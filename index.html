@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>유튜브 라이브 + 채팅</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0f0f0f; color: #eee; overflow: hidden; }
+  body { font-family: -apple-system, "Noto Sans KR", sans-serif; }
+
+  #setup {
+    padding: 20px 16px; display: flex; flex-direction: column; gap: 12px; max-width: 460px; margin: 0 auto;
+  }
+  #setup h1 { font-size: 16px; margin: 8px 0 0; }
+  #setup p { font-size: 13px; color: #aaa; line-height: 1.5; margin: 0; }
+  #setup input {
+    padding: 12px 14px; border-radius: 10px; border: 1px solid #333;
+    background: #1c1c1c; color: #eee; font-size: 15px;
+  }
+  #setup button, #fsBtn {
+    padding: 12px; border: none; border-radius: 10px;
+    background: #ff0033; color: white; font-size: 15px; font-weight: 600;
+  }
+  #err { color: #ff6b6b; font-size: 13px; min-height: 16px; }
+
+  #stage { display: none; height: 100%; width: 100%; flex-direction: column; }
+  #stage.active { display: flex; }
+
+  #panels { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  #video { flex: 0 0 auto; aspect-ratio: 16 / 9; width: 100%; }
+  #chat { flex: 1; min-height: 0; }
+  #video iframe, #chat iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  /* 가로 방향: 영상 왼쪽 + 채팅 오른쪽, 둘 다 항상 보이게.
+     폴드 펼친 화면은 거의 정사각형(약 1.1:1)이라 폭만으로 16:9를 못 채움 —
+     그래서 aspect-ratio 는 유지한 채 width/height 둘 다 auto 로 두고
+     행 안에서 세로 중앙 정렬(letterbox)한다. aspect-ratio 를 없애면 영상이
+     찌그러져 크롭된 것처럼 보인다 (실제로 겪은 버그). */
+  @media (orientation: landscape) {
+    #panels { flex-direction: row; align-items: center; }
+    #video { flex: 1 1 auto; aspect-ratio: 16 / 9; width: auto; height: auto; max-width: 100%; max-height: 100%; }
+    #chat { flex: 0 0 300px; height: 100%; align-self: stretch; }
+  }
+
+  #bar { flex: 0 0 auto; padding: 6px 10px; display: flex; gap: 8px; background: #000; }
+  #fsBtn { flex: 1; padding: 8px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div id="setup">
+  <h1>유튜브 라이브 + 채팅 (가로에서도 채팅 유지)</h1>
+  <p>유튜브 앱 → 라이브 영상 → 공유 → 링크 복사 → 아래 붙여넣기.<br>
+     이 페이지 안에서 영상을 재생하기 때문에, 옆으로 돌려도 채팅이 사라지지 않습니다.</p>
+  <input id="url" type="text" inputmode="url" placeholder="유튜브 라이브 링크 또는 영상 ID">
+  <div id="err"></div>
+  <button id="go">시작</button>
+</div>
+
+<div id="stage">
+  <div id="panels">
+    <div id="video"></div>
+    <div id="chat"></div>
+  </div>
+  <div id="bar">
+    <button id="fsBtn">전체화면</button>
+  </div>
+</div>
+
+<script>
+function extractId(raw) {
+  const input = (raw || '').trim();
+  if (/^[\w-]{11}$/.test(input)) return input;
+  try {
+    const u = new URL(input);
+    const v = u.searchParams.get('v');
+    if (v && /^[\w-]{11}$/.test(v)) return v;
+    const parts = u.pathname.split('/').filter(Boolean);
+    const last = parts[parts.length - 1];
+    if (last && /^[\w-]{11}$/.test(last)) return last;
+  } catch (e) {}
+  return null;
+}
+
+function start(id) {
+  document.getElementById('video').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&playsinline=1" allow="autoplay; encrypted-media; fullscreen"></iframe>`;
+  document.getElementById('chat').innerHTML =
+    `<iframe src="https://www.youtube.com/live_chat?v=${id}&embed_domain=${location.hostname}"></iframe>`;
+  document.getElementById('setup').style.display = 'none';
+  document.getElementById('stage').classList.add('active');
+}
+
+document.getElementById('go').onclick = () => {
+  const raw = document.getElementById('url').value;
+  const id = extractId(raw);
+  const err = document.getElementById('err');
+  if (!id) { err.textContent = '유튜브 링크나 영상 ID를 알아보지 못했습니다.'; return; }
+  err.textContent = '';
+  start(id);
+};
+document.getElementById('url').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('go').click();
+});
+
+document.getElementById('fsBtn').onclick = () => {
+  const stage = document.getElementById('stage');
+  if (!document.fullscreenElement) {
+    (stage.requestFullscreen || stage.webkitRequestFullscreen)?.call(stage);
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape').catch(() => {});
+    }
+  } else {
+    document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+  }
+};
+
+const qp = new URLSearchParams(location.search);
+const shared = qp.get('text') || qp.get('url') || qp.get('v');
+if (shared) {
+  const id = extractId(shared);
+  if (id) start(id);
+}
+</script>
+</body>
+</html>
