@@ -1,35 +1,42 @@
-import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { EndingData, Genre, Language, SceneData, StoryEntry, WorldData } from '../types';
 
-const client = new Anthropic({
-  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || '',
-  dangerouslyAllowBrowser: true,
-});
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
 
-const MODEL = 'claude-haiku-4-5';
+const MODEL = 'gemini-2.0-flash';
 
 const GENRE_LABEL: Record<Genre, Record<Language, string>> = {
-  horror:  { ko: '공포',   en: 'Horror'   },
-  fantasy: { ko: '판타지', en: 'Fantasy'  },
-  romance: { ko: '로맨스', en: 'Romance'  },
-  thriller:{ ko: '스릴러', en: 'Thriller' },
+  horror:   { ko: '공포',   en: 'Horror'   },
+  fantasy:  { ko: '판타지', en: 'Fantasy'  },
+  romance:  { ko: '로맨스', en: 'Romance'  },
+  thriller: { ko: '스릴러', en: 'Thriller' },
 };
 
 function parseJSON<T>(raw: string): T {
-  const stripped = raw.replace(/^```(?:json)?\s*/m, '').replace(/```\s*$/m, '').trim();
+  const stripped = raw
+    .replace(/^```(?:json)?\s*/m, '')
+    .replace(/```\s*$/m, '')
+    .trim();
   return JSON.parse(stripped) as T;
+}
+
+async function callGemini(systemPrompt: string, userPrompt: string): Promise<string> {
+  const model = genAI.getGenerativeModel({
+    model: MODEL,
+    systemInstruction: systemPrompt,
+    generationConfig: { temperature: 1.0 },
+  });
+  const result = await model.generateContent(userPrompt);
+  return result.response.text();
 }
 
 export async function generateWorld(genre: Genre, language: Language): Promise<WorldData> {
   const genreName = GENRE_LABEL[genre][language];
   const langLabel = language === 'ko' ? '한국어' : 'English';
 
-  const response = await client.messages.create({
-    model: MODEL,
-    max_tokens: 1024,
-    messages: [{
-      role: 'user',
-      content: `Generate a unique story world for a ${genreName} interactive fiction game in ${langLabel}.
+  const text = await callGemini(
+    `You are a creative story world generator. Always respond with valid JSON only, no markdown.`,
+    `Generate a unique story world for a ${genreName} interactive fiction game in ${langLabel}.
 
 OUTPUT FORMAT (strict JSON, no markdown):
 {
@@ -38,10 +45,8 @@ OUTPUT FORMAT (strict JSON, no markdown):
   "protagonist": "주인공 설정 (1문장)",
   "hook": "첫 장면 도입부 (2문장, 긴장감 있게)"
 }`,
-    }],
-  });
+  );
 
-  const text = response.content[0].type === 'text' ? response.content[0].text : '{}';
   return parseJSON<WorldData>(text);
 }
 
@@ -69,10 +74,12 @@ STORYTELLING RULES:
 - Never repeat similar scene structures two rounds in a row
 - Keep each scene vivid but concise (3-4 sentences)
 
-OUTPUT FORMAT (strict JSON, no markdown):
+Always respond with valid JSON only, no markdown.
+
+OUTPUT FORMAT:
 {
   "scene": "장면 묘사",
-  "atmosphere": "분위기 키워드 one word (eerie / tense / hopeful / ominous / warm)",
+  "atmosphere": "one word: eerie | tense | hopeful | ominous | warm",
   "imagePrompt": "cinematic scene, ${genreName} style, [scene description in English, 10 words max]",
   "choices": [
     { "id": "A", "text": "선택지 A" },
@@ -89,13 +96,7 @@ OUTPUT FORMAT (strict JSON, no markdown):
     ? storyHistory.map(e => `Round ${e.round}: ${e.choice}`).join('\n')
     : 'None yet';
 
-  const response = await client.messages.create({
-    model: MODEL,
-    max_tokens: 1024,
-    system,
-    messages: [{
-      role: 'user',
-      content: `Round ${round} of 5.
+  const text = await callGemini(system, `Round ${round} of 5.
 Genre: ${genreName}
 World: ${worldSetting}
 
@@ -105,11 +106,8 @@ ${historyText}
 Player's choices so far:
 ${choiceHistory}
 
-Generate the next scene and two choices.`,
-    }],
-  });
+Generate the next scene and two choices.`);
 
-  const text = response.content[0].type === 'text' ? response.content[0].text : '{}';
   return parseJSON<SceneData>(text);
 }
 
@@ -125,14 +123,9 @@ export async function generateEnding(
   const historyText = storyHistory.map(e => `Round ${e.round}: ${e.scene}\nPlayer chose: ${e.choice}`).join('\n\n');
   const choiceHistory = storyHistory.map(e => `Round ${e.round}: ${e.choice}`).join('\n');
 
-  const response = await client.messages.create({
-    model: MODEL,
-    max_tokens: 1024,
-    system: `You are a master storyteller running an interactive fiction game.
-SETTINGS: Genre: ${genreName}, Language: ${langLabel}`,
-    messages: [{
-      role: 'user',
-      content: `Round 5 of 5 — FINAL ROUND.
+  const text = await callGemini(
+    `You are a master storyteller. Genre: ${genreName}, Language: ${langLabel}. Always respond with valid JSON only, no markdown.`,
+    `Round 5 of 5 — FINAL ROUND.
 Genre: ${genreName}
 World: ${worldSetting}
 
@@ -142,18 +135,16 @@ ${historyText}
 Player's choices:
 ${choiceHistory}
 
-Deliver the ending. OUTPUT FORMAT (strict JSON, no markdown):
+Deliver the ending. OUTPUT FORMAT (strict JSON):
 {
   "scene": "엔딩 장면 묘사 (4-5문장, 임팩트 있게)",
   "endingType": "엔딩 이름 (예: 'The Survivor' / '고독한 영웅' / 'Twisted Fate')",
-  "endingGrade": "S / A / B / C",
+  "endingGrade": "S or A or B or C",
   "epilogue": "한 줄 총평 (플레이어에게 보여줄 문장)",
   "imagePrompt": "cinematic final scene, ${genreName} style, [description in English, 10 words max]",
-  "atmosphere": "분위기 키워드 (eerie / tense / hopeful / ominous / warm)"
+  "atmosphere": "one word: eerie | tense | hopeful | ominous | warm"
 }`,
-    }],
-  });
+  );
 
-  const text = response.content[0].type === 'text' ? response.content[0].text : '{}';
   return parseJSON<EndingData>(text);
 }
