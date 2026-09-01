@@ -3,7 +3,7 @@ import type { EndingData, Genre, Language, SceneData, StoryEntry, WorldData } fr
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
 
-const MODEL = 'gemini-1.5-flash';
+const MODEL = 'gemini-2.0-flash-exp';
 
 const GENRE_LABEL: Record<Genre, Record<Language, string>> = {
   horror:   { ko: '공포',   en: 'Horror'   },
