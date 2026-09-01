@@ -1,9 +1,9 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 import type { EndingData, Genre, Language, SceneData, StoryEntry, WorldData } from '../types';
 
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
 
-const MODEL = 'gemini-2.0-flash-exp';
+const MODEL = 'gemini-2.0-flash';
 
 const GENRE_LABEL: Record<Genre, Record<Language, string>> = {
   horror:   { ko: '공포',   en: 'Horror'   },
@@ -21,13 +21,15 @@ function parseJSON<T>(raw: string): T {
 }
 
 async function callGemini(systemPrompt: string, userPrompt: string): Promise<string> {
-  const model = genAI.getGenerativeModel({
+  const response = await ai.models.generateContent({
     model: MODEL,
-    systemInstruction: systemPrompt,
-    generationConfig: { temperature: 1.0 },
+    contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+    config: {
+      systemInstruction: systemPrompt,
+      temperature: 1.0,
+    },
   });
-  const result = await model.generateContent(userPrompt);
-  return result.response.text();
+  return response.text ?? '';
 }
 
 export async function generateWorld(genre: Genre, language: Language): Promise<WorldData> {
