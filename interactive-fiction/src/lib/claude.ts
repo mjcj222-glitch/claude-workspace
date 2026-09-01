@@ -1,9 +1,12 @@
-import { GoogleGenAI } from '@google/genai';
+import Groq from 'groq-sdk';
 import type { EndingData, Genre, Language, SceneData, StoryEntry, WorldData } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
+const groq = new Groq({
+  apiKey: import.meta.env.VITE_GROQ_API_KEY || '',
+  dangerouslyAllowBrowser: true,
+});
 
-const MODEL = 'gemini-3.6-flash';
+const MODEL = 'llama-3.1-8b-instant';
 
 const GENRE_LABEL: Record<Genre, Record<Language, string>> = {
   horror:   { ko: '공포',   en: 'Horror'   },
@@ -20,23 +23,23 @@ function parseJSON<T>(raw: string): T {
   return JSON.parse(stripped) as T;
 }
 
-async function callGemini(systemPrompt: string, userPrompt: string): Promise<string> {
-  const response = await ai.models.generateContent({
+async function callGroq(systemPrompt: string, userPrompt: string): Promise<string> {
+  const completion = await groq.chat.completions.create({
     model: MODEL,
-    contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-    config: {
-      systemInstruction: systemPrompt,
-      temperature: 1.0,
-    },
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt },
+    ],
+    temperature: 1.0,
   });
-  return response.text ?? '';
+  return completion.choices[0]?.message?.content ?? '';
 }
 
 export async function generateWorld(genre: Genre, language: Language): Promise<WorldData> {
   const genreName = GENRE_LABEL[genre][language];
   const langLabel = language === 'ko' ? '한국어' : 'English';
 
-  const text = await callGemini(
+  const text = await callGroq(
     `You are a creative story world generator. Always respond with valid JSON only, no markdown.`,
     `Generate a unique story world for a ${genreName} interactive fiction game in ${langLabel}.
 
@@ -98,7 +101,7 @@ OUTPUT FORMAT:
     ? storyHistory.map(e => `Round ${e.round}: ${e.choice}`).join('\n')
     : 'None yet';
 
-  const text = await callGemini(system, `Round ${round} of 5.
+  const text = await callGroq(system, `Round ${round} of 5.
 Genre: ${genreName}
 World: ${worldSetting}
 
@@ -125,7 +128,7 @@ export async function generateEnding(
   const historyText = storyHistory.map(e => `Round ${e.round}: ${e.scene}\nPlayer chose: ${e.choice}`).join('\n\n');
   const choiceHistory = storyHistory.map(e => `Round ${e.round}: ${e.choice}`).join('\n');
 
-  const text = await callGemini(
+  const text = await callGroq(
     `You are a master storyteller. Genre: ${genreName}, Language: ${langLabel}. Always respond with valid JSON only, no markdown.`,
     `Round 5 of 5 — FINAL ROUND.
 Genre: ${genreName}
