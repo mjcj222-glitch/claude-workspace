@@ -17,6 +17,7 @@ const GENRE_LABEL: Record<Genre, Record<Language, string>> = {
 
 function parseJSON<T>(raw: string): T {
   const stripped = raw
+    .replace(/<think>[\s\S]*?<\/think>/g, '')
     .replace(/^```(?:json)?\s*/m, '')
     .replace(/```\s*$/m, '')
     .trim();
