@@ -16,12 +16,12 @@ const GENRE_LABEL: Record<Genre, Record<Language, string>> = {
 };
 
 function parseJSON<T>(raw: string): T {
-  const stripped = raw
-    .replace(/<think>[\s\S]*?<\/think>/g, '')
-    .replace(/^```(?:json)?\s*/m, '')
-    .replace(/```\s*$/m, '')
-    .trim();
-  return JSON.parse(stripped) as T;
+  const start = raw.indexOf('{');
+  const end = raw.lastIndexOf('}');
+  if (start !== -1 && end !== -1 && end > start) {
+    return JSON.parse(raw.slice(start, end + 1)) as T;
+  }
+  throw new Error('No JSON found in response');
 }
 
 async function callGroq(systemPrompt: string, userPrompt: string): Promise<string> {
