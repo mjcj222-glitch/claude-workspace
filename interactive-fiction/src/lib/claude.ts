@@ -6,7 +6,7 @@ const groq = new Groq({
   dangerouslyAllowBrowser: true,
 });
 
-const MODEL = 'gemma2-9b-it';
+const MODEL = 'qwen/qwen3.6-27b';
 
 const GENRE_LABEL: Record<Genre, Record<Language, string>> = {
   horror:   { ko: '공포',   en: 'Horror'   },
