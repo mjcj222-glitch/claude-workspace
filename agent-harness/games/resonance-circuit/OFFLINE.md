@@ -26,3 +26,5 @@ Draft PR: https://github.com/mjcj222-glitch/claude-workspace/pull/2
 최신 소거 설정 회귀 수정/부드러운 팝·200ms 낙하: [SOFT-CASCADE-REPORT.md](SOFT-CASCADE-REPORT.md). 새 실제 영상: `soft-cascade-play.mp4`.
 
 탐험 v1: 시작에서 연습/탐험 선택. 6개 방 분기·유물8종·HP유지·별도 저장, 패배 후 전투 재도전 없음. [설계](EXPEDITION-DESIGN.md) / [검증 보고](EXPEDITION-REPORT.md). 기존 연습 저장은 유지됩니다.
+
+최신 화면은 아이보리·차콜 UI입니다. [시각 설계/검수](NEUTRAL-UI-REPORT.md), `neutral-after-*.png` 참고. 포함된 기존 영상은 이전 디자인 기록입니다.
