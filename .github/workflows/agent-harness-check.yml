@@ -1,0 +1,28 @@
+name: Agent Harness Sanity Check
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "agent-harness/**"
+      - ".github/workflows/agent-harness-check.yml"
+  pull_request:
+    paths:
+      - "agent-harness/**"
+      - ".github/workflows/agent-harness-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check research harness config
+        run: python3 agent-harness/harness.py check
+      - name: Run standard-library tests
+        run: python3 -m unittest discover -s agent-harness/tests -v
+      - name: Check prompt generation
+        run: python3 agent-harness/harness.py brief --topic harness-bootstrap --role verify > /dev/null
