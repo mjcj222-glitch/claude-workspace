@@ -12,11 +12,12 @@
     "boss": {
       "source_rect": [
         0,
-        76,
+        68,
         940,
-        270
+        492
       ],
-      "selector": ".concept-boss"
+      "selector": ".concept-boss",
+      "mask_note": "CSS top notch x14.5–24%, y0–4.1% excludes the remaining source UI badge tip; character and scenery retained. HUD uses separate padded edges."
     },
     "refractor": {
       "source_rect": [

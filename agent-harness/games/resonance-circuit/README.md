@@ -62,3 +62,7 @@ python agent-harness/games/resonance-circuit/panels_terminal_browser.py
 `engine.mjs`: 기존 hex/연쇄 규칙, `campaign.mjs`: 전투·성장·재도전, `storage.mjs`: 저장 검증, `audio.mjs`: 제스처 기반 음향, `effects.mjs`: 시각 효과, `app.mjs`: 입력·화면 연결. `config.mjs`/`campaign.mjs`에 밸런스 수치가 있습니다.
 
 승인 원본은 `assets/approved-concept.png`로 보존했습니다. 임시 캐릭터와 개별 보석은 CSS sprite이며, 교체 슬롯은 `assets/characters.css`와 `assets/manifest.json`에 있습니다. 캐릭터 재디자인은 하지 않았습니다. `package_game.py`는 원본에서 이미지 내장 HTML/ZIP을 생성합니다.
+
+## 전투 그림 표시
+
+적의 꽃왕관·얼굴·몸통·발끝을 함께 보여 주도록 전투 일러스트를 원본 비율로 표시합니다. 안내 중에도 그림 높이는 유지합니다. 보드/스킬 크기를 줄이지 않아 하단에는 세로 스크롤이 필요합니다. 캡처와 검증은 [BACKGROUND-REPORT.md](BACKGROUND-REPORT.md)를 참고하세요.

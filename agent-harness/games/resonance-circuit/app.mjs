@@ -54,7 +54,7 @@ function phaseDialog(){
   $('upgradeTitle').textContent=`${STAGES[run.stage].name} 복구! 하나를 선택하세요.`;$('choices').replaceChildren();
   for(const choice of CHOICES[run.stage]){const b=document.createElement('button');b.dataset.choice=choice.id;const title=document.createElement('strong'),desc=document.createElement('span');title.textContent=choice.name;desc.textContent=choice.description;b.append(title,desc);b.onclick=()=>{
    if(gate.locked||!chooseUpgrade(run,choice.id))return;
-   $('upgrade').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus();$('notice').textContent=STAGES[run.stage].lesson;
+   $('upgrade').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[run.stage].lesson;
   };$('choices').append(b);}if(!$('upgrade').open)$('upgrade').showModal();
  }else if(['complete','defeat'].includes(run.phase)){
   $('ending').className=run.phase==='complete'?'victory':'defeat';$('result').textContent=run.phase==='complete'?'세 정원에 빛이 돌아왔습니다':'다시 피어날 수 있어요';
@@ -81,7 +81,7 @@ async function commit(i){
   if(result.incoming){sound.play('enemy');const reaction=result.retaliation?'hurt':'guarded';$('health').classList.add(reaction);setTimeout(()=>$('health').classList.remove(reaction),420);}
   await delay(220);
   $('notice').textContent=`${result.removed.length}칸${result.unlocked.length?' · 덩굴 해제 '+result.unlocked.length:''}${result.echoHit?' · 잔향 발동':''}${bombs.length?' · 폭탄 '+bombs.length:''}${result.retaliation?' · 적 공격 −'+result.retaliation:''}${result.blocked?' · 보호 −'+result.blocked:''}${result.prismBonus?' · 링크 +'+result.prismBonus:''}${result.ignitionBonus?' · 점화 +'+result.ignitionBonus:''}${result.wardAbsorbed?' · 장막 −'+result.wardAbsorbed:''}`;
-  if(run.phase!=='battle'){await delay(320);phaseDialog();}else tiles[focus].focus();
+  if(run.phase!=='battle'){await delay(320);phaseDialog();}else tiles[focus].focus({preventScroll:true});
  }finally{gate.finish();if(run.phase==='battle')showPreview(focus);}
 }
 for(const [i,b] of tiles.entries()){
@@ -89,7 +89,7 @@ for(const [i,b] of tiles.entries()){
  b.addEventListener('pointerdown',e=>{if(blocked()||e.button!==0)return;pressed={id:e.pointerId,i,x:e.clientX,y:e.clientY};showPreview(i);});
  b.addEventListener('pointerup',e=>{const p=pressed;pressed=null;if(p&&p.id===e.pointerId&&p.i===i&&Math.hypot(e.clientX-p.x,e.clientY-p.y)<12&&document.elementFromPoint(e.clientX,e.clientY)?.closest('.tile')===b)commit(i);});
  b.addEventListener('click',e=>{if(e.detail===0)commit(i);});
- b.addEventListener('keydown',e=>{if(e.repeat){e.preventDefault();return;}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();if(!blocked()){focus=moveFocus(i,e.key);tiles[focus].focus();}}});
+ b.addEventListener('keydown',e=>{if(e.repeat){e.preventDefault();return;}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();if(!blocked()){focus=moveFocus(i,e.key);tiles[focus].focus({preventScroll:true});const box=tiles[focus].getBoundingClientRect();if(box.top<0||box.bottom>innerHeight)tiles[focus].scrollIntoView({block:"nearest"});}}});
 }
 window.addEventListener('pointercancel',()=>pressed=null);window.addEventListener('pointerup',()=>pressed=null);
 window.addEventListener('pointermove',e=>{if(pressed&&Math.hypot(e.clientX-pressed.x,e.clientY-pressed.y)>=12)pressed=null;});
@@ -101,22 +101,22 @@ document.querySelectorAll('[data-skill]').forEach(b=>b.onclick=()=>{
 $('boost').onclick=()=>{if(!blocked()&&runBoost(run)){sound.unlock();sound.play('boost');persist();render();showPreview(focus);fx.ring($('board'));$('notice').textContent='과충전 · 이번 턴 피해 2배';}};
 function begin(fresh){
  fx.clear();skillUI.clear();pressed=null;run=createRun(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed,!learned);state=run.state;started=true;sessionPlaying=true;
- for(const id of ['start','ending','confirmNew','upgrade'])if($(id).open)$(id).close();persist();render();showPreview(1);tiles[1].focus();$('notice').textContent=STAGES[0].lesson;
+ for(const id of ['start','ending','confirmNew','upgrade'])if($(id).open)$(id).close();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[0].lesson;
 }
 function askNew(fresh){if(gate.locked)return;pendingFresh=fresh;if(started&&['battle','upgrade'].includes(run.phase))$('confirmNew').showModal();else begin(fresh);}
 $('restart').onclick=()=>askNew(false);$('newSeed').onclick=()=>askNew(true);$('again').onclick=()=>begin(false);$('another').onclick=()=>begin(true);
 $('cancelNew').onclick=()=>$('confirmNew').close();$('confirmRestart').onclick=()=>begin(pendingFresh);
-$('retryBattle').onclick=()=>{if(gate.locked||!retryBattle(run))return;$('ending').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus();$('notice').textContent='진입 당시 체력·게이지·보드로 재도전합니다.';};
+$('retryBattle').onclick=()=>{if(gate.locked||!retryBattle(run))return;$('ending').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent='진입 당시 체력·게이지·보드로 재도전합니다.';};
 $('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();render();showPreview(focus);};
 $('sound').onclick=()=>{sound.enable(!settings.enabled);persist();render();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
 $('volume').oninput=e=>{sound.volume(Number(e.target.value)/100);persist();};
 document.addEventListener('visibilitychange',()=>{if(document.hidden){pressed=null;sound.hide();}});
 const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.'],['덩굴을 벗기세요',PANEL_HELP.vine+' 직접 누르면 탭을 쓰지 않습니다. 해제한 타일은 다음 행동부터 연결돼요.'],['무지개를 이으세요',PANEL_HELP.rainbow+' 동률이면 불꽃·별빛·물방울·회복 순입니다. 미리보기의 확정색을 확인하세요.']];
 function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`규칙 ${guideStep+1}/${guide.length}`;$('guideTitle').textContent=title;$('guideText').textContent=body;$('guideNext').textContent=guideStep===guide.length-1?'돌아가기':'다음';if(!$('guide').open)$('guide').showModal();}
-$('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus();}};
+$('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus({preventScroll:true});}};
 $('skillHelp').onclick=()=>{if(!gate.locked)skillUI.describe();};$('closeSkills').onclick=()=>$('skillGuide').close();
 $('help').onclick=()=>{if(!gate.locked){guideStep=0;tutorial();}};
-$('continueRun').disabled=!started;$('continueRun').onclick=()=>{sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle')tiles[focus].focus();};
+$('continueRun').disabled=!started;$('continueRun').onclick=()=>{sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle'){tiles[focus].focus({preventScroll:true});window.scrollTo(0,0);}};
 $('startNew').onclick=()=>askNew(false);
 $('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해 이어갑니다. 새 스킬 효과는 재사용부터 적용되며, 이전 스킬 저장의 2전투 방어는 다음 턴부터, 새 패널은 다음 전투부터 적용됩니다.':loaded.reason==='invalid'?'저장 데이터 형식이 맞지 않아 새 탐험으로 시작합니다.':loaded.reason==='unavailable'?'저장소를 사용할 수 없지만 플레이할 수 있습니다.':'자동 저장 · 기본 무음 · 인터넷 불필요';
 for(const id of ['start','upgrade'])$(id).addEventListener('cancel',e=>e.preventDefault());

@@ -19,7 +19,8 @@ with sync_playwright() as p:
   page.reload();page.locator('#continueRun').click();assert saved(page)['run']==before
   page.screenshot(path=str(ROOT/f'skills-ready-{w}.png'),full_page=True)
   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-  box=page.locator('#boost').bounding_box();assert box['y']+box['height']<=h
+  box=page.locator('#boost').bounding_box();assert box['height']>=32
+  page.locator('#boost').scroll_into_view_if_needed();assert page.locator('#boost').is_visible()
   # Explicit zero-candidate fixture: old ready effects must not be consumed/refreshed.
   data=saved(page);s=data['run']['state'];s['turn']=4;s['ready']=[4,4,4];s['echo']=[]
   for t in s['board']:t['color']='heal'

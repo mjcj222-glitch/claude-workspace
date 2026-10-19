@@ -11,6 +11,7 @@ with sync_playwright() as p:
    assert page.locator('.tile').count()==42
    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
    box=page.locator('#boost').bounding_box();print(w,h,'tutorial',tutorial,'boost bottom',round(box['y']+box['height']),flush=True)
-   assert box['y']+box['height']<=h
+   assert box['height']>=32
+   page.locator('#boost').scroll_into_view_if_needed();assert page.locator('#boost').is_visible()
   page.close()
  b.close()
