@@ -1,0 +1,144 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>잔향 회로 · 유리 온실</title><style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#081c26;color:#e0f8ec}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 5%,#1b5149,transparent 60%),repeating-linear-gradient(60deg,transparent 0 110px,#9ce9bd08 111px 112px);min-height:100vh}main{width:min(100% - 24px,520px);margin:auto;padding:25px 0}h1{font-size:2.7rem;letter-spacing:-.07em;margin:8px 0}h2{font-size:1.1rem;margin:4px 0 10px}p{line-height:1.6;font-size:.9rem}header p{color:#a4bebd}.eyebrow{font-size:.65rem;letter-spacing:.22em;color:#99dfc0}.glass{border:1px solid #7bd9b43b;border-radius:18px;padding:16px;margin:15px 0;background:#102e37dc;box-shadow:0 12px 40px #0002}.enemy{border-color:#e2c48359}.line{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.8rem}progress{width:100%;height:9px;accent-color:#a1e8c2;margin:10px 0}#boss{accent-color:#edc476}button{font:inherit;color:inherit;background:#183e48;border:1px solid #81cbb367;border-radius:9px;padding:10px;cursor:pointer;touch-action:manipulation}button:disabled{opacity:.45;cursor:default}button:focus-visible{outline:3px solid #fff;outline-offset:3px}#board{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:3px;padding:3px 0 26px;isolation:isolate}.tile{grid-row:var(--r);grid-column:var(--c);width:100%;height:48px;padding:0;border-radius:13px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);border:0;position:relative;font-size:1.4rem;transition:transform .16s,filter .16s;color:#09222a;font-weight:800}.tile.odd{transform:translateY(25px)}.coral{background:#ff997e}.gold{background:#f0cf77}.blue{background:#83cbe5}.heal{background:#b3e2af}.tile:focus-visible{outline:0;box-shadow:inset 0 0 0 5px #fff}.tile.selected{filter:brightness(1.3);box-shadow:inset 0 0 0 4px #fff}.tile.marked:after{content:'◌';position:absolute;inset:0;font-size:40px;line-height:48px;color:#112e38}.tile small{position:absolute;right:8px;top:0;font-size:11px;background:#08252d;color:white;border-radius:3px}.tile.cleared{opacity:.2;scale:.75}#board.falling{animation:settle .22s ease-out}#board.blast{animation:shake .2s}#preview,#echo{min-height:1.6em;margin:5px 0;color:#b6e4d0}#pending{margin:10px 0}.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:12px}.skills button{font-size:.85rem;padding:12px 4px}.skills small{font-size:.65rem}#boost{width:100%}footer{text-align:center}footer button{font-size:.75rem;margin:3px}footer p{color:#a4bebd;font-size:.7rem}dialog{background:#11323d;color:#e0f8ec;border:1px solid #a1e8c2;border-radius:20px;max-width:min(90vw,430px);padding:28px}dialog::backdrop{background:#031217ce}dialog button{margin:4px}#notice{margin-bottom:0}@keyframes settle{from{translate:0 -10px;opacity:.7}to{translate:0 0;opacity:1}}@keyframes shake{25%{translate:-3px}75%{translate:3px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}@media(min-width:500px){.tile{height:56px}.tile.odd{transform:translateY(29px)}.tile.marked:after{line-height:56px}}
+
+.cooldown{display:block;font-size:.65rem;color:#bce8d5;margin-top:6px}
+
+</style>
+<body><main><header><span class="eyebrow">GLASSHOUSE / CIRCUIT 07</span><h1>잔향 회로</h1><p>사라진 빛이 다음 빛을 깨웁니다.</p></header>
+<section class="glass enemy"><div class="line"><h2>온실의 그림자</h2><span id="turn"></span></div><progress id="boss" aria-label="보스 체력"></progress><div class="line"><span id="bossText"></span><strong id="incoming"></strong></div></section>
+<section class="glass"><div class="line"><strong id="health"></strong><span id="taps"></span></div><p id="pending"></p><div id="board" role="group" aria-label="6열 7행 빛 회로. 방향키 이동, Enter 또는 Space 확정"></div><p id="preview">타일을 누르거나 키보드로 선택하면 연결을 미리 봅니다.</p><p id="echo"></p></section>
+<section class="glass"><div class="line"><label for="gauge">과충전</label><span id="gaugeText"></span></div><progress id="gauge"></progress><button id="boost">빛 증폭 · 이번 턴 피해 ×2</button><div class="skills"><button data-skill="0">굴절사<br><small>파랑 → 산호</small></button><button data-skill="1">점화사<br><small>일반 공격 2개 → 폭탄</small></button><button data-skill="2">정원사<br><small>일반 공격 6개 → 회복</small></button></div><p id="notice" role="status" aria-live="polite">빛 회로를 연결해 온실을 복구하세요.</p></section>
+<footer><button id="help">규칙 보기</button><button id="restart">같은 시드 재시작</button><button id="newSeed">새 시드</button><p>소리 없음 · 외부 통신 없음 · 색과 모양으로 구분</p></footer>
+<dialog id="guide"><span class="eyebrow" id="step"></span><h2 id="guideTitle"></h2><p id="guideText"></p><button id="guideNext">다음</button></dialog>
+<dialog id="ending"><h2 id="result"></h2><p id="stats"></p><button id="again">같은 회로 다시</button><button id="another">새 회로 시작</button></dialog>
+</main><script>
+(() => {
+const C = Object.freeze({cols:6, rows:7, hp:180, bossHP:680, attack:5, heal:6, charge:24, attacks:[24,42], gauge:55, cooldown:3, seed:20261019});
+const COLORS = ['coral','gold','blue','heal'];
+
+
+function neighbors(i) {
+  const c=Math.floor(i/C.rows), r=i%C.rows, out=[];
+  for(const [dc,dr] of [[0,-1],[0,1],[-1,0],[1,0],[-1,c%2?1:-1],[1,c%2?1:-1]]) {
+    const x=c+dc,y=r+dr; if(x>=0&&x<C.cols&&y>=0&&y<C.rows) out.push(x*C.rows+y);
+  } return out;
+}
+function random(s) { s.rng=(Math.imul(s.rng,1664525)+1013904223)>>>0; return s.rng/4294967296; }
+function tile(s,color) {return {id:s.nextID++,color:color??COLORS[Math.floor(random(s)*4)],kind:'normal'};}
+function createGame(seed=C.seed) {
+ const s={seed:seed>>>0,rng:seed>>>0,nextID:1,board:[],echo:[],hp:C.hp,bossHP:C.bossHP,turn:1,taps:3,damage:0,healing:0,gauge:0,boost:false,ready:[1,1,1],status:'playing',maxChain:0,echoCount:0};
+ s.board=Array.from({length:42},()=>tile(s));
+ // A guaranteed opening cluster, next to surviving attack tiles.
+ for(const i of [1,2,3,8,9,10]) s.board[i].color='coral';
+ for(const i of [0,4,7,11,15,16,17]) s.board[i].color='blue';
+ return s;
+}
+function group(s,index) {
+ if(!s.board[index]) return [];
+ const found=new Set([index]), queue=[index], color=s.board[index].color;
+ for(const i of queue) for(const n of neighbors(i)) if(!found.has(n)&&s.board[n].color===color){found.add(n);queue.push(n);}
+ return queue;
+}
+function preview(s,index) {
+ const initial=group(s,index); if(!initial.length) return {initial:[],removed:[],echoHit:false,damage:0,healing:0};
+ const echoHit=initial.some(i=>s.echo.includes(s.board[i].id));
+ const removed=new Set(initial), queue=[...initial];
+ if(echoHit) s.board.forEach((t,i)=>{if(s.echo.includes(t.id)&&!removed.has(i)){removed.add(i);queue.push(i);}});
+ for(const i of queue) if(s.board[i].kind==='bomb') for(const n of neighbors(i)) if(!removed.has(n)){removed.add(n);queue.push(n);}
+ let damage=0,healing=0;
+ for(const i of removed){const t=s.board[i]; if(t.color==='heal') healing+=C.heal; else damage+=C.attack; if(t.kind==='charge') damage+=C.charge;}
+ return {initial,removed:[...removed],echoHit,damage:damage*(s.boost?2:1),healing};
+}
+function tap(s,index) {
+ if(s.status!=='playing'||!s.board[index]) return null;
+ const p=preview(s,index), removed=new Set(p.removed), original=s.board, selected=original[index];
+ const make=selected.color!=='heal'&&p.initial.length>=5;
+ const candidates=new Set(p.initial.flatMap(neighbors));
+ s.echo=make?[...candidates].sort((a,b)=>a-b).filter(i=>!removed.has(i)&&original[i].kind==='normal'&&original[i].color!=='heal').slice(0,8).map(i=>original[i].id):[];
+ s.board=original.map((t,i)=>removed.has(i)?null:t);
+ let special=null;
+ if(make){special=tile(s,selected.color);special.kind=p.initial.length>=10?'bomb':'charge';s.board[index]=special;}
+ for(let c=0;c<C.cols;c++) {
+   const survivors=s.board.slice(c*7,c*7+7).filter(Boolean), fresh=Array.from({length:7-survivors.length},()=>tile(s));
+   s.board.splice(c*7,7,...fresh,...survivors);
+ }
+ s.damage+=p.damage;s.healing+=p.healing;s.maxChain=Math.max(s.maxChain,p.removed.length);s.echoCount+=Number(p.echoHit);
+ if(!s.boost)s.gauge=Math.min(C.gauge,s.gauge+p.removed.length);
+ s.taps--;
+ let retaliation=0;
+ if(s.taps===0){
+   s.hp=Math.min(C.hp,s.hp+s.healing);s.bossHP=Math.max(0,s.bossHP-s.damage);
+   if(s.bossHP===0)s.status='won';
+   else {retaliation=C.attacks[(s.turn-1)%2];s.hp=Math.max(0,s.hp-retaliation);if(!s.hp)s.status='lost';}
+   if(s.status==='playing'){s.turn++;s.taps=3;s.damage=0;s.healing=0;s.boost=false;}
+ }
+ return {...p,special,retaliation};
+}
+function useSkill(s,k) {
+ if(s.status!=='playing'||!Number.isInteger(k)||k<0||k>2||s.turn<s.ready[k])return false;
+ let candidates=s.board.filter(t=>k===0?t.color==='blue':t.kind==='normal'&&t.color!=='heal');
+ if(k>0)candidates=candidates.slice(0,k===1?2:6);
+ if(!candidates.length)return false;
+ for(const t of candidates){if(k===1)t.kind='bomb';else {t.color=k===0?'coral':'heal';if(k===2)s.echo=s.echo.filter(id=>id!==t.id);}}
+ s.ready[k]=s.turn+C.cooldown;return true;
+}
+function overcharge(s) {
+ if(s.status!=='playing'||s.taps!==3||s.boost||s.gauge<C.gauge)return false;
+ s.gauge=0;s.boost=true;return true;
+}
+function inputGate() {let locked=false;return {get locked(){return locked;},start(){if(locked)return false;locked=true;return true;},finish(){locked=false;}};}
+
+function moveFocus(index,key) {
+ const col=Math.floor(index/C.rows), row=index%C.rows;
+ const delta={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[key];
+ if(!delta)return index;
+ return Math.max(0,Math.min(C.cols-1,col+delta[0]))*C.rows+Math.max(0,Math.min(C.rows-1,row+delta[1]));
+}
+
+
+
+const $=id=>document.getElementById(id), symbols={coral:'◆',gold:'✦',blue:'●',heal:'+'}, names={coral:'산호',gold:'금빛',blue:'파랑',heal:'회복'};
+let state=createGame(), focus=1, pressed=null, guideStep=0;
+const gate=inputGate(), reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const tiles=Array.from({length:42},(_,i)=>{const b=document.createElement('button');b.className='tile';b.style.setProperty('--c',Math.floor(i/7)+1);b.style.setProperty('--r',i%7+1);b.dataset.index=i;$('board').append(b);return b;});
+function showPreview(i){if(gate.locked||state.status!=='playing')return;focus=i;const p=preview(state,i);tiles.forEach((b,j)=>{b.classList.toggle('selected',p.removed.includes(j));b.tabIndex=j===i?0:-1;});$('preview').textContent=`연결 ${p.initial.length} · 총 ${p.removed.length}칸 · 피해 +${p.damage} / 회복 +${p.healing}${p.echoHit?' · 잔향 연결!':''}`;}
+function render(){
+ tiles.forEach((b,i)=>{const t=state.board[i];b.className=`tile ${t.color} ${Math.floor(i/7)%2?'odd':''} ${state.echo.includes(t.id)?'marked':''}`;b.innerHTML=`${symbols[t.color]}${t.kind==='normal'?'':`<small>${t.kind==='bomb'?'✹':'ϟ'}</small>`}`;b.setAttribute('aria-label',`${Math.floor(i/7)+1}열 ${i%7+1}행 ${names[t.color]} ${t.kind==='bomb'?'폭탄':t.kind==='charge'?'차지':'일반'}${state.echo.includes(t.id)?' 잔향':''}`);b.tabIndex=i===focus?0:-1;b.disabled=state.status!=='playing';});
+ $('boss').max=C.bossHP;$('boss').value=state.bossHP;$('bossText').textContent=`그림자 ${state.bossHP} / ${C.bossHP}`;$('incoming').textContent=`다음 공격 ${C.attacks[(state.turn-1)%2]}`;
+ $('health').textContent=`온실 체력 ${state.hp} / ${C.hp}`;$('turn').textContent=`${state.turn}턴`;$('taps').textContent=`남은 탭 ${state.taps} / 3`;
+ $('pending').textContent=`턴 끝 정산: 피해 ${state.damage} · 회복 ${state.healing}${state.boost?' · 과충전 중':''}`;
+ $('echo').textContent=state.echo.length?`◌ 잔향 ${state.echo.length}개 — 다음 탭에 연결`:'5개 이상 연결하면 이웃에 잔향이 남습니다.';
+ $('gauge').max=C.gauge;$('gauge').value=state.gauge;$('gaugeText').textContent=`${state.gauge} / ${C.gauge}`;
+ $('boost').disabled=state.status!=='playing'||state.gauge<C.gauge||state.taps!==3||state.boost;
+ document.querySelectorAll('[data-skill]').forEach((b,i)=>{b.disabled=state.status!=='playing'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';let status=b.querySelector('.cooldown');if(!status){status=document.createElement('span');status.className='cooldown';b.append(status);}status.textContent=state.turn<state.ready[i]?`${state.ready[i]-state.turn}턴 후`:'준비';});
+}
+const delay=ms=>new Promise(resolve=>setTimeout(resolve,reduced.matches?0:ms));
+async function commit(i){
+ if(state.status!=='playing'||$('guide').open||!gate.start())return;
+ try {const p=preview(state,i);p.removed.forEach(j=>tiles[j].classList.add('cleared'));$('board').classList.toggle('blast',p.removed.length>=10);await delay(180);
+ const result=tap(state,i);render();$('board').classList.remove('blast');$('board').classList.add('falling');await delay(220);$('board').classList.remove('falling');
+ $('notice').textContent=`${result.removed.length}칸 해소${result.echoHit?' · 잔향 발동!':''}${result.special?' · 새 '+(result.special.kind==='bomb'?'폭탄':'차지'):''}${result.retaliation?' · 그림자 공격 '+result.retaliation:''}`;
+ if(state.status!=='playing'){$('result').textContent=state.status==='won'?'온실에 빛이 돌아왔습니다':'잠시 꺼진 온실';$('stats').textContent=`${state.turn}턴 · 최대 연쇄 ${state.maxChain} · 잔향 발동 ${state.echoCount}회. 다음 회로에서는 어떤 빛을 남길까요?`;$('ending').showModal();}
+ else tiles[focus].focus();
+ } finally {gate.finish();if(state.status==='playing')showPreview(focus);}
+}
+for(const [i,b] of tiles.entries()){
+ b.addEventListener('focus',()=>showPreview(i));
+ b.addEventListener('pointerdown',e=>{if(gate.locked||e.button!==0)return;pressed={id:e.pointerId,i,x:e.clientX,y:e.clientY};showPreview(i);});
+ b.addEventListener('pointerup',e=>{const p=pressed;pressed=null;if(p&&p.id===e.pointerId&&p.i===i&&Math.hypot(e.clientX-p.x,e.clientY-p.y)<12&&document.elementFromPoint(e.clientX,e.clientY)?.closest('.tile')===b)commit(i);});
+ b.addEventListener('click',e=>{if(e.detail===0)commit(i);});
+ b.addEventListener('keydown',e=>{if(e.repeat){e.preventDefault();return;}const move={ArrowUp:-1,ArrowDown:1,ArrowLeft:-7,ArrowRight:7}[e.key];if(move){e.preventDefault();if(!gate.locked){focus=moveFocus(i,e.key);tiles[focus].focus();}}});
+}
+window.addEventListener('pointercancel',()=>pressed=null);window.addEventListener('pointerup',()=>pressed=null);
+window.addEventListener('pointermove',e=>{if(pressed&&Math.hypot(e.clientX-pressed.x,e.clientY-pressed.y)>=12)pressed=null;});
+document.querySelectorAll('[data-skill]').forEach(b=>b.addEventListener('click',()=>{if(gate.locked)return;const ok=useSkill(state,Number(b.dataset.skill));render();showPreview(focus);$('notice').textContent=ok?'스킬 적용 · 탭은 소모하지 않습니다.':'대상이 없거나 재충전 중입니다.';}));
+$('boost').onclick=()=>{if(!gate.locked&&overcharge(state)){render();showPreview(focus);$('notice').textContent='과충전! 이번 턴 피해 2배.';}};
+function restart(fresh){if(gate.locked)return;state=createGame(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:state.seed);if($('ending').open)$('ending').close();render();showPreview(1);tiles[1].focus();$('notice').textContent='새로운 빛 회로가 준비됐습니다.';}
+$('restart').onclick=()=>restart(false);$('newSeed').onclick=()=>restart(true);$('again').onclick=()=>restart(false);$('another').onclick=()=>restart(true);
+const guide=[['빛을 이어 주세요','같은 색은 모양도 같습니다. 누르면 연결을 미리 보고, 같은 자리에서 떼면 해소합니다. 드래그하면 취소됩니다. 방향키로 이동하고 Enter 또는 Space로 확정하세요.'],['다음 빛을 남기세요','공격색 5개 이상은 차지와 이웃 잔향 ◌을, 10개 이상은 폭탄을 만듭니다. 다음 탭의 같은 색 묶음이 ◌에 닿으면 이전 잔향 전체가 연결됩니다. 빗나가면 표식이 사라집니다.'],['온실을 지켜 주세요','3탭 뒤 피해·회복을 정산하고 그림자가 공격합니다. 스킬은 탭을 쓰지 않으며 3턴 뒤 돌아옵니다. 게이지가 차면 턴 첫 탭 전에 과충전하세요. 차지는 추가 피해, 폭탄은 주변 6칸도 해소합니다.']];
+function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`FIELD NOTES / ${guideStep+1} OF 3`;$('guideTitle').textContent=title;$('guideText').textContent=body;$('guideNext').textContent=guideStep===2?'온실에 들어가기':'다음';if(!$('guide').open)$('guide').showModal();}
+$('guideNext').onclick=()=>{if(guideStep<2){guideStep++;tutorial();}else{$('guide').close();tiles[1].focus();}};$('help').onclick=()=>{if(!gate.locked){guideStep=0;tutorial();}};
+render();tutorial();
+
+})();
+</script></body></html>

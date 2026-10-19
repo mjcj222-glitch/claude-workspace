@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {C} from './config.mjs';
-import {neighbors,createGame,group,preview,tap,useSkill,overcharge,inputGate} from './engine.mjs';
+import {neighbors,createGame,group,preview,tap,useSkill,overcharge,inputGate,moveFocus} from './engine.mjs';
 function fixture(){const s=createGame(7);s.board.forEach((t,i)=>{t.color=['blue','gold','heal'][(Math.floor(i/7)+i%7)%3];t.kind='normal';});return s;}
 function cluster(n){const s=fixture(), cells=[0,1,2,3,4,5,6,7,8,9];cells.slice(0,n).forEach(i=>s.board[i].color='coral');return s;}
 test('hex bounds, six neighbors and symmetry',()=>{assert.equal(neighbors(0).length,2);assert.equal(neighbors(10).length,6);for(let i=0;i<42;i++)for(const j of neighbors(i)){assert(j>=0&&j<42);assert(neighbors(j).includes(i));}});
@@ -20,3 +20,6 @@ test('three taps settle, heal cap, boss dead cannot retaliate',()=>{const s=fixt
 test('loss and restart reset all state, alternating attacks',()=>{const s=fixture();s.hp=1;s.taps=1;s.board.forEach(t=>t.color='coral');s.bossHP=9999;tap(s,0);assert.equal(s.status,'lost');assert.equal(s.hp,0);assert.deepEqual(createGame(7),createGame(7));assert.equal(createGame(7).status,'playing');const b=fixture();b.turn=2;b.taps=1;const p=tap(b,0);assert.equal(p.retaliation,C.attacks[1]);});
 test('overcharge only before first tap, double damage not healing, no gauge gain',()=>{const s=fixture();s.gauge=C.gauge;s.taps=2;assert.equal(overcharge(s),false);s.taps=3;const p=preview(s,0);assert(overcharge(s));assert.equal(overcharge(s),false);assert.equal(preview(s,0).damage,p.damage*2);assert.equal(preview(s,0).healing,p.healing);tap(s,0);assert.equal(s.gauge,0);tap(s,0);tap(s,0);assert.equal(s.boost,false);assert.equal(s.gauge,0);});
 test('input gate rejects duplicate until resolution finishes',()=>{const g=inputGate();assert(g.start());assert.equal(g.start(),false);g.finish();assert(g.start());});
+
+for(const [edge,index,key] of [['top',7,'ArrowUp'],['bottom',6,'ArrowDown'],['left',3,'ArrowLeft'],['right',35,'ArrowRight']])test(`keyboard ${edge} edge stays on same tile`,()=>assert.equal(moveFocus(index,key),index));
+test('keyboard interior row and column movement',()=>{assert.equal(moveFocus(10,'ArrowUp'),9);assert.equal(moveFocus(10,'ArrowDown'),11);assert.equal(moveFocus(10,'ArrowLeft'),3);assert.equal(moveFocus(10,'ArrowRight'),17);});

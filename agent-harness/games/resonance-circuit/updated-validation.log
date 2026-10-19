@@ -1,0 +1,36 @@
+$ node --test agent-harness/games/resonance-circuit/engine.test.mjs
+✔ hex bounds, six neighbors and symmetry (2.69421ms)
+✔ initial group 1 special threshold (0.679058ms)
+✔ initial group 4 special threshold (0.190949ms)
+✔ initial group 5 special threshold (0.278572ms)
+✔ initial group 9 special threshold (0.182496ms)
+✔ initial group 10 special threshold (0.153192ms)
+✔ heal groups do not create special (0.201776ms)
+✔ overlapping bombs chain, charge counted once, explosion does not raise initial threshold (0.163257ms)
+✔ gravity preserves survivor order and IDs, seeded refill is deterministic (1.07048ms)
+✔ echo is pre-gravity neighbor order, max eight, surviving normals only (0.534379ms)
+✔ echo trigger requires original group; blast-only contact expires other marks (0.582993ms)
+✔ original group echo fires all old marks once; new echo does not recurse (0.268887ms)
+✔ miss expires, preview does not, echo crosses turn boundary (0.27738ms)
+✔ bomb and color conversion preserve ID/color/kind/echo as required (0.200183ms)
+✔ heal conversion clears marks, does not overwrite specials; shortage and zero (0.206663ms)
+✔ cooldown T+3, skills do not spend taps (0.102405ms)
+✔ three taps settle, heal cap, boss dead cannot retaliate (0.176307ms)
+✔ loss and restart reset all state, alternating attacks (0.309308ms)
+✔ overcharge only before first tap, double damage not healing, no gauge gain (0.166953ms)
+✔ input gate rejects duplicate until resolution finishes (0.138029ms)
+✔ keyboard top edge stays on same tile (0.094162ms)
+✔ keyboard bottom edge stays on same tile (0.069435ms)
+✔ keyboard left edge stays on same tile (0.037117ms)
+✔ keyboard right edge stays on same tile (0.030566ms)
+✔ keyboard interior row and column movement (0.108644ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.446405
+
+EXIT 0

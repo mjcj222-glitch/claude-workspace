@@ -24,6 +24,9 @@ def run():
    for _ in range(3): page.locator('#guideNext').click()
    assert page.locator('.tile').count()==42
    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+   for index,key in [(7,'ArrowUp'),(6,'ArrowDown'),(3,'ArrowLeft'),(35,'ArrowRight')]:
+    page.locator('.tile').nth(index).focus();page.keyboard.press(key)
+    assert page.evaluate('Number(document.activeElement.dataset.index)')==index
    tile=page.locator('.tile').nth(1)
    box=tile.bounding_box(); x=box['x']+box['width']/2; y=box['y']+box['height']/2
    page.mouse.move(x,y);page.mouse.down();page.mouse.move(x+20,y);page.mouse.move(x,y);page.mouse.up()
@@ -40,7 +43,7 @@ def run():
    page.locator('.tile').nth(1).tap();page.wait_for_timeout(450)
    assert '2 / 3' in page.locator('#taps').inner_text()
    page.locator('#restart').click()
-   for mode in (['largest','smallest'] if motion=='reduce' else []):
+   for mode in ['largest','smallest']:
     page.locator('#restart').click()
     for step in range(120):
      if page.locator('#ending').evaluate('(e)=>e.open'): break
@@ -49,7 +52,11 @@ def run():
        b=page.locator(selector)
        if b.is_enabled(): b.click()
      idx=page.evaluate('''mode=>{const b=[...document.querySelectorAll('.tile')];const colors=b.map(e=>['coral','gold','blue','heal'].find(c=>e.classList.contains(c)));const sizes=b.map((_,i)=>{const seen=new Set([i]),q=[i];for(const k of q){const c=Math.floor(k/7),r=k%7;for(const [dc,dr] of [[0,-1],[0,1],[-1,0],[1,0],[-1,c%2?1:-1],[1,c%2?1:-1]]){const x=c+dc,y=r+dr,n=x*7+y;if(x>=0&&x<6&&y>=0&&y<7&&!seen.has(n)&&colors[n]===colors[i]){seen.add(n);q.push(n);}}}return seen.size;});return sizes.indexOf(mode==='largest'?Math.max(...sizes):Math.min(...sizes));}''',mode)
-     page.locator('.tile').nth(idx).evaluate('e=>e.click()');page.wait_for_timeout(35 if motion=='reduce' else 450)
+
+     target=page.locator('.tile').nth(idx)
+     if motion=='reduce': target.evaluate('e=>e.click()')
+     else: target.tap()
+     page.wait_for_timeout(35 if motion=='reduce' else 450)
     assert page.locator('#ending').evaluate('(e)=>e.open'), 'No ending within 120 taps'
     result=page.locator('#result').inner_text()
     assert ('돌아왔습니다' in result) if mode=='largest' else ('꺼진' in result)
@@ -57,7 +64,7 @@ def run():
     page.locator('#again').click();assert '3 / 3' in page.locator('#taps').inner_text()
    if motion=='reduce': page.screenshot(path=str(ROOT/f'preview-{width}.png'),full_page=True)
    assert not errors, errors
-   print(f'PASS {width}px motion={motion}: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested in reduced-motion cases')
+   print(f'PASS {width}px motion={motion}: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested; normal motion uses touch pointer taps')
    page.close()
   browser.close()
 if __name__=='__main__': run()

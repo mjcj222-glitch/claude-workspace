@@ -69,3 +69,10 @@ export function overcharge(s) {
  s.gauge=0;s.boost=true;return true;
 }
 export function inputGate() {let locked=false;return {get locked(){return locked;},start(){if(locked)return false;locked=true;return true;},finish(){locked=false;}};}
+
+export function moveFocus(index,key) {
+ const col=Math.floor(index/C.rows), row=index%C.rows;
+ const delta={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[key];
+ if(!delta)return index;
+ return Math.max(0,Math.min(C.cols-1,col+delta[0]))*C.rows+Math.max(0,Math.min(C.rows-1,row+delta[1]));
+}

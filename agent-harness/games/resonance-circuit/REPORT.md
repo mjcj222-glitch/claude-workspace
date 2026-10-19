@@ -39,3 +39,14 @@
 1. 사람 플레이로 잔향 학습·재도전 의향·실측 시간을 기록한다.
 2. 실물 모바일 및 스크린리더로 조작·초점·안내를 검수한다.
 3. 피드백에 따라 config의 체력·피해·게이지 수치를 조정한다.
+
+## 다운로드판 및 키보드 수정 후속 작업
+
+- 행·열을 각각 제한하도록 키보드 이동을 수정했다. 네 가장자리 회귀와 내부 이동을 포함한 node:test는 총 25개다.
+- 모듈 원본을 유지하며 standalone.html과 ZIP을 생성하는 표준 라이브러리 스크립트를 추가했다. ZIP에는 독립 HTML, 모듈 원본, 실행 안내를 담았다.
+- file:// 실제 탐색은 환경 관리 정책 ERR_BLOCKED_BY_ADMINISTRATOR로 차단됐다. 설정 변경이나 우회는 하지 않았다. 이 결과는 offline-validation.log에 있다. standalone_check.py는 별개의 브라우저 내부 응답 검증이며 file:// 성공 증거가 아니다.
+- 기본 모션 360px 승리·패배 전체 흐름을 터치 포인터 탭으로 보강했다. 드래그 취소 검사는 마우스이며 실제 터치 스크롤·pointercancel 검증은 여전히 미실시다.
+- 최종 검증은 updated-validation.log, standalone-validation.log, updated-browser-validation.log를 참조한다. git diff --check의 임시 공백 오류는 제거했다.
+- Parent는 이전 head c1242b1의 GitHub Actions 성공을 확인했다. Vercel 상태 success만으로 공개 게임 배포 성공을 주장하지 않으며 수동 배포를 추가하지 않았다.
+
+Library 저장: ZIP과 두 스크린샷의 일괄 저장을 시도했으나, 파일 쓰기 전 tools/list 연결 단계에서 network 오류(exit 1)로 실패했다. 저장 성공 응답과 library_file_id는 없다. 권한 확대나 다른 업로드 방식으로 재시도하지 않았다. ZIP SHA256: c640de78f75c10f1173b43d64f0d73b75f7093980b88195f18dd2de8e7ae094b.

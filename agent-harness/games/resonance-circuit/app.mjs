@@ -1,5 +1,5 @@
 import {C} from './config.mjs';
-import {createGame,preview,tap,useSkill,overcharge,inputGate} from './engine.mjs';
+import {createGame,preview,tap,useSkill,overcharge,inputGate,moveFocus} from './engine.mjs';
 const $=id=>document.getElementById(id), symbols={coral:'◆',gold:'✦',blue:'●',heal:'+'}, names={coral:'산호',gold:'금빛',blue:'파랑',heal:'회복'};
 let state=createGame(), focus=1, pressed=null, guideStep=0;
 const gate=inputGate(), reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -30,7 +30,7 @@ for(const [i,b] of tiles.entries()){
  b.addEventListener('pointerdown',e=>{if(gate.locked||e.button!==0)return;pressed={id:e.pointerId,i,x:e.clientX,y:e.clientY};showPreview(i);});
  b.addEventListener('pointerup',e=>{const p=pressed;pressed=null;if(p&&p.id===e.pointerId&&p.i===i&&Math.hypot(e.clientX-p.x,e.clientY-p.y)<12&&document.elementFromPoint(e.clientX,e.clientY)?.closest('.tile')===b)commit(i);});
  b.addEventListener('click',e=>{if(e.detail===0)commit(i);});
- b.addEventListener('keydown',e=>{if(e.repeat){e.preventDefault();return;}const move={ArrowUp:-1,ArrowDown:1,ArrowLeft:-7,ArrowRight:7}[e.key];if(move){e.preventDefault();if(!gate.locked){focus=Math.max(0,Math.min(41,i+move));tiles[focus].focus();}}});
+ b.addEventListener('keydown',e=>{if(e.repeat){e.preventDefault();return;}const move={ArrowUp:-1,ArrowDown:1,ArrowLeft:-7,ArrowRight:7}[e.key];if(move){e.preventDefault();if(!gate.locked){focus=moveFocus(i,e.key);tiles[focus].focus();}}});
 }
 window.addEventListener('pointercancel',()=>pressed=null);window.addEventListener('pointerup',()=>pressed=null);
 window.addEventListener('pointermove',e=>{if(pressed&&Math.hypot(e.clientX-pressed.x,e.clientY-pressed.y)>=12)pressed=null;});
