@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {C} from './config.mjs';
+import {group} from './engine.mjs';
 import {createRun,runTap,runSkill,runBoost,chooseUpgrade,retryBattle,nextAttack,tutorialTargets,skipTutorial,STAGES} from './campaign.mjs';
 import {decodeSave,loadProgress,saveProgress,SAVE_KEY} from './storage.mjs';
 import {createAudio} from './audio.mjs';
@@ -49,4 +50,27 @@ test('audio default off, gesture enable, bounded voices, hide stops, unavailable
  const context={state:'running',currentTime:0,destination:{},resume(){resumed++;return Promise.resolve();},suspend(){suspended++;return Promise.resolve();},createOscillator(){return {frequency:param,connect(){},disconnect(){},start(){started++;},stop(){stopped++;}};},createGain(){return {gain:param,connect(){},disconnect(){}};}};
  const opts={enabled:false,volume:.3},audio=createAudio(opts,{factory:()=>context});assert.equal(audio.play('chain'),false);assert.equal(resumed,0);audio.enable(true);assert.equal(resumed,1);for(let i=0;i<20;i++)audio.play('echo');assert(audio.voices<=8);assert(started>0);audio.hide();assert.equal(audio.voices,0);assert(stopped>0);assert(suspended>0);audio.volume(2);assert.equal(opts.volume,1);audio.enable(false);assert.equal(audio.play('bomb'),false);
  const unavailable=createAudio({enabled:true,volume:.3},{factory:()=>{throw Error();}});assert.equal(unavailable.unlock(),false);assert.equal(unavailable.play('chain'),false);
+});
+
+test('unfinished tutorial loss is a valid terminal save, not a rollback to previous tap',()=>{
+ const r=createRun();let taps=0;
+ while(r.phase==='battle'&&taps<200){
+  const sizes=r.state.board.map((_,i)=>group(r.state,i).length);
+  runTap(r,sizes.indexOf(Math.min(...sizes)));taps++;
+ }
+ assert.equal(r.phase,'defeat');assert.equal(r.state.turn,18);
+ assert.equal(r.tutorial,'done');assert.deepEqual(r.tutorialIDs,[]);
+ const restored=decodeSave(encoded(r));assert(restored);assert.deepEqual(restored.run,r);
+});
+test('unfinished tutorial victory cleans coaching and restores the upgrade screen',()=>{
+ const r=createRun();r.state.bossHP=1;r.state.damage=100;r.state.taps=1;
+ const sizes=r.state.board.map((_,i)=>group(r.state,i).length);
+ runTap(r,sizes.indexOf(Math.min(...sizes)));
+ assert.equal(r.phase,'upgrade');assert.equal(r.tutorial,'done');assert.deepEqual(r.tutorialIDs,[]);
+ const restored=decodeSave(encoded(r));assert(restored);assert.deepEqual(restored.run,r);
+});
+test('victory on the echo-creating tap clears newly assigned tutorial IDs',()=>{
+ const r=createRun();r.state.bossHP=1;r.state.taps=1;runTap(r,1);
+ assert.equal(r.phase,'upgrade');assert.equal(r.tutorial,'done');assert.deepEqual(r.tutorialIDs,[]);
+ assert.deepEqual(decodeSave(encoded(r)).run,r);
 });

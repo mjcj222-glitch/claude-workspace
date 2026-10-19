@@ -23,6 +23,7 @@ export function runTap(run,index){
  const result=tap(run.state,index);if(!result)return null;
  if(run.tutorial==='chain'&&run.state.echo.length){run.tutorial='echo';run.tutorialIDs=[...run.state.echo];}else if(run.tutorial==='echo'){run.tutorial='done';run.tutorialIDs=[];}
  if(run.state.status!=='playing'){
+  skipTutorial(run);
   run.history.push({stage:run.stage,turns:run.state.turn,echoes:run.state.echoCount,maxChain:run.state.maxChain,result:run.state.status});
   run.phase=run.state.status==='lost'?'defeat':run.stage===2?'complete':'upgrade';
  }
