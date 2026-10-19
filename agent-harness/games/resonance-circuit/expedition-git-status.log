@@ -1,0 +1,103 @@
+ M OFFLINE.md
+ M README.md
+ M app.mjs
+ M index.html
+ M package_game.py
+ M resonance-circuit.zip
+ M run-battle-1-390-no-preference.png
+ M run-battle-1-390-reduce.png
+ M run-battle-2-390-no-preference.png
+ M run-battle-2-390-reduce.png
+ M run-battle-3-390-no-preference.png
+ M run-battle-3-390-reduce.png
+ M run-result-390-no-preference.png
+ M run-result-390-reduce.png
+ M run-upgrade-390-no-preference.png
+ M run-upgrade-390-reduce.png
+ M standalone.html
+ M style.css
+?? EXPEDITION-DESIGN.md
+?? EXPEDITION-REPORT.md
+?? expedition-battle-1280-no-preference.png
+?? expedition-battle-1280-reduce.png
+?? expedition-battle-360-no-preference.png
+?? expedition-battle-360-reduce.png
+?? expedition-battle-390-no-preference.png
+?? expedition-battle-390-reduce.png
+?? expedition-boss-1280-no-preference.png
+?? expedition-boss-1280-reduce.png
+?? expedition-boss-360-no-preference.png
+?? expedition-boss-360-reduce.png
+?? expedition-boss-390-no-preference.png
+?? expedition-boss-390-reduce.png
+?? expedition-browser-0.log
+?? expedition-browser-final-0.log
+?? expedition-browser-final-1.log
+?? expedition-browser-final-2.log
+?? expedition-browser-final-3.log
+?? expedition-browser-final-4.log
+?? expedition-browser-final-5.log
+?? expedition-browser-save-final.log
+?? expedition-cancel-regression.log
+?? expedition-defeat-1280-no-preference.png
+?? expedition-defeat-1280-reduce.png
+?? expedition-defeat-360-no-preference.png
+?? expedition-defeat-360-reduce.png
+?? expedition-defeat-390-no-preference.png
+?? expedition-defeat-390-reduce.png
+?? expedition-edge-red.log
+?? expedition-experiment.json
+?? expedition-git-status.log
+?? expedition-green-initial.log
+?? expedition-harness-check.log
+?? expedition-harness-tests.log
+?? expedition-interrupt-final.log
+?? expedition-interrupt.log
+?? expedition-map-1280-no-preference.png
+?? expedition-map-1280-reduce.png
+?? expedition-map-360-no-preference.png
+?? expedition-map-360-reduce.png
+?? expedition-map-390-no-preference.png
+?? expedition-map-390-reduce.png
+?? expedition-map-viewport-360.png
+?? expedition-navigation.log
+?? expedition-play.mp4
+?? expedition-practice-normal.log
+?? expedition-practice-reduced.log
+?? expedition-red.log
+?? expedition-result-1280-no-preference.png
+?? expedition-result-1280-reduce.png
+?? expedition-result-360-no-preference.png
+?? expedition-result-360-reduce.png
+?? expedition-result-390-no-preference.png
+?? expedition-result-390-reduce.png
+?? expedition-reward-1280-no-preference.png
+?? expedition-reward-1280-reduce.png
+?? expedition-reward-360-no-preference.png
+?? expedition-reward-360-reduce.png
+?? expedition-reward-390-no-preference.png
+?? expedition-reward-390-reduce.png
+?? expedition-room-1280-no-preference.png
+?? expedition-room-1280-reduce.png
+?? expedition-room-360-no-preference.png
+?? expedition-room-360-reduce.png
+?? expedition-room-390-no-preference.png
+?? expedition-room-390-reduce.png
+?? expedition-settings-regression.log
+?? expedition-ui-green.log
+?? expedition-ui-red.log
+?? expedition-ui.mjs
+?? expedition-unit-final.log
+?? expedition-unit-initial.log
+?? expedition-validation-red.log
+?? expedition-video-contact.png
+?? expedition-video-final.log
+?? expedition-video.log
+?? expedition.mjs
+?? expedition.test.mjs
+?? expedition_browser.py
+?? expedition_interrupt_browser.py
+?? expedition_navigation_browser.py
+?? expedition_sim.mjs
+?? expedition_ui_browser.py
+?? record_expedition.py

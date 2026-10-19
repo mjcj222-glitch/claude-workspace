@@ -76,3 +76,5 @@ python agent-harness/games/resonance-circuit/panels_terminal_browser.py
 타일이 탭 지점의 hex 연결 순서를 따라 차르르 사라진 뒤 빈자리와 낙하가 이어집니다. 기본 모션에서6칸 약458ms,10칸570ms,42칸738ms의 해소·낙하 후보 타임라인입니다. reduced-motion은 순차 이동 없이 즉시 정산합니다. 실제 프레임·취소 규칙·검증은 [CASCADE-REPORT.md](CASCADE-REPORT.md), 새 영상은 `cascade-play.mp4`, 소리 샘플은 `samples/cascade-{6,10,42}.wav`입니다.
 
 최신 소거 설정 회귀 수정/부드러운 팝·200ms 낙하: [SOFT-CASCADE-REPORT.md](SOFT-CASCADE-REPORT.md). 새 실제 영상: `soft-cascade-play.mp4`.
+
+탐험 v1: 시작에서 연습/탐험 선택. 6개 방 분기·유물8종·HP유지·별도 저장, 패배 후 전투 재도전 없음. [설계](EXPEDITION-DESIGN.md) / [검증 보고](EXPEDITION-REPORT.md). 기존 연습 저장은 유지됩니다.

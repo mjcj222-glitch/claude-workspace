@@ -24,3 +24,5 @@ Draft PR: https://github.com/mjcj222-glitch/claude-workspace/pull/2
 순차 소거: 탭 위치부터 hex 연결 순서로 압축·팝·수축한 뒤 낙하합니다. 큰 묶음은 마지막 시작420ms로 제한합니다. cascade-play.mp4는 실제 무음 플레이 영상, samples/cascade-6.wav·cascade-10.wav·cascade-42.wav는 순차 유리음 샘플입니다. 소거 중 새게임 요청은 적용 전 행동을 취소하고 확인창을 띄우며, 숨김/모션 변경은 행동을 한 번만 정산하고 연출을 정리합니다.
 
 최신 소거 설정 회귀 수정/부드러운 팝·200ms 낙하: [SOFT-CASCADE-REPORT.md](SOFT-CASCADE-REPORT.md). 새 실제 영상: `soft-cascade-play.mp4`.
+
+탐험 v1: 시작에서 연습/탐험 선택. 6개 방 분기·유물8종·HP유지·별도 저장, 패배 후 전투 재도전 없음. [설계](EXPEDITION-DESIGN.md) / [검증 보고](EXPEDITION-REPORT.md). 기존 연습 저장은 유지됩니다.

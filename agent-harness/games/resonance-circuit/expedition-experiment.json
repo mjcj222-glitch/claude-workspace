@@ -1,0 +1,696 @@
+[
+  {
+    "seed": 1,
+    "strategy": "safe",
+    "phase": "complete",
+    "hp": 170,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "bell",
+      "tea",
+      "lens"
+    ],
+    "relicTotals": {
+      "damage": 80,
+      "healing": 48,
+      "gauge": 0,
+      "shield": 102
+    },
+    "turns": 16,
+    "echoes": 20,
+    "damage": 2510,
+    "taken": 114,
+    "healed": 104
+  },
+  {
+    "seed": 1,
+    "strategy": "bold",
+    "phase": "complete",
+    "hp": 166,
+    "path": [
+      "0-0",
+      "1-1",
+      "2-1",
+      "3-1",
+      "4-1",
+      "5-0"
+    ],
+    "relics": [
+      "bell",
+      "lens",
+      "brooch",
+      "bottle",
+      "petal"
+    ],
+    "relicTotals": {
+      "damage": 168,
+      "healing": 0,
+      "gauge": 10,
+      "shield": 96
+    },
+    "turns": 14,
+    "echoes": 19,
+    "damage": 2740,
+    "taken": 122,
+    "healed": 144
+  },
+  {
+    "seed": 1,
+    "strategy": "weak",
+    "phase": "defeat",
+    "hp": 0,
+    "path": [
+      "0-0",
+      "1-0"
+    ],
+    "relics": [
+      "bell"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 0,
+      "gauge": 0,
+      "shield": 0
+    },
+    "turns": 27,
+    "echoes": 0,
+    "damage": 375,
+    "taken": 332,
+    "healed": 150
+  },
+  {
+    "seed": 7,
+    "strategy": "safe",
+    "phase": "complete",
+    "hp": 180,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "bell",
+      "powder",
+      "lens"
+    ],
+    "relicTotals": {
+      "damage": 80,
+      "healing": 39,
+      "gauge": 0,
+      "shield": 84
+    },
+    "turns": 13,
+    "echoes": 17,
+    "damage": 2510,
+    "taken": 82,
+    "healed": 82
+  },
+  {
+    "seed": 7,
+    "strategy": "bold",
+    "phase": "complete",
+    "hp": 180,
+    "path": [
+      "0-0",
+      "1-1",
+      "2-1",
+      "3-1",
+      "4-1",
+      "5-0"
+    ],
+    "relics": [
+      "petal",
+      "lens",
+      "bell",
+      "bottle",
+      "brooch"
+    ],
+    "relicTotals": {
+      "damage": 252,
+      "healing": 0,
+      "gauge": 5,
+      "shield": 66
+    },
+    "turns": 13,
+    "echoes": 18,
+    "damage": 2740,
+    "taken": 142,
+    "healed": 178
+  },
+  {
+    "seed": 7,
+    "strategy": "weak",
+    "phase": "defeat",
+    "hp": 0,
+    "path": [
+      "0-0",
+      "1-0"
+    ],
+    "relics": [
+      "bell"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 0,
+      "gauge": 0,
+      "shield": 0
+    },
+    "turns": 33,
+    "echoes": 0,
+    "damage": 550,
+    "taken": 416,
+    "healed": 234
+  },
+  {
+    "seed": 19,
+    "strategy": "safe",
+    "phase": "complete",
+    "hp": 176,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "petal",
+      "bell",
+      "powder"
+    ],
+    "relicTotals": {
+      "damage": 60,
+      "healing": 15,
+      "gauge": 0,
+      "shield": 66
+    },
+    "turns": 16,
+    "echoes": 19,
+    "damage": 2510,
+    "taken": 140,
+    "healed": 136
+  },
+  {
+    "seed": 19,
+    "strategy": "bold",
+    "phase": "complete",
+    "hp": 166,
+    "path": [
+      "0-0",
+      "1-1",
+      "2-1",
+      "3-1",
+      "4-1",
+      "5-0"
+    ],
+    "relics": [
+      "lens",
+      "bottle",
+      "bell",
+      "brooch",
+      "tea"
+    ],
+    "relicTotals": {
+      "damage": 256,
+      "healing": 18,
+      "gauge": 20,
+      "shield": 60
+    },
+    "turns": 15,
+    "echoes": 17,
+    "damage": 2740,
+    "taken": 190,
+    "healed": 212
+  },
+  {
+    "seed": 19,
+    "strategy": "weak",
+    "phase": "defeat",
+    "hp": 0,
+    "path": [
+      "0-0",
+      "1-0"
+    ],
+    "relics": [
+      "petal"
+    ],
+    "relicTotals": {
+      "damage": 12,
+      "healing": 0,
+      "gauge": 0,
+      "shield": 0
+    },
+    "turns": 45,
+    "echoes": 0,
+    "damage": 681,
+    "taken": 572,
+    "healed": 390
+  },
+  {
+    "seed": 42,
+    "strategy": "safe",
+    "phase": "complete",
+    "hp": 164,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "powder",
+      "tea",
+      "brooch"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 90,
+      "gauge": 0,
+      "shield": 0
+    },
+    "turns": 15,
+    "echoes": 18,
+    "damage": 2510,
+    "taken": 198,
+    "healed": 182
+  },
+  {
+    "seed": 42,
+    "strategy": "bold",
+    "phase": "complete",
+    "hp": 150,
+    "path": [
+      "0-0",
+      "1-1",
+      "2-1",
+      "3-1",
+      "4-1",
+      "5-0"
+    ],
+    "relics": [
+      "bottle",
+      "petal",
+      "tea",
+      "powder",
+      "umbrella"
+    ],
+    "relicTotals": {
+      "damage": 36,
+      "healing": 41,
+      "gauge": 30,
+      "shield": 0
+    },
+    "turns": 13,
+    "echoes": 14,
+    "damage": 2740,
+    "taken": 190,
+    "healed": 196
+  },
+  {
+    "seed": 42,
+    "strategy": "weak",
+    "phase": "defeat",
+    "hp": 0,
+    "path": [
+      "0-0",
+      "1-0"
+    ],
+    "relics": [
+      "powder"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 0,
+      "gauge": 0,
+      "shield": 0
+    },
+    "turns": 31,
+    "echoes": 0,
+    "damage": 514,
+    "taken": 390,
+    "healed": 210
+  },
+  {
+    "seed": 117,
+    "strategy": "safe",
+    "phase": "complete",
+    "hp": 180,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "umbrella",
+      "bell",
+      "tea"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 24,
+      "gauge": 0,
+      "shield": 54
+    },
+    "turns": 13,
+    "echoes": 14,
+    "damage": 2510,
+    "taken": 118,
+    "healed": 118
+  },
+  {
+    "seed": 117,
+    "strategy": "bold",
+    "phase": "complete",
+    "hp": 180,
+    "path": [
+      "0-0",
+      "1-1",
+      "2-1",
+      "3-1",
+      "4-1",
+      "5-0"
+    ],
+    "relics": [
+      "lens",
+      "bottle",
+      "bell",
+      "brooch",
+      "umbrella"
+    ],
+    "relicTotals": {
+      "damage": 224,
+      "healing": 0,
+      "gauge": 45,
+      "shield": 66
+    },
+    "turns": 16,
+    "echoes": 17,
+    "damage": 2740,
+    "taken": 210,
+    "healed": 246
+  },
+  {
+    "seed": 117,
+    "strategy": "weak",
+    "phase": "defeat",
+    "hp": 0,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "umbrella",
+      "bell",
+      "tea"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 10,
+      "gauge": 0,
+      "shield": 318
+    },
+    "turns": 91,
+    "echoes": 0,
+    "damage": 1635,
+    "taken": 946,
+    "healed": 766
+  },
+  {
+    "seed": 999,
+    "strategy": "safe",
+    "phase": "complete",
+    "hp": 164,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "powder",
+      "bell",
+      "brooch"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 45,
+      "gauge": 0,
+      "shield": 78
+    },
+    "turns": 13,
+    "echoes": 18,
+    "damage": 2510,
+    "taken": 92,
+    "healed": 76
+  },
+  {
+    "seed": 999,
+    "strategy": "bold",
+    "phase": "complete",
+    "hp": 158,
+    "path": [
+      "0-0",
+      "1-1",
+      "2-1",
+      "3-1",
+      "4-1",
+      "5-0"
+    ],
+    "relics": [
+      "bottle",
+      "petal",
+      "bell",
+      "lens",
+      "brooch"
+    ],
+    "relicTotals": {
+      "damage": 120,
+      "healing": 0,
+      "gauge": 40,
+      "shield": 66
+    },
+    "turns": 13,
+    "echoes": 17,
+    "damage": 2740,
+    "taken": 136,
+    "healed": 150
+  },
+  {
+    "seed": 999,
+    "strategy": "weak",
+    "phase": "defeat",
+    "hp": 0,
+    "path": [
+      "0-0",
+      "1-0"
+    ],
+    "relics": [
+      "powder"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 0,
+      "gauge": 0,
+      "shield": 0
+    },
+    "turns": 28,
+    "echoes": 0,
+    "damage": 440,
+    "taken": 348,
+    "healed": 166
+  },
+  {
+    "seed": 20261019,
+    "strategy": "safe",
+    "phase": "complete",
+    "hp": 178,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "bell",
+      "powder",
+      "petal"
+    ],
+    "relicTotals": {
+      "damage": 12,
+      "healing": 33,
+      "gauge": 0,
+      "shield": 84
+    },
+    "turns": 16,
+    "echoes": 17,
+    "damage": 2510,
+    "taken": 120,
+    "healed": 118
+  },
+  {
+    "seed": 20261019,
+    "strategy": "bold",
+    "phase": "complete",
+    "hp": 158,
+    "path": [
+      "0-0",
+      "1-1",
+      "2-1",
+      "3-1",
+      "4-1",
+      "5-0"
+    ],
+    "relics": [
+      "lens",
+      "bottle",
+      "bell",
+      "petal",
+      "brooch"
+    ],
+    "relicTotals": {
+      "damage": 248,
+      "healing": 0,
+      "gauge": 45,
+      "shield": 72
+    },
+    "turns": 14,
+    "echoes": 18,
+    "damage": 2740,
+    "taken": 152,
+    "healed": 166
+  },
+  {
+    "seed": 20261019,
+    "strategy": "weak",
+    "phase": "defeat",
+    "hp": 0,
+    "path": [
+      "0-0",
+      "1-0"
+    ],
+    "relics": [
+      "bell"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 0,
+      "gauge": 0,
+      "shield": 0
+    },
+    "turns": 38,
+    "echoes": 0,
+    "damage": 505,
+    "taken": 478,
+    "healed": 298
+  },
+  {
+    "seed": 735,
+    "strategy": "safe",
+    "phase": "complete",
+    "hp": 176,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-0",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "bell",
+      "lens",
+      "powder"
+    ],
+    "relicTotals": {
+      "damage": 192,
+      "healing": 21,
+      "gauge": 0,
+      "shield": 84
+    },
+    "turns": 12,
+    "echoes": 18,
+    "damage": 2510,
+    "taken": 84,
+    "healed": 80
+  },
+  {
+    "seed": 735,
+    "strategy": "bold",
+    "phase": "complete",
+    "hp": 180,
+    "path": [
+      "0-0",
+      "1-1",
+      "2-1",
+      "3-1",
+      "4-1",
+      "5-0"
+    ],
+    "relics": [
+      "powder",
+      "bottle",
+      "petal",
+      "bell",
+      "lens"
+    ],
+    "relicTotals": {
+      "damage": 176,
+      "healing": 48,
+      "gauge": 30,
+      "shield": 30
+    },
+    "turns": 14,
+    "echoes": 17,
+    "damage": 2740,
+    "taken": 184,
+    "healed": 220
+  },
+  {
+    "seed": 735,
+    "strategy": "weak",
+    "phase": "defeat",
+    "hp": 0,
+    "path": [
+      "0-0",
+      "1-0"
+    ],
+    "relics": [
+      "bell"
+    ],
+    "relicTotals": {
+      "damage": 0,
+      "healing": 0,
+      "gauge": 0,
+      "shield": 0
+    },
+    "turns": 31,
+    "echoes": 0,
+    "damage": 400,
+    "taken": 390,
+    "healed": 210
+  }
+]

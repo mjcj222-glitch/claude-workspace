@@ -59,18 +59,21 @@ header{gap:8px}.guarded{animation:guard-soft .4s ease-out}@keyframes guard-soft{
 .tile.cleared{animation:cascade-pop .17s cubic-bezier(.2,.65,.3,1) both;animation-delay:0ms}
 @keyframes cascade-pop{0%{scale:1;opacity:1;filter:brightness(1)}22%{scale:.88;opacity:1;filter:brightness(1.06)}48%{scale:1.17;opacity:1;filter:brightness(1.1)}100%{scale:.12;opacity:0;filter:brightness(1.05)}}
 
+/* Separate room selection: battle layout keeps its full width. */
+.mode-card{border:1px solid #79b7ac;border-radius:14px;padding:10px;margin:10px 0}.mode-card h3{margin:0;font-size:16px}#start{max-height:90dvh;overflow:auto}.journey{width:min(95vw,540px);max-width:540px;max-height:94dvh;overflow:auto;padding:14px}.journey h2{margin:6px 0}.journey p{font-size:12px;line-height:1.45}.route-row{display:flex;align-items:center;gap:6px;margin:7px 0}.route-row>span{width:14px;color:#bad9cc;font-size:12px}.route-row button{flex:1;min-width:0;margin:0;padding:9px 7px;font-size:11px;text-align:left;border-radius:12px}.route-row small,#roomChoices small{display:block;font-size:10px;font-weight:normal;line-height:1.5;margin-top:4px}.route-row [data-route=chosen]{opacity:1;background:#386b61;border-color:#d1edac}.route-row [data-route=missed]{opacity:.45;border-style:dashed}.route-row [data-route=available]{background:#275e62;border:2px solid #efd69c}.route-row [data-route=future]{opacity:.65}#roomChoices{display:grid;gap:7px}#roomChoices button{text-align:left;margin:0;padding:12px;background:#41634d;border-color:#d1e6a2}#relicGuide{max-height:90dvh;overflow:auto}#relicList p{font-size:12px;border-bottom:1px solid #5d8d86;padding-bottom:8px}.journey>button{font-size:12px;margin:4px;padding:8px}#journeyRelics{color:#d7edb6}footer{flex-wrap:wrap}
+
 </style>
 <body><canvas id="effects" aria-hidden="true"></canvas><main><header><span class="eyebrow">GLASSHOUSE 07</span><h1>잔향 회로</h1><button id="skillHelp">스킬 설명</button></header>
 <section class="glass enemy" id="enemy"><div class="habitat" aria-hidden="true"><div class="concept-boss"></div></div><div class="line"><h2 id="stageName">새싹 회랑</h2><span id="turn"></span></div><progress id="boss" aria-label="보스 체력"></progress><div class="line"><span id="bossText"></span><strong id="incoming"></strong></div></section>
 <section class="glass circuit"><div class="line"><strong id="health"></strong><span id="taps"></span></div><p id="pending"></p><div id="coach" role="status"><span id="coachText"></span><button id="skipLesson">안내 건너뛰기</button></div><div id="board" role="group" aria-label="6열 7행 빛 회로. 방향키 이동, Enter 또는 Space 확정"></div><p id="preview">타일을 누르거나 키보드로 선택하면 연결을 미리 봅니다.</p><div class="echo-row"><p id="echo" title="잔향은 다음 유효 탭까지 유지됩니다."></p><div id="buffs" role="status" aria-live="polite" aria-label="현재 스킬 및 방어 상태"></div></div></section>
 <section class="glass controls"><div id="skillCutin" class="skill-cutin" role="status" hidden></div><div class="line"><label for="gauge">과충전</label><span id="gaugeText"></span></div><progress id="gauge"></progress><button id="boost">빛 증폭 · 이번 턴 피해 ×2</button><div class="skills"><button data-skill="0" aria-label="굴절사: 파랑을 산호색으로 변환"><span class="portrait portrait-0" aria-hidden="true"></span>프리즘 링크<br><small>파랑 → 산호</small></button><button data-skill="1" aria-label="점화사: 일반 공격 타일 최대 2개를 폭탄으로"><span class="portrait portrait-1" aria-hidden="true"></span>연쇄 점화<br><small>일반 공격 2개 → 폭탄</small></button><button data-skill="2" aria-label="정원사: 일반 공격 타일 최대 6개를 회복으로"><span class="portrait portrait-2" aria-hidden="true"></span>생명의 온실<br><small>일반 공격 6개 → 회복</small></button></div><p id="notice" role="status" aria-live="polite">빛 회로를 연결해 온실을 복구하세요.</p></section>
-<div class="settings"><button id="sound" aria-pressed="false">소리 꺼짐</button><label>음량 <input id="volume" type="range" min="0" max="100" value="30" aria-label="효과음 음량"></label><button id="feedbackHelp">연출·소리</button><span id="saveStatus" role="status"></span></div><footer><button id="help">규칙 보기</button><button id="restart">같은 시드 재시작</button><button id="newSeed">새 시드</button><p>소리 없음 · 외부 통신 없음 · 색과 모양으로 구분</p></footer>
+<div class="settings"><button id="sound" aria-pressed="false">소리 꺼짐</button><label>음량 <input id="volume" type="range" min="0" max="100" value="30" aria-label="효과음 음량"></label><button id="feedbackHelp">연출·소리</button><span id="saveStatus" role="status"></span></div><footer><button id="modeMenu">모드 선택</button><button id="relicHelp" hidden>유물</button><button id="help">규칙 보기</button><button id="restart">같은 시드 재시작</button><button id="newSeed">새 시드</button><p>소리 없음 · 외부 통신 없음 · 색과 모양으로 구분</p></footer>
 <dialog id="guide"><span class="eyebrow" id="step"></span><h2 id="guideTitle"></h2><p id="guideText"></p><button id="guideNext">다음</button></dialog>
-<dialog id="ending"><div class="end-emblem" aria-hidden="true">✧</div><span class="eyebrow">GLASSHOUSE / FIELD RECORD</span><h2 id="result"></h2><p id="stats"></p><button id="retryBattle">이 전투 재도전</button><button id="again">같은 회로 다시</button><button id="another">새 회로 시작</button></dialog>
-<dialog id="start"><span class="eyebrow">잔향 회로 · 온실 탐험</span><h2>세 정원에 빛을</h2><p>연결을 만들고, 남은 잔향을 이어 보세요.<br>3전투와 두 번의 성장 선택이 기다립니다.</p><button id="continueRun">이어하기</button><button id="startNew">새 탐험</button><p id="loadNote"></p></dialog>
+<dialog id="ending"><div class="end-emblem" aria-hidden="true">✧</div><span class="eyebrow">GLASSHOUSE / FIELD RECORD</span><h2 id="result"></h2><p id="stats"></p><button id="retryBattle">이 전투 재도전</button><button id="again">같은 회로 다시</button><button id="another">새 회로 시작</button><button id="endingMenu">모드 선택</button></dialog>
+<dialog id="start"><span class="eyebrow">잔향 회로 · 온실 탐험</span><h2>세 정원에 빛을</h2><p>연결을 만들고, 남은 잔향을 이어 보세요.<br>3전투와 두 번의 성장 선택이 기다립니다.</p><div class="mode-card"><h3>연습 · 세 정원</h3><p>기존 3전투와 성장 선택 · 전투 재도전 가능</p><button id="continueRun">연습 이어하기</button><button id="startNew">새 연습</button></div><div class="mode-card"><h3>탐험 · 갈림길 온실</h3><p>6개 방 · 유물 조합 · 체력 유지 · 패배 시 종료<br>연습과 별도 저장 v1</p><button id="expeditionContinue">탐험 이어하기</button><button id="expeditionNew">새 탐험</button></div><p id="loadNote"></p></dialog>
 <dialog id="upgrade"><span class="eyebrow">정원 복구 · 성장 선택</span><h2 id="upgradeTitle"></h2><p>체력 45 회복 · 게이지 유지<br>다음 전투는 새 보드와 준비된 스킬로 시작합니다.</p><div id="choices"></div></dialog>
-<dialog id="confirmNew"><h2>현재 탐험을 새로 시작할까요?</h2><p>현재 진행은 덮어씁니다. 취소하면 그대로 이어집니다.</p><button id="cancelNew">계속 플레이</button><button id="confirmRestart">새로 시작</button></dialog>
-<dialog id="skillGuide"><h2>고유 스킬</h2><div id="skillDescriptions"></div><p>준비 효과는 전투 종료 시 만료됩니다. 다음 전투와 체크포인트 재도전에는 이어지지 않습니다. 2전투 장막은 최종 피해20%를 줄입니다. 잔향 적중이면 이번 턴 해제되고 다음 턴 돌아옵니다. 잔향 없이도 공격으로 돌파할 수 있습니다.</p><button id="closeSkills">돌아가기</button></dialog><dialog id="feedbackSettings"><h2>연출·소리</h2><label><input type="checkbox" id="lessEffects"> 효과 줄이기 · 이번 실행에 적용</label><p>시스템 모션 줄이기는 항상 적용합니다. 소리는 기본 꺼짐이며, 메인 음량 설정을 함께 사용합니다.</p><button id="previewEnable">소리 켜기</button><p id="soundHint" role="status">각 소리를 짧게 미리 들어 보세요.</p><div id="soundSamples"></div><button id="closeFeedback">돌아가기</button></dialog></main><script>
+<dialog id="confirmNew"><h2>현재 모드를 새로 시작할까요?</h2><p>이 모드의 저장만 덮어씁니다. 다른 모드 저장은 유지됩니다. 취소하면 그대로 이어집니다.</p><button id="cancelNew">계속 플레이</button><button id="confirmRestart">새로 시작</button></dialog>
+<dialog id="skillGuide"><h2>고유 스킬</h2><div id="skillDescriptions"></div><p>준비 효과는 전투 종료 시 만료됩니다. 다음 전투와 체크포인트 재도전에는 이어지지 않습니다. 2전투 장막은 최종 피해20%를 줄입니다. 잔향 적중이면 이번 턴 해제되고 다음 턴 돌아옵니다. 잔향 없이도 공격으로 돌파할 수 있습니다.</p><button id="closeSkills">돌아가기</button></dialog><dialog id="feedbackSettings"><h2>연출·소리</h2><label><input type="checkbox" id="lessEffects"> 효과 줄이기 · 이번 실행에 적용</label><p>시스템 모션 줄이기는 항상 적용합니다. 소리는 기본 꺼짐이며, 메인 음량 설정을 함께 사용합니다.</p><button id="previewEnable">소리 켜기</button><p id="soundHint" role="status">각 소리를 짧게 미리 들어 보세요.</p><div id="soundSamples"></div><button id="closeFeedback">돌아가기</button></dialog></main><dialog id="journey" class="journey"><span class="eyebrow">EXPEDITION / 6 ROOMS</span><h2 id="journeyTitle"></h2><p id="journeyHealth"></p><p id="journeyHint"></p><div id="roomChoices"></div><div id="routeRows" aria-label="탐험 경로"></div><p id="journeyRelics"></p><button id="journeyRelicHelp">유물 설명</button><button id="journeyMenu">저장하고 모드 선택</button><button id="journeyNew">새 탐험</button></dialog><dialog id="relicGuide"><h2>빛의 유물 · 중복 없음</h2><div id="relicList"></div><p>유물 효과는 실제 탭/성공 스킬마다 한 번. 유물로 만든 효과는 다시 발동하지 않아요. 회복은 턴 끝 반격 전에 적용. 유물보호 최대12 + 스킬18 = 총30, 다음 반격에 소진. 전투 끝 보호 만료. 고정 피해는 과충전 배율 제외.</p><button id="closeRelics">돌아가기</button></dialog><script>
 (() => {
 const C = Object.freeze({cols:6, rows:7, hp:180, bossHP:680, attack:5, heal:6, charge:24, attacks:[24,42], gauge:55, cooldown:3, seed:20261019});
 const COLORS = ['coral','gold','blue','heal'];
@@ -318,6 +321,121 @@ function decodeSave(raw){
 function loadProgress(storage){try{const raw=storage.getItem(SAVE_KEY);if(!raw)return {data:null,reason:'empty'};const data=decodeSave(raw);const legacy=data&&data.run&&(JSON.parse(raw).run.state.buffs===undefined||JSON.parse(raw).run.panelVersion===undefined);return {data,reason:data?(legacy?'migrated':'ok'):'invalid'};}catch{return {data:null,reason:'unavailable'};}}
 function saveProgress(storage,run,learned,audio){try{const data={version:1,run,learned,audio};if(!decodeSave(JSON.stringify(data)))return false;storage.setItem(SAVE_KEY,JSON.stringify(data));return true;}catch{return false;}}
 
+
+
+
+const EXPEDITION_KEY='resonance-expedition-v1';
+const RELICS=[
+ {id:'bell',name:'잔향 방울',text:'실제 잔향 발동: 보호6. 유물보호 최대12, 다음 반격에 소진.'},
+ {id:'powder',name:'씨앗 화약',text:'소거한 기존 폭탄당 정산 회복3. 탭당 최대9.'},
+ {id:'bottle',name:'무지개 병',text:'최초 연결에 무지개: 게이지5, 탭1회. 과충전 중 제외.'},
+ {id:'tea',name:'덩굴 찻잎',text:'덩굴 해제당 정산 회복2. 탭당 최대6.'},
+ {id:'lens',name:'긴빛 렌즈',text:'최초 연결8개 이상: 고정 피해16, 탭1회.'},
+ {id:'petal',name:'꽃잎 변압기',text:'회복색 최초 연결4개 이상: 고정 피해12, 탭1회.'},
+ {id:'brooch',name:'첫빛 브로치',text:'각 방 첫턴의 첫 성공스킬: 보호6, 방1회.'},
+ {id:'umbrella',name:'반달 우산',text:'체력90 이하로 마지막 탭 시작: 보호6, 턴1회.'}
+];
+const types=[['normal'],['normal','elite'],['rest','event'],['normal','elite'],['rest','event'],['boss']];
+function createExpedition(seed=C.seed){
+ const e=createRun(seed,false);let rng=(seed^0xa3c59ac3)>>>0;const next=()=>rng=(Math.imul(rng,1664525)+1013904223)>>>0;
+ e.mode='expedition';e.phase='map';e.depth=0;e.path=[];e.relics=[];e.shield=0;e.firstSkill=false;e.offer=[];e.log=[];e.total={turns:0,echoes:0,damage:0,taken:0,healed:0};
+ e.map=types.map((row,depth)=>row.map((type,i)=>{const order=RELICS.map(r=>r.id);for(let j=order.length-1;j>0;j--){const k=next()%(j+1);[order[j],order[k]]=[order[k],order[j]];}return {id:`${depth}-${i}`,type,depth,seed:next(),order};}));return e;
+}
+function roomRules(n){const stage=n.depth<1?0:n.depth<3?1:2;return {...C,panelStage:stage,echoWard:n.type==='elite',bossHP:n.type==='boss'?1000:n.depth===0?360:n.depth===1?(n.type==='elite'?600:500):(n.type==='elite'?780:650),attacks:n.type==='boss'?[16,24,34]:n.type==='elite'?[18,26]:[10,16]};}
+function currentRoom(e){return e.map.flat().find(n=>n.id===e.path.at(-1));}
+function availableRooms(e){return e.phase==='map'?(e.map[e.depth]??[]):[];}
+function enterRoom(e,id){
+ const n=availableRooms(e).find(n=>n.id===id);if(!n)return false;e.path.push(id);e.offer=[];
+ if(['normal','elite','boss'].includes(n.type)){
+  const hp=e.state.hp,gauge=e.state.gauge;e.state=createGame(n.seed,roomRules(n));Object.assign(e.state,{hp,gauge});e.stage=e.state.rules.panelStage;e.phase='battle';e.shield=0;e.firstSkill=false;e.tutorial='done';e.panelLesson=e.stage&&!e.panelSeen[e.stage-1]?(e.stage===1?'vine':'rainbow'):null;
+ }else {e.phase='room';e.offer=n.order.filter(id=>!e.relics.includes(id)).slice(0,1);}
+ return true;
+}
+function relicEffects(e,p){const has=id=>e.relics.includes(id);return {damage:(has('lens')&&p.initial.length>=8?16:0)+(has('petal')&&p.color==='heal'&&p.initial.length>=4?12:0),healing:(has('powder')?Math.min(3,p.bombs)*3:0)+(has('tea')?Math.min(3,p.unlocked.length)*2:0),gauge:has('bottle')&&!e.state.boost&&p.initial.some(i=>e.state.board[i].kind==='rainbow')?5:0,shield:(has('bell')&&p.echoHit?6:0)+(has('umbrella')&&e.state.taps===1&&e.state.hp<=90?6:0)};}
+function heal(e,n){const amount=Math.min(180-e.state.hp,n);e.state.hp+=amount;e.total.healed+=amount;return amount;}
+function advance(e){e.depth++;e.phase=e.depth===6?'complete':'map';e.offer=[];}
+function expeditionTap(e,index){
+ if(e.phase!=='battle'||e.state.status!=='playing')return null;const s=e.state,p=preview(s,index);if(!p.initial.length)return null;
+ const f=relicEffects(e,p),before=s.hp,boss=s.bossHP,ending=s.taps===1;e.shield=Math.min(12,e.shield+f.shield);s.damage+=f.damage;s.healing+=f.healing;if(ending)s.buffs.shield=Math.min(30,s.buffs.shield+e.shield);
+ const actualHealing=ending?Math.min(180-before,s.healing+p.healing):0;const usedRainbow=p.initial.some(i=>s.board[i].kind==='rainbow'),result=tap(s,index);s.gauge=Math.min(C.gauge,s.gauge+f.gauge);result.relic=f;
+ if(e.panelLesson==='vine'&&result.unlocked.length||e.panelLesson==='rainbow'&&usedRainbow)skipPanelLesson(e);
+ if(ending){e.total.turns++;e.total.damage+=boss-s.bossHP;e.total.taken+=result.retaliation;e.total.healed+=actualHealing;}
+ if(result.incoming||s.status!=='playing')e.shield=0;
+ if(s.status!=='playing'){
+  skipTutorial(e);e.log.push({id:currentRoom(e).id,turns:s.turn,echoes:s.echoCount,maxChain:s.maxChain,result:s.status});e.total.echoes+=s.echoCount;
+  if(s.status==='lost'){e.phase='defeat';e.offer=[];}
+  else if(currentRoom(e).type==='boss'){e.depth=6;e.phase='complete';}
+  else {heal(e,currentRoom(e).type==='elite'?12:6);e.phase='reward';e.offer=currentRoom(e).order.filter(id=>!e.relics.includes(id)).slice(0,2);}
+ }
+ return result;
+}
+function expeditionSkill(e,index){if(e.phase!=='battle'||!useSkill(e.state,index))return false;if(e.state.turn===1&&!e.firstSkill){e.firstSkill=true;if(e.relics.includes('brooch'))e.shield=Math.min(12,e.shield+6);}return true;}
+function rewards(e){if(e.phase!=='reward')return [];return e.relics.length===RELICS.length?['restore']:[...e.offer];}
+function takeReward(e,id){if(!rewards(e).includes(id))return false;if(id==='restore')heal(e,18);else if(!e.relics.includes(id))e.relics.push(id);else return false;advance(e);return true;}
+function resolveRoom(e,choice){
+ if(e.phase!=='room')return false;const n=currentRoom(e);
+ if(choice==='rest'){heal(e,n.type==='rest'?36:22);}else if(choice==='gift'&&n.type==='event'&&e.offer.length&&e.state.hp>18&&!e.relics.includes(e.offer[0])){e.state.hp-=18;e.relics.push(e.offer[0]);}else return false;
+ e.log.push({id:n.id,choice});advance(e);return true;
+}
+const expInt=(n,a,b)=>Number.isInteger(n)&&n>=a&&n<=b;
+function decodeExpedition(raw){try{
+ const e=JSON.parse(raw),s=e?.state;if(e?.version!==1||e.mode!=='expedition'||!expInt(e.seed,0,4294967295)||!['map','battle','reward','room','complete','defeat'].includes(e.phase)||!expInt(e.depth,0,6))return null;
+ const generated=createExpedition(e.seed);if(JSON.stringify(e.map)!==JSON.stringify(generated.map))return null;
+ if(!Array.isArray(e.path)||e.path.length>6||e.path.some((id,d)=>!e.map[d].some(n=>n.id===id))||e.path.length!==e.depth+(['battle','reward','room','defeat'].includes(e.phase)?1:0))return null;
+ if(!Array.isArray(e.relics)||new Set(e.relics).size!==e.relics.length||e.relics.some(id=>!RELICS.some(r=>r.id===id))||!expInt(e.shield,0,12)||typeof e.firstSkill!=='boolean')return null;
+ if(!Array.isArray(e.offer)||e.offer.length>2||new Set(e.offer).size!==e.offer.length||e.offer.some(id=>!RELICS.some(r=>r.id===id)||e.relics.includes(id)))return null;
+ if(!e.total||Object.keys(e.total).sort().join(',')!=='damage,echoes,healed,taken,turns'||Object.values(e.total).some(v=>!expInt(v,0,10000000))||!Array.isArray(e.log)||e.log.length>6)return null;
+ if(!Array.isArray(e.panelSeen)||e.panelSeen.length!==2||e.panelSeen.some(v=>typeof v!=='boolean')||![null,'vine','rainbow'].includes(e.panelLesson)||!['done'].includes(e.tutorial))return null;
+ const battleNode=[...e.path].reverse().map(id=>e.map.flat().find(n=>n.id===id)).find(n=>['normal','elite','boss'].includes(n.type));const rules=battleNode?roomRules(battleNode):generated.state.rules;
+ if(!s||!expInt(s.seed,0,4294967295)||s.seed!==(battleNode?.seed??e.seed)||!expInt(s.rng,0,4294967295)||!expInt(s.panelRng,0,4294967295)||!expInt(s.nextID,43,1000000)||!expInt(s.hp,0,180)||!expInt(s.bossHP,0,rules.bossHP)||!expInt(s.turn,1,10000)||!expInt(s.taps,0,3)||!expInt(s.gauge,0,55)||typeof s.boost!=='boolean'||typeof s.wardBroken!=='boolean')return null;
+ if(!['playing','won','lost'].includes(s.status)||!s.buffs||typeof s.buffs.prism!=='boolean'||typeof s.buffs.ignition!=='boolean'||![0,18].includes(s.buffs.shield))return null;
+ if(!Array.isArray(s.board)||s.board.length!==42||s.board.some(t=>!expInt(t.id,1,s.nextID-1)||!COLORS.includes(t.color)||!['normal','charge','bomb','rainbow'].includes(t.kind)||t.vine!==undefined&&typeof t.vine!=='boolean'||t.vine&&(t.kind!=='normal'||t.color==='heal'))||new Set(s.board.map(t=>t.id)).size!==42)return null;
+ if(s.board.filter(t=>t.vine).length>4||s.board.filter(t=>t.kind==='rainbow').length>2||s.board.some(t=>t.vine&&!rules.panelStage||t.kind==='rainbow'&&rules.panelStage!==2))return null;
+ if(!Array.isArray(s.echo)||s.echo.length>8||new Set(s.echo).size!==s.echo.length||s.echo.some(id=>!s.board.some(t=>t.id===id&&!t.vine&&t.color!=='heal'&&t.kind!=='rainbow')))return null;
+ if(!Array.isArray(s.ready)||s.ready.length!==3||s.ready.some(v=>!expInt(v,1,s.turn+3)))return null;
+ for(const k of ['damage','healing','echoCount','maxChain'])if(!expInt(s[k],0,1000000))return null;
+ if(e.phase==='battle'&&(s.status!=='playing'||!s.hp||!s.bossHP||!s.taps))return null;
+ if(e.phase==='defeat'&&(s.status!=='lost'||s.hp!==0||s.taps!==0))return null;
+ if(e.phase==='complete'&&(e.depth!==6||s.status!=='won'||s.bossHP!==0))return null;
+ if(e.phase==='reward'&&(s.status!=='won'||s.bossHP!==0))return null;
+ if(!['defeat'].includes(e.phase)&&!s.hp)return null;
+ const n=currentRoom(e);if(e.phase==='room'&&!['rest','event'].includes(n?.type))return null;
+ if(['battle','reward'].includes(e.phase)&&!['normal','elite','boss'].includes(n?.type))return null;
+ if(e.phase==='map'&&e.depth===6)return null;
+ if(e.phase==='reward'&&JSON.stringify(e.offer)!==JSON.stringify(n.order.filter(id=>!e.relics.includes(id)).slice(0,2)))return null;
+ if(!expInt(e.stage,0,2)||e.stage!==(rules.panelStage??0))return null;
+ if(e.panelLesson&&(e.phase!=='battle'||e.stage!==(e.panelLesson==='vine'?1:2)||e.panelSeen[e.stage-1]))return null;
+ if(e.log.some(h=>!h||!e.path.includes(h.id)||h.choice!==undefined&&!['rest','gift'].includes(h.choice)||h.result!==undefined&&(!['won','lost'].includes(h.result)||!expInt(h.turns,1,10000)||!expInt(h.echoes,0,1000000)||!expInt(h.maxChain,0,42)))||new Set(e.log.map(h=>h.id)).size!==e.log.length)return null;
+ if(e.phase==='room'&&JSON.stringify(e.offer)!==JSON.stringify(n.order.filter(id=>!e.relics.includes(id)).slice(0,1)))return null;
+ s.rules=rules;return e;
+ }catch{return null;}}
+function saveExpedition(storage,e){try{const raw=JSON.stringify(e);if(!decodeExpedition(raw))return false;storage.setItem(EXPEDITION_KEY,raw);return true;}catch{return false;}}
+function loadExpedition(storage){try{return decodeExpedition(storage.getItem(EXPEDITION_KEY));}catch{return null;}}
+
+
+const ROOM_NAMES={normal:'새싹 수호자',elite:'정예 · 수정 파수꾼',rest:'이슬 쉼터',event:'종이새의 선물',boss:'최종 · 온실의 여왕'};
+function roomDescription(n){if(n.type==='rest')return '안전 · 체력36 회복 (최대180)';if(n.type==='event')return '선택 · 체력18을 유물로 / 체력22 회복';const r=roomRules(n);return `적 체력${r.bossHP} · 반격 ${r.attacks.join('→')}${r.echoWard?' · 장막20%, 잔향으로 해제':''} · ${n.type==='boss'?'탐험 완주':`승리 회복${n.type==='elite'?12:6} + 유물 선택`}`;}
+function createExpeditionUI(getRun,onChange){
+ const $=id=>document.getElementById(id);
+ function button(text,description,action){const b=document.createElement('button'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=text;small.textContent=description;b.append(strong,small);b.onclick=()=>{if(action())onChange();};return b;}
+ function render(){
+  const e=getRun();if(!e||e.mode!=='expedition')return;
+  $('journeyHealth').textContent=`체력 ${e.state.hp}/180 · 보호 ${e.shield} · 시드 ${e.seed}`;
+  $('journeyTitle').textContent=e.phase==='reward'?'빛의 유물 하나를 골라요':e.phase==='room'?ROOM_NAMES[currentRoom(e).type]:'다음 정원으로';
+  $('journeyHint').textContent=e.phase==='map'?'한 층에서 한 길만 선택해요. 선택 전 위험과 보상을 확인하세요.':e.phase==='reward'?'미소유 유물만 제시합니다. 선택하면 다음 층으로 이어집니다.':'결과를 확인하고 한 번만 선택하세요.';
+  $('routeRows').replaceChildren();
+  for(const [d,row] of e.map.entries()){const line=document.createElement('div');line.className='route-row';const label=document.createElement('span');label.textContent=`${d+1}`;line.append(label);for(const n of row){const selected=e.path.includes(n.id),available=availableRooms(e).some(r=>r.id===n.id);const b=button(`${selected?'✓ ':d<e.path.length?'— ':''}${ROOM_NAMES[n.type]}`,roomDescription(n),()=>enterRoom(e,n.id));b.dataset.room=n.id;b.dataset.route=selected?'chosen':d<e.path.length?'missed':available?'available':'future';b.disabled=!available;b.setAttribute('aria-label',`${d+1}층 ${ROOM_NAMES[n.type]}. ${roomDescription(n)}. ${selected?'선택한 길':d<e.path.length?'지나간 다른 길':available?'진입 가능':'아직 잠김'}`);line.append(b);}$('routeRows').append(line);}
+  $('roomChoices').replaceChildren();
+  if(e.phase==='reward')for(const id of rewards(e)){const relic=RELICS.find(r=>r.id===id);const b=button(relic?.name??'유물 모두 보유',relic?.text??'대체 보상: 체력18 회복 (최대180)',()=>takeReward(e,id));b.dataset.reward=id;$('roomChoices').append(b);}
+  if(e.phase==='room'){const n=currentRoom(e);if(n.type==='event'&&e.offer.length){const relic=RELICS.find(r=>r.id===e.offer[0]),b=button(`${relic.name} 받기 · 체력−18`,relic.text,()=>resolveRoom(e,'gift'));b.dataset.event='gift';b.disabled=e.state.hp<=18;$('roomChoices').append(b);}const b=button(n.type==='rest'?'잠깐 쉬어 가기':'따뜻한 차 마시기',`체력 +${n.type==='rest'?36:22}, 최대180${n.type==='event'&&!e.offer.length?' · 유물 모두 보유':''}`,()=>resolveRoom(e,'rest'));b.dataset.event='rest';$('roomChoices').append(b);}
+  $('journeyRelics').textContent=e.relics.length?e.relics.map(id=>RELICS.find(r=>r.id===id).name).join(' · '):'아직 유물이 없어요. 첫 전투를 마치면 선택합니다.';
+  if(['map','reward','room'].includes(e.phase)&&!$('journey').open)$('journey').showModal();
+  if(!['map','reward','room'].includes(e.phase)&&$('journey').open)$('journey').close();
+ }
+ function describe(){const e=getRun();$('relicList').replaceChildren();for(const r of RELICS){const p=document.createElement('p'),strong=document.createElement('strong');strong.textContent=(e.relics.includes(r.id)?'✓ ':'')+r.name;p.append(strong,document.createElement('br'),document.createTextNode(r.text));$('relicList').append(p);}$('relicGuide').showModal();}
+ return {render,describe};
+}
+
 // Shared live/offline synthesizer. No external assets or game RNG.
 const SOUND_EVENTS={select:'보석 선택',chain:'짧은 연쇄',large:'큰 연쇄',echo:'잔향',bomb:'폭탄',vine:'덩굴 해제',rainbow:'무지개',heal:'회복 정산',prism:'프리즘 링크',ignite:'연쇄 점화',garden:'생명의 온실',shield:'보호막',hit:'적 피격',enemy:'적 반격',boost:'과충전',win:'승리',lose:'패배'};
 function soundRecipe(kind,chain=1){
@@ -484,11 +602,14 @@ function createSkillUI(getState){
 
 
 
+
+
 const $=id=>document.getElementById(id),names={coral:'불꽃',gold:'별빛',blue:'물방울',heal:'회복 잎'};
 let storage;try{storage=localStorage;}catch{storage=null;}
 const loaded=loadProgress(storage);
 let run=loaded.data?.run??createRun(),state=run.state,learned=loaded.data?.learned??false;
 let started=!!loaded.data?.run,sessionPlaying=false,focus=1,pressed=null,guideStep=0,pendingFresh=false;
+let mode='practice',practiceSlot=loaded.data?.run??null,expeditionSlot=loadExpedition(storage);
 const settings=loaded.data?.audio??{enabled:false,volume:.3};
 let queuedNew=null,activeTimeline=null,lessEffects=false,actionID=0;const motionQuery=matchMedia('(prefers-reduced-motion: reduce)'),reduced={get matches(){return motionQuery.matches||lessEffects;}};
 const sound=createAudio(settings),gate=inputGate(),fx=createEffects($('effects'),reduced);
@@ -496,13 +617,14 @@ const skillUI=createSkillUI(()=>state);
 const tiles=Array.from({length:42},(_,i)=>{
  const b=document.createElement('button');b.className='tile';b.style.setProperty('--c',Math.floor(i/7)+1);b.style.setProperty('--r',i%7+1);b.dataset.index=i;$('board').append(b);return b;
 });
-function persist(){if(run.tutorial==='done'&&started)learned=true;const ok=saveProgress(storage,started?run:null,learned,settings);$('saveStatus').textContent=ok?'저장됨':'저장 불가 · 플레이 가능';return ok;}
-function blocked(){return !sessionPlaying||gate.locked||['guide','start','upgrade','confirmNew','ending','skillGuide','feedbackSettings'].some(id=>$(id).open);}
+function persist(){if(mode==='expedition'){expeditionSlot=run;const ok=saveExpedition(storage,run);saveProgress(storage,practiceSlot,learned,settings);$('saveStatus').textContent=ok?'저장됨':'저장 불가 · 플레이 가능';return ok;}practiceSlot=started?run:null;if(run.tutorial==='done'&&started)learned=true;const ok=saveProgress(storage,started?run:null,learned,settings);$('saveStatus').textContent=ok?'저장됨':'저장 불가 · 플레이 가능';return ok;}
+function blocked(){return !sessionPlaying||gate.locked||['guide','start','upgrade','confirmNew','ending','skillGuide','feedbackSettings','journey','relicGuide'].some(id=>$(id).open);}
 function showPreview(i){
  if(gate.locked||run.phase!=='battle')return;
  focus=i;const p=preview(state,i);
  tiles.forEach((b,j)=>{b.classList.toggle('selected',p.removed.includes(j));b.tabIndex=j===i?0:-1;});
  $('preview').textContent=!p.initial.length?'덩굴 보호 · 옆 타일로 해제 · 탭 소모 없음':`${state.board[i].kind==='rainbow'?'확정색 '+names[p.color]+' · ':''}연결 ${p.initial.length} · 총 ${p.removed.length}칸 · 적립 +${p.damage} / 회복 +${p.healing}${p.echoHit?' · 잔향 연결!':''}${p.unlocked.length?' · 덩굴 해제 '+p.unlocked.length:''}`;
+ if(mode==='expedition'&&p.initial.length){const f=relicEffects(run,p);$('preview').textContent+=` · 유물 +피해${f.damage}/회복${f.healing}/보호${f.shield}/게이지${f.gauge}`;}
 }
 function render(){
  state=run.state;const rules=state.rules,targets=tutorialTargets(run);
@@ -513,10 +635,10 @@ function render(){
   delete b.dataset.clearId;b.tabIndex=i===focus?0:-1;b.disabled=run.phase!=='battle';
  });
  document.body.classList.toggle('overcharged',state.boost);document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
- $('stageName').textContent=`${run.stage+1}/3 · ${STAGES[run.stage].name}`;
+ $('stageName').textContent=mode==='expedition'?`탐험 ${Math.min(run.depth+1,6)}/6 · ${ROOM_NAMES[currentRoom(run)?.type]??'갈림길 온실'}`:`${run.stage+1}/3 · ${STAGES[run.stage].name}`;$('relicHelp').hidden=mode!=='expedition';
  $('boss').max=rules.bossHP;$('boss').value=state.bossHP;$('bossText').textContent=`적 ${state.bossHP}/${rules.bossHP}`;
- const attack=nextAttack(run);$('incoming').textContent=`${attack.name} ${attack.damage} · ${attack.pattern}`;
- $('health').textContent=`체력 ${state.hp}/${rules.hp}`;$('turn').textContent=`${state.turn}턴`;$('taps').textContent=`남은 탭 ${state.taps}/3`;
+ const attack=mode==='expedition'?{name:currentRoom(run)?.type==='elite'?'정예 장막':'빛 파동',damage:state.rules.attacks[(state.turn-1)%state.rules.attacks.length],pattern:state.rules.attacks.join(' → ')}:nextAttack(run);$('incoming').textContent=`${attack.name} ${attack.damage} · ${attack.pattern}`;
+ $('health').textContent=`체력 ${state.hp}/${rules.hp}${mode==='expedition'&&run.shield?' · 유물보호 '+run.shield:''}`;$('turn').textContent=`${state.turn}턴`;$('taps').textContent=`남은 탭 ${state.taps}/3`;
  $('pending').textContent=`턴 끝: 피해 ${pendingDamage(state)} · 회복 ${state.healing}${state.boost?' · 과충전 중':''}`;
  $('echo').textContent=state.echo.length?`◌ 잔향 ${state.echo.length}개 · 다음 연결로 발동`:'공격색 5개 이상 → 잔향 · 다음 연결을 준비하세요.';
  $('gauge').max=C.gauge;$('gauge').value=state.gauge;$('gaugeText').textContent=`${state.gauge}/${C.gauge}`;
@@ -536,7 +658,10 @@ function renderLesson(){
 function renderAudio(){
  $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;
 }
+const expeditionUI=createExpeditionUI(()=>run,()=>{persist();render();expeditionUI.render();if(run.phase==='battle'){showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);}phaseDialog();});
 function phaseDialog(){
+ if(mode==='expedition'){expeditionUI.render();if(['complete','defeat'].includes(run.phase)){$('ending').className=run.phase==='complete'?'victory':'defeat';$('result').textContent=run.phase==='complete'?'갈림길 온실 복구 완료':'탐험이 끝났어요';$('stats').textContent=`경로: ${run.path.map(id=>ROOM_NAMES[run.map.flat().find(n=>n.id===id).type]).join(' → ')}\n유물: ${run.relics.map(id=>RELICS.find(r=>r.id===id).name).join(' · ')||'없음'}\n${run.total.turns}턴 · 잔향 ${run.total.echoes}회 · 피해 ${run.total.damage} · 받은 피해 ${run.total.taken} · 회복 ${run.total.healed}\n탐험은 전투 되돌리기 없이 새로 시작합니다.`;$('retryBattle').hidden=true;if(!$('ending').open)$('ending').showModal();}return;}
+
  if(run.phase==='upgrade'){
   $('upgradeTitle').textContent=`${STAGES[run.stage].name} 복구! 하나를 선택하세요.`;$('choices').replaceChildren();
   for(const choice of CHOICES[run.stage]){const b=document.createElement('button');b.dataset.choice=choice.id;const title=document.createElement('strong'),desc=document.createElement('span');title.textContent=choice.name;desc.textContent=choice.description;b.append(title,desc);b.onclick=()=>{
@@ -556,7 +681,7 @@ async function commit(i){
  if(blocked()||!canRunTap(run,i)||!gate.start())return;
  $('board').dataset.resolving='true';sound.unlock();
  try{
-  const p=preview(state,i),eventID=++actionID,oldHP=state.bossHP,settledHeal=state.taps===1?Math.min(state.rules.hp-state.hp,state.healing+p.healing):0,positions=new Map(state.board.map((t,j)=>{const point=fx.point(tiles[j]);return [t.id,{...point,y:point.y+scrollY}];}));
+  const p=preview(state,i),eventID=++actionID,oldHP=state.bossHP,settledHeal=state.taps===1?Math.min(state.rules.hp-state.hp,state.healing+p.healing+(mode==='expedition'?relicEffects(run,p).healing:0)):0,positions=new Map(state.board.map((t,j)=>{const point=fx.point(tiles[j]);return [t.id,{...point,y:point.y+scrollY}];}));
   const bombs=p.removed.filter(j=>state.board[j].kind==='bomb');
   const large=p.initial.length>=10,color={coral:'#ffc0bd',gold:'#ffe4a0',blue:'#a3e2ff',heal:'#c3efa7'}[p.color];
   p.rainbows=p.initial.filter(j=>state.board[j].kind==='rainbow').length;
@@ -576,7 +701,7 @@ async function commit(i){
   if(resolution==='finish'){sound.cancel();fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
   if(resolution==='reset'){fx.clear();render();return;}
   if(large&&resolution==='done'){fx.ring($('board'),color,'resonance');sound.play('resonance',{id:eventID});}
-  const result=runTap(run,i);persist();render();
+  const result=mode==='expedition'?expeditionTap(run,i):runTap(run,i);persist();render();
   if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=fallOffset(old,now,scrollY);if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 1px',opacity:1,offset:.86},{translate:'0 0',opacity:1}],{duration:200,easing:'cubic-bezier(.16,.7,.3,1)'});});
   if(resolution==='done')for(const kind of postFeedback(result,{bossHit:state.bossHP<oldHP,healed:settledHeal,status:state.status}))sound.play(kind,{id:eventID});
   if(settledHeal)fx.cue('heal',$('health'),'#c2eda9');if(result.blocked)fx.ring($('health'),'#c2eeeb','shield');
@@ -597,19 +722,20 @@ for(const [i,b] of tiles.entries()){
 window.addEventListener('pointercancel',()=>pressed=null);window.addEventListener('pointerup',()=>pressed=null);
 window.addEventListener('pointermove',e=>{if(pressed&&Math.hypot(e.clientX-pressed.x,e.clientY-pressed.y)>=12)pressed=null;});
 document.querySelectorAll('[data-skill]').forEach(b=>b.onclick=()=>{
- if(blocked())return;sound.unlock();const ok=runSkill(run,Number(b.dataset.skill));persist();render();showPreview(focus);
+ if(blocked())return;sound.unlock();const ok=mode==='expedition'?expeditionSkill(run,Number(b.dataset.skill)):runSkill(run,Number(b.dataset.skill));persist();render();showPreview(focus);
  if(ok){fx.cue(['prism','ignite','garden'][Number(b.dataset.skill)],b,['#f3ada4','#9bdfff','#c5eca8'][Number(b.dataset.skill)]);skillUI.show(Number(b.dataset.skill));sound.play(['prism','ignite','garden'][Number(b.dataset.skill)]);fx.burst(b);b.classList.add('skill-used');setTimeout(()=>b.classList.remove('skill-used'),450);}
  $('notice').textContent=ok?'스킬 적용 · 탭 유지':'대상이 없거나 재충전 중입니다.';
 });
 $('boost').onclick=()=>{if(!blocked()&&runBoost(run)){sound.unlock();sound.play('boost');persist();render();showPreview(focus);fx.ring($('board'));$('notice').textContent='과충전 · 이번 턴 피해 2배';}};
 function begin(fresh){
+ if(mode==='expedition'){fx.clear();skillUI.clear();run=createExpedition(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed);state=run.state;started=true;sessionPlaying=true;for(const id of ['start','ending','confirmNew','upgrade','journey'])if($(id).open)$(id).close();persist();render();phaseDialog();return;}
  fx.clear();skillUI.clear();pressed=null;run=createRun(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed,!learned);state=run.state;started=true;sessionPlaying=true;
  for(const id of ['start','ending','confirmNew','upgrade'])if($(id).open)$(id).close();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[0].lesson;
 }
-function askNew(fresh){if(gate.locked&&!activeTimeline){queuedNew=fresh;return;}if(activeTimeline){activeTimeline.cancel('reset');sound.cancel();fx.clear();}pendingFresh=fresh;if(started&&['battle','upgrade'].includes(run.phase))$('confirmNew').showModal();else begin(fresh);}
-$('restart').onclick=()=>askNew(false);$('newSeed').onclick=()=>askNew(true);$('again').onclick=()=>begin(false);$('another').onclick=()=>begin(true);
+function askNew(fresh){if(gate.locked&&!activeTimeline){queuedNew=fresh;return;}if(activeTimeline){activeTimeline.cancel('reset');sound.cancel();fx.clear();}pendingFresh=fresh;if(started&&(mode==='expedition'||['battle','upgrade'].includes(run.phase)))$('confirmNew').showModal();else begin(fresh);}
+$('restart').onclick=()=>askNew(false);$('newSeed').onclick=()=>askNew(true);$('again').onclick=()=>mode==='expedition'?askNew(false):begin(false);$('another').onclick=()=>mode==='expedition'?askNew(true):begin(true);
 $('cancelNew').onclick=()=>$('confirmNew').close();$('confirmRestart').onclick=()=>begin(pendingFresh);
-$('retryBattle').onclick=()=>{if(gate.locked||!retryBattle(run))return;$('ending').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent='진입 당시 체력·게이지·보드로 재도전합니다.';};
+$('retryBattle').onclick=()=>{if(mode==='expedition'||gate.locked||!retryBattle(run))return;$('ending').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent='진입 당시 체력·게이지·보드로 재도전합니다.';};
 $('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();renderLesson();showPreview(focus);};
 $('sound').onclick=()=>{sound.enable(!settings.enabled);persist();renderAudio();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
 $('volume').oninput=e=>{sound.volume(Number(e.target.value)/100);persist();};
@@ -619,8 +745,17 @@ function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`�
 $('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus({preventScroll:true});}};
 $('skillHelp').onclick=()=>{if(!gate.locked)skillUI.describe();};$('closeSkills').onclick=()=>$('skillGuide').close();
 $('help').onclick=()=>{if(!gate.locked){guideStep=0;tutorial();}};
-$('continueRun').disabled=!started;$('continueRun').onclick=()=>{sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle'){tiles[focus].focus({preventScroll:true});window.scrollTo(0,0);}};
-$('startNew').onclick=()=>askNew(false);
+function switchMode(next){if(mode!==next){persist();mode=next;run=(next==='expedition'?expeditionSlot:practiceSlot)??(next==='expedition'?createExpedition():createRun());started=!!(next==='expedition'?expeditionSlot:practiceSlot);state=run.state;}render();}
+function resumeMode(next){switchMode(next);sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle'){tiles[focus].focus({preventScroll:true});window.scrollTo(0,0);}}
+function modeMenu(){if(gate.locked)return;persist();sessionPlaying=false;for(const id of ['journey','ending'])if($(id).open)$(id).close();$('continueRun').disabled=!practiceSlot;$('expeditionContinue').disabled=!expeditionSlot;$('start').showModal();}
+$('continueRun').disabled=!practiceSlot;$('continueRun').onclick=()=>resumeMode('practice');
+$('startNew').onclick=()=>{switchMode('practice');askNew(false);};
+$('expeditionContinue').disabled=!expeditionSlot;$('expeditionContinue').onclick=()=>resumeMode('expedition');
+$('expeditionNew').onclick=()=>{switchMode('expedition');askNew(true);};
+for(const id of ['modeMenu','endingMenu','journeyMenu'])$(id).onclick=modeMenu;
+$('journeyNew').onclick=()=>askNew(true);
+for(const id of ['relicHelp','journeyRelicHelp'])$(id).onclick=()=>{if(!gate.locked)expeditionUI.describe();};$('closeRelics').onclick=()=>$('relicGuide').close();
+$('journey').addEventListener('cancel',e=>e.preventDefault());
 $('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해 이어갑니다. 새 스킬 효과는 재사용부터 적용되며, 이전 스킬 저장의 2전투 방어는 다음 턴부터, 새 패널은 다음 전투부터 적용됩니다.':loaded.reason==='invalid'?'저장 데이터 형식이 맞지 않아 새 탐험으로 시작합니다.':loaded.reason==='unavailable'?'저장소를 사용할 수 없지만 플레이할 수 있습니다.':'자동 저장 · 기본 무음 · 인터넷 불필요';
 for(const id of ['start','upgrade'])$(id).addEventListener('cancel',e=>e.preventDefault());
 render();$('start').showModal();
