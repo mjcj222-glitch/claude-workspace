@@ -14,37 +14,52 @@
         0,
         76,
         940,
-        400
+        310
       ],
       "selector": ".concept-boss"
     },
     "refractor": {
       "source_rect": [
         30,
-        1260,
+        1250,
         270,
-        170
+        230
       ],
       "selector": ".portrait-0"
     },
     "igniter": {
       "source_rect": [
         337,
-        1260,
+        1250,
         270,
-        170
+        230
       ],
       "selector": ".portrait-1"
     },
     "gardener": {
       "source_rect": [
         642,
-        1260,
+        1250,
         270,
-        170
+        230
       ],
       "selector": ".portrait-2"
     }
   },
-  "replacement": "Replace each selector background-image/background-size/background-position in characters.css with a standalone character asset. Do not change engine or input code."
+  "replacement": "Replace each selector background-image/background-size/background-position in characters.css with a standalone character asset. Do not change engine or input code.",
+  "gems": {
+    "source": "approved-concept.png",
+    "crop_size": [
+      120,
+      114
+    ],
+    "y": 576,
+    "x": {
+      "coral": 80,
+      "blue": 210,
+      "gold": 342,
+      "heal": 476
+    },
+    "implementation": ".gem sprite inside each of 42 independent buttons"
+  }
 }
