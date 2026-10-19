@@ -2,14 +2,14 @@ import {C} from './config.mjs';
 import {createGame,tap,useSkill,overcharge,group} from './engine.mjs';
 export const STAGES=[
  {name:'새싹 회랑',lesson:'큰 연결 뒤 남은 잔향을 이어 보세요.',bossHP:620,attacks:[14,20],patterns:['덩굴 스침','잎새 파동']},
- {name:'수정 정원',lesson:'점화사로 만든 폭탄과 잔향을 연결하세요.',bossHP:1100,attacks:[20,30],patterns:['수정 파편','공명 파동']},
- {name:'온실의 여왕',lesson:'3턴마다 큰 공격. 회복과 과충전을 준비하세요.',bossHP:1700,attacks:[18,26,40],patterns:['꽃잎','덩굴','만개 · 강공격']}
+ {name:'수정 정원',lesson:'장막20% · 잔향 적중으로 이번 턴 방어를 해제하세요.',bossHP:1100,attacks:[20,30],patterns:['수정 파편','공명 파동']},
+ {name:'온실의 여왕',lesson:'3턴마다 만개40 · 보호막과 회복을 준비하세요.',bossHP:1700,attacks:[18,26,40],patterns:['꽃잎','덩굴','만개 · 강공격']}
 ];
 export const CHOICES=[
  [{id:'power',name:'빛의 렌즈',description:'공격 타일 1개당 피해 +1. 이후 모든 전투에 적용.'},{id:'vitality',name:'튼튼한 온실',description:'최대 체력 +50. 이후 전투도 늘어난 체력으로 시작.'}],
  [{id:'charge',name:'축전 수정',description:'차지의 추가 피해 +20. 일반 타일 피해는 그대로.'},{id:'healing',name:'재생의 잎',description:'회복 타일 1개당 회복 +3. 최대 체력 상한은 유지.'}]
 ];
-export function rulesFor(stage,upgrades){return {...C,bossHP:STAGES[stage].bossHP,attacks:[...STAGES[stage].attacks],hp:C.hp+(upgrades.includes('vitality')?50:0),attack:C.attack+(upgrades.includes('power')?1:0),charge:C.charge+(upgrades.includes('charge')?20:0),heal:C.heal+(upgrades.includes('healing')?3:0)};}
+export function rulesFor(stage,upgrades){return {...C,bossHP:STAGES[stage].bossHP,attacks:[...STAGES[stage].attacks],echoWard:stage===1,hp:C.hp+(upgrades.includes('vitality')?50:0),attack:C.attack+(upgrades.includes('power')?1:0),charge:C.charge+(upgrades.includes('charge')?20:0),heal:C.heal+(upgrades.includes('healing')?3:0)};}
 export function createRun(seed=C.seed,learn=true){return {version:1,seed:seed>>>0,stage:0,phase:'battle',upgrades:[],history:[],retries:[0,0,0],entry:{hp:C.hp,gauge:0},tutorialIDs:[],tutorial:learn?'chain':'done',state:createGame(seed,rulesFor(0,[]))};}
 export function nextAttack(run){const stage=STAGES[run.stage],i=(run.state.turn-1)%stage.attacks.length;return {name:stage.patterns[i],damage:stage.attacks[i],pattern:stage.attacks.join(' → ')};}
 export function tutorialTargets(run){

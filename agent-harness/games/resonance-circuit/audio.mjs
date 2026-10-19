@@ -11,7 +11,10 @@ export function createAudio(settings,{factory=()=>new (globalThis.AudioContext||
  }
  function play(kind){if(!settings.enabled||!context||context.state!=='running')return false;try{
   const now=context.currentTime;
-  if(kind==='bomb'){tone(82,now,.3,.12);tone(123,now,.22,.035,'triangle');}
+  if(kind==='prism'){[247,330].forEach((f,i)=>tone(f,now+i*.045,.17,.04));}
+  else if(kind==='ignite'){tone(98,now,.22,.08,'triangle');tone(147,now+.04,.16,.03);}
+  else if(kind==='garden'){tone(196,now,.26,.04);tone(247,now+.065,.25,.025);}
+  else if(kind==='bomb'){tone(82,now,.3,.12);tone(123,now,.22,.035,'triangle');}
   else if(kind==='enemy')tone(110,now,.22,.065);
   else if(kind==='echo'||kind==='boost'){[220,277,330].forEach((f,i)=>tone(f,now+i*.055,.17,.045));}
   else{tone(165,now,.13,.07);tone(247,now+.025,.1,.025);}

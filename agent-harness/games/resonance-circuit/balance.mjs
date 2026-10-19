@@ -1,4 +1,4 @@
-import {createRun,runTap,runSkill,runBoost,chooseUpgrade} from './campaign.mjs';
+import {createRun,runTap,runSkill,runBoost,chooseUpgrade,nextAttack} from './campaign.mjs';
 import {preview} from './engine.mjs';
 export function simulate(seed,strategy='planned',choices=['power','healing']){
  const run=createRun(seed,false);let taps=0;
@@ -6,7 +6,7 @@ export function simulate(seed,strategy='planned',choices=['power','healing']){
   if(run.phase==='upgrade'){chooseUpgrade(run,choices[run.stage]);continue;}
   const s=run.state;
   if(strategy==='planned'){
-   if(s.hp<s.rules.hp*.65)runSkill(run,2);
+   if(s.hp<s.rules.hp*.65||(s.taps===1&&nextAttack(run).damage>=30))runSkill(run,2);
    runSkill(run,0);runSkill(run,1);runBoost(run);
   }
   const scores=s.board.map((t,i)=>{const p=preview(s,i);if(strategy==='smallest')return -p.initial.length;

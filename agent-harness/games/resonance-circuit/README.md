@@ -22,6 +22,12 @@ python -m http.server 8000 --bind 127.0.0.1
 
 전투 승리 후 성장 하나를 선택합니다. 체력45 회복·게이지 유지, 새 보드·준비된 스킬로 다음 전투를 시작합니다. 패배하면 해당 전투의 진입 체력·게이지·성장·시드에서 정확히 재도전합니다. 새 탐험은 진행 덮어쓰기를 확인합니다.
 
+## 고유 스킬과 정원 방어
+
+기존 색 전환·폭탄 생성·회복 생성에 각각 프리즘 추가 피해(+12, 잔향 적중 +24), 실제 폭탄 해소 보너스(폭탄당 +10, 최대 +30), 다음 적 반격 보호막18을 더했습니다. 상단 `스킬 설명`에서 사용 전 효과·현재 대상 수·쿨다운을 확인합니다. 준비 효과는 저장되며 재사용 시 중첩 없이 갱신됩니다.
+
+두 번째 정원은 피해를20% 줄이는 장막을 사용합니다. 잔향 적중으로 현재 턴 장막을 해제하며 다음 턴 복구됩니다. 잔향 없이도 피해를 줄 수 있습니다. 세 번째 정원의 기존 18→26→40 예고 공격은 그대로이며 보호막을 맞춰 쓸 수 있습니다. 정확한 계산·이전 저장 호환·검증 결과는 [SKILLS-REPORT.md](SKILLS-REPORT.md)에 있습니다.
+
 ## 저장·음향
 
 보드/RNG/성장/튜토리얼 완료/음향 설정을 버전1 localStorage에 자동 저장합니다. 같은 브라우저·주소에서 이어하기를 선택하세요. 손상되거나 버전이 맞지 않는 저장은 사용하지 않습니다. 저장이 막히면 현재 플레이는 가능하지만 창을 닫은 뒤 복구되지 않습니다. 기기/주소 간 동기화는 없습니다.
@@ -31,13 +37,14 @@ python -m http.server 8000 --bind 127.0.0.1
 ## 검증
 
 ```sh
-node --test agent-harness/games/resonance-circuit/engine.test.mjs agent-harness/games/resonance-circuit/campaign.test.mjs
+node --test agent-harness/games/resonance-circuit/*.test.mjs
 node agent-harness/games/resonance-circuit/balance.mjs
 # 기존 설치된 Playwright 및 /usr/bin/chromium이 있는 환경:
 python agent-harness/games/resonance-circuit/campaign_browser.py
 python agent-harness/games/resonance-circuit/resilience_browser.py
 python agent-harness/games/resonance-circuit/layout_check.py
 python agent-harness/games/resonance-circuit/art_check.py
+python agent-harness/games/resonance-circuit/skills_browser.py
 ```
 
 서버를 열지 않고 브라우저 내부 route로 검증합니다. 전체 결과/시드 실험/미검증 사항은 [CAMPAIGN-REPORT.md](CAMPAIGN-REPORT.md)에 있습니다. 자동 검사를 재미나 상용 품질의 증명으로 보지 않습니다.

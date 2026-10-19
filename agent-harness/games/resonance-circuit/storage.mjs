@@ -1,4 +1,5 @@
 import {C,COLORS} from './config.mjs';
+import {freshBuffs} from './skills.mjs';
 import {createRun,rulesFor,CHOICES} from './campaign.mjs';
 export const SAVE_KEY='resonance-circuit-v1';
 const integer=(n,a,b)=>Number.isInteger(n)&&n>=a&&n<=b;
@@ -25,11 +26,15 @@ export function decodeSave(raw){
  if(r.tutorial!=='done'&&(r.stage!==0||r.phase!=='battle')||r.tutorial==='echo'&&!s.echo.length)return null;
  if(!Array.isArray(r.history)||r.history.length!==r.stage+(r.phase==='battle'?0:1)||r.history.some((h,i)=>h.stage!==i||!integer(h.turns,1,10000)||!integer(h.echoes,0,1000000)||!integer(h.maxChain,0,42)||!['won','lost'].includes(h.result)))return null;
  run=createRun(r.seed,false);Object.assign(run,{stage:r.stage,phase:r.phase,tutorial:r.tutorial,upgrades:[...r.upgrades],history:r.history.map(h=>({...h})),retries:[...r.retries],entry:{...r.entry},tutorialIDs:[...r.tutorialIDs]});
+ const buffs=s.buffs===undefined?freshBuffs():s.buffs;
+ if(!buffs||typeof buffs.prism!=='boolean'||typeof buffs.ignition!=='boolean'||![0,18].includes(buffs.shield)||s.wardBroken!==undefined&&typeof s.wardBroken!=='boolean')return null;
+ if(r.phase!=='battle'&&(buffs.prism||buffs.ignition||buffs.shield))return null;
+ run.state.buffs={prism:buffs.prism,ignition:buffs.ignition,shield:buffs.shield};run.state.wardBroken=s.wardBroken??(r.stage===1);
  const keys=['seed','rng','nextID','hp','bossHP','turn','taps','damage','healing','gauge','boost','status','maxChain','echoCount'];for(const k of keys)run.state[k]=s[k];
  run.state.rules=rules;run.state.board=s.board.map(({id,color,kind})=>({id,color,kind}));run.state.echo=[...s.echo];run.state.ready=[...s.ready];
  }
  return {version:1,run,learned:data.learned,audio:{enabled:data.audio.enabled,volume:data.audio.volume}};
  }catch{return null;}
 }
-export function loadProgress(storage){try{const raw=storage.getItem(SAVE_KEY);if(!raw)return {data:null,reason:'empty'};const data=decodeSave(raw);return {data,reason:data?'ok':'invalid'};}catch{return {data:null,reason:'unavailable'};}}
+export function loadProgress(storage){try{const raw=storage.getItem(SAVE_KEY);if(!raw)return {data:null,reason:'empty'};const data=decodeSave(raw);const legacy=data&&data.run&&JSON.parse(raw).run.state.buffs===undefined;return {data,reason:data?(legacy?'migrated':'ok'):'invalid'};}catch{return {data:null,reason:'unavailable'};}}
 export function saveProgress(storage,run,learned,audio){try{const data={version:1,run,learned,audio};if(!decodeSave(JSON.stringify(data)))return false;storage.setItem(SAVE_KEY,JSON.stringify(data));return true;}catch{return false;}}
