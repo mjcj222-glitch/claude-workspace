@@ -14,10 +14,10 @@ def run():
    def serve(route):
     name=route.request.url.split('resonance.test/')[-1] or 'index.html'
     file=ROOT/('standalone.html' if name=='index.html' else name)
-    if file.parent!=ROOT or not file.is_file():
+    if not file.resolve().is_relative_to(ROOT) or not file.is_file():
      route.fulfill(status=404,body='Not found'); return
-    mime='text/javascript' if file.suffix=='.mjs' else 'text/css' if file.suffix=='.css' else 'text/html'
-    route.fulfill(status=200,content_type=mime,body=file.read_text())
+    mime='image/png' if file.suffix=='.png' else 'text/javascript' if file.suffix=='.mjs' else 'text/css' if file.suffix=='.css' else 'text/html'
+    route.fulfill(status=200,content_type=mime,body=file.read_bytes())
    page.route('http://resonance.test/**',serve)
    page.goto('http://resonance.test/')
    assert page.locator('#guide').evaluate('(e)=>e.open')

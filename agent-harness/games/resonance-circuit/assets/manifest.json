@@ -1,0 +1,50 @@
+{
+  "source": {
+    "path": "approved-concept.png",
+    "width": 940,
+    "height": 1672,
+    "git_blob": "733bb5464df6488a6fcafeb9d9424e3fa7c2e692",
+    "preserve_original": true
+  },
+  "temporary_characters": true,
+  "implementation": "assets/characters.css; CSS crops only, source image unchanged",
+  "slots": {
+    "boss": {
+      "source_rect": [
+        0,
+        76,
+        940,
+        400
+      ],
+      "selector": ".concept-boss"
+    },
+    "refractor": {
+      "source_rect": [
+        30,
+        1260,
+        270,
+        170
+      ],
+      "selector": ".portrait-0"
+    },
+    "igniter": {
+      "source_rect": [
+        337,
+        1260,
+        270,
+        170
+      ],
+      "selector": ".portrait-1"
+    },
+    "gardener": {
+      "source_rect": [
+        642,
+        1260,
+        270,
+        170
+      ],
+      "selector": ".portrait-2"
+    }
+  },
+  "replacement": "Replace each selector background-image/background-size/background-position in characters.css with a standalone character asset. Do not change engine or input code."
+}

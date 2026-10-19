@@ -1,0 +1,5 @@
+/* Temporary character slots. Source stays intact; see manifest.json for crop rectangles.
+   Replace a slot with a separate image and background-size: cover; background-position: center. */
+.concept-boss{width:100%;aspect-ratio:940/400;background-image:url('approved-concept.png');background-size:100% auto;background-position:center 5.97484%;background-repeat:no-repeat}
+.portrait{display:block;width:100%;height:55px;background-image:url('approved-concept.png');background-size:348.148% auto;background-position-y:83.888%;background-repeat:no-repeat;border-radius:8px 8px 0 0}
+.portrait-0{background-position-x:4.4776%}.portrait-1{background-position-x:50.2985%}.portrait-2{background-position-x:95.8209%}

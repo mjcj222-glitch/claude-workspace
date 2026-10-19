@@ -1,0 +1,12 @@
+$ python agent-harness/games/resonance-circuit/standalone_check.py
+{"viewport": 360, "strategy": "largest", "result": "온실에 빛이 돌아왔습니다", "stats": "3턴 · 최대 연쇄 27 · 잔향 발동 3회. 다음 회로에서는 어떤 빛을 남길까요?"}
+{"viewport": 360, "strategy": "smallest", "result": "잠시 꺼진 온실", "stats": "6턴 · 최대 연쇄 1 · 잔향 발동 0회. 다음 회로에서는 어떤 빛을 남길까요?"}
+PASS 360px motion=reduce: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested; normal motion uses touch pointer taps
+{"viewport": 1280, "strategy": "largest", "result": "온실에 빛이 돌아왔습니다", "stats": "3턴 · 최대 연쇄 27 · 잔향 발동 3회. 다음 회로에서는 어떤 빛을 남길까요?"}
+{"viewport": 1280, "strategy": "smallest", "result": "잠시 꺼진 온실", "stats": "6턴 · 최대 연쇄 1 · 잔향 발동 0회. 다음 회로에서는 어떤 빛을 남길까요?"}
+PASS 1280px motion=reduce: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested; normal motion uses touch pointer taps
+{"viewport": 360, "strategy": "largest", "result": "온실에 빛이 돌아왔습니다", "stats": "3턴 · 최대 연쇄 27 · 잔향 발동 3회. 다음 회로에서는 어떤 빛을 남길까요?"}
+{"viewport": 360, "strategy": "smallest", "result": "잠시 꺼진 온실", "stats": "6턴 · 최대 연쇄 1 · 잔향 발동 0회. 다음 회로에서는 어떤 빛을 남길까요?"}
+PASS 360px motion=no-preference: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested; normal motion uses touch pointer taps
+
+EXIT 0

@@ -4,20 +4,20 @@ from playwright.sync_api import sync_playwright
 import json
 ROOT = Path(__file__).resolve().parent
 
-def run():
+def run(cases=None):
  with sync_playwright() as p:
   browser = p.chromium.launch(executable_path='/usr/bin/chromium', headless=True)
-  for width, height, motion in [(360,800,'reduce'),(1280,900,'reduce'),(360,800,'no-preference')]:
+  for width, height, motion in (cases or [(360,800,'reduce'),(1280,900,'reduce'),(360,800,'no-preference')]):
    page = browser.new_page(viewport={'width':width,'height':height}, reduced_motion=motion, has_touch=True)
    errors=[]
    page.on('pageerror', lambda error: errors.append(str(error)))
    def serve(route):
     name=route.request.url.split('resonance.test/')[-1] or 'index.html'
     file=ROOT/name
-    if file.parent!=ROOT or not file.is_file():
+    if not file.resolve().is_relative_to(ROOT) or not file.is_file():
      route.fulfill(status=404,body='Not found'); return
-    mime='text/javascript' if file.suffix=='.mjs' else 'text/css' if file.suffix=='.css' else 'text/html'
-    route.fulfill(status=200,content_type=mime,body=file.read_text())
+    mime='image/png' if file.suffix=='.png' else 'text/javascript' if file.suffix=='.mjs' else 'text/css' if file.suffix=='.css' else 'text/html'
+    route.fulfill(status=200,content_type=mime,body=file.read_bytes())
    page.route('http://resonance.test/**',serve)
    page.goto('http://resonance.test/')
    assert page.locator('#guide').evaluate('(e)=>e.open')

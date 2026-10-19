@@ -49,3 +49,7 @@ python agent-harness/games/resonance-circuit/browser_check.py
 ## 시각 개선판
 
 SVG 유리꽃 보스, 보석 회로, 실제 폭탄·잔향 기반 효과와 개별 낙하를 추가했습니다. `effects.mjs`는 시각 효과만 담당합니다. 전후 비교와 검증 한계는 [VISUAL-REPORT.md](VISUAL-REPORT.md)를 참조하세요. 다운로드판은 `resonance-circuit.zip`을 풀고 `standalone.html`을 엽니다. 관리형 브라우저의 file:// 차단 때문에 직접 파일 실행 성공은 미확인입니다.
+
+## 승인 시안 적용판
+
+밝은 청록 온실의 중앙 세로 UI로 구성했습니다. 임시 캐릭터 원본은 `assets/approved-concept.png`, 교체 설정은 `assets/characters.css`와 `assets/manifest.json`입니다. 전체 그림 위에 버튼을 얹지 않고 실제 6×7 보드와 HUD를 렌더링합니다. 세부 검증과 한계는 [CONCEPT-IMPLEMENTATION.md](CONCEPT-IMPLEMENTATION.md)를 참조하세요. 모듈판 전달 시 assets 폴더를 함께 포함해야 하며, ZIP에는 이미지가 내장된 standalone.html도 포함됩니다.
