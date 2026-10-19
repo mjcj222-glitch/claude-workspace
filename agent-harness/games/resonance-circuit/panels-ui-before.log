@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/panels_browser.py", line 13, in <module>
+    assert page.locator('#coach').is_visible();assert ('덩굴 타일' if stage==1 else '무지개는') in page.locator('#coachText').inner_text()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -28,6 +28,12 @@ python -m http.server 8000 --bind 127.0.0.1
 
 두 번째 정원은 피해를20% 줄이는 장막을 사용합니다. 잔향 적중으로 현재 턴 장막을 해제하며 다음 턴 복구됩니다. 잔향 없이도 피해를 줄 수 있습니다. 세 번째 정원의 기존 18→26→40 예고 공격은 그대로이며 보호막을 맞춰 쓸 수 있습니다. 정확한 계산·이전 저장 호환·검증 결과는 [SKILLS-REPORT.md](SKILLS-REPORT.md)에 있습니다.
 
+## 단계별 새 패널
+
+1전투는 기존 기본 보드, 2전투에는 덩굴, 3전투에는 덩굴과 무지개가 등장합니다. 덩굴은 직접 지울 수 없고 옆 타일 소거나 폭탄으로 껍질만 벗깁니다. 무지개는 한 색 연결을 이어 주며 직접 누르면 가장 큰 연결색을 고릅니다. 확정색은 미리보기에 표시합니다. 실제 보드의 첫 안내는 건너뛸 수 있고 규칙 보기에서 다시 읽을 수 있습니다.
+
+이전 저장은 현재 전투와 재도전 배치를 보존하고 다음 전투부터 새 패널을 도입합니다. 새 규칙·생성 확률·검증 결과는 [PANELS-REPORT.md](PANELS-REPORT.md)를 참고하세요.
+
 ## 저장·음향
 
 보드/RNG/성장/튜토리얼 완료/음향 설정을 버전1 localStorage에 자동 저장합니다. 같은 브라우저·주소에서 이어하기를 선택하세요. 손상되거나 버전이 맞지 않는 저장은 사용하지 않습니다. 저장이 막히면 현재 플레이는 가능하지만 창을 닫은 뒤 복구되지 않습니다. 기기/주소 간 동기화는 없습니다.
@@ -45,6 +51,8 @@ python agent-harness/games/resonance-circuit/resilience_browser.py
 python agent-harness/games/resonance-circuit/layout_check.py
 python agent-harness/games/resonance-circuit/art_check.py
 python agent-harness/games/resonance-circuit/skills_browser.py
+python agent-harness/games/resonance-circuit/panels_browser.py
+python agent-harness/games/resonance-circuit/panels_terminal_browser.py
 ```
 
 서버를 열지 않고 브라우저 내부 route로 검증합니다. 전체 결과/시드 실험/미검증 사항은 [CAMPAIGN-REPORT.md](CAMPAIGN-REPORT.md)에 있습니다. 자동 검사를 재미나 상용 품질의 증명으로 보지 않습니다.

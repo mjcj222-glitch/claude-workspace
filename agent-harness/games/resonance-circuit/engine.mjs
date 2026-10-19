@@ -1,3 +1,4 @@
+import {panelSeed,initialPanels,refillPanels} from './panels.mjs';
 import {C, COLORS} from './config.mjs';
 import {freshBuffs,skillCandidates} from './skills.mjs';
 export function neighbors(i) {
@@ -9,51 +10,68 @@ export function neighbors(i) {
 function random(s) { s.rng=(Math.imul(s.rng,1664525)+1013904223)>>>0; return s.rng/4294967296; }
 function tile(s,color) {return {id:s.nextID++,color:color??COLORS[Math.floor(random(s)*4)],kind:'normal'};}
 export function createGame(seed=C.seed, overrides=null) {
- const s={seed:seed>>>0,rng:seed>>>0,nextID:1,board:[],echo:[],hp:C.hp,bossHP:C.bossHP,turn:1,taps:3,damage:0,healing:0,gauge:0,boost:false,ready:[1,1,1],status:'playing',maxChain:0,echoCount:0,buffs:freshBuffs(),wardBroken:false};
+ const s={seed:seed>>>0,rng:seed>>>0,nextID:1,board:[],echo:[],hp:C.hp,bossHP:C.bossHP,turn:1,taps:3,damage:0,healing:0,gauge:0,boost:false,ready:[1,1,1],status:'playing',maxChain:0,echoCount:0,buffs:freshBuffs(),wardBroken:false,panelRng:panelSeed(seed)};
  if(overrides){s.rules={...C,...overrides};s.hp=s.rules.hp;s.bossHP=s.rules.bossHP;}
  s.board=Array.from({length:42},()=>tile(s));
  // A guaranteed opening cluster, next to surviving attack tiles.
  for(const i of [1,2,3,8,9,10]) s.board[i].color='coral';
  for(const i of [0,4,7,11,15,16,17]) s.board[i].color='blue';
+ initialPanels(s);
  return s;
 }
-export function group(s,index) {
- if(!s.board[index]) return [];
- const found=new Set([index]), queue=[index], color=s.board[index].color;
- for(const i of queue) for(const n of neighbors(i)) if(!found.has(n)&&s.board[n].color===color){found.add(n);queue.push(n);}
+function colorGroup(s,index,color){
+ if(!s.board[index]||s.board[index].vine)return [];
+ const found=new Set([index]),queue=[index];
+ for(const i of queue)for(const n of neighbors(i)){const t=s.board[n];if(!found.has(n)&&!t.vine&&(t.color===color||t.kind==='rainbow')){found.add(n);queue.push(n);}}
  return queue;
 }
+function connection(s,index){
+ const t=s.board[index];if(!t||t.vine)return {color:null,initial:[]};
+ if(t.kind!=='rainbow')return {color:t.color,initial:colorGroup(s,index,t.color)};
+ let best={color:'coral',initial:[]};
+ for(const color of ['coral','gold','blue','heal']){const initial=colorGroup(s,index,color);if(initial.length>best.initial.length)best={color,initial};}
+ return best;
+}
+export function group(s,index){return connection(s,index).initial;}
 export function preview(s,index) {
- const initial=group(s,index); if(!initial.length) return {initial:[],removed:[],echoHit:false,damage:0,healing:0};
+ const {initial,color}=connection(s,index);
+ if(!initial.length)return {initial:[],removed:[],unlocked:[],color:null,echoHit:false,bombs:0,prismBonus:0,ignitionBonus:0,damage:0,healing:0};
  const echoHit=initial.some(i=>s.echo.includes(s.board[i].id));
- const removed=new Set(initial), queue=[...initial];
- if(echoHit) s.board.forEach((t,i)=>{if(s.echo.includes(t.id)&&!removed.has(i)){removed.add(i);queue.push(i);}});
- for(const i of queue) if(s.board[i].kind==='bomb') for(const n of neighbors(i)) if(!removed.has(n)){removed.add(n);queue.push(n);}
- const rules=s.rules??C;
+ const removed=new Set(initial),queue=[...initial],unlocked=new Set();
+ const hit=i=>{if(s.board[i].vine){unlocked.add(i);return;}if(!removed.has(i)){removed.add(i);queue.push(i);}};
+ if(echoHit)s.board.forEach((t,i)=>{if(s.echo.includes(t.id))hit(i);});
+ for(const i of queue){
+  for(const n of neighbors(i))if(s.board[n].vine)unlocked.add(n);
+  if(s.board[i].kind==='bomb')for(const n of neighbors(i))hit(n);
+ }
+ const rules=s.rules??C,initialSet=new Set(initial);
  let damage=0,healing=0;
- for(const i of removed){const t=s.board[i]; if(t.color==='heal') healing+=rules.heal; else damage+=rules.attack; if(t.kind==='charge') damage+=rules.charge;}
+ for(const i of removed){const t=s.board[i],resolved=t.kind==='rainbow'?(initialSet.has(i)?color:'coral'):t.color;if(resolved==='heal')healing+=rules.heal;else damage+=rules.attack;if(t.kind==='charge')damage+=rules.charge;}
  const bombs=[...removed].filter(i=>s.board[i].kind==='bomb').length;
- const prismBonus=s.buffs?.prism&&s.board[index].color!=='heal'?(echoHit?24:12):0;
+ const prismBonus=s.buffs?.prism&&color!=='heal'?(echoHit?24:12):0;
  const ignitionBonus=s.buffs?.ignition?Math.min(bombs,3)*10:0;
- return {initial,removed:[...removed],echoHit,bombs,prismBonus,ignitionBonus,damage:damage*(s.boost?2:1)+prismBonus+ignitionBonus,healing};
+ return {initial,color,removed:[...removed],unlocked:[...unlocked].sort((a,b)=>a-b),echoHit,bombs,prismBonus,ignitionBonus,damage:damage*(s.boost?2:1)+prismBonus+ignitionBonus,healing};
 }
 export function pendingDamage(s){return s.rules?.echoWard&&!s.wardBroken?Math.floor(s.damage*.8):s.damage;}
 export function tap(s,index) {
- if(s.status!=='playing'||!s.board[index]) return null;
+ if(s.status!=='playing'||!s.board[index]||s.board[index].vine) return null;
  const rules=s.rules??C;
- const p=preview(s,index), removed=new Set(p.removed), original=s.board, selected=original[index];
+ const p=preview(s,index), removed=new Set(p.removed), original=s.board;
  s.buffs??=freshBuffs();if(p.prismBonus)s.buffs.prism=false;if(p.ignitionBonus)s.buffs.ignition=false;
  if(rules.echoWard&&p.echoHit)s.wardBroken=true;
- const make=selected.color!=='heal'&&p.initial.length>=5;
+ const make=p.color!=='heal'&&p.initial.length>=5;
  const candidates=new Set(p.initial.flatMap(neighbors));
- s.echo=make?[...candidates].sort((a,b)=>a-b).filter(i=>!removed.has(i)&&original[i].kind==='normal'&&original[i].color!=='heal').slice(0,8).map(i=>original[i].id):[];
+ s.echo=make?[...candidates].sort((a,b)=>a-b).filter(i=>!removed.has(i)&&!original[i].vine&&original[i].kind==='normal'&&original[i].color!=='heal').slice(0,8).map(i=>original[i].id):[];
+ for(const i of p.unlocked)delete original[i].vine;
  s.board=original.map((t,i)=>removed.has(i)?null:t);
  let special=null;
- if(make){special=tile(s,selected.color);special.kind=p.initial.length>=10?'bomb':'charge';s.board[index]=special;}
+ if(make){special=tile(s,p.color);special.kind=p.initial.length>=10?'bomb':'charge';s.board[index]=special;}
+ const refills=[];
  for(let c=0;c<C.cols;c++) {
    const survivors=s.board.slice(c*7,c*7+7).filter(Boolean), fresh=Array.from({length:7-survivors.length},()=>tile(s));
-   s.board.splice(c*7,7,...fresh,...survivors);
+   refills.push(...fresh);s.board.splice(c*7,7,...fresh,...survivors);
  }
+ refillPanels(s,refills);
  s.damage+=p.damage;s.healing+=p.healing;s.maxChain=Math.max(s.maxChain,p.removed.length);s.echoCount+=Number(p.echoHit);
  if(!s.boost)s.gauge=Math.min(C.gauge,s.gauge+p.removed.length);
  s.taps--;

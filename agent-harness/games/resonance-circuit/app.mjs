@@ -1,7 +1,7 @@
 import {C} from './config.mjs';
 import {createSkillUI} from './skill-ui.mjs';
 import {preview,inputGate,moveFocus,pendingDamage} from './engine.mjs';
-import {createRun,runTap,runSkill,runBoost,chooseUpgrade,retryBattle,nextAttack,tutorialTargets,skipTutorial,canRunTap,STAGES,CHOICES} from './campaign.mjs';
+import {createRun,runTap,runSkill,runBoost,chooseUpgrade,retryBattle,nextAttack,tutorialTargets,skipTutorial,canRunTap,STAGES,CHOICES,PANEL_HELP} from './campaign.mjs';
 import {loadProgress,saveProgress} from './storage.mjs';
 import {createAudio} from './audio.mjs';
 import {createEffects} from './effects.mjs';
@@ -22,17 +22,17 @@ function showPreview(i){
  if(gate.locked||run.phase!=='battle')return;
  focus=i;const p=preview(state,i);
  tiles.forEach((b,j)=>{b.classList.toggle('selected',p.removed.includes(j));b.tabIndex=j===i?0:-1;});
- $('preview').textContent=`연결 ${p.initial.length} · 총 ${p.removed.length}칸 · 적립 +${p.damage} / 회복 +${p.healing}${p.echoHit?' · 잔향 연결!':''}`;
+ $('preview').textContent=!p.initial.length?'덩굴 보호 · 옆 타일로 해제 · 탭 소모 없음':`${state.board[i].kind==='rainbow'?'확정색 '+names[p.color]+' · ':''}연결 ${p.initial.length} · 총 ${p.removed.length}칸 · 적립 +${p.damage} / 회복 +${p.healing}${p.echoHit?' · 잔향 연결!':''}${p.unlocked.length?' · 덩굴 해제 '+p.unlocked.length:''}`;
 }
 function render(){
  state=run.state;const rules=state.rules,targets=tutorialTargets(run);
  tiles.forEach((b,i)=>{
-  const t=state.board[i];b.className=`tile ${t.color} ${Math.floor(i/7)%2?'odd':''} ${state.echo.includes(t.id)?'marked':''} ${targets.includes(i)?'lesson-target':''}`;
-  b.innerHTML=`<span class="gem" aria-hidden="true"></span>${t.kind==='normal'?'':`<small>${t.kind==='bomb'?'✹':'ϟ'}</small>`}`;
-  b.setAttribute('aria-label',`${Math.floor(i/7)+1}열 ${i%7+1}행 ${names[t.color]} ${t.kind==='bomb'?'폭탄':t.kind==='charge'?'차지':'일반'}${state.echo.includes(t.id)?' 잔향':''}`);
+  const t=state.board[i];b.className=`tile ${t.color} ${t.vine?'vine':''} ${t.kind==='rainbow'?'rainbow':''} ${Math.floor(i/7)%2?'odd':''} ${state.echo.includes(t.id)?'marked':''} ${targets.includes(i)?'lesson-target':''}`;
+  b.innerHTML=`<span class="gem" aria-hidden="true"></span>${t.vine?'<span class=vine-wrap aria-hidden=true></span>':''}${t.kind==='normal'||t.kind==='rainbow'?'':`<small>${t.kind==='bomb'?'✹':'ϟ'}</small>`}`;
+  b.setAttribute('aria-label',`${Math.floor(i/7)+1}열 ${i%7+1}행 ${t.kind==='rainbow'?'무지개 · 가장 큰 연결색 자동 선택':names[t.color]} ${t.vine?'덩굴 · 직접 탭 무효, 이웃 소거로 해제':t.kind==='bomb'?'폭탄':t.kind==='charge'?'차지':'일반'}${state.echo.includes(t.id)?' 잔향':''}`);
   b.tabIndex=i===focus?0:-1;b.disabled=run.phase!=='battle';
  });
- document.body.classList.toggle('overcharged',state.boost);document.body.classList.toggle('learning',run.tutorial!=='done');
+ document.body.classList.toggle('overcharged',state.boost);document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
  $('stageName').textContent=`${run.stage+1}/3 · ${STAGES[run.stage].name}`;
  $('boss').max=rules.bossHP;$('boss').value=state.bossHP;$('bossText').textContent=`적 ${state.bossHP}/${rules.bossHP}`;
  const attack=nextAttack(run);$('incoming').textContent=`${attack.name} ${attack.damage} · ${attack.pattern}`;
@@ -45,8 +45,8 @@ function render(){
   b.disabled=run.phase!=='battle'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';
   let status=b.querySelector('.cooldown');if(!status){status=document.createElement('span');status.className='cooldown';b.append(status);}status.textContent=state.turn<state.ready[i]?`${state.ready[i]-state.turn}턴 후`:'준비';
  });
- $('coach').hidden=run.tutorial==='done'||run.phase!=='battle';
- $('coachText').textContent=run.tutorial==='chain'?'빛나는 큰 묶음을 눌러 잔향을 남겨 보세요.':'◌ 표식 타일을 연결해 남겨 둔 빛을 깨워 보세요.';
+ $('coach').hidden=(run.tutorial==='done'&&!run.panelLesson)||run.phase!=='battle';$('skipLesson').textContent=run.panelLesson?'알겠어요':'안내 건너뛰기';
+ $('coachText').textContent=run.panelLesson?PANEL_HELP[run.panelLesson]:run.tutorial==='chain'?'빛나는 큰 묶음을 눌러 잔향을 남겨 보세요.':'◌ 표식 타일을 연결해 남겨 둔 빛을 깨워 보세요.';
  $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;skillUI.render();
 }
 function phaseDialog(){
@@ -80,7 +80,7 @@ async function commit(i){
   if(state.bossHP<oldHP){fx.label($('enemy'),`−${oldHP-state.bossHP}`);$('enemy').classList.add('hit');setTimeout(()=>$('enemy').classList.remove('hit'),420);fx.link(tiles[i],$('enemy'),'#ffe4a9');}
   if(result.incoming){sound.play('enemy');const reaction=result.retaliation?'hurt':'guarded';$('health').classList.add(reaction);setTimeout(()=>$('health').classList.remove(reaction),420);}
   await delay(220);
-  $('notice').textContent=`${result.removed.length}칸${result.echoHit?' · 잔향 발동':''}${bombs.length?' · 폭탄 '+bombs.length:''}${result.retaliation?' · 적 공격 −'+result.retaliation:''}${result.blocked?' · 보호 −'+result.blocked:''}${result.prismBonus?' · 링크 +'+result.prismBonus:''}${result.ignitionBonus?' · 점화 +'+result.ignitionBonus:''}${result.wardAbsorbed?' · 장막 −'+result.wardAbsorbed:''}`;
+  $('notice').textContent=`${result.removed.length}칸${result.unlocked.length?' · 덩굴 해제 '+result.unlocked.length:''}${result.echoHit?' · 잔향 발동':''}${bombs.length?' · 폭탄 '+bombs.length:''}${result.retaliation?' · 적 공격 −'+result.retaliation:''}${result.blocked?' · 보호 −'+result.blocked:''}${result.prismBonus?' · 링크 +'+result.prismBonus:''}${result.ignitionBonus?' · 점화 +'+result.ignitionBonus:''}${result.wardAbsorbed?' · 장막 −'+result.wardAbsorbed:''}`;
   if(run.phase!=='battle'){await delay(320);phaseDialog();}else tiles[focus].focus();
  }finally{gate.finish();if(run.phase==='battle')showPreview(focus);}
 }
@@ -111,13 +111,13 @@ $('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();render();s
 $('sound').onclick=()=>{sound.enable(!settings.enabled);persist();render();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
 $('volume').oninput=e=>{sound.volume(Number(e.target.value)/100);persist();};
 document.addEventListener('visibilitychange',()=>{if(document.hidden){pressed=null;sound.hide();}});
-const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.']];
-function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`규칙 ${guideStep+1}/3`;$('guideTitle').textContent=title;$('guideText').textContent=body;$('guideNext').textContent=guideStep===2?'돌아가기':'다음';if(!$('guide').open)$('guide').showModal();}
-$('guideNext').onclick=()=>{if(guideStep<2){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus();}};
+const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.'],['덩굴을 벗기세요',PANEL_HELP.vine+' 직접 누르면 탭을 쓰지 않습니다. 해제한 타일은 다음 행동부터 연결돼요.'],['무지개를 이으세요',PANEL_HELP.rainbow+' 동률이면 불꽃·별빛·물방울·회복 순입니다. 미리보기의 확정색을 확인하세요.']];
+function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`규칙 ${guideStep+1}/${guide.length}`;$('guideTitle').textContent=title;$('guideText').textContent=body;$('guideNext').textContent=guideStep===guide.length-1?'돌아가기':'다음';if(!$('guide').open)$('guide').showModal();}
+$('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus();}};
 $('skillHelp').onclick=()=>{if(!gate.locked)skillUI.describe();};$('closeSkills').onclick=()=>$('skillGuide').close();
 $('help').onclick=()=>{if(!gate.locked){guideStep=0;tutorial();}};
 $('continueRun').disabled=!started;$('continueRun').onclick=()=>{sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle')tiles[focus].focus();};
 $('startNew').onclick=()=>askNew(false);
-$('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해 이어갑니다. 새 스킬 효과는 재사용부터 적용되며, 2전투 방어는 다음 턴부터 시작합니다.':loaded.reason==='invalid'?'저장 데이터 형식이 맞지 않아 새 탐험으로 시작합니다.':loaded.reason==='unavailable'?'저장소를 사용할 수 없지만 플레이할 수 있습니다.':'자동 저장 · 기본 무음 · 인터넷 불필요';
+$('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해 이어갑니다. 새 스킬 효과는 재사용부터 적용되며, 이전 스킬 저장의 2전투 방어는 다음 턴부터, 새 패널은 다음 전투부터 적용됩니다.':loaded.reason==='invalid'?'저장 데이터 형식이 맞지 않아 새 탐험으로 시작합니다.':loaded.reason==='unavailable'?'저장소를 사용할 수 없지만 플레이할 수 있습니다.':'자동 저장 · 기본 무음 · 인터넷 불필요';
 for(const id of ['start','upgrade'])$(id).addEventListener('cancel',e=>e.preventDefault());
 render();$('start').showModal();

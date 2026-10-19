@@ -9,7 +9,7 @@ export function simulate(seed,strategy='planned',choices=['power','healing']){
    if(s.hp<s.rules.hp*.65||(s.taps===1&&nextAttack(run).damage>=30))runSkill(run,2);
    runSkill(run,0);runSkill(run,1);runBoost(run);
   }
-  const scores=s.board.map((t,i)=>{const p=preview(s,i);if(strategy==='smallest')return -p.initial.length;
+  const scores=s.board.map((t,i)=>{const p=preview(s,i);if(!p.initial.length)return -Infinity;if(strategy==='smallest')return -p.initial.length;
    if(strategy==='largest')return p.initial.length;
    return p.damage+Math.min(p.healing,Math.max(0,s.rules.hp-s.hp-s.healing))*1.3+(p.echoHit?12:0);
   });

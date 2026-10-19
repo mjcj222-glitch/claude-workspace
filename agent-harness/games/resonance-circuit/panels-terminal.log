@@ -1,0 +1,8 @@
+{"standalone": false, "stage": 2, "phase": "defeat", "terminal_restore": true, "retry": true, "errors": 0}
+{"standalone": false, "stage": 2, "phase": "upgrade", "terminal_restore": true, "retry": false, "errors": 0}
+{"standalone": false, "stage": 3, "phase": "defeat", "terminal_restore": true, "retry": true, "errors": 0}
+{"standalone": false, "stage": 3, "phase": "complete", "terminal_restore": true, "retry": false, "errors": 0}
+{"standalone": true, "stage": 2, "phase": "defeat", "terminal_restore": true, "retry": true, "errors": 0}
+{"standalone": true, "stage": 2, "phase": "upgrade", "terminal_restore": true, "retry": false, "errors": 0}
+{"standalone": true, "stage": 3, "phase": "defeat", "terminal_restore": true, "retry": true, "errors": 0}
+{"standalone": true, "stage": 3, "phase": "complete", "terminal_restore": true, "retry": false, "errors": 0}

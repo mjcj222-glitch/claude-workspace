@@ -1,0 +1,6 @@
+{"standalone": false, "phase": "defeat", "turn": 18, "tutorial": "done", "reload": "same terminal state", "errors": 0}
+{"standalone": false, "phase": "upgrade", "turn": 1, "tutorial": "done", "reload": "same terminal state", "errors": 0}
+{"standalone": true, "phase": "defeat", "turn": 18, "tutorial": "done", "reload": "same terminal state", "errors": 0}
+{"standalone": true, "phase": "upgrade", "turn": 1, "tutorial": "done", "reload": "same terminal state", "errors": 0}
+
+EXIT 0

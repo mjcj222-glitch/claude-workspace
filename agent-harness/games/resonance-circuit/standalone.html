@@ -36,6 +36,9 @@
 .learning .echo-row{min-height:0}
 header{gap:8px}.guarded{animation:guard-soft .4s ease-out}@keyframes guard-soft{50%{color:#d1ffab;text-shadow:0 0 5px #9bd99c66}}
 
+/* New panels use CSS only; the approved art remains unchanged. */
+.vine .gem{filter:saturate(.65) brightness(.8)}.vine-wrap{position:absolute;inset:5px 4px;pointer-events:none;border:3px solid #397846;border-radius:45% 25% 45% 25%;transform:rotate(-23deg);box-shadow:0 0 0 1px #d8f6a6,inset 0 0 0 1px #b3e582;z-index:3}.vine-wrap:before,.vine-wrap:after{content:'';position:absolute;width:14px;height:8px;background:#b4eb83;border:1px solid #245d39;border-radius:2px 90%;box-shadow:inset 0 -2px #69ab66}.vine-wrap:before{top:0;left:-5px;rotate:30deg}.vine-wrap:after{bottom:0;right:-5px;rotate:20deg}.rainbow .gem{background-image:conic-gradient(from 30deg,#ff8d9a,#ffdb6d,#a8efad,#81dfff,#baa4f4,#ff8d9a);background-size:100% 100%;background-position:center;box-shadow:inset 0 0 0 3px #fcf8e2;filter:drop-shadow(0 0 2px #dcfaff)}.rainbow .gem:after{content:'✦';position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:white;text-shadow:0 1px 2px #416879}.panel-learning #preview{display:block}.panel-learning .concept-boss{aspect-ratio:940/210}.panel-learning .portrait{aspect-ratio:1.16}.panel-learning #coach{font-size:11px;line-height:1.4}.panel-learning #skipLesson{min-width:48px}.vine.selected .gem{filter:saturate(.65) brightness(.8)}
+
 </style>
 <body><canvas id="effects" aria-hidden="true"></canvas><main><header><span class="eyebrow">GLASSHOUSE 07</span><h1>잔향 회로</h1><button id="skillHelp">스킬 설명</button></header>
 <section class="glass enemy" id="enemy"><div class="habitat" aria-hidden="true"><div class="concept-boss"></div></div><div class="line"><h2 id="stageName">새싹 회랑</h2><span id="turn"></span></div><progress id="boss" aria-label="보스 체력"></progress><div class="line"><span id="bossText"></span><strong id="incoming"></strong></div></section>
@@ -52,6 +55,25 @@ header{gap:8px}.guarded{animation:guard-soft .4s ease-out}@keyframes guard-soft{
 const C = Object.freeze({cols:6, rows:7, hp:180, bossHP:680, attack:5, heal:6, charge:24, attacks:[24,42], gauge:55, cooldown:3, seed:20261019});
 const COLORS = ['coral','gold','blue','heal'];
 
+// Independent stream: panel decoration never advances the ordinary refill RNG.
+function panelSeed(seed){return (seed^0x9e3779b9)>>>0;}
+function panelRandom(s){s.panelRng=(Math.imul(s.panelRng,1664525)+1013904223)>>>0;return s.panelRng/4294967296;}
+function initialPanels(s){
+ if(!s.rules?.panelStage)return;
+ const protectedCells=new Set([0,1,2,3,4,7,8,9,10,11,15,16,17]);
+ const candidates=s.board.map((t,i)=>({t,i})).filter(({t,i})=>!protectedCells.has(i)&&t.color!=='heal').map(x=>({...x,rank:panelRandom(s)})).sort((a,b)=>a.rank-b.rank||a.i-b.i);
+ candidates.slice(0,4).forEach(({t})=>t.vine=true);
+ if(s.rules.panelStage===2)candidates.slice(4,6).forEach(({t})=>{t.kind='rainbow';t.color='coral';});
+}
+function refillPanels(s,tiles){
+ if(!s.rules?.panelStage)return;
+ let vines=s.board.filter(t=>t.vine).length,rainbows=s.board.filter(t=>t.kind==='rainbow').length;
+ for(const t of tiles){const roll=panelRandom(s);
+  if(roll<.08){if(vines<4&&t.color!=='heal'){t.vine=true;vines++;}}
+  else if(roll<.14&&s.rules.panelStage===2&&rainbows<2){t.kind='rainbow';t.color='coral';rainbows++;}
+ }
+}
+
 
 const SKILLS=[
  {name:'프리즘 링크',color:'coral',description:'파랑 전부를 불꽃으로. 다음 공격색 탭 1회 +12 피해, 잔향 적중이면 +24. 회복색 탭에는 유지.'},
@@ -61,14 +83,15 @@ const SKILLS=[
 function freshBuffs(){return {prism:false,ignition:false,shield:0};}
 function skillCandidates(s,k){
  if(!Number.isInteger(k)||k<0||k>2)return [];
- const found=s.board.filter(t=>k===0?t.color==='blue':t.kind==='normal'&&t.color!=='heal');
+ const found=s.board.filter(t=>!t.vine&&t.kind!=='rainbow'&&(k===0?t.color==='blue':t.kind==='normal'&&t.color!=='heal'));
  return k===0?found:found.slice(0,k===1?2:6);
 }
 function skillInfo(s,k){
  const skill=SKILLS[k],count=skillCandidates(s,k).length,remaining=Math.max(0,s.ready[k]-s.turn);
  return {...skill,count,remaining,usable:s.status==='playing'&&remaining===0&&count>0,
- text:`${skill.description} 현재 대상 ${count}개. 쿨다운 ${C.cooldown}턴${remaining?` (남음 ${remaining}턴)`:''}. 대상0이면 사용 실패·쿨다운/버프 변화 없음. 재사용은 갱신, 중첩 없음. 고정 보너스는 과충전 배율 제외.`};
+ text:`${skill.description} 덩굴·무지개는 변환 제외. 현재 대상 ${count}개. 쿨다운 ${C.cooldown}턴${remaining?` (남음 ${remaining}턴)`:''}. 대상0이면 사용 실패·쿨다운/버프 변화 없음. 재사용은 갱신, 중첩 없음. 고정 보너스는 과충전 배율 제외.`};
 }
+
 
 
 
@@ -81,51 +104,68 @@ function neighbors(i) {
 function random(s) { s.rng=(Math.imul(s.rng,1664525)+1013904223)>>>0; return s.rng/4294967296; }
 function tile(s,color) {return {id:s.nextID++,color:color??COLORS[Math.floor(random(s)*4)],kind:'normal'};}
 function createGame(seed=C.seed, overrides=null) {
- const s={seed:seed>>>0,rng:seed>>>0,nextID:1,board:[],echo:[],hp:C.hp,bossHP:C.bossHP,turn:1,taps:3,damage:0,healing:0,gauge:0,boost:false,ready:[1,1,1],status:'playing',maxChain:0,echoCount:0,buffs:freshBuffs(),wardBroken:false};
+ const s={seed:seed>>>0,rng:seed>>>0,nextID:1,board:[],echo:[],hp:C.hp,bossHP:C.bossHP,turn:1,taps:3,damage:0,healing:0,gauge:0,boost:false,ready:[1,1,1],status:'playing',maxChain:0,echoCount:0,buffs:freshBuffs(),wardBroken:false,panelRng:panelSeed(seed)};
  if(overrides){s.rules={...C,...overrides};s.hp=s.rules.hp;s.bossHP=s.rules.bossHP;}
  s.board=Array.from({length:42},()=>tile(s));
  // A guaranteed opening cluster, next to surviving attack tiles.
  for(const i of [1,2,3,8,9,10]) s.board[i].color='coral';
  for(const i of [0,4,7,11,15,16,17]) s.board[i].color='blue';
+ initialPanels(s);
  return s;
 }
-function group(s,index) {
- if(!s.board[index]) return [];
- const found=new Set([index]), queue=[index], color=s.board[index].color;
- for(const i of queue) for(const n of neighbors(i)) if(!found.has(n)&&s.board[n].color===color){found.add(n);queue.push(n);}
+function colorGroup(s,index,color){
+ if(!s.board[index]||s.board[index].vine)return [];
+ const found=new Set([index]),queue=[index];
+ for(const i of queue)for(const n of neighbors(i)){const t=s.board[n];if(!found.has(n)&&!t.vine&&(t.color===color||t.kind==='rainbow')){found.add(n);queue.push(n);}}
  return queue;
 }
+function connection(s,index){
+ const t=s.board[index];if(!t||t.vine)return {color:null,initial:[]};
+ if(t.kind!=='rainbow')return {color:t.color,initial:colorGroup(s,index,t.color)};
+ let best={color:'coral',initial:[]};
+ for(const color of ['coral','gold','blue','heal']){const initial=colorGroup(s,index,color);if(initial.length>best.initial.length)best={color,initial};}
+ return best;
+}
+function group(s,index){return connection(s,index).initial;}
 function preview(s,index) {
- const initial=group(s,index); if(!initial.length) return {initial:[],removed:[],echoHit:false,damage:0,healing:0};
+ const {initial,color}=connection(s,index);
+ if(!initial.length)return {initial:[],removed:[],unlocked:[],color:null,echoHit:false,bombs:0,prismBonus:0,ignitionBonus:0,damage:0,healing:0};
  const echoHit=initial.some(i=>s.echo.includes(s.board[i].id));
- const removed=new Set(initial), queue=[...initial];
- if(echoHit) s.board.forEach((t,i)=>{if(s.echo.includes(t.id)&&!removed.has(i)){removed.add(i);queue.push(i);}});
- for(const i of queue) if(s.board[i].kind==='bomb') for(const n of neighbors(i)) if(!removed.has(n)){removed.add(n);queue.push(n);}
- const rules=s.rules??C;
+ const removed=new Set(initial),queue=[...initial],unlocked=new Set();
+ const hit=i=>{if(s.board[i].vine){unlocked.add(i);return;}if(!removed.has(i)){removed.add(i);queue.push(i);}};
+ if(echoHit)s.board.forEach((t,i)=>{if(s.echo.includes(t.id))hit(i);});
+ for(const i of queue){
+  for(const n of neighbors(i))if(s.board[n].vine)unlocked.add(n);
+  if(s.board[i].kind==='bomb')for(const n of neighbors(i))hit(n);
+ }
+ const rules=s.rules??C,initialSet=new Set(initial);
  let damage=0,healing=0;
- for(const i of removed){const t=s.board[i]; if(t.color==='heal') healing+=rules.heal; else damage+=rules.attack; if(t.kind==='charge') damage+=rules.charge;}
+ for(const i of removed){const t=s.board[i],resolved=t.kind==='rainbow'?(initialSet.has(i)?color:'coral'):t.color;if(resolved==='heal')healing+=rules.heal;else damage+=rules.attack;if(t.kind==='charge')damage+=rules.charge;}
  const bombs=[...removed].filter(i=>s.board[i].kind==='bomb').length;
- const prismBonus=s.buffs?.prism&&s.board[index].color!=='heal'?(echoHit?24:12):0;
+ const prismBonus=s.buffs?.prism&&color!=='heal'?(echoHit?24:12):0;
  const ignitionBonus=s.buffs?.ignition?Math.min(bombs,3)*10:0;
- return {initial,removed:[...removed],echoHit,bombs,prismBonus,ignitionBonus,damage:damage*(s.boost?2:1)+prismBonus+ignitionBonus,healing};
+ return {initial,color,removed:[...removed],unlocked:[...unlocked].sort((a,b)=>a-b),echoHit,bombs,prismBonus,ignitionBonus,damage:damage*(s.boost?2:1)+prismBonus+ignitionBonus,healing};
 }
 function pendingDamage(s){return s.rules?.echoWard&&!s.wardBroken?Math.floor(s.damage*.8):s.damage;}
 function tap(s,index) {
- if(s.status!=='playing'||!s.board[index]) return null;
+ if(s.status!=='playing'||!s.board[index]||s.board[index].vine) return null;
  const rules=s.rules??C;
- const p=preview(s,index), removed=new Set(p.removed), original=s.board, selected=original[index];
+ const p=preview(s,index), removed=new Set(p.removed), original=s.board;
  s.buffs??=freshBuffs();if(p.prismBonus)s.buffs.prism=false;if(p.ignitionBonus)s.buffs.ignition=false;
  if(rules.echoWard&&p.echoHit)s.wardBroken=true;
- const make=selected.color!=='heal'&&p.initial.length>=5;
+ const make=p.color!=='heal'&&p.initial.length>=5;
  const candidates=new Set(p.initial.flatMap(neighbors));
- s.echo=make?[...candidates].sort((a,b)=>a-b).filter(i=>!removed.has(i)&&original[i].kind==='normal'&&original[i].color!=='heal').slice(0,8).map(i=>original[i].id):[];
+ s.echo=make?[...candidates].sort((a,b)=>a-b).filter(i=>!removed.has(i)&&!original[i].vine&&original[i].kind==='normal'&&original[i].color!=='heal').slice(0,8).map(i=>original[i].id):[];
+ for(const i of p.unlocked)delete original[i].vine;
  s.board=original.map((t,i)=>removed.has(i)?null:t);
  let special=null;
- if(make){special=tile(s,selected.color);special.kind=p.initial.length>=10?'bomb':'charge';s.board[index]=special;}
+ if(make){special=tile(s,p.color);special.kind=p.initial.length>=10?'bomb':'charge';s.board[index]=special;}
+ const refills=[];
  for(let c=0;c<C.cols;c++) {
    const survivors=s.board.slice(c*7,c*7+7).filter(Boolean), fresh=Array.from({length:7-survivors.length},()=>tile(s));
-   s.board.splice(c*7,7,...fresh,...survivors);
+   refills.push(...fresh);s.board.splice(c*7,7,...fresh,...survivors);
  }
+ refillPanels(s,refills);
  s.damage+=p.damage;s.healing+=p.healing;s.maxChain=Math.max(s.maxChain,p.removed.length);s.echoCount+=Number(p.echoHit);
  if(!s.boost)s.gauge=Math.min(C.gauge,s.gauge+p.removed.length);
  s.taps--;
@@ -171,18 +211,23 @@ const CHOICES=[
  [{id:'power',name:'빛의 렌즈',description:'공격 타일 1개당 피해 +1. 이후 모든 전투에 적용.'},{id:'vitality',name:'튼튼한 온실',description:'최대 체력 +50. 이후 전투도 늘어난 체력으로 시작.'}],
  [{id:'charge',name:'축전 수정',description:'차지의 추가 피해 +20. 일반 타일 피해는 그대로.'},{id:'healing',name:'재생의 잎',description:'회복 타일 1개당 회복 +3. 최대 체력 상한은 유지.'}]
 ];
-function rulesFor(stage,upgrades){return {...C,bossHP:STAGES[stage].bossHP,attacks:[...STAGES[stage].attacks],echoWard:stage===1,hp:C.hp+(upgrades.includes('vitality')?50:0),attack:C.attack+(upgrades.includes('power')?1:0),charge:C.charge+(upgrades.includes('charge')?20:0),heal:C.heal+(upgrades.includes('healing')?3:0)};}
-function createRun(seed=C.seed,learn=true){return {version:1,seed:seed>>>0,stage:0,phase:'battle',upgrades:[],history:[],retries:[0,0,0],entry:{hp:C.hp,gauge:0},tutorialIDs:[],tutorial:learn?'chain':'done',state:createGame(seed,rulesFor(0,[]))};}
+function rulesFor(stage,upgrades){return {...C,bossHP:STAGES[stage].bossHP,attacks:[...STAGES[stage].attacks],echoWard:stage===1,panelStage:stage,hp:C.hp+(upgrades.includes('vitality')?50:0),attack:C.attack+(upgrades.includes('power')?1:0),charge:C.charge+(upgrades.includes('charge')?20:0),heal:C.heal+(upgrades.includes('healing')?3:0)};}
+function createRun(seed=C.seed,learn=true){return {version:1,panelVersion:1,panelLesson:null,panelSeen:[false,false],seed:seed>>>0,stage:0,phase:'battle',upgrades:[],history:[],retries:[0,0,0],entry:{hp:C.hp,gauge:0},tutorialIDs:[],tutorial:learn?'chain':'done',state:createGame(seed,rulesFor(0,[]))};}
 function nextAttack(run){const stage=STAGES[run.stage],i=(run.state.turn-1)%stage.attacks.length;return {name:stage.patterns[i],damage:stage.attacks[i],pattern:stage.attacks.join(' → ')};}
+const PANEL_HELP={vine:'덩굴 타일은 바로 지울 수 없어요. 옆 타일을 지우거나 폭탄을 맞히면 덩굴이 벗겨져요.',rainbow:'무지개는 같은 색 연결 사이를 이어 줘요. 직접 누르면 가장 많이 이어지는 색을 선택해요.'};
 function tutorialTargets(run){
+ if(run.panelLesson)return run.state.board.flatMap((t,i)=>(run.panelLesson==='vine'?t.vine:t.kind==='rainbow')?[i]:[]);
  if(run.tutorial==='chain'){let best=[];for(let i=0;i<42;i++){const g=group(run.state,i);if(run.state.board[i].color!=='heal'&&g.length>best.length)best=g;}return best;}
  if(run.tutorial==='echo')return run.state.board.flatMap((t,i)=>run.tutorialIDs.includes(t.id)?[i]:[]);return [];
 }
-function skipTutorial(run){run.tutorial='done';run.tutorialIDs=[];}
-function canRunTap(run,index){return run.phase==='battle'&&!!run.state.board[index];}
+function skipPanelLesson(run){if(run.panelLesson)run.panelSeen[run.panelLesson==='vine'?0:1]=true;run.panelLesson=null;}
+function skipTutorial(run){run.tutorial='done';run.tutorialIDs=[];skipPanelLesson(run);}
+function canRunTap(run,index){return run.phase==='battle'&&!!run.state.board[index]&&!run.state.board[index].vine;}
 function runTap(run,index){
  if(!canRunTap(run,index))return null;
+ const usedRainbow=run.state.board.some((t,i)=>t.kind==='rainbow'&&group(run.state,index).includes(i));
  const result=tap(run.state,index);if(!result)return null;
+ if(run.panelLesson==='vine'&&result.unlocked.length||run.panelLesson==='rainbow'&&usedRainbow)skipPanelLesson(run);
  if(run.tutorial==='chain'&&run.state.echo.length){run.tutorial='echo';run.tutorialIDs=[...run.state.echo];}else if(run.tutorial==='echo'){run.tutorial='done';run.tutorialIDs=[];}
  if(run.state.status!=='playing'){
   skipTutorial(run);
@@ -195,16 +240,17 @@ function runSkill(run,index){return run.phase==='battle'&&useSkill(run.state,ind
 function runBoost(run){return run.phase==='battle'&&overcharge(run.state);}
 function chooseUpgrade(run,id){
  if(run.phase!=='upgrade'||!CHOICES[run.stage]?.some(c=>c.id===id))return false;
- run.upgrades.push(id);run.stage++;run.phase='battle';run.tutorial='done';
+ run.upgrades.push(id);run.stage++;run.phase='battle';run.tutorial='done';run.panelVersion=1;run.panelLesson=run.panelSeen[run.stage-1]?null:run.stage===1?'vine':'rainbow';
  const rules=rulesFor(run.stage,run.upgrades);run.entry={hp:Math.min(rules.hp,run.state.hp+45),gauge:run.state.gauge};
  run.state=createGame((run.seed+run.stage*7919)>>>0,rules);Object.assign(run.state,run.entry);return true;
 }
 
 function retryBattle(run){
  if(run.phase!=='defeat')return false;
- run.retries[run.stage]++;run.history=run.history.slice(0,run.stage);run.phase='battle';run.tutorial='done';run.tutorialIDs=[];
- run.state=createGame((run.seed+run.stage*7919)>>>0,rulesFor(run.stage,run.upgrades));Object.assign(run.state,run.entry);return true;
+ skipPanelLesson(run);run.retries[run.stage]++;run.history=run.history.slice(0,run.stage);run.phase='battle';run.tutorial='done';run.tutorialIDs=[];
+ run.state=createGame((run.seed+run.stage*7919)>>>0,{...rulesFor(run.stage,run.upgrades),panelStage:run.panelVersion?run.stage:0});Object.assign(run.state,run.entry);return true;
 }
+
 
 
 
@@ -219,32 +265,37 @@ function decodeSave(raw){
  const r=data.run,s=r?.state;
  if(!r||r.version!==1||!integer(r.seed,0,4294967295)||!integer(r.stage,0,2)||!['battle','upgrade','complete','defeat'].includes(r.phase)||!['chain','echo','done'].includes(r.tutorial))return null;
  if(!Array.isArray(r.upgrades)||r.upgrades.length!==r.stage||r.upgrades.some((id,i)=>!CHOICES[i]?.some(c=>c.id===id)))return null;
- const rules=rulesFor(r.stage,r.upgrades);
+ const panelVersion=r.panelVersion??0,panelLesson=r.panelLesson??null,panelSeen=r.panelSeen??[false,false];
+ if(![0,1].includes(panelVersion)||!Array.isArray(panelSeen)||panelSeen.length!==2||panelSeen.some(x=>typeof x!=='boolean')||![null,'vine','rainbow'].includes(panelLesson))return null;
+ if(panelLesson&&(r.phase!=='battle'||!panelVersion||r.stage!==(panelLesson==='vine'?1:2)||panelSeen[r.stage-1]))return null;
+ const rules={...rulesFor(r.stage,r.upgrades),panelStage:panelVersion?r.stage:0};
  if(!Array.isArray(r.retries)||r.retries.length!==3||r.retries.some(n=>!integer(n,0,10000))||!integer(r.entry?.hp,1,rules.hp)||!integer(r.entry?.gauge,0,C.gauge)||!Array.isArray(r.tutorialIDs)||r.tutorialIDs.length>8)return null;
  if(!s||!integer(s.seed,0,4294967295)||!integer(s.rng,0,4294967295)||!integer(s.nextID,43,1000000)||!integer(s.turn,1,10000)||!integer(s.taps,0,3)||!integer(s.hp,0,rules.hp)||!integer(s.bossHP,0,rules.bossHP)||!integer(s.gauge,0,C.gauge)||typeof s.boost!=='boolean'||!['playing','won','lost'].includes(s.status))return null;
  for(const key of ['damage','healing','maxChain','echoCount'])if(!integer(s[key],0,1000000))return null;
- if(!Array.isArray(s.board)||s.board.length!==42||s.board.some(t=>!integer(t.id,1,s.nextID-1)||!COLORS.includes(t.color)||!['normal','charge','bomb'].includes(t.kind)))return null;
+ if(!Array.isArray(s.board)||s.board.length!==42||s.board.some(t=>!integer(t.id,1,s.nextID-1)||!COLORS.includes(t.color)||!['normal','charge','bomb','rainbow'].includes(t.kind)||t.vine!==undefined&&typeof t.vine!=='boolean'||t.vine&&(t.kind!=='normal'||t.color==='heal')))return null;
+ if(s.board.filter(t=>t.vine).length>4||s.board.filter(t=>t.kind==='rainbow').length>2||s.board.some(t=>(t.vine&&!rules.panelStage)||(t.kind==='rainbow'&&rules.panelStage!==2)))return null;
+ if((panelVersion===1||s.panelRng!==undefined)&&!integer(s.panelRng,0,4294967295))return null;
  if(s.seed!==((r.seed+r.stage*7919)>>>0))return null;
  const ids=new Set(s.board.map(t=>t.id));if(r.tutorialIDs.some(id=>!ids.has(id)))return null;if(ids.size!==42||!Array.isArray(s.echo)||s.echo.length>8||new Set(s.echo).size!==s.echo.length||s.echo.some(id=>!ids.has(id)))return null;
- if(s.echo.some(id=>s.board.find(t=>t.id===id).color==='heal'))return null;
+ if(s.echo.some(id=>s.board.find(t=>t.id===id).color==='heal'||s.board.find(t=>t.id===id).vine||s.board.find(t=>t.id===id).kind==='rainbow'))return null;
  if(r.phase!=='battle'&&(s.taps!==0||s.status==='won'&&s.hp===0||s.status==='lost'&&s.bossHP===0))return null;
  if(!Array.isArray(s.ready)||s.ready.length!==3||s.ready.some(n=>!integer(n,1,s.turn+C.cooldown)))return null;
  if(r.phase==='battle'&&(s.status!=='playing'||s.taps<1||s.hp<1||s.bossHP<1))return null;
  if(r.phase==='upgrade'&&(s.status!=='won'||r.stage>=2||s.bossHP!==0)||r.phase==='complete'&&(s.status!=='won'||r.stage!==2||s.bossHP!==0)||r.phase==='defeat'&&(s.status!=='lost'||s.hp!==0))return null;
  if(r.tutorial!=='done'&&(r.stage!==0||r.phase!=='battle')||r.tutorial==='echo'&&!s.echo.length)return null;
  if(!Array.isArray(r.history)||r.history.length!==r.stage+(r.phase==='battle'?0:1)||r.history.some((h,i)=>h.stage!==i||!integer(h.turns,1,10000)||!integer(h.echoes,0,1000000)||!integer(h.maxChain,0,42)||!['won','lost'].includes(h.result)))return null;
- run=createRun(r.seed,false);Object.assign(run,{stage:r.stage,phase:r.phase,tutorial:r.tutorial,upgrades:[...r.upgrades],history:r.history.map(h=>({...h})),retries:[...r.retries],entry:{...r.entry},tutorialIDs:[...r.tutorialIDs]});
+ run=createRun(r.seed,false);Object.assign(run,{panelVersion,panelLesson,panelSeen:[...panelSeen],stage:r.stage,phase:r.phase,tutorial:r.tutorial,upgrades:[...r.upgrades],history:r.history.map(h=>({...h})),retries:[...r.retries],entry:{...r.entry},tutorialIDs:[...r.tutorialIDs]});
  const buffs=s.buffs===undefined?freshBuffs():s.buffs;
  if(!buffs||typeof buffs.prism!=='boolean'||typeof buffs.ignition!=='boolean'||![0,18].includes(buffs.shield)||s.wardBroken!==undefined&&typeof s.wardBroken!=='boolean')return null;
  if(r.phase!=='battle'&&(buffs.prism||buffs.ignition||buffs.shield))return null;
  run.state.buffs={prism:buffs.prism,ignition:buffs.ignition,shield:buffs.shield};run.state.wardBroken=s.wardBroken??(r.stage===1);
  const keys=['seed','rng','nextID','hp','bossHP','turn','taps','damage','healing','gauge','boost','status','maxChain','echoCount'];for(const k of keys)run.state[k]=s[k];
- run.state.rules=rules;run.state.board=s.board.map(({id,color,kind})=>({id,color,kind}));run.state.echo=[...s.echo];run.state.ready=[...s.ready];
+ run.state.panelRng=s.panelRng??panelSeed(s.seed);run.state.rules=rules;run.state.board=s.board.map(({id,color,kind,vine})=>({...{id,color,kind},...(vine===undefined?{}:{vine})}));run.state.echo=[...s.echo];run.state.ready=[...s.ready];
  }
  return {version:1,run,learned:data.learned,audio:{enabled:data.audio.enabled,volume:data.audio.volume}};
  }catch{return null;}
 }
-function loadProgress(storage){try{const raw=storage.getItem(SAVE_KEY);if(!raw)return {data:null,reason:'empty'};const data=decodeSave(raw);const legacy=data&&data.run&&JSON.parse(raw).run.state.buffs===undefined;return {data,reason:data?(legacy?'migrated':'ok'):'invalid'};}catch{return {data:null,reason:'unavailable'};}}
+function loadProgress(storage){try{const raw=storage.getItem(SAVE_KEY);if(!raw)return {data:null,reason:'empty'};const data=decodeSave(raw);const legacy=data&&data.run&&(JSON.parse(raw).run.state.buffs===undefined||JSON.parse(raw).run.panelVersion===undefined);return {data,reason:data?(legacy?'migrated':'ok'):'invalid'};}catch{return {data:null,reason:'unavailable'};}}
 function saveProgress(storage,run,learned,audio){try{const data={version:1,run,learned,audio};if(!decodeSave(JSON.stringify(data)))return false;storage.setItem(SAVE_KEY,JSON.stringify(data));return true;}catch{return false;}}
 
 // Soft synthesized accents only; no assets, autoplay or game-state dependency.
@@ -342,17 +393,17 @@ function showPreview(i){
  if(gate.locked||run.phase!=='battle')return;
  focus=i;const p=preview(state,i);
  tiles.forEach((b,j)=>{b.classList.toggle('selected',p.removed.includes(j));b.tabIndex=j===i?0:-1;});
- $('preview').textContent=`연결 ${p.initial.length} · 총 ${p.removed.length}칸 · 적립 +${p.damage} / 회복 +${p.healing}${p.echoHit?' · 잔향 연결!':''}`;
+ $('preview').textContent=!p.initial.length?'덩굴 보호 · 옆 타일로 해제 · 탭 소모 없음':`${state.board[i].kind==='rainbow'?'확정색 '+names[p.color]+' · ':''}연결 ${p.initial.length} · 총 ${p.removed.length}칸 · 적립 +${p.damage} / 회복 +${p.healing}${p.echoHit?' · 잔향 연결!':''}${p.unlocked.length?' · 덩굴 해제 '+p.unlocked.length:''}`;
 }
 function render(){
  state=run.state;const rules=state.rules,targets=tutorialTargets(run);
  tiles.forEach((b,i)=>{
-  const t=state.board[i];b.className=`tile ${t.color} ${Math.floor(i/7)%2?'odd':''} ${state.echo.includes(t.id)?'marked':''} ${targets.includes(i)?'lesson-target':''}`;
-  b.innerHTML=`<span class="gem" aria-hidden="true"></span>${t.kind==='normal'?'':`<small>${t.kind==='bomb'?'✹':'ϟ'}</small>`}`;
-  b.setAttribute('aria-label',`${Math.floor(i/7)+1}열 ${i%7+1}행 ${names[t.color]} ${t.kind==='bomb'?'폭탄':t.kind==='charge'?'차지':'일반'}${state.echo.includes(t.id)?' 잔향':''}`);
+  const t=state.board[i];b.className=`tile ${t.color} ${t.vine?'vine':''} ${t.kind==='rainbow'?'rainbow':''} ${Math.floor(i/7)%2?'odd':''} ${state.echo.includes(t.id)?'marked':''} ${targets.includes(i)?'lesson-target':''}`;
+  b.innerHTML=`<span class="gem" aria-hidden="true"></span>${t.vine?'<span class=vine-wrap aria-hidden=true></span>':''}${t.kind==='normal'||t.kind==='rainbow'?'':`<small>${t.kind==='bomb'?'✹':'ϟ'}</small>`}`;
+  b.setAttribute('aria-label',`${Math.floor(i/7)+1}열 ${i%7+1}행 ${t.kind==='rainbow'?'무지개 · 가장 큰 연결색 자동 선택':names[t.color]} ${t.vine?'덩굴 · 직접 탭 무효, 이웃 소거로 해제':t.kind==='bomb'?'폭탄':t.kind==='charge'?'차지':'일반'}${state.echo.includes(t.id)?' 잔향':''}`);
   b.tabIndex=i===focus?0:-1;b.disabled=run.phase!=='battle';
  });
- document.body.classList.toggle('overcharged',state.boost);document.body.classList.toggle('learning',run.tutorial!=='done');
+ document.body.classList.toggle('overcharged',state.boost);document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
  $('stageName').textContent=`${run.stage+1}/3 · ${STAGES[run.stage].name}`;
  $('boss').max=rules.bossHP;$('boss').value=state.bossHP;$('bossText').textContent=`적 ${state.bossHP}/${rules.bossHP}`;
  const attack=nextAttack(run);$('incoming').textContent=`${attack.name} ${attack.damage} · ${attack.pattern}`;
@@ -365,8 +416,8 @@ function render(){
   b.disabled=run.phase!=='battle'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';
   let status=b.querySelector('.cooldown');if(!status){status=document.createElement('span');status.className='cooldown';b.append(status);}status.textContent=state.turn<state.ready[i]?`${state.ready[i]-state.turn}턴 후`:'준비';
  });
- $('coach').hidden=run.tutorial==='done'||run.phase!=='battle';
- $('coachText').textContent=run.tutorial==='chain'?'빛나는 큰 묶음을 눌러 잔향을 남겨 보세요.':'◌ 표식 타일을 연결해 남겨 둔 빛을 깨워 보세요.';
+ $('coach').hidden=(run.tutorial==='done'&&!run.panelLesson)||run.phase!=='battle';$('skipLesson').textContent=run.panelLesson?'알겠어요':'안내 건너뛰기';
+ $('coachText').textContent=run.panelLesson?PANEL_HELP[run.panelLesson]:run.tutorial==='chain'?'빛나는 큰 묶음을 눌러 잔향을 남겨 보세요.':'◌ 표식 타일을 연결해 남겨 둔 빛을 깨워 보세요.';
  $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;skillUI.render();
 }
 function phaseDialog(){
@@ -400,7 +451,7 @@ async function commit(i){
   if(state.bossHP<oldHP){fx.label($('enemy'),`−${oldHP-state.bossHP}`);$('enemy').classList.add('hit');setTimeout(()=>$('enemy').classList.remove('hit'),420);fx.link(tiles[i],$('enemy'),'#ffe4a9');}
   if(result.incoming){sound.play('enemy');const reaction=result.retaliation?'hurt':'guarded';$('health').classList.add(reaction);setTimeout(()=>$('health').classList.remove(reaction),420);}
   await delay(220);
-  $('notice').textContent=`${result.removed.length}칸${result.echoHit?' · 잔향 발동':''}${bombs.length?' · 폭탄 '+bombs.length:''}${result.retaliation?' · 적 공격 −'+result.retaliation:''}${result.blocked?' · 보호 −'+result.blocked:''}${result.prismBonus?' · 링크 +'+result.prismBonus:''}${result.ignitionBonus?' · 점화 +'+result.ignitionBonus:''}${result.wardAbsorbed?' · 장막 −'+result.wardAbsorbed:''}`;
+  $('notice').textContent=`${result.removed.length}칸${result.unlocked.length?' · 덩굴 해제 '+result.unlocked.length:''}${result.echoHit?' · 잔향 발동':''}${bombs.length?' · 폭탄 '+bombs.length:''}${result.retaliation?' · 적 공격 −'+result.retaliation:''}${result.blocked?' · 보호 −'+result.blocked:''}${result.prismBonus?' · 링크 +'+result.prismBonus:''}${result.ignitionBonus?' · 점화 +'+result.ignitionBonus:''}${result.wardAbsorbed?' · 장막 −'+result.wardAbsorbed:''}`;
   if(run.phase!=='battle'){await delay(320);phaseDialog();}else tiles[focus].focus();
  }finally{gate.finish();if(run.phase==='battle')showPreview(focus);}
 }
@@ -431,14 +482,14 @@ $('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();render();s
 $('sound').onclick=()=>{sound.enable(!settings.enabled);persist();render();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
 $('volume').oninput=e=>{sound.volume(Number(e.target.value)/100);persist();};
 document.addEventListener('visibilitychange',()=>{if(document.hidden){pressed=null;sound.hide();}});
-const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.']];
-function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`규칙 ${guideStep+1}/3`;$('guideTitle').textContent=title;$('guideText').textContent=body;$('guideNext').textContent=guideStep===2?'돌아가기':'다음';if(!$('guide').open)$('guide').showModal();}
-$('guideNext').onclick=()=>{if(guideStep<2){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus();}};
+const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.'],['덩굴을 벗기세요',PANEL_HELP.vine+' 직접 누르면 탭을 쓰지 않습니다. 해제한 타일은 다음 행동부터 연결돼요.'],['무지개를 이으세요',PANEL_HELP.rainbow+' 동률이면 불꽃·별빛·물방울·회복 순입니다. 미리보기의 확정색을 확인하세요.']];
+function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`규칙 ${guideStep+1}/${guide.length}`;$('guideTitle').textContent=title;$('guideText').textContent=body;$('guideNext').textContent=guideStep===guide.length-1?'돌아가기':'다음';if(!$('guide').open)$('guide').showModal();}
+$('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus();}};
 $('skillHelp').onclick=()=>{if(!gate.locked)skillUI.describe();};$('closeSkills').onclick=()=>$('skillGuide').close();
 $('help').onclick=()=>{if(!gate.locked){guideStep=0;tutorial();}};
 $('continueRun').disabled=!started;$('continueRun').onclick=()=>{sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle')tiles[focus].focus();};
 $('startNew').onclick=()=>askNew(false);
-$('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해 이어갑니다. 새 스킬 효과는 재사용부터 적용되며, 2전투 방어는 다음 턴부터 시작합니다.':loaded.reason==='invalid'?'저장 데이터 형식이 맞지 않아 새 탐험으로 시작합니다.':loaded.reason==='unavailable'?'저장소를 사용할 수 없지만 플레이할 수 있습니다.':'자동 저장 · 기본 무음 · 인터넷 불필요';
+$('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해 이어갑니다. 새 스킬 효과는 재사용부터 적용되며, 이전 스킬 저장의 2전투 방어는 다음 턴부터, 새 패널은 다음 전투부터 적용됩니다.':loaded.reason==='invalid'?'저장 데이터 형식이 맞지 않아 새 탐험으로 시작합니다.':loaded.reason==='unavailable'?'저장소를 사용할 수 없지만 플레이할 수 있습니다.':'자동 저장 · 기본 무음 · 인터넷 불필요';
 for(const id of ['start','upgrade'])$(id).addEventListener('cancel',e=>e.preventDefault());
 render();$('start').showModal();
 
