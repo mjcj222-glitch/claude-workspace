@@ -4,6 +4,7 @@ import {preview,inputGate,moveFocus,pendingDamage} from './engine.mjs';
 import {createRun,runTap,runSkill,runBoost,chooseUpgrade,retryBattle,nextAttack,tutorialTargets,skipTutorial,canRunTap,STAGES,CHOICES,PANEL_HELP} from './campaign.mjs';
 import {loadProgress,saveProgress} from './storage.mjs';
 import {createAudio,SOUND_EVENTS} from './audio.mjs';
+import {planTimeline,runTimeline,fallOffset} from './timeline.mjs';
 import {preFeedback,postFeedback} from './feedback.mjs';
 import {createEffects} from './effects.mjs';
 const $=id=>document.getElementById(id),names={coral:'불꽃',gold:'별빛',blue:'물방울',heal:'회복 잎'};
@@ -12,7 +13,7 @@ const loaded=loadProgress(storage);
 let run=loaded.data?.run??createRun(),state=run.state,learned=loaded.data?.learned??false;
 let started=!!loaded.data?.run,sessionPlaying=false,focus=1,pressed=null,guideStep=0,pendingFresh=false;
 const settings=loaded.data?.audio??{enabled:false,volume:.3};
-let lessEffects=false,actionID=0;const motionQuery=matchMedia('(prefers-reduced-motion: reduce)'),reduced={get matches(){return motionQuery.matches||lessEffects;}};
+let queuedNew=null,activeTimeline=null,lessEffects=false,actionID=0;const motionQuery=matchMedia('(prefers-reduced-motion: reduce)'),reduced={get matches(){return motionQuery.matches||lessEffects;}};
 const sound=createAudio(settings),gate=inputGate(),fx=createEffects($('effects'),reduced);
 const skillUI=createSkillUI(()=>state);
 const tiles=Array.from({length:42},(_,i)=>{
@@ -32,7 +33,7 @@ function render(){
   const t=state.board[i];b.className=`tile ${t.color} ${t.vine?'vine':''} ${t.kind==='rainbow'?'rainbow':''} ${Math.floor(i/7)%2?'odd':''} ${state.echo.includes(t.id)?'marked':''} ${targets.includes(i)?'lesson-target':''}`;
   b.innerHTML=`<span class="gem" aria-hidden="true"></span>${t.vine?'<span class=vine-wrap aria-hidden=true></span>':''}${t.kind==='normal'||t.kind==='rainbow'?'':`<small>${t.kind==='bomb'?'✹':'ϟ'}</small>`}`;
   b.setAttribute('aria-label',`${Math.floor(i/7)+1}열 ${i%7+1}행 ${t.kind==='rainbow'?'무지개 · 가장 큰 연결색 자동 선택':names[t.color]} ${t.vine?'덩굴 · 직접 탭 무효, 이웃 소거로 해제':t.kind==='bomb'?'폭탄':t.kind==='charge'?'차지':'일반'}${state.echo.includes(t.id)?' 잔향':''}`);
-  b.tabIndex=i===focus?0:-1;b.disabled=run.phase!=='battle';
+  delete b.dataset.clearId;b.tabIndex=i===focus?0:-1;b.disabled=run.phase!=='battle';
  });
  document.body.classList.toggle('overcharged',state.boost);document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
  $('stageName').textContent=`${run.stage+1}/3 · ${STAGES[run.stage].name}`;
@@ -69,28 +70,38 @@ function phaseDialog(){
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,reduced.matches?0:ms));
 async function commit(i){
  if(blocked()||!canRunTap(run,i)||!gate.start())return;
- sound.unlock();
+ $('board').dataset.resolving='true';sound.unlock();
  try{
-  const p=preview(state,i),eventID=++actionID,oldHP=state.bossHP,settledHeal=state.taps===1?Math.min(state.rules.hp-state.hp,state.healing+p.healing):0,positions=new Map(state.board.map((t,j)=>[t.id,fx.point(tiles[j])]));
+  const p=preview(state,i),eventID=++actionID,oldHP=state.bossHP,settledHeal=state.taps===1?Math.min(state.rules.hp-state.hp,state.healing+p.healing):0,positions=new Map(state.board.map((t,j)=>{const point=fx.point(tiles[j]);return [t.id,{...point,y:point.y+scrollY}];}));
   const bombs=p.removed.filter(j=>state.board[j].kind==='bomb');
   const large=p.initial.length>=10,color={coral:'#ffc0bd',gold:'#ffe4a0',blue:'#a3e2ff',heal:'#c3efa7'}[p.color];
   p.rainbows=p.initial.filter(j=>state.board[j].kind==='rainbow').length;
-  p.removed.forEach((j,n)=>{tiles[j].style.setProperty('--stagger',Math.min(n*3,24)+'ms');tiles[j].classList.add('cleared');if(n<8){fx.burst(tiles[j],color,large);fx.absorb(tiles[j],p.color==='heal'?$('health'):$('enemy'),color);}});
-  if(p.echoHit)for(const j of p.removed)if(state.echo.includes(state.board[j].id))fx.link(tiles[i],tiles[j]);
-  for(const j of bombs)fx.ring(tiles[j]);for(const j of p.unlocked)fx.release(tiles[j]);
-  for(const j of p.initial)if(state.board[j].kind==='rainbow')fx.converge(tiles[j],color);
-  for(const kind of preFeedback(p))sound.play(kind,{id:eventID,chain:p.initial.length});
-  await delay(large?200:160);
+  const plan=planTimeline(state,i,p),notes=new Map(plan.audio.map(n=>[n.id,n.note]));
+  const accents=new Set();sound.beginSequence();if(reduced.matches&&!document.hidden)sound.play(large?'large':'chain',{id:eventID,chain:p.initial.length});
+  activeTimeline=runTimeline(plan,e=>{
+   const tile=tiles[e.index];
+   if(e.type==='vine'){fx.release(tile);if(!accents.has('vine')){sound.play('vine',{id:eventID});accents.add('vine');}return;}
+   tile.dataset.clearId=e.id;tile.style.setProperty('--stagger','0ms');tile.classList.add('cleared');
+   if(!reduced.matches&&!document.hidden&&notes.has(e.id))sound.tick(notes.get(e.id),eventID+':'+e.id);
+   fx.burst(tile,color,large);fx.absorb(tile,p.color==='heal'?$('health'):$('enemy'),color);
+   if(e.echo){if(e.index!==plan.echoOrigin)fx.link(tiles[plan.echoOrigin],tile);if(!accents.has('echo')){sound.play('echo',{id:eventID});accents.add('echo');}}
+   if(e.bomb){fx.ring(tile);if(!accents.has('bomb')){sound.play('bomb',{id:eventID});accents.add('bomb');}}
+   if(e.rainbow){fx.converge(tile,color);if(!accents.has('rainbow')){sound.play('rainbow',{id:eventID});accents.add('rainbow');}}
+  },reduced.matches||document.hidden,()=>reduced.matches||document.hidden);
+  const resolution=await activeTimeline.done;activeTimeline=null;sound.endSequence();
+  if(resolution==='finish'){sound.cancel();fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
+  if(resolution==='reset'){fx.clear();render();return;}
+  if(large&&resolution==='done')fx.cue('large',$('board'),color);
   const result=runTap(run,i);persist();render();
-  if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=old?old.y-now.y:-28;if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 0',opacity:1}],{duration:120,easing:'cubic-bezier(.2,.7,.3,1)'});});
-  for(const kind of postFeedback(result,{bossHit:state.bossHP<oldHP,healed:settledHeal,status:state.status}))sound.play(kind,{id:eventID});
+  if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=fallOffset(old,now,scrollY);if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 0',opacity:1}],{duration:120,easing:'cubic-bezier(.2,.7,.3,1)'});});
+  if(resolution==='done')for(const kind of postFeedback(result,{bossHit:state.bossHP<oldHP,healed:settledHeal,status:state.status}))sound.play(kind,{id:eventID});
   if(settledHeal)fx.cue('heal',$('health'),'#c2eda9');if(result.blocked)fx.ring($('health'),'#c2eeeb','shield');
   if(state.bossHP<oldHP&&!document.hidden){fx.label($('enemy'),`−${oldHP-state.bossHP}`);$('enemy').classList.add('hit');setTimeout(()=>$('enemy').classList.remove('hit'),420);fx.link(tiles[i],$('enemy'),'#ffe4a9');}
   if(result.incoming&&!document.hidden){const reaction=result.retaliation?'hurt':'guarded';$('health').classList.add(reaction);setTimeout(()=>$('health').classList.remove(reaction),420);}
   await delay(140);
   $('notice').textContent=`${result.removed.length}칸${result.unlocked.length?' · 덩굴 해제 '+result.unlocked.length:''}${result.echoHit?' · 잔향 발동':''}${bombs.length?' · 폭탄 '+bombs.length:''}${result.retaliation?' · 적 공격 −'+result.retaliation:''}${result.blocked?' · 보호 −'+result.blocked:''}${result.prismBonus?' · 링크 +'+result.prismBonus:''}${result.ignitionBonus?' · 점화 +'+result.ignitionBonus:''}${result.wardAbsorbed?' · 장막 −'+result.wardAbsorbed:''}`;
   if(run.phase!=='battle'){fx.cue(state.status==='won'?'win':'lose',$('enemy'));await delay(180);phaseDialog();}else tiles[focus].focus({preventScroll:true});
- }finally{gate.finish();if(run.phase==='battle')showPreview(focus);}
+ }finally{gate.finish();$('board').dataset.resolving='false';if(queuedNew!==null){const fresh=queuedNew;queuedNew=null;askNew(fresh);}else if(run.phase==='battle')showPreview(focus);}
 }
 for(const [i,b] of tiles.entries()){
  b.addEventListener('focus',()=>{showPreview(i);if(!blocked())fx.cue('select',b);});
@@ -111,14 +122,14 @@ function begin(fresh){
  fx.clear();skillUI.clear();pressed=null;run=createRun(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed,!learned);state=run.state;started=true;sessionPlaying=true;
  for(const id of ['start','ending','confirmNew','upgrade'])if($(id).open)$(id).close();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[0].lesson;
 }
-function askNew(fresh){if(gate.locked)return;pendingFresh=fresh;if(started&&['battle','upgrade'].includes(run.phase))$('confirmNew').showModal();else begin(fresh);}
+function askNew(fresh){if(gate.locked&&!activeTimeline){queuedNew=fresh;return;}if(activeTimeline){activeTimeline.cancel('reset');sound.cancel();fx.clear();}pendingFresh=fresh;if(started&&['battle','upgrade'].includes(run.phase))$('confirmNew').showModal();else begin(fresh);}
 $('restart').onclick=()=>askNew(false);$('newSeed').onclick=()=>askNew(true);$('again').onclick=()=>begin(false);$('another').onclick=()=>begin(true);
 $('cancelNew').onclick=()=>$('confirmNew').close();$('confirmRestart').onclick=()=>begin(pendingFresh);
 $('retryBattle').onclick=()=>{if(gate.locked||!retryBattle(run))return;$('ending').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent='진입 당시 체력·게이지·보드로 재도전합니다.';};
 $('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();render();showPreview(focus);};
 $('sound').onclick=()=>{sound.enable(!settings.enabled);persist();render();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
 $('volume').oninput=e=>{sound.volume(Number(e.target.value)/100);persist();};
-document.addEventListener('visibilitychange',()=>{if(document.hidden){pressed=null;sound.hide();fx.clear();skillUI.clear();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){pressed=null;activeTimeline?.cancel('finish');sound.hide();fx.clear();skillUI.clear();}});
 const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.'],['덩굴을 벗기세요',PANEL_HELP.vine+' 직접 누르면 탭을 쓰지 않습니다. 해제한 타일은 다음 행동부터 연결돼요.'],['무지개를 이으세요',PANEL_HELP.rainbow+' 동률이면 불꽃·별빛·물방울·회복 순입니다. 미리보기의 확정색을 확인하세요.']];
 function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`규칙 ${guideStep+1}/${guide.length}`;$('guideTitle').textContent=title;$('guideText').textContent=body;$('guideNext').textContent=guideStep===guide.length-1?'돌아가기':'다음';if(!$('guide').open)$('guide').showModal();}
 $('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus({preventScroll:true});}};
@@ -130,7 +141,7 @@ $('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해
 for(const id of ['start','upgrade'])$(id).addEventListener('cancel',e=>e.preventDefault());
 render();$('start').showModal();
 
-function motionChanged(){fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
+function motionChanged(){if(activeTimeline){activeTimeline.cancel('finish');sound.cancel();}fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
 motionQuery.addEventListener('change',motionChanged);motionChanged();
 $('feedbackHelp').onclick=()=>{if(!gate.locked){$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';$('feedbackSettings').showModal();}};$('closeFeedback').onclick=()=>$('feedbackSettings').close();
 $('lessEffects').onchange=e=>{lessEffects=e.target.checked;motionChanged();};

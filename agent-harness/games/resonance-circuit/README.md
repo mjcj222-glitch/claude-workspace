@@ -70,3 +70,7 @@ python agent-harness/games/resonance-circuit/panels_terminal_browser.py
 ## 연출과 소리 확인
 
 메인 화면의 `연출·소리`에서 효과 줄이기(이번 실행만)와17개 미리듣기를 제공합니다. 소리는 기본 꺼짐이며 먼저 켜야 합니다. ZIP의 `sound-check.html`은 별도 설치 없이 같은 합성음을 재생하고, `samples/`에는 실제 OfflineAudioContext로 렌더링한 WAV가 있습니다. `feedback-play.mp4`는 실제 브라우저 조작 녹화이며 무음입니다. 실제 차이·수치·검증 한계는 [FEEDBACK-REPORT.md](FEEDBACK-REPORT.md)를 참고하세요.
+
+## 순차 소거
+
+타일이 탭 지점의 hex 연결 순서를 따라 차르르 사라진 뒤 빈자리와 낙하가 이어집니다. 기본 모션에서6칸 약458ms,10칸570ms,42칸738ms의 해소·낙하 후보 타임라인입니다. reduced-motion은 순차 이동 없이 즉시 정산합니다. 실제 프레임·취소 규칙·검증은 [CASCADE-REPORT.md](CASCADE-REPORT.md), 새 영상은 `cascade-play.mp4`, 소리 샘플은 `samples/cascade-{6,10,42}.wav`입니다.

@@ -1,0 +1,26 @@
+✔ timeline 1: tapped ID first, unique resolved IDs, readable cadence and bounded duration (4.45019ms)
+✔ timeline 6: tapped ID first, unique resolved IDs, readable cadence and bounded duration (1.431488ms)
+✔ timeline 10: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.67964ms)
+✔ timeline 42: tapped ID first, unique resolved IDs, readable cadence and bounded duration (1.126947ms)
+✔ BFS distance is monotone within a plain initial group (0.419696ms)
+✔ echo, chained bombs and vines schedule once from actual results (0.535151ms)
+✔ scheduler cancellation stops callbacks and resolves once; reduced mode has no stagger (106.401112ms)
+✔ late main-thread callback still receives the full final animation hold (83.222468ms)
+✖ survivor fall offset uses document coordinates so scrolling adds no false fall (0.672548ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 254.353123
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:10:1
+✖ survivor fall offset uses document coordinates so scrolling adds no false fall (0.672548ms)
+  TypeError: fallOffset is not a function
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs:10:153)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

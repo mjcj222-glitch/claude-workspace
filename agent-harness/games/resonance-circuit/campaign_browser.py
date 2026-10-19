@@ -17,7 +17,7 @@ def setup(page, standalone):
  page.evaluate("async()=>{window.oracle=await import('/engine.mjs')}")
 
 def saved(page):return page.evaluate("JSON.parse(localStorage.getItem('resonance-circuit-v1'))")
-def idle(page):page.wait_for_function("!document.querySelector('.cleared') && document.querySelector('#saveStatus').textContent==='저장됨'");page.wait_for_timeout(430 if page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches") is False else 20)
+def idle(page):page.wait_for_function("document.querySelector('#board').dataset.resolving!=='true' && !document.querySelector('.cleared') && document.querySelector('#saveStatus').textContent==='저장됨'");page.wait_for_timeout(430 if page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches") is False else 20)
 
 def full_run(browser,w,h,motion,standalone):
  page=browser.new_page(viewport={'width':w,'height':h},reduced_motion=motion,has_touch=True)

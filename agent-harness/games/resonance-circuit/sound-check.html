@@ -5,6 +5,7 @@ function soundRecipe(kind,chain=1){
  const noise=(t,d,a,cut)=>({noise:true,t,d,a,cut});
  const scale=[392,440,494,587,659,784],root=scale[Math.min(5,Math.max(0,Math.floor((chain-1)/2)))];
  switch(kind){
+ case 'tile':{const f=scale[Math.min(5,Math.max(0,chain))];return [{...note(f,0,.045,.045),tile:true}];}
  case 'select':return [note(784,0,.07,.025),note(1568,0,.05,.007)];
  case 'chain':return [note(root),note(root*2,.008,.12,.016)];
  case 'large':return [note(root,0,.25,.085),note(root*1.25,.035,.24,.045),note(root*2,.06,.18,.018)];
@@ -26,7 +27,7 @@ function soundRecipe(kind,chain=1){
  }
 }
 function createAudio(settings,{factory=()=>new (globalThis.AudioContext||globalThis.webkitAudioContext)(),offline=false}={}){
- let lastMaster=0,context=null,master=null,compressor=null,noiseBuffer=null,available=true,generation=0,resuming=false,queue=[],suspendTimer;
+ let sequence=false,lastMaster=0,context=null,master=null,compressor=null,noiseBuffer=null,available=true,generation=0,resuming=false,queue=[],suspendTimer;
  const sources=new Set(),seen=new Set(),last=new Map();let peakVoices=0,peakNodes=0,events=0,dropped=0;
  const nodes=()=>sources.size*3+(master?1:0)+(compressor?1:0); // conservative upper bound
  function masterLevel(value,smooth=true){if(!master)return;const at=context.currentTime;const current=Number.isFinite(master.gain.value)&&at>0?master.gain.value:lastMaster;master.gain.cancelScheduledValues?.(at);master.gain.setValueAtTime(current,at);lastMaster=value;if(smooth&&master.gain.setTargetAtTime)master.gain.setTargetAtTime(value,at,.004);else master.gain.setValueAtTime(value,at);}
@@ -39,7 +40,7 @@ function createAudio(settings,{factory=()=>new (globalThis.AudioContext||globalT
  }catch{available=false;return false;}}
  function noise(){if(noiseBuffer)return noiseBuffer;const rate=Math.min(context.sampleRate,48000),length=Math.floor(rate*.35);noiseBuffer=context.createBuffer(1,length,rate);const data=noiseBuffer.getChannelData(0);let seed=7213;for(let i=0;i<length;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;data[i]=(seed/4294967296*2-1)*.6;}return noiseBuffer;}
  function voice(spec,now){
-  if(sources.size>=8){dropped++;return;}
+  if(sources.size>=(sequence&&!spec.tile?6:8)){dropped++;return;}
   let source,gain,filter,v;
   try{const useNoise=spec.noise&&context.createBufferSource;source=useNoise?context.createBufferSource():context.createOscillator();gain=context.createGain();
    if(useNoise){source.buffer=noise();filter=context.createBiquadFilter();filter.type='lowpass';filter.frequency.setValueAtTime(spec.cut,now);filter.Q.setValueAtTime(.4,now);source.connect(filter);filter.connect(gain);}else{source.type='sine';source.frequency.setValueAtTime(spec.f??196,now+spec.t);source.frequency.exponentialRampToValueAtTime(spec.end??196,now+spec.t+spec.d);source.connect(gain);}
@@ -47,11 +48,11 @@ function createAudio(settings,{factory=()=>new (globalThis.AudioContext||globalT
    v={source,active:true,timer:null,clean:()=>{if(!sources.delete(v))return;clearTimeout(v.timer);source.disconnect();gain.disconnect();filter?.disconnect();}};sources.add(v);source.onended=v.clean;source.start(t);source.stop(t+spec.d+.02);peakVoices=Math.max(peakVoices,sources.size);peakNodes=Math.max(peakNodes,nodes());
   }catch(e){if(v)v.clean();else{source?.disconnect();gain?.disconnect();filter?.disconnect();}throw e;}
  }
- function emit(kind,options={}){try{const specs=soundRecipe(kind,options.chain);if(!specs.length)return false;events++;for(const spec of specs)voice(spec,context.currentTime);return true;}catch{available=false;return false;}}
+ function emit(kind,options={}){try{const specs=soundRecipe(kind,options.note??options.chain);if(!specs.length)return false;events++;for(const spec of specs)voice(spec,context.currentTime);return true;}catch{available=false;return false;}}
  function play(kind,options={}){
   if(!settings.enabled||!context)return false;
   const key=options.id===undefined?null:kind+':'+options.id,now=context.currentTime;
-  if(key&&seen.has(key)||now-(last.get(kind)??-Infinity)<.045)return false;
+  if(key&&seen.has(key)||kind!=='tile'&&now-(last.get(kind)??-Infinity)<.045)return false;
   if(key){seen.add(key);if(seen.size>64)seen.delete(seen.values().next().value);}last.set(kind,now);
   if(!offline&&context.state!=='running'){if(!resuming)return false;if(queue.length>=4){dropped++;return false;}queue.push({kind,options,at:performance.now()});return true;}
   return emit(kind,options);
@@ -59,7 +60,7 @@ function createAudio(settings,{factory=()=>new (globalThis.AudioContext||globalT
  function enable(value){settings.enabled=!!value;if(value)unlock();else hide();}
  function volume(value){settings.volume=Math.max(0,Math.min(1,Number(value)||0));masterLevel(settings.enabled?settings.volume*.7:0);}
  function hide(){stop();try{context?.suspend()?.catch(()=>{});}catch{}}
- return {unlock,play,enable,volume,hide,get available(){return available;},get voices(){return [...sources].filter(v=>v.active).length;},get stats(){return {voices:[...sources].filter(v=>v.active).length,nodes:nodes(),peakVoices,peakNodes,bufferBytes:noiseBuffer?(noiseBuffer.length??0)*4:0,queued:queue.length,events,dropped};}};
+ return {unlock,play,enable,volume,hide,beginSequence(){sequence=true;},endSequence(){sequence=false;},cancel(){sequence=false;stop();},tick(note,id){return play('tile',{note,id});},get available(){return available;},get voices(){return [...sources].filter(v=>v.active).length;},get stats(){return {voices:[...sources].filter(v=>v.active).length,nodes:nodes(),peakVoices,peakNodes,bufferBytes:noiseBuffer?(noiseBuffer.length??0)*4:0,queued:queue.length,events,dropped};}};
 }
 
 

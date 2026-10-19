@@ -3,7 +3,9 @@ export function createEffects(canvas,reduced){
  const ctx=canvas.getContext('2d');let particles=[],frame=0,last=0,peak=0;const marks=new Map(),labels=new Map();
  const point=el=>{const r=el.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};};
  function size(){const d=Math.min(devicePixelRatio||1,2);canvas.width=innerWidth*d;canvas.height=innerHeight*d;ctx?.setTransform(d,0,0,d,0,0);}
- size();window.addEventListener('resize',()=>{clear();size();});
+ function clearScreen(){cancelAnimationFrame(frame);frame=0;particles=[];ctx?.clearRect(0,0,innerWidth,innerHeight);canvas.dataset.active='0';for(const [el,t] of labels){clearTimeout(t);el.remove();}labels.clear();}
+ window.addEventListener('scroll',clearScreen,{passive:true});
+ size();window.addEventListener('resize',()=>{clearScreen();size();});
  function cue(kind,el,color='#c7f5e5'){if(document.hidden)return;clearTimeout(marks.get(el));el.dataset.fx=kind;el.style.setProperty('--fx-color',color);marks.set(el,setTimeout(()=>{delete el.dataset.fx;marks.delete(el);},160));}
  function draw(time){const dt=Math.min((time-last)/1000,.05);last=time;ctx.clearRect(0,0,innerWidth,innerHeight);particles=particles.filter(p=>{
   p.life-=dt;if(p.life<=0)return false;const a=p.life/p.total,u=1-a;ctx.globalAlpha=Math.min(1,a*2);ctx.strokeStyle=p.color;ctx.fillStyle=p.color;ctx.lineWidth=1.5;

@@ -1,0 +1,136 @@
+✖ timeline 1: tapped ID first, unique resolved IDs, readable cadence and bounded duration (2.384519ms)
+✖ timeline 6: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.39672ms)
+✖ timeline 10: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.359444ms)
+✖ timeline 42: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.344621ms)
+✖ BFS distance is monotone within a plain initial group (0.333325ms)
+✖ echo, chained bombs and vines schedule once from actual results (0.362329ms)
+✖ scheduler cancellation stops callbacks and resolves once; reduced mode has no stagger (0.504333ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.423715
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:5:28
+✖ timeline 1: tapped ID first, unique resolved IDs, readable cadence and bounded duration (2.384519ms)
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs' imported from /workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs
+      at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+      at moduleResolve (node:internal/modules/esm/resolve:865:10)
+      at defaultResolve (node:internal/modules/esm/resolve:992:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+      at #resolve (node:internal/modules/esm/loader:683:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+      at node:internal/modules/esm/loader:632:32
+      at TracingChannel.tracePromise (node:diagnostics_channel:362:14) {
+    code: 'ERR_MODULE_NOT_FOUND',
+    url: 'file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs'
+  }
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:5:28
+✖ timeline 6: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.39672ms)
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs' imported from /workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs
+      at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+      at moduleResolve (node:internal/modules/esm/resolve:865:10)
+      at defaultResolve (node:internal/modules/esm/resolve:992:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+      at #resolve (node:internal/modules/esm/loader:683:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+      at node:internal/modules/esm/loader:632:32
+      at TracingChannel.tracePromise (node:diagnostics_channel:362:14) {
+    code: 'ERR_MODULE_NOT_FOUND',
+    url: 'file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs'
+  }
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:5:28
+✖ timeline 10: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.359444ms)
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs' imported from /workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs
+      at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+      at moduleResolve (node:internal/modules/esm/resolve:865:10)
+      at defaultResolve (node:internal/modules/esm/resolve:992:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+      at #resolve (node:internal/modules/esm/loader:683:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+      at node:internal/modules/esm/loader:632:32
+      at TracingChannel.tracePromise (node:diagnostics_channel:362:14) {
+    code: 'ERR_MODULE_NOT_FOUND',
+    url: 'file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs'
+  }
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:5:28
+✖ timeline 42: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.344621ms)
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs' imported from /workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs
+      at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+      at moduleResolve (node:internal/modules/esm/resolve:865:10)
+      at defaultResolve (node:internal/modules/esm/resolve:992:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+      at #resolve (node:internal/modules/esm/loader:683:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+      at node:internal/modules/esm/loader:632:32
+      at TracingChannel.tracePromise (node:diagnostics_channel:362:14) {
+    code: 'ERR_MODULE_NOT_FOUND',
+    url: 'file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs'
+  }
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:6:1
+✖ BFS distance is monotone within a plain initial group (0.333325ms)
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs' imported from /workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs
+      at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+      at moduleResolve (node:internal/modules/esm/resolve:865:10)
+      at defaultResolve (node:internal/modules/esm/resolve:992:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+      at #resolve (node:internal/modules/esm/loader:683:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+      at node:internal/modules/esm/loader:632:32
+      at TracingChannel.tracePromise (node:diagnostics_channel:362:14) {
+    code: 'ERR_MODULE_NOT_FOUND',
+    url: 'file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs'
+  }
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:7:1
+✖ echo, chained bombs and vines schedule once from actual results (0.362329ms)
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs' imported from /workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs
+      at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+      at moduleResolve (node:internal/modules/esm/resolve:865:10)
+      at defaultResolve (node:internal/modules/esm/resolve:992:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+      at #resolve (node:internal/modules/esm/loader:683:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+      at node:internal/modules/esm/loader:632:32
+      at TracingChannel.tracePromise (node:diagnostics_channel:362:14) {
+    code: 'ERR_MODULE_NOT_FOUND',
+    url: 'file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs'
+  }
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:8:1
+✖ scheduler cancellation stops callbacks and resolves once; reduced mode has no stagger (0.504333ms)
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs' imported from /workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs
+      at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+      at moduleResolve (node:internal/modules/esm/resolve:865:10)
+      at defaultResolve (node:internal/modules/esm/resolve:992:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+      at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+      at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+      at #resolve (node:internal/modules/esm/loader:683:17)
+      at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+      at node:internal/modules/esm/loader:632:32
+      at TracingChannel.tracePromise (node:diagnostics_channel:362:14) {
+    code: 'ERR_MODULE_NOT_FOUND',
+    url: 'file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.mjs'
+  }

@@ -1,0 +1,35 @@
+✔ timeline 1: tapped ID first, unique resolved IDs, readable cadence and bounded duration (5.760041ms)
+✔ timeline 6: tapped ID first, unique resolved IDs, readable cadence and bounded duration (4.961712ms)
+✔ timeline 10: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.783446ms)
+✔ timeline 42: tapped ID first, unique resolved IDs, readable cadence and bounded duration (1.475884ms)
+✔ BFS distance is monotone within a plain initial group (0.512956ms)
+✔ echo, chained bombs and vines schedule once from actual results (0.893092ms)
+✔ scheduler cancellation stops callbacks and resolves once; reduced mode has no stagger (106.76081ms)
+✖ late main-thread callback still receives the full final animation hold (54.20536ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 247.130737
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:9:1
+✖ late main-thread callback still receives the full final animation hold (54.20536ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(performance.now()-end>=28)
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs:9:299)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
