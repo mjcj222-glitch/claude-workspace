@@ -1,3 +1,4 @@
+import {setupMobileUI} from './mobile-ui.mjs';
 import {createExpedition,loadExpedition,saveExpedition,expeditionTap,expeditionSkill,currentRoom,RELICS,relicEffects} from './expedition.mjs';
 import {createExpeditionUI,ROOM_NAMES} from './expedition-ui.mjs';
 import {C} from './config.mjs';
@@ -18,12 +19,12 @@ let mode='practice',practiceSlot=loaded.data?.run??null,expeditionSlot=loadExped
 const settings=loaded.data?.audio??{enabled:false,volume:.3};
 let queuedNew=null,activeTimeline=null,lessEffects=false,actionID=0;const motionQuery=matchMedia('(prefers-reduced-motion: reduce)'),reduced={get matches(){return motionQuery.matches||lessEffects;}};
 const sound=createAudio(settings),gate=inputGate(),fx=createEffects($('effects'),reduced);
-const skillUI=createSkillUI(()=>state);
+const skillUI=createSkillUI(()=>state);setupMobileUI();
 const tiles=Array.from({length:42},(_,i)=>{
  const b=document.createElement('button');b.className='tile';b.style.setProperty('--c',Math.floor(i/7)+1);b.style.setProperty('--r',i%7+1);b.dataset.index=i;$('board').append(b);return b;
 });
 function persist(){if(mode==='expedition'){expeditionSlot=run;const ok=saveExpedition(storage,run);saveProgress(storage,practiceSlot,learned,settings);$('saveStatus').textContent=ok?'저장됨':'저장 불가 · 플레이 가능';return ok;}practiceSlot=started?run:null;if(run.tutorial==='done'&&started)learned=true;const ok=saveProgress(storage,started?run:null,learned,settings);$('saveStatus').textContent=ok?'저장됨':'저장 불가 · 플레이 가능';return ok;}
-function blocked(){return !sessionPlaying||gate.locked||['guide','start','upgrade','confirmNew','ending','skillGuide','feedbackSettings','journey','relicGuide'].some(id=>$(id).open);}
+function blocked(){return !sessionPlaying||gate.locked||['guide','start','upgrade','confirmNew','ending','skillGuide','feedbackSettings','journey','relicGuide','gameMenu','roomDetail'].some(id=>$(id).open);}
 function showPreview(i){
  if(gate.locked||run.phase!=='battle')return;
  focus=i;const p=preview(state,i);
@@ -58,7 +59,7 @@ function renderLesson(){
  document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
  const targets=tutorialTargets(run);tiles.forEach((b,i)=>b.classList.toggle('lesson-target',targets.includes(i)));
  $('coach').hidden=(run.tutorial==='done'&&!run.panelLesson)||run.phase!=='battle';$('skipLesson').textContent=run.panelLesson?'알겠어요':'안내 건너뛰기';
- $('coachText').textContent=run.panelLesson?PANEL_HELP[run.panelLesson]:run.tutorial==='chain'?'빛나는 큰 묶음을 눌러 잔향을 남겨 보세요.':'◌ 표식 타일을 연결해 남겨 둔 빛을 깨워 보세요.';
+ $('coachText').textContent=run.panelLesson?(run.panelLesson==='vine'?'덩굴은 옆 타일을 지워 벗겨요.':'무지개는 가장 큰 색 묶음을 이어요.'):run.tutorial==='chain'?'큰 묶음 → 잔향을 남겨요.':'◌ 표식을 연결해 빛을 깨워요.';
 }
 function renderAudio(){
  $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;

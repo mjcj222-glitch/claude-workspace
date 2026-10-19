@@ -80,3 +80,5 @@ python agent-harness/games/resonance-circuit/panels_terminal_browser.py
 탐험 v1: 시작에서 연습/탐험 선택. 6개 방 분기·유물8종·HP유지·별도 저장, 패배 후 전투 재도전 없음. [설계](EXPEDITION-DESIGN.md) / [검증 보고](EXPEDITION-REPORT.md). 기존 연습 저장은 유지됩니다.
 
 최신 화면은 아이보리·차콜 UI입니다. [시각 설계/검수](NEUTRAL-UI-REPORT.md), `neutral-after-*.png` 참고. 포함된 기존 영상은 이전 디자인 기록입니다.
+
+최신 모바일 프레임: 스크롤 없는 전투와 메뉴 오버레이, 노드→상세→진입 지도. [보고서](MOBILE-FRAME-REPORT.md), `mobile-combat-*.png`, `mobile-play.mp4` 참고.

@@ -6,7 +6,7 @@ def read(page):return page.evaluate('(k)=>JSON.parse(localStorage.getItem(k))',K
 def idle(page):page.wait_for_function("document.querySelector('#board').dataset.resolving!=='true'")
 def run(b,w,h,motion,standalone):
  page=b.new_page(viewport={'width':w,'height':h},reduced_motion=motion,has_touch=True);errors=[];page.on('pageerror',lambda e:errors.append(str(e)));setup(page,standalone)
- page.locator('#startNew').click();page.locator('#modeMenu').click();practice=page.evaluate("localStorage.getItem('resonance-circuit-v1')")
+ page.locator('#startNew').click();page.locator('#menuOpen').click();page.locator('#modeMenu').click();practice=page.evaluate("localStorage.getItem('resonance-circuit-v1')")
  page.locator('#expeditionNew').click();page.locator('#journey').wait_for(state='visible');seed=read(page)['seed'];before=read(page)
  page.locator('#journeyNew').click();page.locator('#cancelNew').click();assert read(page)==before
  seen=set();n=0
@@ -21,7 +21,7 @@ def run(b,w,h,motion,standalone):
    before=read(page);page.reload();page.evaluate("async()=>window.oracle=await import('/engine.mjs')");page.locator('#expeditionContinue').click();assert read(page)==before
   if phase=='map':
    depth=e['depth'];index=1 if depth in [3,4] else 0
-   page.locator(f'[data-room="{depth}-{index}"]').evaluate('e=>{e.click();e.click()}')
+   page.locator(f'[data-room="{depth}-{index}"]').click();page.locator('#roomEnter').evaluate('e=>{e.click();e.click()}')
   elif phase=='reward':page.locator('[data-reward]').first.evaluate('e=>{e.click();e.click()}')
   elif phase=='room':
    choice='gift' if e['map'][e['depth']][int(e['path'][-1][-1])]['type']=='event' and e['state']['hp']>60 and e['offer'] else 'rest'

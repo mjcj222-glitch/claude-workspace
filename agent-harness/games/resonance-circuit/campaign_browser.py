@@ -31,7 +31,7 @@ def full_run(browser,w,h,motion,standalone):
  page.locator('.lesson-target').first.tap();idle(page)
  assert saved(page)['learned'] and not page.locator('#coach').is_visible()
  # New-game cancellation must preserve the board and progress.
- before=saved(page)['run'];page.locator('#newSeed').click();page.locator('#cancelNew').click();assert saved(page)['run']==before
+ before=saved(page)['run'];page.locator('#menuOpen').click();page.locator('#newSeed').click();page.locator('#cancelNew').click();assert saved(page)['run']==before
  # Reload resumes the exact board, phase and RNG. No automatic gameplay.
  page.reload();page.evaluate("async()=>{window.oracle=await import('/engine.mjs')}");page.locator('#continueRun').click();assert saved(page)['run']==before
  # Arrow boundaries and keyboard confirmation, touch cancellation (synthetic browser PointerEvent).
@@ -44,8 +44,8 @@ def full_run(browser,w,h,motion,standalone):
  assert saved(page)['run']==before
  # Audio opt in + volume save; keep muted during bulk automated battle.
  assert page.locator('#sound').get_attribute('aria-pressed')=='false'
- page.locator('#sound').click();assert saved(page)['audio']['enabled'];page.locator('#volume').fill('20');page.locator('#volume').dispatch_event('input');assert saved(page)['audio']['volume']==.2
- page.locator('#sound').click();assert not saved(page)['audio']['enabled']
+ page.locator('#menuOpen').click();page.locator('#sound').click();assert saved(page)['audio']['enabled'];page.locator('#volume').fill('20');page.locator('#volume').dispatch_event('input');assert saved(page)['audio']['volume']==.2
+ page.locator('#sound').click();assert not saved(page)['audio']['enabled'];page.locator('#menuClose').click()
  captured=set();upgrades=0
  for n in range(350):
   r=saved(page)['run']
