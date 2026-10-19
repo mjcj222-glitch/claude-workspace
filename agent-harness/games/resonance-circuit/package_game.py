@@ -4,7 +4,7 @@ import re
 import zipfile
 
 ROOT = Path(__file__).resolve().parent
-modules = ['config.mjs', 'engine.mjs', 'app.mjs']
+modules = ['config.mjs', 'engine.mjs', 'effects.mjs', 'app.mjs']
 code = '\n'.join((ROOT / name).read_text() for name in modules)
 code = re.sub(r'^import .*?;\s*$', '', code, flags=re.MULTILINE)
 code = re.sub(r'^export ', '', code, flags=re.MULTILINE)

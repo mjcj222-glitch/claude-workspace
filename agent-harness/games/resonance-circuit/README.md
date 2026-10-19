@@ -44,4 +44,8 @@ python agent-harness/games/resonance-circuit/browser_check.py
 - `engine.test.mjs`, `browser_check.py`: 로직 및 브라우저 검사
 - `preview-360.png`, `preview-1280.png`: 실제 Chromium 렌더링
 
-배포에는 앞의 런타임 파일 5개만 필요합니다. 롤백은 PR을 병합하지 않거나, 병합 이후에는 이 폴더만 추가한 커밋을 별도 검토하여 되돌립니다. 이 작업에서 파일 삭제·병합·배포를 수행하지 않습니다.
+배포에는 앞의 런타임 파일 6개만 필요합니다. 롤백은 PR을 병합하지 않거나, 병합 이후에는 이 폴더만 추가한 커밋을 별도 검토하여 되돌립니다. 이 작업에서 파일 삭제·병합·배포를 수행하지 않습니다.
+
+## 시각 개선판
+
+SVG 유리꽃 보스, 보석 회로, 실제 폭탄·잔향 기반 효과와 개별 낙하를 추가했습니다. `effects.mjs`는 시각 효과만 담당합니다. 전후 비교와 검증 한계는 [VISUAL-REPORT.md](VISUAL-REPORT.md)를 참조하세요. 다운로드판은 `resonance-circuit.zip`을 풀고 `standalone.html`을 엽니다. 관리형 브라우저의 file:// 차단 때문에 직접 파일 실행 성공은 미확인입니다.

@@ -50,18 +50,29 @@ def run():
      if mode=='largest':
       for selector in ['[data-skill="0"]','[data-skill="1"]','#boost']:
        b=page.locator(selector)
-       if b.is_enabled(): b.click()
+       if b.is_enabled():
+        b.click()
+        if selector=='#boost':
+         assert page.locator('body').evaluate("e=>e.classList.contains('overcharged')")
+         page.screenshot(path=str(ROOT/f'overcharge-{width}.png'),full_page=True)
      idx=page.evaluate('''mode=>{const b=[...document.querySelectorAll('.tile')];const colors=b.map(e=>['coral','gold','blue','heal'].find(c=>e.classList.contains(c)));const sizes=b.map((_,i)=>{const seen=new Set([i]),q=[i];for(const k of q){const c=Math.floor(k/7),r=k%7;for(const [dc,dr] of [[0,-1],[0,1],[-1,0],[1,0],[-1,c%2?1:-1],[1,c%2?1:-1]]){const x=c+dc,y=r+dr,n=x*7+y;if(x>=0&&x<6&&y>=0&&y<7&&!seen.has(n)&&colors[n]===colors[i]){seen.add(n);q.push(n);}}}return seen.size;});return sizes.indexOf(mode==='largest'?Math.max(...sizes):Math.min(...sizes));}''',mode)
 
      target=page.locator('.tile').nth(idx)
      if motion=='reduce': target.evaluate('e=>e.click()')
      else: target.tap()
-     page.wait_for_timeout(35 if motion=='reduce' else 450)
+     page.wait_for_timeout(35 if motion=='reduce' else 800)
     assert page.locator('#ending').evaluate('(e)=>e.open'), 'No ending within 120 taps'
+    page.wait_for_timeout(850)
+    assert page.locator('.fx-label').count()==0
+    assert page.locator('#effects').get_attribute('data-active') in ['0',None]
+    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+    assert page.locator('.cleared,.falling,.blast,.hit,.skill-used').count()==0
+    page.screenshot(path=str(ROOT/f'ending-{mode}-{width}.png'),full_page=True)
     result=page.locator('#result').inner_text()
     assert ('돌아왔습니다' in result) if mode=='largest' else ('꺼진' in result)
     print(json.dumps({'viewport':width,'strategy':mode,'result':result,'stats':page.locator('#stats').inner_text()},ensure_ascii=False))
     page.locator('#again').click();assert '3 / 3' in page.locator('#taps').inner_text()
+   page.wait_for_timeout(850)
    if motion=='reduce': page.screenshot(path=str(ROOT/f'standalone-preview-{width}.png'),full_page=True)
    assert not errors, errors
    print(f'PASS {width}px motion={motion}: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested; normal motion uses touch pointer taps')

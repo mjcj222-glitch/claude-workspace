@@ -1,0 +1,33 @@
+✔ hex bounds, six neighbors and symmetry (2.322927ms)
+✔ initial group 1 special threshold (0.590604ms)
+✔ initial group 4 special threshold (0.240895ms)
+✔ initial group 5 special threshold (0.270189ms)
+✔ initial group 9 special threshold (0.288076ms)
+✔ initial group 10 special threshold (0.125259ms)
+✔ heal groups do not create special (0.235246ms)
+✔ overlapping bombs chain, charge counted once, explosion does not raise initial threshold (0.168545ms)
+✔ gravity preserves survivor order and IDs, seeded refill is deterministic (0.920844ms)
+✔ echo is pre-gravity neighbor order, max eight, surviving normals only (0.591326ms)
+✔ echo trigger requires original group; blast-only contact expires other marks (0.505526ms)
+✔ original group echo fires all old marks once; new echo does not recurse (0.17215ms)
+✔ miss expires, preview does not, echo crosses turn boundary (0.261106ms)
+✔ bomb and color conversion preserve ID/color/kind/echo as required (0.223048ms)
+✔ heal conversion clears marks, does not overwrite specials; shortage and zero (0.250298ms)
+✔ cooldown T+3, skills do not spend taps (0.126081ms)
+✔ three taps settle, heal cap, boss dead cannot retaliate (0.138059ms)
+✔ loss and restart reset all state, alternating attacks (0.399725ms)
+✔ overcharge only before first tap, double damage not healing, no gauge gain (0.146101ms)
+✔ input gate rejects duplicate until resolution finishes (0.097168ms)
+✔ keyboard top edge stays on same tile (0.084007ms)
+✔ keyboard bottom edge stays on same tile (0.070297ms)
+✔ keyboard left edge stays on same tile (0.052339ms)
+✔ keyboard right edge stays on same tile (0.02619ms)
+✔ keyboard interior row and column movement (0.053971ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.402203
