@@ -1,0 +1,78 @@
+Validation UTC: 2026-10-19T10:42:07.172320+00:00
+Environment: Linux cloud workspace; Python 3.12.14
+Node: v24.19.0
+Initial baseline 670c402: harness check exit 0; unittest 5/5 exit 0. Latest main base: 2d7679357427dcc267e11138fd70ec92e18ce132.
+Read-only CLI issue requests failed: GraphQL and REST Forbidden (exit 1); connected GitHub fetch_issue succeeded.
+Diagnostic ls /usr/lib/node_modules failed (exit 2, path absent); installed Python Playwright and Chromium found.
+
+$ python agent-harness/harness.py check
+OK: 1 research topic(s), 4 role(s), templates present.
+
+
+EXIT 0
+
+$ python -m unittest discover -s agent-harness/tests -v
+OK: 1 research topic(s), 4 role(s), templates present.
+
+test_brief_includes_goal_and_rules (test_harness.HarnessTests.test_brief_includes_goal_and_rules) ... ok
+test_default_topic_is_active (test_harness.HarnessTests.test_default_topic_is_active) ... ok
+test_rejects_path_traversal_id (test_harness.HarnessTests.test_rejects_path_traversal_id) ... ok
+test_topic_ids_unique (test_harness.HarnessTests.test_topic_ids_unique) ... ok
+test_workspace_validates (test_harness.HarnessTests.test_workspace_validates) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
+
+EXIT 0
+
+$ node --test agent-harness/games/resonance-circuit/engine.test.mjs
+✔ hex bounds, six neighbors and symmetry (2.776694ms)
+✔ initial group 1 special threshold (0.698678ms)
+✔ initial group 4 special threshold (0.274125ms)
+✔ initial group 5 special threshold (0.251621ms)
+✔ initial group 9 special threshold (0.255727ms)
+✔ initial group 10 special threshold (0.223839ms)
+✔ heal groups do not create special (0.322338ms)
+✔ overlapping bombs chain, charge counted once, explosion does not raise initial threshold (0.167985ms)
+✔ gravity preserves survivor order and IDs, seeded refill is deterministic (1.029368ms)
+✔ echo is pre-gravity neighbor order, max eight, surviving normals only (0.624756ms)
+✔ echo trigger requires original group; blast-only contact expires other marks (0.318803ms)
+✔ original group echo fires all old marks once; new echo does not recurse (0.199202ms)
+✔ miss expires, preview does not, echo crosses turn boundary (0.244971ms)
+✔ bomb and color conversion preserve ID/color/kind/echo as required (0.270399ms)
+✔ heal conversion clears marks, does not overwrite specials; shortage and zero (0.196467ms)
+✔ cooldown T+3, skills do not spend taps (0.115786ms)
+✔ three taps settle, heal cap, boss dead cannot retaliate (0.135996ms)
+✔ loss and restart reset all state, alternating attacks (0.312023ms)
+✔ overcharge only before first tap, double damage not healing, no gauge gain (0.148485ms)
+✔ input gate rejects duplicate until resolution finishes (0.130377ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65.909973
+
+
+EXIT 0
+
+$ python agent-harness/games/resonance-circuit/browser_check.py
+{"viewport": 360, "strategy": "largest", "result": "온실에 빛이 돌아왔습니다", "stats": "3턴 · 최대 연쇄 27 · 잔향 발동 3회. 다음 회로에서는 어떤 빛을 남길까요?"}
+{"viewport": 360, "strategy": "smallest", "result": "잠시 꺼진 온실", "stats": "6턴 · 최대 연쇄 1 · 잔향 발동 0회. 다음 회로에서는 어떤 빛을 남길까요?"}
+PASS 360px motion=reduce: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested in reduced-motion cases
+{"viewport": 1280, "strategy": "largest", "result": "온실에 빛이 돌아왔습니다", "stats": "3턴 · 최대 연쇄 27 · 잔향 발동 3회. 다음 회로에서는 어떤 빛을 남길까요?"}
+{"viewport": 1280, "strategy": "smallest", "result": "잠시 꺼진 온실", "stats": "6턴 · 최대 연쇄 1 · 잔향 발동 0회. 다음 회로에서는 어떤 빛을 남길까요?"}
+PASS 1280px motion=reduce: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested in reduced-motion cases
+PASS 360px motion=no-preference: tutorial, layout, drag cancel, duplicate input, keyboard, touch, no JS errors; endings tested in reduced-motion cases
+
+
+EXIT 0
+
+$ git diff --check
+
+
+EXIT 0

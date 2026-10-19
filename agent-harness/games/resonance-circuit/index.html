@@ -1,0 +1,9 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>잔향 회로 · 유리 온실</title><link rel="stylesheet" href="style.css">
+<body><main><header><span class="eyebrow">GLASSHOUSE / CIRCUIT 07</span><h1>잔향 회로</h1><p>사라진 빛이 다음 빛을 깨웁니다.</p></header>
+<section class="glass enemy"><div class="line"><h2>온실의 그림자</h2><span id="turn"></span></div><progress id="boss" aria-label="보스 체력"></progress><div class="line"><span id="bossText"></span><strong id="incoming"></strong></div></section>
+<section class="glass"><div class="line"><strong id="health"></strong><span id="taps"></span></div><p id="pending"></p><div id="board" role="group" aria-label="6열 7행 빛 회로. 방향키 이동, Enter 또는 Space 확정"></div><p id="preview">타일을 누르거나 키보드로 선택하면 연결을 미리 봅니다.</p><p id="echo"></p></section>
+<section class="glass"><div class="line"><label for="gauge">과충전</label><span id="gaugeText"></span></div><progress id="gauge"></progress><button id="boost">빛 증폭 · 이번 턴 피해 ×2</button><div class="skills"><button data-skill="0">굴절사<br><small>파랑 → 산호</small></button><button data-skill="1">점화사<br><small>일반 공격 2개 → 폭탄</small></button><button data-skill="2">정원사<br><small>일반 공격 6개 → 회복</small></button></div><p id="notice" role="status" aria-live="polite">빛 회로를 연결해 온실을 복구하세요.</p></section>
+<footer><button id="help">규칙 보기</button><button id="restart">같은 시드 재시작</button><button id="newSeed">새 시드</button><p>소리 없음 · 외부 통신 없음 · 색과 모양으로 구분</p></footer>
+<dialog id="guide"><span class="eyebrow" id="step"></span><h2 id="guideTitle"></h2><p id="guideText"></p><button id="guideNext">다음</button></dialog>
+<dialog id="ending"><h2 id="result"></h2><p id="stats"></p><button id="again">같은 회로 다시</button><button id="another">새 회로 시작</button></dialog>
+</main><script type="module" src="app.mjs"></script></body></html>
