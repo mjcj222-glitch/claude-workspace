@@ -1,11 +1,14 @@
-# 잔향 회로 — 다운로드 실행판
+# 잔향 회로 · 오프라인 탐험판
 
-ZIP을 풀고 `resonance-circuit/standalone.html`을 브라우저로 열면 됩니다. 인터넷·서버·설치·API 키 없이 실행합니다. 원본 HTML/CSS/ES modules도 함께 포함되어 있습니다.
+ZIP을 풀고 standalone.html을 브라우저로 여세요. 3전투와 두 번의 성장 선택, 최종 결과와 재도전까지 연결됩니다. 이미지와 프로그램은 독립 HTML에 내장돼 있습니다. 원본 모듈과 assets도 함께 제공합니다.
 
-`standalone.html`은 검증된 원본을 `package_game.py`로 결합한 파일입니다. 코드 변경은 기존 모듈에서 검토하고 다시 생성하는 방식으로 관리합니다. 원본 `index.html`은 ES modules용 HTTP 환경이 필요하지만 `standalone.html`은 `file://`로 실행됩니다.
+같은 모양·색을 누르고 떼면 해소, 드래그하면 취소합니다. 방향키/Enter/Space도 지원합니다. 5개 이상 연결하면 ◌ 잔향이 남고, 다음 연결이 표식에 닿으면 이전 잔향 전체가 발동합니다. 3탭마다 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 다시 준비됩니다.
 
-조작: 같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 3탭마다 전투 정산. 공격색 5개 이상을 연결하면 이웃에 잔향(◌)이 생깁니다. 다음 탭의 연결이 표식에 닿으면 이전 잔향 전체가 발동합니다. 스킬과 과충전을 활용하세요. 기본 무음이며 시스템의 reduced-motion을 따릅니다.
+시작 화면의 이어하기는 같은 브라우저·주소의 버전 검증된 localStorage 저장을 사용합니다. 저장 불가 상태에서는 현재 플레이는 가능하지만 종료 후 진행을 복원할 수 없습니다. 새 탐험은 확인 후 진행을 덮어씁니다. 패배 재도전은 전투 진입 상태를 정확히 복원합니다.
 
-검증 한계: 이 클라우드 Chromium의 관리 정책이 `file://` 탐색을 ERR_BLOCKED_BY_ADMINISTRATOR로 차단했습니다. 따라서 직접 파일 열기 성공은 검증하지 못했습니다. 별도 서버 없이 브라우저 내부 응답으로 독립 HTML의 게임 흐름을 검사합니다. 최초 차단 기록은 `offline-validation.log`, 대체 검사는 `standalone-validation.log`에 있습니다. 실물 모바일 파일 열기 방식은 운영체제별 차이가 있으며 Safari/Firefox와 사람의 재미 평가는 미검수입니다.
+음향 기본 꺼짐. 직접 켜고 음량을 조절할 수 있습니다. 외부 음원 없이 Web Audio로 생성하며 탭이 숨겨지면 정지합니다. 오디오 미지원이어도 플레이합니다. 기본 무음/reduced-motion/색 외 모양 구분을 지원합니다.
 
-배포하거나 main에 병합하지 않은 시제품입니다. Draft PR: https://github.com/mjcj222-glitch/claude-workspace/pull/2
+검증 한계: 개발 환경의 관리형 Chromium이 file://를 차단했으므로 직접 파일 열기 성공은 미확인입니다. 서버 없이 브라우저 내부 응답 방식으로 독립 HTML의 전체 흐름은 검사했습니다. 실물 모바일, Safari/Firefox, 스크린리더, 실제 청취·재미 평가는 남았습니다.
+
+Draft PR: https://github.com/mjcj222-glitch/claude-workspace/pull/2
+수동 배포·main 병합은 하지 않은 검토용 게임입니다.

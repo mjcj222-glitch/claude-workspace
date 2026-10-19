@@ -1,55 +1,49 @@
-# 잔향 회로
+# 잔향 회로 · 세 정원 탐험
 
-고장 난 유리 온실의 빛 회로를 되살리는 싱글플레이 퍼즐 전투 시제품. 원작 에셋·캐릭터·음악·로고를 사용하지 않았습니다. 실행 시 외부 통신·분석·오디오·저장소 접근이 없으며 빌드 및 런타임 의존성도 없습니다.
+승인된 만화풍 온실 시안으로 구현한 오프라인 퍼즐 전투입니다. 시작 → 실제 보드 잔향 안내 → 3전투 → 전투 사이 2택1 성장 → 최종 결과 → 새 탐험/전투 재도전으로 이어집니다. 로그인·서버·광고·과금·추적·외부 네트워크 요청은 없습니다.
 
 ## 실행
 
-이 폴더의 정적 파일을 ES modules를 지원하는 HTTP 환경에서 열면 됩니다. 사용자가 로컬에서 직접 실행할 때:
+`resonance-circuit.zip`을 풀고 `standalone.html`을 브라우저로 엽니다. 이미지·CSS·JS가 모두 내장되어 있습니다. 이 클라우드 환경의 관리 정책은 file://를 차단하므로 직접 파일 실행 성공은 미검증입니다. 모듈판을 사용자가 로컬에서 실행할 경우:
 
 ```sh
 cd agent-harness/games/resonance-circuit
 python -m http.server 8000 --bind 127.0.0.1
-# 브라우저에서 http://127.0.0.1:8000
+# http://127.0.0.1:8000
 ```
 
-`file://` 직접 열기는 모듈 로딩 제한 때문에 지원하지 않습니다. 개발 작업 중 위 서버를 실행하거나 웹 배포하지 않았습니다.
+개발 중 호스팅·배포를 시작하지 않았습니다.
 
-## 조작과 규칙
+## 플레이
 
-- 같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 12px 이상 움직이거나 취소하면 탭하지 않습니다.
-- 키보드: 방향키로 행·열 이동, Enter/Space 확정. Tab으로 스킬·규칙·재시작 이동.
-- 3탭 뒤 회복 상한 적용 → 피해 정산 → 보스가 생존한 경우 예고 공격. 고립 타일도 유효합니다.
-- 공격색 5–9개는 차지(ϟ, 추가 피해), 10개 이상은 폭탄(✹, 인접 연쇄)을 생성합니다.
-- 큰 최초 묶음의 생존 이웃 최대 8개에 ◌ 잔향이 남습니다. 다음 탭의 최초 묶음에 ◌이 있으면 이전 표식 전부 발동. 빗나가면 만료됩니다.
-- 스킬은 탭을 쓰지 않고 3턴 뒤 재사용합니다. 파랑→산호 / 일반 공격 최대2개→폭탄 / 일반 공격 최대6개→회복.
-- 게이지가 찼을 때 턴 첫 탭 전에 과충전을 누르면 그 턴 피해가 2배입니다.
-- 같은 시드 재시작은 동일한 난수열을 재현합니다. 새 시드는 브라우저 난수를 사용하며 첫 기회용 큰 묶음은 유지합니다.
-- 기본 무음. 시스템의 reduced-motion 설정을 따릅니다. 종료 및 해소 중에는 전투 입력을 막습니다.
+같은 색·모양을 누르면 미리보기, 같은 위치에서 떼면 확정합니다. 방향키 이동, Enter/Space 확정, Tab으로 다른 버튼 이동. 드래그·pointercancel은 취소합니다. 3탭 뒤 회복 → 보스 피해 → 생존 보스의 예고 공격을 정산합니다.
+
+공격색 5개 이상은 차지와 이웃 잔향, 10개 이상은 폭탄을 만듭니다. 다음 최초 연결이 잔향에 닿으면 이전 표식 전체가 발동합니다. 스킬은 탭 없이 사용하며 3턴 뒤 준비됩니다. 과충전은 게이지55를 채운 뒤 턴 첫 탭 전에 사용합니다.
+
+전투 승리 후 성장 하나를 선택합니다. 체력45 회복·게이지 유지, 새 보드·준비된 스킬로 다음 전투를 시작합니다. 패배하면 해당 전투의 진입 체력·게이지·성장·시드에서 정확히 재도전합니다. 새 탐험은 진행 덮어쓰기를 확인합니다.
+
+## 저장·음향
+
+보드/RNG/성장/튜토리얼 완료/음향 설정을 버전1 localStorage에 자동 저장합니다. 같은 브라우저·주소에서 이어하기를 선택하세요. 손상되거나 버전이 맞지 않는 저장은 사용하지 않습니다. 저장이 막히면 현재 플레이는 가능하지만 창을 닫은 뒤 복구되지 않습니다. 기기/주소 간 동기화는 없습니다.
+
+음향은 기본 꺼짐입니다. 사용자 토글 후 Web Audio로 짧은 부드러운 합성음을 생성하며 음량을 조절할 수 있습니다. 탭이 숨겨지면 정지하고 다음 사용자 조작 때 재개합니다. 오디오가 없어도 플레이할 수 있습니다. 실제 청취 품질은 미검증입니다.
 
 ## 검증
 
 ```sh
-node --test agent-harness/games/resonance-circuit/engine.test.mjs
-# 선택 사항: 이미 설치된 Python Playwright와 /usr/bin/chromium이 있을 때만
-python agent-harness/games/resonance-circuit/browser_check.py
+node --test agent-harness/games/resonance-circuit/engine.test.mjs agent-harness/games/resonance-circuit/campaign.test.mjs
+node agent-harness/games/resonance-circuit/balance.mjs
+# 기존 설치된 Playwright 및 /usr/bin/chromium이 있는 환경:
+python agent-harness/games/resonance-circuit/campaign_browser.py
+python agent-harness/games/resonance-circuit/resilience_browser.py
+python agent-harness/games/resonance-circuit/layout_check.py
+python agent-harness/games/resonance-circuit/art_check.py
 ```
 
-브라우저 검사기는 서버 없이 내부 route 응답으로 로컬 파일을 읽으며 PNG 검수 이미지를 같은 폴더에 생성합니다. 외부 패키지 설치가 필요하지 않은 순수 로직 검사는 node:test입니다. 실행 기록과 한계는 [REPORT.md](REPORT.md), 실제 출력은 [validation.log](validation.log)를 참조하세요.
+서버를 열지 않고 브라우저 내부 route로 검증합니다. 전체 결과/시드 실험/미검증 사항은 [CAMPAIGN-REPORT.md](CAMPAIGN-REPORT.md)에 있습니다. 자동 검사를 재미나 상용 품질의 증명으로 보지 않습니다.
 
-## 파일
+## 구조·에셋
 
-- `config.mjs`: 밸런스 수치·시드
-- `engine.mjs`: DOM과 분리된 결정론 로직
-- `app.mjs`, `index.html`, `style.css`: 입력·접근성·화면
-- `engine.test.mjs`, `browser_check.py`: 로직 및 브라우저 검사
-- `preview-360.png`, `preview-1280.png`: 실제 Chromium 렌더링
+`engine.mjs`: 기존 hex/연쇄 규칙, `campaign.mjs`: 전투·성장·재도전, `storage.mjs`: 저장 검증, `audio.mjs`: 제스처 기반 음향, `effects.mjs`: 시각 효과, `app.mjs`: 입력·화면 연결. `config.mjs`/`campaign.mjs`에 밸런스 수치가 있습니다.
 
-배포에는 앞의 런타임 파일 6개만 필요합니다. 롤백은 PR을 병합하지 않거나, 병합 이후에는 이 폴더만 추가한 커밋을 별도 검토하여 되돌립니다. 이 작업에서 파일 삭제·병합·배포를 수행하지 않습니다.
-
-## 시각 개선판
-
-SVG 유리꽃 보스, 보석 회로, 실제 폭탄·잔향 기반 효과와 개별 낙하를 추가했습니다. `effects.mjs`는 시각 효과만 담당합니다. 전후 비교와 검증 한계는 [VISUAL-REPORT.md](VISUAL-REPORT.md)를 참조하세요. 다운로드판은 `resonance-circuit.zip`을 풀고 `standalone.html`을 엽니다. 관리형 브라우저의 file:// 차단 때문에 직접 파일 실행 성공은 미확인입니다.
-
-## 승인 시안 적용판
-
-밝은 청록 온실의 중앙 세로 UI로 구성했습니다. 임시 캐릭터 원본은 `assets/approved-concept.png`, 교체 설정은 `assets/characters.css`와 `assets/manifest.json`입니다. 전체 그림 위에 버튼을 얹지 않고 실제 6×7 보드와 HUD를 렌더링합니다. 세부 검증과 한계는 [CONCEPT-IMPLEMENTATION.md](CONCEPT-IMPLEMENTATION.md)를 참조하세요. 모듈판 전달 시 assets 폴더를 함께 포함해야 하며, ZIP에는 이미지가 내장된 standalone.html도 포함됩니다.
+승인 원본은 `assets/approved-concept.png`로 보존했습니다. 임시 캐릭터와 개별 보석은 CSS sprite이며, 교체 슬롯은 `assets/characters.css`와 `assets/manifest.json`에 있습니다. 캐릭터 재디자인은 하지 않았습니다. `package_game.py`는 원본에서 이미지 내장 HTML/ZIP을 생성합니다.

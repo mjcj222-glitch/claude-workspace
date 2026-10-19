@@ -14,3 +14,9 @@
 #boost:not(:disabled){color:white;border-color:#fff4b7;box-shadow:inset 0 0 0 2px #a16d0d,0 0 8px #ffe39b88}
 @media(min-width:390px){.gem{width:46px;height:44px}.tile{height:44px}.tile.odd{transform:translateY(23px)}}
 .gem{clip-path:polygon(25% 1%,75% 1%,97% 25%,100% 55%,76% 99%,24% 99%,1% 75%,0 30%)}
+/* Campaign controls stay readable; learning replaces the small preview rows. */
+#coach{display:flex;align-items:center;gap:5px;font-size:11px;line-height:1.35;padding:4px 2px}#coach[hidden]{display:none}#skipLesson{flex-shrink:0;padding:5px;font-size:10px;min-height:28px}.lesson-target .gem{filter:drop-shadow(0 0 3px #e8ffae)}
+.learning #preview,.learning #echo{display:none}.settings{display:flex;align-items:center;justify-content:space-between;gap:5px;font-size:10px;margin:4px 0;color:#123e45}.settings button{font-size:10px;min-height:28px;padding:3px 7px}.settings label{display:flex;align-items:center;gap:3px}.settings input{width:65px}#saveStatus{font-size:9px}
+#choices{display:grid;gap:10px}#choices button{display:block;text-align:left;padding:14px}#choices strong,#choices span{display:block}#choices span{font-size:13px;line-height:1.6;margin-top:5px}#stats{white-space:pre-line}.hurt{animation:hurt .4s ease-out}@keyframes hurt{50%{color:#ff9d9d;transform:translateX(2px)}}
+#incoming{font-size:10px}#notice{font-size:11px}.skills button{font-size:12px}.portrait{height:auto!important;aspect-ratio:1;background-position-y:89.15835%}.concept-boss{aspect-ratio:940/270;background-position-y:5.42083%}#board{gap:1px;padding-bottom:24px}
+.settings button{color:#effff7}.cooldown{font-size:10px}

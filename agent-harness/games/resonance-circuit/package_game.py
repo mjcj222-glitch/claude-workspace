@@ -5,7 +5,7 @@ import base64
 import zipfile
 
 ROOT = Path(__file__).resolve().parent
-modules = ['config.mjs', 'engine.mjs', 'effects.mjs', 'app.mjs']
+modules = ['config.mjs', 'engine.mjs', 'campaign.mjs', 'storage.mjs', 'audio.mjs', 'effects.mjs', 'app.mjs']
 code = '\n'.join((ROOT / name).read_text() for name in modules)
 code = re.sub(r'^import .*?;\s*$', '', code, flags=re.MULTILINE)
 code = re.sub(r'^export ', '', code, flags=re.MULTILINE)

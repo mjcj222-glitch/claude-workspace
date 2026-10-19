@@ -7,8 +7,9 @@ export function neighbors(i) {
 }
 function random(s) { s.rng=(Math.imul(s.rng,1664525)+1013904223)>>>0; return s.rng/4294967296; }
 function tile(s,color) {return {id:s.nextID++,color:color??COLORS[Math.floor(random(s)*4)],kind:'normal'};}
-export function createGame(seed=C.seed) {
+export function createGame(seed=C.seed, overrides=null) {
  const s={seed:seed>>>0,rng:seed>>>0,nextID:1,board:[],echo:[],hp:C.hp,bossHP:C.bossHP,turn:1,taps:3,damage:0,healing:0,gauge:0,boost:false,ready:[1,1,1],status:'playing',maxChain:0,echoCount:0};
+ if(overrides){s.rules={...C,...overrides};s.hp=s.rules.hp;s.bossHP=s.rules.bossHP;}
  s.board=Array.from({length:42},()=>tile(s));
  // A guaranteed opening cluster, next to surviving attack tiles.
  for(const i of [1,2,3,8,9,10]) s.board[i].color='coral';
@@ -27,12 +28,14 @@ export function preview(s,index) {
  const removed=new Set(initial), queue=[...initial];
  if(echoHit) s.board.forEach((t,i)=>{if(s.echo.includes(t.id)&&!removed.has(i)){removed.add(i);queue.push(i);}});
  for(const i of queue) if(s.board[i].kind==='bomb') for(const n of neighbors(i)) if(!removed.has(n)){removed.add(n);queue.push(n);}
+ const rules=s.rules??C;
  let damage=0,healing=0;
- for(const i of removed){const t=s.board[i]; if(t.color==='heal') healing+=C.heal; else damage+=C.attack; if(t.kind==='charge') damage+=C.charge;}
+ for(const i of removed){const t=s.board[i]; if(t.color==='heal') healing+=rules.heal; else damage+=rules.attack; if(t.kind==='charge') damage+=rules.charge;}
  return {initial,removed:[...removed],echoHit,damage:damage*(s.boost?2:1),healing};
 }
 export function tap(s,index) {
  if(s.status!=='playing'||!s.board[index]) return null;
+ const rules=s.rules??C;
  const p=preview(s,index), removed=new Set(p.removed), original=s.board, selected=original[index];
  const make=selected.color!=='heal'&&p.initial.length>=5;
  const candidates=new Set(p.initial.flatMap(neighbors));
@@ -49,9 +52,9 @@ export function tap(s,index) {
  s.taps--;
  let retaliation=0;
  if(s.taps===0){
-   s.hp=Math.min(C.hp,s.hp+s.healing);s.bossHP=Math.max(0,s.bossHP-s.damage);
+   s.hp=Math.min(rules.hp,s.hp+s.healing);s.bossHP=Math.max(0,s.bossHP-s.damage);
    if(s.bossHP===0)s.status='won';
-   else {retaliation=C.attacks[(s.turn-1)%2];s.hp=Math.max(0,s.hp-retaliation);if(!s.hp)s.status='lost';}
+   else {retaliation=rules.attacks[(s.turn-1)%rules.attacks.length];s.hp=Math.max(0,s.hp-retaliation);if(!s.hp)s.status='lost';}
    if(s.status==='playing'){s.turn++;s.taps=3;s.damage=0;s.healing=0;s.boost=false;}
  }
  return {...p,special,retaliation};
