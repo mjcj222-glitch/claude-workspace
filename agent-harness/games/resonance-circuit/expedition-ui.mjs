@@ -1,11 +1,11 @@
 import {RELICS,availableRooms,currentRoom,roomRules,enterRoom,rewards,takeReward,resolveRoom} from './expedition.mjs';
 export const ROOM_NAMES={normal:'새싹 수호자',elite:'정예 · 수정 파수꾼',rest:'이슬 쉼터',event:'종이새의 선물',boss:'최종 · 온실의 여왕'};
 export function roomDescription(n){if(n.type==='rest')return '안전 · 체력36 회복 (최대180)';if(n.type==='event')return '선택 · 체력18을 유물로 / 체력22 회복';const r=roomRules(n);return `적 체력${r.bossHP} · 반격 ${r.attacks.join('→')}${r.echoWard?' · 장막20%, 잔향으로 해제':''} · ${n.type==='boss'?'탐험 완주':`승리 회복${n.type==='elite'?12:6} + 유물 선택`}`;}
-export function createExpeditionUI(getRun,onChange){
+export function createExpeditionUI(getRun,onChange,onChoice=()=>{}){
  const $=id=>document.getElementById(id);let pendingRoom=null;
  $('roomBack').onclick=()=>$('roomDetail').close();$('roomEnter').onclick=()=>{const e=getRun();if(pendingRoom&&enterRoom(e,pendingRoom)){$('roomDetail').close();pendingRoom=null;onChange();}};
  function inspectRoom(e,n){pendingRoom=n.id;$('roomDetailTitle').textContent=ROOM_NAMES[n.type];$('roomDetailText').textContent=roomDescription(n);$('roomEnter').disabled=!availableRooms(e).some(r=>r.id===n.id);$('roomDetail').showModal();return false;}
- function button(text,description,action){const b=document.createElement('button'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=text;small.textContent=description;b.append(strong,small);b.onclick=()=>{if(action())onChange();};return b;}
+ function button(text,description,action){const b=document.createElement('button'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=text;small.textContent=description;b.append(strong,small);b.onclick=()=>{if(action()){onChange();onChoice(text);}};return b;}
  function render(){
   const e=getRun();if(!e||e.mode!=='expedition')return;
   $('journeyHealth').textContent=`체력 ${e.state.hp}/180 · 보호 ${e.shield} · 시드 ${e.seed}`;

@@ -12,16 +12,16 @@ with sync_playwright() as p:
    for box in dimensions['tiles']+dimensions['dock']:assert box['x']>=0 and box['y']>=0 and box['x']+box['w']<=w+1 and box['y']+box['h']<=h+1 and box['h']>=39,box
    assert page.locator('#incoming').is_visible() and page.locator('#bossText').is_visible()
    assert abs(dimensions['art']['w']/dimensions['art']['h']-940/492)<.01
-   page.screenshot(path=str(ROOT/f'mobile-battle-{w}-{h}-{motion}.png'))
-   page.locator('#skipLesson').click();page.screenshot(path=str(ROOT/f'mobile-combat-{w}-{h}-{motion}.png'));before=page.evaluate("localStorage.getItem('resonance-circuit-v1')")
+   page.wait_for_timeout(180);page.screenshot(path=str(ROOT/f'mobile-battle-{w}-{h}-{motion}.png'))
+   page.locator('#skipLesson').click();page.wait_for_timeout(180);page.screenshot(path=str(ROOT/f'mobile-combat-{w}-{h}-{motion}.png'));before=page.evaluate("localStorage.getItem('resonance-circuit-v1')")
    for n in range(3):
     page.locator('#menuOpen').click();assert page.locator('#gameMenu').is_visible();page.locator('.tile').nth(1).evaluate('e=>e.click()');assert page.evaluate("localStorage.getItem('resonance-circuit-v1')")==before
     page.locator('#menuClose').click();assert page.locator('#gameMenu').is_hidden()
    page.keyboard.press('Tab');page.locator('#menuOpen').focus();page.keyboard.press('Enter');page.keyboard.press('Escape');assert page.locator('#menuOpen').evaluate('e=>e===document.activeElement')
    page.locator('[data-skill="0"]').click();assert page.locator('#saveStatus').inner_text()=='저장됨'
    page.locator('.tile').nth(1).evaluate('e=>{e.click();e.click()}');page.locator('#menuOpen').click();page.wait_for_function("document.querySelector('#board').dataset.resolving==='false'");assert page.evaluate("JSON.parse(localStorage.getItem('resonance-circuit-v1')).run.state.taps")==2;page.locator('#menuClose').click()
-   page.locator('#menuOpen').click();page.screenshot(path=str(ROOT/f'mobile-menu-{w}-{h}-{motion}.png'));page.locator('#modeMenu').click();page.locator('#expeditionNew').click();page.screenshot(path=str(ROOT/f'mobile-map-{w}-{h}-{motion}.png'))
-   page.locator('[data-room="0-0"]').click();assert page.locator('#roomDetail').is_visible();assert page.evaluate("JSON.parse(localStorage.getItem('resonance-expedition-v1')).phase")=='map';page.locator('#roomBack').click();page.locator('[data-room="0-0"]').click();page.screenshot(path=str(ROOT/f'mobile-route-detail-{w}-{h}-{motion}.png'));page.locator('#roomEnter').click();assert page.evaluate("JSON.parse(localStorage.getItem('resonance-expedition-v1')).phase")=='battle'
+   page.locator('#menuOpen').click();page.wait_for_timeout(180);page.screenshot(path=str(ROOT/f'mobile-menu-{w}-{h}-{motion}.png'));page.locator('#modeMenu').click();page.locator('#expeditionNew').click();page.wait_for_timeout(180);page.screenshot(path=str(ROOT/f'mobile-map-{w}-{h}-{motion}.png'))
+   page.locator('[data-room="0-0"]').click();assert page.locator('#roomDetail').is_visible();assert page.evaluate("JSON.parse(localStorage.getItem('resonance-expedition-v1')).phase")=='map';page.locator('#roomBack').click();page.locator('[data-room="0-0"]').click();page.wait_for_timeout(180);page.screenshot(path=str(ROOT/f'mobile-route-detail-{w}-{h}-{motion}.png'));page.locator('#roomEnter').click();assert page.evaluate("JSON.parse(localStorage.getItem('resonance-expedition-v1')).phase")=='battle'
    assert not errors,errors
    print(json.dumps({'size':[w,h],'motion':motion,'tileMinHeight':min(x['h'] for x in dimensions['tiles']),'art':dimensions['art'],'pageHeight':dimensions['sh'],'result':'PASS'}),flush=True);page.close()
  b.close()

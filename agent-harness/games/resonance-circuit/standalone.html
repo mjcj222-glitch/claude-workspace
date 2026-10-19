@@ -114,6 +114,18 @@ dialog{max-height:calc(100dvh - 24px);max-width:min(94vw,420px);padding:18px;bor
 @media(max-height:680px){main{gap:3px;padding-top:max(2px,env(safe-area-inset-top));padding-bottom:max(3px,env(safe-area-inset-bottom));grid-template-rows:36px minmax(70px,1fr) auto 80px}main>header{height:36px}#menuOpen{height:36px}.controls{grid-template-rows:72px 4px}.skills button,.skills button:nth-child(n),.controls #boost{height:72px}.skills .portrait,.panel-learning .skills .portrait{width:42px;height:42px!important}.journey{padding:12px}#routeRows{gap:5px}.route-row{min-height:42px}.route-row button{height:42px;min-height:42px}.journey h2{font-size:19px}#journeyRelics{font-size:10px}}
 @media(min-width:760px){main{box-shadow:0 0 0 1px #d7d0c7,0 12px 60px #30253518}dialog{padding:22px}.journey{padding:16px}}
 
+</style><style>
+/* Tight stage/HUD rhythm and state-first feedback. */
+.enemy{max-height:none;align-self:stretch}.enemy .habitat{inset:0 0 42px;align-items:flex-end}.enemy>.line:last-child{height:24px;padding:2px 4px;align-items:center}#bossText{font-size:12px;font-variant-numeric:tabular-nums;font-weight:650}#incoming{font-size:11px;font-weight:650}.enemy>#boss{opacity:0;pointer-events:none}.boss-meter{position:absolute;height:6px;bottom:28px;left:4px;right:4px;overflow:hidden;border-radius:4px;background:#dcd5ce}.boss-meter span{position:absolute;inset:0;transform-origin:left center;will-change:transform}#bossTrail{background:#e5b978}#bossFill{background:#c85570}
+.circuit>.line{font-size:13px}#health{font-variant-numeric:tabular-nums;position:relative}#healthDelta{display:inline-block;margin-left:6px;font-size:12px;font-weight:800;color:#b94359}#healthDelta[data-change=heal]{color:#426e3d}#taps{font-size:12px;font-variant-numeric:tabular-nums}#taps:before{content:attr(data-dots);font-size:9px;letter-spacing:2px;color:#786090;margin-right:5px}.skills .cooldown{font-size:10px;font-weight:700;box-shadow:none;top:0;right:0;padding:3px 5px}.skills [data-ready=true] .cooldown{color:#5d437c;background:#eee4f7}.skills [data-ready=false] .cooldown{color:#685f6e;background:#e7e1da}.controls #boost[data-state=ready]{background:#685096;color:white}.controls #boost[data-state=active]{background:#ddd0b4;color:#534225}.controls #gaugeText{font-size:11px;font-weight:650}.fx-label{font-size:20px;font-variant-numeric:tabular-nums;font-weight:800;text-shadow:0 2px 3px #292c36,0 0 3px #292c36}.presentation-choice{position:absolute;z-index:30;pointer-events:none;bottom:12px;left:50%;translate:-50% 0;max-width:90%;padding:8px 12px;background:#493b5e;color:#fffaf5;border-radius:12px;font-size:12px;white-space:nowrap;box-shadow:0 3px 10px #29293018}
+@media(min-height:720px){.circuit #board{--tile-height:48px}.gem{height:44px;width:46px}}
+@media(min-height:820px){.circuit #board{--tile-height:56px}.gem{height:48px;width:50px}}
+@media(max-height:680px){#incoming{font-size:10px}#bossText{font-size:11px}.circuit>.line{font-size:12px}#taps{font-size:11px}#taps:before{letter-spacing:1px;margin-right:3px}}
+
+dialog[open]{animation:presentation-enter .15s ease-out}@keyframes presentation-enter{from{opacity:.65}to{opacity:1}}
+
+.presentation-enter{animation:presentation-enter .15s ease-out}
+
 </style>
 <body><button id="menuOpen" aria-label="메뉴 · 설정과 전투 상세">☰</button><canvas id="effects" aria-hidden="true"></canvas><main><header><span class="eyebrow">GLASSHOUSE 07</span><h1>잔향 회로</h1><button id="skillHelp">스킬 설명</button></header>
 <section class="glass enemy" id="enemy"><div class="habitat" aria-hidden="true"><div class="concept-boss"></div></div><div class="line"><h2 id="stageName">새싹 회랑</h2><span id="turn"></span></div><progress id="boss" aria-label="보스 체력"></progress><div class="line"><span id="bossText"></span><strong id="incoming"></strong></div></section>
@@ -467,11 +479,11 @@ function loadExpedition(storage){try{return decodeExpedition(storage.getItem(EXP
 
 const ROOM_NAMES={normal:'새싹 수호자',elite:'정예 · 수정 파수꾼',rest:'이슬 쉼터',event:'종이새의 선물',boss:'최종 · 온실의 여왕'};
 function roomDescription(n){if(n.type==='rest')return '안전 · 체력36 회복 (최대180)';if(n.type==='event')return '선택 · 체력18을 유물로 / 체력22 회복';const r=roomRules(n);return `적 체력${r.bossHP} · 반격 ${r.attacks.join('→')}${r.echoWard?' · 장막20%, 잔향으로 해제':''} · ${n.type==='boss'?'탐험 완주':`승리 회복${n.type==='elite'?12:6} + 유물 선택`}`;}
-function createExpeditionUI(getRun,onChange){
+function createExpeditionUI(getRun,onChange,onChoice=()=>{}){
  const $=id=>document.getElementById(id);let pendingRoom=null;
  $('roomBack').onclick=()=>$('roomDetail').close();$('roomEnter').onclick=()=>{const e=getRun();if(pendingRoom&&enterRoom(e,pendingRoom)){$('roomDetail').close();pendingRoom=null;onChange();}};
  function inspectRoom(e,n){pendingRoom=n.id;$('roomDetailTitle').textContent=ROOM_NAMES[n.type];$('roomDetailText').textContent=roomDescription(n);$('roomEnter').disabled=!availableRooms(e).some(r=>r.id===n.id);$('roomDetail').showModal();return false;}
- function button(text,description,action){const b=document.createElement('button'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=text;small.textContent=description;b.append(strong,small);b.onclick=()=>{if(action())onChange();};return b;}
+ function button(text,description,action){const b=document.createElement('button'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=text;small.textContent=description;b.append(strong,small);b.onclick=()=>{if(action()){onChange();onChoice(text);}};return b;}
  function render(){
   const e=getRun();if(!e||e.mode!=='expedition')return;
   $('journeyHealth').textContent=`체력 ${e.state.hp}/180 · 보호 ${e.shield} · 시드 ${e.seed}`;
@@ -658,6 +670,37 @@ function setupMobileUI(){
  $('gameMenu').addEventListener('click',e=>{if(['modeMenu','restart','newSeed','help','skillHelp','feedbackHelp','relicHelp'].includes(e.target.closest('button')?.id))$('gameMenu').close();},true);
 }
 
+// Cancellable visual projection only: never defers gameplay or owns saved state.
+function createPresentation(reduced){
+ const $=id=>document.getElementById(id),meter=document.createElement('div');meter.className='boss-meter';meter.setAttribute('aria-hidden','true');meter.innerHTML='<span id="bossTrail"></span><span id="bossFill"></span>';$('enemy').append(meter);
+ // Preserve last-child HUD selectors by keeping its existing line last.
+ $('enemy').append($('bossText').parentElement);
+ const healthDelta=document.createElement('span');healthDelta.id='healthDelta';healthDelta.setAttribute('aria-hidden','true');$('health').append(healthDelta);
+ const running=new Set(),timers=new Set();let previous=null,identity=null,lastPhase=null,lastRatio=1,choice=null,healthVersion=0;
+ const quiet=()=>reduced.matches||document.hidden;
+ function animate(el,frames,options){if(quiet())return;const a=el.animate(frames,options);running.add(a);const done=()=>running.delete(a);a.onfinish=()=>{done();a.cancel();};a.oncancel=done;}
+ function later(fn,ms){const id=setTimeout(()=>{timers.delete(id);fn();},ms);timers.add(id);}
+ function clear(){document.querySelectorAll('.presentation-enter').forEach(el=>el.classList.remove('presentation-enter'));document.querySelectorAll('dialog').forEach(el=>el.getAnimations().forEach(a=>a.cancel()));for(const a of running)a.cancel();running.clear();for(const t of timers)clearTimeout(t);timers.clear();choice?.remove();choice=null;healthVersion++;healthDelta.textContent='';for(const id of ['bossFill','bossTrail']){const el=$(id);el.style.transform=`scaleX(${lastRatio})`;el.dataset.ratio=String(lastRatio);}}
+ function transition(el){if(quiet())return;el.classList.add('presentation-enter');later(()=>el.classList.remove('presentation-enter'),160);}
+ function update(s,phase){
+  const changed=identity!==s,ratio=Math.max(0,Math.min(1,s.bossHP/s.rules.bossHP)),old=lastRatio;
+  if(changed){clear();previous=null;identity=s;}
+  lastRatio=ratio;
+  if(changed||old!==ratio)for(const [id,duration,delay] of [['bossFill',160,0],['bossTrail',320,110]]){const el=$(id);el.getAnimations().forEach(a=>a.cancel());el.style.transform=`scaleX(${ratio})`;el.dataset.ratio=String(ratio);if(!changed&&old!==ratio)animate(el,[{transform:`scaleX(${old})`},{transform:`scaleX(${ratio})`}],{duration:ratio<old?duration:160,delay:ratio<old?delay:0,easing:'cubic-bezier(.2,.7,.3,1)',fill:'backwards'});}
+  $('taps').dataset.dots='●'.repeat(s.taps)+'○'.repeat(3-s.taps);
+  $('boost').dataset.state=s.boost?'active':s.gauge>=55&&s.taps===3?'ready':'charging';$('gaugeText').textContent=s.boost?'발동 중':$('boost').dataset.state==='ready'?'사용 가능':`${s.gauge}/55`;
+  const ready=[...document.querySelectorAll('[data-skill]')].map((b,i)=>{const yes=phase==='battle'&&s.turn>=s.ready[i];b.dataset.ready=String(yes);if(previous&&yes&&!previous.ready[i])animate(b,[{background:'#d9c9ec'},{background:'#eae5df'}],{duration:220});return yes;});
+  if(previous&&previous.hp!==s.hp){$('health').append(healthDelta);healthDelta.textContent=`${s.hp>previous.hp?'+':'−'}${Math.abs(s.hp-previous.hp)}`;healthDelta.dataset.change=s.hp>previous.hp?'heal':'hurt';animate(healthDelta,[{opacity:1},{opacity:0}],{duration:480,delay:100});const version=++healthVersion;later(()=>{if(version===healthVersion)healthDelta.textContent='';},600);}
+  if(changed&&phase==='battle')transition($('enemy'));
+  if(phase!==lastPhase){if(!changed)clear();const target=phase==='battle'?$('board'):phase==='upgrade'?$('upgrade'):['complete','defeat'].includes(phase)?$('ending'):$('journey');transition(target);lastPhase=phase;}
+  previous={hp:s.hp,ready};
+ }
+ function selected(text){choice?.remove();choice=document.createElement('span');choice.className='presentation-choice';choice.textContent='✓ '+text;choice.setAttribute('role','status');const host=document.querySelector('dialog[open]')??document.querySelector('main');host.append(choice);animate(choice,[{opacity:0},{opacity:1,offset:.25},{opacity:0}],{duration:260});const selectedChoice=choice;later(()=>{selectedChoice.remove();if(choice===selectedChoice)choice=null;},300);}
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)clear();});
+ return {update,clear,selected};
+}
+
+
 
 
 
@@ -679,7 +722,7 @@ let mode='practice',practiceSlot=loaded.data?.run??null,expeditionSlot=loadExped
 const settings=loaded.data?.audio??{enabled:false,volume:.3};
 let queuedNew=null,activeTimeline=null,lessEffects=false,actionID=0;const motionQuery=matchMedia('(prefers-reduced-motion: reduce)'),reduced={get matches(){return motionQuery.matches||lessEffects;}};
 const sound=createAudio(settings),gate=inputGate(),fx=createEffects($('effects'),reduced);
-const skillUI=createSkillUI(()=>state);setupMobileUI();
+const skillUI=createSkillUI(()=>state);setupMobileUI();const presentation=createPresentation(reduced);
 const tiles=Array.from({length:42},(_,i)=>{
  const b=document.createElement('button');b.className='tile';b.style.setProperty('--c',Math.floor(i/7)+1);b.style.setProperty('--r',i%7+1);b.dataset.index=i;$('board').append(b);return b;
 });
@@ -713,7 +756,7 @@ function render(){
   b.disabled=run.phase!=='battle'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';
   let status=b.querySelector('.cooldown');if(!status){status=document.createElement('span');status.className='cooldown';b.append(status);}status.textContent=state.turn<state.ready[i]?`${state.ready[i]-state.turn}턴 후`:'준비';
  });
- renderLesson();renderAudio();skillUI.render();
+ renderLesson();renderAudio();skillUI.render();presentation.update(state,run.phase);
 }
 function renderLesson(){
  document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
@@ -724,7 +767,7 @@ function renderLesson(){
 function renderAudio(){
  $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;
 }
-const expeditionUI=createExpeditionUI(()=>run,()=>{persist();render();expeditionUI.render();if(run.phase==='battle'){showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);}phaseDialog();});
+const expeditionUI=createExpeditionUI(()=>run,()=>{persist();render();expeditionUI.render();if(run.phase==='battle'){showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);}phaseDialog();},text=>presentation.selected(text));
 function phaseDialog(){
  if(mode==='expedition'){expeditionUI.render();if(['complete','defeat'].includes(run.phase)){$('ending').className=run.phase==='complete'?'victory':'defeat';$('result').textContent=run.phase==='complete'?'갈림길 온실 복구 완료':'탐험이 끝났어요';$('stats').textContent=`경로: ${run.path.map(id=>ROOM_NAMES[run.map.flat().find(n=>n.id===id).type]).join(' → ')}\n유물: ${run.relics.map(id=>RELICS.find(r=>r.id===id).name).join(' · ')||'없음'}\n${run.total.turns}턴 · 잔향 ${run.total.echoes}회 · 피해 ${run.total.damage} · 받은 피해 ${run.total.taken} · 회복 ${run.total.healed}\n탐험은 전투 되돌리기 없이 새로 시작합니다.`;$('retryBattle').hidden=true;if(!$('ending').open)$('ending').showModal();}return;}
 
@@ -732,7 +775,7 @@ function phaseDialog(){
   $('upgradeTitle').textContent=`${STAGES[run.stage].name} 복구! 하나를 선택하세요.`;$('choices').replaceChildren();
   for(const choice of CHOICES[run.stage]){const b=document.createElement('button');b.dataset.choice=choice.id;const title=document.createElement('strong'),desc=document.createElement('span');title.textContent=choice.name;desc.textContent=choice.description;b.append(title,desc);b.onclick=()=>{
    if(gate.locked||!chooseUpgrade(run,choice.id))return;
-   $('upgrade').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[run.stage].lesson;
+   $('upgrade').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[run.stage].lesson;presentation.selected(choice.name);
   };$('choices').append(b);}if(!$('upgrade').open)$('upgrade').showModal();
  }else if(['complete','defeat'].includes(run.phase)){
   $('ending').className=run.phase==='complete'?'victory':'defeat';$('result').textContent=run.phase==='complete'?'세 정원에 빛이 돌아왔습니다':'다시 피어날 수 있어요';
@@ -794,6 +837,7 @@ document.querySelectorAll('[data-skill]').forEach(b=>b.onclick=()=>{
 });
 $('boost').onclick=()=>{if(!blocked()&&runBoost(run)){sound.unlock();sound.play('boost');persist();render();showPreview(focus);fx.ring($('board'));$('notice').textContent='과충전 · 이번 턴 피해 2배';}};
 function begin(fresh){
+ presentation.clear();
  if(mode==='expedition'){fx.clear();skillUI.clear();run=createExpedition(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed);state=run.state;started=true;sessionPlaying=true;for(const id of ['start','ending','confirmNew','upgrade','journey'])if($(id).open)$(id).close();persist();render();phaseDialog();return;}
  fx.clear();skillUI.clear();pressed=null;run=createRun(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed,!learned);state=run.state;started=true;sessionPlaying=true;
  for(const id of ['start','ending','confirmNew','upgrade'])if($(id).open)$(id).close();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[0].lesson;
@@ -811,7 +855,7 @@ function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`�
 $('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus({preventScroll:true});}};
 $('skillHelp').onclick=()=>{if(!gate.locked)skillUI.describe();};$('closeSkills').onclick=()=>$('skillGuide').close();
 $('help').onclick=()=>{if(!gate.locked){guideStep=0;tutorial();}};
-function switchMode(next){if(mode!==next){persist();mode=next;run=(next==='expedition'?expeditionSlot:practiceSlot)??(next==='expedition'?createExpedition():createRun());started=!!(next==='expedition'?expeditionSlot:practiceSlot);state=run.state;}render();}
+function switchMode(next){presentation.clear();if(mode!==next){persist();mode=next;run=(next==='expedition'?expeditionSlot:practiceSlot)??(next==='expedition'?createExpedition():createRun());started=!!(next==='expedition'?expeditionSlot:practiceSlot);state=run.state;}render();}
 function resumeMode(next){switchMode(next);sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle'){tiles[focus].focus({preventScroll:true});window.scrollTo(0,0);}}
 function modeMenu(){if(gate.locked)return;persist();sessionPlaying=false;for(const id of ['journey','ending'])if($(id).open)$(id).close();$('continueRun').disabled=!practiceSlot;$('expeditionContinue').disabled=!expeditionSlot;$('start').showModal();}
 $('continueRun').disabled=!practiceSlot;$('continueRun').onclick=()=>resumeMode('practice');
@@ -826,7 +870,7 @@ $('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해
 for(const id of ['start','upgrade'])$(id).addEventListener('cancel',e=>e.preventDefault());
 render();$('start').showModal();
 
-function motionChanged(){if(activeTimeline){activeTimeline.cancel('finish');sound.cancel();}fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
+function motionChanged(){presentation.clear();if(activeTimeline){activeTimeline.cancel('finish');sound.cancel();}fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
 motionQuery.addEventListener('change',motionChanged);motionChanged();
 $('feedbackHelp').onclick=()=>{if(!gate.locked){$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';$('feedbackSettings').showModal();}};$('closeFeedback').onclick=()=>$('feedbackSettings').close();
 $('lessEffects').onchange=e=>{lessEffects=e.target.checked;motionChanged();};

@@ -1,3 +1,4 @@
+import {createPresentation} from './presentation.mjs';
 import {setupMobileUI} from './mobile-ui.mjs';
 import {createExpedition,loadExpedition,saveExpedition,expeditionTap,expeditionSkill,currentRoom,RELICS,relicEffects} from './expedition.mjs';
 import {createExpeditionUI,ROOM_NAMES} from './expedition-ui.mjs';
@@ -19,7 +20,7 @@ let mode='practice',practiceSlot=loaded.data?.run??null,expeditionSlot=loadExped
 const settings=loaded.data?.audio??{enabled:false,volume:.3};
 let queuedNew=null,activeTimeline=null,lessEffects=false,actionID=0;const motionQuery=matchMedia('(prefers-reduced-motion: reduce)'),reduced={get matches(){return motionQuery.matches||lessEffects;}};
 const sound=createAudio(settings),gate=inputGate(),fx=createEffects($('effects'),reduced);
-const skillUI=createSkillUI(()=>state);setupMobileUI();
+const skillUI=createSkillUI(()=>state);setupMobileUI();const presentation=createPresentation(reduced);
 const tiles=Array.from({length:42},(_,i)=>{
  const b=document.createElement('button');b.className='tile';b.style.setProperty('--c',Math.floor(i/7)+1);b.style.setProperty('--r',i%7+1);b.dataset.index=i;$('board').append(b);return b;
 });
@@ -53,7 +54,7 @@ function render(){
   b.disabled=run.phase!=='battle'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';
   let status=b.querySelector('.cooldown');if(!status){status=document.createElement('span');status.className='cooldown';b.append(status);}status.textContent=state.turn<state.ready[i]?`${state.ready[i]-state.turn}턴 후`:'준비';
  });
- renderLesson();renderAudio();skillUI.render();
+ renderLesson();renderAudio();skillUI.render();presentation.update(state,run.phase);
 }
 function renderLesson(){
  document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
@@ -64,7 +65,7 @@ function renderLesson(){
 function renderAudio(){
  $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;
 }
-const expeditionUI=createExpeditionUI(()=>run,()=>{persist();render();expeditionUI.render();if(run.phase==='battle'){showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);}phaseDialog();});
+const expeditionUI=createExpeditionUI(()=>run,()=>{persist();render();expeditionUI.render();if(run.phase==='battle'){showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);}phaseDialog();},text=>presentation.selected(text));
 function phaseDialog(){
  if(mode==='expedition'){expeditionUI.render();if(['complete','defeat'].includes(run.phase)){$('ending').className=run.phase==='complete'?'victory':'defeat';$('result').textContent=run.phase==='complete'?'갈림길 온실 복구 완료':'탐험이 끝났어요';$('stats').textContent=`경로: ${run.path.map(id=>ROOM_NAMES[run.map.flat().find(n=>n.id===id).type]).join(' → ')}\n유물: ${run.relics.map(id=>RELICS.find(r=>r.id===id).name).join(' · ')||'없음'}\n${run.total.turns}턴 · 잔향 ${run.total.echoes}회 · 피해 ${run.total.damage} · 받은 피해 ${run.total.taken} · 회복 ${run.total.healed}\n탐험은 전투 되돌리기 없이 새로 시작합니다.`;$('retryBattle').hidden=true;if(!$('ending').open)$('ending').showModal();}return;}
 
@@ -72,7 +73,7 @@ function phaseDialog(){
   $('upgradeTitle').textContent=`${STAGES[run.stage].name} 복구! 하나를 선택하세요.`;$('choices').replaceChildren();
   for(const choice of CHOICES[run.stage]){const b=document.createElement('button');b.dataset.choice=choice.id;const title=document.createElement('strong'),desc=document.createElement('span');title.textContent=choice.name;desc.textContent=choice.description;b.append(title,desc);b.onclick=()=>{
    if(gate.locked||!chooseUpgrade(run,choice.id))return;
-   $('upgrade').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[run.stage].lesson;
+   $('upgrade').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[run.stage].lesson;presentation.selected(choice.name);
   };$('choices').append(b);}if(!$('upgrade').open)$('upgrade').showModal();
  }else if(['complete','defeat'].includes(run.phase)){
   $('ending').className=run.phase==='complete'?'victory':'defeat';$('result').textContent=run.phase==='complete'?'세 정원에 빛이 돌아왔습니다':'다시 피어날 수 있어요';
@@ -134,6 +135,7 @@ document.querySelectorAll('[data-skill]').forEach(b=>b.onclick=()=>{
 });
 $('boost').onclick=()=>{if(!blocked()&&runBoost(run)){sound.unlock();sound.play('boost');persist();render();showPreview(focus);fx.ring($('board'));$('notice').textContent='과충전 · 이번 턴 피해 2배';}};
 function begin(fresh){
+ presentation.clear();
  if(mode==='expedition'){fx.clear();skillUI.clear();run=createExpedition(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed);state=run.state;started=true;sessionPlaying=true;for(const id of ['start','ending','confirmNew','upgrade','journey'])if($(id).open)$(id).close();persist();render();phaseDialog();return;}
  fx.clear();skillUI.clear();pressed=null;run=createRun(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed,!learned);state=run.state;started=true;sessionPlaying=true;
  for(const id of ['start','ending','confirmNew','upgrade'])if($(id).open)$(id).close();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[0].lesson;
@@ -151,7 +153,7 @@ function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`�
 $('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus({preventScroll:true});}};
 $('skillHelp').onclick=()=>{if(!gate.locked)skillUI.describe();};$('closeSkills').onclick=()=>$('skillGuide').close();
 $('help').onclick=()=>{if(!gate.locked){guideStep=0;tutorial();}};
-function switchMode(next){if(mode!==next){persist();mode=next;run=(next==='expedition'?expeditionSlot:practiceSlot)??(next==='expedition'?createExpedition():createRun());started=!!(next==='expedition'?expeditionSlot:practiceSlot);state=run.state;}render();}
+function switchMode(next){presentation.clear();if(mode!==next){persist();mode=next;run=(next==='expedition'?expeditionSlot:practiceSlot)??(next==='expedition'?createExpedition():createRun());started=!!(next==='expedition'?expeditionSlot:practiceSlot);state=run.state;}render();}
 function resumeMode(next){switchMode(next);sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle'){tiles[focus].focus({preventScroll:true});window.scrollTo(0,0);}}
 function modeMenu(){if(gate.locked)return;persist();sessionPlaying=false;for(const id of ['journey','ending'])if($(id).open)$(id).close();$('continueRun').disabled=!practiceSlot;$('expeditionContinue').disabled=!expeditionSlot;$('start').showModal();}
 $('continueRun').disabled=!practiceSlot;$('continueRun').onclick=()=>resumeMode('practice');
@@ -166,7 +168,7 @@ $('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해
 for(const id of ['start','upgrade'])$(id).addEventListener('cancel',e=>e.preventDefault());
 render();$('start').showModal();
 
-function motionChanged(){if(activeTimeline){activeTimeline.cancel('finish');sound.cancel();}fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
+function motionChanged(){presentation.clear();if(activeTimeline){activeTimeline.cancel('finish');sound.cancel();}fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
 motionQuery.addEventListener('change',motionChanged);motionChanged();
 $('feedbackHelp').onclick=()=>{if(!gate.locked){$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';$('feedbackSettings').showModal();}};$('closeFeedback').onclick=()=>$('feedbackSettings').close();
 $('lessEffects').onchange=e=>{lessEffects=e.target.checked;motionChanged();};
