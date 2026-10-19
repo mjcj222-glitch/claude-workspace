@@ -44,5 +44,5 @@ header{gap:8px}.guarded{animation:guard-soft .4s ease-out}@keyframes guard-soft{
 #feedbackSettings{max-height:85vh;overflow:auto}#feedbackSettings p{font-size:12px}#soundSamples{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}#soundSamples button{font-size:11px;padding:8px 3px;margin:0;min-height:36px}.settings{flex-wrap:wrap}.settings #feedbackHelp{font-size:10px}
 
 /* Cascading gem release: compact, pop, then collapse into an empty cell. */
-.tile.cleared{animation:cascade-pop .15s cubic-bezier(.2,.65,.3,1) both;animation-delay:0ms}
-@keyframes cascade-pop{0%{scale:1;opacity:1;filter:brightness(1)}20%{scale:.82;opacity:1;filter:brightness(1.25)}45%{scale:1.14;opacity:1;filter:brightness(1.18)}100%{scale:.12;opacity:0;filter:brightness(1.05)}}
+.tile.cleared{animation:cascade-pop .17s cubic-bezier(.2,.65,.3,1) both;animation-delay:0ms}
+@keyframes cascade-pop{0%{scale:1;opacity:1;filter:brightness(1)}22%{scale:.88;opacity:1;filter:brightness(1.06)}48%{scale:1.17;opacity:1;filter:brightness(1.1)}100%{scale:.12;opacity:0;filter:brightness(1.05)}}

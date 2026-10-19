@@ -56,8 +56,8 @@ header{gap:8px}.guarded{animation:guard-soft .4s ease-out}@keyframes guard-soft{
 #feedbackSettings{max-height:85vh;overflow:auto}#feedbackSettings p{font-size:12px}#soundSamples{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}#soundSamples button{font-size:11px;padding:8px 3px;margin:0;min-height:36px}.settings{flex-wrap:wrap}.settings #feedbackHelp{font-size:10px}
 
 /* Cascading gem release: compact, pop, then collapse into an empty cell. */
-.tile.cleared{animation:cascade-pop .15s cubic-bezier(.2,.65,.3,1) both;animation-delay:0ms}
-@keyframes cascade-pop{0%{scale:1;opacity:1;filter:brightness(1)}20%{scale:.82;opacity:1;filter:brightness(1.25)}45%{scale:1.14;opacity:1;filter:brightness(1.18)}100%{scale:.12;opacity:0;filter:brightness(1.05)}}
+.tile.cleared{animation:cascade-pop .17s cubic-bezier(.2,.65,.3,1) both;animation-delay:0ms}
+@keyframes cascade-pop{0%{scale:1;opacity:1;filter:brightness(1)}22%{scale:.88;opacity:1;filter:brightness(1.06)}48%{scale:1.17;opacity:1;filter:brightness(1.1)}100%{scale:.12;opacity:0;filter:brightness(1.05)}}
 
 </style>
 <body><canvas id="effects" aria-hidden="true"></canvas><main><header><span class="eyebrow">GLASSHOUSE 07</span><h1>잔향 회로</h1><button id="skillHelp">스킬 설명</button></header>
@@ -325,7 +325,8 @@ function soundRecipe(kind,chain=1){
  const noise=(t,d,a,cut)=>({noise:true,t,d,a,cut});
  const scale=[392,440,494,587,659,784],root=scale[Math.min(5,Math.max(0,Math.floor((chain-1)/2)))];
  switch(kind){
- case 'tile':{const f=scale[Math.min(5,Math.max(0,chain))];return [{...note(f,0,.045,.045),tile:true}];}
+ case 'tile':{const f=scale[Math.min(5,Math.max(0,chain))];return [{...note(f*.75,0,.065,.038,f*.74),tile:true}];}
+ case 'resonance':return [note(196,0,.18,.025),note(294,.02,.16,.012)];
  case 'select':return [note(784,0,.07,.025),note(1568,0,.05,.007)];
  case 'chain':return [note(root),note(root*2,.008,.12,.016)];
  case 'large':return [note(root,0,.25,.085),note(root*1.25,.035,.24,.045),note(root*2,.06,.18,.018)];
@@ -409,8 +410,8 @@ function planTimeline(s,index,p){
  const rawMax=Math.max(...events.map(e=>e.at)),scale=rawMax>420?420/rawMax:1;for(const e of events)e.at=Math.round(e.at*scale);
  events.sort((a,b)=>a.at-b.at||around(index,a.index,b.index));
  const audio=[];for(const e of events)if(e.type==='clear'&&audio.length<9&&(!audio.length||e.at-audio.at(-1).at>=48))audio.push({id:e.id,at:e.at,note:audio.length});
- const lastStart=Math.max(...events.map(e=>e.at)),settleAt=lastStart+150+28;
- return {events,audio,lastStart,settleAt,total:settleAt+140,echoOrigin};
+ const lastStart=Math.max(...events.map(e=>e.at)),settleAt=lastStart+170+28;
+ return {events,audio,lastStart,settleAt,total:settleAt+220,echoOrigin};
 }
 function runTimeline(plan,callback,reduced=false,shouldFinish=()=>false){
  const timers=new Set();let resolve,finished=false;const done=new Promise(r=>resolve=r);
@@ -434,20 +435,22 @@ function createEffects(canvas,reduced){
  function draw(time){const dt=Math.min((time-last)/1000,.05);last=time;ctx.clearRect(0,0,innerWidth,innerHeight);particles=particles.filter(p=>{
   p.life-=dt;if(p.life<=0)return false;const a=p.life/p.total,u=1-a;ctx.globalAlpha=Math.min(1,a*2);ctx.strokeStyle=p.color;ctx.fillStyle=p.color;ctx.lineWidth=1.5;
   if(p.type==='ring'){ctx.beginPath();ctx.arc(p.x,p.y,8+u*(p.radius??42),0,Math.PI*2);ctx.stroke();}
+  else if(p.type==='flow'){ctx.globalAlpha=.35*a;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+(p.tx-p.x)*Math.min(1,u*3),p.y+(p.ty-p.y)*Math.min(1,u*3));ctx.stroke();}
   else if(p.type==='line'){ctx.lineWidth=1+2*a;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.quadraticCurveTo((p.x+p.tx)/2,(p.y+p.ty)/2-22,p.tx,p.ty);ctx.stroke();}
   else if(p.type==='absorb'){const v=u*u;ctx.beginPath();ctx.arc(p.x+(p.tx-p.x)*v,p.y+(p.ty-p.y)*v-16*Math.sin(u*Math.PI),2.5*a+.5,0,Math.PI*2);ctx.fill();}
-  else{p.x+=p.vx*dt;p.y+=p.vy*dt;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(u*2+p.angle);ctx.beginPath();if(p.type==='leaf')ctx.ellipse(0,0,5*a+1,2.5*a+1,0,0,Math.PI*2);else{ctx.moveTo(0,-3);ctx.lineTo(2.5,2);ctx.lineTo(-2.5,2);ctx.closePath();}ctx.fill();ctx.restore();}return true;
+  else{p.x+=p.vx*dt;p.y+=p.vy*dt;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(u*2+p.angle);ctx.beginPath();if(p.type==='leaf')ctx.ellipse(0,0,5*a+1,2.5*a+1,0,0,Math.PI*2);else ctx.ellipse(0,0,2.5*a+.5,1.7*a+.4,0,0,Math.PI*2);ctx.fill();ctx.restore();}return true;
  });ctx.globalAlpha=1;canvas.dataset.active=String(particles.length);if(particles.length)frame=requestAnimationFrame(draw);else{frame=0;ctx.clearRect(0,0,innerWidth,innerHeight);}}
  function add(p){if(reduced.matches||document.hidden||!ctx)return;particles.push({...p,life:p.life??.28,total:p.life??.28});if(particles.length>80)particles.splice(0,particles.length-80);peak=Math.max(peak,particles.length);canvas.dataset.active=String(particles.length);if(!frame){last=performance.now();frame=requestAnimationFrame(draw);}}
- function burst(el,color='#b4f7dc',large=false){cue(large?'large':'chain',el,color);const p=point(el);for(let j=0;j<(large?5:3);j++){const a=j*Math.PI*.8;add({...p,vx:Math.cos(a)*(large?60:36),vy:Math.sin(a)*36,type:'shard',angle:a,color,life:large?.3:.22});}}
- function ring(el,color='#ffe5a5',kind='bomb'){cue(kind,el,color);add({...point(el),type:'ring',color,life:.28,radius:kind==='shield'?22:42});}
+ function burst(el,color='#b4f7dc',large=false){cue(large?'large':'chain',el,color);const p=point(el);add({...p,type:'ring',color,life:.19,radius:15});for(let j=0;j<(large?4:2);j++){const a=j*Math.PI*.8;add({...p,vx:Math.cos(a)*(large?60:36),vy:Math.sin(a)*36,type:'shard',angle:a,color,life:large?.3:.22});}}
+ function ring(el,color='#ffe5a5',kind='bomb'){cue(kind,el,color);add({...point(el),type:'ring',color,life:.28,radius:kind==='shield'?22:kind==='resonance'?32:42});}
  function link(a,b,color='#a2ffdb'){cue('echo',b,color);add({...point(a),tx:point(b).x,ty:point(b).y,type:'line',color,life:.28});}
+ function flow(a,b,color){add({...point(a),tx:point(b).x,ty:point(b).y,type:'flow',color,life:.13});}
  function absorb(a,b,color='#ffe8a5'){add({...point(a),tx:point(b).x,ty:point(b).y,type:'absorb',color,life:.24});}
  function release(el){cue('vine',el,'#c2ec95');for(let j=0;j<3;j++)add({...point(el),type:'leaf',vx:(j-1)*42,vy:-25-j*9,angle:j,color:'#b9e589',life:.32});}
  function converge(el,color){cue('rainbow',el,color);const p=point(el);for(let j=0;j<4;j++){const a=j*Math.PI/2;add({x:p.x+Math.cos(a)*23,y:p.y+Math.sin(a)*23,tx:p.x,ty:p.y,type:'absorb',color,life:.23});}}
  function label(el,text,kind=''){if(document.hidden)return;if(reduced.matches){cue(kind||'hit',el);return;}if(labels.size>=3)return;const node=document.createElement('span'),p=point(el);node.className='fx-label '+kind;node.textContent=text;node.style.left=Math.max(65,Math.min(innerWidth-65,p.x))+'px';node.style.top=p.y+'px';node.setAttribute('aria-hidden','true');document.body.append(node);labels.set(node,setTimeout(()=>{node.remove();labels.delete(node);},380));}
  function clear(){cancelAnimationFrame(frame);frame=0;particles=[];ctx?.clearRect(0,0,innerWidth,innerHeight);canvas.dataset.active='0';for(const [el,t] of marks){clearTimeout(t);delete el.dataset.fx;}marks.clear();for(const [el,t] of labels){clearTimeout(t);el.remove();}labels.clear();document.querySelectorAll('.hit,.hurt,.guarded,.skill-used,.cleared').forEach(el=>el.classList.remove('hit','hurt','guarded','skill-used','cleared'));document.querySelectorAll('.tile,.concept-boss,.skill-cutin').forEach(el=>el.getAnimations().forEach(a=>a.cancel()));}
- return {burst,ring,link,absorb,release,converge,cue,label,clear,point,get stats(){return {particles:particles.length,peakParticles:peak,marks:marks.size,labels:labels.size};}};
+ return {burst,ring,link,flow,absorb,release,converge,cue,label,clear,point,get stats(){return {particles:particles.length,peakParticles:peak,marks:marks.size,labels:labels.size};}};
 }
 
 
@@ -522,9 +525,16 @@ function render(){
   b.disabled=run.phase!=='battle'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';
   let status=b.querySelector('.cooldown');if(!status){status=document.createElement('span');status.className='cooldown';b.append(status);}status.textContent=state.turn<state.ready[i]?`${state.ready[i]-state.turn}턴 후`:'준비';
  });
+ renderLesson();renderAudio();skillUI.render();
+}
+function renderLesson(){
+ document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
+ const targets=tutorialTargets(run);tiles.forEach((b,i)=>b.classList.toggle('lesson-target',targets.includes(i)));
  $('coach').hidden=(run.tutorial==='done'&&!run.panelLesson)||run.phase!=='battle';$('skipLesson').textContent=run.panelLesson?'알겠어요':'안내 건너뛰기';
  $('coachText').textContent=run.panelLesson?PANEL_HELP[run.panelLesson]:run.tutorial==='chain'?'빛나는 큰 묶음을 눌러 잔향을 남겨 보세요.':'◌ 표식 타일을 연결해 남겨 둔 빛을 깨워 보세요.';
- $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;skillUI.render();
+}
+function renderAudio(){
+ $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;
 }
 function phaseDialog(){
  if(run.phase==='upgrade'){
@@ -551,13 +561,13 @@ async function commit(i){
   const large=p.initial.length>=10,color={coral:'#ffc0bd',gold:'#ffe4a0',blue:'#a3e2ff',heal:'#c3efa7'}[p.color];
   p.rainbows=p.initial.filter(j=>state.board[j].kind==='rainbow').length;
   const plan=planTimeline(state,i,p),notes=new Map(plan.audio.map(n=>[n.id,n.note]));
-  const accents=new Set();sound.beginSequence();if(reduced.matches&&!document.hidden)sound.play(large?'large':'chain',{id:eventID,chain:p.initial.length});
+  let previousClear=null;const accents=new Set();sound.beginSequence();if(reduced.matches&&!document.hidden)sound.play(large?'large':'chain',{id:eventID,chain:p.initial.length});
   activeTimeline=runTimeline(plan,e=>{
    const tile=tiles[e.index];
    if(e.type==='vine'){fx.release(tile);if(!accents.has('vine')){sound.play('vine',{id:eventID});accents.add('vine');}return;}
    tile.dataset.clearId=e.id;tile.style.setProperty('--stagger','0ms');tile.classList.add('cleared');
    if(!reduced.matches&&!document.hidden&&notes.has(e.id))sound.tick(notes.get(e.id),eventID+':'+e.id);
-   fx.burst(tile,color,large);fx.absorb(tile,p.color==='heal'?$('health'):$('enemy'),color);
+   if(previousClear!==null)fx.flow(tiles[previousClear],tile,color);previousClear=e.index;fx.burst(tile,color,large);fx.absorb(tile,p.color==='heal'?$('health'):$('enemy'),color);
    if(e.echo){if(e.index!==plan.echoOrigin)fx.link(tiles[plan.echoOrigin],tile);if(!accents.has('echo')){sound.play('echo',{id:eventID});accents.add('echo');}}
    if(e.bomb){fx.ring(tile);if(!accents.has('bomb')){sound.play('bomb',{id:eventID});accents.add('bomb');}}
    if(e.rainbow){fx.converge(tile,color);if(!accents.has('rainbow')){sound.play('rainbow',{id:eventID});accents.add('rainbow');}}
@@ -565,14 +575,14 @@ async function commit(i){
   const resolution=await activeTimeline.done;activeTimeline=null;sound.endSequence();
   if(resolution==='finish'){sound.cancel();fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
   if(resolution==='reset'){fx.clear();render();return;}
-  if(large&&resolution==='done')fx.cue('large',$('board'),color);
+  if(large&&resolution==='done'){fx.ring($('board'),color,'resonance');sound.play('resonance',{id:eventID});}
   const result=runTap(run,i);persist();render();
-  if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=fallOffset(old,now,scrollY);if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 0',opacity:1}],{duration:120,easing:'cubic-bezier(.2,.7,.3,1)'});});
+  if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=fallOffset(old,now,scrollY);if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 1px',opacity:1,offset:.86},{translate:'0 0',opacity:1}],{duration:200,easing:'cubic-bezier(.16,.7,.3,1)'});});
   if(resolution==='done')for(const kind of postFeedback(result,{bossHit:state.bossHP<oldHP,healed:settledHeal,status:state.status}))sound.play(kind,{id:eventID});
   if(settledHeal)fx.cue('heal',$('health'),'#c2eda9');if(result.blocked)fx.ring($('health'),'#c2eeeb','shield');
   if(state.bossHP<oldHP&&!document.hidden){fx.label($('enemy'),`−${oldHP-state.bossHP}`);$('enemy').classList.add('hit');setTimeout(()=>$('enemy').classList.remove('hit'),420);fx.link(tiles[i],$('enemy'),'#ffe4a9');}
   if(result.incoming&&!document.hidden){const reaction=result.retaliation?'hurt':'guarded';$('health').classList.add(reaction);setTimeout(()=>$('health').classList.remove(reaction),420);}
-  await delay(140);
+  await delay(220);
   $('notice').textContent=`${result.removed.length}칸${result.unlocked.length?' · 덩굴 해제 '+result.unlocked.length:''}${result.echoHit?' · 잔향 발동':''}${bombs.length?' · 폭탄 '+bombs.length:''}${result.retaliation?' · 적 공격 −'+result.retaliation:''}${result.blocked?' · 보호 −'+result.blocked:''}${result.prismBonus?' · 링크 +'+result.prismBonus:''}${result.ignitionBonus?' · 점화 +'+result.ignitionBonus:''}${result.wardAbsorbed?' · 장막 −'+result.wardAbsorbed:''}`;
   if(run.phase!=='battle'){fx.cue(state.status==='won'?'win':'lose',$('enemy'));await delay(180);phaseDialog();}else tiles[focus].focus({preventScroll:true});
  }finally{gate.finish();$('board').dataset.resolving='false';if(queuedNew!==null){const fresh=queuedNew;queuedNew=null;askNew(fresh);}else if(run.phase==='battle')showPreview(focus);}
@@ -600,8 +610,8 @@ function askNew(fresh){if(gate.locked&&!activeTimeline){queuedNew=fresh;return;}
 $('restart').onclick=()=>askNew(false);$('newSeed').onclick=()=>askNew(true);$('again').onclick=()=>begin(false);$('another').onclick=()=>begin(true);
 $('cancelNew').onclick=()=>$('confirmNew').close();$('confirmRestart').onclick=()=>begin(pendingFresh);
 $('retryBattle').onclick=()=>{if(gate.locked||!retryBattle(run))return;$('ending').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent='진입 당시 체력·게이지·보드로 재도전합니다.';};
-$('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();render();showPreview(focus);};
-$('sound').onclick=()=>{sound.enable(!settings.enabled);persist();render();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
+$('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();renderLesson();showPreview(focus);};
+$('sound').onclick=()=>{sound.enable(!settings.enabled);persist();renderAudio();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
 $('volume').oninput=e=>{sound.volume(Number(e.target.value)/100);persist();};
 document.addEventListener('visibilitychange',()=>{if(document.hidden){pressed=null;activeTimeline?.cancel('finish');sound.hide();fx.clear();skillUI.clear();}});
 const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.'],['덩굴을 벗기세요',PANEL_HELP.vine+' 직접 누르면 탭을 쓰지 않습니다. 해제한 타일은 다음 행동부터 연결돼요.'],['무지개를 이으세요',PANEL_HELP.rainbow+' 동률이면 불꽃·별빛·물방울·회복 순입니다. 미리보기의 확정색을 확인하세요.']];
@@ -619,7 +629,7 @@ function motionChanged(){if(activeTimeline){activeTimeline.cancel('finish');soun
 motionQuery.addEventListener('change',motionChanged);motionChanged();
 $('feedbackHelp').onclick=()=>{if(!gate.locked){$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';$('feedbackSettings').showModal();}};$('closeFeedback').onclick=()=>$('feedbackSettings').close();
 $('lessEffects').onchange=e=>{lessEffects=e.target.checked;motionChanged();};
-$('previewEnable').onclick=()=>{sound.enable(!settings.enabled);persist();render();$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';};
+$('previewEnable').onclick=()=>{sound.enable(!settings.enabled);persist();renderAudio();$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';};
 for(const [kind,name] of Object.entries(SOUND_EVENTS)){const b=document.createElement('button');b.textContent=name;b.dataset.sound=kind;b.onclick=()=>{if(!settings.enabled){$('soundHint').textContent='소리 켜기를 누른 뒤 미리 들어 보세요.';return;}sound.unlock();sound.play(kind,{id:++actionID,chain:kind==='large'?12:3});$('soundHint').textContent=sound.available?name+' · 미리듣기':'오디오를 사용할 수 없습니다.';};$('soundSamples').append(b);}
 
 })();

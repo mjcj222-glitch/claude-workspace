@@ -15,8 +15,8 @@ export function planTimeline(s,index,p){
  const rawMax=Math.max(...events.map(e=>e.at)),scale=rawMax>420?420/rawMax:1;for(const e of events)e.at=Math.round(e.at*scale);
  events.sort((a,b)=>a.at-b.at||around(index,a.index,b.index));
  const audio=[];for(const e of events)if(e.type==='clear'&&audio.length<9&&(!audio.length||e.at-audio.at(-1).at>=48))audio.push({id:e.id,at:e.at,note:audio.length});
- const lastStart=Math.max(...events.map(e=>e.at)),settleAt=lastStart+150+28;
- return {events,audio,lastStart,settleAt,total:settleAt+140,echoOrigin};
+ const lastStart=Math.max(...events.map(e=>e.at)),settleAt=lastStart+170+28;
+ return {events,audio,lastStart,settleAt,total:settleAt+220,echoOrigin};
 }
 export function runTimeline(plan,callback,reduced=false,shouldFinish=()=>false){
  const timers=new Set();let resolve,finished=false;const done=new Promise(r=>resolve=r);

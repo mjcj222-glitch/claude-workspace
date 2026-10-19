@@ -1,0 +1,8 @@
+{"count": "6", "control": "sound", "failures": [], "elapsed": 587.4000000003725, "applied": true, "result": "PASS"}
+{"count": "6", "control": "skipLesson", "failures": [], "elapsed": 589, "applied": false, "result": "PASS"}
+{"count": "6", "control": "both", "failures": [], "elapsed": 581, "applied": true, "result": "PASS"}
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/settings_browser.py", line 22, in <module>
+    page.locator('.tile').nth(9).evaluate('e=>e.click()');page.wait_for_function("document.querySelector('#board').dataset.resolving==='false'");assert saved(page)['run']['state']['taps']==1
+                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

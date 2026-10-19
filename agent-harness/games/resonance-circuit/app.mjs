@@ -48,9 +48,16 @@ function render(){
   b.disabled=run.phase!=='battle'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';
   let status=b.querySelector('.cooldown');if(!status){status=document.createElement('span');status.className='cooldown';b.append(status);}status.textContent=state.turn<state.ready[i]?`${state.ready[i]-state.turn}턴 후`:'준비';
  });
+ renderLesson();renderAudio();skillUI.render();
+}
+function renderLesson(){
+ document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
+ const targets=tutorialTargets(run);tiles.forEach((b,i)=>b.classList.toggle('lesson-target',targets.includes(i)));
  $('coach').hidden=(run.tutorial==='done'&&!run.panelLesson)||run.phase!=='battle';$('skipLesson').textContent=run.panelLesson?'알겠어요':'안내 건너뛰기';
  $('coachText').textContent=run.panelLesson?PANEL_HELP[run.panelLesson]:run.tutorial==='chain'?'빛나는 큰 묶음을 눌러 잔향을 남겨 보세요.':'◌ 표식 타일을 연결해 남겨 둔 빛을 깨워 보세요.';
- $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;skillUI.render();
+}
+function renderAudio(){
+ $('sound').textContent=settings.enabled?'소리 켜짐':'소리 꺼짐';$('sound').setAttribute('aria-pressed',String(settings.enabled));$('volume').value=settings.volume*100;
 }
 function phaseDialog(){
  if(run.phase==='upgrade'){
@@ -77,13 +84,13 @@ async function commit(i){
   const large=p.initial.length>=10,color={coral:'#ffc0bd',gold:'#ffe4a0',blue:'#a3e2ff',heal:'#c3efa7'}[p.color];
   p.rainbows=p.initial.filter(j=>state.board[j].kind==='rainbow').length;
   const plan=planTimeline(state,i,p),notes=new Map(plan.audio.map(n=>[n.id,n.note]));
-  const accents=new Set();sound.beginSequence();if(reduced.matches&&!document.hidden)sound.play(large?'large':'chain',{id:eventID,chain:p.initial.length});
+  let previousClear=null;const accents=new Set();sound.beginSequence();if(reduced.matches&&!document.hidden)sound.play(large?'large':'chain',{id:eventID,chain:p.initial.length});
   activeTimeline=runTimeline(plan,e=>{
    const tile=tiles[e.index];
    if(e.type==='vine'){fx.release(tile);if(!accents.has('vine')){sound.play('vine',{id:eventID});accents.add('vine');}return;}
    tile.dataset.clearId=e.id;tile.style.setProperty('--stagger','0ms');tile.classList.add('cleared');
    if(!reduced.matches&&!document.hidden&&notes.has(e.id))sound.tick(notes.get(e.id),eventID+':'+e.id);
-   fx.burst(tile,color,large);fx.absorb(tile,p.color==='heal'?$('health'):$('enemy'),color);
+   if(previousClear!==null)fx.flow(tiles[previousClear],tile,color);previousClear=e.index;fx.burst(tile,color,large);fx.absorb(tile,p.color==='heal'?$('health'):$('enemy'),color);
    if(e.echo){if(e.index!==plan.echoOrigin)fx.link(tiles[plan.echoOrigin],tile);if(!accents.has('echo')){sound.play('echo',{id:eventID});accents.add('echo');}}
    if(e.bomb){fx.ring(tile);if(!accents.has('bomb')){sound.play('bomb',{id:eventID});accents.add('bomb');}}
    if(e.rainbow){fx.converge(tile,color);if(!accents.has('rainbow')){sound.play('rainbow',{id:eventID});accents.add('rainbow');}}
@@ -91,14 +98,14 @@ async function commit(i){
   const resolution=await activeTimeline.done;activeTimeline=null;sound.endSequence();
   if(resolution==='finish'){sound.cancel();fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
   if(resolution==='reset'){fx.clear();render();return;}
-  if(large&&resolution==='done')fx.cue('large',$('board'),color);
+  if(large&&resolution==='done'){fx.ring($('board'),color,'resonance');sound.play('resonance',{id:eventID});}
   const result=runTap(run,i);persist();render();
-  if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=fallOffset(old,now,scrollY);if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 0',opacity:1}],{duration:120,easing:'cubic-bezier(.2,.7,.3,1)'});});
+  if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=fallOffset(old,now,scrollY);if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 1px',opacity:1,offset:.86},{translate:'0 0',opacity:1}],{duration:200,easing:'cubic-bezier(.16,.7,.3,1)'});});
   if(resolution==='done')for(const kind of postFeedback(result,{bossHit:state.bossHP<oldHP,healed:settledHeal,status:state.status}))sound.play(kind,{id:eventID});
   if(settledHeal)fx.cue('heal',$('health'),'#c2eda9');if(result.blocked)fx.ring($('health'),'#c2eeeb','shield');
   if(state.bossHP<oldHP&&!document.hidden){fx.label($('enemy'),`−${oldHP-state.bossHP}`);$('enemy').classList.add('hit');setTimeout(()=>$('enemy').classList.remove('hit'),420);fx.link(tiles[i],$('enemy'),'#ffe4a9');}
   if(result.incoming&&!document.hidden){const reaction=result.retaliation?'hurt':'guarded';$('health').classList.add(reaction);setTimeout(()=>$('health').classList.remove(reaction),420);}
-  await delay(140);
+  await delay(220);
   $('notice').textContent=`${result.removed.length}칸${result.unlocked.length?' · 덩굴 해제 '+result.unlocked.length:''}${result.echoHit?' · 잔향 발동':''}${bombs.length?' · 폭탄 '+bombs.length:''}${result.retaliation?' · 적 공격 −'+result.retaliation:''}${result.blocked?' · 보호 −'+result.blocked:''}${result.prismBonus?' · 링크 +'+result.prismBonus:''}${result.ignitionBonus?' · 점화 +'+result.ignitionBonus:''}${result.wardAbsorbed?' · 장막 −'+result.wardAbsorbed:''}`;
   if(run.phase!=='battle'){fx.cue(state.status==='won'?'win':'lose',$('enemy'));await delay(180);phaseDialog();}else tiles[focus].focus({preventScroll:true});
  }finally{gate.finish();$('board').dataset.resolving='false';if(queuedNew!==null){const fresh=queuedNew;queuedNew=null;askNew(fresh);}else if(run.phase==='battle')showPreview(focus);}
@@ -126,8 +133,8 @@ function askNew(fresh){if(gate.locked&&!activeTimeline){queuedNew=fresh;return;}
 $('restart').onclick=()=>askNew(false);$('newSeed').onclick=()=>askNew(true);$('again').onclick=()=>begin(false);$('another').onclick=()=>begin(true);
 $('cancelNew').onclick=()=>$('confirmNew').close();$('confirmRestart').onclick=()=>begin(pendingFresh);
 $('retryBattle').onclick=()=>{if(gate.locked||!retryBattle(run))return;$('ending').close();fx.clear();skillUI.clear();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent='진입 당시 체력·게이지·보드로 재도전합니다.';};
-$('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();render();showPreview(focus);};
-$('sound').onclick=()=>{sound.enable(!settings.enabled);persist();render();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
+$('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();renderLesson();showPreview(focus);};
+$('sound').onclick=()=>{sound.enable(!settings.enabled);persist();renderAudio();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
 $('volume').oninput=e=>{sound.volume(Number(e.target.value)/100);persist();};
 document.addEventListener('visibilitychange',()=>{if(document.hidden){pressed=null;activeTimeline?.cancel('finish');sound.hide();fx.clear();skillUI.clear();}});
 const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.'],['덩굴을 벗기세요',PANEL_HELP.vine+' 직접 누르면 탭을 쓰지 않습니다. 해제한 타일은 다음 행동부터 연결돼요.'],['무지개를 이으세요',PANEL_HELP.rainbow+' 동률이면 불꽃·별빛·물방울·회복 순입니다. 미리보기의 확정색을 확인하세요.']];
@@ -145,5 +152,5 @@ function motionChanged(){if(activeTimeline){activeTimeline.cancel('finish');soun
 motionQuery.addEventListener('change',motionChanged);motionChanged();
 $('feedbackHelp').onclick=()=>{if(!gate.locked){$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';$('feedbackSettings').showModal();}};$('closeFeedback').onclick=()=>$('feedbackSettings').close();
 $('lessEffects').onchange=e=>{lessEffects=e.target.checked;motionChanged();};
-$('previewEnable').onclick=()=>{sound.enable(!settings.enabled);persist();render();$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';};
+$('previewEnable').onclick=()=>{sound.enable(!settings.enabled);persist();renderAudio();$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';};
 for(const [kind,name] of Object.entries(SOUND_EVENTS)){const b=document.createElement('button');b.textContent=name;b.dataset.sound=kind;b.onclick=()=>{if(!settings.enabled){$('soundHint').textContent='소리 켜기를 누른 뒤 미리 들어 보세요.';return;}sound.unlock();sound.play(kind,{id:++actionID,chain:kind==='large'?12:3});$('soundHint').textContent=sound.available?name+' · 미리듣기':'오디오를 사용할 수 없습니다.';};$('soundSamples').append(b);}

@@ -5,7 +5,8 @@ export function soundRecipe(kind,chain=1){
  const noise=(t,d,a,cut)=>({noise:true,t,d,a,cut});
  const scale=[392,440,494,587,659,784],root=scale[Math.min(5,Math.max(0,Math.floor((chain-1)/2)))];
  switch(kind){
- case 'tile':{const f=scale[Math.min(5,Math.max(0,chain))];return [{...note(f,0,.045,.045),tile:true}];}
+ case 'tile':{const f=scale[Math.min(5,Math.max(0,chain))];return [{...note(f*.75,0,.065,.038,f*.74),tile:true}];}
+ case 'resonance':return [note(196,0,.18,.025),note(294,.02,.16,.012)];
  case 'select':return [note(784,0,.07,.025),note(1568,0,.05,.007)];
  case 'chain':return [note(root),note(root*2,.008,.12,.016)];
  case 'large':return [note(root,0,.25,.085),note(root*1.25,.035,.24,.045),note(root*2,.06,.18,.018)];
