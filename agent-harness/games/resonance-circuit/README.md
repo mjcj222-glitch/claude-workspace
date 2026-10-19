@@ -66,3 +66,7 @@ python agent-harness/games/resonance-circuit/panels_terminal_browser.py
 ## 전투 그림 표시
 
 적의 꽃왕관·얼굴·몸통·발끝을 함께 보여 주도록 전투 일러스트를 원본 비율로 표시합니다. 안내 중에도 그림 높이는 유지합니다. 보드/스킬 크기를 줄이지 않아 하단에는 세로 스크롤이 필요합니다. 캡처와 검증은 [BACKGROUND-REPORT.md](BACKGROUND-REPORT.md)를 참고하세요.
+
+## 연출과 소리 확인
+
+메인 화면의 `연출·소리`에서 효과 줄이기(이번 실행만)와17개 미리듣기를 제공합니다. 소리는 기본 꺼짐이며 먼저 켜야 합니다. ZIP의 `sound-check.html`은 별도 설치 없이 같은 합성음을 재생하고, `samples/`에는 실제 OfflineAudioContext로 렌더링한 WAV가 있습니다. `feedback-play.mp4`는 실제 브라우저 조작 녹화이며 무음입니다. 실제 차이·수치·검증 한계는 [FEEDBACK-REPORT.md](FEEDBACK-REPORT.md)를 참고하세요.

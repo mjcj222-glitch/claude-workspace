@@ -1,0 +1,7 @@
+{"event": "large", "hp": 62, "phase": "battle", "errors": 0}
+{"event": "heal", "hp": 162, "phase": "battle", "errors": 0}
+{"event": "full-shield", "hp": 80, "phase": "battle", "errors": 0}
+{"event": "partial-shield", "hp": 72, "phase": "battle", "errors": 0}
+{"event": "hit-enemy", "hp": 62, "phase": "battle", "errors": 0}
+{"event": "win", "hp": 80, "phase": "complete", "errors": 0}
+{"event": "lose", "hp": 0, "phase": "defeat", "errors": 0}

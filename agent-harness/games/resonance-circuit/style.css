@@ -34,3 +34,11 @@ header{gap:8px}.guarded{animation:guard-soft .4s ease-out}@keyframes guard-soft{
 .enemy>.line:not(:last-child){position:absolute;z-index:1;top:0;left:0;right:0;height:23px;background:#103a47d9;padding:2px 8px}
 .enemy>progress{position:absolute;z-index:1;top:23px;left:0;right:0;height:7px}
 .enemy>.line:last-child{height:26px;z-index:1;background:#103a47df}
+
+/* Quiet glass accents; reduced mode is static, never full-screen flash. */
+.tile.cleared{animation-duration:.12s}.fx-label{font-size:15px;animation-duration:.36s}
+[data-fx]{outline:2px solid var(--fx-color,#c7f5e5);outline-offset:-2px;border-radius:8px}
+[data-fx="select"]{outline-width:1px}[data-fx="shield"]{border-radius:50%;box-shadow:0 0 5px #b5efdd66}[data-fx="rainbow"] .gem{filter:drop-shadow(0 0 4px var(--fx-color))}
+@keyframes boss-hit{40%{filter:brightness(1.12)}}@keyframes hurt{50%{color:#ffb2a9}}
+.fx-reduced *,.fx-reduced *:before,.fx-reduced *:after{animation:none!important;transition:none!important}
+#feedbackSettings{max-height:85vh;overflow:auto}#feedbackSettings p{font-size:12px}#soundSamples{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}#soundSamples button{font-size:11px;padding:8px 3px;margin:0;min-height:36px}.settings{flex-wrap:wrap}.settings #feedbackHelp{font-size:10px}

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/feedback_check.py", line 23, in <module>
+    page.locator('.tile').nth(1).tap();page.wait_for_timeout(25);page.emulate_media(reduced_motion='reduce');assert page.locator('#effects').get_attribute('data-active')=='0'
+                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
