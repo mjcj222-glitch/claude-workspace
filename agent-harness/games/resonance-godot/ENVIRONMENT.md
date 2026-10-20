@@ -1,5 +1,9 @@
 # 실제 환경 확인 · 2026-10-20 UTC
 
+**후속 확인:** 기존 설치된 Xorg dummy 드라이버와 Mesa llvmpipe를 찾아 인증 쿠키가 있는 로컬 화면 서버로 실제 GUI 실행에 성공했다. Xvfb나 새 패키지를 설치하지 않았다. TCP 리스닝을 열거나 인증을 끄지 않았으며, 임시 프로세스별 설정만 사용했다. `evidence/environment-software-gui.log` 및 `native-movie.log`의 종료0과 실제 렌더 영상이 근거다. 아래 표의 GUI 실패는 최초 시도 이력이다.
+
+한 전투 구현과 후속 검증은 [VALIDATION.md](VALIDATION.md)를 참조한다. Android 빌드 환경 부재는 그대로다. 캐릭터/VFX 다운로드는 [TRANSFER-DIAGNOSIS.md](TRANSFER-DIAGNOSIS.md)의 프록시403으로 미수신이며 전송 문제 해결을 우선한다.
+
 ## 확인 결과
 
 | 항목 | 실제 확인 |

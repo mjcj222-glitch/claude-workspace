@@ -1,18 +1,32 @@
-; Godot 4 project. The initial checkpoint is an environment probe, not a playable release.
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
+
+run/main_scene="res://scenes/battle.tscn"
 config/name="잔향 회로 · Godot 전투 프로토타입"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [display]
+
 window/size/viewport_width=720
 window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
 
+[physics]
+
+common/physics_ticks_per_second=120
+2d/default_gravity=1800.0
+2d/solver/solver_iterations=24
+
 [rendering]
+
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-
-[physics]
-common/physics_ticks_per_second=120
