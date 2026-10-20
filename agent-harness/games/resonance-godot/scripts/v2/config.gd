@@ -5,6 +5,8 @@ const BOARD_WIDTH := 600.0
 const BOARD_HEIGHT := 600.0
 const PIECE_COUNT := 42
 const CONTACT_EPS := 1.0
+# Total hull-edge gap for visible matching/skills; physical support stays1.0.
+const MATCH_CONTACT_EPS := 1.75
 const BASE_HULL_SCALE := 1.08
 const SIZE_MIN := 0.96
 const SIZE_MAX := 1.04

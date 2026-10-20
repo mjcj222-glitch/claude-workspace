@@ -14,8 +14,8 @@ var compression_contours: Array = []
 func show_selection(snapshot: Dictionary, plan: Dictionary) -> void:
     direct_ids = plan.get("direct_ids",[]).duplicate()
     extra_ids = plan.get("extra_ids",[]).duplicate()
-    direct_contours = _contours(snapshot, direct_ids)
-    extra_contours = _contours(snapshot, extra_ids)
+    direct_contours = _selection_contours(snapshot, direct_ids)
+    extra_contours = _selection_contours(snapshot, extra_ids)
     blast_circles = plan.get("blast_circles",[]).duplicate(true)
     queue_redraw()
 func reset_transients() -> void:
@@ -25,6 +25,17 @@ func reset_transients() -> void:
     bursts.clear()
     burst_time = 0.0
     queue_redraw()
+
+func _selection_contours(snapshot: Dictionary, ids: Array) -> Array:
+    var contours: Array = []
+    for piece in snapshot.get("pieces",[]):
+        if not ids.has(int(piece.id)): continue
+        var hull := Geometry.transformed(Geometry.polygon(int(piece.hull_id),float(piece.size)),Vector2(piece.x,piece.y),float(piece.angle))
+        # Widest stroke half-width4.5 + AA stays inside the actual selected hull.
+        # Concave insets may split or vanish; never fall back to an outward halo.
+        for inset in Geometry2D.offset_polygon(hull,-6.0,Geometry2D.JOIN_ROUND):
+            if inset.size() >= 3: contours.append(inset)
+    return contours
 
 func _contours(snapshot: Dictionary, ids: Array) -> Array:
     var contours: Array = []

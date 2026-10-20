@@ -53,10 +53,10 @@ func inspect_groups() -> void:
     mixed.pieces[1].size = 0.97
     check(SelectionV2.preview(mixed, 1, 1).get("direct_ids") == [1, 2, 3], "same type matches across distinct rotated and scaled hulls")
     var contact := Fixtures.chain(3)
-    contact.pieces[2].x = Fixtures.circle_step() + Fixtures.circle_diameter() + 1.0
-    check(SelectionV2.preview(contact, 1, 1).get("direct_ids") == [1, 2, 3], "one-unit hull gap is included")
-    contact.pieces[2].x = Fixtures.circle_step() + Fixtures.circle_diameter() + 1.01
-    check(SelectionV2.preview(contact, 1, 1).is_empty(), "gap beyond one is not remotely joined")
+    contact.pieces[2].x = Fixtures.circle_step() + Fixtures.circle_diameter() + 1.75
+    check(SelectionV2.preview(contact, 1, 1).get("direct_ids") == [1, 2, 3], "total1.75 hull gap is included")
+    contact.pieces[2].x = Fixtures.circle_step() + Fixtures.circle_diameter() + 1.751
+    check(SelectionV2.preview(contact, 1, 1).is_empty(), "gap beyond total1.75 is not remotely joined")
 
 func inspect_bombs() -> void:
     var d := Geometry.diameter_unit()

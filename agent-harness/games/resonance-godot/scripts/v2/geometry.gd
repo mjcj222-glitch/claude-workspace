@@ -29,7 +29,7 @@ static func diameter_unit() -> float:
         sum += diameter
     return sum / Config.HULL_COUNT
 
-static func graph(snapshot: Dictionary) -> Dictionary:
+static func graph(snapshot: Dictionary, contact_eps: float = Config.CONTACT_EPS) -> Dictionary:
     var edges := {}
     var polygons := {}
     var bounds := {}
@@ -42,14 +42,14 @@ static func graph(snapshot: Dictionary) -> Dictionary:
         var rect := Rect2(poly[0], Vector2.ZERO)
         for point in poly:
             rect = rect.expand(point)
-        bounds[id] = rect.grow(CONTACT_EPS)
+        bounds[id] = rect.grow(contact_eps)
     for i in range(pieces.size()):
         var a := int(pieces[i].id)
         for j in range(i):
             var b := int(pieces[j].id)
             if not bounds[a].intersects(bounds[b], true):
                 continue
-            if distance(polygons[a], polygons[b]) <= CONTACT_EPS:
+            if distance(polygons[a], polygons[b]) <= contact_eps:
                 edges[a].append(b)
                 edges[b].append(a)
     for ids in edges.values():

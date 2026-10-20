@@ -56,7 +56,7 @@ func run() -> void:
         check(effects.direct_ids == original_direct, "caller mutation cannot change the shown membership")
         plan.direct_ids.erase(999)
         effects.show_selection(Fixtures.chain(3), {"direct_ids":[1,2,3]})
-        check(effects.direct_contours.size() == 1, "connected pieces receive a single outer group contour")
+        check(effects.direct_contours.size() == 3 and effects.direct_ids == [1,2,3], "whole group remains marked by contained per-hull selection contours")
         view.show_selection(snapshot,plan)
     check(view.get_node("PreviewLine").text.contains("2"), "selection-only preview shows actual target count")
     check(not view.get_node("PreviewLine").text.contains("피해"), "selection-only preview invents no combat outcome")

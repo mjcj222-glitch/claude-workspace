@@ -35,7 +35,7 @@ static func preview(snapshot: Dictionary, state: Dictionary, actor_id: String, s
             limit = clampi(int(state.hero_limit), Config.HERO_START_LIMIT, Config.HERO_MAX_LIMIT)
         else:
             destination = "heart"
-        var edges := Geometry.graph(snapshot)
+        var edges := Geometry.graph(snapshot,Config.MATCH_CONTACT_EPS)
         var seen := {seed_id: true}
         var frontier: Array = [seed_id]
         while not frontier.is_empty() and changes.size() < limit:

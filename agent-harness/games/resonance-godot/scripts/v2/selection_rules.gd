@@ -11,7 +11,7 @@ static func preview(snapshot: Dictionary, seed_id: int, combat_version: int) -> 
     if not by_id.has(seed_id):
         return {}
     var type := str(by_id[seed_id].match_type)
-    var edges := Geometry.graph(snapshot)
+    var edges := Geometry.graph(snapshot,Config.MATCH_CONTACT_EPS)
     var direct := {seed_id: true}
     var queue: Array = [seed_id]
     var cursor := 0
