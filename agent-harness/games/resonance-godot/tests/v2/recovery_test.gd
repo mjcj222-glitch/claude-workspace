@@ -57,7 +57,7 @@ func blocked(board: Node) -> Dictionary:
     # Preserve a real supported physical pile; assign surfaces so no component
     # exceeds two. Reject any fixture construction failure explicitly.
     var snap: Dictionary = board.capture()
-    var edges := Geometry.graph(snap)
+    var edges := Geometry.graph(snap,Config.MATCH_CONTACT_EPS)
     var assigned := {}
     for p in snap.pieces:
         for type in Config.TYPES:

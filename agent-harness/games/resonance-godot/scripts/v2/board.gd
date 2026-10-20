@@ -8,6 +8,7 @@ const Config = preload("res://scripts/v2/config.gd")
 const Piece = preload("res://scripts/v2/piece.gd")
 const Selection = preload("res://scripts/v2/selection_rules.gd")
 const Geometry = preload("res://scripts/v2/geometry.gd")
+const Inlet = preload("res://scripts/v2/inlet_geometry.gd")
 const WIDTH := Config.BOARD_WIDTH
 const HEIGHT := Config.BOARD_HEIGHT
 var pieces: Array = []
@@ -23,6 +24,9 @@ var _recovery_epoch := 0
 var _recovering := false
 var _pending_batch: Array = []
 var _pending_openings: Array = []
+var _admitted_count := 0
+var _attempt_frame := -1
+var _in_physics_boundary := false
 var last_snapshot: Dictionary = {"version": 0, "pieces": []}
 
 func _ready() -> void:
@@ -44,6 +48,9 @@ func _ready() -> void:
     queue_redraw()
 
 func _exit_tree() -> void:
+    _attempt_frame = -1
+    _in_physics_boundary = false
+    Inlet.clear_operation()
     # Resolve the coroutine before a retiring owner frees this board. Awaiting
     # a global physics-frame signal would retain a dead function state.
     if _recovering:
@@ -91,6 +98,9 @@ func make_refill(count: int) -> Array:
     return batch
 
 func apply_clear(ids: Array, batch: Array) -> void:
+    _attempt_frame = -1
+    Inlet.clear_operation()
+    _admitted_count = 0
     _pending_batch.clear()
     _pending_openings.clear()
     var openings: Array = []
@@ -112,82 +122,28 @@ func apply_clear(ids: Array, batch: Array) -> void:
     if refill_phase == "incoming": _activate_pending_batch()
 
 func _activate_pending_batch() -> void:
-    var batch := _pending_batch
-    var openings := _pending_openings
-    _pending_batch = []
-    _pending_openings = []
     refill_phase = "incoming"
     stable_ticks = 0
-    var entry_roof: Array = []
-    for piece in pieces:
-        entry_roof.append(Geometry.transformed(piece.polygon,piece.position,piece.rotation))
-    for i in range(batch.size()):
-        var item: Dictionary = batch[i].duplicate(true)
-        if not openings.is_empty():
-            # Refill enters above the real cleared footprint; all descent and
-            # neighbor displacement still comes from rigid-body collisions.
-            var radius := 0.0
-            for point in Geometry.polygon(int(item.hull_id), float(item.size)):
-                radius = maxf(radius, point.length())
-            item.x = clampf(float(openings[i % openings.size()]), radius + 1, WIDTH - radius - 1)
-            var left := INF
-            var right := -INF
-            for point in Geometry.transformed(Geometry.polygon(int(item.hull_id),float(item.size)),Vector2.ZERO,float(item.angle)):
-                left = minf(left,point.x)
-                right = maxf(right,point.x)
-            var sampled_x := clampf(float(batch[i].x),1.0-left,WIDTH-right-1.0)
-            var local_hull := Geometry.transformed(Geometry.polygon(int(item.hull_id),float(item.size)),Vector2.ZERO,float(item.angle))
-            # Compare only the existing footprint and already-sampled entry.
-            # A lower first contact offers more real descent before the roof.
-            if _entry_depth(local_hull,sampled_x,entry_roof) > _entry_depth(local_hull,float(item.x),entry_roof):
-                item.x = sampled_x
-            item.y = Config.SPAWN_Y - i * Config.SPAWN_ROW_SPACING
-        var incoming = _spawn(item)
-        entry_roof.append(Geometry.transformed(incoming.polygon,incoming.position,incoming.rotation))
+    _admit_available()
 
-func _vertical_span(poly: PackedVector2Array, x: float) -> Vector2:
-    var span := Vector2(INF,-INF)
-    for i in range(poly.size()):
-        var a := poly[i]
-        var b := poly[(i+1)%poly.size()]
-        if x < minf(a.x,b.x) or x > maxf(a.x,b.x): continue
-        if a.x == b.x:
-            span.x = minf(span.x,minf(a.y,b.y))
-            span.y = maxf(span.y,maxf(a.y,b.y))
-        else:
-            var y := lerpf(a.y,b.y,(x-a.x)/(b.x-a.x))
-            span.x = minf(span.x,y)
-            span.y = maxf(span.y,y)
-    return span
-
-func _entry_depth(local_hull: PackedVector2Array, x: float, roof: Array) -> float:
-    var incoming := Geometry.transformed(local_hull,Vector2(x,0),0)
-    var left := INF
-    var right := -INF
-    for point in incoming:
-        left = minf(left,point.x)
-        right = maxf(right,point.x)
-    var depth := INF
-    for other in roof:
-        var other_left := INF
-        var other_right := -INF
-        for point in other:
-            other_left = minf(other_left,point.x)
-            other_right = maxf(other_right,point.x)
-        var lo := maxf(left,other_left)
-        var hi := minf(right,other_right)
-        if lo > hi: continue
-        # Between polygon vertex x coordinates both envelopes are linear, so
-        # their first-contact minimum occurs at one of these exact endpoints.
-        var xs: Array = [lo,hi]
-        for poly in [incoming,other]:
-            for point in poly:
-                if point.x >= lo and point.x <= hi: xs.append(point.x)
-        for at_x in xs:
-            var a := _vertical_span(incoming,at_x)
-            var b := _vertical_span(other,at_x)
-            if a.y != -INF and b.x != INF: depth = minf(depth,b.x-a.y)
-    return depth
+func _admit_available() -> void:
+    if _pending_batch.is_empty() or not _in_physics_boundary:return
+    var process_frame_id:=Engine.get_process_frames()
+    if _attempt_frame==process_frame_id:return
+    _attempt_frame=process_frame_id # Spend before choose, including blocked heads.
+    var obstacles: Array=[]
+    for body in pieces:obstacles.append(Geometry.transformed(body.polygon,body.position,body.rotation))
+    var item: Dictionary=_pending_batch[0].duplicate(true)
+    var local:=Geometry.transformed(Geometry.polygon(int(item.hull_id),float(item.size)),Vector2.ZERO,float(item.angle))
+    var result:=Inlet.choose(local,obstacles,float(item.x),WIDTH,HEIGHT,Config.SPAWN_Y,Config.CONTACT_EPS)
+    if result.is_empty():return
+    item.x=result.x
+    item.y=result.y
+    _spawn(item)
+    _admitted_count+=1
+    _pending_batch.pop_front()
+    if not _pending_openings.is_empty():_pending_openings.pop_front()
+    stable_ticks=0
 
 func apply_types(changes: Dictionary) -> Dictionary:
     if settling:
@@ -205,9 +161,7 @@ func apply_types(changes: Dictionary) -> Dictionary:
     return capture()
 
 func _has_selection(value: Dictionary) -> bool:
-    for item in value.pieces:
-        if not Selection.preview(value,int(item.id),0).is_empty(): return true
-    return false
+    return Selection.has_selection(value)
 
 func recover_if_blocked() -> Dictionary:
     # The caller owns the input lock for the whole coroutine. Ordinary refill
@@ -346,12 +300,15 @@ func _spawn(item: Dictionary, restored: bool = false):
     return piece
 
 func _clear_bodies() -> void:
+    _attempt_frame = -1
+    Inlet.clear_operation()
     _recovery_epoch += 1
     var was_recovering := _recovering
     _recovering = false
     if was_recovering: recovery_settlement_finished.emit()
     _pending_batch.clear()
     _pending_openings.clear()
+    _admitted_count = 0
     refill_phase = "idle"
     for piece in pieces:
         piece.free()
@@ -367,12 +324,24 @@ func _start_settling() -> void:
         piece.sleeping = false
 
 func _physics_process(delta: float) -> void:
+    # One actual process-frame credit spans all catch-up physics callbacks.
+    # Keep the wrapper small so every early return clears boundary ownership.
+    _in_physics_boundary = true
+    _step_settling(delta)
+    _in_physics_boundary = false
+    if refill_phase == "error":
+        _attempt_frame = -1
+        Inlet.clear_operation()
+
+func _step_settling(delta: float) -> void:
     if not settling:
         return
+    if refill_phase == "incoming" and not _pending_batch.is_empty(): _admit_available()
     elapsed += delta
     if elapsed > Config.SETTLE_TIMEOUT:
         _pending_batch.clear()
         _pending_openings.clear()
+        _admitted_count = 0
         refill_phase = "error"
         settling = false
         for piece in pieces:
@@ -386,7 +355,7 @@ func _physics_process(delta: float) -> void:
             quiet = false
             break
     stable_ticks = stable_ticks + 1 if quiet else 0
-    if stable_ticks >= Config.SETTLE_QUIET_TICKS and supported(capture()):
+    if stable_ticks >= Config.SETTLE_QUIET_TICKS and (refill_phase == "collapse" or _pending_batch.is_empty()) and supported(capture()):
         if refill_phase == "collapse":
             _activate_pending_batch()
             return

@@ -874,8 +874,8 @@ func phase_lifecycle(battle: Node) -> void:
         if not battle.board.settling:break
         await physics_frame
     check(monotonic_clock and one_version,"collapse/incoming share continuous clock and one boardversion")
-    check(phases.any(func(p):return p.phase=="incoming" and p.elapsed>0 and p.count==42),"one actual activation after collapse keeps all42")
-    check(battle.phase == "READY" and signals.size() == 1 and battle.refill_batch_count == 1,"one final settle and no intermediate READY/refill event")
+    check(phases.any(func(p):return p.phase=="incoming" and p.elapsed>0 and p.count>42-plan.removed_ids.size() and p.count<=42) and phases.any(func(p):return p.phase=="settled" and p.count==42),"admission starts after collapse and reaches one final42-body settlement")
+    check(battle.phase == "READY" and signals.size() == 1 and battle.refill_batch_count == 1 and battle.board.pieces.size() == 42 and battle.board._pending_batch.is_empty() and battle.board.supported(battle.board.capture()),"one final42 supported settle and no intermediate READY/refill event")
     var file := FileAccess.open(OS.get_environment("XDG_DATA_HOME").path_join("phase-lifecycle.json"),FileAccess.WRITE)
     file.store_string(JSON.stringify({"phases":phases,"lock":battle.lock_measurements}))
     battle.board.settled.disconnect(listener)

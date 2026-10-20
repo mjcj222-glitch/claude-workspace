@@ -1,0 +1,2552 @@
+{
+  "provenance": {
+    "seed": 41,
+    "battle_seed": 3296630253,
+    "route": "risk",
+    "profile": "HISTORICAL1.0 matching. Replays original body trajectory without restore; product Board applied only at failed target. Not a final-rules normal win.",
+    "original_product_commit": "2f0a4df84c5126c3aa6d3c3f76b6234e82069783",
+    "original_failure_sha256": "37e6fa5a106fa93ee1f2daf2c1f781a6ed2fdc5dfad27caace6dc1583f97d94d",
+    "frozen_source_sha256": {
+      "board.gd": "affd1659e119eeb148cf2ba2739ff94960da90adbb36e8fc9013dddf93f31104",
+      "full_expedition.gd": "4b23aa5ba0129f7b3226002d0fcd1f0b60497d825a53b7190109acd08b48924b",
+      "geometry.gd": "9cf6f06f9da063f76dbf2062b51e8eda19e1afa946b0a115467110c8220b21cc"
+    }
+  },
+  "expected_checkpoint": {
+    "board": {
+      "next_id": 68,
+      "rng_seed": "3296630253",
+      "rng_state": "-7073472719749392670",
+      "snapshot": {
+        "pieces": [
+          {
+            "angle": -0.710200190544128,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 1,
+            "match_type": "yellow",
+            "size": 0.998318016529083,
+            "x": 52.1359100341797,
+            "y": 548.817626953125
+          },
+          {
+            "angle": 3.14158535003662,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 3,
+            "match_type": "blue",
+            "size": 1.00060403347015,
+            "x": 259.175567626953,
+            "y": 561.393371582031
+          },
+          {
+            "angle": -2.50825262069702,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 4,
+            "match_type": "yellow",
+            "size": 0.96666157245636,
+            "x": 346.009887695312,
+            "y": 558.6162109375
+          },
+          {
+            "angle": 0.00371447927318513,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 5,
+            "match_type": "blue",
+            "size": 0.982755959033966,
+            "x": 434.320495605469,
+            "y": 561.994262695312
+          },
+          {
+            "angle": 1.25851404666901,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 6,
+            "match_type": "yellow",
+            "size": 0.972004592418671,
+            "x": 520.648071289062,
+            "y": 558.468444824219
+          },
+          {
+            "angle": 1.58805739879608,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 7,
+            "match_type": "blue",
+            "size": 1.03373038768768,
+            "x": 40.2733955383301,
+            "y": 468.831298828125
+          },
+          {
+            "angle": 1.86647653579712,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 10,
+            "match_type": "yellow",
+            "size": 1.0242532491684,
+            "x": 390.296539306641,
+            "y": 487.879211425781
+          },
+          {
+            "angle": 1.29996228218079,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 11,
+            "match_type": "yellow",
+            "size": 0.987510442733765,
+            "x": 472.258117675781,
+            "y": 482.922546386719
+          },
+          {
+            "angle": -1.65960097312927,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 12,
+            "match_type": "yellow",
+            "size": 0.976432681083679,
+            "x": 555.894287109375,
+            "y": 486.504547119141
+          },
+          {
+            "angle": -1.29126715660095,
+            "bomb_tier": 0,
+            "hull_id": 3,
+            "id": 13,
+            "match_type": "heart",
+            "size": 0.992005348205566,
+            "x": 49.4770965576172,
+            "y": 393.117584228516
+          },
+          {
+            "angle": 2.51262426376343,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 14,
+            "match_type": "yellow",
+            "size": 0.983510315418243,
+            "x": 142.608520507812,
+            "y": 558.01513671875
+          },
+          {
+            "angle": -0.966264188289642,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 15,
+            "match_type": "yellow",
+            "size": 1.01021480560303,
+            "x": 299.450561523438,
+            "y": 487.772888183594
+          },
+          {
+            "angle": 0.456122487783432,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 16,
+            "match_type": "yellow",
+            "size": 0.982074916362762,
+            "x": 381.938049316406,
+            "y": 404.279968261719
+          },
+          {
+            "angle": -1.06097865104675,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 18,
+            "match_type": "yellow",
+            "size": 1.01430177688599,
+            "x": 548.140197753906,
+            "y": 407.595123291016
+          },
+          {
+            "angle": 0.41079780459404,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 20,
+            "match_type": "yellow",
+            "size": 0.998663067817688,
+            "x": 201.614410400391,
+            "y": 501.885772705078
+          },
+          {
+            "angle": -0.587680041790009,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 21,
+            "match_type": "yellow",
+            "size": 1.01647806167603,
+            "x": 241.587524414062,
+            "y": 427.124847412109
+          },
+          {
+            "angle": -2.69431185722351,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 24,
+            "match_type": "yellow",
+            "size": 0.96828031539917,
+            "x": 461.685821533203,
+            "y": 396.869964599609
+          },
+          {
+            "angle": -1.06542134284973,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 26,
+            "match_type": "yellow",
+            "size": 1.01683950424194,
+            "x": 147.457931518555,
+            "y": 409.863464355469
+          },
+          {
+            "angle": 0.696155369281769,
+            "bomb_tier": 0,
+            "hull_id": 3,
+            "id": 27,
+            "match_type": "heart",
+            "size": 0.970121085643768,
+            "x": 115.974914550781,
+            "y": 482.599365234375
+          },
+          {
+            "angle": -2.72219085693359,
+            "bomb_tier": 0,
+            "hull_id": 3,
+            "id": 28,
+            "match_type": "heart",
+            "size": 0.9937584400177,
+            "x": 311.771789550781,
+            "y": 397.207824707031
+          },
+          {
+            "angle": -2.51986265182495,
+            "bomb_tier": 0,
+            "hull_id": 0,
+            "id": 33,
+            "match_type": "red",
+            "size": 0.971971571445465,
+            "x": 197.414169311523,
+            "y": 346.764739990234
+          },
+          {
+            "angle": 0.0629178807139397,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 34,
+            "match_type": "yellow",
+            "size": 1.018021941185,
+            "x": 271.065338134766,
+            "y": 317.966888427734
+          },
+          {
+            "angle": -2.48356342315674,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 36,
+            "match_type": "yellow",
+            "size": 1.01358962059021,
+            "x": 508.593048095703,
+            "y": 327.197204589844
+          },
+          {
+            "angle": -0.412913948297501,
+            "bomb_tier": 0,
+            "hull_id": 0,
+            "id": 40,
+            "match_type": "red",
+            "size": 1.03089570999146,
+            "x": 331.002349853516,
+            "y": 261.609710693359
+          },
+          {
+            "angle": -2.4603533744812,
+            "bomb_tier": 0,
+            "hull_id": 3,
+            "id": 44,
+            "match_type": "heart",
+            "size": 1.03933835029602,
+            "x": 119.846183776855,
+            "y": 341.377471923828
+          },
+          {
+            "angle": 3.13849997520447,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 48,
+            "match_type": "blue",
+            "size": 1.00588762760162,
+            "x": 561.091796875,
+            "y": 265.346832275391
+          },
+          {
+            "angle": 0.0920348390936852,
+            "bomb_tier": 0,
+            "hull_id": 0,
+            "id": 49,
+            "match_type": "red",
+            "size": 0.96567291021347,
+            "x": 552.392028808594,
+            "y": 186.871994018555
+          },
+          {
+            "angle": 2.58868217468262,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 50,
+            "match_type": "blue",
+            "size": 0.996762692928314,
+            "x": 380.863342285156,
+            "y": 325.907592773438
+          },
+          {
+            "angle": -0.250354140996933,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 51,
+            "match_type": "blue",
+            "size": 0.983862578868866,
+            "x": 184.949859619141,
+            "y": 269.667266845703
+          },
+          {
+            "angle": 2.31953835487366,
+            "bomb_tier": 0,
+            "hull_id": 0,
+            "id": 53,
+            "match_type": "red",
+            "size": 0.987580418586731,
+            "x": 465.886383056641,
+            "y": 265.122100830078
+          },
+          {
+            "angle": -2.51823091506958,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 56,
+            "match_type": "yellow",
+            "size": 0.960154354572296,
+            "x": 47.6640930175781,
+            "y": 324.077972412109
+          },
+          {
+            "angle": 0.547083795070648,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 57,
+            "match_type": "blue",
+            "size": 1.01305675506592,
+            "x": 95.0206527709961,
+            "y": 259.160675048828
+          },
+          {
+            "angle": 2.55461716651917,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 58,
+            "match_type": "blue",
+            "size": 0.961884438991547,
+            "x": 252.641418457031,
+            "y": 224.457672119141
+          },
+          {
+            "angle": 2.01603603363037,
+            "bomb_tier": 0,
+            "hull_id": 0,
+            "id": 59,
+            "match_type": "red",
+            "size": 0.996693730354309,
+            "x": 147.909576416016,
+            "y": 197.606643676758
+          },
+          {
+            "angle": -1.40708994865417,
+            "bomb_tier": 0,
+            "hull_id": 3,
+            "id": 60,
+            "match_type": "heart",
+            "size": 0.985407710075378,
+            "x": 398.173156738281,
+            "y": 219.027084350586
+          },
+          {
+            "angle": -0.752518236637115,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 61,
+            "match_type": "yellow",
+            "size": 1.01689040660858,
+            "x": 48.1887092590332,
+            "y": 194.321258544922
+          },
+          {
+            "angle": -0.58542412519455,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 62,
+            "match_type": "blue",
+            "size": 1.03399455547333,
+            "x": 216.874206542969,
+            "y": 155.128829956055
+          },
+          {
+            "angle": -2.1357524394989,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 63,
+            "match_type": "blue",
+            "size": 1.0290687084198,
+            "x": 314.017822265625,
+            "y": 176.102416992188
+          },
+          {
+            "angle": -1.10655844211578,
+            "bomb_tier": 0,
+            "hull_id": 3,
+            "id": 64,
+            "match_type": "heart",
+            "size": 1.02533149719238,
+            "x": 470.427368164062,
+            "y": 187.861511230469
+          },
+          {
+            "angle": 1.2319563627243,
+            "bomb_tier": 0,
+            "hull_id": 0,
+            "id": 65,
+            "match_type": "red",
+            "size": 0.97400689125061,
+            "x": 388.138000488281,
+            "y": 144.231094360352
+          },
+          {
+            "angle": -3.13996601104736,
+            "bomb_tier": 0,
+            "hull_id": 1,
+            "id": 66,
+            "match_type": "blue",
+            "size": 1.02167987823486,
+            "x": 560.318908691406,
+            "y": 107.903861999512
+          },
+          {
+            "angle": 2.39183449745178,
+            "bomb_tier": 0,
+            "hull_id": 2,
+            "id": 67,
+            "match_type": "yellow",
+            "size": 1.0220513343811,
+            "x": 63.5485458374023,
+            "y": 114.480194091797
+          }
+        ],
+        "version": 9
+      }
+    },
+    "reduced": false,
+    "state": {
+      "actions_left": 1,
+      "bomb_buff": {
+        "active": false,
+        "generated_count": 0,
+        "paid_cost": 0,
+        "refunded": false
+      },
+      "enemy_hp": 100,
+      "enemy_id": "hall2_risk",
+      "energy": 10,
+      "hero_limit": 3,
+      "hp": 25,
+      "intent": {
+        "base_damage": 26,
+        "kind": "strong",
+        "pressure": 0,
+        "total_damage": 26,
+        "weakened": false
+      },
+      "party": [
+        "hero"
+      ],
+      "pending_damage": 12,
+      "pending_heal": 0,
+      "refill_pending": false,
+      "revision": 17,
+      "status": "active",
+      "team_skill_used": false,
+      "turn": 3
+    }
+  },
+  "expected_steps": [
+    {
+      "actual_removed_ids": [
+        14,
+        19,
+        20
+      ],
+      "after": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 72,
+        "enemy_id": "hall1",
+        "energy": 5,
+        "hero_limit": 3,
+        "hp": 72,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 6,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 72,
+        "enemy_id": "hall1",
+        "energy": 4,
+        "hero_limit": 3,
+        "hp": 72,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 1,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "board_version_after": 2,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 1,
+        "combat_version": 1,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          14,
+          19,
+          20
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          14,
+          19,
+          20
+        ],
+        "seed_id": 14,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        11,
+        24,
+        30
+      ],
+      "after": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 72,
+        "enemy_id": "hall1",
+        "energy": 6,
+        "hero_limit": 3,
+        "hp": 72,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 12,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 5,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 72,
+        "enemy_id": "hall1",
+        "energy": 5,
+        "hero_limit": 3,
+        "hp": 72,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 6,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "board_version_after": 3,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 2,
+        "combat_version": 3,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          11,
+          24,
+          30
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          11,
+          24,
+          30
+        ],
+        "seed_id": 11,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        33,
+        45,
+        46
+      ],
+      "after": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 54,
+        "enemy_id": "hall1",
+        "energy": 7,
+        "hero_limit": 3,
+        "hp": 64,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 7,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 72,
+        "enemy_id": "hall1",
+        "energy": 6,
+        "hero_limit": 3,
+        "hp": 72,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 12,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 5,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "board_version_after": 4,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 3,
+        "combat_version": 5,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          33,
+          45,
+          46
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          33,
+          45,
+          46
+        ],
+        "seed_id": 33,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        10,
+        23,
+        29,
+        41
+      ],
+      "after": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 54,
+        "enemy_id": "hall1",
+        "energy": 8,
+        "hero_limit": 3,
+        "hp": 64,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 8,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 9,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 54,
+        "enemy_id": "hall1",
+        "energy": 7,
+        "hero_limit": 3,
+        "hp": 64,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 7,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "board_version_after": 5,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 4,
+        "combat_version": 7,
+        "direct_color_count": 4,
+        "direct_damage": 8,
+        "direct_ids": [
+          10,
+          23,
+          29,
+          41
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          10,
+          23,
+          29,
+          41
+        ],
+        "seed_id": 10,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        16,
+        22,
+        34
+      ],
+      "after": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 54,
+        "enemy_id": "hall1",
+        "energy": 9,
+        "hero_limit": 3,
+        "hp": 64,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 14,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 11,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 54,
+        "enemy_id": "hall1",
+        "energy": 8,
+        "hero_limit": 3,
+        "hp": 64,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 8,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 9,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "board_version_after": 6,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 5,
+        "combat_version": 9,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          16,
+          22,
+          34
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          16,
+          22,
+          34
+        ],
+        "seed_id": 16,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        21,
+        43,
+        49
+      ],
+      "after": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 34,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 56,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 13,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 54,
+        "enemy_id": "hall1",
+        "energy": 9,
+        "hero_limit": 3,
+        "hp": 64,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 14,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 11,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "board_version_after": 7,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 6,
+        "combat_version": 11,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          21,
+          43,
+          49
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          21,
+          43,
+          49
+        ],
+        "seed_id": 21,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        27,
+        31,
+        38,
+        50
+      ],
+      "after": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 34,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 56,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 8,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 15,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 34,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 56,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 13,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "board_version_after": 8,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 7,
+        "combat_version": 13,
+        "direct_color_count": 4,
+        "direct_damage": 8,
+        "direct_ids": [
+          27,
+          31,
+          38,
+          50
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          27,
+          31,
+          38,
+          50
+        ],
+        "seed_id": 27,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        37,
+        44,
+        59
+      ],
+      "after": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 34,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 56,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 14,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 17,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 34,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 56,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 8,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 15,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "board_version_after": 9,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 8,
+        "combat_version": 15,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          37,
+          44,
+          59
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          37,
+          44,
+          59
+        ],
+        "seed_id": 37,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        36,
+        42,
+        47,
+        48,
+        60,
+        65
+      ],
+      "after": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 2,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 4,
+          "total_damage": 12,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 19,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 4
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 34,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 56,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 14,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 17,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "board_version_after": 10,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 9,
+        "combat_version": 17,
+        "direct_color_count": 6,
+        "direct_damage": 18,
+        "direct_ids": [
+          36,
+          42,
+          47,
+          48,
+          60,
+          65
+        ],
+        "energy_effective": 0,
+        "energy_raw": 2,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          36,
+          42,
+          47,
+          48,
+          60,
+          65
+        ],
+        "seed_id": 36,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        54,
+        64,
+        71
+      ],
+      "after": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 2,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 4,
+          "total_damage": 12,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 6,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 21,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 4
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 2,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 4,
+          "total_damage": 12,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 19,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 4
+      },
+      "board_version_after": 11,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 10,
+        "combat_version": 19,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          54,
+          64,
+          71
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          54,
+          64,
+          71
+        ],
+        "seed_id": 54,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        4,
+        5,
+        12,
+        17,
+        35,
+        39,
+        52,
+        53
+      ],
+      "after": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 2,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 4,
+          "total_damage": 12,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 40,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 23,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 4
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 2,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 4,
+          "total_damage": 12,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 6,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 21,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 4
+      },
+      "board_version_after": 12,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 11,
+        "combat_version": 21,
+        "direct_color_count": 8,
+        "direct_damage": 34,
+        "direct_ids": [
+          4,
+          5,
+          12,
+          17,
+          35,
+          39,
+          52,
+          53
+        ],
+        "energy_effective": 0,
+        "energy_raw": 4,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          4,
+          5,
+          12,
+          17,
+          35,
+          39,
+          52,
+          53
+        ],
+        "seed_id": 4,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        8,
+        26,
+        62
+      ],
+      "after": {
+        "actions_left": 0,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 0,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 4,
+          "total_damage": 12,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 25,
+        "status": "victory",
+        "team_skill_used": false,
+        "turn": 4
+      },
+      "battle": "hall1",
+      "before": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 2,
+        "enemy_id": "hall1",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 4,
+          "total_damage": 12,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 40,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 23,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 4
+      },
+      "board_version_after": 13,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 12,
+        "combat_version": 23,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          8,
+          26,
+          62
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          8,
+          26,
+          62
+        ],
+        "seed_id": 8,
+        "weaken_intent": false
+      }
+    },
+    {
+      "choice": "risk",
+      "run": {
+        "applied_choices": [
+          "route_choice"
+        ],
+        "battle_seeds": [
+          3824726209,
+          3296630253,
+          1326668828
+        ],
+        "completed_battles": [
+          "battle1"
+        ],
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "party": [
+          "hero"
+        ],
+        "revision": 15,
+        "route": "risk",
+        "seed": 41,
+        "stage": "battle2"
+      }
+    },
+    {
+      "actual_removed_ids": [
+        2,
+        8,
+        9
+      ],
+      "after": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 132,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 6,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "battle": "hall2_risk",
+      "before": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 132,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 1,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "board_version_after": 2,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 1,
+        "combat_version": 1,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          2,
+          8,
+          9
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          2,
+          8,
+          9
+        ],
+        "seed_id": 2,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        23,
+        29,
+        35
+      ],
+      "after": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 132,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 12,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 5,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "battle": "hall2_risk",
+      "before": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 132,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 6,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "board_version_after": 3,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 2,
+        "combat_version": 3,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          23,
+          29,
+          35
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          23,
+          29,
+          35
+        ],
+        "seed_id": 23,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        42,
+        46,
+        47
+      ],
+      "after": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 120,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 41,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 7,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "battle": "hall2_risk",
+      "before": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 132,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 48,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 12,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 5,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "board_version_after": 4,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 3,
+        "combat_version": 5,
+        "direct_color_count": 0,
+        "direct_damage": 0,
+        "direct_ids": [
+          42,
+          46,
+          47
+        ],
+        "energy_effective": 0,
+        "energy_raw": 0,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 9,
+        "healing_raw": 9,
+        "mode": "heart",
+        "refill_tier": 0,
+        "removed_ids": [
+          42,
+          46,
+          47
+        ],
+        "seed_id": 42,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        19,
+        25,
+        31,
+        38
+      ],
+      "after": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 120,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 41,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 8,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 9,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "battle": "hall2_risk",
+      "before": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 120,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 41,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 7,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "board_version_after": 5,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 4,
+        "combat_version": 7,
+        "direct_color_count": 4,
+        "direct_damage": 8,
+        "direct_ids": [
+          19,
+          25,
+          31,
+          38
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          19,
+          25,
+          31,
+          38
+        ],
+        "seed_id": 19,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        32,
+        37,
+        43
+      ],
+      "after": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 120,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 41,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 14,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 11,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "battle": "hall2_risk",
+      "before": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 120,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 41,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 8,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 9,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "board_version_after": 6,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 5,
+        "combat_version": 9,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          32,
+          37,
+          43
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          32,
+          37,
+          43
+        ],
+        "seed_id": 32,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        39,
+        52,
+        55
+      ],
+      "after": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 100,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 25,
+        "intent": {
+          "base_damage": 26,
+          "kind": "strong",
+          "pressure": 0,
+          "total_damage": 26,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 13,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "battle": "hall2_risk",
+      "before": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 120,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 41,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 14,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 11,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 2
+      },
+      "board_version_after": 7,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 6,
+        "combat_version": 11,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          39,
+          52,
+          55
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          39,
+          52,
+          55
+        ],
+        "seed_id": 39,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        41,
+        45,
+        54
+      ],
+      "after": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 100,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 25,
+        "intent": {
+          "base_damage": 26,
+          "kind": "strong",
+          "pressure": 0,
+          "total_damage": 26,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 6,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 15,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "battle": "hall2_risk",
+      "before": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 100,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 25,
+        "intent": {
+          "base_damage": 26,
+          "kind": "strong",
+          "pressure": 0,
+          "total_damage": 26,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 13,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "board_version_after": 8,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 7,
+        "combat_version": 13,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          41,
+          45,
+          54
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          41,
+          45,
+          54
+        ],
+        "seed_id": 41,
+        "weaken_intent": false
+      }
+    },
+    {
+      "actual_removed_ids": [
+        17,
+        22,
+        30
+      ],
+      "after": {
+        "actions_left": 1,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 100,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 25,
+        "intent": {
+          "base_damage": 26,
+          "kind": "strong",
+          "pressure": 0,
+          "total_damage": 26,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 12,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 17,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "battle": "hall2_risk",
+      "before": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 100,
+        "enemy_id": "hall2_risk",
+        "energy": 10,
+        "hero_limit": 3,
+        "hp": 25,
+        "intent": {
+          "base_damage": 26,
+          "kind": "strong",
+          "pressure": 0,
+          "total_damage": 26,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 6,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 15,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 3
+      },
+      "board_version_after": 9,
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 8,
+        "combat_version": 15,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          17,
+          22,
+          30
+        ],
+        "energy_effective": 0,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          17,
+          22,
+          30
+        ],
+        "seed_id": 17,
+        "weaken_intent": false
+      }
+    }
+  ],
+  "failed_plan": {
+    "blast_circles": [],
+    "blast_damage": 0,
+    "board_version": 9,
+    "combat_version": 17,
+    "direct_color_count": 5,
+    "direct_damage": 16,
+    "direct_ids": [
+      51,
+      57,
+      58,
+      62,
+      63
+    ],
+    "energy_effective": 0,
+    "energy_raw": 2,
+    "extra_ids": [],
+    "fired_bomb_ids": [],
+    "healing_effective": 0,
+    "healing_raw": 0,
+    "mode": "color",
+    "refill_tier": 0,
+    "removed_ids": [
+      51,
+      57,
+      58,
+      62,
+      63
+    ],
+    "seed_id": 51,
+    "weaken_intent": false
+  }
+}

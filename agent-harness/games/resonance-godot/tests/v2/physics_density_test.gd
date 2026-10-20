@@ -2,7 +2,22 @@ extends SceneTree
 ## Real Board/Selection measurement. Not full expedition gameplay.
 const Board = preload("res://scripts/v2/board.gd")
 const Geometry = preload("res://scripts/v2/geometry.gd")
+const Config = preload("res://scripts/v2/config.gd")
 const Selection = preload("res://scripts/v2/selection_rules.gd")
+class BirthAuditBoard:
+    extends "res://scripts/v2/board.gd"
+    var births: Array = []
+    func _spawn(item: Dictionary, restored: bool = false):
+        var body = super._spawn(item,restored)
+        var poly := Geometry.transformed(body.polygon,body.position,body.rotation)
+        var overlap := 0.0
+        for prior in births:
+            var previous = by_id(int(prior.actual.id))
+            if previous == null: continue
+            var other := Geometry.transformed(previous.polygon,previous.position,previous.rotation)
+            for intersection in Geometry2D.intersect_polygons(poly,other): overlap = maxf(overlap,Geometry.area(intersection))
+        births.append({"actual":body.snapshot(),"polygon":poly,"overlap_with_incoming":overlap})
+        return body
 var failures := 0
 var timed_out := false
 var enforce := false
@@ -58,7 +73,7 @@ func measure(board, seed_value: int, phase: String, motion: Dictionary = {}) -> 
         check(top >= 0 and top <= top_limit,"settled %s top band at most %d pixels" % [phase,int(top_limit)])
 func run() -> void:
     enforce = not OS.get_cmdline_user_args().has("--measure-only")
-    var board = Board.new()
+    var board = BirthAuditBoard.new()
     root.add_child(board)
     board.settle_failed.connect(func(_reason): timed_out = true)
     for seed_value in [41,73,991,20261020]:
@@ -85,21 +100,11 @@ func run() -> void:
         var moved := {}
         var batch: Array = board.make_refill(plan.removed_ids.size())
         var batch_before := batch.duplicate(true)
+        board.births.clear()
         board.apply_clear(plan.removed_ids,batch)
         check(batch == batch_before,"physical inlet leaves supplied refill batch unchanged")
-        # The immutable batch enters only after genuine survivors settle.
-        while board.refill_phase == "collapse": await physics_frame
-        var incoming: Array = []
-        for item in batch:
-            var body = board.by_id(item.id)
-            var actual: Dictionary = body.snapshot()
-            check(actual.hull_id == item.hull_id and actual.match_type == item.match_type and actual.size == item.size and actual.angle == item.angle,"inlet preserves sampled identity, hull, type, size and rotation")
-            var poly := Geometry.transformed(Geometry.polygon(actual.hull_id,actual.size),Vector2(actual.x,actual.y),actual.angle)
-            for point in poly: check(point.y < 0,"refill begins above visible board")
-            for previous in incoming:
-                for intersection in Geometry2D.intersect_polygons(poly,previous):
-                    check(Geometry.area(intersection)<0.01,"incoming hulls begin without overlap")
-            incoming.append(poly)
+        # Capture every real birth inside a test-only _spawn override, before
+        # physics advances its rotation; admission can span multiple frames.
         for tick in range(1800):
             if not board.settling: break
             await physics_frame
@@ -110,6 +115,15 @@ func run() -> void:
                 max_translation = maxf(max_translation,distance)
                 max_rotation = maxf(max_rotation,angle)
                 if distance>3 and angle>0.04: moved[id]=true
+        check(board.births.size() == batch.size(),"every pending batch member has exactly one actual birth")
+        for index in range(board.births.size()):
+            var birth: Dictionary = board.births[index]
+            var actual: Dictionary = birth.actual
+            var item: Dictionary = batch[index]
+            check(actual.id == item.id and actual.hull_id == item.hull_id and actual.match_type == item.match_type and actual.size == item.size and actual.angle == item.angle and actual.bomb_tier == item.bomb_tier,"inlet preserves sampled identity hull type size angle bomb at exact birth")
+            check(Array(birth.polygon).all(func(point):return point.x>=Config.CONTACT_EPS and point.x<=Config.BOARD_WIDTH-Config.CONTACT_EPS and point.y<=-Config.CONTACT_EPS),"finite aperture keeps entire actual birth hull above board inside width")
+            for point in birth.polygon: check(point.y < 0,"refill begins above visible board")
+            check(birth.overlap_with_incoming < 0.01,"incoming hulls begin without overlap with actual prior births")
         var motion := {"removed_ids":plan.removed_ids,"neighbor_ids":neighbors.keys(),"max_translation":max_translation,"max_rotation_radians":max_rotation,"translated_and_rolled_ids":moved.keys(),"refill_count":batch.size()}
         measure(board,seed_value,"refill",motion)
         check(max_translation>3 and max_rotation>0.04 and not moved.is_empty(),"actual removal neighbors translate and roll")

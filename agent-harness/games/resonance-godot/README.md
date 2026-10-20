@@ -1,6 +1,53 @@
 # 잔향 회로 · Godot 전투 프로토타입
 
-**현재 상태: 주인공 3포즈·Kenney 효과·입체 기물을 통합하고 검증한 한 전투 프로토타입.** PR #3의 `74a92ac`에 이어 아트와 창 크기별 입력 검증을 보완했다. 웹판과 main은 보존했다. APK나 최종 게임이 아니다.
+**v1 보존 기록: 주인공 3포즈·Kenney 효과·입체 기물을 통합하고 검증한 한 전투 프로토타입.** PR #3의 `74a92ac`에 이어 아트와 창 크기별 입력 검증을 보완했다. 웹판과 main은 보존했다. APK나 최종 게임이 아니다.
+
+## 별도 v2 탐험 실행
+
+v2는 솔로 시작 → 경로 선택 → 첫 동료 모집/주인공 강화 → 세 번째 관문의 세 전투 탐험이다. 기본 실행은 계속 v1이다. v2를 실행하려면 씬을 명시한다.
+
+```sh
+cd agent-harness/games/resonance-godot
+godot res://scenes/v2/expedition.tscn -- --no-save
+# 원래 v1
+godot res://scenes/battle.tscn -- --no-save
+```
+
+v2에서는 같은 문양의 접촉 그룹 3개 이상을 누른 채 제거 예고를 보고 놓아 확정한다. 보드 밖으로 이동했다 돌아오거나 취소·포커스 상실·창 크기 변경이 생기면 취소한다. 한 턴은 유효 제거 3회이며, 팀 스킬은 제거 횟수 없이 턴당 한 번이다. 주인공은 초상 → 목적색 → 기물 순서로 변환하고 0.7초 컷인 뒤 복귀한다. 방향키와 Enter/Space, 스킬 1/2/3, 목적색 R/Y/B도 지원한다.
+
+매칭과 주인공/정원지기 탐색은 hull 사이 **총 간격1.75 논리px 이하**를 사용한다. 물리 지지는1.0을 유지한다. 양쪽을 각각1.75씩 넓힌3.5가 아니며, 선택 테두리의 두께는 연결 판정에 들어가지 않는다. 시드121의 추가 접촉 사례와 초기35↔34 분리 사례를 함께 회귀 검사한다.
+
+v2 저장은 `user://resonance_godot_v2.json`에 새로 기록하며 v1 저장을 읽거나 변환하지 않는다. 검사는 임시 절대 XDG 경로와 `--no-save`를 사용한다. 저장 검사의 명시적 fixture 슬롯도 그 임시 공간 안에만 만든다.
+
+```sh
+export XDG_DATA_HOME=/tmp/resonance-v2-check/data
+export XDG_CONFIG_HOME=/tmp/resonance-v2-check/config
+export XDG_CACHE_HOME=/tmp/resonance-v2-check/cache
+godot --headless --fixed-fps 120 --script tests/v2/full_expedition_test.gd -- --no-save
+godot --headless --fixed-fps 120 --script tests/v2/window_input_test.gd -- --no-save
+# 기존 인증된 로컬 X11 DISPLAY/XAUTHORITY가 있는 경우에만 실행
+python3 tools/v2/run_os_input_probe.py --output-dir /tmp/resonance-v2-os-evidence
+# 실제 그래픽 창의 정상 탐험 + 화면에 표시된 별도 기능 fixture 기록
+godot --resolution 720x1280 --script tools/v2/record_expedition.gd -- --no-save
+```
+
+리필은 이미 한 번 추첨한 배치를 순서대로 유지하고, 현재 실제 hull 기하에서 보드 폭 전체의 유한 높이 입구를 계산한다. 한 process-frame 묶음에서 성공·막힘을 합쳐 한 번만 입구를 계산하며, 다음 계산은 움직인 몸체를 다시 읽는다. 전체12초 물리 시계·42개 정착·28quiet·경계/지지 검사는 유지한다. 모든 상태의 성공이나 지연 상한을 보장하지 않으며 실패하면 ERROR로 멈춘다.
+
+현재 데스크톱 개발 미리보기에서 연속 유입의 프레임별 집중 비용을 줄였지만 실시간60fps 합격은 아니다. 실제 세 표본의 단일 계산 최대23.200ms, 선택 계산이 없던 입력/렌더 구간 최대70.152ms를 남긴다. 실제 놓기→READY는 약2.66–5.31초였으며, 영화의 고정60fps 명목 길이와 구별한다. 휴대폰 성능·사람의 재미는 별도 검수다.
+
+`inlet_history_test.gd`는 별도 역사적1.0 매칭 fixture 프로젝트에서 원래 실패 이력과 몸체를 보존한 채 대상 Board만 현재 소스로 교체한다. 현재1.75 규칙의 정상 완주와 구별한다. 별도 현재 Board 물리 검사는 원래7개 제거와 대형 합집합 투입을 검사한다. 저장 검사는 `XDG_DATA_HOME`에 `/xdg/task8-`가, 복구 검사는 `/xdg/task9-`가 포함된 전용 절대 fixture 경로를 요구한다.
+
+```sh
+# 고정 fps나 Movie Maker 없이 실제 그래픽 창에서 보통3–8개 제거 다섯 건의 시간·엔진 동기 경과시간 표본(프로세스 CPU 아님)
+# 이 실행은 전체 탐험 승리 검사가 아니다.
+godot --resolution 720x1280 --script tools/v2/record_expedition.gd -- --no-save --timing-only --capture-dir=/tmp/resonance-v2-timing-fresh
+```
+
+`full_expedition_test.gd`의 정상 완주 정책은 현재 정착 보드의 접촉 그래프와 합법적 변환만 읽어 비교한다. 실제 컨트롤러의 누름/놓기, 물리 리필과 Run 선택을 사용하며 미래 리필·자원 보정·적 HP 보정·종료 상태 주입을 하지 않는다. 별도 상태 전이 및 영상 기능 fixture는 정상 승리 근거로 세지 않는다. 합성 터치는 엔진 이벤트 주입이며 OS 마우스 검사는 인증된 XTest 입력이다.
+
+[최신 실제 플레이/기능 미리보기](evidence/v2-local/final-expedition/README.md)와 최종 수치·실패 기록·완주 시드·물리와 영상 시간의 구분은 [VALIDATION.md](VALIDATION.md)의 v2 기록을 따른다. 자동 완주는 휴대폰 조작감, 실시간 성능, 사람의 재미를 입증하지 않는다.
+
+## v1 전투 보존 기록
 
 Godot 4.6.3에서 `project.godot`을 열고 F6/F5로 실행하거나 다음 명령을 사용한다.
 

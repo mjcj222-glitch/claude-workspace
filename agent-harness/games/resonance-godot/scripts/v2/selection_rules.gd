@@ -4,14 +4,23 @@ extends RefCounted
 const Config = preload("res://scripts/v2/config.gd")
 const Geometry = preload("res://scripts/v2/geometry.gd")
 
-static func preview(snapshot: Dictionary, seed_id: int, combat_version: int) -> Dictionary:
-    var by_id := {}
+static func _index(snapshot: Dictionary) -> Dictionary:
+    var by_id: Dictionary={}
+    for item in snapshot.pieces:by_id[int(item.id)]=item
+    return by_id
+static func preview(snapshot: Dictionary,seed_id: int,combat_version: int) -> Dictionary:
+    var by_id:=_index(snapshot)
+    if not by_id.has(seed_id):return {}
+    return _evaluate(snapshot,seed_id,combat_version,by_id,Geometry.graph(snapshot,Config.MATCH_CONTACT_EPS))
+static func has_selection(snapshot: Dictionary) -> bool:
+    var by_id:=_index(snapshot)
+    if by_id.is_empty():return false
+    var edges:=Geometry.graph(snapshot,Config.MATCH_CONTACT_EPS)
     for item in snapshot.pieces:
-        by_id[int(item.id)] = item
-    if not by_id.has(seed_id):
-        return {}
+        if not _evaluate(snapshot,int(item.id),0,by_id,edges).is_empty():return true
+    return false
+static func _evaluate(snapshot: Dictionary,seed_id: int,combat_version: int,by_id: Dictionary,edges: Dictionary) -> Dictionary:
     var type := str(by_id[seed_id].match_type)
-    var edges := Geometry.graph(snapshot,Config.MATCH_CONTACT_EPS)
     var direct := {seed_id: true}
     var queue: Array = [seed_id]
     var cursor := 0
