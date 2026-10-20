@@ -1,0 +1,122 @@
+{
+  "normal_strategy_trials": "All normal Run trials used seed41; no alternative success seed substituted. Original harness trials1/2 were parse/layout/retired-owner errors; trials3 through6 retained original wins and repeated same weak failure for requested diagnostics. Later5a normal run retained risk/bomber physical failure. Final current six+defeat pass on same seed/strategy; old negatives remain.",
+  "failure_families": [
+    {
+      "family": "original mandatory native7",
+      "source": "historical earlier Board",
+      "seeds": [
+        41,
+        73,
+        991,
+        20261020
+      ],
+      "ids": [
+        28,
+        30,
+        33,
+        34,
+        35,
+        36,
+        41
+      ],
+      "outcome": "ERROR12.008333,42,top-32.424301/supportfalse; exact original reused prefix preserved"
+    },
+    {
+      "family": "native4 after real type change",
+      "source": "historical earlier Board",
+      "seed": 41,
+      "ids": [
+        8,
+        13,
+        19,
+        25
+      ],
+      "outcome": "finite top/left jam at12.008333; separate restored JAM replay retained"
+    },
+    {
+      "family": "restored5 overflow",
+      "source": "historical earlier Board",
+      "seed": 41,
+      "ids": [
+        7,
+        8,
+        13,
+        19,
+        25
+      ],
+      "outcome": "survivor coordinates1e31–1e35; not a finite inlet jam; original CCD2 failure retained"
+    },
+    {
+      "family": "original repeated restore73",
+      "source": "historical earlier Board",
+      "seed": 73,
+      "ids": [
+        18,
+        22,
+        23,
+        28,
+        33
+      ],
+      "outcome": "new47 protrudes top; ERROR12.008333; original restore fixture retained"
+    },
+    {
+      "family": "normal weak21",
+      "source": "2f0a4df original trajectory",
+      "seed": 41,
+      "battle_seed": 3296630253,
+      "ids": [
+        51,
+        57,
+        58,
+        62,
+        63
+      ],
+      "outcome": "ERROR12.008333,42,top-0.1800575/supportfalse after21 original successful records; restoration alone was not equivalent"
+    },
+    {
+      "family": "derived42 combined history",
+      "source": "pre-tie944 historical Board",
+      "seed": 41,
+      "outcome": "ERROR12.008333,42,top-1.069603; exact11prefix retained, separate from original standalone8/13 construction"
+    },
+    {
+      "family": "normal risk/bomber23",
+      "source": "5a0bf previous integrated Board",
+      "seed": 41,
+      "battle_seed": 1326668828,
+      "ids": [
+        11,
+        16,
+        21,
+        26,
+        27,
+        32,
+        33,
+        38,
+        45,
+        49,
+        50,
+        54,
+        57,
+        58,
+        59,
+        61,
+        62,
+        63,
+        64,
+        65,
+        68,
+        69,
+        70
+      ],
+      "outcome": "ERROR12.008333,42,top-1543.518799; original20successful records then failure (action counter18), not truncated18record replay"
+    },
+    {
+      "family": "final historical fixture profile",
+      "source": "latest integrated runtime; test-only expectation defect",
+      "outcome": "parent launcherexit1/current-density374/1 only old-physical-pose equality under changed current prefix. Frozen-history70/474passed; corrected failed child374/0 and unrun standalone40/0; original invocation not rewritten"
+    }
+  ],
+  "test_setup_failures": "Local port first referenced unavailable open-union API, then meaningful behavior RED; one private telemetry-field reference in durable test was corrected to real pending-batch invariant. Failed sources/logs retained privately. No game gate or assertion weakened.",
+  "scope": "Conditional empirical coverage, no universal packing/60Hz/phone/fun proof"
+}

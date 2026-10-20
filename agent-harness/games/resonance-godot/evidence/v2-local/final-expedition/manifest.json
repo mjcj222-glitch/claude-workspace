@@ -1,0 +1,1576 @@
+{
+  "source_parent_at_capture": "5da4989fc833f69c34b072462ff5108d3cc480b2",
+  "source_state_at_capture": "uncommitted local integrated source; exact per-file map authoritative; final equivalent commit will be supplied after review",
+  "capture_source_sha256": {
+    "project.godot": "b5bc2fd942e820dc122edb4919d22ab9172c13e3383c7a049c3fbf0123e43f29",
+    "tools/v2/record_expedition.gd": "1cde1a748a52dae279abf57ab72e94bb9ef34b45a5c93780a233a5b2ca488b78",
+    "tests/v2/full_expedition_test.gd": "939ddd512b5e9ea2210adf73d1f719650edce27eceacaece245476b0a2ec77a4",
+    "scripts/v2/battle.gd": "49e18b52329bca158ec293976b2fb38d0bfc577a333de7fd34f2a629ad6b2502",
+    "scripts/v2/battle_view.gd": "ab84f486a2f69ac670845afde82d7d83d60f259110e3b045a14a701e4a11946c",
+    "scripts/v2/board.gd": "e76e1f233f46dbbb4061b7e32208589c074ba8f4ebd4b47a2f1e73f809ba55c3",
+    "scripts/v2/board_effects.gd": "c576119925341fd08c32cb6432b12d090955546cf6e80b31ef3b28b0848b9649",
+    "scripts/v2/board_viewport.gd": "0f561d5c6e564c4b7641a4141e97ee07a0373b5aac21a75d2263dfafafc1b299",
+    "scripts/v2/combat_rules.gd": "ae7a9476006de99807a52faf984b53aa13e2af03f8391336d662924582b916aa",
+    "scripts/v2/config.gd": "47abced3203b86697d3b4aedd6ccb182e7125fd8cda60c9980bd470c8360a9ed",
+    "scripts/v2/expedition.gd": "b0f1d7444c9659d11cb5c4cf1d7ae30661c37942be385ff1fc90fb56d270dcb5",
+    "scripts/v2/geometry.gd": "982e50b91161e4c33bd83b2d0d47f305eadabbe7cbdd2554c77890ade2e8ac9c",
+    "scripts/v2/inlet_geometry.gd": "ce33ea81f7467b636d4351030d9841443e093ae02057ef5291ea70a4b10509dc",
+    "scripts/v2/piece.gd": "a44f2758ac541326754b4687582c5cbf985ed8304c9f8e533c98046994cb4aa3",
+    "scripts/v2/preview_session.gd": "534fc1d5c71c600ed6780ee79d510137f4a9679288aee07bd3a046bae8edab6f",
+    "scripts/v2/run_rules.gd": "201e9d601aa3c0088e98c3b909bb8e8859b4481a0ec53ca0a42a0c2fc18bada7",
+    "scripts/v2/save_store.gd": "2c3540d1beda63909368279ddcf0e94239d156f0abdde023e35ad0e31402f905",
+    "scripts/v2/selection_rules.gd": "c0cf1c054236187396903979cff6103048eec60bcabddefbf4a424f56038568c",
+    "scripts/v2/skill_cutin.gd": "de4fa50476f0fcc68bab6be1e65d62e75dd42988ef0c3c9aaaf901e23040e378",
+    "scripts/v2/skill_rules.gd": "2b35c3aea879da00e18c90396781d7d8203189ec8e93c007799dd5d42e0bae45",
+    "scenes/v2/battle.tscn": "0622cc55ce8e751e350c4ab5a5a84df5862adeb85d2addc8c6f57f44b2cfe99c",
+    "scenes/v2/battle_view.tscn": "1e880220e3cf5153dd7ce5183eb68b234ed2bf5e2687c779c5c98b4c90ccd78d",
+    "scenes/v2/expedition.tscn": "04aa4664ca66fc90eadcd4108bc1604d9f2472ae564aff5c5e97280f45958bf4",
+    "assets/Noto-COPYRIGHT.txt": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+    "assets/NotoSansCJK-Regular.ttc": "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
+    "assets/NotoSansCJK-Regular.ttc.import": "9766f1a4a5916337a086eef33ea729d10c56649c89de09f87986a6acc7af5df8",
+    "assets/SOURCES.md": "0bd1597c689a62d2d34ac34032f296ba0d3657df74613bf2281d1c1b74c1e092",
+    "assets/background.webp": "069241d0806ebd4cff3e4b0751ee3c7b12a1250e8d647c50c961ad54bc3e4843",
+    "assets/background.webp.import": "b3af863a373c16436113fccc2c1d18dc3f4c5a572ffbd152420e2b8ef2539e8e",
+    "assets/enemy-sheet.png": "f30890993fad04445bd381b10dc6f1d5ba07cda224a512683ac8c59eba6cf3b7",
+    "assets/enemy-sheet.png.import": "66bece9a9934f0b2a9417e8d20681c956363fb62e63d25820e8b3a6c5a0b8fc4",
+    "assets/integration-sources.json": "c1e11a2862c66acce9092b56ea27dd3639e27294272de364f4b68de9494d797e",
+    "assets/portraits.webp": "2b185439928ab1e53f268a74a21387ec765fbd01a67774e411f3092fdd2c88ac",
+    "assets/portraits.webp.import": "fd85edd88bb8883d6093c3571b6c50ad5a75b0858a78cd8025e5f5f6ef503177"
+  },
+  "os_input_capture_source_sha256": {
+    "scripts/v2/battle.gd": "49e18b52329bca158ec293976b2fb38d0bfc577a333de7fd34f2a629ad6b2502",
+    "scripts/v2/battle_view.gd": "ab84f486a2f69ac670845afde82d7d83d60f259110e3b045a14a701e4a11946c",
+    "scripts/v2/board.gd": "e76e1f233f46dbbb4061b7e32208589c074ba8f4ebd4b47a2f1e73f809ba55c3",
+    "scripts/v2/board_effects.gd": "c576119925341fd08c32cb6432b12d090955546cf6e80b31ef3b28b0848b9649",
+    "scripts/v2/board_viewport.gd": "0f561d5c6e564c4b7641a4141e97ee07a0373b5aac21a75d2263dfafafc1b299",
+    "scripts/v2/combat_rules.gd": "ae7a9476006de99807a52faf984b53aa13e2af03f8391336d662924582b916aa",
+    "scripts/v2/config.gd": "47abced3203b86697d3b4aedd6ccb182e7125fd8cda60c9980bd470c8360a9ed",
+    "scripts/v2/expedition.gd": "b0f1d7444c9659d11cb5c4cf1d7ae30661c37942be385ff1fc90fb56d270dcb5",
+    "scripts/v2/geometry.gd": "982e50b91161e4c33bd83b2d0d47f305eadabbe7cbdd2554c77890ade2e8ac9c",
+    "scripts/v2/inlet_geometry.gd": "ce33ea81f7467b636d4351030d9841443e093ae02057ef5291ea70a4b10509dc",
+    "scripts/v2/piece.gd": "a44f2758ac541326754b4687582c5cbf985ed8304c9f8e533c98046994cb4aa3",
+    "scripts/v2/preview_session.gd": "534fc1d5c71c600ed6780ee79d510137f4a9679288aee07bd3a046bae8edab6f",
+    "scripts/v2/run_rules.gd": "201e9d601aa3c0088e98c3b909bb8e8859b4481a0ec53ca0a42a0c2fc18bada7",
+    "scripts/v2/save_store.gd": "2c3540d1beda63909368279ddcf0e94239d156f0abdde023e35ad0e31402f905",
+    "scripts/v2/selection_rules.gd": "c0cf1c054236187396903979cff6103048eec60bcabddefbf4a424f56038568c",
+    "scripts/v2/skill_cutin.gd": "de4fa50476f0fcc68bab6be1e65d62e75dd42988ef0c3c9aaaf901e23040e378",
+    "scripts/v2/skill_rules.gd": "2b35c3aea879da00e18c90396781d7d8203189ec8e93c007799dd5d42e0bae45",
+    "scenes/v2/battle.tscn": "0622cc55ce8e751e350c4ab5a5a84df5862adeb85d2addc8c6f57f44b2cfe99c",
+    "scenes/v2/battle_view.tscn": "1e880220e3cf5153dd7ce5183eb68b234ed2bf5e2687c779c5c98b4c90ccd78d",
+    "scenes/v2/expedition.tscn": "04aa4664ca66fc90eadcd4108bc1604d9f2472ae564aff5c5e97280f45958bf4",
+    "tests/v2/window_input_test.gd": "a40f80d7a528fc429eac2b474d797472f3d709923802cfb7c1cc0c5d7f1607d6",
+    "tools/v2/os_input_probe.gd": "18642b8fcc7435597aec8abfdfb9d0d0d0cb194af39209fe82f45a7a3a483b43",
+    "tools/v2/run_os_input_probe.py": "f21131b0243b724abc81a0720201fdcb119b4b5d505d9be0363abc226996a6df",
+    "tools/native_input.gd": "d4bb4d24c8af14e89d83df986b4f29f898eefc54e1c75daa4cce0fd16e2fa154",
+    "project.godot": "b5bc2fd942e820dc122edb4919d22ab9172c13e3383c7a049c3fbf0123e43f29"
+  },
+  "source_unchanged_during_each_capture": true,
+  "equivalent_source_commit": "9c56c8f75ebde74530b86ed1f3655643f01d5c07",
+  "movie": {
+    "normal_route": "risk",
+    "normal_recruit": "bomber",
+    "normal_seed": 41,
+    "normal_three_victories": 3,
+    "normal_final_hp": 45,
+    "resource_overrides": [],
+    "graphical_checks": 150,
+    "failures": 0,
+    "full_engine_wall_seconds": 256.89487181200093,
+    "capture_section": {
+      "nominal_movie_seconds_at60": 112.833333333333,
+      "process_frames": 6770,
+      "simulation_seconds": 112.833333333333,
+      "wall_seconds": 247.129811
+    },
+    "decoded_nominal_seconds": 112.85,
+    "decoded_frames": 6771,
+    "cadence": "fixed60MovieMaker / physics120; not wall performance",
+    "fixtures": "one actual gardener skill+heart preview; three real committed controlled chain/pressure/final-refill removals; never counted as normal wins"
+  },
+  "limits": [
+    "cold positive23.200ms/negative18.392ms; no overall60Hz/phone claim",
+    "stress70.152ms postdraw interval no choose, input/render/OS contribution unprofiled",
+    "initialseed121top98.85logical/area61.216%, upper vacancy retained",
+    "movie normal fixed60 finalHP45 differs fixed120 risk/bomber53; own genuine3wins, no same-trajectory claim",
+    "no universal packing/all-cadence success/human fun claim"
+  ],
+  "contact_evidence": "../contact-fix/README.md; accepted28PNGs reused unchanged",
+  "files": {
+    "entry-clipping-decoded.png": {
+      "sha256": "b42e9309c8979a00c437ccb3dd36846272fb3252eeb64508cacc98227e7ff19f",
+      "bytes": 526406,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "decoded actual final movie frame",
+      "file": "entry-clipping-decoded.png",
+      "zero_based_frame": 18,
+      "nominal_seconds": 0.3
+    },
+    "expedition-preview.mp4": {
+      "sha256": "465fe83c16d746102f382229aa3ab0726c1a0cf21bf7ad0e954aaa20601afb81",
+      "bytes": 23823747,
+      "source_role": "movie_capture",
+      "codec": "h264",
+      "pixels": [
+        720,
+        1280
+      ],
+      "fps": "60/1",
+      "decoded_frames": 6771,
+      "nominal_seconds": 112.85,
+      "full_decode_exit": 0
+    },
+    "fixture-gardener-converted.png": {
+      "sha256": "203eade12abea327cd66a2ba3c11828f8b8633fb2b8c5d262f3c1465d3ecb5e1",
+      "bytes": 762489,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 5483,
+      "physics_frame": 10967,
+      "phase": "READY",
+      "label": "CONTROLLED PARTY FIXTURE · seed121 poses · actual gardener skill / heart preview",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 6,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "actor_id": "gardener",
+        "board_version": 1,
+        "changes": {
+          "1": "heart",
+          "2": "heart",
+          "7": "heart"
+        },
+        "combat_version": 1,
+        "cost": 4,
+        "destination": "heart",
+        "seed_id": 1
+      }
+    },
+    "fixture-independent-hearts.png": {
+      "sha256": "b73afaa23f5d1161cd1b0b3364c108f960f4aa33c3612c1f5c6cdb16e57202b1",
+      "bytes": 769696,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 5484,
+      "physics_frame": 10969,
+      "phase": "PREVIEW",
+      "label": "CONTROLLED PARTY FIXTURE · seed121 poses · actual gardener skill / heart preview",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 6,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 2,
+        "combat_version": 2,
+        "direct_color_count": 0,
+        "direct_damage": 0,
+        "direct_ids": [
+          1,
+          2,
+          7
+        ],
+        "energy_effective": 0,
+        "energy_raw": 0,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 9,
+        "healing_raw": 9,
+        "mode": "heart",
+        "refill_tier": 0,
+        "removed_ids": [
+          1,
+          2,
+          7
+        ],
+        "seed_id": 1,
+        "weaken_intent": false
+      }
+    },
+    "fixture-last-refill-refund-preview.png": {
+      "sha256": "ac4ed7472226e75230bf21eb8e212ebe9406ecced4e13101df4dc7c0e253df9a",
+      "bytes": 756446,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 6563,
+      "physics_frame": 13127,
+      "phase": "PREVIEW",
+      "label": "CONTROLLED FINAL-ACTION FIXTURE · seed1 · natural zero-blue final refill / refund",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 4,
+        "turn": 1,
+        "actions_left": 1,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 2,
+        "combat_version": 3,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          1,
+          2,
+          7
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 1,
+        "removed_ids": [
+          1,
+          2,
+          7
+        ],
+        "seed_id": 1,
+        "weaken_intent": false
+      }
+    },
+    "fixture-last-refill-refund-refill-start.png": {
+      "sha256": "7aa15feebdb0c0a849b930bfd730a927912824a1cf0bdf35987643f0915916cf",
+      "bytes": 732279,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 6577,
+      "physics_frame": 13155,
+      "phase": "SETTLING",
+      "label": "CONTROLLED FINAL-ACTION FIXTURE · seed1 · natural zero-blue final refill / refund",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 5,
+        "turn": 1,
+        "actions_left": 0,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 2,
+        "combat_version": 3,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          1,
+          2,
+          7
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 1,
+        "removed_ids": [
+          1,
+          2,
+          7
+        ],
+        "seed_id": 1,
+        "weaken_intent": false
+      }
+    },
+    "fixture-last-refill-refund-settled.png": {
+      "sha256": "df11cd54179228583ccd8f44a05ca9d599ea73bf64f3d6642ec63e7497612ed6",
+      "bytes": 752257,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 6769,
+      "physics_frame": 13539,
+      "phase": "FINISHED",
+      "label": "CONTROLLED FINAL-ACTION FIXTURE · seed1 · natural zero-blue final refill / refund",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 1,
+        "actions_left": 0,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "victory"
+      },
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 2,
+        "combat_version": 3,
+        "direct_color_count": 3,
+        "direct_damage": 6,
+        "direct_ids": [
+          1,
+          2,
+          7
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 1,
+        "removed_ids": [
+          1,
+          2,
+          7
+        ],
+        "seed_id": 1,
+        "weaken_intent": false
+      }
+    },
+    "fixture-pressure-weakening-preview.png": {
+      "sha256": "01a8c7fd478c23390b592159fd2755616f9e55f502de490b65d9369f23cac3bc",
+      "bytes": 899733,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 6052,
+      "physics_frame": 12105,
+      "phase": "PREVIEW",
+      "label": "CONTROLLED VISUAL FIXTURE · seed121 · turn6 strong→normal keeps pressure12",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 6,
+        "actions_left": 3,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 28,
+          "kind": "strong",
+          "pressure": 12,
+          "total_damage": 40,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 2,
+        "combat_version": 2,
+        "direct_color_count": 42,
+        "direct_damage": 120,
+        "direct_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        "energy_effective": 0,
+        "energy_raw": 6,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        "seed_id": 1,
+        "weaken_intent": true
+      }
+    },
+    "fixture-pressure-weakening-settled.png": {
+      "sha256": "0273c885c86bcb8fbf63fb6eae8e912bbd118a3195e0323749dfec35e7b458fd",
+      "bytes": 779695,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 6347,
+      "physics_frame": 12695,
+      "phase": "READY",
+      "label": "CONTROLLED VISUAL FIXTURE · seed121 · turn6 strong→normal keeps pressure12",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 6,
+        "actions_left": 2,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 12,
+          "total_damage": 28,
+          "weakened": true
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 2,
+        "combat_version": 2,
+        "direct_color_count": 42,
+        "direct_damage": 120,
+        "direct_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        "energy_effective": 0,
+        "energy_raw": 6,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        "seed_id": 1,
+        "weaken_intent": true
+      }
+    },
+    "fixture-radius-tier1.png": {
+      "sha256": "2df4ac6c423f48292fb1b397c88950b62f6fdde628795d5ad4ba24d670d8e75c",
+      "bytes": 764536,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 5638,
+      "physics_frame": 11277,
+      "phase": "PREVIEW",
+      "label": "CONTROLLED VISUAL FIXTURE · seed121 poses · bomb radius tier1",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [
+          {
+            "id": 28,
+            "radius": 94.6497840881348,
+            "x": 309.616394042969,
+            "y": 291.742980957031
+          }
+        ],
+        "blast_damage": 5,
+        "board_version": 2,
+        "combat_version": 1,
+        "direct_color_count": 0,
+        "direct_damage": 0,
+        "direct_ids": [
+          28
+        ],
+        "energy_effective": 0,
+        "energy_raw": 0,
+        "extra_ids": [
+          21,
+          22,
+          27,
+          34,
+          40
+        ],
+        "fired_bomb_ids": [
+          28
+        ],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "solo_bomb",
+        "refill_tier": 0,
+        "removed_ids": [
+          21,
+          22,
+          27,
+          28,
+          34,
+          40
+        ],
+        "seed_id": 28,
+        "weaken_intent": false
+      }
+    },
+    "fixture-radius-tier2.png": {
+      "sha256": "4a18259ab127d406369a67f31f4f36f4984bd7a70f8f263844a368c35a6b4ba5",
+      "bytes": 789442,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 5639,
+      "physics_frame": 11279,
+      "phase": "PREVIEW",
+      "label": "CONTROLLED VISUAL FIXTURE · seed121 poses · bomb radius tier2",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [
+          {
+            "id": 28,
+            "radius": 151.439654541016,
+            "x": 309.616394042969,
+            "y": 291.742980957031
+          }
+        ],
+        "blast_damage": 9,
+        "board_version": 3,
+        "combat_version": 1,
+        "direct_color_count": 0,
+        "direct_damage": 0,
+        "direct_ids": [
+          28
+        ],
+        "energy_effective": 0,
+        "energy_raw": 0,
+        "extra_ids": [
+          15,
+          21,
+          22,
+          23,
+          27,
+          29,
+          33,
+          34,
+          40
+        ],
+        "fired_bomb_ids": [
+          28
+        ],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "solo_bomb",
+        "refill_tier": 0,
+        "removed_ids": [
+          15,
+          21,
+          22,
+          23,
+          27,
+          28,
+          29,
+          33,
+          34,
+          40
+        ],
+        "seed_id": 28,
+        "weaken_intent": false
+      }
+    },
+    "fixture-radius-tier3.png": {
+      "sha256": "6ea912e04f6f703489579fff62f9c27b3c30f69778c9a68e72a4ef1a3afec729",
+      "bytes": 830042,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 5640,
+      "physics_frame": 11281,
+      "phase": "PREVIEW",
+      "label": "CONTROLLED VISUAL FIXTURE · seed121 poses · bomb radius tier3",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [
+          {
+            "id": 28,
+            "radius": 208.229524993896,
+            "x": 309.616394042969,
+            "y": 291.742980957031
+          }
+        ],
+        "blast_damage": 18,
+        "board_version": 4,
+        "combat_version": 1,
+        "direct_color_count": 0,
+        "direct_damage": 0,
+        "direct_ids": [
+          28
+        ],
+        "energy_effective": 0,
+        "energy_raw": 0,
+        "extra_ids": [
+          9,
+          14,
+          15,
+          16,
+          20,
+          21,
+          22,
+          23,
+          26,
+          27,
+          29,
+          30,
+          33,
+          34,
+          35,
+          39,
+          40,
+          41
+        ],
+        "fired_bomb_ids": [
+          28
+        ],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "solo_bomb",
+        "refill_tier": 0,
+        "removed_ids": [
+          9,
+          14,
+          15,
+          16,
+          20,
+          21,
+          22,
+          23,
+          26,
+          27,
+          28,
+          29,
+          30,
+          33,
+          34,
+          35,
+          39,
+          40,
+          41
+        ],
+        "seed_id": 28,
+        "weaken_intent": false
+      }
+    },
+    "fixture-three-radii-chain-preview.png": {
+      "sha256": "71b1602c09cf98f33b883b9b8875c0603bfc0af4adcfa450186cd8c84401a990",
+      "bytes": 807926,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 5641,
+      "physics_frame": 11283,
+      "phase": "PREVIEW",
+      "label": "CONTROLLED VISUAL FIXTURE · real seed121 poses · solo bomb chain / three radii",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [
+          {
+            "id": 1,
+            "radius": 208.229524993896,
+            "x": 37.9011535644531,
+            "y": 562.172058105469
+          },
+          {
+            "id": 3,
+            "radius": 151.439654541016,
+            "x": 238.45654296875,
+            "y": 556.843872070312
+          },
+          {
+            "id": 10,
+            "radius": 94.6497840881348,
+            "x": 362.921325683594,
+            "y": 495.558624267578
+          }
+        ],
+        "blast_damage": 10,
+        "board_version": 6,
+        "combat_version": 1,
+        "direct_color_count": 0,
+        "direct_damage": 0,
+        "direct_ids": [
+          1
+        ],
+        "energy_effective": 0,
+        "energy_raw": 0,
+        "extra_ids": [
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          16,
+          19
+        ],
+        "fired_bomb_ids": [
+          1,
+          3,
+          10
+        ],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "solo_bomb",
+        "refill_tier": 0,
+        "removed_ids": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          16,
+          19
+        ],
+        "seed_id": 1,
+        "weaken_intent": false
+      }
+    },
+    "fixture-three-radii-chain-refill-start.png": {
+      "sha256": "d1e9f1fb5889599fe89d30f0ed9391cdb26c6e50c2cd499d540ad02638f263fe",
+      "bytes": 689389,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 5655,
+      "physics_frame": 11311,
+      "phase": "SETTLING",
+      "label": "CONTROLLED VISUAL FIXTURE · real seed121 poses · solo bomb chain / three radii",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 1,
+        "actions_left": 2,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [
+          {
+            "id": 1,
+            "radius": 208.229524993896,
+            "x": 37.9011535644531,
+            "y": 562.172058105469
+          },
+          {
+            "id": 3,
+            "radius": 151.439654541016,
+            "x": 238.45654296875,
+            "y": 556.843872070312
+          },
+          {
+            "id": 10,
+            "radius": 94.6497840881348,
+            "x": 362.921325683594,
+            "y": 495.558624267578
+          }
+        ],
+        "blast_damage": 10,
+        "board_version": 6,
+        "combat_version": 1,
+        "direct_color_count": 0,
+        "direct_damage": 0,
+        "direct_ids": [
+          1
+        ],
+        "energy_effective": 0,
+        "energy_raw": 0,
+        "extra_ids": [
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          16,
+          19
+        ],
+        "fired_bomb_ids": [
+          1,
+          3,
+          10
+        ],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "solo_bomb",
+        "refill_tier": 0,
+        "removed_ids": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          16,
+          19
+        ],
+        "seed_id": 1,
+        "weaken_intent": false
+      }
+    },
+    "fixture-three-radii-chain-settled.png": {
+      "sha256": "e96fa96211b9c204b9a2dd3540938de5b4d11ef191551c4c1d13a3863426f9f5",
+      "bytes": 745418,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "controlled feature fixture",
+      "process_frame": 5898,
+      "physics_frame": 11797,
+      "phase": "READY",
+      "label": "CONTROLLED VISUAL FIXTURE · real seed121 poses · solo bomb chain / three radii",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 40,
+        "energy": 10,
+        "turn": 1,
+        "actions_left": 2,
+        "party": [
+          "hero",
+          "bomber",
+          "gardener"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "blast_circles": [
+          {
+            "id": 1,
+            "radius": 208.229524993896,
+            "x": 37.9011535644531,
+            "y": 562.172058105469
+          },
+          {
+            "id": 3,
+            "radius": 151.439654541016,
+            "x": 238.45654296875,
+            "y": 556.843872070312
+          },
+          {
+            "id": 10,
+            "radius": 94.6497840881348,
+            "x": 362.921325683594,
+            "y": 495.558624267578
+          }
+        ],
+        "blast_damage": 10,
+        "board_version": 6,
+        "combat_version": 1,
+        "direct_color_count": 0,
+        "direct_damage": 0,
+        "direct_ids": [
+          1
+        ],
+        "energy_effective": 0,
+        "energy_raw": 0,
+        "extra_ids": [
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          16,
+          19
+        ],
+        "fired_bomb_ids": [
+          1,
+          3,
+          10
+        ],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "solo_bomb",
+        "refill_tier": 0,
+        "removed_ids": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          16,
+          19
+        ],
+        "seed_id": 1,
+        "weaken_intent": false
+      }
+    },
+    "input-1280x900.png": {
+      "sha256": "7183066e23a2d7ec26243cf5f59a808afa2c702abf02f6f33d0fe0410245d7f0",
+      "bytes": 387471,
+      "source_role": "os_input_capture",
+      "pixels": [
+        1280,
+        900
+      ],
+      "capture_kind": "current actual XTest OS input; native full client, not engine injection"
+    },
+    "input-360x640.png": {
+      "sha256": "44f2875ca24e0e7703774e5dac7266159cdc7b4a87d83c6a311e338a5d3fad9d",
+      "bytes": 208981,
+      "source_role": "os_input_capture",
+      "pixels": [
+        360,
+        640
+      ],
+      "capture_kind": "current actual XTest OS input; native full client, not engine injection"
+    },
+    "input-390x844.png": {
+      "sha256": "83b279a34020209c93630c4c8d30d9e9dca26adad79cc2783537a8659133cb6d",
+      "bytes": 241097,
+      "source_role": "os_input_capture",
+      "pixels": [
+        390,
+        844
+      ],
+      "capture_kind": "current actual XTest OS input; native full client, not engine injection"
+    },
+    "input-720x1280.png": {
+      "sha256": "37c41ffb9cb441182385aae441e29b95eed6b5950ee18f8f46fad926e8e28e51",
+      "bytes": 671543,
+      "source_role": "os_input_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "current actual XTest OS input; native full client, not engine injection"
+    },
+    "movie-normal-trace.json": {
+      "sha256": "d8ec5307fe6fc130259a3d54ed6c4e9bd409e30475555a1015f7238ca8265d17",
+      "bytes": 128503,
+      "source_role": "movie_capture"
+    },
+    "normal-cutin-1.png": {
+      "sha256": "aecbcefeb884339a245bc441ea145fc546a9c90cd57e9a3f590848920ac359ae",
+      "bytes": 527650,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "normal gameplay",
+      "process_frame": 181,
+      "physics_frame": 363,
+      "phase": "CUTIN",
+      "label": "NORMAL · seed41 · risk/bomber · live controller + physical refill",
+      "readable_state": {
+        "enemy_id": "hall1",
+        "hp": 72,
+        "energy": 0,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero"
+        ],
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "actor_id": "hero",
+        "board_version": 1,
+        "changes": {
+          "15": "yellow",
+          "16": "yellow",
+          "22": "yellow"
+        },
+        "combat_version": 1,
+        "cost": 4,
+        "destination": "yellow",
+        "seed_id": 15
+      }
+    },
+    "normal-gate-ready.png": {
+      "sha256": "1f69ac757eaa120a8fd3428cbf5e22755a96e267bb1f64b3dbf4ed3d59b5d0d1",
+      "bytes": 770387,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "normal gameplay",
+      "process_frame": 2731,
+      "physics_frame": 5463,
+      "phase": "READY",
+      "label": "NORMAL · seed41 · risk/bomber · live controller + physical refill",
+      "readable_state": {
+        "enemy_id": "gate",
+        "hp": 56,
+        "energy": 10,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero",
+          "bomber"
+        ],
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "status": "active"
+      }
+    },
+    "normal-hall1-ready.png": {
+      "sha256": "65905a1791711488666068888c7aa34d36d356cd5f24841fdabba222fbc610bd",
+      "bytes": 729950,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "normal gameplay",
+      "process_frame": 168,
+      "physics_frame": 337,
+      "phase": "READY",
+      "label": "NORMAL · seed41 · risk/bomber · live controller + physical refill",
+      "readable_state": {
+        "enemy_id": "hall1",
+        "hp": 72,
+        "energy": 4,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero"
+        ],
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "status": "active"
+      }
+    },
+    "normal-hall1-settled.png": {
+      "sha256": "d7466afd655f846725d0932220c0cabce6a04ca0b473cafe8c393da02814e07f",
+      "bytes": 723905,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "normal gameplay",
+      "process_frame": 214,
+      "physics_frame": 429,
+      "phase": "READY",
+      "label": "NORMAL · seed41 · risk/bomber · live controller + physical refill",
+      "readable_state": {
+        "enemy_id": "hall1",
+        "hp": 72,
+        "energy": 0,
+        "turn": 1,
+        "actions_left": 3,
+        "party": [
+          "hero"
+        ],
+        "intent": {
+          "base_damage": 8,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 8,
+          "weakened": false
+        },
+        "status": "active"
+      },
+      "displayed_plan": {
+        "actor_id": "hero",
+        "board_version": 1,
+        "changes": {
+          "15": "yellow",
+          "16": "yellow",
+          "22": "yellow"
+        },
+        "combat_version": 1,
+        "cost": 4,
+        "destination": "yellow",
+        "seed_id": 15
+      }
+    },
+    "normal-terminal-12.png": {
+      "sha256": "e8a48446f513be0f5c566eb95fc2f50f1588e25b4d177e0bf871aa445254d998",
+      "bytes": 30683,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "normal gameplay",
+      "process_frame": 5327,
+      "physics_frame": 10655,
+      "phase": null,
+      "label": "NORMAL · seed41 · risk/bomber · live controller + physical refill",
+      "run_terminal_state": {
+        "applied_choices": [
+          "route_choice",
+          "recruit_choice"
+        ],
+        "battle_seeds": [
+          3824726209,
+          3296630253,
+          1326668828
+        ],
+        "completed_battles": [
+          "battle1",
+          "battle2",
+          "battle3"
+        ],
+        "energy": 10,
+        "hero_limit": 4,
+        "hp": 45,
+        "party": [
+          "hero",
+          "bomber"
+        ],
+        "revision": 30,
+        "route": "risk",
+        "seed": 41,
+        "stage": "completed"
+      }
+    },
+    "normal-traces.json": {
+      "sha256": "c84377b59971422a2f4f4a0c0374309510f15550217031d1f2c1bbb5cd6aee69",
+      "bytes": 984978,
+      "source_role": "validation_and_retained_history"
+    },
+    "refill-clipping-decoded.png": {
+      "sha256": "9efe770737402fa332913a73d0887d5b4275fcd1e24a5b5785cac43455053ac4",
+      "bytes": 912969,
+      "source_role": "movie_capture",
+      "pixels": [
+        720,
+        1280
+      ],
+      "capture_kind": "decoded actual final movie frame",
+      "file": "refill-clipping-decoded.png",
+      "zero_based_frame": 385,
+      "nominal_seconds": 6.416666666666667
+    },
+    "retained-failures.json": {
+      "sha256": "f307adf7cec86231c832630f20fcabbda33ee378c44ed1b81a99cb4fdab5741e",
+      "bytes": 3683,
+      "source_role": "validation_and_retained_history"
+    },
+    "README.md": {
+      "sha256": "1cbf2a61a6a5df98055acf8b5790e7c48b29e6fb519980eaf6cb8e3c213dc0ee",
+      "bytes": 7399,
+      "source_role": "delivery_document",
+      "scope": "Updated index distinguishing prior9c full media and currentce UI additions; not a captured gameplay frame."
+    }
+  },
+  "commit_equivalence_verification": {
+    "movie": {
+      "matched_committed_dependencies": 34,
+      "generated_not_in_commit": [],
+      "all_working_capture_bytes_unchanged": true
+    },
+    "OS": {
+      "matched_committed_dependencies": 25,
+      "generated_not_in_commit": [],
+      "all_working_capture_bytes_unchanged": true
+    }
+  },
+  "delivery_index_update": {
+    "original_capture_manifest_sha256": "701960d4f35908815d8ebe23f0b993a06bad65a56e537d0cd060d6b1b8c631e4",
+    "change": "Only current README index hash/bytes/role updated; all captured prior media and trace bytes unchanged; original manifest preserved privately.",
+    "prior_capture_source_commit": "9c56c8f75ebde74530b86ed1f3655643f01d5c07",
+    "current_ui_manifest": "ui-fix-manifest.json"
+  }
+}

@@ -128,7 +128,7 @@ assert(not view.get_node("CutinLayer/Hero").visible)
 assert(viewport.board_to_logical(viewport.logical_to_board(p)).distance_to(p) < 0.1)
 ~~~
 - [ ] 2. godot --headless --script tests/v2/presentation_test.gd -- --no-save로 실패를 확인한다.
-- [ ] 3. 600×600 SubViewport 안에 물리 기물과 모든 보드 효과를 함께 넣고 정사각형으로 표시한다. 물리 부모를 확대하지 않는다. 상단 적, 작은 초상 줄, 얇은 HP·기력, 한 줄 예고를 구성한다. 기존 로컬 자산만 사용한다. 변환·하트·폭탄 단계는 큰 문양으로, 선택은 그룹 외곽으로 읽힌다.
+- [ ] 3. 600×600 SubViewport 안에 물리 기물과 모든 보드 효과를 함께 넣고 정사각형으로 표시한다. 물리 부모를 확대하지 않는다. 상단 적, 작은 초상 줄, 얇은 HP·기력, 고정 예고 영역을 구성한다. 회복 적립량·실효량을 구분하는 짧은 두 줄은 같은 영역 안에서 허용한다. 기존 로컬 자산만 사용한다. 변환·하트·폭탄 단계는 큰 문양으로, 선택은 그룹 외곽으로 읽힌다.
 - [ ] 4. 같은 검사 통과 후 godot --script tools/v2/preview_probe.gd -- --no-save --fixture base를 실행한다. fixture 값 base, bombs, clip, cutin을 각각 그래픽 실행해 실제 시드 보드와 시험용 폭탄 장면을 촬영한다. 초기 도구는 대상 개수만 표시하며 미구현 피해 숫자를 꾸며 넣지 않는다.
 - [ ] 5. **체크포인트 A:** 참고 이미지와 실제 픽셀을 대조해 광택·베벨·검정/중성 회색·손가락 밖 그룹 외곽·낙하/폭발 클리핑·0.7초 컷인 복귀를 독립 검수한다. 첫 장면을 사용자에게 중간 결과로 보여 준다. 불합격 장면을 수정한 뒤 통과한 화면으로 진행한다. 로컬 커밋: feat: add v2 battle presentation and clipped board.
 
