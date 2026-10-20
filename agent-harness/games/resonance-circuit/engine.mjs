@@ -1,3 +1,4 @@
+import {isBomb,blastTargets,promotion,prepareOpening} from './mechanics.mjs';
 import {FLOW,seedBodies,settleBodies,flowNeighbors,spatialFocus} from './flow.mjs';
 import {panelSeed,initialPanels,refillPanels} from './panels.mjs';
 import {C, COLORS} from './config.mjs';
@@ -13,6 +14,7 @@ function random(s) { s.rng=(Math.imul(s.rng,1664525)+1013904223)>>>0; return s.r
 function tile(s,color) {return {id:s.nextID++,color:color??COLORS[Math.floor(random(s)*4)],kind:'normal'};}
 export function createGame(seed=C.seed, overrides=null) {
  const s={seed:seed>>>0,rng:seed>>>0,nextID:1,board:[],echo:[],hp:C.hp,bossHP:C.bossHP,turn:1,taps:3,damage:0,healing:0,gauge:0,boost:false,ready:[1,1,1],status:'playing',maxChain:0,echoCount:0,buffs:freshBuffs(),wardBroken:false,panelRng:panelSeed(seed)};
+ if(overrides?.rulesVersion===1)s.rulesVersion=1;
  if(overrides){s.rules={...C,...overrides};s.hp=s.rules.hp;s.bossHP=s.rules.bossHP;}
  s.board=Array.from({length:42},()=>tile(s));
  // A guaranteed opening cluster, next to surviving attack tiles.
@@ -20,6 +22,7 @@ export function createGame(seed=C.seed, overrides=null) {
  for(const i of [0,4,7,11,15,16,17]) s.board[i].color='blue';
  initialPanels(s);
  if(overrides?.boardVersion===1){s.boardVersion=1;s.board=seedBodies(s.board,s.seed);const start=s.board.findIndex(t=>!t.vine&&t.kind==='normal'),cluster=[start],seen=new Set(cluster);for(const i of cluster){for(const j of adjacent(s,i))if(!seen.has(j)&&!s.board[j].vine&&s.board[j].kind==='normal'&&cluster.length<6){seen.add(j);cluster.push(j);}if(cluster.length>=6)break;}for(const i of cluster)s.board[i].color='coral';}
+ prepareOpening(s);
  return s;
 }
 function colorGroup(s,index,color){
@@ -45,15 +48,15 @@ export function preview(s,index) {
  if(echoHit)s.board.forEach((t,i)=>{if(s.echo.includes(t.id))hit(i);});
  for(const i of queue){
   for(const n of adjacent(s,i))if(s.board[n].vine)unlocked.add(n);
-  if(s.board[i].kind==='bomb')for(const n of adjacent(s,i))hit(n);
+  if(isBomb(s.board[i]))for(const n of blastTargets(s,i,adjacent))hit(n);
  }
  const rules=s.rules??C,initialSet=new Set(initial);
  let damage=0,healing=0;
  for(const i of removed){const t=s.board[i],resolved=t.kind==='rainbow'?(initialSet.has(i)?color:'coral'):t.color;if(resolved==='heal')healing+=rules.heal;else damage+=rules.attack;if(t.kind==='charge')damage+=rules.charge;}
- const bombs=[...removed].filter(i=>s.board[i].kind==='bomb').length;
+ const bombs=[...removed].filter(i=>isBomb(s.board[i])).length;const megas=[...removed].filter(i=>s.board[i].kind==='mega').length;
  const prismBonus=s.buffs?.prism&&color!=='heal'?(echoHit?24:12):0;
  const ignitionBonus=s.buffs?.ignition?Math.min(bombs,3)*10:0;
- return {initial,color,removed:[...removed],unlocked:[...unlocked].sort((a,b)=>a-b),echoHit,bombs,prismBonus,ignitionBonus,damage:damage*(s.boost?2:1)+prismBonus+ignitionBonus,healing};
+ return {initial,color,...(s.rulesVersion===1?{megas,promotion:promotion(s,{initial,color})}:{}),removed:[...removed],unlocked:[...unlocked].sort((a,b)=>a-b),echoHit,bombs,prismBonus,ignitionBonus,damage:damage*(s.boost?2:1)+prismBonus+ignitionBonus,healing};
 }
 export function pendingDamage(s){return s.rules?.echoWard&&!s.wardBroken?Math.floor(s.damage*.8):s.damage;}
 export function tap(s,index) {
@@ -62,13 +65,13 @@ export function tap(s,index) {
  const p=preview(s,index), removed=new Set(p.removed), original=s.board;
  s.buffs??=freshBuffs();if(p.prismBonus)s.buffs.prism=false;if(p.ignitionBonus)s.buffs.ignition=false;
  if(rules.echoWard&&p.echoHit)s.wardBroken=true;
- const make=p.color!=='heal'&&p.initial.length>=5;
+ const specialKind=promotion(s,p),make=!!specialKind;
  const candidates=new Set(p.initial.flatMap(i=>adjacent(s,i)));
  s.echo=make?[...candidates].sort((a,b)=>s.boardVersion===1?original[a].x-original[b].x||original[a].y-original[b].y||original[a].id-original[b].id:a-b).filter(i=>!removed.has(i)&&!original[i].vine&&original[i].kind==='normal'&&original[i].color!=='heal').slice(0,8).map(i=>original[i].id):[];
  for(const i of p.unlocked)delete original[i].vine;
  s.board=original.map((t,i)=>removed.has(i)?null:t);
  let special=null;
- if(make){special=tile(s,p.color);special.kind=p.initial.length>=10?'bomb':'charge';if(s.boardVersion===1)for(const k of ['x','y','r','angle'])special[k]=original[index][k];s.board[index]=special;}
+ if(make){special=tile(s,p.color);special.kind=specialKind;if(s.boardVersion===1)for(const k of ['x','y','r','angle'])special[k]=original[index][k];s.board[index]=special;}
  const refills=[];let flow=null;
  if(s.boardVersion===1){s.board=s.board.filter(Boolean);while(s.board.length<42){const t=tile(s);s.board.push(t);refills.push(t);}}else for(let c=0;c<C.cols;c++) {
    const survivors=s.board.slice(c*7,c*7+7).filter(Boolean), fresh=Array.from({length:7-survivors.length},()=>tile(s));

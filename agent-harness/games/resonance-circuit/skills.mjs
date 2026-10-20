@@ -7,11 +7,11 @@ export const SKILLS=[
 export function freshBuffs(){return {prism:false,ignition:false,shield:0};}
 export function skillCandidates(s,k){
  if(!Number.isInteger(k)||k<0||k>2)return [];
- const found=s.board.filter(t=>!t.vine&&t.kind!=='rainbow'&&(k===0?t.color==='blue':t.kind==='normal'&&t.color!=='heal'));
+ const found=s.board.filter(t=>!t.vine&&t.kind!=='rainbow'&&!(s.rulesVersion===1&&t.kind==='mega')&&(k===0?t.color==='blue':t.kind==='normal'&&t.color!=='heal'));
  return k===0?found:found.slice(0,k===1?2:6);
 }
 export function skillInfo(s,k){
  const skill=SKILLS[k],count=skillCandidates(s,k).length,remaining=Math.max(0,s.ready[k]-s.turn);
  return {...skill,count,remaining,usable:s.status==='playing'&&remaining===0&&count>0,
- text:`${skill.description} 덩굴·무지개는 변환 제외. 현재 대상 ${count}개. 쿨다운 ${C.cooldown}턴${remaining?` (남음 ${remaining}턴)`:''}. 대상0이면 사용 실패·쿨다운/버프 변화 없음. 재사용은 갱신, 중첩 없음. 고정 보너스는 과충전 배율 제외.`};
+ text:`${skill.description} 덩굴·무지개${s.rulesVersion===1?'·대형 폭탄':''}는 변환 제외. 현재 대상 ${count}개. 쿨다운 ${C.cooldown}턴${remaining?` (남음 ${remaining}턴)`:''}. 대상0이면 사용 실패·쿨다운/버프 변화 없음. 재사용은 갱신, 중첩 없음. 고정 보너스는 과충전 배율 제외.`};
 }

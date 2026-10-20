@@ -1,0 +1,40 @@
+/* Attribute tells remain inside the physical circular hit target. */
+:root[data-art-panels=ready] #board .tile.mega .gem{width:98%;height:98%;clip-path:none!important;border-radius:50%!important;border:3px double #fff4b8;box-shadow:inset 0 0 0 3px #ffffff80,inset 0 -7px 10px #12374a55,0 0 8px #ffe8ab66}
+#board .tile.mega small{position:absolute;z-index:3;inset:20% 0 auto;width:auto;height:auto;background:none;border:0;box-shadow:none;text-align:center;font-size:clamp(17px,4vw,23px);line-height:1;color:#fff;text-shadow:0 1px 4px #122c45;pointer-events:none}
+.tile.mega .mega-tag{position:absolute;bottom:12%;left:0;right:0;z-index:3;font-size:9px;line-height:1;color:white;text-shadow:0 1px 3px #102435;text-align:center;pointer-events:none}
+#board .tile.blast-target .gem{outline:2px solid #ffd477;outline-offset:-2px;filter:brightness(1.18)}
+#chainHint{position:absolute;bottom:30px;left:8%;right:8%;z-index:5;margin:0;padding:4px 7px;border-radius:6px;text-align:center;font-size:11px;line-height:1.3;background:#082639d9;color:#eaffff;pointer-events:none}
+.learning #chainHint{display:none}
+#coach{max-width:96%;font-size:11px}
+#roomScene,.reward-vignette{position:relative;isolation:isolate}
+.choice-atmosphere{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:inherit;z-index:1}
+.choice-halo{position:absolute;left:14%;top:4%;width:60%;height:95%;background:radial-gradient(ellipse,#ffebaa5c,transparent 66%);opacity:.45;animation:choice-glow 6s ease-in-out infinite alternate}
+.choice-spark{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffefa7;box-shadow:0 0 8px 2px #ffe7a66e;animation:choice-drift 6.8s ease-in-out infinite alternate}
+.choice-spark.one{left:24%;top:35%}.choice-spark.two{left:73%;top:52%;animation-delay:-2.4s}.choice-spark.three{left:54%;top:18%;animation-delay:-4.6s}
+.choice-leaf{position:absolute;right:12%;bottom:12%;font-size:22px;color:#b9cba6a6;animation:choice-leaf 7.4s ease-in-out infinite alternate}
+[data-kind=rest] .choice-halo{background:radial-gradient(ellipse,#e3efff59,transparent 65%);animation-duration:6.2s}
+[data-kind=rest] .choice-spark.three{display:none}
+[data-kind=event] .choice-halo{left:40%;top:10%;width:50%;animation-duration:5.8s}
+[data-kind=event] .choice-leaf{display:none}
+.reward-vignette{height:76px;margin:4px 0 10px;border-radius:10px;background:linear-gradient(110deg,#dcebf5dd,#f7edcddb),url('assets/encounter-rest.webp') center 44%/cover;overflow:hidden}
+.reward-vignette[hidden]{display:none}
+.reward-crystal{position:absolute;left:calc(50% - 28px);top:3px;width:56px;height:62px;text-align:center;font-size:62px;line-height:1;color:#5796ae;text-shadow:2px 2px #fff9,0 0 14px #ffefd7}
+.reward-vignette .choice-leaf,.reward-vignette .choice-spark{display:none}
+.choice-arrival .reward-crystal{animation:choice-arrival .21s ease-out both}
+.choice-arrival .reward-vignette:after{content:'';position:absolute;inset:0;border:1px solid #fff8;border-radius:inherit;pointer-events:none;animation:choice-border .22s ease-out both}
+.choice-atmosphere *{animation-play-state:paused}
+.motion-live .choice-atmosphere *{animation-play-state:running}
+body.fx-reduced .choice-atmosphere *,body.fx-reduced .reward-crystal,body.fx-reduced .reward-vignette:after{animation:none!important;transform:none!important}
+@keyframes choice-glow{from{opacity:.3}to{opacity:.55}}
+@keyframes choice-drift{from{transform:translate(-3px,3px);opacity:.35}to{transform:translate(4px,-4px);opacity:.8}}
+@keyframes choice-leaf{from{transform:translate(0,2px) rotate(-3deg)}to{transform:translate(3px,-3px) rotate(3deg)}}
+@keyframes choice-arrival{from{transform:translateY(4px);opacity:.5}to{transform:translateY(0);opacity:1}}
+@keyframes choice-border{from{opacity:.2}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.choice-atmosphere *,.reward-crystal,.reward-vignette:after{animation:none!important;transform:none!important}}
+@media(max-height:680px){.reward-vignette{height:52px;margin:3px 0 6px}.reward-crystal{font-size:45px;height:45px;width:45px;left:calc(50% - 22px)}#chainHint{font-size:10px;bottom:27px;padding:3px}#journey #roomScene .room-scene-art{aspect-ratio:2.8/1}}
+
+#board .tile.mega .gem:after{content:none}
+
+#board .tile.lesson-target .gem{outline:2px dashed #fff5bf;outline-offset:-3px;filter:brightness(1.16)}
+
+#journey #journeyHint{display:block;font-size:11px;line-height:1.4;margin:6px 0;color:#315e75}

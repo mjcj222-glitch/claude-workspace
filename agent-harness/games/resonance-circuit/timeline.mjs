@@ -1,3 +1,4 @@
+import {isBomb,blastTargets} from './mechanics.mjs';
 import {neighbors,adjacent} from './engine.mjs';
 const center=i=>({x:Math.floor(i/7)*.866,y:i%7+(Math.floor(i/7)%2)*.5});
 function around(origin,a,b,s){const point=i=>s?.boardVersion===1?s.board[i]:center(i),o=point(origin),p=point(a),q=point(b);return Math.atan2(p.y-o.y,p.x-o.x)-Math.atan2(q.y-o.y,q.x-o.x)||a-b;}
@@ -9,9 +10,9 @@ export function planTimeline(s,index,p){
  const marked=p.initial.filter(i=>s.echo.includes(s.board[i].id)).sort((a,b)=>times.get(a)-times.get(b)),echoOrigin=marked[0]??index;
  if(p.echoHit){const targets=p.removed.filter(i=>s.echo.includes(s.board[i].id)).sort((a,b)=>around(echoOrigin,a,b,s));targets.forEach((i,n)=>times.set(i,Math.min(times.get(i)??Infinity,times.get(echoOrigin)+52+n*18)));}
  // Relax blast edges over the already resolved removal set; never recalculate gameplay.
- for(let pass=0;pass<p.removed.length;pass++){let changed=false;for(const [i,t] of [...times].sort((a,b)=>a[1]-b[1]))if(s.board[i].kind==='bomb')for(const n of adjacent(s,i))if(removed.has(n)&&t+38<(times.get(n)??Infinity)){times.set(n,t+38);changed=true;}if(!changed)break;}
- const events=[...removed].map(i=>({index:i,id:s.board[i].id,type:'clear',at:times.get(i)??0,distance:distance.get(i)??Infinity,bomb:s.board[i].kind==='bomb',echo:p.echoHit&&s.echo.includes(s.board[i].id),rainbow:initial.has(i)&&s.board[i].kind==='rainbow'}));
- for(const i of p.unlocked){const touching=adjacent(s,i).filter(n=>removed.has(n));events.push({index:i,id:s.board[i].id,type:'vine',at:Math.min(...touching.map(n=>times.get(n)))+24});}
+ for(let pass=0;pass<p.removed.length;pass++){let changed=false;for(const [i,t] of [...times].sort((a,b)=>a[1]-b[1]))if(isBomb(s.board[i]))for(const n of blastTargets(s,i,adjacent))if(removed.has(n)&&t+38<(times.get(n)??Infinity)){times.set(n,t+38);changed=true;}if(!changed)break;}
+ const events=[...removed].map(i=>({index:i,id:s.board[i].id,type:'clear',at:times.get(i)??0,distance:distance.get(i)??Infinity,bomb:isBomb(s.board[i]),echo:p.echoHit&&s.echo.includes(s.board[i].id),rainbow:initial.has(i)&&s.board[i].kind==='rainbow'}));
+ for(const i of p.unlocked){const touching=adjacent(s,i).filter(n=>removed.has(n)),sources=p.removed.filter(n=>isBomb(s.board[n])&&blastTargets(s,n,adjacent).includes(i));events.push({index:i,id:s.board[i].id,type:'vine',at:Math.min(...[...touching,...sources].map(n=>times.get(n)??0),420)+24});}
  const rawMax=Math.max(...events.map(e=>e.at)),scale=rawMax>420?420/rawMax:1;for(const e of events)e.at=Math.round(e.at*scale);
  events.sort((a,b)=>a.at-b.at||around(index,a.index,b.index,s));
  const audio=[];for(const e of events)if(e.type==='clear'&&audio.length<9&&(!audio.length||e.at-audio.at(-1).at>=48))audio.push({id:e.id,at:e.at,note:audio.length});
