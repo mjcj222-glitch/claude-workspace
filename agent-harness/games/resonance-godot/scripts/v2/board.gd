@@ -3,8 +3,10 @@ extends Node2D
 
 signal settled(snapshot: Dictionary)
 signal settle_failed(reason: String)
+signal recovery_settlement_finished
 const Config = preload("res://scripts/v2/config.gd")
 const Piece = preload("res://scripts/v2/piece.gd")
+const Selection = preload("res://scripts/v2/selection_rules.gd")
 const Geometry = preload("res://scripts/v2/geometry.gd")
 const WIDTH := Config.BOARD_WIDTH
 const HEIGHT := Config.BOARD_HEIGHT
@@ -17,6 +19,8 @@ var stable_ticks := 0
 var elapsed := 0.0
 var last_settle_seconds := 0.0
 var refill_phase := "idle"
+var _recovery_epoch := 0
+var _recovering := false
 var _pending_batch: Array = []
 var _pending_openings: Array = []
 var last_snapshot: Dictionary = {"version": 0, "pieces": []}
@@ -38,6 +42,14 @@ func _ready() -> void:
         wall.add_child(shape)
         add_child(wall)
     queue_redraw()
+
+func _exit_tree() -> void:
+    # Resolve the coroutine before a retiring owner frees this board. Awaiting
+    # a global physics-frame signal would retain a dead function state.
+    if _recovering:
+        _recovery_epoch += 1
+        _recovering = false
+        recovery_settlement_finished.emit()
 
 func new_board(seed: int) -> void:
     _clear_bodies()
@@ -192,6 +204,74 @@ func apply_types(changes: Dictionary) -> Dictionary:
         last_snapshot = capture()
     return capture()
 
+func _has_selection(value: Dictionary) -> bool:
+    for item in value.pieces:
+        if not Selection.preview(value,int(item.id),0).is_empty(): return true
+    return false
+
+func recover_if_blocked() -> Dictionary:
+    # The caller owns the input lock for the whole coroutine. Ordinary refill
+    # signals during the single redrop must never finish combat a second time.
+    if settling or _recovering or refill_phase == "error":
+        return {"status":"error","snapshot":capture()}
+    var original := capture()
+    if _has_selection(original): return {"status":"unchanged","snapshot":original}
+    _recovering = true
+    _recovery_epoch += 1
+    var epoch := _recovery_epoch
+    var edges := Geometry.graph(original)
+    var attempts := 0
+    var type_counts := {}
+    for item in original.pieces:
+        type_counts[item.match_type] = int(type_counts.get(item.match_type,0))+1
+    # A connected triple is a center and two neighbors, or a three-node path.
+    # Enumerate in snapshot/graph ID order; move existing surfaces by swaps.
+    for center in original.pieces:
+        var neighbors: Array = edges[int(center.id)]
+        for i in range(neighbors.size()):
+            for j in range(i+1,neighbors.size()):
+                for type in ["red","yellow","blue"]:
+                    if int(type_counts.get(type,0)) < Config.MIN_GROUP: continue
+                    if attempts >= Config.RECOVERY_ATTEMPTS: break
+                    attempts += 1
+                    var targets: Array = [int(center.id),neighbors[i],neighbors[j]]
+                    var changes := {}
+                    for item in original.pieces: changes[int(item.id)] = str(item.match_type)
+                    for target in targets:
+                        if changes[target] == type: continue
+                        for donor in original.pieces:
+                            if not targets.has(int(donor.id)) and changes[int(donor.id)] == type:
+                                changes[int(donor.id)] = changes[target]
+                                changes[target] = type
+                                break
+                    var value := apply_types(changes)
+                    if _has_selection(value):
+                        _recovering = false
+                        return {"status":"recovered","snapshot":value}
+                if attempts >= Config.RECOVERY_ATTEMPTS: break
+            if attempts >= Config.RECOVERY_ATTEMPTS: break
+        if attempts >= Config.RECOVERY_ATTEMPTS: break
+    # No new bodies, IDs, random draws, or bomb decoration. Drop these exact
+    # pieces once from the normal entry lanes, retaining hull/size/type/angle.
+    for i in range(pieces.size()):
+        var piece = pieces[i]
+        var lane := i % Config.SPAWN_LANES
+        piece.position = Vector2(Config.SPAWN_X+lane*Config.SPAWN_SPACING,
+            Config.SPAWN_Y-floori(float(i)/Config.SPAWN_LANES)*Config.SPAWN_ROW_SPACING)
+        piece.linear_velocity = Vector2.ZERO
+        piece.angular_velocity = 0.0
+    refill_phase = "recovery"
+    _start_settling()
+    await recovery_settlement_finished
+    if epoch != _recovery_epoch:
+        return {"status":"error","snapshot":capture()}
+    _recovering = false
+    var value := capture()
+    if refill_phase != "error" and _has_selection(value):
+        return {"status":"recovered","snapshot":value}
+    refill_phase = "error"
+    return {"status":"error","snapshot":value}
+
 func checkpoint() -> Dictionary:
     return {"snapshot": capture(), "next_id": next_id,
         "rng_seed": str(rng.seed), "rng_state": str(rng.state)}
@@ -266,6 +346,10 @@ func _spawn(item: Dictionary, restored: bool = false):
     return piece
 
 func _clear_bodies() -> void:
+    _recovery_epoch += 1
+    var was_recovering := _recovering
+    _recovering = false
+    if was_recovering: recovery_settlement_finished.emit()
     _pending_batch.clear()
     _pending_openings.clear()
     refill_phase = "idle"
@@ -294,6 +378,7 @@ func _physics_process(delta: float) -> void:
         for piece in pieces:
             piece.freeze = true
         settle_failed.emit("기물이 아직 안정되지 않았어요. 다시 시작해 주세요.")
+        if _recovering: recovery_settlement_finished.emit()
         return
     var quiet := true
     for piece in pieces:
@@ -312,6 +397,7 @@ func _physics_process(delta: float) -> void:
             piece.freeze = true
         last_snapshot = capture()
         settled.emit(last_snapshot.duplicate(true))
+        if _recovering: recovery_settlement_finished.emit()
 
 func _draw() -> void:
     draw_rect(Rect2(0, 0, WIDTH, HEIGHT), Color.WHITE)

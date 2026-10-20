@@ -91,6 +91,21 @@ func _on_checkpoint_available(source: Node, owner_generation: int, owner_stage: 
     if source != battle or owner_generation != generation or run.stage != owner_stage: return
     save_checkpoint()
 
+func _on_battle_error(_reason: String, source: Node, owner_generation: int, owner_stage: String) -> void:
+    if source != battle or owner_generation != generation or run.stage != owner_stage or source.phase != "ERROR": return
+    if source.view.get_node_or_null("RecoveryResume") != null or source.view.get_node_or_null("RecoveryRestart") != null: return
+    var record := last_good_checkpoint()
+    var button := Button.new()
+    button.name = "RecoveryResume" if not record.is_empty() else "RecoveryRestart"
+    button.text = "마지막 정상 지점 재개" if not record.is_empty() else "새 탐험 시작"
+    button.position = Vector2(100,730)
+    button.size = Vector2(520,90)
+    button.pressed.connect(func():
+        if source != battle or owner_generation != generation or run.stage != owner_stage or source.phase != "ERROR": return
+        if record.is_empty(): new_run(seed)
+        else: resume_checkpoint(record))
+    source.view.add_child(button)
+
 func _set_save_error(message: String) -> void:
     save_error = message
     if is_instance_valid(battle): battle.view.get_node("PreviewLine").text = message
@@ -149,6 +164,7 @@ func _show_stage(restored: Dictionary = {}) -> void:
         generation += 1
         context.reduced = reduced
         battle = BattleScene.instantiate()
+        battle.recovery_failed.connect(_on_battle_error.bind(battle,generation,str(run.stage)))
         battle.finished.connect(_on_battle_finished.bind(battle,generation,str(run.stage)))
         battle.checkpoint_available.connect(_on_checkpoint_available.bind(battle,generation,str(run.stage)))
         add_child(battle)

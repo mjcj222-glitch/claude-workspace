@@ -1,6 +1,7 @@
 extends Node
 ## Owns the displayed plan, physical board and the single pending refill.
 signal finished(outcome: Dictionary)
+signal recovery_failed(reason: String)
 signal checkpoint_available
 const Board = preload("res://scripts/v2/board.gd")
 const Combat = preload("res://scripts/v2/combat_rules.gd")
@@ -87,8 +88,7 @@ func restore_checkpoint(record: Dictionary) -> void:
     _finished_sent = state.status != "active"
     board.restore(record.board)
     snapshot = board.capture()
-    phase = "READY" if state.status == "active" else "FINISHED"
-    _render_state()
+    _wait_for_input()
 
 func _reset_transients() -> void:
     var cutin = view.get_node("CutinLayer")
@@ -242,8 +242,7 @@ func commit_preview(plan: Dictionary) -> bool:
             view.get_node("CutinLayer").play(reduced)
             _finish_cutin(_epoch)
         else:
-            phase = "READY"
-            checkpoint_available.emit()
+            _wait_for_input()
     else:
         action_count += 1
         _lock_start_usec = release_usec
@@ -257,9 +256,7 @@ func _finish_cutin(epoch: int) -> void:
     while view.get_node("CutinLayer").active:
         await get_tree().process_frame
         if epoch != _epoch: return
-    phase = "READY"
-    _render_state()
-    checkpoint_available.emit()
+    _wait_for_input()
 
 func _clear_and_refill(plan: Dictionary, epoch: int) -> void:
     var effects = view.get_node("BoardViewport").effects
@@ -279,7 +276,7 @@ func _clear_and_refill(plan: Dictionary, epoch: int) -> void:
     board.apply_clear(plan.removed_ids,decorated.batch)
 
 func _on_settled(value: Dictionary) -> void:
-    if phase == "RESTORING": return
+    if phase in ["RESTORING","RECOVERING","ERROR"]: return
     # A stale/foreign signal is not proof that this owner's committed board is done.
     if board.settling or value != board.capture(): return
     if _pending_refill and (phase != "SETTLING" or _pending_epoch != _epoch or int(value.version) != _pending_board_version): return
@@ -297,14 +294,35 @@ func _on_settled(value: Dictionary) -> void:
             "wall_seconds":float(Time.get_ticks_usec()-_lock_start_usec)/1000000.0,
             "physical_seconds":board.elapsed,"timed_out":false})
     elif phase != "SETTLING": return
-    phase = "READY" if state.status == "active" else "FINISHED"
-    _render_state()
-    if phase == "READY": checkpoint_available.emit()
+    _wait_for_input()
+
+func _wait_for_input() -> void:
+    if state.status == "active":
+        # Acquire ownership before checking even a synchronous permutation.
+        cancel_input()
+        phase = "RECOVERING"
+        _epoch += 1
+        var epoch := _epoch
+        view.get_node("PreviewLine").text = "막힌 판을 확인하고 복구하고 있어요."
+        var result: Dictionary = await board.recover_if_blocked()
+        if epoch != _epoch or phase != "RECOVERING" or is_queued_for_deletion() or not is_inside_tree(): return
+        if result.status == "error":
+            _on_settle_failed("판을 복구하지 못했어요. 마지막 정상 지점을 재개해 주세요.")
+            return
+        snapshot = result.snapshot.duplicate(true)
+        phase = "READY"
+        _render_state()
+        view.show_plan(snapshot,{})
+        checkpoint_available.emit()
+    else:
+        phase = "FINISHED"
+        _render_state()
     if phase == "FINISHED" and not _finished_sent:
         _finished_sent = true
         finished.emit({"status":state.status,"hp":state.hp,"energy":state.energy,"enemy_id":state.enemy_id})
 
 func _on_settle_failed(reason: String) -> void:
+    _epoch += 1
     if _pending_refill:
         lock_measurements.append({"removed_count":_lock_count,"physical_seconds":board.elapsed,"timed_out":true,
             "wall_seconds":float(Time.get_ticks_usec()-_lock_start_usec)/1000000.0})
@@ -312,6 +330,7 @@ func _on_settle_failed(reason: String) -> void:
     cancel_input()
     phase = "ERROR"
     view.get_node("PreviewLine").text = reason
+    recovery_failed.emit(reason)
 
 var keyboard_id := -1
 func _keyboard(event: InputEventKey) -> void:
