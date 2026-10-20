@@ -80,7 +80,6 @@ func apply_clear(ids: Array, batch: Array) -> void:
         var removed = by_id(int(id))
         if removed != null:
             openings.append(removed.position.x)
-    openings.sort()
     for id in ids:
         var piece = by_id(int(id))
         if piece != null:

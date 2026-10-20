@@ -53,7 +53,9 @@ func measure(board, seed_value: int, phase: String, motion: Dictionary = {}) -> 
     check(overlap<32,"maximum overlap remains below 32")
     if enforce:
         check(area/360000.0 >= 0.60 and area/360000.0 <= 0.71,"bounded area occupancy 60–71%")
-        check(top >= 0 and top <= 90,"settled top empty band at most 15%")
+        # Controller visual ruling keeps initial 15%; compact refill may use 16%.
+        var top_limit := 90.0 if phase == "initial" else 96.0
+        check(top >= 0 and top <= top_limit,"settled %s top band at most %d pixels" % [phase,int(top_limit)])
 func run() -> void:
     enforce = not OS.get_cmdline_user_args().has("--measure-only")
     var board = Board.new()
