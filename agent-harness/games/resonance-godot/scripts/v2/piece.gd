@@ -63,6 +63,13 @@ func _draw() -> void:
         var bevel := color.lightened(maxf(0, light) * 0.50) if light > 0 else color.darkened(-light * 0.35)
         draw_colored_polygon(PackedVector2Array([polygon[i], polygon[j], inner[j], inner[i]]), bevel)
     draw_colored_polygon(inner, color.lightened(0.15))
+    # Inset reflective bands follow the face, without changing its silhouette.
+    var shine := PackedVector2Array([Vector2(-80,-80),Vector2(80,-80),Vector2(80,-18),Vector2(-80,4)])
+    for cap in Geometry2D.intersect_polygons(inner, shine):
+        draw_colored_polygon(cap, Color(1,1,1,0.20))
+    var reflection := PackedVector2Array([Vector2(-80,-25),Vector2(80,-47),Vector2(80,-41),Vector2(-80,-19)])
+    for band in Geometry2D.intersect_polygons(inner, reflection):
+        draw_colored_polygon(band, Color(1,1,1,0.12))
     var rim := PackedVector2Array()
     for point in polygon: rim.append(point * 0.96)
     rim.append(rim[0])
@@ -73,10 +80,13 @@ func _draw() -> void:
     if bomb_tier > 0:
         # Bomb decoration surrounds the shared type motif rather than replacing it.
         draw_circle(Vector2.ZERO, 21, Color("243049"))
-        draw_arc(Vector2.ZERO, 22, 0, TAU, 32, ink, 2.0, true)
+        var tier_color: Color = [ink, ink, Color("ffd16d"), Color("ff8b76")][bomb_tier]
+        draw_arc(Vector2.ZERO, 22, 0, TAU, 48, tier_color, 2.0 + bomb_tier * 0.55, true)
         draw_line(Vector2(9, -21), Vector2(12, -24), Color("ffc735"), 3, true)
+        draw_style_box(_tier_badge(), Rect2(-13,14,26,11))
         for i in range(bomb_tier):
-            draw_circle(Vector2((i - (bomb_tier - 1) * 0.5) * 7, 17), 2.0, ink)
+            var x := (i - (bomb_tier - 1) * 0.5) * 6
+            draw_line(Vector2(x,16),Vector2(x,22),tier_color,3.0,true)
     if match_type == "red":
         draw_colored_polygon(PackedVector2Array([Vector2(0, -19), Vector2(12, -2), Vector2(10, 10),
             Vector2(0, 17), Vector2(-11, 10), Vector2(-13, 0), Vector2(-5, -10), Vector2(-4, 2)]), ink)
@@ -98,3 +108,9 @@ func _draw() -> void:
             var t := i * TAU / 40
             heart.append(Vector2(16 * pow(sin(t), 3), -(13 * cos(t) - 5 * cos(2*t) - 2 * cos(3*t) - cos(4*t))))
         draw_colored_polygon(heart, ink)
+
+func _tier_badge() -> StyleBoxFlat:
+    var badge := StyleBoxFlat.new()
+    badge.bg_color = Color("152234")
+    badge.set_corner_radius_all(4)
+    return badge
