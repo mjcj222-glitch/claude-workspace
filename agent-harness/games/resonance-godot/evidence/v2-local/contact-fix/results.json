@@ -1,0 +1,119 @@
+{
+  "checks": 57,
+  "failures": 0,
+  "records": [
+    {
+      "displayed_ids": [
+        17,
+        18,
+        24,
+        30,
+        35,
+        36
+      ],
+      "excluded_id": 34,
+      "excluded_strong_mask_pixels": 1500,
+      "files": [
+        "initial-360x640-clean.png",
+        "initial-360x640-pressed.png"
+      ],
+      "first_gap_delta": 0.0,
+      "fixture": "initial",
+      "painted_excluded_pixels": 0,
+      "source": "actual engine-injected pointer; recorded natural42 frozen replay, not a normal win",
+      "visible_changed_board_pixels": 4498,
+      "window": [
+        360,
+        640
+      ]
+    },
+    {
+      "displayed_ids": [
+        8,
+        9,
+        14
+      ],
+      "excluded_id": 19,
+      "excluded_strong_mask_pixels": 1459,
+      "files": [
+        "actual_release-360x640-clean.png",
+        "actual_release-360x640-pressed.png"
+      ],
+      "first_gap_delta": 0.0,
+      "fixture": "actual_release",
+      "painted_excluded_pixels": 0,
+      "source": "actual engine-injected pointer; recorded natural42 frozen replay, not a normal win",
+      "visible_changed_board_pixels": 2226,
+      "window": [
+        360,
+        640
+      ]
+    },
+    {
+      "displayed_ids": [
+        17,
+        18,
+        24,
+        30,
+        35,
+        36
+      ],
+      "excluded_id": 34,
+      "excluded_strong_mask_pixels": 5997,
+      "files": [
+        "initial-720x1280-clean.png",
+        "initial-720x1280-pressed.png"
+      ],
+      "first_gap_delta": 0.0,
+      "fixture": "initial",
+      "painted_excluded_pixels": 0,
+      "source": "actual engine-injected pointer; recorded natural42 frozen replay, not a normal win",
+      "visible_changed_board_pixels": 18035,
+      "window": [
+        720,
+        1280
+      ]
+    },
+    {
+      "displayed_ids": [
+        8,
+        9,
+        14
+      ],
+      "excluded_id": 19,
+      "excluded_strong_mask_pixels": 5842,
+      "files": [
+        "actual_release-720x1280-clean.png",
+        "actual_release-720x1280-pressed.png"
+      ],
+      "first_gap_delta": 0.0,
+      "fixture": "actual_release",
+      "painted_excluded_pixels": 0,
+      "source": "actual engine-injected pointer; recorded natural42 frozen replay, not a normal win",
+      "visible_changed_board_pixels": 8896,
+      "window": [
+        720,
+        1280
+      ]
+    }
+  ],
+  "independent_review": {
+    "spec": "PASS",
+    "quality": "PASS",
+    "findings": []
+  },
+  "isolated_committed_tests": {
+    "visible_contact": {
+      "checks": 109,
+      "failures": 0,
+      "exit": 0
+    },
+    "presentation": {
+      "checks": 48,
+      "failures": 0,
+      "exit": 0
+    }
+  },
+  "matching_total_gap_inclusive": 1.75,
+  "physical_contact_unchanged": 1.0
+}
