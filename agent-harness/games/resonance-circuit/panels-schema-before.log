@@ -1,0 +1,365 @@
+✔ vine direct tap is inert and cannot bridge same color groups (2.391004ms)
+✔ vine adjacent or blast hits strip once, preserve ID/color and fall without reward (0.562152ms)
+✔ hex row boundary does not unlock a non-neighbor vine (0.151851ms)
+✔ rainbow bridges only chosen color, never changes color through another neighbor (0.819472ms)
+✔ direct rainbow tie and isolated rainbow choose coral, heal majority heals (0.672639ms)
+✔ rainbow initial count 4 uses resolved color and fresh special ID (0.419857ms)
+✔ rainbow initial count 5 uses resolved color and fresh special ID (0.261196ms)
+✔ rainbow initial count 9 uses resolved color and fresh special ID (0.222958ms)
+✔ rainbow initial count 10 uses resolved color and fresh special ID (0.287015ms)
+✔ blast-only rainbow is one attack cell; duplicate blast and group count once (0.58077ms)
+✔ skills exclude vines and rainbow; zero candidates retain buffs/cooldowns (1.212978ms)
+✔ rainbow resolved heal preserves prism; resolved attack consumes bonus with boost and ward (1.45174ms)
+✔ unlocked vine and rainbow never become new echo candidates (0.438615ms)
+✔ stage generation caps, protected opening, separate RNG and pure previews (50.63588ms)
+✔ stage introductions, checkpoint and new save exactly reproduce panel RNG and board (2.569314ms)
+✔ old save keeps current board and RNG, retry uses old layout, next stage enables panels (0.80538ms)
+✔ unfinished panel lesson clears at terminal save, win and loss (1.080437ms)
+✖ malformed panel state is rejected, including a legacy-mode RNG and invalid lesson (3.237487ms)
+✔ refill RNG advances exactly once per fresh tile, caps do not reroll (12.12184ms)
+✖ vine unlock adds no ignition bonus and rainbow heal preserves shield until retaliation (0.761264ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 18
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 156.985091
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:27:1
+✖ malformed panel state is rejected, including a legacy-mode RNG and invalid lesson (3.237487ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   audio: {
+  +     enabled: false,
+  +     volume: 0.3
+  +   },
+  +   learned: true,
+  +   run: {
+  +     entry: {
+  +       gauge: 0,
+  +       hp: 180
+  +     },
+  +     history: [],
+  +     panelLesson: null,
+  +     panelSeen: [
+  +       false,
+  +       false
+  +     ],
+  +     panelVersion: 0,
+  +     phase: 'battle',
+  +     retries: [
+  +       0,
+  +       0,
+  +       0
+  +     ],
+  +     seed: 42,
+  +     stage: 0,
+  +     state: {
+  +       board: [
+  +         {
+  +           color: 'blue',
+  +           id: 1,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 2,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 3,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 4,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 5,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 6,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'gold',
+  +           id: 7,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 8,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 9,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 10,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 11,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 12,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 13,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 14,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 15,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 16,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 17,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 18,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 19,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 20,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 21,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 22,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 23,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'gold',
+  +           id: 24,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 25,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 26,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 27,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 28,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'gold',
+  +           id: 29,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 30,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'coral',
+  +           id: 31,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 32,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 33,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 34,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 35,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'gold',
+  +           id: 36,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 37,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 38,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 39,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'blue',
+  +           id: 40,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'heal',
+  +           id: 41,
+  +           kind: 'normal'
+  +         },
+  +         {
+  +           color: 'gold',
+  +           id: 42,
+  +           kind: 'normal'
+  +         }
+  +       ],
+  +       boost: false,
+  +       bossHP: 620,
+  +       buffs: {
+  +         ignition: false,
+  +         prism: false,
+  +         shield: 0
+  +       },
+  +       damage: 0,
+  +       echo: [],
+  +       echoCount: 0,
+  +       gauge: 0,
+  +       healing: 0,
+  +       hp: 180,
+  +       maxChain: 0,
+  +       nextID: 43,
+  +       panelRng: 'bad',
+  +       ready: [
+  +         1,
+  +         1,
+  +         1
+  +       ],
+  +       rng: 1931673780,
+  +       rules: {
+  +         attack: 5,
+  +         attacks: [
+  +           14,
+  +           20
+  +         ],
+  +         bossHP: 620,
+  +         charge: 24,
+  +         cols: 6,
+  +         cooldown: 3,
+  +         echoWard: false,
+  +         gauge: 55,
+  +         heal: 6,
+  +         hp: 180,
+  +         panelStage: 0,
+  +         rows: 7,
+  +         seed: 20261019
+  +       },
+  +       seed: 42,
+  +       status: 'playing',
+  +       taps: 3,
+  +       turn: 1,
+  +       wardBroken: false
+  +     },
+  +     tutorial: 'done',
+  +     tutorialIDs: [],
+  +     upgrades: [],
+  +     version: 1
+  +   },
+  +   version: 1
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:29:279)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { version: 1, run: { version: 1, panelVersion: 0, panelLesson: null, panelSeen: [Array], seed: 42, stage: 0, phase: 'battle', upgrades: [], history: [], retries: [Array], entry: [Object], tutorialIDs: [], tutorial: 'done', state: [Object] }, learned: true, audio: { enabled: false, volume: 0.3 } },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:40:1
+✖ vine unlock adds no ignition bonus and rainbow heal preserves shield until retaliation (0.761264ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  18 !== 14
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:42:167)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 18,
+    expected: 14,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

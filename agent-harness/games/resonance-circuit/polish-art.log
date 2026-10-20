@@ -1,0 +1,2 @@
+PASS 360px: sequential clear, marked echo activation, actual bomb, <=100 particles, cleanup, restart, no overflow/JS errors
+PASS 1280px: sequential clear, marked echo activation, actual bomb, <=100 particles, cleanup, restart, no overflow/JS errors

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/presentation_browser.py", line 8, in <module>
+    assert page.locator('#bossTrail').count()==1,'HP trail missing'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: HP trail missing

@@ -1,0 +1,7 @@
+encounter-event.png: 3803662 -> 2643154; exact RGB pixels PASS
+encounter-midboss.png: 4277053 -> 2856008; exact RGB pixels PASS
+encounter-boss.png: 4005770 -> 2771188; exact RGB pixels PASS
+encounter-rest.png: 3699149 -> 2425578; exact RGB pixels PASS
+encounter-mob.png: 3800396 -> 2578480; exact RGB pixels PASS
+portraits-cute.png: 3794484 -> 2396152; exact RGB pixels PASS
+storybook-battle.png: 3869726 -> 2582008; exact RGB pixels PASS

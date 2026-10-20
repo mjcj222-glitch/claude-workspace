@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/expedition_browser.py", line 51, in <module>
+    for i in ([int(sys.argv[1])] if len(sys.argv)>1 else range(6)):run(b,*cases[i])
+                                                                   ^^^^^^^^^^^^^^^^
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/expedition_browser.py", line 38, in run
+    assert page.evaluate("localStorage.getItem('resonance-circuit-v1')")==practice
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

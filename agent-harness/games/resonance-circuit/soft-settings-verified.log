@@ -1,0 +1,6 @@
+{"count": "6", "control": "sound", "failures": [], "elapsed": 579.1999999992549, "applied": true, "result": "PASS"}
+{"count": "6", "control": "skipLesson", "failures": [], "elapsed": 589.5, "applied": false, "result": "PASS"}
+{"count": "6", "control": "both", "failures": [], "elapsed": 585.2999999988824, "applied": true, "result": "PASS"}
+{"count": "42", "control": "sound", "failures": [], "elapsed": 898.2999999988824, "applied": true, "result": "PASS"}
+{"count": "42", "control": "skipLesson", "failures": [], "elapsed": 865.9000000003725, "applied": false, "result": "PASS"}
+{"count": "42", "control": "both", "failures": [], "elapsed": 877.9000000003725, "applied": true, "result": "PASS"}

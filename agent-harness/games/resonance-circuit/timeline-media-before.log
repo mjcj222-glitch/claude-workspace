@@ -1,0 +1,37 @@
+✔ timeline 1: tapped ID first, unique resolved IDs, readable cadence and bounded duration (7.63403ms)
+✔ timeline 6: tapped ID first, unique resolved IDs, readable cadence and bounded duration (1.933608ms)
+✔ timeline 10: tapped ID first, unique resolved IDs, readable cadence and bounded duration (0.804608ms)
+✔ timeline 42: tapped ID first, unique resolved IDs, readable cadence and bounded duration (1.295341ms)
+✔ BFS distance is monotone within a plain initial group (0.443702ms)
+✔ echo, chained bombs and vines schedule once from actual results (0.536312ms)
+✔ scheduler cancellation stops callbacks and resolves once; reduced mode has no stagger (107.337674ms)
+✔ late main-thread callback still receives the full final animation hold (82.417528ms)
+✔ survivor fall offset uses document coordinates so scrolling adds no false fall (0.529022ms)
+✖ live cancellation predicate ends even if a media change event is not delivered (111.951731ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 9
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 374.82421
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/timeline.test.mjs:11:1
+✖ live cancellation predicate ends even if a media change event is not delivered (111.951731ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'done' !== 'finish'
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline.test.mjs:11:339)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'done',
+    expected: 'finish',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

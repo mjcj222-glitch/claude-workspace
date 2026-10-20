@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/neutral_ui_browser.py", line 22, in <module>
+    page.locator('#endingMenu').focus();assert page.locator('#endingMenu').evaluate("e=>getComputedStyle(e).outlineStyle!=='none'")
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

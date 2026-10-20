@@ -1,0 +1,9 @@
+{"viewport": [360, 800], "motion": "no-preference", "compound": "bomb+echo+vine+rainbow", "sampleButtons": 17, "cleanup": true, "errors": 0}
+{"viewport": [360, 800], "motion": "reduce", "compound": "bomb+echo+vine+rainbow", "sampleButtons": 17, "cleanup": true, "errors": 0}
+{"viewport": [390, 844], "motion": "no-preference", "compound": "bomb+echo+vine+rainbow", "sampleButtons": 17, "cleanup": true, "errors": 0}
+{"viewport": [390, 844], "motion": "reduce", "compound": "bomb+echo+vine+rainbow", "sampleButtons": 17, "cleanup": true, "errors": 0}
+{"viewport": [1280, 900], "motion": "no-preference", "compound": "bomb+echo+vine+rainbow", "sampleButtons": 17, "cleanup": true, "errors": 0}
+{"viewport": [1280, 900], "motion": "reduce", "compound": "bomb+echo+vine+rainbow", "sampleButtons": 17, "cleanup": true, "errors": 0}
+{"played": 1, "peak": {"voices": 8, "nodes": 26, "peakVoices": 8, "peakNodes": 26, "bufferBytes": 61736, "queued": 0, "events": 5, "dropped": 8}, "after": {"voices": 0, "nodes": 2, "peakVoices": 8, "peakNodes": 26, "bufferBytes": 61736, "queued": 0, "events": 5, "dropped": 8}, "state": "suspended"}
+{"peak": {"particles": 80, "peakParticles": 80, "marks": 1, "labels": 3}, "reduced": {"particles": 0, "peakParticles": 80, "marks": 1, "labels": 0}, "clean": {"particles": 0, "peakParticles": 80, "marks": 0, "labels": 0}}
+{"inFlightVolume": {"before": 0.017198672518134117, "after": 0}}

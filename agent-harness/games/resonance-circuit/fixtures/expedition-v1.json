@@ -1,0 +1,4539 @@
+{
+  "map": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": null,
+    "panelSeen": [
+      false,
+      false
+    ],
+    "seed": 23,
+    "stage": 0,
+    "phase": "map",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 23,
+      "rng": 2348552521,
+      "nextID": 43,
+      "board": [
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 2,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 3,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 4,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 7,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 9,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 10,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 11,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 21,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 22,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 23,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 25,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 26,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 27,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 29,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 30,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 31,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 35,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 36,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 37,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 39,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 40,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 41,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "blue",
+          "kind": "normal"
+        }
+      ],
+      "echo": [],
+      "hp": 180,
+      "bossHP": 620,
+      "turn": 1,
+      "taps": 3,
+      "damage": 0,
+      "healing": 0,
+      "gauge": 0,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "playing",
+      "maxChain": 0,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 2654435758,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 620,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          14,
+          20
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "echoWard": false,
+        "panelStage": 0
+      }
+    },
+    "mode": "expedition",
+    "depth": 0,
+    "path": [],
+    "relics": [],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [],
+    "log": [],
+    "total": {
+      "turns": 0,
+      "echoes": 0,
+      "damage": 0,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  },
+  "battle": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": null,
+    "panelSeen": [
+      false,
+      false
+    ],
+    "seed": 23,
+    "stage": 0,
+    "phase": "battle",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 1673942268,
+      "rng": 1692239745,
+      "nextID": 49,
+      "board": [
+        {
+          "id": 44,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 45,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 43,
+          "color": "coral",
+          "kind": "charge"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 7,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 46,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 47,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 48,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 21,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 22,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 23,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 25,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 26,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 27,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 29,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 30,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 31,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 35,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 36,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 37,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 39,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 40,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 41,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "heal",
+          "kind": "normal"
+        }
+      ],
+      "echo": [
+        1,
+        5,
+        8,
+        12,
+        16,
+        17,
+        18,
+        19
+      ],
+      "hp": 180,
+      "bossHP": 360,
+      "turn": 1,
+      "taps": 2,
+      "damage": 30,
+      "healing": 0,
+      "gauge": 6,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "playing",
+      "maxChain": 6,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 4260441413,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 360,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          10,
+          16
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "panelStage": 0,
+        "echoWard": false
+      }
+    },
+    "mode": "expedition",
+    "depth": 0,
+    "path": [
+      "0-0"
+    ],
+    "relics": [],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [],
+    "log": [],
+    "total": {
+      "turns": 0,
+      "echoes": 0,
+      "damage": 0,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  },
+  "reward": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": null,
+    "panelSeen": [
+      false,
+      false
+    ],
+    "seed": 23,
+    "stage": 0,
+    "phase": "reward",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 1673942268,
+      "rng": 3678747372,
+      "nextID": 50,
+      "board": [
+        {
+          "id": 49,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 44,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 43,
+          "color": "coral",
+          "kind": "charge"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 7,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 46,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 47,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 48,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 21,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 22,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 23,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 25,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 26,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 27,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 29,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 30,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 31,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 35,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 36,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 37,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 39,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 40,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 41,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "heal",
+          "kind": "normal"
+        }
+      ],
+      "echo": [],
+      "hp": 180,
+      "bossHP": 0,
+      "turn": 1,
+      "taps": 0,
+      "damage": 9999,
+      "healing": 6,
+      "gauge": 7,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "won",
+      "maxChain": 6,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 4260441413,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 360,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          10,
+          16
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "panelStage": 0,
+        "echoWard": false
+      }
+    },
+    "mode": "expedition",
+    "depth": 0,
+    "path": [
+      "0-0"
+    ],
+    "relics": [],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [
+      "bell",
+      "bottle"
+    ],
+    "log": [
+      {
+        "id": "0-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      }
+    ],
+    "total": {
+      "turns": 1,
+      "echoes": 0,
+      "damage": 360,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  },
+  "event": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": null,
+    "panelSeen": [
+      true,
+      false
+    ],
+    "seed": 23,
+    "stage": 1,
+    "phase": "room",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 1397117988,
+      "rng": 309385033,
+      "nextID": 49,
+      "board": [
+        {
+          "id": 44,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 45,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 43,
+          "color": "coral",
+          "kind": "charge"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 7,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 46,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 47,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 48,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 21,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 22,
+          "color": "coral",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 23,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 25,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 26,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 27,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 29,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 30,
+          "color": "coral",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 31,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 35,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 36,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 37,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 39,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 40,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 41,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "coral",
+          "kind": "normal"
+        }
+      ],
+      "echo": [
+        1,
+        5,
+        8,
+        12,
+        16,
+        17,
+        18
+      ],
+      "hp": 180,
+      "bossHP": 0,
+      "turn": 1,
+      "taps": 0,
+      "damage": 10029,
+      "healing": 0,
+      "gauge": 13,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "won",
+      "maxChain": 6,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 3985642673,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 500,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          10,
+          16
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "panelStage": 1,
+        "echoWard": false
+      }
+    },
+    "mode": "expedition",
+    "depth": 2,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-1"
+    ],
+    "relics": [
+      "bell",
+      "lens"
+    ],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [
+      "bottle"
+    ],
+    "log": [
+      {
+        "id": "0-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "1-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      }
+    ],
+    "total": {
+      "turns": 2,
+      "echoes": 0,
+      "damage": 860,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  },
+  "mid_elite": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": "rainbow",
+    "panelSeen": [
+      true,
+      false
+    ],
+    "seed": 23,
+    "stage": 2,
+    "phase": "battle",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 3678747372,
+      "rng": 2848759302,
+      "nextID": 43,
+      "board": [
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 2,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 3,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 4,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 7,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 9,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 10,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 11,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 21,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 22,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 23,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 25,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 26,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 27,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "coral",
+          "kind": "rainbow"
+        },
+        {
+          "id": 29,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 30,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 31,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 35,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 36,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 37,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "coral",
+          "kind": "rainbow"
+        },
+        {
+          "id": 39,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 40,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 41,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        }
+      ],
+      "echo": [],
+      "hp": 180,
+      "bossHP": 780,
+      "turn": 1,
+      "taps": 3,
+      "damage": 0,
+      "healing": 0,
+      "gauge": 13,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "playing",
+      "maxChain": 0,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 982068319,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 780,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          18,
+          26
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "panelStage": 2,
+        "echoWard": true
+      }
+    },
+    "mode": "expedition",
+    "depth": 3,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-1",
+      "3-1"
+    ],
+    "relics": [
+      "bell",
+      "lens"
+    ],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [],
+    "log": [
+      {
+        "id": "0-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "1-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "2-1",
+        "choice": "rest"
+      }
+    ],
+    "total": {
+      "turns": 2,
+      "echoes": 0,
+      "damage": 860,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  },
+  "mid_normal": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": "rainbow",
+    "panelSeen": [
+      true,
+      false
+    ],
+    "seed": 23,
+    "stage": 2,
+    "phase": "battle",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 3784803012,
+      "rng": 1046997662,
+      "nextID": 43,
+      "board": [
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 2,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 3,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 4,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 7,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 9,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 10,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 11,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "coral",
+          "kind": "rainbow"
+        },
+        {
+          "id": 21,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 22,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 23,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 25,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 26,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 27,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 29,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 30,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 31,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 35,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 36,
+          "color": "coral",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 37,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 39,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 40,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 41,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "coral",
+          "kind": "rainbow"
+        }
+      ],
+      "echo": [],
+      "hp": 180,
+      "bossHP": 650,
+      "turn": 1,
+      "taps": 3,
+      "damage": 0,
+      "healing": 0,
+      "gauge": 13,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "playing",
+      "maxChain": 0,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 1895287048,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 650,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          10,
+          16
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "panelStage": 2,
+        "echoWard": false
+      }
+    },
+    "mode": "expedition",
+    "depth": 3,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-1",
+      "3-0"
+    ],
+    "relics": [
+      "bell",
+      "lens"
+    ],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [],
+    "log": [
+      {
+        "id": "0-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "1-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "2-1",
+        "choice": "rest"
+      }
+    ],
+    "total": {
+      "turns": 2,
+      "echoes": 0,
+      "damage": 860,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  },
+  "rest": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": null,
+    "panelSeen": [
+      true,
+      true
+    ],
+    "seed": 23,
+    "stage": 2,
+    "phase": "room",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 3784803012,
+      "rng": 295506025,
+      "nextID": 49,
+      "board": [
+        {
+          "id": 44,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 45,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 43,
+          "color": "coral",
+          "kind": "charge"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 7,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 46,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 47,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 48,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "coral",
+          "kind": "rainbow"
+        },
+        {
+          "id": 21,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 22,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 23,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 25,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 26,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 27,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 29,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 30,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 31,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 35,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 36,
+          "color": "coral",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 37,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 39,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 40,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 41,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "coral",
+          "kind": "rainbow"
+        }
+      ],
+      "echo": [
+        1,
+        5,
+        8,
+        12,
+        16,
+        17,
+        18,
+        19
+      ],
+      "hp": 180,
+      "bossHP": 0,
+      "turn": 1,
+      "taps": 0,
+      "damage": 10029,
+      "healing": 0,
+      "gauge": 19,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "won",
+      "maxChain": 6,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 2836081899,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 650,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          10,
+          16
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "panelStage": 2,
+        "echoWard": false
+      }
+    },
+    "mode": "expedition",
+    "depth": 4,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-1",
+      "3-0",
+      "4-0"
+    ],
+    "relics": [
+      "bell",
+      "lens",
+      "brooch"
+    ],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [
+      "powder"
+    ],
+    "log": [
+      {
+        "id": "0-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "1-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "2-1",
+        "choice": "rest"
+      },
+      {
+        "id": "3-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      }
+    ],
+    "total": {
+      "turns": 3,
+      "echoes": 0,
+      "damage": 1510,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  },
+  "boss": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": null,
+    "panelSeen": [
+      true,
+      true
+    ],
+    "seed": 23,
+    "stage": 2,
+    "phase": "battle",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 3130982756,
+      "rng": 341558846,
+      "nextID": 43,
+      "board": [
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 2,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 3,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 4,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 7,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 9,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 10,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 11,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "coral",
+          "kind": "rainbow"
+        },
+        {
+          "id": 21,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 22,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 23,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 25,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 26,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 27,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 29,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 30,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 31,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "coral",
+          "kind": "rainbow"
+        },
+        {
+          "id": 35,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 36,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 37,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 39,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 40,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 41,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "coral",
+          "kind": "normal"
+        }
+      ],
+      "echo": [],
+      "hp": 180,
+      "bossHP": 1000,
+      "turn": 1,
+      "taps": 3,
+      "damage": 0,
+      "healing": 0,
+      "gauge": 19,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "playing",
+      "maxChain": 0,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 1703308444,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 1000,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          16,
+          24,
+          34
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "panelStage": 2,
+        "echoWard": false
+      }
+    },
+    "mode": "expedition",
+    "depth": 5,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-1",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "bell",
+      "lens",
+      "brooch"
+    ],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [],
+    "log": [
+      {
+        "id": "0-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "1-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "2-1",
+        "choice": "rest"
+      },
+      {
+        "id": "3-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "4-0",
+        "choice": "rest"
+      }
+    ],
+    "total": {
+      "turns": 3,
+      "echoes": 0,
+      "damage": 1510,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  },
+  "complete": {
+    "version": 1,
+    "panelVersion": 1,
+    "panelLesson": null,
+    "panelSeen": [
+      true,
+      true
+    ],
+    "seed": 23,
+    "stage": 2,
+    "phase": "complete",
+    "upgrades": [],
+    "history": [],
+    "retries": [
+      0,
+      0,
+      0
+    ],
+    "entry": {
+      "hp": 180,
+      "gauge": 0
+    },
+    "tutorialIDs": [],
+    "tutorial": "done",
+    "state": {
+      "seed": 3130982756,
+      "rng": 1224792457,
+      "nextID": 49,
+      "board": [
+        {
+          "id": 44,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 45,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 1,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 43,
+          "color": "coral",
+          "kind": "charge"
+        },
+        {
+          "id": 5,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 6,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 7,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 46,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 47,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 48,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 8,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 12,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 13,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 14,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 15,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 16,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 17,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 18,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 19,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 20,
+          "color": "coral",
+          "kind": "rainbow"
+        },
+        {
+          "id": 21,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 22,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 23,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 24,
+          "color": "gold",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 25,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 26,
+          "color": "blue",
+          "kind": "normal",
+          "vine": true
+        },
+        {
+          "id": 27,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 28,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 29,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 30,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 31,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 32,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 33,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 34,
+          "color": "coral",
+          "kind": "rainbow"
+        },
+        {
+          "id": 35,
+          "color": "blue",
+          "kind": "normal"
+        },
+        {
+          "id": 36,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 37,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 38,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 39,
+          "color": "coral",
+          "kind": "normal"
+        },
+        {
+          "id": 40,
+          "color": "heal",
+          "kind": "normal"
+        },
+        {
+          "id": 41,
+          "color": "gold",
+          "kind": "normal"
+        },
+        {
+          "id": 42,
+          "color": "coral",
+          "kind": "normal"
+        }
+      ],
+      "echo": [
+        1,
+        5,
+        8,
+        12,
+        16,
+        17,
+        18
+      ],
+      "hp": 180,
+      "bossHP": 0,
+      "turn": 1,
+      "taps": 0,
+      "damage": 10029,
+      "healing": 0,
+      "gauge": 25,
+      "boost": false,
+      "ready": [
+        1,
+        1,
+        1
+      ],
+      "status": "won",
+      "maxChain": 6,
+      "echoCount": 0,
+      "buffs": {
+        "prism": false,
+        "ignition": false,
+        "shield": 0
+      },
+      "wardBroken": false,
+      "panelRng": 3783735727,
+      "rules": {
+        "cols": 6,
+        "rows": 7,
+        "hp": 180,
+        "bossHP": 1000,
+        "attack": 5,
+        "heal": 6,
+        "charge": 24,
+        "attacks": [
+          16,
+          24,
+          34
+        ],
+        "gauge": 55,
+        "cooldown": 3,
+        "seed": 20261019,
+        "panelStage": 2,
+        "echoWard": false
+      }
+    },
+    "mode": "expedition",
+    "depth": 6,
+    "path": [
+      "0-0",
+      "1-0",
+      "2-1",
+      "3-0",
+      "4-0",
+      "5-0"
+    ],
+    "relics": [
+      "bell",
+      "lens",
+      "brooch"
+    ],
+    "shield": 0,
+    "firstSkill": false,
+    "offer": [],
+    "log": [
+      {
+        "id": "0-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "1-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "2-1",
+        "choice": "rest"
+      },
+      {
+        "id": "3-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      },
+      {
+        "id": "4-0",
+        "choice": "rest"
+      },
+      {
+        "id": "5-0",
+        "turns": 1,
+        "echoes": 0,
+        "maxChain": 6,
+        "result": "won"
+      }
+    ],
+    "total": {
+      "turns": 4,
+      "echoes": 0,
+      "damage": 2510,
+      "taken": 0,
+      "healed": 0
+    },
+    "map": [
+      [
+        {
+          "id": "0-0",
+          "type": "normal",
+          "depth": 0,
+          "seed": 1673942268,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "1-0",
+          "type": "normal",
+          "depth": 1,
+          "seed": 1397117988,
+          "order": [
+            "lens",
+            "powder",
+            "bell",
+            "umbrella",
+            "bottle",
+            "petal",
+            "brooch",
+            "tea"
+          ]
+        },
+        {
+          "id": "1-1",
+          "type": "elite",
+          "depth": 1,
+          "seed": 1328429132,
+          "order": [
+            "bottle",
+            "lens",
+            "bell",
+            "umbrella",
+            "petal",
+            "brooch",
+            "powder",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "2-0",
+          "type": "rest",
+          "depth": 2,
+          "seed": 1903862132,
+          "order": [
+            "bell",
+            "powder",
+            "lens",
+            "umbrella",
+            "brooch",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        },
+        {
+          "id": "2-1",
+          "type": "event",
+          "depth": 2,
+          "seed": 3015454620,
+          "order": [
+            "bell",
+            "bottle",
+            "brooch",
+            "umbrella",
+            "lens",
+            "powder",
+            "petal",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "3-0",
+          "type": "normal",
+          "depth": 3,
+          "seed": 3784803012,
+          "order": [
+            "brooch",
+            "lens",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        },
+        {
+          "id": "3-1",
+          "type": "elite",
+          "depth": 3,
+          "seed": 3678747372,
+          "order": [
+            "bell",
+            "bottle",
+            "petal",
+            "brooch",
+            "umbrella",
+            "powder",
+            "lens",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "4-0",
+          "type": "rest",
+          "depth": 4,
+          "seed": 672266260,
+          "order": [
+            "bell",
+            "brooch",
+            "powder",
+            "petal",
+            "bottle",
+            "umbrella",
+            "lens",
+            "tea"
+          ]
+        },
+        {
+          "id": "4-1",
+          "type": "event",
+          "depth": 4,
+          "seed": 3638450748,
+          "order": [
+            "lens",
+            "powder",
+            "brooch",
+            "umbrella",
+            "bell",
+            "petal",
+            "bottle",
+            "tea"
+          ]
+        }
+      ],
+      [
+        {
+          "id": "5-0",
+          "type": "boss",
+          "depth": 5,
+          "seed": 3130982756,
+          "order": [
+            "bottle",
+            "powder",
+            "brooch",
+            "lens",
+            "petal",
+            "umbrella",
+            "bell",
+            "tea"
+          ]
+        }
+      ]
+    ]
+  }
+}

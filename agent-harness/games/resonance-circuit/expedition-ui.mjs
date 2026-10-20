@@ -1,0 +1,28 @@
+import {ENCOUNTERS,encounterKind} from './encounters.mjs';
+import {RELICS,availableRooms,currentRoom,roomRules,enterRoom,rewards,takeReward,resolveRoom} from './expedition.mjs';
+export const ROOM_NAMES=Object.fromEntries(Object.entries(ENCOUNTERS).map(([key,value])=>[key,value.name]));
+export const LEVEL_GOALS=['8개 연결로 대형 폭탄을 만들고 다음 탭에 활용해요.','덩굴 옆 폭탄을 활용해 새 연결을 열어요.','폭딜·잔향·회복 중 빌드를 보완하거나 쉬어 가요.','무지개 연결과 잔향으로 중간보스 장막을 풀어요.','남은 체력과 유물을 보고 최종전을 준비해요.','배운 폭탄·무지개·회복과 3탭 정산을 조합해요.'];
+export function roomDescription(n,rulesVersion=0){if(n.type==='rest')return '안전 · 체력36 회복 (최대180)';if(n.type==='event')return '여우와 선택 · 체력18을 나눠 유물 / 따뜻한 차로 체력22 회복';const r=roomRules(n,rulesVersion);return `적 체력${r.bossHP} · 반격 ${r.attacks.join('→')}${r.echoWard?' · 장막20%, 잔향으로 해제':''} · ${n.type==='boss'?'탐험 완주':`승리 회복${['elite','midboss'].includes(n.type)?12:6} + 유물 선택`}`;}
+export function createExpeditionUI(getRun,onChange,onChoice=()=>{}){
+ const $=id=>document.getElementById(id);let pendingRoom=null;
+ $('roomBack').onclick=()=>$('roomDetail').close();$('roomEnter').onclick=()=>{const e=getRun();if(pendingRoom&&enterRoom(e,pendingRoom)){$('roomDetail').close();pendingRoom=null;onChange();}};
+ function inspectRoom(e,n){pendingRoom=n.id;$('roomDetail').dataset.encounter=encounterKind(n);$('roomDetailTitle').textContent=ROOM_NAMES[encounterKind(n)];$('roomDetailText').textContent=roomDescription(n,e.rulesVersion)+(e.rulesVersion?' · '+LEVEL_GOALS[n.depth]:'');$('roomEnter').disabled=!availableRooms(e).some(r=>r.id===n.id);$('roomDetail').showModal();return false;}
+ function button(text,description,action){const b=document.createElement('button'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=text;small.textContent=description;b.append(strong,small);b.onclick=()=>{if(action()){onChange();onChoice(text);}};return b;}
+ function render(){
+  const e=getRun();if(!e||e.mode!=='expedition')return;
+  $('journeyHealth').textContent=`체력 ${e.state.hp}/180 · 보호 ${e.shield} · 시드 ${e.seed}`;
+  $('journeyTitle').textContent=e.phase==='reward'?'빛의 유물 하나를 골라요':e.phase==='room'?ROOM_NAMES[currentRoom(e).type]:'다음 정원으로';
+  $('journeyHint').textContent=e.phase==='map'?'한 층에서 한 길만 선택해요. 선택 전 위험과 보상을 확인하세요.':e.phase==='reward'?'미소유 유물만 제시합니다. 선택하면 다음 층으로 이어집니다.':'결과를 확인하고 한 번만 선택하세요.';
+  if(e.rulesVersion)$('journeyHint').textContent=LEVEL_GOALS[Math.min(e.depth,5)]+(e.phase==='reward'?' · 후보 '+rewards(e).length+'개 중 하나를 선택해요.':'');
+  $('routeRows').hidden=e.phase!=='map';$('routeRows').replaceChildren();
+  for(const [d,row] of e.map.entries()){const line=document.createElement('div');line.className='route-row';const label=document.createElement('span');label.textContent=`${d+1}`;line.append(label);for(const n of row){const selected=e.path.includes(n.id),available=availableRooms(e).some(r=>r.id===n.id);const b=button(`${selected?'✓ ':d<e.path.length?'— ':''}${ROOM_NAMES[encounterKind(n)]}`,roomDescription(n,e.rulesVersion),()=>inspectRoom(e,n));b.dataset.room=n.id;b.dataset.kind=encounterKind(n);b.dataset.route=selected?'chosen':d<e.path.length?'missed':available?'available':'future';b.disabled=!available;b.setAttribute('aria-label',`${d+1}층 ${ROOM_NAMES[encounterKind(n)]}. ${roomDescription(n,e.rulesVersion)}. ${selected?'선택한 길':d<e.path.length?'지나간 다른 길':available?'진입 가능':'아직 잠김'}`);line.append(b);}$('routeRows').append(line);}
+  $('roomChoices').replaceChildren();
+  if(e.phase==='reward')for(const id of rewards(e)){const relic=RELICS.find(r=>r.id===id);const build=e.rulesVersion?({lens:'큰 연결·대형 폭탄 빌드. ',bell:'잔향·과충전 빌드. ',petal:'회복·덩굴 순환 빌드. '}[id]??''):'';const b=button(relic?.name??'유물 모두 보유',build+(relic?.text??'대체 보상: 체력18 회복 (최대180)'),()=>takeReward(e,id));b.dataset.reward=id;$('roomChoices').append(b);}
+  if(e.phase==='room'){const n=currentRoom(e);if(n.type==='event'&&e.offer.length){const relic=RELICS.find(r=>r.id===e.offer[0]),b=button(`${relic.name} 교환 · 체력−18`,relic.text,()=>resolveRoom(e,'gift'));b.dataset.event='gift';b.disabled=e.state.hp<=18;$('roomChoices').append(b);}const b=button(n.type==='rest'?'잠깐 쉬어 가기':'따뜻한 차 마시기',`체력 +${n.type==='rest'?36:22}, 최대180${n.type==='event'&&!e.offer.length?' · 유물 모두 보유':''}`,()=>resolveRoom(e,'rest'));b.dataset.event='rest';$('roomChoices').append(b);}
+  $('journeyRelics').textContent=e.relics.length?e.relics.map(id=>RELICS.find(r=>r.id===id).name).join(' · '):'아직 유물이 없어요. 첫 전투를 마치면 선택합니다.';
+  if(['map','reward','room'].includes(e.phase)&&!$('journey').open)$('journey').showModal();
+  if(!['map','reward','room'].includes(e.phase)&&$('journey').open)$('journey').close();
+ }
+ function describe(){const e=getRun();$('relicList').replaceChildren();for(const r of RELICS){const p=document.createElement('p'),strong=document.createElement('strong');strong.textContent=(e.relics.includes(r.id)?'✓ ':'')+r.name;p.append(strong,document.createElement('br'),document.createTextNode(r.text));$('relicList').append(p);}$('relicGuide').showModal();}
+ return {render,describe};
+}

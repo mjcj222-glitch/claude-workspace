@@ -1,0 +1,3 @@
+{"count": 6, "noteTimes": [0, 56, 112], "peak": 0.043243519961833954, "rms": 0.0032996688161762403, "clip": 0, "stats": {"voices": 0, "nodes": 2, "peakVoices": 2, "peakNodes": 8, "bufferBytes": 0, "queued": 0, "events": 3, "dropped": 0}}
+{"count": 10, "noteTimes": [0, 56, 112, 168, 224], "peak": 0.045167144387960434, "rms": 0.004807844011229546, "clip": 0, "stats": {"voices": 0, "nodes": 2, "peakVoices": 2, "peakNodes": 8, "bufferBytes": 0, "queued": 0, "events": 5, "dropped": 0}}
+{"count": 42, "noteTimes": [0, 51, 102, 154, 205, 256, 307, 359, 410], "peak": 0.05515268072485924, "rms": 0.010766896529401401, "clip": 0, "stats": {"voices": 0, "nodes": 2, "peakVoices": 8, "peakNodes": 26, "bufferBytes": 67200, "queued": 0, "events": 11, "dropped": 0}}

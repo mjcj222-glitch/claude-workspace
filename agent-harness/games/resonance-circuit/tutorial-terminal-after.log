@@ -1,0 +1,47 @@
+✔ three battles, carry heal/gauge, upgrade effects and duplicate prevention (3.105127ms)
+✔ all battles loss and exact checkpoint retry; no hidden heal or shuffle (2.640862ms)
+✔ tutorial tracks surviving IDs, miss does not block and skip persists (1.086911ms)
+✔ visible pattern and actual retaliation agree in every stage (0.773956ms)
+✔ roundtrip battle, tutorial, upgrades, ending, retries and audio; unknown fields stripped (1.684409ms)
+✔ reject corrupt, unsupported, out of range, duplicate tile, malformed rules and phases (1.504736ms)
+✔ storage errors never prevent run, learned and mute saved (0.867638ms)
+✔ seed restart deterministic; planned strategies complete several seeds, poor strategy loses (50.27165ms)
+✔ audio default off, gesture enable, bounded voices, hide stops, unavailable safe (0.781287ms)
+✔ unfinished tutorial loss is a valid terminal save, not a rollback to previous tap (5.209514ms)
+✔ unfinished tutorial victory cleans coaching and restores the upgrade screen (0.541843ms)
+✔ victory on the echo-creating tap clears newly assigned tutorial IDs (0.32252ms)
+✔ hex bounds, six neighbors and symmetry (2.853635ms)
+✔ initial group 1 special threshold (1.104098ms)
+✔ initial group 4 special threshold (0.258162ms)
+✔ initial group 5 special threshold (0.409432ms)
+✔ initial group 9 special threshold (0.364944ms)
+✔ initial group 10 special threshold (0.218872ms)
+✔ heal groups do not create special (0.328358ms)
+✔ overlapping bombs chain, charge counted once, explosion does not raise initial threshold (0.317773ms)
+✔ gravity preserves survivor order and IDs, seeded refill is deterministic (1.278773ms)
+✔ echo is pre-gravity neighbor order, max eight, surviving normals only (0.479368ms)
+✔ echo trigger requires original group; blast-only contact expires other marks (0.252614ms)
+✔ original group echo fires all old marks once; new echo does not recurse (0.250871ms)
+✔ miss expires, preview does not, echo crosses turn boundary (0.262259ms)
+✔ bomb and color conversion preserve ID/color/kind/echo as required (0.211331ms)
+✔ heal conversion clears marks, does not overwrite specials; shortage and zero (0.178241ms)
+✔ cooldown T+3, skills do not spend taps (0.13125ms)
+✔ three taps settle, heal cap, boss dead cannot retaliate (0.147063ms)
+✔ loss and restart reset all state, alternating attacks (0.341719ms)
+✔ overcharge only before first tap, double damage not healing, no gauge gain (0.155236ms)
+✔ input gate rejects duplicate until resolution finishes (0.219624ms)
+✔ keyboard top edge stays on same tile (0.107874ms)
+✔ keyboard bottom edge stays on same tile (0.038539ms)
+✔ keyboard left edge stays on same tile (0.029165ms)
+✔ keyboard right edge stays on same tile (0.025869ms)
+✔ keyboard interior row and column movement (0.054763ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 135.046446
+
+EXIT 0

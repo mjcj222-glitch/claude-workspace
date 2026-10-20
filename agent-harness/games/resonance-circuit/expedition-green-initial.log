@@ -1,0 +1,14 @@
+✔ seed map has six reachable layers, one final boss, stable queries and no backtracking (11.999458ms)
+✔ event/rest once, bounded HP, unique rewards and explicit exhausted fallback (0.947454ms)
+✔ relic effects use original actual outcome once, shield cap and no recursion (0.732659ms)
+✔ first skill relic triggers once per room only on successful first-turn skill (0.485425ms)
+✔ save roundtrip preserves interrupted battle and death; practice slot is untouched (2.660337ms)
+✔ invalid save rejected and every generated path remains forward only (7.323725ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 136.055381

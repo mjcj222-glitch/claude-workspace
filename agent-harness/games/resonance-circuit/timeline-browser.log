@@ -1,0 +1,7 @@
+{"width": 360, "motion": "no-preference", "case": "1", "clearCount": 1, "scheduledLast": 0, "expectedTotal": 318, "trace": "checked", "result": "PASS"}
+{"width": 360, "motion": "no-preference", "case": "6", "clearCount": 6, "scheduledLast": 140, "expectedTotal": 458, "trace": "checked", "result": "PASS"}
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/timeline_browser.py", line 24, in <module>
+    assert min(x['time'] for x in trace['ends'])>=max(x['time'] for x in trace['starts'])+120
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

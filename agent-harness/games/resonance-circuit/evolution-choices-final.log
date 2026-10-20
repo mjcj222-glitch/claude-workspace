@@ -1,0 +1,16 @@
+{"size": [360, 640], "motion": "no-preference", "standalone": false, "scene": "reward", "result": "PASS"}
+{"size": [360, 640], "motion": "no-preference", "standalone": false, "scene": "elite", "result": "PASS"}
+{"size": [360, 640], "motion": "no-preference", "standalone": false, "scene": "rest", "result": "PASS"}
+{"size": [360, 640], "motion": "no-preference", "standalone": false, "scene": "event", "result": "PASS"}
+{"size": [360, 640], "motion": "reduce", "standalone": true, "scene": "reward", "result": "PASS"}
+{"size": [360, 640], "motion": "reduce", "standalone": true, "scene": "elite", "result": "PASS"}
+{"size": [360, 640], "motion": "reduce", "standalone": true, "scene": "rest", "result": "PASS"}
+{"size": [360, 640], "motion": "reduce", "standalone": true, "scene": "event", "result": "PASS"}
+{"size": [390, 844], "motion": "no-preference", "standalone": true, "scene": "reward", "result": "PASS"}
+{"size": [390, 844], "motion": "no-preference", "standalone": true, "scene": "elite", "result": "PASS"}
+{"size": [390, 844], "motion": "no-preference", "standalone": true, "scene": "rest", "result": "PASS"}
+{"size": [390, 844], "motion": "no-preference", "standalone": true, "scene": "event", "result": "PASS"}
+{"size": [390, 844], "motion": "reduce", "standalone": false, "scene": "reward", "result": "PASS"}
+{"size": [390, 844], "motion": "reduce", "standalone": false, "scene": "elite", "result": "PASS"}
+{"size": [390, 844], "motion": "reduce", "standalone": false, "scene": "rest", "result": "PASS"}
+{"size": [390, 844], "motion": "reduce", "standalone": false, "scene": "event", "result": "PASS"}

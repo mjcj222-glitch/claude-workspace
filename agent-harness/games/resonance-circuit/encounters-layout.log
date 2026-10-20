@@ -1,0 +1,8 @@
+{"size": [360, 640], "motion": "reduce", "tileMinHeight": 40, "art": {"w": 360, "h": 180}, "pageHeight": 640, "result": "PASS"}
+{"size": [360, 640], "motion": "no-preference", "tileMinHeight": 40, "art": {"w": 360, "h": 180}, "pageHeight": 640, "result": "PASS"}
+{"size": [360, 800], "motion": "reduce", "tileMinHeight": 48, "art": {"w": 360, "h": 180}, "pageHeight": 800, "result": "PASS"}
+{"size": [360, 800], "motion": "no-preference", "tileMinHeight": 48, "art": {"w": 360, "h": 180}, "pageHeight": 800, "result": "PASS"}
+{"size": [390, 844], "motion": "reduce", "tileMinHeight": 60, "art": {"w": 390, "h": 195}, "pageHeight": 844, "result": "PASS"}
+{"size": [390, 844], "motion": "no-preference", "tileMinHeight": 60, "art": {"w": 390, "h": 195}, "pageHeight": 844, "result": "PASS"}
+{"size": [1280, 900], "motion": "reduce", "tileMinHeight": 60, "art": {"w": 430, "h": 215}, "pageHeight": 900, "result": "PASS"}
+{"size": [1280, 900], "motion": "no-preference", "tileMinHeight": 60, "art": {"w": 430, "h": 215}, "pageHeight": 900, "result": "PASS"}

@@ -1,0 +1,540 @@
+✔ seed map has six reachable layers, one final boss, stable queries and no backtracking (12.299048ms)
+✔ event/rest once, bounded HP, unique rewards and explicit exhausted fallback (0.714202ms)
+✔ relic effects use original actual outcome once, shield cap and no recursion (0.690126ms)
+✔ first skill relic triggers once per room only on successful first-turn skill (0.404032ms)
+✔ save roundtrip preserves interrupted battle and death; practice slot is untouched (2.342049ms)
+✔ invalid save rejected and every generated path remains forward only (4.813234ms)
+✖ overkill is not counted as healing in expedition summary (1.296545ms)
+✔ last relic offers one choice, exhaustion offers only restoration (0.444383ms)
+✔ event payment cannot kill; declined action does not mutate state (0.760723ms)
+✖ save does not trust stage, room choice or terminal state mismatches (5.209825ms)
+✔ preview queries and relic effects never spend RNG or mutate the offer (3.085315ms)
+✔ no relic wrapper preserves the practice engine during a nonterminal tap (0.766221ms)
+✔ relic bell exact trigger and cap (0.301447ms)
+✔ relic powder exact trigger and cap (0.121084ms)
+✔ relic bottle exact trigger and cap (0.181135ms)
+✔ relic tea exact trigger and cap (0.149867ms)
+✔ relic lens exact trigger and cap (0.135845ms)
+✔ relic petal exact trigger and cap (0.089746ms)
+✔ relic umbrella exact trigger and cap (0.082044ms)
+✔ combined shield absorbs at most30 and is consumed on real retaliation (0.410983ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 18
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 99.469618
+
+✖ failing tests:
+
+test at expedition.test.mjs:11:1
+✖ overkill is not counted as healing in expedition summary (1.296545ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  99 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/expedition.test.mjs:11:366)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 99,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at expedition.test.mjs:14:1
+✖ save does not trust stage, room choice or terminal state mismatches (5.209825ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   depth: 0,
+  +   entry: {
+  +     gauge: 0,
+  +     hp: 180
+  +   },
+  +   firstSkill: false,
+  +   history: [],
+  +   log: [],
+  +   map: [
+  +     [
+  +       {
+  +         depth: 0,
+  +         id: '0-0',
+  +         order: [
+  +           'lens',
+  +           'petal',
+  +           'brooch',
+  +           'tea',
+  +           'bell',
+  +           'powder',
+  +           'bottle',
+  +           'umbrella'
+  +         ],
+  +         seed: 3114423416,
+  +         type: 'normal'
+  +       }
+  +     ],
+  +     [
+  +       {
+  +         depth: 1,
+  +         id: '1-0',
+  +         order: [
+  +           'bell',
+  +           'bottle',
+  +           'powder',
+  +           'lens',
+  +           'petal',
+  +           'brooch',
+  +           'tea',
+  +           'umbrella'
+  +         ],
+  +         seed: 1979597600,
+  +         type: 'normal'
+  +       },
+  +       {
+  +         depth: 1,
+  +         id: '1-1',
+  +         order: [
+  +           'bottle',
+  +           'powder',
+  +           'lens',
+  +           'brooch',
+  +           'bell',
+  +           'tea',
+  +           'petal',
+  +           'umbrella'
+  +         ],
+  +         seed: 96470728,
+  +         type: 'elite'
+  +       }
+  +     ],
+  +     [
+  +       {
+  +         depth: 2,
+  +         id: '2-0',
+  +         order: [
+  +           'bottle',
+  +           'lens',
+  +           'bell',
+  +           'petal',
+  +           'brooch',
+  +           'tea',
+  +           'powder',
+  +           'umbrella'
+  +         ],
+  +         seed: 3533848432,
+  +         type: 'rest'
+  +       },
+  +       {
+  +         depth: 2,
+  +         id: '2-1',
+  +         order: [
+  +           'bell',
+  +           'brooch',
+  +           'bottle',
+  +           'tea',
+  +           'lens',
+  +           'powder',
+  +           'petal',
+  +           'umbrella'
+  +         ],
+  +         seed: 498306328,
+  +         type: 'event'
+  +       }
+  +     ],
+  +     [
+  +       {
+  +         depth: 3,
+  +         id: '3-0',
+  +         order: [
+  +           'bell',
+  +           'lens',
+  +           'powder',
+  +           'brooch',
+  +           'bottle',
+  +           'petal',
+  +           'tea',
+  +           'umbrella'
+  +         ],
+  +         seed: 3923152832,
+  +         type: 'normal'
+  +       },
+  +       {
+  +         depth: 3,
+  +         id: '3-1',
+  +         order: [
+  +           'lens',
+  +           'brooch',
+  +           'bottle',
+  +           'tea',
+  +           'bell',
+  +           'petal',
+  +           'powder',
+  +           'umbrella'
+  +         ],
+  +         seed: 910288744,
+  +         type: 'elite'
+  +       }
+  +     ],
+  +     [
+  +       {
+  +         depth: 4,
+  +         id: '4-0',
+  +         order: [
+  +           'bell',
+  +           'lens',
+  +           'petal',
+  +           'tea',
+  +           'bottle',
+  +           'brooch',
+  +           'powder',
+  +           'umbrella'
+  +         ],
+  +         seed: 2298491920,
+  +         type: 'rest'
+  +       },
+  +       {
+  +         depth: 4,
+  +         id: '4-1',
+  +         order: [
+  +           'bell',
+  +           'lens',
+  +           'bottle',
+  +           'tea',
+  +           'petal',
+  +           'powder',
+  +           'brooch',
+  +           'umbrella'
+  +         ],
+  +         seed: 3379566008,
+  +         type: 'event'
+  +       }
+  +     ],
+  +     [
+  +       {
+  +         depth: 5,
+  +         id: '5-0',
+  +         order: [
+  +           'bottle',
+  +           'petal',
+  +           'lens',
+  +           'brooch',
+  +           'bell',
+  +           'powder',
+  +           'tea',
+  +           'umbrella'
+  +         ],
+  +         seed: 1791241312,
+  +         type: 'boss'
+  +       }
+  +     ]
+  +   ],
+  +   mode: 'expedition',
+  +   offer: [],
+  +   panelLesson: null,
+  +   panelSeen: [
+  +     false,
+  +     false
+  +   ],
+  +   panelVersion: 1,
+  +   path: [
+  +     '0-0'
+  +   ],
+  +   phase: 'battle',
+  +   relics: [],
+  +   retries: [
+  +     0,
+  +     0,
+  +     0
+  +   ],
+  +   seed: 19,
+  +   shield: 0,
+  +   stage: 99,
+  +   state: {
+  +     board: [
+  +       {
+  +         color: 'blue',
+  +         id: 1,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 2,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 3,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 4,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 5,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 6,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'heal',
+  +         id: 7,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 8,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 9,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 10,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 11,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 12,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 13,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 14,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'heal',
+  +         id: 15,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 16,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 17,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 18,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 19,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 20,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 21,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 22,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 23,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'heal',
+  +         id: 24,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'heal',
+  +         id: 25,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 26,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 27,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 28,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 29,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'heal',
+  +         id: 30,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'heal',
+  +         id: 31,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 32,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 33,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 34,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'heal',
+  +         id: 35,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 36,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 37,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 38,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'coral',
+  +         id: 39,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'heal',
+  +         id: 40,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'blue',
+  +         id: 41,
+  +         kind: 'normal'
+  +       },
+  +       {
+  +         color: 'gold',
+  +         id: 42,
+  +         kind: 'normal'
+  +       }
+  +     ],
+  +     boost: false,
+  +     bossHP: 360,
+  +     buffs: {
+  +       ignition: false,
+  +       prism: false,
+  +       shield: 0
+  +     },
+  +     damage: 0,
+  +     echo: [],
+  +     echoCount: 0,
+  +     gauge: 0,
+  +     healing: 0,
+  +     hp: 180,
+  +     maxChain: 0,
+  +     nextID: 43,
+  +     panelRng: 664088001,
+  +     ready: [
+  +       1,
+  +       1,
+  +       1
+  +     ],
+  +     rng: 1939738354,
+  +     rules: {
+  +       attack: 5,
+  +       attacks: [
+  +         10,
+  +         16
+  +       ],
+  +       bossHP: 360,
+  +       charge: 24,
+  +       cols: 6,
+  +       cooldown: 3,
+  +       echoWard: false,
+  +       gauge: 55,
+  +       heal: 6,
+  +       hp: 180,
+  +       panelStage: 0,
+  +       rows: 7,
+  +       seed: 20261019
+  +     },
+  +     seed: 3114423416,
+  +     status: 'playing',
+  +     taps: 3,
+  +     turn: 1,
+  +     wardBroken: false
+  +   },
+  +   total: {
+  +     damage: 0,
+  +     echoes: 0,
+  +     healed: 0,
+  +     taken: 0,
+  +     turns: 0
+  +   },
+  +   tutorial: 'done',
+  +   tutorialIDs: [],
+  +   upgrades: [],
+  +   version: 1
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/expedition.test.mjs:14:267)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { version: 1, panelVersion: 1, panelLesson: null, panelSeen: [ false, false ], seed: 19, stage: 99, phase: 'battle', upgrades: [], history: [], retries: [ 0, 0, 0 ], entry: { hp: 180, gauge: 0 }, tutorialIDs: [], tutorial: 'done', state: { seed: 3114423416, rng: 1939738354, nextID: 43, board: [Array], echo: [], hp: 180, bossHP: 360, turn: 1, taps: 3, damage: 0, healing: 0, gauge: 0, boost: false, ready: [Array], status: 'playing', maxChain: 0, echoCount: 0, buffs: [Object], wardBroken: false, panelRng: 664088001, rules: [Object] }, mode: 'expedition', depth: 0, path: [ '0-0' ], relics: [], shield: 0, firstSkill: false, offer: [], log: [], total: { turns: 0, echoes: 0, damage: 0, taken: 0, healed: 0 }, map: [ [Array], [Array], [Array], [Array], [Array], [Array] ] },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

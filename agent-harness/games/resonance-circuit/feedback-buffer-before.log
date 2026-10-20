@@ -1,0 +1,36 @@
+✔ master bus, deduplication, voice/node/buffer limits and synchronous cleanup (4.263972ms)
+✔ audio failures stay isolated; numeric volume clamps and mute does not allocate (0.201855ms)
+✔ first sound waits for resume, stale hidden queue is cancelled and live volume uses master (1.90202ms)
+✔ routing preserves compound bomb/echo and settlement-only heal/shield/victory (1.51245ms)
+✖ noise cache stays below 67200 bytes even on a 96kHz device (5.446518ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.113795
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/feedback.test.mjs:21:1
+✖ noise cache stays below 67200 bytes even on a 96kHz device (5.446518ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(a.stats.bufferBytes<=67200)
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/feedback.test.mjs:21:197)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

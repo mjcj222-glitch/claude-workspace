@@ -1,0 +1,2 @@
+PASS: PR merge-base diff and untracked work are confined to agent-harness/games/resonance-circuit/. No deleted files.
+main has two later report additions absent on this branch; direct tip-to-tip comparison is not the PR diff. Those main files were not changed or deleted by this work.

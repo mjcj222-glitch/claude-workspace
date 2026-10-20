@@ -1,0 +1,190 @@
+✖ prism augments existing conversion, preview is pure, next attack only, echo doubles fixed bonus (9.940708ms)
+✖ ignition requires actual pre-existing bomb, overlaps count once, cap three (0.232712ms)
+✖ new special is not ignition event and pending ignition survives normal taps (1.68382ms)
+✖ shield applies once after healing, floor zero, announced raw attack preserved (0.426195ms)
+✖ zero candidates spend neither cooldown nor buff; reapply refreshes without stacking (2.445423ms)
+✖ overcharge doubles base damage only, prism/ignition stay additive (0.453938ms)
+✖ all buffs expire on win/loss, transition and exact checkpoint retry (1.283123ms)
+✖ save restores pending buffs, accepts old v1 without fields, rejects malformed fields (1.178354ms)
+✖ stage-two ward is partial, echo removes it for entire turn, resets next turn (0.435619ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 0
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 119.77968
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:9:1
+✖ prism augments existing conversion, preview is pure, next attack only, echo doubles fixed bonus (9.940708ms)
+  TypeError: Cannot read properties of undefined (reading 'prism')
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:10:63)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:13:1
+✖ ignition requires actual pre-existing bomb, overlaps count once, cap three (0.232712ms)
+  TypeError: Cannot read properties of undefined (reading 'ignition')
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:14:57)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:18:1
+✖ new special is not ignition event and pending ignition survives normal taps (1.68382ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:19:149)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:21:1
+✖ shield applies once after healing, floor zero, announced raw attack preserved (0.426195ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 14
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:22:179)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 14,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:25:1
+✖ zero candidates spend neither cooldown nor buff; reapply refreshes without stacking (2.445423ms)
+  TypeError: Cannot read properties of undefined (reading 'shield')
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:27:120)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:29:1
+✖ overcharge doubles base damage only, prism/ignition stay additive (0.453938ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  30 !== NaN
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:30:153)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 30,
+    expected: NaN,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:32:1
+✖ all buffs expire on win/loss, transition and exact checkpoint retry (1.283123ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   ignition: false,
+  -   prism: false,
+  -   shield: 0
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:33:141)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { prism: false, ignition: false, shield: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:36:1
+✖ save restores pending buffs, accepts old v1 without fields, rejects malformed fields (1.178354ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   ignition: false,
+  -   prism: false,
+  -   shield: 0
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:38:163)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { prism: false, ignition: false, shield: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/skills.test.mjs:41:1
+✖ stage-two ward is partial, echo removes it for entire turn, resets next turn (0.435619ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - true
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/skills.test.mjs:42:124)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

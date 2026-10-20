@@ -1,0 +1,5 @@
+360 800 boost bottom 797 tile {'x': 20, 'y': 239.125, 'width': 51.65625, 'height': 40}
+390 844 boost bottom 834 tile {'x': 20, 'y': 249.015625, 'width': 56.65625, 'height': 44}
+1280 900 boost bottom 850 tile {'x': 442, 'y': 264.1875, 'width': 64.328125, 'height': 44}
+
+EXIT 0

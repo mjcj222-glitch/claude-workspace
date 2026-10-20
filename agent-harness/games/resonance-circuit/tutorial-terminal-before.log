@@ -1,0 +1,65 @@
+✔ three battles, carry heal/gauge, upgrade effects and duplicate prevention (3.428443ms)
+✔ all battles loss and exact checkpoint retry; no hidden heal or shuffle (2.847062ms)
+✔ tutorial tracks surviving IDs, miss does not block and skip persists (1.14863ms)
+✔ visible pattern and actual retaliation agree in every stage (0.822937ms)
+✔ roundtrip battle, tutorial, upgrades, ending, retries and audio; unknown fields stripped (1.314641ms)
+✔ reject corrupt, unsupported, out of range, duplicate tile, malformed rules and phases (2.030816ms)
+✔ storage errors never prevent run, learned and mute saved (0.877419ms)
+✔ seed restart deterministic; planned strategies complete several seeds, poor strategy loses (79.231039ms)
+✔ audio default off, gesture enable, bounded voices, hide stops, unavailable safe (0.983159ms)
+✖ unfinished tutorial loss is a valid terminal save, not a rollback to previous tap (6.681951ms)
+✖ unfinished tutorial victory cleans coaching and restores the upgrade screen (0.649664ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 9
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 190.69961
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/campaign.test.mjs:55:1
+✖ unfinished tutorial loss is a valid terminal save, not a rollback to previous tap (6.681951ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'chain' !== 'done'
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/campaign.test.mjs:62:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'chain',
+    expected: 'done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/campaign.test.mjs:65:1
+✖ unfinished tutorial victory cleans coaching and restores the upgrade screen (0.649664ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'chain' !== 'done'
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/campaign.test.mjs:69:41)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'chain',
+    expected: 'done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+EXIT 1

@@ -1,0 +1,11 @@
+✔ fixed-step flow is deterministic, bounded, settled and non-overlapping (124.900876ms)
+✔ a local hole changes survivor x positions and contact graph; new bodies fall from above (40.602147ms)
+✔ contacts are symmetric, geometric and hit testing rejects empty corners/outside (16.813001ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.136115

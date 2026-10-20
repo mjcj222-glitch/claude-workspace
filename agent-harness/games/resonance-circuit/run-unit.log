@@ -1,0 +1,44 @@
+✔ three battles, carry heal/gauge, upgrade effects and duplicate prevention (3.666013ms)
+✔ all battles loss and exact checkpoint retry; no hidden heal or shuffle (3.728017ms)
+✔ tutorial tracks surviving IDs, miss does not block and skip persists (1.230233ms)
+✔ visible pattern and actual retaliation agree in every stage (1.024382ms)
+✔ roundtrip battle, tutorial, upgrades, ending, retries and audio; unknown fields stripped (6.010895ms)
+✔ reject corrupt, unsupported, out of range, duplicate tile, malformed rules and phases (1.977165ms)
+✔ storage errors never prevent run, learned and mute saved (1.019153ms)
+✔ seed restart deterministic; planned strategies complete several seeds, poor strategy loses (55.785717ms)
+✔ audio default off, gesture enable, bounded voices, hide stops, unavailable safe (0.907184ms)
+✔ hex bounds, six neighbors and symmetry (3.420431ms)
+✔ initial group 1 special threshold (0.940244ms)
+✔ initial group 4 special threshold (0.370071ms)
+✔ initial group 5 special threshold (0.390431ms)
+✔ initial group 9 special threshold (0.297721ms)
+✔ initial group 10 special threshold (0.213363ms)
+✔ heal groups do not create special (0.309148ms)
+✔ overlapping bombs chain, charge counted once, explosion does not raise initial threshold (0.288818ms)
+✔ gravity preserves survivor order and IDs, seeded refill is deterministic (1.392168ms)
+✔ echo is pre-gravity neighbor order, max eight, surviving normals only (1.247028ms)
+✔ echo trigger requires original group; blast-only contact expires other marks (0.275377ms)
+✔ original group echo fires all old marks once; new echo does not recurse (0.259012ms)
+✔ miss expires, preview does not, echo crosses turn boundary (0.321016ms)
+✔ bomb and color conversion preserve ID/color/kind/echo as required (0.249377ms)
+✔ heal conversion clears marks, does not overwrite specials; shortage and zero (0.231591ms)
+✔ cooldown T+3, skills do not spend taps (0.156307ms)
+✔ three taps settle, heal cap, boss dead cannot retaliate (0.256969ms)
+✔ loss and restart reset all state, alternating attacks (0.476631ms)
+✔ overcharge only before first tap, double damage not healing, no gauge gain (0.258001ms)
+✔ input gate rejects duplicate until resolution finishes (0.258832ms)
+✔ keyboard top edge stays on same tile (0.149627ms)
+✔ keyboard bottom edge stays on same tile (0.070487ms)
+✔ keyboard left edge stays on same tile (0.060672ms)
+✔ keyboard right edge stays on same tile (0.053261ms)
+✔ keyboard interior row and column movement (0.135986ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 158.076159
+
+EXIT 0

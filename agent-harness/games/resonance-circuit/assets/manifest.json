@@ -1,0 +1,306 @@
+{
+  "temporary_characters": false,
+  "implementation": "assets/art-slots.css and assets/encounters.css; current role-specific art and face crop; original PNGs retained in Git",
+  "replacement": "Replace active local art slots and repackage; preserve rules and input code.",
+  "legacy_source": {
+    "path": "approved-concept.png",
+    "width": 940,
+    "height": 1672,
+    "git_blob": "733bb5464df6488a6fcafeb9d9424e3fa7c2e692",
+    "preserve_original": true
+  },
+  "legacy_slots": {
+    "boss": {
+      "source_rect": [
+        0,
+        68,
+        940,
+        492
+      ],
+      "selector": ".concept-boss",
+      "mask_note": "CSS top notch x14.5–24%, y0–4.1% excludes the remaining source UI badge tip; character and scenery retained. HUD uses separate padded edges."
+    },
+    "refractor": {
+      "source_rect": [
+        30,
+        1250,
+        270,
+        270
+      ],
+      "selector": ".portrait-0"
+    },
+    "igniter": {
+      "source_rect": [
+        337,
+        1250,
+        270,
+        270
+      ],
+      "selector": ".portrait-1"
+    },
+    "gardener": {
+      "source_rect": [
+        642,
+        1250,
+        270,
+        270
+      ],
+      "selector": ".portrait-2"
+    }
+  },
+  "legacy_gems": {
+    "source": "approved-concept.png",
+    "crop_size": [
+      120,
+      108
+    ],
+    "y": 576,
+    "x": {
+      "coral": 80,
+      "blue": 210,
+      "gold": 342,
+      "heal": 476
+    },
+    "implementation": ".gem sprite inside each of 42 independent buttons"
+  },
+  "runes": {
+    "coral": {
+      "path": "rune-coral.svg",
+      "width": 64,
+      "height": 64,
+      "symbol": "flame",
+      "provenance": "Original code-authored vector"
+    },
+    "blue": {
+      "path": "rune-blue.svg",
+      "width": 64,
+      "height": 64,
+      "symbol": "drop",
+      "provenance": "Original code-authored vector"
+    },
+    "gold": {
+      "path": "rune-gold.svg",
+      "width": 64,
+      "height": 64,
+      "symbol": "star",
+      "provenance": "Original code-authored vector"
+    },
+    "heal": {
+      "path": "rune-heal.svg",
+      "width": 64,
+      "height": 64,
+      "symbol": "leaf",
+      "provenance": "Original code-authored vector"
+    }
+  },
+  "previous_active_assets": {
+    "storybook-battle.png": {
+      "git_blob": "31fd1ef48a32c1ff495a723a7cc946e3ff1887dc",
+      "sha256": "9a856a3cf622026b22f8efb9c330e35768cbd5ccec6b577fa061e6a27667a7e6",
+      "provenance": "Original generated art supplied and approved by user through parent; no reference artwork copied",
+      "width": 1774,
+      "height": 887,
+      "display": "contain exact 2:1, no cropping"
+    },
+    "storybook-portraits.png": {
+      "git_blob": "06d2083714876bd8f4119c8a488f4bf78519a2c8",
+      "sha256": "8cf9549a11b0f65c1bed72d72e22087f0b02d7280d818f5d42aea4c37266648c",
+      "provenance": "Original generated art supplied and approved by user through parent; no reference artwork copied",
+      "width": 2172,
+      "height": 724,
+      "crops": [
+        [
+          0,
+          0,
+          724,
+          724
+        ],
+        [
+          724,
+          0,
+          724,
+          724
+        ],
+        [
+          1448,
+          0,
+          724,
+          724
+        ]
+      ],
+      "css_positions": [
+        "0% 0px",
+        "50% 0px",
+        "100% 0px"
+      ],
+      "css_size": "300% 100%"
+    }
+  },
+  "active_assets": {
+    "encounter-boss.webp": {
+      "source_png": "encounter-boss.png",
+      "source_sha256": "d588c110d684e1ecdb7bba0109d691c7c69f7939a4e86b0b95fcd8c577670226",
+      "sha256": "f1180d718d24b957a35e92abbccadb06fb4e72dc1d8d96cc47dc798847419d69",
+      "bytes": 2771188,
+      "encoding": "Lossless WebP; exact RGB pixel equality verified",
+      "width": 1774,
+      "height": 887
+    },
+    "encounter-mob.webp": {
+      "source_png": "encounter-mob.png",
+      "source_sha256": "45fe8a9a23bc7ecdaa97eb533dfc49c995e3c1980045c79d943fd9823d01ace0",
+      "sha256": "71a5c9fadc30a2be4695e0a90f40b0d6f90acb13fb0556e1ac3eaf0bd89f566f",
+      "bytes": 2578480,
+      "encoding": "Lossless WebP; exact RGB pixel equality verified",
+      "width": 1774,
+      "height": 887
+    },
+    "encounter-midboss.webp": {
+      "source_png": "encounter-midboss.png",
+      "source_sha256": "2f2b0ddd2c8cdff6dcee979700f6f246fb09ef93ba464aab1b9b85b89bed1cac",
+      "sha256": "dbe8684af53e569c3e77973d08bff1ad8e102243cfc222abcf32389f52362622",
+      "bytes": 2856008,
+      "encoding": "Lossless WebP; exact RGB pixel equality verified",
+      "width": 1774,
+      "height": 887
+    },
+    "encounter-rest.webp": {
+      "source_png": "encounter-rest.png",
+      "source_sha256": "206d7a4475f0e0c45e9913daf105c6b7b4192b3a5e7c060ec4e31e4d5daf2219",
+      "sha256": "4a113f424a349508a9715f0ac8f38116288725856cd33f3fbc4a3cf118e8a24c",
+      "bytes": 2425578,
+      "encoding": "Lossless WebP; exact RGB pixel equality verified",
+      "width": 1774,
+      "height": 887
+    },
+    "encounter-event.webp": {
+      "source_png": "encounter-event.png",
+      "source_sha256": "0583b80bf4021e67cbfe9e61dc24f161fdcd3d03241cf3021b42c183dff18f1d",
+      "sha256": "698000c51d2f8510cd7cf7afb9cbf0cc5cb5beff181766aab697ccb11f2562b0",
+      "bytes": 2643154,
+      "encoding": "Lossless WebP; exact RGB pixel equality verified",
+      "width": 1774,
+      "height": 887
+    },
+    "portraits-cute.webp": {
+      "source_png": "portraits-cute.png",
+      "source_sha256": "b029942e989acb187eb4d79dfa43a8ecde1cf55a8b2f8eb001c1e664eb73f1f4",
+      "sha256": "2b185439928ab1e53f268a74a21387ec765fbd01a67774e411f3092fdd2c88ac",
+      "bytes": 2396152,
+      "encoding": "Lossless WebP; exact RGB pixel equality verified",
+      "width": 2172,
+      "height": 724
+    },
+    "storybook-battle.webp": {
+      "source_png": "storybook-battle.png",
+      "source_sha256": "9a856a3cf622026b22f8efb9c330e35768cbd5ccec6b577fa061e6a27667a7e6",
+      "sha256": "069241d0806ebd4cff3e4b0751ee3c7b12a1250e8d647c50c961ad54bc3e4843",
+      "bytes": 2582008,
+      "encoding": "Lossless WebP; exact RGB pixel equality verified",
+      "width": 1774,
+      "height": 887
+    }
+  },
+  "scene_map": {
+    "normal": "encounter-mob.webp",
+    "elite": "storybook-battle.webp",
+    "midboss": "encounter-midboss.webp",
+    "boss": "encounter-boss.webp",
+    "rest": "encounter-rest.webp",
+    "event": "encounter-event.webp"
+  },
+  "portraits": {
+    "image": "portraits-cute.webp",
+    "original_panels": [
+      [
+        0,
+        0,
+        724,
+        724
+      ],
+      [
+        724,
+        0,
+        724,
+        724
+      ],
+      [
+        1448,
+        0,
+        724,
+        724
+      ]
+    ],
+    "display_source_rects": [
+      [
+        103.42857142857143,
+        103.42857142857143,
+        517.1428571428572,
+        517.1428571428572
+      ],
+      [
+        827.4285714285714,
+        103.42857142857143,
+        517.1428571428572,
+        517.1428571428572
+      ],
+      [
+        1551.4285714285713,
+        103.42857142857143,
+        517.1428571428572,
+        517.1428571428572
+      ]
+    ],
+    "css_size": "420% 140%",
+    "css_positions": [
+      "6.25% 50%",
+      "50% 50%",
+      "93.75% 50%"
+    ],
+    "display_px": {
+      "short": 60,
+      "regular": 64
+    }
+  },
+  "foreground_sheet": {
+    "file": "assets/enemy-foreground-sheet.png",
+    "sha256": "f30890993fad04445bd381b10dc6f1d5ba07cda224a512683ac8c59eba6cf3b7",
+    "size": [
+      2172,
+      724
+    ],
+    "source": "Built-in image generation from the three original encounter paintings; corrected independent-cell layout",
+    "transparent": true,
+    "cells": [
+      "normal",
+      "midboss",
+      "boss"
+    ],
+    "cell_size": [
+      724,
+      724
+    ],
+    "visible_bounds_alpha_gt_32": [
+      [
+        52,
+        139,
+        667,
+        607
+      ],
+      [
+        77,
+        54,
+        683,
+        671
+      ],
+      [
+        50,
+        89,
+        690,
+        671
+      ]
+    ],
+    "original_style": "cute pen line and watercolor; no Crash Fever artwork used",
+    "revision": "flow foreground layout 2"
+  }
+}

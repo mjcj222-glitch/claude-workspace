@@ -1,0 +1,7 @@
+PASS defeat/retry UI stage 1
+PASS defeat/retry UI stage 2
+PASS defeat/retry UI stage 3
+PASS corrupted save, tutorial skip, confirmed restart, audio opt-in/suspend
+PASS unavailable storage/audio: playable, no JS errors
+
+EXIT 0

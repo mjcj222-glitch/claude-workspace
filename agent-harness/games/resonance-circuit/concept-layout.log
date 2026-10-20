@@ -1,0 +1,6 @@
+$ python agent-harness/games/resonance-circuit/layout_check.py
+360 800 boost bottom 796 tile {'x': 20, 'y': 271.671875, 'width': 51.65625, 'height': 38}
+390 844 boost bottom 827 tile {'x': 20, 'y': 284.4375, 'width': 56.65625, 'height': 40}
+1280 900 boost bottom 847 tile {'x': 442, 'y': 304.015625, 'width': 64.328125, 'height': 40}
+
+EXIT 0

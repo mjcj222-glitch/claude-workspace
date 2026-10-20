@@ -1,0 +1,1 @@
+{"size": [1280, 900], "motion": "no-preference", "standalone": true, "seed": 693134051, "rooms": ["0-0", "1-0", "2-0", "3-1", "4-1", "5-0"], "relics": ["bell", "brooch", "powder", "lens"], "total": {"turns": 14, "echoes": 16, "damage": 2640, "taken": 124, "healed": 126}, "result": "PASS"}

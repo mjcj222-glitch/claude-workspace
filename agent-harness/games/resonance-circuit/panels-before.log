@@ -1,0 +1,402 @@
+✖ vine direct tap is inert and cannot bridge same color groups (3.493522ms)
+✖ vine adjacent or blast hits strip once, preserve ID/color and fall without reward (0.892221ms)
+✖ hex row boundary does not unlock a non-neighbor vine (0.201324ms)
+✖ rainbow bridges only chosen color, never changes color through another neighbor (0.502982ms)
+✖ direct rainbow tie and isolated rainbow choose coral, heal majority heals (0.300575ms)
+✖ rainbow initial count 4 uses resolved color and fresh special ID (3.313438ms)
+✖ rainbow initial count 5 uses resolved color and fresh special ID (0.206844ms)
+✖ rainbow initial count 9 uses resolved color and fresh special ID (0.13235ms)
+✖ rainbow initial count 10 uses resolved color and fresh special ID (0.163348ms)
+✖ blast-only rainbow is one attack cell; duplicate blast and group count once (0.469281ms)
+✖ skills exclude vines and rainbow; zero candidates retain buffs/cooldowns (0.38261ms)
+✔ rainbow resolved heal preserves prism; resolved attack consumes bonus with boost and ward (1.547384ms)
+✖ unlocked vine and rainbow never become new echo candidates (6.323667ms)
+✖ stage generation caps, protected opening, separate RNG and pure previews (0.504645ms)
+✖ stage introductions, checkpoint and new save exactly reproduce panel RNG and board (1.243444ms)
+✖ old save keeps current board and RNG, retry uses old layout, next stage enables panels (1.273909ms)
+✖ unfinished panel lesson clears at terminal save, win and loss (0.562532ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 1
+ℹ fail 16
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108.35651
+
+✖ failing tests:
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:10:1
+✖ vine direct tap is inert and cannot bridge same color groups (3.493522ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   1,
+  +   0,
+  +   2,
+  +   8,
+  +   7,
+  +   3,
+  +   9,
+  +   15,
+  +   16,
+  +   14,
+  +   4,
+  +   10,
+  +   17,
+  +   22,
+  +   21,
+  +   23,
+  +   5,
+  +   11,
+  +   18,
+  +   24,
+  +   29,
+  +   30,
+  +   28,
+  +   31,
+  +   6,
+  +   12,
+  +   19,
+  +   25,
+  +   32,
+  +   36,
+  +   35,
+  +   37,
+  +   38,
+  +   13,
+  +   20,
+  +   26,
+  +   33,
+  +   39,
+  +   27,
+  +   34,
+  +   40,
+  +   41
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:10:186)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [
+       1,  0,  2,  8,  7,  3,  9, 15, 16, 14,
+       4, 10, 17, 22, 21, 23,  5, 11, 18, 24,
+      29, 30, 28, 31,  6, 12, 19, 25, 32, 36,
+      35, 37, 38, 13, 20, 26, 33, 39, 27, 34,
+      40, 41
+    ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:11:1
+✖ vine adjacent or blast hits strip once, preserve ID/color and fall without reward (0.892221ms)
+  TypeError: Cannot read properties of undefined (reading 'includes')
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:11:319)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:12:1
+✖ hex row boundary does not unlock a non-neighbor vine (0.201324ms)
+  TypeError: Cannot read properties of undefined (reading 'includes')
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:12:191)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:13:1
+✖ rainbow bridges only chosen color, never changes color through another neighbor (0.502982ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'coral'
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:13:286)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'coral',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:14:1
+✖ direct rainbow tie and isolated rainbow choose coral, heal majority heals (0.300575ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'coral'
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:14:207)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'coral',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:15:27
+✖ rainbow initial count 4 uses resolved color and fresh special ID (3.313438ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 4
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:15:389)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:15:27
+✖ rainbow initial count 5 uses resolved color and fresh special ID (0.206844ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 5
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:15:389)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:15:27
+✖ rainbow initial count 9 uses resolved color and fresh special ID (0.13235ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 9
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:15:389)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:15:27
+✖ rainbow initial count 10 uses resolved color and fresh special ID (0.163348ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 10
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:15:389)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 10,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:16:1
+✖ blast-only rainbow is one attack cell; duplicate blast and group count once (0.469281ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'heal'
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:17:187)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'heal',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:20:1
+✖ skills exclude vines and rainbow; zero candidates retain buffs/cooldowns (0.38261ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:20:303)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:22:1
+✖ unlocked vine and rainbow never become new echo candidates (6.323667ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(!s.echo.includes(id))
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:22:270)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:23:1
+✖ stage generation caps, protected opening, separate RNG and pure previews (0.504645ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 4
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:23:267)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:24:1
+✖ stage introductions, checkpoint and new save exactly reproduce panel RNG and board (1.243444ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'vine'
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:24:149)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'vine',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:25:1
+✖ old save keeps current board and RNG, retry uses old layout, next stage enables panels (1.273909ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:25:529)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agent-harness/games/resonance-circuit/panels.test.mjs:26:1
+✖ unfinished panel lesson clears at terminal save, win and loss (0.562532ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - null
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/panels.test.mjs:26:405)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

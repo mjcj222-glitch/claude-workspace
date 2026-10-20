@@ -1,0 +1,15 @@
+✔ timeline 1: tapped ID first, unique resolved IDs, readable cadence and bounded duration (5.143874ms)
+✔ timeline 6: tapped ID first, unique resolved IDs, readable cadence and bounded duration (1.793955ms)
+✔ timeline 10: tapped ID first, unique resolved IDs, readable cadence and bounded duration (1.112093ms)
+✔ timeline 42: tapped ID first, unique resolved IDs, readable cadence and bounded duration (1.329923ms)
+✔ BFS distance is monotone within a plain initial group (0.505766ms)
+✔ echo, chained bombs and vines schedule once from actual results (0.693339ms)
+✔ scheduler cancellation stops callbacks and resolves once; reduced mode has no stagger (106.736931ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 183.286589

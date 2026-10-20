@@ -1,0 +1,13 @@
+{"mode": "practice", "fixture": "battle_0", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "practice", "fixture": "tap_1", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "practice", "fixture": "upgrade_1", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "practice", "fixture": "complete_2", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "1_0_battle", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "1_complete", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_0_map", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_0_battle", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_0_reward", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_2_room", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_3_battle", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_5_battle", "oldFlowRules": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_complete", "oldFlowRules": "preserved", "result": "PASS"}

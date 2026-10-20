@@ -1,0 +1,65 @@
+// Shared live/offline synthesizer. No external assets or game RNG.
+export const SOUND_EVENTS={select:'보석 선택',chain:'짧은 연쇄',large:'큰 연쇄',echo:'잔향',bomb:'폭탄',vine:'덩굴 해제',rainbow:'무지개',heal:'회복 정산',prism:'프리즘 링크',ignite:'연쇄 점화',garden:'생명의 온실',shield:'보호막',hit:'적 피격',enemy:'적 반격',boost:'과충전',win:'승리',lose:'패배'};
+export function soundRecipe(kind,chain=1){
+ const note=(f,t=0,d=.18,a=.065,end=f)=>({f,t,d,a,end});
+ const noise=(t,d,a,cut)=>({noise:true,t,d,a,cut});
+ const scale=[392,440,494,587,659,784],root=scale[Math.min(5,Math.max(0,Math.floor((chain-1)/2)))];
+ switch(kind){
+ case 'tile':{const f=scale[Math.min(5,Math.max(0,chain))];return [{...note(f*.75,0,.065,.038,f*.74),tile:true}];}
+ case 'resonance':return [note(196,0,.18,.025),note(294,.02,.16,.012)];
+ case 'select':return [note(784,0,.07,.025),note(1568,0,.05,.007)];
+ case 'chain':return [note(root),note(root*2,.008,.12,.016)];
+ case 'large':return [note(root,0,.25,.085),note(root*1.25,.035,.24,.045),note(root*2,.06,.18,.018)];
+ case 'echo':return [note(523,0,.18,.045),note(659,.07,.22,.035),note(784,.14,.24,.025),note(523,.23,.18,.012)];
+ case 'bomb':return [note(95,0,.24,.15,48),noise(0,.18,.065,550)];
+ case 'vine':return [noise(0,.19,.055,1700),note(330,.035,.13,.022,392)];
+ case 'rainbow':return [note(392),note(494,.035,.18,.045),note(587,.07,.18,.035),note(784,.105,.17,.02)];
+ case 'heal':return [note(262,0,.38,.045),note(330,.02,.36,.035),note(392,.04,.34,.025)];
+ case 'prism':return [note(523,0,.14,.055),note(784,.05,.18,.04),note(1047,.10,.19,.018)];
+ case 'ignite':return [note(131,0,.15,.09,98),noise(.015,.10,.035,850),note(392,.08,.18,.05)];
+ case 'garden':return [note(196,0,.3,.05),note(247,.04,.28,.04),note(294,.08,.28,.025)];
+ case 'shield':return [note(392,0,.22,.05),note(588,.012,.25,.025)];
+ case 'hit':return [note(196,0,.12,.06,147),note(392,0,.08,.02)];
+ case 'enemy':return [note(110,0,.19,.08,82),noise(0,.10,.025,650)];
+ case 'boost':return [note(262),note(392,.06,.2,.05),note(523,.12,.22,.04),note(784,.18,.2,.02)];
+ case 'win':return [note(392,0,.24,.055),note(494,.10,.24,.045),note(587,.20,.24,.035),note(784,.30,.32,.025)];
+ case 'lose':return [note(294,0,.23,.045),note(247,.14,.23,.035),note(196,.28,.30,.03)];
+ default:return [];
+ }
+}
+export function createAudio(settings,{factory=()=>new (globalThis.AudioContext||globalThis.webkitAudioContext)(),offline=false}={}){
+ let sequence=false,lastMaster=0,context=null,master=null,compressor=null,noiseBuffer=null,available=true,generation=0,resuming=false,queue=[],suspendTimer;
+ const sources=new Set(),seen=new Set(),last=new Map();let peakVoices=0,peakNodes=0,events=0,dropped=0;
+ const nodes=()=>sources.size*3+(master?1:0)+(compressor?1:0); // conservative upper bound
+ function masterLevel(value,smooth=true){if(!master)return;const at=context.currentTime;const current=Number.isFinite(master.gain.value)&&at>0?master.gain.value:lastMaster;master.gain.cancelScheduledValues?.(at);master.gain.setValueAtTime(current,at);lastMaster=value;if(smooth&&master.gain.setTargetAtTime)master.gain.setTargetAtTime(value,at,.004);else master.gain.setValueAtTime(value,at);}
+ function bus(){master=context.createGain();lastMaster=settings.volume*.7;master.gain.setValueAtTime(lastMaster,context.currentTime);if(context.createDynamicsCompressor){compressor=context.createDynamicsCompressor();for(const [k,v] of Object.entries({threshold:-16,knee:18,ratio:5,attack:.003,release:.12}))compressor[k].setValueAtTime(v,context.currentTime);master.connect(compressor);compressor.connect(context.destination);}else master.connect(context.destination);}
+ function stop(){generation++;queue=[];resuming=false;masterLevel(0);for(const v of [...sources]){v.active=false;try{v.source.stop(context.currentTime+.015);}catch{}v.timer=setTimeout(v.clean,35);}seen.clear();last.clear();}
+ function unlock(){if(!settings.enabled)return false;try{
+  clearTimeout(suspendTimer);for(const v of [...sources])if(!v.active)v.clean();const fresh=!context;context??=factory();if(fresh)bus();masterLevel(settings.volume*.7);
+  if(offline)return true;if(resuming)return true;if(!fresh&&context.state==='running')return true;
+  const g=generation;resuming=true;Promise.resolve(context.resume()).then(()=>{if(g!==generation)return;resuming=false;const jobs=queue;queue=[];if(settings.enabled&&context.state==='running')for(const j of jobs)if(performance.now()-j.at<250)emit(j.kind,j.options);}).catch(()=>{if(g===generation){available=false;resuming=false;queue=[];}});return true;
+ }catch{available=false;return false;}}
+ function noise(){if(noiseBuffer)return noiseBuffer;const rate=Math.min(context.sampleRate,48000),length=Math.floor(rate*.35);noiseBuffer=context.createBuffer(1,length,rate);const data=noiseBuffer.getChannelData(0);let seed=7213;for(let i=0;i<length;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;data[i]=(seed/4294967296*2-1)*.6;}return noiseBuffer;}
+ function voice(spec,now){
+  if(sources.size>=(sequence&&!spec.tile?6:8)){dropped++;return;}
+  let source,gain,filter,v;
+  try{const useNoise=spec.noise&&context.createBufferSource;source=useNoise?context.createBufferSource():context.createOscillator();gain=context.createGain();
+   if(useNoise){source.buffer=noise();filter=context.createBiquadFilter();filter.type='lowpass';filter.frequency.setValueAtTime(spec.cut,now);filter.Q.setValueAtTime(.4,now);source.connect(filter);filter.connect(gain);}else{source.type='sine';source.frequency.setValueAtTime(spec.f??196,now+spec.t);source.frequency.exponentialRampToValueAtTime(spec.end??196,now+spec.t+spec.d);source.connect(gain);}
+   const t=now+spec.t;gain.gain.setValueAtTime(0,t);gain.gain.linearRampToValueAtTime(spec.a,t+.009);gain.gain.exponentialRampToValueAtTime(.0001,t+spec.d);gain.gain.linearRampToValueAtTime(0,t+spec.d+.012);gain.connect(master);
+   v={source,active:true,timer:null,clean:()=>{if(!sources.delete(v))return;clearTimeout(v.timer);source.disconnect();gain.disconnect();filter?.disconnect();}};sources.add(v);source.onended=v.clean;source.start(t);source.stop(t+spec.d+.02);peakVoices=Math.max(peakVoices,sources.size);peakNodes=Math.max(peakNodes,nodes());
+  }catch(e){if(v)v.clean();else{source?.disconnect();gain?.disconnect();filter?.disconnect();}throw e;}
+ }
+ function emit(kind,options={}){try{const specs=soundRecipe(kind,options.note??options.chain);if(!specs.length)return false;events++;for(const spec of specs)voice(spec,context.currentTime);return true;}catch{available=false;return false;}}
+ function play(kind,options={}){
+  if(!settings.enabled||!context)return false;
+  const key=options.id===undefined?null:kind+':'+options.id,now=context.currentTime;
+  if(key&&seen.has(key)||kind!=='tile'&&now-(last.get(kind)??-Infinity)<.045)return false;
+  if(key){seen.add(key);if(seen.size>64)seen.delete(seen.values().next().value);}last.set(kind,now);
+  if(!offline&&context.state!=='running'){if(!resuming)return false;if(queue.length>=4){dropped++;return false;}queue.push({kind,options,at:performance.now()});return true;}
+  return emit(kind,options);
+ }
+ function enable(value){settings.enabled=!!value;if(value)unlock();else hide();}
+ function volume(value){settings.volume=Math.max(0,Math.min(1,Number(value)||0));masterLevel(settings.enabled?settings.volume*.7:0);}
+ function hide(){stop();try{context?.suspend()?.catch(()=>{});}catch{}}
+ return {unlock,play,enable,volume,hide,beginSequence(){sequence=true;},endSequence(){sequence=false;},cancel(){sequence=false;stop();},tick(note,id){return play('tile',{note,id});},get available(){return available;},get voices(){return [...sources].filter(v=>v.active).length;},get stats(){return {voices:[...sources].filter(v=>v.active).length,nodes:nodes(),peakVoices,peakNodes,bufferBytes:noiseBuffer?(noiseBuffer.length??0)*4:0,queued:queue.length,events,dropped};}};
+}

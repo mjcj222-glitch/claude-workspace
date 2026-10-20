@@ -1,0 +1,3 @@
+PASS CRC and every packaged byte: 78 entries
+PASS standalone embeds all CSS, JS and CSS image URLs
+bytes 34060519 sha256 c46426217d2d6c76074636a03c98a105f42f70916f2dfd4b741a02d177d9034e
