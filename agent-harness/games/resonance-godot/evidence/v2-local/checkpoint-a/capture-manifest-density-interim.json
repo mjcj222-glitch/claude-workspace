@@ -1,0 +1,21 @@
+{
+  "status": "verified intermediate physical-module captures; final independent visual review in progress",
+  "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+  "files": [
+    {
+      "name": "base-selection.png",
+      "bytes": 730756,
+      "sha256": "19d44bec1d02f6182700dd1f771631b4dc27d3b4b159ada37223c128e7265f66",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0"
+    },
+    {
+      "name": "checkpoint-a.mp4",
+      "bytes": 1334876,
+      "sha256": "50c85d17d85506d3e1cda3f56c3ed298f386913f97e2c82e21c31c67a2bed3a3",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0"
+    }
+  ],
+  "movie_seconds": 6.1,
+  "physical_refill_sim_seconds": 2.275,
+  "controller_input_lock_measured": false
+}
