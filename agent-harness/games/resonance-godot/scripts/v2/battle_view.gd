@@ -9,6 +9,7 @@ var hp_bar: ProgressBar
 var energy_bar: ProgressBar
 var party_keys: Array = []
 var board: Node
+var destination_row: HBoxContainer
 func _ready() -> void:
     size = Vector2(720,1280)
     theme = Theme.new()
@@ -30,7 +31,20 @@ func _ready() -> void:
     preview.text = "같은 문양 3개 이상을 눌러 확인"
     get_node("BoardViewport").position = Vector2(40,550)
     get_node("BoardViewport").size = Vector2(640,640)
-    _label(get_node("Bars"),"잔향 회로   /   첫 번째 관문",Rect2(40,1210,640,32),18,Color("8c929b"))
+    labels.footer = _label(get_node("Bars"),"잔향 회로   /   첫 번째 관문",Rect2(40,1210,640,32),18,Color("8c929b"))
+    destination_row = HBoxContainer.new()
+    destination_row.name = "Destinations"
+    destination_row.position = Vector2(270,332)
+    destination_row.add_theme_constant_override("separation",8)
+    get_node("Bars").add_child(destination_row)
+    for color in Config.COLOR_TYPES:
+        var button := Button.new()
+        button.name = str(color).capitalize()
+        button.text = {"red":"● 빨강","yellow":"◆ 노랑","blue":"≈ 파랑"}[color]
+        button.custom_minimum_size = Vector2(125,68)
+        button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        destination_row.add_child(button)
+    destination_row.hide()
     queue_redraw()
 func _stage() -> void:
     var stage := get_node("EnemyStage")
@@ -54,7 +68,7 @@ func _stage() -> void:
     enemy.position = Vector2(360,158)
     enemy.scale = Vector2.ONE * 0.34
     stage.add_child(enemy)
-    _label(stage,"01  /  온실의 문턱",Rect2(42,34,400,30),18,Color("b5b9bf"))
+    labels.title = _label(stage,"01  /  온실의 문턱",Rect2(42,34,400,30),18,Color("b5b9bf"))
     labels.enemy = _label(stage,"",Rect2(40,264,380,32),20)
     labels.intent = _label(stage,"",Rect2(422,264,260,32),20,Color("f0b995"))
     enemy_hp_bar = _bar(stage,Rect2(40,307,640,5),Color("d58d82"),72)
@@ -92,13 +106,21 @@ func show_state(state: Dictionary, party: Array) -> void:
         for child in get_node("Party").get_children(): child.free()
         for character in party:
             _portrait(str(character))
+    for portrait in get_node("Party").get_children():
+        var key := str(portrait.name).to_lower()
+        portrait.disabled = state.get("team_skill_used",false) or int(state.get("energy",0)) < int(Config.SKILL_COSTS[key]) or state.get("status","") != "active"
     var enemy_id := str(state.get("enemy_id","hall1"))
+    var titles := {"hall1":"01  /  첫 회랑", "hall2_safe":"02  /  안전 회랑", "hall2_risk":"02  /  위험 회랑", "gate":"03  /  관문 수호자"}
+    labels.title.text = titles[enemy_id]
+    labels.footer.text = "잔향 회로   /   " + titles[enemy_id] + "   ·   %d턴" % state.get("turn",1)
+    var enemy = get_node("EnemyStage/Enemy")
+    enemy.texture.region = Rect2({"hall1":0,"hall2_safe":1,"hall2_risk":1,"gate":2}[enemy_id]*724,0,724,724)
     var maximum: int = Config.ENEMIES[enemy_id].hp
     labels.enemy.text = "수호자   %d / %d" % [state.get("enemy_hp",maximum),maximum]
     enemy_hp_bar.max_value = maximum
     enemy_hp_bar.value = state.get("enemy_hp",maximum)
-    labels.intent.text = "%s %d  ·  %d회 남음" % ["강공격" if state.get("intent",{}).get("kind","") == "strong" else "공격",state.get("intent",{}).get("total_damage",0),state.get("actions_left",3)]
-    labels.hp.text = "HP   %d / %d" % [state.get("hp",72),Config.MAX_HP]
+    labels.intent.text = "%s%d(+%d) · %d회" % ["강공격" if state.get("intent",{}).get("kind","") == "strong" else "공격",state.get("intent",{}).get("total_damage",0),state.get("intent",{}).get("pressure",0),state.get("actions_left",3)]
+    labels.hp.text = "HP %d/%d  ·  회복 +%d / 피해 +%d" % [state.get("hp",72),Config.MAX_HP,state.get("pending_heal",0),state.get("pending_damage",0)]
     labels.energy.text = "기력   %d / %d" % [state.get("energy",4),Config.MAX_ENERGY]
     hp_bar.value = state.get("hp",72)
     energy_bar.value = state.get("energy",4)
@@ -114,7 +136,7 @@ func _portrait(character: String) -> void:
     button.add_theme_stylebox_override("normal",style)
     button.add_theme_stylebox_override("hover",style)
     button.add_theme_stylebox_override("pressed",style)
-    button.pressed.connect(func(): skill_requested.emit(character))
+    button.mouse_filter = Control.MOUSE_FILTER_IGNORE
     get_node("Party").add_child(button)
     var portrait := TextureRect.new()
     var atlas := AtlasTexture.new()
@@ -140,7 +162,8 @@ func show_selection(snapshot: Dictionary, plan: Dictionary) -> void:
 func show_plan(snapshot: Dictionary, plan: Dictionary) -> void:
     show_selection(snapshot,plan)
     if plan.is_empty(): return
-    get_node("PreviewLine").text = "피해 +%d   ·   회복 +%d   ·   기력 +%d" % [int(plan.get("direct_damage",0))+int(plan.get("blast_damage",0)),plan.get("healing_effective",0),plan.get("energy_effective",0)]
+    get_node("PreviewLine").text = "직접%d + 추가%d  ·  피해%d+%d=%d  ·  회복%d  ·  기력%d%s" % [plan.get("direct_ids",[]).size(),plan.get("extra_ids",[]).size(),plan.get("direct_damage",0),plan.get("blast_damage",0),int(plan.get("direct_damage",0))+int(plan.get("blast_damage",0)),plan.get("healing_effective",0),plan.get("energy_effective",0)," · 약화" if plan.get("weaken_intent",false) else ""]
+    get_node("PreviewLine").add_theme_font_size_override("font_size",18)
 func _draw() -> void:
     draw_rect(Rect2(0,0,720,1280),Color("14171e"))
     draw_style_box(_frame(),Rect2(34,544,652,652))
@@ -152,3 +175,21 @@ func _frame() -> StyleBoxFlat:
     style.set_border_width_all(2)
     style.set_corner_radius_all(6)
     return style
+
+func show_skill_mode(actor: String, destination: String) -> void:
+    destination_row.visible = actor == "hero"
+    for portrait in get_node("Party").get_children():
+        portrait.visible = actor != "hero" or portrait.name == "Hero"
+        portrait.modulate = Color("ffe0a0") if portrait.name.to_lower() == actor else Color.WHITE
+    if not actor.is_empty():
+        get_node("PreviewLine").text = "목적색 선택 → 기물을 누른 채 대상 확인" if actor == "hero" and destination.is_empty() else "기물을 누른 채 변환 대상을 확인하고 놓으세요"
+func show_skill_plan(snapshot: Dictionary, plan: Dictionary, state: Dictionary) -> void:
+    var ids: Array = plan.changes.keys()
+    ids.sort()
+    show_selection(snapshot,{"direct_ids":ids})
+    if plan.actor_id == "bomber":
+        get_node("PreviewLine").text = "기력6 · 남은 리필%d회 파랑→폭탄 · 생성0개면 턴 끝 환불" % state.actions_left
+    else:
+        get_node("PreviewLine").text = "%d개 → %s  ·  기력%d  ·  놓아서 변환" % [ids.size(),{"red":"빨강","yellow":"노랑","blue":"파랑","heart":"하트"}[plan.destination],plan.cost]
+func show_keyboard_focus(snapshot: Dictionary, id: int) -> void:
+    show_selection(snapshot,{"direct_ids":[id]})

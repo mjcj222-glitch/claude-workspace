@@ -9,6 +9,8 @@ var extra_color := Color("ffbe69")
 var blast_circles: Array = []
 var bursts: Array = []
 var burst_time := 0.0
+var compression_time := -1.0
+var compression_contours: Array = []
 func show_selection(snapshot: Dictionary, plan: Dictionary) -> void:
     direct_ids = plan.get("direct_ids",[]).duplicate()
     extra_ids = plan.get("extra_ids",[]).duplicate()
@@ -42,7 +44,17 @@ func play_blast(circles: Array, reduced: bool = false) -> void:
     bursts = [] if reduced else circles.duplicate(true)
     burst_time = 0.0
     queue_redraw()
+func play_compression(snapshot: Dictionary, plan: Dictionary, reduced: bool = false) -> void:
+    compression_contours = [] if reduced else _contours(snapshot,plan.removed_ids)
+    compression_time = -1.0 if reduced else 0.0
+    queue_redraw()
 func _process(delta: float) -> void:
+    if compression_time >= 0:
+        compression_time += delta
+        if compression_time >= 0.12:
+            compression_time = -1
+            compression_contours.clear()
+        queue_redraw()
     if bursts.is_empty(): return
     burst_time += delta
     if burst_time >= 0.4: bursts.clear()
@@ -57,6 +69,13 @@ func _outline(contour: PackedVector2Array, color: Color, dashed: bool) -> void:
         for i in range(closed.size()-1):
             draw_dashed_line(closed[i],closed[i+1],color,3.5,7.0,true,true)
 func _draw() -> void:
+    for contour in compression_contours:
+        var center := Vector2.ZERO
+        for point in contour: center += point
+        center /= contour.size()
+        var compressed := PackedVector2Array()
+        for point in contour: compressed.append(center+(point-center)*(1.0-0.12*clampf(compression_time/0.12,0,1)))
+        _outline(compressed,Color("ffffff"),false)
     for circle in blast_circles:
         draw_arc(Vector2(circle.x,circle.y),float(circle.radius),0,TAU,96,Color(1,0.72,0.3,0.35),1.5,true)
     for contour in extra_contours: _outline(contour,extra_color,true)

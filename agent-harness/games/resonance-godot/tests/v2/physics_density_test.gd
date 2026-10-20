@@ -87,6 +87,8 @@ func run() -> void:
         var batch_before := batch.duplicate(true)
         board.apply_clear(plan.removed_ids,batch)
         check(batch == batch_before,"physical inlet leaves supplied refill batch unchanged")
+        # The immutable batch enters only after genuine survivors settle.
+        while board.refill_phase == "collapse": await physics_frame
         var incoming: Array = []
         for item in batch:
             var body = board.by_id(item.id)
