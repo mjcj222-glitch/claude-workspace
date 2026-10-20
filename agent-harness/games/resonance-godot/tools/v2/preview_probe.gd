@@ -61,8 +61,8 @@ func run() -> void:
         if top.r <= bottom.r + 0.02:
             print("FAIL: glossy upper face must visibly reflect more light than lower face")
             failures += 1
-        var tier2 := pixels.get_pixel(269,51)
-        var tier3 := pixels.get_pixel(367,51)
+        var tier2 := pixels.get_pixelv(_ink_pixel(board.by_id(3),Vector2(19,0)))
+        var tier3 := pixels.get_pixelv(_ink_pixel(board.by_id(4),Vector2(19,0)))
         if not (tier2.r > tier2.b + 0.15):
             print("FAIL: tier 2 has a distinct gold rim")
             failures += 1
@@ -70,7 +70,7 @@ func run() -> void:
             print("FAIL: tier 3 has a distinct coral rim")
             failures += 1
         for row in range(4):
-            var badge := pixels.get_pixel(163,67+row*82)
+            var badge := pixels.get_pixelv(_ink_pixel(board.by_id(row*6+2),Vector2(11,16)))
             if not badge.b > badge.r + 0.20:
                 print("FAIL: smaller blue wave badge remains readable on hull "+str(row))
                 failures += 1
@@ -115,3 +115,8 @@ func run() -> void:
     print(JSON.stringify({"fixture":fixture,"piece_count":board.capture().pieces.size(),"board_version":board.version,"captures":captures,"targets":plan.get("removed_ids",[]).size()}))
     print(JSON.stringify({"render_checks_failures":failures}))
     quit(0 if failures == 0 else 1)
+
+func _ink_pixel(piece: Node, point: Vector2) -> Vector2i:
+    var canonical := Geometry.Base.polygon(Geometry.HULL_MAP[piece.hull_id],1.0)
+    var ink_scale := sqrt(Geometry.area(piece.polygon)/Geometry.area(canonical))
+    return Vector2i((piece.position+point*ink_scale).round())
