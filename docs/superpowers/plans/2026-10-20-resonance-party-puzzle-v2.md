@@ -8,7 +8,7 @@
 
 **Tech Stack:** 저장소의 Godot 4.6.3, GDScript, 기존 로컬 폰트·캐릭터·효과 자산. 추가 엔진·런타임 의존성은 도입하지 않는다.
 
-**Spec:** docs/superpowers/specs/2026-10-20-resonance-party-puzzle-v2-design.md  
+**Spec:** docs/superpowers/specs/2026-10-20-resonance-party-puzzle-v2-design.md
 **Spec baseline:** d5d57e50207699b4b487c26eba211714308668dc.
 
 이 문서는 실행 전 검토용이며, 아래 단계는 모두 앞으로 수행할 일이다.
@@ -73,7 +73,7 @@ scripts/v2/config.gd만 수치의 원본으로 삼는다. 적 자료 키는 hall
 
 ## 작업 1. hull·타입을 분리한 v2 물리 보드
 
-**의존성:** 없음.  
+**의존성:** 없음.
 **새 파일:** scripts/v2/ 아래 config.gd, geometry.gd, piece.gd, board.gd; tests/v2/ 아래 fixtures.gd, geometry_board_test.gd.
 
 **계약:** GeometryV2.polygon(hull_id: int, size: float) -> PackedVector2Array, graph(snapshot: Dictionary) -> Dictionary, diameter_unit() -> float. PieceV2.configure(id: int, hull_id: int, match_type: String, size: float, bomb_tier: int = 0) -> void, apply_type(match_type: String) -> void, snapshot() -> Dictionary. BoardV2.new_board(seed: int) -> void, capture() -> Dictionary, make_refill(count: int) -> Array, apply_clear(ids: Array, batch: Array) -> void, apply_types(changes: Dictionary) -> Dictionary, checkpoint() -> Dictionary, restore(checkpoint: Dictionary) -> void, supported(snapshot: Dictionary) -> bool.
@@ -95,7 +95,7 @@ Fixtures.tile(id, type, hull_id, center, bomb_tier=0), snapshot(tiles, version=1
 
 ## 작업 2. 접촉 그룹·폭발 합집합과 예고 소비 계약
 
-**의존성:** 작업 1.  
+**의존성:** 작업 1.
 **새 파일:** scripts/v2/ 아래 selection_rules.gd, preview_session.gd; tests/v2/selection_test.gd.
 
 **계약:** SelectionV2.preview(snapshot: Dictionary, seed_id: int, combat_version: int) -> Dictionary. PreviewSessionV2.begin(plan: Dictionary, pointer_id: int) -> bool, move(pointer_id: int, inside: bool) -> void, release(pointer_id: int, inside: bool, board_version: int, combat_version: int) -> Dictionary, cancel() -> void.
@@ -116,7 +116,7 @@ assert(plan.fired_bomb_ids.size() == unique_fired_count)
 
 ## 작업 3. 새 화면과 첫 시각 체크포인트 A
 
-**의존성:** 작업 2.  
+**의존성:** 작업 2.
 **새 파일:** scenes/v2/battle_view.tscn; scripts/v2/ 아래 battle_view.gd, board_viewport.gd, board_effects.gd, skill_cutin.gd; tests/v2/presentation_test.gd; tools/v2/preview_probe.gd.
 
 **계약:** BattleViewV2.bind_board(board: Node) -> void, show_state(state: Dictionary, party: Array) -> void, show_selection(snapshot: Dictionary, plan: Dictionary) -> void, show_plan(snapshot: Dictionary, plan: Dictionary) -> void. BoardViewportV2.logical_to_board(point: Vector2) -> Vector2, board_to_logical(point: Vector2) -> Vector2, contains_logical(point: Vector2) -> bool. SkillCutinV2.play(reduced: bool) -> void. 씬의 직계 노드는 EnemyStage, Party, Bars, PreviewLine, BoardViewport, CutinLayer이며 전신은 CutinLayer/Hero에 둔다.
@@ -136,7 +136,7 @@ assert(viewport.board_to_logical(viewport.logical_to_board(p)).distance_to(p) < 
 
 ## 작업 4. 피해·회복·기력·적 예고의 순수 규칙
 
-**의존성:** 작업 2. 작업 3과 파일 충돌 없이 병렬 수행할 수 있다.  
+**의존성:** 작업 2. 작업 3과 파일 충돌 없이 병렬 수행할 수 있다.
 **새 파일:** scripts/v2/combat_rules.gd; tests/v2/combat_rules_test.gd.
 
 **계약:** CombatV2.fresh(context: Dictionary) -> Dictionary, preview(snapshot: Dictionary, state: Dictionary, seed_id: int) -> Dictionary, apply_action(state: Dictionary, plan: Dictionary) -> Dictionary, finish_refill(state: Dictionary, generated_bombs: int) -> Dictionary, intent(enemy_id: String, turn: int, weakened: bool = false) -> Dictionary.
@@ -158,7 +158,7 @@ assert(CombatV2.intent("gate", 4, true).total_damage == 20)
 
 ## 작업 5. 세 스킬과 이번 턴 리필 폭탄
 
-**의존성:** 작업 4.  
+**의존성:** 작업 4.
 **새 파일:** scripts/v2/skill_rules.gd; tests/v2/skill_rules_test.gd.
 
 **계약:** SkillsV2.preview(snapshot: Dictionary, state: Dictionary, actor_id: String, seed_id: int = -1, destination: String = "") -> Dictionary, apply(state: Dictionary, skill_plan: Dictionary) -> Dictionary, decorate_refill(batch: Array, state: Dictionary, trigger_plan: Dictionary) -> Dictionary. 마지막 함수는 batch와 generated_bombs를 반환하며 원본 배치를 바꾸지 않는다.
@@ -177,8 +177,8 @@ assert(refill_result.batch.map(func(t): return t.match_type) == original_types)
 
 ## 작업 6. 실제 입력·정산 통합과 시각 체크포인트 B
 
-**의존성:** 작업 3·4·5 완료.  
-**새 파일:** scripts/v2/battle.gd; scenes/v2/battle.tscn; tests/v2/battle_integration_test.gd.  
+**의존성:** 작업 3·4·5 완료.
+**새 파일:** scripts/v2/battle.gd; scenes/v2/battle.tscn; tests/v2/battle_integration_test.gd.
 **수정:** scripts/v2/ 아래 battle_view.gd, board_effects.gd. 화면 담당과의 동시 편집을 끝낸다.
 
 **계약:** BattleV2.start_battle(context: Dictionary) -> void, commit_preview(plan: Dictionary) -> bool, export_checkpoint() -> Dictionary, restore_checkpoint(record: Dictionary) -> void. 종료는 finished(outcome: Dictionary) 신호를 한 번만 보낸다.
@@ -199,7 +199,7 @@ assert(battle.action_count == 1) # 같은 계획을 두 번 놓아도 한 번
 
 ## 작업 7. 솔로 시작·경로·첫 모집·관문
 
-**의존성:** 작업 6.  
+**의존성:** 작업 6.
 **새 파일:** scripts/v2/ 아래 run_rules.gd, expedition.gd; scenes/v2/expedition.tscn; tests/v2/run_rules_test.gd.
 
 **계약:** RunV2.fresh(seed: int) -> Dictionary, battle_context(run: Dictionary) -> Dictionary, sync_battle(run: Dictionary, battle: Dictionary) -> Dictionary, complete_battle(run: Dictionary, battle: Dictionary) -> Dictionary, choose_route(run: Dictionary, choice: String) -> Dictionary, choose_recruit(run: Dictionary, choice: String) -> Dictionary. 변경 함수는 ApplyResult를 반환한다.
@@ -221,8 +221,8 @@ assert(skip_result.state.hero_limit <= 5)
 
 ## 작업 8. v2 저장과 중간 재개
 
-**의존성:** 작업 7.  
-**새 파일:** scripts/v2/save_store.gd; tests/v2/save_store_test.gd.  
+**의존성:** 작업 7.
+**새 파일:** scripts/v2/save_store.gd; tests/v2/save_store_test.gd.
 **수정:** scripts/v2/ 아래 expedition.gd, battle.gd.
 
 **계약:** SaveV2.decode(raw: String) -> Dictionary, write_checkpoint(path: String, record: Dictionary) -> Error. 저장 레코드는 version=2, ruleset="party-puzzle-v2-initial", run, battle, board, reduced를 가진다. board에는 스냅샷·다음 ID·난수 상태를 포함한다.
@@ -241,7 +241,7 @@ assert(second_refund_result.state.energy == first_refund_result.state.energy)
 
 ## 작업 9. 막힌 판 복구와 물리 회귀
 
-**의존성:** 작업 6·8.  
+**의존성:** 작업 6·8.
 **수정:** scripts/v2/ 아래 board.gd, battle.gd.
 **새 파일:** tests/v2/recovery_test.gd.
 
@@ -263,7 +263,7 @@ assert(refill_count_during_recovery == 0)
 
 ## 작업 10. 전체 회귀·실제 창 입력·픽셀과 영상
 
-**의존성:** 작업 7·8·9.  
+**의존성:** 작업 7·8·9.
 **새 파일:** tests/v2/ 아래 full_expedition_test.gd, window_input_test.gd; tools/v2/ 아래 os_input_probe.gd, run_os_input_probe.py, record_expedition.gd.
 **수정:** tests/v2/presentation_test.gd, README.md, VALIDATION.md. 검수 증거는 기존 evidence/local-integration을 덮어쓰지 않고 로컬 evidence/v2-local/에 둔다.
 
