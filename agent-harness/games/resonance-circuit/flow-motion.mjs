@@ -11,7 +11,7 @@ export function monotoneCurve(times,values){
  };
 }
 export function playbackFrames(flow){
- let frames=flow.frames;while(frames.length>3&&distance(frames.at(-2),frames.at(-1))<.03)frames=frames.slice(0,-1);
+ let frames=flow.frames;while(frames.length>3&&distance(frames.at(-2),frames.at(-1))<.03)frames=[...frames.slice(0,-2),frames.at(-1)];
  if(frames.length<2)return {duration:0,tracks:[]};
  const weights=frames.slice(1).map((f,i)=>Math.max(.5,Math.sqrt(distance(f,frames[i]))));
  // The authoritative solver's final projection gets its own visible settling interval.

@@ -7,7 +7,7 @@ import hashlib
 import json
 
 ROOT = Path(__file__).resolve().parent
-modules = ['flow.mjs','config.mjs', 'panels.mjs', 'skills.mjs', 'engine.mjs', 'campaign.mjs', 'storage.mjs', 'expedition.mjs','encounters.mjs','expedition-ui.mjs', 'audio.mjs', 'feedback.mjs', 'timeline.mjs', 'effects.mjs', 'skill-ui.mjs','mobile-ui.mjs','presentation.mjs','encounter-ui.mjs','flow-ui.mjs', 'app.mjs']
+modules = ['flow.mjs','mechanics.mjs','flow-motion.mjs','config.mjs', 'panels.mjs', 'skills.mjs', 'engine.mjs', 'campaign.mjs', 'storage.mjs', 'expedition.mjs','encounters.mjs','expedition-ui.mjs', 'audio.mjs', 'feedback.mjs', 'timeline.mjs', 'effects.mjs', 'skill-ui.mjs','mobile-ui.mjs','presentation.mjs','encounter-ui.mjs','flow-ui.mjs','choice-motion.mjs', 'app.mjs']
 code = '\n'.join((ROOT / name).read_text() for name in modules)
 code = re.sub(r'^import .*?;\s*$', '', code, flags=re.MULTILINE)
 code = re.sub(r'^export ', '', code, flags=re.MULTILINE)
@@ -38,9 +38,9 @@ sound_code=re.sub(r'^import .*?;\s*$', '', sound_code, flags=re.MULTILINE)
 sound_code=re.sub(r'^export ', '', sound_code, flags=re.MULTILINE)
 sound_html='<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>잔향 회로 · 사운드 체크</title><style>body{font:16px system-ui;background:#f3f0e9;color:#292930;max-width:600px;margin:24px auto;padding:12px}button{padding:12px;margin:4px;background:#64509b;color:white;border:1px solid transparent;border-radius:8px}#samples{display:grid;grid-template-columns:repeat(3,1fr)}</style><h1>잔향 회로 · 사운드 체크</h1><p>기본 무음. 소리를 켠 뒤 각 합성음을 직접 확인하세요. 배경음악·외부 음원 없음.</p><button id="toggle">소리 켜기</button><label>음량 <input id="volume" aria-label="음량" type="range" min="0" max="100" value="30"></label><p id="status" role="status">1초 WAV 샘플은 samples 폴더에 있습니다.</p><div id="samples"></div><script>'+sound_code+'</script></html>'
 (ROOT/'sound-check.html').write_text(sound_html)
-files = ['standalone-assets.json','sound-check.html','sound_check.mjs','standalone.html','index.html','style.css','neutral.css','mobile.css','presentation.css','fantasy.css','encounter.css','flow.css','assets/art-slots.css','assets/encounters.css',*modules,'README.md','OFFLINE.md','FLOW-REPORT.md','FLOW-DESIGN.md','assets/manifest.json']
+files = ['standalone-assets.json','sound-check.html','sound_check.mjs','standalone.html','index.html','style.css','neutral.css','mobile.css','presentation.css','fantasy.css','encounter.css','flow.css','evolution.css','assets/art-slots.css','assets/encounters.css',*modules,'README.md','OFFLINE.md','EVOLUTION-REPORT.md','EVOLUTION-DESIGN.md','assets/manifest.json']
 files += ['assets/enemy-foreground-sheet.png','assets/portraits-cute.webp','assets/storybook-battle.webp',*[f'assets/encounter-{n}.webp' for n in ['mob','midboss','boss','event','rest']],*[f'assets/rune-{c}.svg' for c in ['coral','blue','gold','heal']]]
-files += [n for n in ['flow-play.mp4'] if (ROOT/n).exists()]
+files += [n for n in ['evolution-play.mp4'] if (ROOT/n).exists()]
 files += [str(p.relative_to(ROOT)) for p in sorted((ROOT/'samples').glob('*.wav'))]
 with zipfile.ZipFile(ROOT / 'resonance-circuit.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
     for name in files:

@@ -7,7 +7,7 @@ export function createEffects(canvas,reduced){
  window.addEventListener('scroll',clearScreen,{passive:true});
  size();window.addEventListener('resize',()=>{clearScreen();size();});
  function cue(kind,el,color='#c7f5e5'){if(document.hidden)return;clearTimeout(marks.get(el));el.dataset.fx=kind;el.style.setProperty('--fx-color',color);marks.set(el,setTimeout(()=>{delete el.dataset.fx;marks.delete(el);},160));}
- function draw(time){const dt=Math.min((time-last)/1000,.05);last=time;ctx.clearRect(0,0,innerWidth,innerHeight);particles=particles.filter(p=>{
+ function draw(time){const dt=Math.max(0,Math.min((time-last)/1000,.05));last=Math.max(last,time);ctx.clearRect(0,0,innerWidth,innerHeight);particles=particles.filter(p=>{
   p.life-=dt;if(p.life<=0)return false;const a=p.life/p.total,u=1-a;ctx.globalAlpha=Math.min(1,a*2);ctx.strokeStyle=p.color;ctx.fillStyle=p.color;ctx.lineWidth=1.5;
   if(p.type==='ring'){ctx.beginPath();ctx.arc(p.x,p.y,8+u*(p.radius??42),0,Math.PI*2);ctx.stroke();}
   else if(p.type==='flow'){ctx.globalAlpha=.35*a;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+(p.tx-p.x)*Math.min(1,u*3),p.y+(p.ty-p.y)*Math.min(1,u*3));ctx.stroke();}

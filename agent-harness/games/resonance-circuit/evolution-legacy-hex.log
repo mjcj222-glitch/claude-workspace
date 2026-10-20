@@ -1,0 +1,14 @@
+{"mode": "practice", "fixture": "battle_0", "legacyState": "preserved", "result": "PASS"}
+{"mode": "practice", "fixture": "upgrade_0", "legacyState": "preserved", "result": "PASS"}
+{"mode": "practice", "fixture": "complete_2", "legacyState": "preserved", "result": "PASS"}
+{"mode": "practice", "fixture": "defeat", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "1_map", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "1_0_battle", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "1_0_reward", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "1_2_room", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "1_5_complete", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_map", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_0_battle", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_0_reward", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_2_room", "legacyState": "preserved", "result": "PASS"}
+{"mode": "expedition", "fixture": "2_5_complete", "legacyState": "preserved", "result": "PASS"}

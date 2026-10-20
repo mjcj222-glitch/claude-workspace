@@ -1,0 +1,12 @@
+{"size": [360, 800], "motion": "reduce", "standalone": false, "seed": 3777943571, "rooms": ["0-0", "1-0", "2-0", "3-0", "4-1", "5-0"], "relics": ["lens", "powder", "brooch", "bottle"], "total": {"turns": 25, "echoes": 13, "damage": 3140, "taken": 498, "healed": 516}, "result": "PASS"}
+{"size": [390, 844], "motion": "reduce", "standalone": true, "seed": 3954739183, "rooms": ["0-0", "1-0", "2-0", "3-0", "4-1", "5-0"], "relics": ["bell", "umbrella", "bottle", "brooch"], "total": {"turns": 22, "echoes": 17, "damage": 3140, "taken": 342, "healed": 348}, "result": "PASS"}
+{"size": [1280, 900], "motion": "reduce", "standalone": false, "seed": 2779990201, "rooms": ["0-0", "1-0", "2-0", "3-0", "4-1", "5-0"], "relics": ["petal", "umbrella", "tea", "bell"], "total": {"turns": 16, "echoes": 15, "damage": 3140, "taken": 268, "healed": 274}, "result": "PASS"}
+{"size": [360, 800], "motion": "no-preference", "standalone": true, "seed": 2493019731, "rooms": ["0-0", "1-0", "2-0", "3-0", "4-1", "5-0"], "relics": ["lens", "brooch", "powder", "bottle"], "total": {"turns": 21, "echoes": 14, "damage": 3140, "taken": 384, "healed": 369}, "result": "PASS"}
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/evolution_expedition_browser.py", line 51, in <module>
+    for i in ([int(sys.argv[1])] if len(sys.argv)>1 else range(6)):run(b,*cases[i])
+                                                                   ^^^^^^^^^^^^^^^^
+  File "/workspace/claude-workspace/agent-harness/games/resonance-circuit/evolution_expedition_browser.py", line 45, in run
+    assert not errors,errors
+           ^^^^^^^^^^
+AssertionError: ["Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.560579) is negative."]

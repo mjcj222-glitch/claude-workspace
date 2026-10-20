@@ -14,7 +14,7 @@ test('new fixed opening guarantees creation then use, vines and a rainbow bridge
   prepareOpening(s);assert.equal(s.rng,rng);assert.deepEqual(s.board.map(({id,x,y,r,angle})=>({id,x,y,r,angle})),coords);
   assert(validFlowBoard(s.board));const i=opening(s);assert(i>=0);assert.equal(preview(s,i).initial.length,MEGA_AT);
   if(panelStage)assert(s.board.some((t,j)=>t.kind==='bomb'&&adjacent(s,j).some(k=>s.board[k].vine)));
-  if(panelStage===2){const j=s.board.findIndex(t=>t.kind==='rainbow');const gold=adjacent(s,j).filter(k=>s.board[k].color==='gold');assert.equal(gold.length,2);assert(!adjacent(s,gold[0]).includes(gold[1]));}
+  if(panelStage===2){const j=s.board.findIndex(t=>t.kind==='rainbow'),p=preview(s,j);assert.equal(p.color,'gold');assert.equal(p.initial.length,8);const split=structuredClone(s);split.board[j].kind='normal';split.board[j].color='blue';const gold=split.board.flatMap((t,i)=>t.color==='gold'?[i]:[]);assert.equal(gold.length,7);assert(gold.every(i=>[3,4].includes(preview(split,i).initial.length)));}
   const result=tap(s,i);assert.equal(result.special.kind,'mega');assert.equal(result.megas,0);const j=s.board.findIndex(t=>t.id===result.special.id);assert(j>=0);assert(preview(s,j).megas>=1);assert(tap(s,j).megas>=1);assert(validFlowBoard(s.board));
  }
 });
@@ -29,7 +29,7 @@ test('three attribute ranges use frozen geometry; chained bombs and vines settle
  }
 });
 test('promotion counts only direct connections, retains tapped color/new ID; heal never promotes',()=>{
- const s=createGame(7,{boardVersion:1,rulesVersion:1});const i=opening(s),p=preview(s,i),next=s.nextID,color=p.color;const r=tap(s,i);assert.equal(r.special.id,next);assert.equal(r.special.color,color);assert(!r.removed.some(j=>s.board[j]?.id===next&&r.initial.includes(j))||r.megas===0);
+ const s=createGame(7,{boardVersion:1,rulesVersion:1});const i=opening(s),p=preview(s,i),next=s.nextID,color=p.color;const r=tap(s,i);assert.equal(r.special.id,next);assert.equal(r.special.color,color);assert.equal(r.megas,0);assert.equal(r.bombs,0);assert(s.board.some(t=>t.id===next&&t.kind==='mega'));
  const q=createGame(8,{boardVersion:1,rulesVersion:1});q.board.forEach(t=>{t.color='heal';t.kind='normal';delete t.vine;});const h=tap(q,0);assert.equal(h.special,null);assert.equal(h.damage,0);assert.equal(q.echo.length,0);
  const x=createGame(9,{boardVersion:1,rulesVersion:1});x.board.forEach(t=>{t.color='blue';t.kind='normal';});x.board[0].kind='mega';x.board[0].color='coral';x.echo=x.board.slice(1,9).map(t=>t.id);const z=preview(x,0);assert(!z.echoHit);assert(z.removed.length>z.initial.length);assert.equal(tap(x,0).special,null);
 });

@@ -1,0 +1,19 @@
+✔ new fixed opening guarantees creation then use, vines and a rainbow bridge without RNG changes (28686.233544ms)
+✔ three attribute ranges use frozen geometry; chained bombs and vines settle each ID once (704.563113ms)
+✔ promotion counts only direct connections, retains tapped color/new ID; heal never promotes (708.946896ms)
+✔ mega color is stable under prism; old bomb conversion still preserves identity and echo (128.234785ms)
+✔ overlapping megas count existing bombs once, cap ignition/relics, and never count the new bomb (357.021742ms)
+✔ stripe-hit vine timeline remains finite even when no adjacent tile is removed (114.065517ms)
+✔ new rules and mega survive both save modes; version forgery and heal mega rejected (1089.400663ms)
+✔ new rewards are deterministic, normal two/elite three, choose once, retry retains rules (1148.509946ms)
+✔ all pre-evolution flow saves roundtrip without introducing new rules or changing offers (4658.301578ms)
+✔ render interpolation is bounded, continuous and ends at zero velocity (2.168063ms)
+✔ playback leaves authoritative frames/state byte-identical and preserves exact endpoints (274.674219ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37684.644383

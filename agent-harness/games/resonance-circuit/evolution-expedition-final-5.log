@@ -1,0 +1,1 @@
+{"size": [1280, 900], "motion": "no-preference", "standalone": true, "seed": 3320912985, "rooms": ["0-0", "1-0", "2-0", "3-0", "4-1", "5-0"], "relics": ["bell", "bottle", "umbrella", "lens"], "total": {"turns": 17, "echoes": 18, "damage": 3140, "taken": 230, "healed": 248}, "result": "PASS"}

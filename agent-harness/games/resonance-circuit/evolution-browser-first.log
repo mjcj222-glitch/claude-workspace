@@ -1,0 +1,14 @@
+{"size": [360, 640], "motion": "reduce", "standalone": false, "minimumTarget": 40.3125, "sameIDActions": [2, 1, 43, 53, 66, 7], "state": "identical", "result": "PASS"}
+{"size": [360, 640], "motion": "no-preference", "standalone": true, "minimumTarget": 40.3125, "sameIDActions": [2, 1, 43, 53, 66, 7], "state": "identical", "result": "PASS"}
+{"size": [360, 800], "motion": "reduce", "standalone": true, "minimumTarget": 46.609375, "sameIDActions": [2, 1, 43, 53, 66, 7], "state": "identical", "result": "PASS"}
+{"size": [360, 800], "motion": "no-preference", "standalone": false, "minimumTarget": 46.609375, "sameIDActions": [2, 1, 43, 53, 66, 7], "state": "identical", "result": "PASS"}
+{"size": [390, 844], "motion": "reduce", "standalone": false, "minimumTarget": 49.890625, "sameIDActions": [2, 1, 43, 53, 66, 7], "state": "identical", "result": "PASS"}
+{"size": [390, 844], "motion": "no-preference", "standalone": true, "minimumTarget": 49.890625, "sameIDActions": [2, 1, 43, 53, 66, 7], "state": "identical", "result": "PASS"}
+{"size": [1280, 900], "motion": "reduce", "standalone": true, "minimumTarget": 54.046875, "sameIDActions": [2, 1, 43, 53, 66, 7], "state": "identical", "result": "PASS"}
+{"size": [1280, 900], "motion": "no-preference", "standalone": false, "minimumTarget": 54.046875, "sameIDActions": [2, 1, 43, 53, 66, 7], "state": "identical", "result": "PASS"}
+{"interruption": "hidden-clear", "settlements": 1, "result": "PASS"}
+{"interruption": "hidden-fall", "settlements": 1, "result": "PASS"}
+{"interruption": "reduced-fall", "settlements": 1, "result": "PASS"}
+{"interruption": "reload-fall", "settlements": 1, "result": "PASS"}
+{"interruption": "reset-clear", "settlements": 0, "result": "PASS"}
+{"interruption": "reset-fall", "settlements": 1, "result": "PASS"}

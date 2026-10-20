@@ -19,11 +19,20 @@ export function prepareOpening(s){
  for(const t of b){delete t.vine;t.kind='normal';}
  if(s.rules.panelStage===2){
   const order=b.map((t,i)=>i).sort((a,c)=>b[a].y-b[c].y||b[a].id-b[c].id);
+  const component=(start,blocked,limit)=>{const queue=[start],seen=new Set(queue);for(const i of queue){for(const j of adj(i))if(!blocked.has(j)&&!seen.has(j)&&queue.length<limit){queue.push(j);seen.add(j);}if(queue.length===limit)break;}return queue;};
   outer:for(const center of order)for(const a of adj(center))for(const c of adj(center)){
    if(a===c||adj(a).includes(c))continue;
+   const left=component(a,new Set([center,c,...adj(c)]),3);
+   if(left.length!==3)continue;
+   const right=component(c,new Set([center,...left,...left.flatMap(adj)]),4);
+   if(right.length!==4)continue;
    for(const t of b)if(t.color==='gold')t.color='blue';
-   b[a].color=b[c].color='gold';b[center].kind='rainbow';b[center].color='coral';
-   [center,a,c].forEach(i=>reserved.add(i));break outer;
+   for(const i of [...left,...right])b[i].color='gold';
+   b[center].kind='rainbow';b[center].color='coral';
+   [center,...left,...right].forEach(i=>reserved.add(i));
+   const guards=adj(center).filter(i=>!reserved.has(i));for(const i of guards)b[i].color='blue';
+   for(const i of guards)for(const j of adj(i))if(!reserved.has(j)&&!guards.includes(j))b[j].color='heal';
+   guards.forEach(i=>reserved.add(i));break outer;
   }
  }
  const order=b.map((t,i)=>i).filter(i=>!reserved.has(i)).sort((a,c)=>Math.hypot(b[a].x-210,b[a].y-300)-Math.hypot(b[c].x-210,b[c].y-300)||a-c);

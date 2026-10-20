@@ -1,0 +1,637 @@
+✖ new fixed opening guarantees creation then use, vines and a rainbow bridge without RNG changes (50.938902ms)
+✖ three attribute ranges use frozen geometry; chained bombs and vines settle each ID once (22.865363ms)
+✖ promotion counts only direct connections, retains tapped color/new ID; heal never promotes (58.699943ms)
+✖ mega color is stable under prism; old bomb conversion still preserves identity and echo (27.340289ms)
+✖ new rules and mega survive both save modes; version forgery and heal mega rejected (228.252014ms)
+✖ new rewards are deterministic, normal two/elite three, choose once, retry retains rules (45.460057ms)
+✔ all pre-evolution flow saves roundtrip without introducing new rules or changing offers (721.704111ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 1
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1237.109496
+
+✖ failing tests:
+
+test at evolution.test.mjs:10:1
+✖ new fixed opening guarantees creation then use, vines and a rainbow bridge without RNG changes (50.938902ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  12 !== 8
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/evolution.test.mjs:14:74)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 12,
+    expected: 8,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at evolution.test.mjs:20:1
+✖ three attribute ranges use frozen geometry; chained bombs and vines settle each ID once (22.865363ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + Set(1) {
+  - Set(11) {
+  -   10,
+      11,
+  -   13,
+  -   14,
+  -   15,
+  -   16,
+  -   19,
+  -   20,
+  -   21,
+  -   25,
+  -   27
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/evolution.test.mjs:24:66)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Set(1) { 11 },
+    expected: Set(11) { 11, 10, 13, 14, 15, 16, 19, 20, 21, 25, 27 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at evolution.test.mjs:30:1
+✖ promotion counts only direct connections, retains tapped color/new ID; heal never promotes (58.699943ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(!r.removed.some(j=>s.board[j]?.id===next&&r.initial.includes(j))||r.megas===0)
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/evolution.test.mjs:31:203)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at evolution.test.mjs:35:1
+✖ mega color is stable under prism; old bomb conversion still preserves identity and echo (27.340289ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      angle: -16.5997,
+  +   color: 'coral',
+  -   color: 'blue',
+      id: 1,
+      kind: 'mega',
+      r: 30.6033,
+      x: 30.6033,
+      y: 409.3967
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/evolution.test.mjs:36:173)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { id: 1, color: 'coral', kind: 'mega', r: 30.6033, x: 30.6033, y: 409.3967, angle: -16.5997 },
+    expected: { id: 1, color: 'blue', kind: 'mega', r: 30.6033, x: 30.6033, y: 409.3967, angle: -16.5997 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at evolution.test.mjs:38:1
+✖ new rules and mega survive both save modes; version forgery and heal mega rejected (228.252014ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   audio: {
+  +     enabled: false,
+  +     volume: 0.3
+  +   },
+  +   learned: true,
+  +   run: {
+  +     boardVersion: 1,
+  +     entry: {
+  +       gauge: 0,
+  +       hp: 180
+  +     },
+  +     history: [],
+  +     panelLesson: null,
+  +     panelSeen: [
+  +       false,
+  +       false
+  +     ],
+  +     panelVersion: 1,
+  +     phase: 'battle',
+  +     retries: [
+  +       0,
+  +       0,
+  +       0
+  +     ],
+  +     seed: 23,
+  +     stage: 0,
+  +     state: {
+  +       board: [
+  +         {
+  +           angle: -42.7974,
+  +           color: 'coral',
+  +           id: 43,
+  +           kind: 'bomb',
+  +           r: 28.4358,
+  +           x: 148.2873,
+  +           y: 411.5642
+  +         },
+  +         {
+  +           angle: 44,
+  +           color: 'blue',
+  +           id: 5,
+  +           kind: 'normal',
+  +           r: 28.2282,
+  +           x: 391.7718,
+  +           y: 411.7718
+  +         },
+  +         {
+  +           angle: -12.1814,
+  +           color: 'gold',
+  +           id: 7,
+  +           kind: 'normal',
+  +           r: 29.9076,
+  +           x: 89.5623,
+  +           y: 410.0924
+  +         },
+  +         {
+  +           angle: -21.2308,
+  +           color: 'blue',
+  +           id: 8,
+  +           kind: 'normal',
+  +           r: 30.0599,
+  +           x: 268.3407,
+  +           y: 409.9401
+  +         },
+  +         {
+  +           angle: -23.0809,
+  +           color: 'blue',
+  +           id: 12,
+  +           kind: 'normal',
+  +           r: 28.7285,
+  +           x: 117.3676,
+  +           y: 358.0194
+  +         },
+  +         {
+  +           angle: -29.6289,
+  +           color: 'coral',
+  +           id: 13,
+  +           kind: 'normal',
+  +           r: 29.6282,
+  +           x: 29.6282,
+  +           y: 410.3718
+  +         },
+  +         {
+  +           angle: 11.26,
+  +           color: 'heal',
+  +           id: 14,
+  +           kind: 'normal',
+  +           r: 30.1604,
+  +           x: 328.9604,
+  +           y: 409.8396
+  +         },
+  +         {
+  +           angle: 29.929,
+  +           color: 'gold',
+  +           id: 15,
+  +           kind: 'normal',
+  +           r: 30.2056,
+  +           x: 363.7669,
+  +           y: 360.0309
+  +         },
+  +         {
+  +           angle: -43.9398,
+  +           color: 'blue',
+  +           id: 16,
+  +           kind: 'normal',
+  +           r: 28.2669,
+  +           x: 205.4135,
+  +           y: 411.7331
+  +         },
+  +         {
+  +           angle: -14.6379,
+  +           color: 'blue',
+  +           id: 17,
+  +           kind: 'normal',
+  +           r: 30.4771,
+  +           x: 85.5965,
+  +           y: 307.5893
+  +         },
+  +         {
+  +           angle: -35.4305,
+  +           color: 'blue',
+  +           id: 18,
+  +           kind: 'normal',
+  +           r: 30.7007,
+  +           x: 237.0705,
+  +           y: 357.3793
+  +         },
+  +         {
+  +           angle: -35.9562,
+  +           color: 'gold',
+  +           id: 19,
+  +           kind: 'normal',
+  +           r: 30.2165,
+  +           x: 43.3402,
+  +           y: 351.7101
+  +         },
+  +         {
+  +           angle: -4.2438,
+  +           color: 'gold',
+  +           id: 21,
+  +           kind: 'normal',
+  +           r: 30.4136,
+  +           x: 298.5826,
+  +           y: 356.9727
+  +         },
+  +         {
+  +           angle: -14.9681,
+  +           color: 'gold',
+  +           id: 22,
+  +           kind: 'normal',
+  +           r: 29.7839,
+  +           x: 176.2445,
+  +           y: 360.0408
+  +         },
+  +         {
+  +           angle: 7.1912,
+  +           color: 'heal',
+  +           id: 23,
+  +           kind: 'normal',
+  +           r: 30.2127,
+  +           x: 266.7835,
+  +           y: 303.7472
+  +         },
+  +         {
+  +           angle: 28.7436,
+  +           color: 'heal',
+  +           id: 24,
+  +           kind: 'normal',
+  +           r: 30.3429,
+  +           x: 389.6571,
+  +           y: 304.8551
+  +         },
+  +         {
+  +           angle: 19.085,
+  +           color: 'blue',
+  +           id: 25,
+  +           kind: 'normal',
+  +           r: 29.9085,
+  +           x: 116.3986,
+  +           y: 254.1936
+  +         },
+  +         {
+  +           angle: -9.6542,
+  +           color: 'gold',
+  +           id: 26,
+  +           kind: 'normal',
+  +           r: 30.0505,
+  +           x: 146.4973,
+  +           y: 306.5072
+  +         },
+  +         {
+  +           angle: 12.4419,
+  +           color: 'heal',
+  +           id: 27,
+  +           kind: 'normal',
+  +           r: 30.7916,
+  +           x: 328.1627,
+  +           y: 302.9338
+  +         },
+  +         {
+  +           angle: -29.0695,
+  +           color: 'gold',
+  +           id: 28,
+  +           kind: 'normal',
+  +           r: 28.1382,
+  +           x: 28.1382,
+  +           y: 294.1604
+  +         },
+  +         {
+  +           angle: 27.9659,
+  +           color: 'coral',
+  +           id: 29,
+  +           kind: 'normal',
+  +           r: 29.6393,
+  +           x: 360.9868,
+  +           y: 251.7192
+  +         },
+  +         {
+  +           angle: -15.6417,
+  +           color: 'gold',
+  +           id: 30,
+  +           kind: 'normal',
+  +           r: 29.6452,
+  +           x: 206.5347,
+  +           y: 303.8582
+  +         },
+  +         {
+  +           angle: -44,
+  +           color: 'heal',
+  +           id: 31,
+  +           kind: 'normal',
+  +           r: 28.0606,
+  +           x: 28.0606,
+  +           y: 237.5628
+  +         },
+  +         {
+  +           angle: -2.4215,
+  +           color: 'blue',
+  +           id: 32,
+  +           kind: 'normal',
+  +           r: 30.3508,
+  +           x: 236.1687,
+  +           y: 251.0286
+  +         },
+  +         {
+  +           angle: 18.8178,
+  +           color: 'blue',
+  +           id: 33,
+  +           kind: 'normal',
+  +           r: 29.4872,
+  +           x: 145.0719,
+  +           y: 201.7208
+  +         },
+  +         {
+  +           angle: 17.7419,
+  +           color: 'gold',
+  +           id: 34,
+  +           kind: 'normal',
+  +           r: 29.3767,
+  +           x: 176.068,
+  +           y: 252.8412
+  +         },
+  +         {
+  +           angle: -7.9354,
+  +           color: 'heal',
+  +           id: 36,
+  +           kind: 'normal',
+  +           r: 28.2867,
+  +           x: 77.7489,
+  +           y: 210.1532
+  +         },
+  +         {
+  +           angle: -29.7189,
+  +           color: 'gold',
+  +           id: 37,
+  +           kind: 'normal',
+  +           r: 29.1018,
+  +           x: 265.7163,
+  +           y: 198.9778
+  +         },
+  +         {
+  +           angle: 37.4667,
+  +           color: 'coral',
+  +           id: 38,
+  +           kind: 'normal',
+  +           r: 30.2951,
+  +           x: 297.28,
+  +           y: 249.7656
+  +         },
+  +         {
+  +           angle: -19.9311,
+  +           color: 'blue',
+  +           id: 39,
+  +           kind: 'normal',
+  +           r: 28.2776,
+  +           x: 28.2776,
+  +           y: 180.8257
+  +         },
+  +         {
+  +           angle: -8.4785,
+  +           color: 'heal',
+  +           id: 40,
+  +           kind: 'normal',
+  +           r: 30.4466,
+  +           x: 331.3461,
+  +           y: 198.9935
+  +         },
+  +         {
+  +           angle: -3.165,
+  +           color: 'coral',
+  +           id: 41,
+  +           kind: 'normal',
+  +           r: 28.6782,
+  +           x: 203.6358,
+  +           y: 201.2954
+  +         },
+  +         {
+  +           angle: 11.8284,
+  +           color: 'blue',
+  +           id: 42,
+  +           kind: 'normal',
+  +           r: 28.313,
+  +           x: 153.4333,
+  +           y: 144.0176
+  +         },
+  +         {
+  +           angle: -3.7428,
+  +           color: 'gold',
+  +           id: 44,
+  +           kind: 'normal',
+  +           r: 30.541,
+  +           x: 94.9396,
+  +           y: 153.4754
+  +         },
+  +         {
+  +           angle: 22.1317,
+  +           color: 'blue',
+  +           id: 45,
+  +           kind: 'normal',
+  +           r: 29.5179,
+  +           x: 390.4821,
+  +           y: 143.6047
+  +         },
+  +         {
+  +           angle: 43.1906,
+  +           color: 'heal',
+  +           id: 46,
+  +           kind: 'normal',
+  +           r: 28.091,
+  +           x: 210.2348,
+  +           y: 144.5083
+  +         },
+  +         {
+  +           angle: 44,
+  +           color: 'coral',
+  +           id: 47,
+  +           kind: 'normal',
+  +           r: 28.4101,
+  +           x: 391.5899,
+  +           y: 201.922
+  +         },
+  +         {
+  +           angle: 7.929,
+  +           color: 'coral',
+  +           id: 48,
+  +           kind: 'normal',
+  +           r: 30.9974,
+  +           x: 269.4278,
+  +           y: 138.5926
+  +         },
+  +         {
+  +           angle: -17.4878,
+  +           color: 'gold',
+  +           id: 49,
+  +           kind: 'normal',
+  +           r: 28.8135,
+  +           x: 42.3599,
+  +           y: 125.0863
+  +         },
+  +         {
+  +           angle: -44,
+  +           color: 'coral',
+  +           id: 50,
+  +           kind: 'normal',
+  +           r: 30.1518,
+  +           x: 30.1518,
+  +           y: 66.9898
+  +         },
+  +         {
+  +           angle: 41.2287,
+  +           color: 'blue',
+  +           id: 51,
+  +           kind: 'normal',
+  +           r: 29.9952,
+  +           x: 330.8188,
+  +           y: 138.1489
+  +         },
+  +         {
+  +           angle: 37.3428,
+  +           color: 'blue',
+  +           id: 52,
+  +           kind: 'normal',
+  +           r: 28.2257,
+  +           x: 391.7743,
+  +           y: 85.4754
+  +         }
+  +       ],
+  +       boardVersion: 1,
+  +       boost: false,
+  +       bossHP: 620,
+  +       buffs: {
+  +         ignition: false,
+  +         prism: false,
+  +         shield: 0
+  +       },
+  +       damage: 50,
+  +       echo: [
+  +         7,
+  +         12,
+  +         17,
+  +         26,
+  +         22,
+  +         16,
+  +         18,
+  +         8
+  +       ],
+  +       echoCount: 0,
+  +       gauge: 10,
+  +       healing: 0,
+  +       hp: 180,
+  +       maxChain: 10,
+  +       nextID: 53,
+  +       panelRng: 2654435758,
+  +       ready: [
+  +         1,
+  +         1,
+  +         1
+  +       ],
+  +       rng: 2412416060,
+  +       rules: {
+  +         attack: 5,
+  +         attacks: [
+  +           14,
+  +           20
+  +         ],
+  +         boardVersion: 1,
+  +         bossHP: 620,
+  +         charge: 24,
+  +         cols: 6,
+  +         cooldown: 3,
+  +         echoWard: false,
+  +         gauge: 55,
+  +         heal: 6,
+  +         hp: 180,
+  +         panelStage: 0,
+  +         rows: 7,
+  +         seed: 20261019
+  +       },
+  +       seed: 23,
+  +       status: 'playing',
+  +       taps: 2,
+  +       turn: 1,
+  +       wardBroken: false
+  +     },
+  +     tutorial: 'done',
+  +     tutorialIDs: [],
+  +     upgrades: [],
+  +     version: 1
+  +   },
+  +   version: 1
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/evolution.test.mjs:42:47)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { version: 1, run: { version: 1, boardVersion: 1, panelVersion: 1, panelLesson: null, panelSeen: [Array], seed: 23, stage: 0, phase: 'battle', upgrades: [], history: [], retries: [Array], entry: [Object], tutorialIDs: [], tutorial: 'done', state: [Object] }, learned: true, audio: { enabled: false, volume: 0.3 } },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at evolution.test.mjs:45:1
+✖ new rewards are deterministic, normal two/elite three, choose once, retry retains rules (45.460057ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(rewards(e).every(x=>['lens','bell','petal'].includes(x)))
+  
+      at TestContext.<anonymous> (file:///workspace/claude-workspace/agent-harness/games/resonance-circuit/evolution.test.mjs:46:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
