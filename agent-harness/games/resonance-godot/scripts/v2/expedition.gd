@@ -14,6 +14,9 @@ var generation := 0
 var save_error := ""
 var _completed_checkpoint: Dictionary = {}
 var _last_good_record: Dictionary = {}
+# A completed resume may pause on a choice before its next owner exists.
+var _resume_combat_floor := 0
+var _resume_board_floor := 0
 
 func _ready() -> void:
     # Do not even probe a real slot when the command line disables saving.
@@ -53,7 +56,11 @@ func save_checkpoint(path: String = Config.SAVE_PATH) -> Error:
         _set_save_error("저장하지 못했어요. 마지막 정상 저장을 보존했습니다. (%d)" % error)
         return error
     _last_good_record = record.duplicate(true)
+    var previous_error := save_error
     save_error = ""
+    if not previous_error.is_empty() and is_instance_valid(battle) \
+        and battle.view.get_node("PreviewLine").text == previous_error:
+        battle.view.show_plan(battle.snapshot,{})
     return OK
 
 func resume_checkpoint(value: Dictionary) -> bool:
@@ -67,11 +74,16 @@ func resume_checkpoint(value: Dictionary) -> bool:
     reduced = record.reduced
     save_error = ""
     _last_good_record = record.duplicate(true)
+    _resume_combat_floor = maxi(_resume_combat_floor,int(record.battle.revision))
+    _resume_board_floor = maxi(_resume_board_floor,int(record.board.snapshot.version))
+    if is_instance_valid(battle):
+        _resume_combat_floor = maxi(_resume_combat_floor,int(battle.state.get("revision",0)))
+        _resume_board_floor = maxi(_resume_board_floor,int(battle.board.version))
     var checkpoint := {"state":record.battle.duplicate(true),"board":record.board.duplicate(true),"reduced":record.reduced}
-    if record.battle.status == "active" and is_instance_valid(battle):
-        checkpoint.state.revision = maxi(int(checkpoint.state.revision),int(battle.state.get("revision",0)))
-        checkpoint.board.snapshot.version = maxi(int(checkpoint.board.snapshot.version),int(battle.board.version))
     _completed_checkpoint = checkpoint.duplicate(true) if record.battle.status != "active" else {}
+    if record.battle.status == "active":
+        checkpoint.state.revision = _resume_combat_floor
+        checkpoint.board.snapshot.version = _resume_board_floor
     _show_stage(checkpoint if record.battle.status == "active" else {})
     return true
 
@@ -111,6 +123,8 @@ func new_run(seed_value: int) -> void:
     run = RunV2.fresh(seed_value)
     _completed_checkpoint = {}
     _last_good_record = {}
+    _resume_combat_floor = 0
+    _resume_board_floor = 0
     save_error = ""
     _show_stage()
 
@@ -138,8 +152,17 @@ func _show_stage(restored: Dictionary = {}) -> void:
         battle.finished.connect(_on_battle_finished.bind(battle,generation,str(run.stage)))
         battle.checkpoint_available.connect(_on_checkpoint_available.bind(battle,generation,str(run.stage)))
         add_child(battle)
-        if restored.is_empty(): battle.start_battle(context)
-        else: battle.restore_checkpoint(restored)
+        if restored.is_empty():
+            # A completed boundary resumes the next fresh context. Carry only
+            # version floors; keep its new board, RNG, IDs and combat resources.
+            battle.board.version = _resume_board_floor
+            battle.start_battle(context)
+            battle.state.revision = _resume_combat_floor+1
+        else:
+            battle.restore_checkpoint(restored)
+        _resume_combat_floor = 0
+        _resume_board_floor = 0
+        if not save_error.is_empty(): _set_save_error(save_error)
     else:
         _show_choices()
 

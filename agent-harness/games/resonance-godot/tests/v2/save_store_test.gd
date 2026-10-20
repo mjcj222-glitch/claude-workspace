@@ -6,6 +6,14 @@ const Skills = preload("res://scripts/v2/skill_rules.gd")
 const RunV2 = preload("res://scripts/v2/run_rules.gd")
 const BattleScene = preload("res://scenes/v2/battle.tscn")
 const ExpeditionScene = preload("res://scenes/v2/expedition.tscn")
+class FixtureExpedition:
+    extends "res://scripts/v2/expedition.gd"
+    var fixture_path := ""
+    func _save_completed_boundary() -> void:
+        # Only reroute the destination; exercise real validation/atomic I/O,
+        # error reporting, last-good retention and production choice flow.
+        save_checkpoint(fixture_path)
+
 var Store: GDScript
 var checks := 0
 var failures := 0
@@ -70,6 +78,13 @@ func _run() -> void:
     board_fixture = owner.export_checkpoint().board
     var initial := record(run,owner.state)
     check(not roundtrip(initial).is_empty(),"strict v2 full checkpoint roundtrip")
+    if "--review-fixes-only" in OS.get_cmdline_user_args():
+        await reviewed_resume_floors(initial)
+        await reviewed_transition_errors()
+        owner.queue_free()
+        await process_frame
+        finish()
+        return
     check(typeof(roundtrip(initial).run.seed) == TYPE_INT,"JSON integral values normalized")
     var large_seed := initial.duplicate(true)
     large_seed.run = RunV2.fresh(9223372036854775807)
@@ -82,6 +97,8 @@ func _run() -> void:
     await expedition_boundaries(initial)
     await live_refund_and_terminal()
     await live_recruit_boundaries()
+    await reviewed_resume_floors(initial)
+    await reviewed_transition_errors()
     owner.queue_free()
     await process_frame
     finish()
@@ -415,6 +432,96 @@ func live_recruit_boundaries() -> void:
         check(expedition.battle.state.actions_left == 2 and expedition.run.hero_limit == expected_limit,"resumed boss action no repeated recruitment reward")
     expedition.queue_free()
     await process_frame
+
+
+func review_boundary(recruit: bool, chosen: bool) -> Dictionary:
+    var run := RunV2.fresh(41)
+    var ended := terminal(run)
+    run = RunV2.complete_battle(run,ended).state
+    if recruit:
+        run = RunV2.choose_route(run,"risk").state
+        ended = terminal(run)
+        run = RunV2.complete_battle(run,ended).state
+    if chosen:
+        run = RunV2.choose_recruit(run,"bomber").state if recruit else RunV2.choose_route(run,"safe").state
+    return record(run,ended)
+
+func reviewed_resume_floors(initial: Dictionary) -> void:
+    var expedition := ExpeditionScene.instantiate()
+    root.add_child(expedition)
+    for recruit in [false,true]:
+        for chosen in [false,true]:
+            for saved_greater in [false,true]:
+                var label := "%s/%s/%s" % ["recruit" if recruit else "route","chosen" if chosen else "screen","saved" if saved_greater else "current"]
+                check(expedition.resume_checkpoint(initial),label+" outgoing active fixture")
+                var current_combat := 10 if saved_greater else 100
+                var current_board := 20 if saved_greater else 120
+                var saved_combat := 200 if saved_greater else 5
+                var saved_board := 220 if saved_greater else 7
+                expedition.battle.state.revision = current_combat
+                expedition.battle.board.version = current_board
+                var value := review_boundary(recruit,chosen)
+                value.battle.revision = saved_combat
+                value.board.snapshot.version = saved_board
+                check(not roundtrip(value).is_empty(),label+" completed boundary valid")
+                var expected_run: Dictionary = value.run.duplicate(true)
+                if not chosen:
+                    expected_run = RunV2.choose_recruit(expected_run,"bomber").state if recruit else RunV2.choose_route(expected_run,"safe").state
+                check(expedition.resume_checkpoint(value),label+" resume accepted")
+                if not chosen:
+                    check(expedition.battle == null,label+" retains floor through choice screen")
+                    expedition._choose("bomber" if recruit else "safe",int(expedition.run.revision),str(expedition.run.stage),expedition.generation)
+                var owner = expedition.battle
+                check(owner.state.revision == maxi(current_combat,saved_combat)+1,label+" combat max floor plus one")
+                check(owner.board.version == maxi(current_board,saved_board)+1,label+" board max floor plus one")
+                var context := RunV2.battle_context(expected_run)
+                check(owner.state.enemy_id == context.enemy_id and owner.state.hp == context.hp and owner.state.energy == context.energy,label+" fresh next enemy/resources")
+                check(owner.state.party == context.party and owner.state.hero_limit == context.hero_limit,label+" chosen party/reward applied once")
+                check(owner.state.turn == 1 and owner.state.actions_left == Config.ACTIONS_PER_TURN and owner.state.pending_damage == 0 and owner.state.pending_heal == 0 and not owner.state.team_skill_used and not owner.state.bomb_buff.active,label+" fresh next combat")
+                check(str(owner.board.rng.seed) == str(context.seed) and owner.board.next_id == Config.PIECE_COUNT+1 and owner.board.pieces.size() == Config.PIECE_COUNT,label+" fresh next IDs and RNG seed")
+                check(owner.board.capture().pieces != value.board.snapshot.pieces and owner.board.pieces.all(func(piece): return piece.bomb_tier == 0),label+" no completed layout or bombs restored")
+                var before_run: Dictionary = expedition.run.duplicate(true)
+                expedition._choose("bomber" if recruit else "safe",int(value.run.revision),"recruit_choice" if recruit else "route_choice",expedition.generation)
+                check(expedition.run == before_run,label+" old choice cannot replay")
+    # Check one resulting next owner through its actual stable checkpoint and
+    # next legal action; the cases above isolate floor and fresh-context logic.
+    check(await wait_ready(expedition.battle),"floor-preserving next board physically settles")
+    var plan := next_plan(expedition.battle)
+    expedition.battle._show_preview(plan,-2)
+    check(expedition.battle.commit_preview(plan),"floor-preserving next owner accepts actual clear")
+    check(await wait_ready(expedition.battle),"floor-preserving actual refill settles")
+    check(expedition.battle.state.actions_left == 2,"floor-preserving next action retains turn semantics")
+    expedition.new_run(41)
+    check(expedition.battle.state.revision == 1 and expedition.battle.board.version == 1,"explicit new run clears deferred resume floors")
+    expedition.queue_free()
+    await process_frame
+
+func reviewed_transition_errors() -> void:
+    for recruit in [false,true]:
+        var expedition := FixtureExpedition.new()
+        expedition.fixture_path = slot.get_base_dir().path_join("fixture-transition-%s.json" % ("recruit" if recruit else "route"))
+        root.add_child(expedition)
+        var value := review_boundary(recruit,false)
+        check(expedition.resume_checkpoint(value),"failure fixture resumes choice screen")
+        check(expedition.save_checkpoint(expedition.fixture_path) == OK,"failure fixture writes last good explicit slot")
+        var good_bytes := FileAccess.get_file_as_bytes(expedition.fixture_path)
+        var last_good: Dictionary = expedition.last_good_checkpoint()
+        DirAccess.make_dir_absolute(expedition.fixture_path+".tmp")
+        expedition._choose("bomber" if recruit else "safe",int(expedition.run.revision),str(expedition.run.stage),expedition.generation)
+        check(expedition.battle.phase == "SETTLING" and expedition.battle.board.refill_phase == "initial","failed choice save proceeds into fresh initial fall")
+        check(not expedition.save_error.is_empty(),"actual fixture write failure retained")
+        var message: String = expedition.save_error
+        check(expedition.battle.view.get_node("PreviewLine").text == message,"choice write failure visible on current falling Battle")
+        await process_frame
+        check(expedition.battle.view.get_node("PreviewLine").is_visible_in_tree() and expedition.battle.view.get_node("PreviewLine").text == message,"choice write failure survives retired panel and visible frame")
+        check(FileAccess.get_file_as_bytes(expedition.fixture_path) == good_bytes and expedition.last_good_checkpoint() == last_good,"failed choice write preserves bytes and last-good API")
+        DirAccess.remove_absolute(expedition.fixture_path+".tmp")
+        check(await wait_ready(expedition.battle),"failure transition next board settles normally")
+        check(expedition.save_checkpoint(expedition.fixture_path) == OK and expedition.save_error.is_empty(),"normal stable retry clears retained error")
+        check(expedition.battle.view.get_node("PreviewLine").text != message,"successful retry clears stale visible save error")
+        check(Store.read_checkpoint(expedition.fixture_path).battle.status == "active","retry writes new stable active board")
+        expedition.queue_free()
+        await process_frame
 
 func finish() -> void:
     print(JSON.stringify({"suite":"v2 atomic saves and actual resume","checks":checks,"failures":failures}))
