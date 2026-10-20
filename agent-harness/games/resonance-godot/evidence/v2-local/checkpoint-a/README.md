@@ -1,5 +1,10 @@
-# Interim v2 Checkpoint A
+# 밀도 개선 중간 캡처
 
-Actual Godot captures from the local v2 presentation fixture. These files are shared for comparison while independent visual review continues. They show the seeded physical board, selection outlines, blue bomb tiers, clipping and the hero cutin. Preview fixtures display actual target counts; combat integration and the complete expedition are not finished here.
+현재 [기본 화면](base-selection.png)과 [실제 제거·굴림·리필 영상](checkpoint-a.mp4)은 새 물리·화면 소스의 검증된 캡처다. **최종 독립 시각 검토는 진행 중이며 전투·원정 전체 완료본은 아니다.**
 
-The MP4 is 9.25 seconds, 720×1280 at60fps. File hashes and the capture source commit are in capture-manifest-interim.json. These captures do not establish native phone performance, final input acceptance or playtest fun.
+- 기본 화면: 실제 시드121 물리 보드, 따뜻한 빨강과 분홍 하트 구분.
+- 영상: 실제 시드41 낙하→접촉7개 예고→제거→주변 굴림→한 번의 리필→42개 지지·정착. H.264720×1280/30fps/6.1초.
+- 실제 촬영 리필 물리 시간2.275시뮬레이션초. 녹화 비용·영상 명목 시간은 실제 입력 잠금이나 기기 성능 측정이 아니다.
+- [이번 두 파일의 해시·출처](capture-manifest-density-interim.json).
+
+나머지 폭탄 갤러리·capture-manifest-interim.json은 과거c7b7fd0의 중간 자료다. 갤러리는 고정 배치 렌더링 시험 장면이며 물리 시드 보드가 아니다. 새 통합 갤러리·컷인·최종 검토 결과는 후속 커밋에서 제공한다. 게임 캡처 소스는03728c7b9e8cfddad326e4cdb330670f8be4d0a0이며, 이 전달 커밋은 미디어와 설명만 포함한다.
