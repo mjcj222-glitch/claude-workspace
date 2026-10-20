@@ -1,2 +1,6 @@
 .godot/
 *.tmp
+evidence/local-integration/*.avi
+evidence/local-integration/os-request.json
+evidence/local-integration/os-ack.json
+LOCAL-INTEGRATION-PLAN.md

@@ -1,5 +1,41 @@
 # 실제 검증 체크포인트
 
+## 로컬 통합 후 검증 · 2026-10-20
+
+기준 커밋 `74a92ac`의 후속 아트·효과 통합을 이번 환경에서 새로 검증했다.
+상세 범위와 참고 이미지 대조 한계는 [LOCAL-INTEGRATION.md](LOCAL-INTEGRATION.md).
+
+| 검사 | 결과 | 새 근거 |
+|---|---|---|
+| 규칙·접촉 기하 | 121 checks, 실패0 | `evidence/local-integration/rules_test-final.log` |
+| 물리·입력·저장 | 2,603 checks, 실패0, 안정 보드20 | `battle_test-final.log` |
+| 동일 초기 스냅샷 두 선택 정책 | largest 5턴 승리, forecast 8턴 승리; 두 정책 HP180 | `full_battle-final.log` |
+| 패배 fixture·재시작 | 모두 통과 | `full_battle-final.log` |
+| 캐릭터 발·크기·포즈·효과·움직임 줄이기·배경·잔여 연결선 | 24 checks, 실패0 | `presentation_test-final.log` |
+| 360×640, 390×844, 720×1280, 1280×900 합성 터치 | 각6 checks, 실패0; 실제 제거 ID=예고 ID | `window-input-*-final.log` |
+| 실제 X11 마우스·실행 중 창 크기 변경 | 총32 checks, 실패0; 네 크기 스킬·예고·제거·42개 리필·재시작 | `os-input-matrix.log` |
+| 저장소 harness | check 성공, unittest 5/5 | 실행 로그 및 최종 로컬 보고 |
+
+이전 세 크기의 입력 미검증 원인은 **검사 도구가 논리 viewport 좌표를
+창 좌표로 바로 보낸 것**이었다. 360×640에서는 창 밖 이벤트가 버려졌다.
+`Viewport.get_final_transform()`으로 축소율과 letterbox 오프셋을 적용하니
+전 크기에서 통과했다. 실제 앱의 좌표를 이중 변환하거나 물리 부모를
+확대·축소하지 않았다. GUI 검사의 첫 OS 클릭 실패는 창 관리자가 없는
+dummy X11 화면의 초점 때문이어서 검사 driver에서 대상 창에 초점을 주었다.
+중간 ACK 파일 읽기 경쟁도 원자적 교체로 고쳤다. 두 실패 로그는 보존했다.
+
+최대 폴리곤 교차 면적은 8.794921875 world-unit²,
+최대 안정화는 약4.008초(시뮬레이션 시간)다. 외형·충돌·터치의 외곽
+폴리곤과 거리1.0의 접촉 기준은 그대로다. 베벨과 질감은 내부에 그린다.
+소거 압축·팽창은 입력이 잠긴 RESOLVING 동안의 그리기 변환이며
+RigidBody2D 및 충돌체 transform은 바꾸지 않는다.
+
+**미확인:** Android/APK, 휴대폰·터치 실기기, 실시간60fps, 사람의 재미·최종
+아트 검수. 참고 이미지 두 장은 새 미허용 호스트로 준비되어 실제
+다운로드·나란히 대조하지 못했다. 새 주인공 PNG 세 장은 실제로 수신·통합했다.
+
+## 이전 검증 기록 · 74a92ac
+
 환경: Godot 4.6.3, Linux, 120Hz 2D 물리. 검사 명령과 종료 코드는 `evidence/*.log`에 기록했다. 최초 harness check 종료0, Python unittest 5/5 종료0도 보존했다.
 
 | 최종 검사 | 결과 | 증거 |

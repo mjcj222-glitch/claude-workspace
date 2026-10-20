@@ -1,6 +1,6 @@
 # 잔향 회로 · Godot 전투 프로토타입
 
-**현재 상태: 플레이 가능한 Godot 한 전투 프로토타입, Draft PR. 캐릭터 파일 전송 차단 해결을 우선하며 아트 통합은 미완료다.** 웹판은 보존했다. APK나 최종 게임이 아니다.
+**현재 상태: 주인공 3포즈·Kenney 효과·입체 기물을 통합하고 검증한 한 전투 프로토타입.** PR #3의 `74a92ac`에 이어 아트와 창 크기별 입력 검증을 보완했다. 웹판과 main은 보존했다. APK나 최종 게임이 아니다.
 
 Godot 4.6.3에서 `project.godot`을 열고 F6/F5로 실행하거나 다음 명령을 사용한다.
 
@@ -13,8 +13,9 @@ godot --path agent-harness/games/resonance-godot
 저장은 Godot `user://resonance_godot_v1.json`에 별도로 기록한다. 웹 저장 호환을 제공하지 않으며 `-- --no-save`로 저장 없이 실행할 수 있다.
 
 - [현재 검증 및 남은 한계](VALIDATION.md)
-- [전송 차단 진단과 최소 다음 작업](TRANSFER-DIAGNOSIS.md)
-- [실제 네이티브 첫 턴 영상](evidence/godot-battle.mp4)
+- [로컬 통합 결과와 남은 제한](LOCAL-INTEGRATION.md)
+- [새 실제 네이티브 첫 턴 영상](evidence/local-integration/local-play.mp4)
+- [이전 전송 차단 진단](TRANSFER-DIAGNOSIS.md)
 
 - [최소 전투 설계](DESIGN.md)
 - [캐릭터/효과 제작 사양](ART-CONTRACT.md)
@@ -28,6 +29,13 @@ godot --headless --script tools/environment_probe.gd
 godot --headless --fixed-fps 120 --script tests/rules_test.gd -- --no-save
 godot --headless --fixed-fps 120 --script tests/battle_test.gd -- --no-save
 godot --headless --fixed-fps 120 --script tests/full_battle.gd -- --no-save
+godot --headless --fixed-fps 120 --script tests/presentation_test.gd -- --no-save
 ```
 
 쓰기가 제한된 환경에서는 Godot의 프로세스별 XDG 데이터/캐시 경로를 쓰기 가능한 임시 폴더로 지정했다. 계정·보안·네트워크 설정은 변경하지 않았다. 추가 결제·main 병합·배포는 하지 않는다.
+
+`tools/native_input.gd`는 검사 도구의 논리 좌표를 실제 창 좌표로 변환한다.
+`tests/window_input_test.gd`는 네 창 크기의 합성 터치를 검증했고,
+`tools/run_os_input_probe.py`는 인증된 로컬 X11 화면에서 XTest 마우스로
+스킬·예고·제거·리필·재시작과 실행 중 창 크기 변경을 검증했다.
+이 자동 OS 입력은 사람의 플레이 검수나 휴대폰 터치 검증을 대신하지 않는다.

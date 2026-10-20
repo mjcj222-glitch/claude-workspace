@@ -2,7 +2,7 @@ class_name PieceGeometry
 extends RefCounted
 
 const CONTACT_EPS := 1.0
-const COLORS := [Color("f2778e"), Color("f3cc58"), Color("61c9e0"), Color("83c9a0")]
+const COLORS := [Color("ee426c"), Color("ffc735"), Color("24bce5"), Color("38c88c")]
 const NAMES := ["불꽃", "별빛", "물방울", "회복"]
 
 static func polygon(kind: int, size_factor: float = 1.0) -> PackedVector2Array:

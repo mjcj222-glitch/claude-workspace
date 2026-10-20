@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+Movie Maker mode enabled, recording movie in 720×1280 @ 60 FPS...
+showcase first chain 12
+{"actions":[{"event":"skill","ids":[1,2,7,9,10,13,15,22,27,28,29,33,36,37,39],"skill":0,"taps_after":3,"taps_before":3,"turn":1},{"chain":12,"damage":72,"event":"tap","healing":0,"hp":180,"id":1,"mega":true,"preview_ids":[1,2,7,8,13,14,15,20,9,4,10,17],"removed_ids":[1,2,7,8,13,14,15,20,9,4,10,17],"result":"playing","turn":1},{"chain":1,"damage":15,"event":"tap","healing":0,"hp":180,"id":43,"mega":false,"preview_ids":[43,19,25],"removed_ids":[43,19,25],"result":"playing","turn":1},{"event":"skill","ids":[3,5,6,11,16,18],"skill":2,"taps_after":1,"taps_before":1,"turn":1},{"chain":6,"damage":0,"event":"tap","healing":36,"hp":180,"id":5,"mega":false,"preview_ids":[5,6,11,12,18,30],"removed_ids":[5,6,11,12,18,30],"result":"playing","turn":2}],"count":42,"showcase":"actual native rendered inputs, first turn only","status":"playing","turn":2}
+--------------------------------------------------------------------------------
+Done recording movie at path: /workspace/claude-workspace/agent-harness/games/resonance-godot/evidence/local-integration/local-play.avi
+1301 frames at 60 FPS (movie length: 00:00:21:41), recorded in 00:01:05 (32% of real-time speed).
+CPU render time: 11.01 seconds (average: 8.46 ms/frame)
+GPU render time: 24.79 seconds (average: 19.05 ms/frame)
+Encoding time: 16.55 seconds (average: 12.72 ms/frame)
+--------------------------------------------------------------------------------

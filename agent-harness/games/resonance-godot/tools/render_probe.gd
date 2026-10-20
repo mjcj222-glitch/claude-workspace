@@ -1,5 +1,6 @@
 extends SceneTree
 const Rules = preload("res://scripts/combat_rules.gd")
+const NativeInput = preload("res://tools/native_input.gd")
 var battle: Node
 var label := "final"
 func _initialize() -> void:
@@ -32,14 +33,18 @@ func run() -> void:
             selected = int(item.id)
     var piece: Node = battle.board.by_id(selected)
     var touch := InputEventScreenTouch.new()
-    touch.position = piece.global_position
+    touch.position = NativeInput.window_point(root,piece.global_position)
     touch.index = 0
     touch.pressed = true
     Input.parse_input_event(touch)
     for i in range(40): await process_frame
+    if battle.press_id != selected or battle.preview_plan.get("removed",[]) != best.removed:
+        print("INPUT_PREVIEW_FAILED")
+        quit(1)
+        return
     await capture("native-first-preview.png")
     touch = InputEventScreenTouch.new()
-    touch.position = piece.global_position
+    touch.position = NativeInput.window_point(root,piece.global_position)
     touch.index = 0
     touch.pressed = false
     Input.parse_input_event(touch)
@@ -50,6 +55,10 @@ func run() -> void:
         quit(1)
         return
     await capture("native-first-refill.png")
+    if battle.action_log.size() != 1 or battle.board.pieces.size() != 42:
+        print("INPUT_COMMIT_FAILED")
+        quit(1)
+        return
     print(JSON.stringify({"phase":battle.phase,"count":battle.board.pieces.size(),"actions":battle.action_log,"skill_buttons":[battle.skills[0].text,battle.skills[1].text,battle.skills[2].text]}))
     for i in range(30): await process_frame
     quit(0)

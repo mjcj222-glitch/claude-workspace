@@ -1,6 +1,14 @@
 extends SceneTree
 const Rules = preload("res://scripts/combat_rules.gd")
+const NativeInput = preload("res://tools/native_input.gd")
 var battle: Node
+var choice_number := 0
+func capture(name_value: String) -> void:
+    await RenderingServer.frame_post_draw
+    root.get_texture().get_image().save_png("res://evidence/local-integration/"+name_value+".png")
+func capture_pose(pose_value: String) -> void:
+    if pose_value in ["windup","strike","recover"]:
+        await capture("hero-"+pose_value)
 func _initialize() -> void: call_deferred("run")
 func pause_frames(count: int) -> void:
     for i in range(count): await process_frame
@@ -13,33 +21,42 @@ func wait_ready() -> bool:
 func click_button(button: Button) -> void:
     var event := InputEventMouseButton.new()
     event.button_index = MOUSE_BUTTON_LEFT
-    event.position = button.get_global_rect().get_center()
+    event.position = NativeInput.window_point(root,button.get_global_rect().get_center())
     event.pressed = true
     Input.parse_input_event(event)
     await process_frame
     event = InputEventMouseButton.new()
     event.button_index = MOUSE_BUTTON_LEFT
-    event.position = button.get_global_rect().get_center()
+    event.position = NativeInput.window_point(root,button.get_global_rect().get_center())
     event.pressed = false
     Input.parse_input_event(event)
 func choose(id_value: int) -> bool:
     var point: Vector2 = battle.board.by_id(id_value).global_position
     var touch := InputEventScreenTouch.new()
-    touch.position = point
+    touch.position = NativeInput.window_point(root,point)
     touch.index = 0
     touch.pressed = true
     Input.parse_input_event(touch)
     await pause_frames(70)
+    if battle.press_id != id_value: return false
+    await capture("choice-"+str(choice_number)+"-preview")
     touch = InputEventScreenTouch.new()
-    touch.position = point
+    touch.position = NativeInput.window_point(root,point)
     touch.index = 0
     touch.pressed = false
     Input.parse_input_event(touch)
-    return await wait_ready()
+    await pause_frames(6)
+    await capture("choice-"+str(choice_number)+"-pop")
+    var ready: bool = await wait_ready()
+    await capture("choice-"+str(choice_number)+"-refill")
+    choice_number += 1
+    return ready
 func run() -> void:
     battle = load("res://scenes/battle.tscn").instantiate()
     root.add_child(battle)
+    battle.heroine.pose_changed.connect(capture_pose)
     if not await wait_ready(): quit(1);return
+    await capture("battle-idle")
     await pause_frames(60)
     await click_button(battle.skills[0])
     if not await wait_ready(): quit(1);return

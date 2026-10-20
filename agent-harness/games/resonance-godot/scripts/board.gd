@@ -44,6 +44,7 @@ func spawn(color: int, location: Vector2, special: String = "normal", size_value
     var assigned := id_value if id_value else next_id
     next_id = maxi(next_id, assigned+1)
     piece.configure(assigned, color, size_value if size_value else rng.randf_range(0.96,1.04), special)
+    piece.reduced = reduce_motion
     piece.position = location
     piece.rotation = angle if is_finite(angle) else rng.randf_range(-PI,PI)
     add_child(piece)
