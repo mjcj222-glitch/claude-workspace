@@ -71,13 +71,13 @@ func _draw() -> void:
     # Every hull of a surface type uses this same large central motif.
     var ink := Color("fff9ee")
     if bomb_tier > 0:
-        draw_circle(Vector2.ZERO, 20, Color("243049"))
-        draw_arc(Vector2.ZERO, 20, 0, TAU, 32, ink, 2.0, true)
-        draw_circle(Vector2(0, -4), 9, ink)
-        draw_line(Vector2(3, -12), Vector2(7, -17), Color("ffc735"), 3, true)
+        # Bomb decoration surrounds the shared type motif rather than replacing it.
+        draw_circle(Vector2.ZERO, 21, Color("243049"))
+        draw_arc(Vector2.ZERO, 22, 0, TAU, 32, ink, 2.0, true)
+        draw_line(Vector2(9, -21), Vector2(12, -24), Color("ffc735"), 3, true)
         for i in range(bomb_tier):
-            draw_circle(Vector2((i - (bomb_tier - 1) * 0.5) * 7, 12), 2.0, ink)
-    elif match_type == "red":
+            draw_circle(Vector2((i - (bomb_tier - 1) * 0.5) * 7, 17), 2.0, ink)
+    if match_type == "red":
         draw_colored_polygon(PackedVector2Array([Vector2(0, -19), Vector2(12, -2), Vector2(10, 10),
             Vector2(0, 17), Vector2(-11, 10), Vector2(-13, 0), Vector2(-5, -10), Vector2(-4, 2)]), ink)
     elif match_type == "yellow":
