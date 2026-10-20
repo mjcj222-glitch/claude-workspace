@@ -1,0 +1,68 @@
+{
+  "aac24dade37c69491": {
+    "path": "assets/rune-coral.svg",
+    "sha256": "ac24dade37c69491c801defd0570815035185121ce52f728fdbfb4a9595676ce",
+    "bytes": 863,
+    "mime": "image/svg+xml"
+  },
+  "ad62a419832651c9e": {
+    "path": "assets/rune-blue.svg",
+    "sha256": "d62a419832651c9efeb9bb4f7ad3f144006a9daa0461e3bc5de47fc5cad342ba",
+    "bytes": 900,
+    "mime": "image/svg+xml"
+  },
+  "ac772ae40a4af84ac": {
+    "path": "assets/rune-gold.svg",
+    "sha256": "c772ae40a4af84ace93f35cbf766110f5d097bd1f245d04cdfc3e42b718eb162",
+    "bytes": 860,
+    "mime": "image/svg+xml"
+  },
+  "a59101a71a54b035f": {
+    "path": "assets/rune-heal.svg",
+    "sha256": "59101a71a54b035f81086e7dd3c44f67cb36f5876f078966e4ba328025cd4c37",
+    "bytes": 903,
+    "mime": "image/svg+xml"
+  },
+  "a069241d0806ebd4c": {
+    "path": "assets/storybook-battle.webp",
+    "sha256": "069241d0806ebd4cff3e4b0751ee3c7b12a1250e8d647c50c961ad54bc3e4843",
+    "bytes": 2582008,
+    "mime": "image/webp"
+  },
+  "a2b185439928ab1e5": {
+    "path": "assets/portraits-cute.webp",
+    "sha256": "2b185439928ab1e53f268a74a21387ec765fbd01a67774e411f3092fdd2c88ac",
+    "bytes": 2396152,
+    "mime": "image/webp"
+  },
+  "a71a5c9fadc30a2be": {
+    "path": "assets/encounter-mob.webp",
+    "sha256": "71a5c9fadc30a2be4695e0a90f40b0d6f90acb13fb0556e1ac3eaf0bd89f566f",
+    "bytes": 2578480,
+    "mime": "image/webp"
+  },
+  "adbe8684af53e569c": {
+    "path": "assets/encounter-midboss.webp",
+    "sha256": "dbe8684af53e569c3e77973d08bff1ad8e102243cfc222abcf32389f52362622",
+    "bytes": 2856008,
+    "mime": "image/webp"
+  },
+  "af1180d718d24b957": {
+    "path": "assets/encounter-boss.webp",
+    "sha256": "f1180d718d24b957a35e92abbccadb06fb4e72dc1d8d96cc47dc798847419d69",
+    "bytes": 2771188,
+    "mime": "image/webp"
+  },
+  "a698000c51d2f8510": {
+    "path": "assets/encounter-event.webp",
+    "sha256": "698000c51d2f8510cd7cf7afb9cbf0cc5cb5beff181766aab697ccb11f2562b0",
+    "bytes": 2643154,
+    "mime": "image/webp"
+  },
+  "a4a113f424a349508": {
+    "path": "assets/encounter-rest.webp",
+    "sha256": "4a113f424a349508a9715f0ac8f38116288725856cd33f3fbc4a3cf118e8a24c",
+    "bytes": 2425578,
+    "mime": "image/webp"
+  }
+}

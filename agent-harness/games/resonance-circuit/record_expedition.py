@@ -27,7 +27,7 @@ with sync_playwright() as p:
   e=read(page);phase=e['phase']
   if phase in ['complete','defeat']:scene('탐험 결과');page.wait_for_timeout(1000);break
   if phase=='map':
-   scene('경로 선택');page.wait_for_timeout(400);index=1 if e['depth'] in [3,4] else 0;page.locator(f'[data-room="{e["depth"]}-{index}"]').click();page.wait_for_timeout(450);page.locator('#roomEnter').click();page.wait_for_timeout(250)
+   scene('경로 선택');page.wait_for_timeout(400);index=1 if e['depth']==4 else 0;page.locator(f'[data-room="{e["depth"]}-{index}"]').click();page.wait_for_timeout(450);page.locator('#roomEnter').click();page.wait_for_timeout(250)
   elif phase=='reward':
    scene('유물 보상');page.wait_for_timeout(650);page.locator('[data-reward]').first.click();page.wait_for_timeout(300)
   elif phase=='room':
@@ -47,5 +47,5 @@ lines=[]
 for i,(path,t) in enumerate(frames):
  lines.append("file '"+str(path)+"'");lines.append('duration '+str(max(.001,min(2,frames[i+1][1]-t)) if i+1<len(frames) else .2))
 lines.append("file '"+str(frames[-1][0])+"'");(folder/'frames.txt').write_text('\n'.join(lines))
-subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','concat','-safe','0','-i',str(folder/'frames.txt'),'-vf','fps=24','-c:v','libx264','-pix_fmt','yuv420p','-movflags','+faststart',str(ROOT/'storybook-play.mp4')],check=True)
+subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','concat','-safe','0','-i',str(folder/'frames.txt'),'-vf','fps=24','-c:v','libx264','-pix_fmt','yuv420p','-movflags','+faststart',str(ROOT/'encounter-play.mp4')],check=True)
 print(json.dumps({'frames':len(frames),'seconds':frames[-1][1],'scenes':scenes,'seed':final['seed'],'result':final['phase'],'audio':'muted','editing':'Actual CDP scenes at original speed; unrecorded middle battle taps omitted, no fabricated/composited frames'},ensure_ascii=False))

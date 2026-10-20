@@ -7,11 +7,11 @@ with sync_playwright() as p:
  for standalone in [False,True]:
   page=b.new_page(viewport={'width':390,'height':844},reduced_motion='reduce');setup(page,standalone)
   page.locator('#startNew').click();page.locator('#skipLesson').click()
-  images=page.evaluate('''async()=>{const selectors=['.concept-boss','.portrait-0','.portrait-1','.portrait-2','.coral .gem','.blue .gem','.gold .gem','.heal .gem'];return await Promise.all(selectors.map(async selector=>{const el=document.querySelector(selector),c=getComputedStyle(el),src=c.backgroundImage.slice(5,-2),im=new Image();im.src=src;await im.decode();return {selector,w:im.naturalWidth,h:im.naturalHeight,position:c.backgroundPosition,size:c.backgroundSize,inline:src.startsWith('data:')}}))}''')
+  images=page.evaluate('''async()=>{const selectors=['.concept-boss','.portrait-0','.portrait-1','.portrait-2','.coral .gem','.blue .gem','.gold .gem','.heal .gem'];return await Promise.all(selectors.map(async selector=>{const el=document.querySelector(selector),c=getComputedStyle(el),src=c.backgroundImage.slice(5,-2),im=new Image();im.src=src;await im.decode();return {selector,w:im.naturalWidth,h:im.naturalHeight,position:c.backgroundPosition,size:c.backgroundSize,inline:src.startsWith('data:')||src.startsWith('blob:')}}))}''')
   assert images[0]['w']==1774 and images[0]['h']==887
   assert [(x['w'],x['h']) for x in images[1:4]]==[(2172,724)]*3
-  assert [x['position'] for x in images[1:4]]==['0% 0px','50% 0px','100% 0px']
-  assert all(x['size']=='300% 100%' for x in images[1:4])
+  assert [x['position'] for x in images[1:4]]==['6.25% 50%','50% 50%','93.75% 50%']
+  assert all(x['size']=='420% 140%' for x in images[1:4])
   assert all(x['w']==64 and x['h']==64 for x in images[4:])
   if standalone:assert all(x['inline'] for x in images)
   page.screenshot(path=str(ROOT/f'storybook-battle-390-{standalone}.png'))

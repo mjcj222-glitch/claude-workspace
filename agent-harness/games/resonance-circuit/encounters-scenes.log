@@ -1,0 +1,12 @@
+{"size": [390, 844], "kind": "normal", "motion": "no-preference", "standalone": false, "result": "PASS"}
+{"size": [390, 844], "kind": "elite", "motion": "no-preference", "standalone": false, "result": "PASS"}
+{"size": [390, 844], "kind": "rest", "motion": "no-preference", "standalone": false, "result": "PASS"}
+{"size": [390, 844], "kind": "event", "motion": "no-preference", "standalone": false, "result": "PASS"}
+{"size": [390, 844], "kind": "midboss", "motion": "no-preference", "standalone": false, "result": "PASS"}
+{"size": [390, 844], "kind": "boss", "motion": "no-preference", "standalone": false, "result": "PASS"}
+{"size": [360, 640], "kind": "normal", "motion": "reduce", "standalone": true, "result": "PASS"}
+{"size": [360, 640], "kind": "elite", "motion": "reduce", "standalone": true, "result": "PASS"}
+{"size": [360, 640], "kind": "rest", "motion": "reduce", "standalone": true, "result": "PASS"}
+{"size": [360, 640], "kind": "event", "motion": "reduce", "standalone": true, "result": "PASS"}
+{"size": [360, 640], "kind": "midboss", "motion": "reduce", "standalone": true, "result": "PASS"}
+{"size": [360, 640], "kind": "boss", "motion": "reduce", "standalone": true, "result": "PASS"}

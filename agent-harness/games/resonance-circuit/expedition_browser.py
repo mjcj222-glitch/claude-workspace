@@ -20,7 +20,7 @@ def run(b,w,h,motion,standalone):
    # Resume at map/reward/room/battle without regenerating offers or entry effects.
    before=read(page);page.reload();page.evaluate("async()=>window.oracle=await import('/engine.mjs')");page.locator('#expeditionContinue').click();assert read(page)==before
   if phase=='map':
-   depth=e['depth'];index=1 if depth in [3,4] else 0
+   depth=e['depth'];index=1 if depth==4 else 0
    page.locator(f'[data-room="{depth}-{index}"]').click();page.locator('#roomEnter').evaluate('e=>{e.click();e.click()}')
   elif phase=='reward':page.locator('[data-reward]').first.evaluate('e=>{e.click();e.click()}')
   elif phase=='room':

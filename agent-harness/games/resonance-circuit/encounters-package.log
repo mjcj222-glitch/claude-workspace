@@ -1,0 +1,8 @@
+ZIP CRC and current source byte equality PASS: 70 files
+Embedded assets PASS: 11 unique assets; full SHA-256 and source equality
+External script, stylesheet and CSS image request references: 0
+standalone.html 24485930 bytes SHA256 e1379874aa01e231ee547847139984207b69fa61888c57dd3913fc75c2747167
+resonance-circuit.zip 39086997 bytes SHA256 41203ac9acae99aede56aff3c45da3a7ca508d1a1dfbd864395dbe6ec9494627
+encounter-play.mp4 1912655 bytes SHA256 c16347f32bb2cb894387d626838b2f9db02f0a193ffd998e4f446f492ccc7eac
+Changed tracked paths confined to game directory: PASS
+EXIT 0
