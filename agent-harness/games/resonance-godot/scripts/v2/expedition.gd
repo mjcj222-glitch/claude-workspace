@@ -12,6 +12,8 @@ var battle: Node
 var choice_panel: Control
 var generation := 0
 var save_error := ""
+# Ephemeral feedback belongs only to the immediately succeeding screen.
+var _refund_notice: Dictionary = {}
 var _completed_checkpoint: Dictionary = {}
 var _last_good_record: Dictionary = {}
 # A completed resume may pause on a choice before its next owner exists.
@@ -69,6 +71,7 @@ func resume_checkpoint(value: Dictionary) -> bool:
         _set_save_error("v2 저장을 읽을 수 없어요. 새 탐험을 명시적으로 시작해 주세요.")
         return false
     generation += 1
+    _refund_notice = {}
     run = record.run.duplicate(true)
     seed = int(run.seed)
     reduced = record.reduced
@@ -134,6 +137,7 @@ func _show_save_error() -> void:
 
 func new_run(seed_value: int) -> void:
     generation += 1
+    _refund_notice = {}
     seed = seed_value
     run = RunV2.fresh(seed_value)
     _completed_checkpoint = {}
@@ -194,6 +198,7 @@ func _on_battle_finished(summary: Dictionary, source: Node, owner_generation: in
     var result := RunV2.complete_battle(run,current)
     if not result.ok: return
     run = result.state
+    _refund_notice = source.refund_notice.duplicate(true)
     _completed_checkpoint = completed.duplicate(true)
     # Capture before retirement; this full finished board also supports choices.
     _save_completed_boundary()
@@ -227,6 +232,7 @@ func _choose(choice: String, expected_revision: int, expected_stage: String, own
         return
     if not result.ok: return
     run = result.state
+    _refund_notice = {}
     _save_completed_boundary()
     _show_stage()
 
@@ -251,6 +257,8 @@ func _show_choices() -> void:
     var titles := {"route_choice":"첫 회랑 통과 · 경로 선택","recruit_choice":"두 번째 회랑 통과 · 함께 갈 길",
         "completed":"세 번째 관문 통과","lost":"탐험 종료"}
     _label(content,titles.get(run.stage,""),32)
+    if not _refund_notice.is_empty():
+        _label(content,preload("res://scripts/v2/battle_view.gd").refund_text(_refund_notice),21)
     if not save_error.is_empty(): _label(content,save_error,20)
     _label(content,"HP %d/%d · 기력 %d/%d · 변환 한도 %d" % [run.hp,Config.MAX_HP,run.energy,Config.MAX_ENERGY,run.hero_limit],21)
     if run.stage == "route_choice":

@@ -10,6 +10,7 @@ var energy_bar: ProgressBar
 var party_keys: Array = []
 var board: Node
 var destination_row: HBoxContainer
+var refund_notice: Dictionary = {}
 func _ready() -> void:
     size = Vector2(720,1280)
     theme = Theme.new()
@@ -23,8 +24,8 @@ func _ready() -> void:
     hp_bar = _bar(get_node("Bars"),Rect2(38,453,390,7),Color("83d8ad"),Config.MAX_HP)
     energy_bar = _bar(get_node("Bars"),Rect2(450,453,232,7),Color("e7c47b"),Config.MAX_ENERGY)
     var preview := get_node("PreviewLine") as Label
-    preview.position = Vector2(38,487)
-    preview.size = Vector2(644,40)
+    preview.position = Vector2(38,480)
+    preview.size = Vector2(644,58)
     preview.add_theme_font_size_override("font_size",21)
     preview.add_theme_color_override("font_color",Color("d8e8e6"))
     preview.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -112,7 +113,7 @@ func show_state(state: Dictionary, party: Array) -> void:
     var enemy_id := str(state.get("enemy_id","hall1"))
     var titles := {"hall1":"01  /  첫 회랑", "hall2_safe":"02  /  안전 회랑", "hall2_risk":"02  /  위험 회랑", "gate":"03  /  관문 수호자"}
     labels.title.text = titles[enemy_id]
-    labels.footer.text = "잔향 회로   /   " + titles[enemy_id] + "   ·   %d턴" % state.get("turn",1)
+    labels.footer.text = refund_text(refund_notice) if not refund_notice.is_empty() else "잔향 회로   /   " + titles[enemy_id] + "   ·   %d턴" % state.get("turn",1)
     var enemy = get_node("EnemyStage/Enemy")
     enemy.texture.region = Rect2({"hall1":0,"hall2_safe":1,"hall2_risk":1,"gate":2}[enemy_id]*724,0,724,724)
     var maximum: int = Config.ENEMIES[enemy_id].hp
@@ -168,8 +169,17 @@ func show_plan(snapshot: Dictionary, plan: Dictionary) -> void:
     var tier := int(plan.get("refill_tier",0))
     if Config.BOMB_RADIUS_MULTIPLIERS.has(tier):
         suffix += " · 다음 파랑 " + {1:"소형",2:"중형",3:"대형"}[tier]
-    get_node("PreviewLine").text = "%s + 추가%d  ·  피해%d+%d=%d  ·  회복%d  ·  기력%d%s" % [direct,plan.get("extra_ids",[]).size(),plan.get("direct_damage",0),plan.get("blast_damage",0),int(plan.get("direct_damage",0))+int(plan.get("blast_damage",0)),plan.get("healing_effective",0),plan.get("energy_effective",0),suffix]
-    get_node("PreviewLine").add_theme_font_size_override("font_size",18)
+    get_node("PreviewLine").text = "%s + 추가%d  ·  피해%d+%d=%d\n회복 누적+%d / 실효+%d  ·  기력+%d%s" % [direct,plan.get("extra_ids",[]).size(),plan.get("direct_damage",0),plan.get("blast_damage",0),int(plan.get("direct_damage",0))+int(plan.get("blast_damage",0)),plan.get("healing_raw",0),plan.get("healing_effective",0),plan.get("energy_effective",0),suffix]
+    get_node("PreviewLine").add_theme_font_size_override("font_size",17)
+
+static func refund_text(event: Dictionary) -> String:
+    if event.is_empty(): return ""
+    return "폭약사 환불 · 기력 +%d (지불%d · 상한 적용)" % [event.energy_effective,event.paid_cost]
+
+func show_refund_notice(event: Dictionary) -> void:
+    refund_notice = event.duplicate(true)
+    labels.footer.text = refund_text(refund_notice)
+
 func _draw() -> void:
     draw_rect(Rect2(0,0,720,1280),Color("14171e"))
     draw_style_box(_frame(),Rect2(34,544,652,652))

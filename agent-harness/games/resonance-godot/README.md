@@ -15,6 +15,8 @@ godot res://scenes/battle.tscn -- --no-save
 
 v2에서는 같은 문양의 접촉 그룹 3개 이상을 누른 채 제거 예고를 보고 놓아 확정한다. 보드 밖으로 이동했다 돌아오거나 취소·포커스 상실·창 크기 변경이 생기면 취소한다. 한 턴은 유효 제거 3회이며, 팀 스킬은 제거 횟수 없이 턴당 한 번이다. 주인공은 초상 → 목적색 → 기물 순서로 변환하고 0.7초 컷인 뒤 복귀한다. 방향키와 Enter/Space, 스킬 1/2/3, 목적색 R/Y/B도 지원한다.
 
+제거 예고의 `회복 누적+N / 실효+M`은 이번 행동이 쌓을 원래 회복량과 현재 HP·이미 쌓인 회복을 반영한 실효량이다. HP 줄의 `회복 +N`은 이전까지 쌓인 값이다. 폭약사의 파랑0 환불이 실제 정산되면 상한을 적용한 반환량과 지불 비용을 하단에 알리고, 전투가 끝나면 다음 선택·완료·패배 화면으로 알림을 넘긴다. 새 행동 확정·선택·새 탐험·재개 때 지우며 저장된 환불 표식을 새 알림으로 재생하지 않는다.
+
 매칭과 주인공/정원지기 탐색은 hull 사이 **총 간격1.75 논리px 이하**를 사용한다. 물리 지지는1.0을 유지한다. 양쪽을 각각1.75씩 넓힌3.5가 아니며, 선택 테두리의 두께는 연결 판정에 들어가지 않는다. 시드121의 추가 접촉 사례와 초기35↔34 분리 사례를 함께 회귀 검사한다.
 
 v2 저장은 `user://resonance_godot_v2.json`에 새로 기록하며 v1 저장을 읽거나 변환하지 않는다. 검사는 임시 절대 XDG 경로와 `--no-save`를 사용한다. 저장 검사의 명시적 fixture 슬롯도 그 임시 공간 안에만 만든다.
@@ -25,6 +27,7 @@ export XDG_CONFIG_HOME=/tmp/resonance-v2-check/config
 export XDG_CACHE_HOME=/tmp/resonance-v2-check/cache
 godot --headless --fixed-fps 120 --script tests/v2/full_expedition_test.gd -- --no-save
 godot --headless --fixed-fps 120 --script tests/v2/window_input_test.gd -- --no-save
+godot --headless --fixed-fps 120 --script tests/v2/feedback_test.gd -- --no-save
 # 기존 인증된 로컬 X11 DISPLAY/XAUTHORITY가 있는 경우에만 실행
 python3 tools/v2/run_os_input_probe.py --output-dir /tmp/resonance-v2-os-evidence
 # 실제 그래픽 창의 정상 탐험 + 화면에 표시된 별도 기능 fixture 기록

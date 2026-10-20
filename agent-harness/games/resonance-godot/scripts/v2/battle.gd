@@ -21,6 +21,8 @@ var destination := ""
 var action_count := 0
 var refill_batch_count := 0
 var event_log: Array = []
+# Presentation-only: adopted from a new accepted settlement, never checkpoint state.
+var refund_notice: Dictionary = {}
 var lock_measurements: Array = []
 var reduced := false
 var _pointer := -999
@@ -91,6 +93,8 @@ func restore_checkpoint(record: Dictionary) -> void:
     _wait_for_input()
 
 func _reset_transients() -> void:
+    refund_notice = {}
+    view.show_refund_notice({})
     var cutin = view.get_node("CutinLayer")
     cutin.active = false
     cutin.elapsed = 0.0
@@ -226,6 +230,8 @@ func commit_preview(plan: Dictionary) -> bool:
     if not result.ok: return false
     phase = "RESOLVING"
     state = result.state
+    refund_notice = {}
+    view.show_refund_notice({})
     event_log.append_array(result.events)
     session.cancel()
     displayed_plan = {}
@@ -289,6 +295,10 @@ func _on_settled(value: Dictionary) -> void:
             return
         state = result.state
         event_log.append_array(result.events)
+        for event in result.events:
+            if event.type == "energy_refunded":
+                refund_notice = event.duplicate(true)
+                view.show_refund_notice(refund_notice)
         lock_measurements.append({"removed_count":_lock_count,"start_frame":_lock_start_frame,
             "end_frame":Engine.get_physics_frames(),"simulation_seconds":float(Engine.get_physics_frames()-_lock_start_frame)/Engine.physics_ticks_per_second,
             "wall_seconds":float(Time.get_ticks_usec()-_lock_start_usec)/1000000.0,

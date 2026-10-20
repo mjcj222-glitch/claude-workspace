@@ -1,6 +1,8 @@
 extends SceneTree
 ## Synthetic touch is engine injection. The subclass drives OS mouse through XTest.
 const Combat = preload("res://scripts/v2/combat_rules.gd")
+const Geometry = preload("res://scripts/v2/geometry.gd")
+const Config = preload("res://scripts/v2/config.gd")
 const Skills = preload("res://scripts/v2/skill_rules.gd")
 const NativeInput = preload("res://tools/native_input.gd")
 var battle: Node
@@ -175,8 +177,54 @@ func run() -> void:
                 var body = battle.board.by_id(int(piece.id))
                 check(body.hull_id == piece.hull_id and body.size_factor == piece.size and body.position == Vector2(piece.x,piece.y) and body.rotation == piece.angle,"conversion preserves hull size pose")
             check(not battle.view.get_node("CutinLayer").visible,"hero returns to enemy-only upper stage")
+        await feedback_layout(size_value)
         results.append({"window":[size_value.x,size_value.y],"checks":checks-start,"displayed_removed_ids":displayed.removed_ids,"actual_removed_ids":actual,"source":source})
         battle.queue_free()
         await frames()
     print(JSON.stringify({"suite":"v2 window input","source":source,"checks":checks,"failures":failures,"windows":results}))
     quit(0 if failures == 0 else 1)
+
+func feedback_layout(size_value: Vector2i) -> void:
+    # Controlled presentation boundary after the existing real action/skill checks.
+    # Native/OS input still presses the actual current board and Bomber portrait.
+    battle.state=Combat.fresh({"enemy_id":"hall1","hp":60,"energy":10,"party":["hero","bomber"]})
+    battle.state.pending_heal=6
+    var graph := Geometry.graph(battle.snapshot,Config.MATCH_CONTACT_EPS)
+    var group: Array=[int(battle.snapshot.pieces[0].id)]
+    var cursor := 0
+    while cursor<group.size() and group.size()<3:
+        for id in graph[group[cursor]]:
+            if group.size()<3 and not group.has(id): group.append(id)
+        cursor+=1
+    var changes := {}
+    for piece in battle.snapshot.pieces: changes[int(piece.id)]="heart" if group.has(int(piece.id)) else "red"
+    battle.snapshot=battle.board.apply_types(changes)
+    battle._render_state()
+    var point := point_for(group[0])
+    await press(point)
+    check(battle.displayed_plan.get("healing_raw",-1)==9 and battle.displayed_plan.get("healing_effective",-1)==6,"actual input displays raw9/effective6 with pending6")
+    var preview: Label=battle.view.get_node("PreviewLine")
+    var metrics := preview.get_theme_font("font").get_multiline_string_size(preview.text,HORIZONTAL_ALIGNMENT_LEFT,-1,preview.get_theme_font_size("font_size"))
+    check(preview.text.contains("누적+9") and preview.text.contains("실효+6") and metrics.x<=preview.size.x and metrics.y<=preview.size.y,"healing distinction fits native result region")
+    await capture("healing-pending-"+str(size_value.x)+"x"+str(size_value.y))
+    await cancel()
+    await release(point)
+    var portrait: Vector2=battle.view.get_node("Party/Bomber").get_global_rect().get_center()
+    await press(portrait)
+    await release(portrait)
+    check(battle.state.bomb_buff.active,"actual OS/synthetic portrait release activates Bomber")
+    # Settlement-boundary fixture: real event arithmetic, no claimed physical refill.
+    battle.state.actions_left=0
+    battle.state.refill_pending=true
+    battle.state.energy=5
+    battle._pending_refill=true
+    battle._pending_epoch=battle._epoch
+    battle._pending_board_version=battle.board.version
+    battle._generated_bombs=0
+    battle.phase="SETTLING"
+    battle._on_settled(battle.board.capture())
+    check(await wait_ready(),"active refund returns to actual input owner")
+    var footer: Label=battle.view.labels.footer
+    check(footer.text.contains("환불") and footer.text.contains("+5") and footer.text.contains("지불6"),"actual capped refund remains visible after recovery/render")
+    check(footer.get_theme_font("font").get_string_size(footer.text,HORIZONTAL_ALIGNMENT_LEFT,-1,footer.get_theme_font_size("font_size")).x<=footer.size.x,"refund notice fits native footer")
+    await capture("refund-active-"+str(size_value.x)+"x"+str(size_value.y))

@@ -67,13 +67,13 @@ func run() -> void:
     var solo_snapshot := Fixtures.chain(1,"blue",{1:1})
     var solo_plan := Combat.preview(solo_snapshot,Fixtures.combat(),1)
     view.show_plan(solo_snapshot,solo_plan)
-    check(view.get_node("PreviewLine").text == "폭탄 1 + 추가0  ·  피해0+0=0  ·  회복0  ·  기력0", "solo detonation has exact bomb1 label and no direct-color reward")
+    check(view.get_node("PreviewLine").text == "폭탄 1 + 추가0  ·  피해0+0=0\n회복 누적+0 / 실효+0  ·  기력+0", "solo detonation has exact bomb1 label and no direct-color reward")
     var active := Fixtures.combat()
     active.bomb_buff.active = true
     for example in [
-        {"n":3,"tier":1,"line":"직접3 + 추가0  ·  피해6+0=6  ·  회복0  ·  기력1 · 다음 파랑 소형"},
-        {"n":5,"tier":2,"line":"직접5 + 추가0  ·  피해16+0=16  ·  회복0  ·  기력2 · 다음 파랑 중형"},
-        {"n":8,"tier":3,"line":"직접8 + 추가0  ·  피해34+0=34  ·  회복0  ·  기력4 · 다음 파랑 대형"}]:
+        {"n":3,"tier":1,"line":"직접3 + 추가0  ·  피해6+0=6\n회복 누적+0 / 실효+0  ·  기력+1 · 다음 파랑 소형"},
+        {"n":5,"tier":2,"line":"직접5 + 추가0  ·  피해16+0=16\n회복 누적+0 / 실효+0  ·  기력+2 · 다음 파랑 중형"},
+        {"n":8,"tier":3,"line":"직접8 + 추가0  ·  피해34+0=34\n회복 누적+0 / 실효+0  ·  기력+4 · 다음 파랑 대형"}]:
         var example_snapshot := Fixtures.chain(example.n)
         var actual_plan := Combat.preview(example_snapshot,active,1)
         var original_plan := actual_plan.duplicate(true)

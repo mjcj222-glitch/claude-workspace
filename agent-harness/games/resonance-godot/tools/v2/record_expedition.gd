@@ -1,5 +1,12 @@
 extends "res://tests/v2/full_expedition_test.gd"
 ## Real rendered normal run plus explicitly labelled feature fixtures. Never count fixtures as wins.
+const RunV2 = preload("res://scripts/v2/run_rules.gd")
+# Controlled seed1 successor fixture isolates presentation; it is not a save witness.
+class FixtureProgression:
+    extends "res://scripts/v2/expedition.gd"
+    func _ready() -> void: pass
+    func _save_completed_boundary() -> void: pass
+
 const FONT = preload("res://assets/NotoSansCJK-Regular.ttc")
 var output := ""
 var captures: Array = []
@@ -115,7 +122,11 @@ func fresh_fixture(seed_value: int = 121) -> Node:
     check(await fixture_ready(owner),"fixture initial physical board ready")
     return owner
 
-func fixture_action(owner: Node, plan: Dictionary, name_value: String) -> void:
+func fixture_action(owner: Node, plan: Dictionary, name_value: String, successor: Node = null) -> Dictionary:
+    var terminal := {}
+    if successor != null:
+        owner.finished.connect(func(_summary):
+            terminal.merge({"snapshot":owner.board.capture(),"state":owner.state.duplicate(true),"events":owner.event_log.duplicate(true),"locks":owner.lock_measurements.duplicate(true),"notice":owner.refund_notice.duplicate(true)}))
     var previous: Array = owner.snapshot.pieces.map(func(p): return int(p.id))
     var point: Vector2 = owner.view.get_node("BoardViewport").board_to_logical(owner.board.by_id(int(plan.seed_id)).position)
     owner._press(point,17)
@@ -125,13 +136,29 @@ func fixture_action(owner: Node, plan: Dictionary, name_value: String) -> void:
     owner._release(point,17)
     for frame in range(14): await process_frame
     await capture_frame(name_value+"-refill-start",owner,shown)
-    check(await fixture_ready(owner),"fixture real physical refill completes")
-    var after: Array = owner.snapshot.pieces.map(func(p): return int(p.id))
+    if successor == null:
+        check(await fixture_ready(owner),"fixture real physical refill completes")
+    else:
+        for frame in range(6000):
+            if not terminal.is_empty() or not is_instance_valid(owner): break
+            if owner.phase == "ERROR":
+                check(false,"terminal fixture physical error")
+                quit(1)
+                return {}
+            await process_frame
+        check(not terminal.is_empty() and successor.run.stage=="completed","actual final refill retires owner into completed screen")
+    var final_snapshot: Dictionary=owner.snapshot if successor==null else terminal.get("snapshot",{})
+    var after: Array = final_snapshot.get("pieces",[]).map(func(p): return int(p.id))
     var actual: Array = previous.filter(func(id): return not after.has(id))
     actual.sort()
     check(actual == shown.removed_ids,"fixture displayed and removed IDs agree")
-    fixture_records.append({"name":name_value,"controlled":true,"displayed_plan":shown,"actual_removed_ids":actual,"state":owner.state.duplicate(true),"events":owner.event_log.duplicate(true),"locks":owner.lock_measurements.duplicate(true)})
-    await capture_frame(name_value+"-settled",owner,shown)
+    var record := {"name":name_value,"controlled":true,"snapshot":final_snapshot,"displayed_plan":shown,"actual_removed_ids":actual,"state":owner.state.duplicate(true) if successor==null else terminal.state,"events":owner.event_log.duplicate(true) if successor==null else terminal.events,"locks":owner.lock_measurements.duplicate(true) if successor==null else terminal.locks}
+    fixture_records.append(record)
+    await capture_frame(name_value+"-settled",owner if is_instance_valid(owner) else null,shown)
+    if successor!=null:
+        captures.back()["successor_stage"]=successor.run.stage
+        captures.back()["refund_notice"]=terminal.notice
+    return record
 
 func feature_fixtures() -> void:
     label.text = "CONTROLLED PARTY FIXTURE · seed121 poses · actual gardener skill / heart preview"
@@ -163,6 +190,17 @@ func feature_fixtures() -> void:
     check(owner.displayed_plan == heart,"actual pointer displays independent heart group")
     await capture_frame("fixture-independent-hearts",owner,heart)
     owner.cancel_input()
+    for example in [{"hp":60,"pending":6,"effective":6,"name":"pending-capped"},{"hp":72,"pending":0,"effective":0,"name":"full-hp"}]:
+        owner.state.hp=example.hp
+        owner.state.pending_heal=example.pending
+        owner.state.revision+=1
+        owner._render_state()
+        owner._press(target,17)
+        check(owner.displayed_plan.healing_raw==9 and owner.displayed_plan.healing_effective==example.effective,"actual held heart plan separates raw9 and capped effective")
+        check(owner.view.get_node("PreviewLine").text.contains("누적+9") and owner.view.get_node("PreviewLine").text.contains("실효+%d" % example.effective),"visible actual healing distinction")
+        label.text="CONTROLLED HEALING PREVIEW · raw9 / effective%d · pending%d / HP%d" % [example.effective,example.pending,example.hp]
+        await capture_frame("fixture-healing-"+example.name,owner,owner.displayed_plan)
+        owner.cancel_input()
     fixture_records.append({"name":"fixture-gardener-and-heart","controlled":true,"skill_plan":gardener,"heart_plan":heart,"before":before_skill,"after":owner.state.duplicate(true)})
     owner.queue_free()
     await process_frame
@@ -241,32 +279,59 @@ func feature_fixtures() -> void:
     owner.queue_free()
     await process_frame
 
-    label.text = "CONTROLLED FINAL-ACTION FIXTURE · seed1 · natural zero-blue final refill / refund"
-    owner = await fresh_fixture(1)
-    graph = Geometry.graph(owner.snapshot,Config.MATCH_CONTACT_EPS)
-    var group: Array = [int(owner.snapshot.pieces[0].id)]
-    for id in group:
-        for neighbor in graph[id]:
-            if group.size() < 3 and not group.has(neighbor): group.append(neighbor)
-        if group.size() == 3: break
-    changes = {}
-    for piece in owner.snapshot.pieces: changes[int(piece.id)] = "red" if group.has(int(piece.id)) else "heart"
-    owner.snapshot = owner.board.apply_types(changes)
-    owner.state.actions_left = 1
-    owner.state.enemy_hp = 1
-    owner.state.revision += 1
-    owner._render_state()
-    var bomber := Skills.preview(owner.snapshot,owner.state,"bomber")
-    await input_skill(owner,bomber)
-    owner._release(owner.view.get_node("Party/Bomber").get_global_rect().get_center(),17)
-    var final_plan := Combat.preview(owner.snapshot,owner.state,group[0])
-    await fixture_action(owner,final_plan,"fixture-last-refill-refund")
-    var new_pieces: Array = owner.snapshot.pieces.filter(func(p): return int(p.id) >= 43)
-    check(new_pieces.size() == 3 and new_pieces.all(func(p): return p.match_type != "blue"),"actual seed1 final physical batch has no blue")
-    var refunds: Array = owner.event_log.filter(func(e): return e.type == "energy_refunded")
-    check(owner.phase == "FINISHED" and refunds.size() == 1 and refunds[0].paid_cost == 6 and refunds[0].energy_effective == 5 and owner.state.energy == 10,"last actual refill precedes one capped refund and terminal victory")
-    owner.queue_free()
-    await process_frame
+    for terminal_case in [false,true]:
+        label.text = "CONTROLLED FINAL-ACTION FIXTURE · seed1 · natural zero-blue final refill / refund"
+        owner = await fresh_fixture(1)
+        graph = Geometry.graph(owner.snapshot,Config.MATCH_CONTACT_EPS)
+        var group: Array = [int(owner.snapshot.pieces[0].id)]
+        for id in group:
+            for neighbor in graph[id]:
+                if group.size() < 3 and not group.has(neighbor): group.append(neighbor)
+            if group.size() == 3: break
+        changes = {}
+        for piece in owner.snapshot.pieces: changes[int(piece.id)] = "red" if group.has(int(piece.id)) else "heart"
+        owner.snapshot = owner.board.apply_types(changes)
+        owner.state.actions_left = 1
+        if terminal_case: owner.state.enemy_hp = 1
+        owner.state.revision += 1
+        owner._render_state()
+        var bomber := Skills.preview(owner.snapshot,owner.state,"bomber")
+        await input_skill(owner,bomber)
+        owner._release(owner.view.get_node("Party/Bomber").get_global_rect().get_center(),17)
+        var successor: Node=null
+        if terminal_case:
+            successor=FixtureProgression.new()
+            root.add_child(successor)
+            successor._retire_battle()
+            var run_state := RunV2.fresh(41)
+            for index in [0,1]:
+                var won := Combat.fresh(RunV2.battle_context(run_state))
+                won.status="victory"; won.enemy_hp=0
+                run_state=RunV2.complete_battle(run_state,won).state
+                run_state=RunV2.choose_route(run_state,"risk").state if index==0 else RunV2.choose_recruit(run_state,"bomber").state
+            successor.run=run_state
+            successor.battle=owner
+            owner.state.party=run_state.party.duplicate()
+            owner.state.hero_limit=run_state.hero_limit
+            owner._render_state()
+            owner.finished.connect(successor._on_battle_finished.bind(owner,successor.generation,str(successor.run.stage)))
+        var final_plan := Combat.preview(owner.snapshot,owner.state,group[0])
+        var record := await fixture_action(owner,final_plan,"fixture-last-refill-refund" if terminal_case else "fixture-active-refund",successor)
+        var refunds: Array = record.events.filter(func(e): return e.type == "energy_refunded")
+        check(refunds.size()==1 and refunds[0].paid_cost==6 and refunds[0].energy_effective==5 and record.state.energy==10,"actual zero-blue refill precedes one capped refund")
+        var new_pieces: Array=record.snapshot.pieces.filter(func(p):return int(p.id)>=43)
+        check(new_pieces.size()==3 and new_pieces.all(func(p):return p.match_type!="blue"),"actual seed1 final physical batch has no blue")
+        if terminal_case:
+            check(record.state.status=="victory","last real physical refill reaches terminal victory")
+            check(successor.run.stage=="completed" and successor.battle==null,"actual Expedition finished callback owns terminal screen")
+            var text := ""
+            for node in successor.choice_panel.find_children("*","Label",true,false): text+=node.text
+            check(text.contains("환불") and text.contains("+5"),"terminal successor visibly retains actual refund")
+            successor.queue_free()
+        else:
+            check(owner.phase=="READY" and owner.view.labels.footer.text.contains("환불") and owner.view.labels.footer.text.contains("+5"),"continuing owner visibly retains actual refund")
+            owner.queue_free()
+        await process_frame
 
 func wait_owner(expedition: Node, owner: Node, monitor: bool = false) -> bool:
     var previous := ""
