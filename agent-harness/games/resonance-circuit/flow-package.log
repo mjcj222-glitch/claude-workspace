@@ -1,0 +1,4 @@
+{"zipEntries": 74, "crc": "PASS", "entryBytes": "all identical", "embeddedAssets": 12, "assetHash": "PASS", "externalResourceTags": "none"}
+{"file": "standalone.html", "bytes": 27594353, "sha256": "ad3a17e63cd6a00b841c75e69c86a031e569128f98d753d55e951284d947c95a"}
+{"file": "resonance-circuit.zip", "bytes": 44178932, "sha256": "dd49e4fcdbfc184c93ad37f52eb9ad3301f68312fb9fd1512cd94bd17fcf583e"}
+{"file": "flow-play.mp4", "bytes": 2462902, "sha256": "f146e83c5dab91b768e590933110571ad40bc0c588f2002b8a5b9b5095ca6198"}

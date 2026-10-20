@@ -35,7 +35,8 @@ def full_run(browser,w,h,motion,standalone):
  # Reload resumes the exact board, phase and RNG. No automatic gameplay.
  page.reload();page.evaluate("async()=>{window.oracle=await import('/engine.mjs')}");page.locator('#continueRun').click();assert saved(page)['run']==before
  # Arrow boundaries and keyboard confirmation, touch cancellation (synthetic browser PointerEvent).
- for index,key in [(7,'ArrowUp'),(6,'ArrowDown'),(3,'ArrowLeft'),(35,'ArrowRight')]:
+ edges=page.evaluate("()=>{const s=JSON.parse(localStorage.getItem('resonance-circuit-v1')).run.state;return s.boardVersion===1?[['ArrowUp','y',1],['ArrowDown','y',-1],['ArrowLeft','x',1],['ArrowRight','x',-1]].map(([key,axis,sign])=>[s.board.map((t,i)=>({i,v:t[axis]*sign})).sort((a,b)=>a.v-b.v)[0].i,key]):[[7,'ArrowUp'],[6,'ArrowDown'],[3,'ArrowLeft'],[35,'ArrowRight']]}")
+ for index,key in edges:
   page.locator('.tile').nth(index).focus();page.keyboard.press(key);assert page.evaluate('Number(document.activeElement.dataset.index)')==index
  tile=page.locator('.tile').nth(0);before=saved(page)['run']
  tile.evaluate("e=>{const r=e.getBoundingClientRect();for(const type of ['pointerdown','pointercancel','pointerup'])e.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerId:99,pointerType:'touch',button:0,clientX:r.x+r.width/2,clientY:r.y+r.height/2}));}")
@@ -54,7 +55,7 @@ def full_run(browser,w,h,motion,standalone):
   if r['phase']=='upgrade':
    page.locator('#upgrade').wait_for(state='visible')
    page.reload();page.evaluate("async()=>{window.oracle=await import('/engine.mjs')}");page.locator('#continueRun').click();assert saved(page)['run']==r
-   page.locator('#upgrade').wait_for(state='visible');page.screenshot(path=str(ROOT/f'run-upgrade-{w}-{motion}.png'),full_page=True)
+   page.locator('#upgrade').wait_for(state='visible');page.screenshot(path=str(ROOT/f'flow-run-upgrade-{w}-{motion}.png'),full_page=True)
    # Two click events in one task select only once.
    choice='power' if r['stage']==0 else 'healing'
    page.locator(f'[data-choice="{choice}"]').evaluate('e=>{e.click();e.click();}')
@@ -62,7 +63,7 @@ def full_run(browser,w,h,motion,standalone):
    continue
   stage=r['stage']
   if stage not in captured:
-   page.screenshot(path=str(ROOT/f'run-battle-{stage+1}-{w}-{motion}.png'),full_page=True);captured.add(stage)
+   page.screenshot(path=str(ROOT/f'flow-run-battle-{stage+1}-{w}-{motion}.png'),full_page=True);captured.add(stage)
    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   s=r['state']
   if s['hp']<s['rules']['hp']*.65 and page.locator('[data-skill="2"]').is_enabled():page.locator('[data-skill="2"]').click()
@@ -79,7 +80,7 @@ def full_run(browser,w,h,motion,standalone):
  assert page.locator('.fx-label,.cleared,.hit,.hurt,.skill-used').count()==0
  assert page.locator('#effects').get_attribute('data-active') in ['0',None]
  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
- page.screenshot(path=str(ROOT/f'run-result-{w}-{motion}.png'),full_page=True)
+ page.screenshot(path=str(ROOT/f'flow-run-result-{w}-{motion}.png'),full_page=True)
  print(json.dumps({'viewport':[w,h],'motion':motion,'standalone':standalone,'history':saved(page)['run']['history'],'result':'PASS'},ensure_ascii=False),flush=True)
  page.locator('#again').click();assert saved(page)['run']['stage']==0;assert saved(page)['run']['tutorial']=='done'
  assert not errors,errors

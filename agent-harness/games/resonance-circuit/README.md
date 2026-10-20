@@ -1,8 +1,8 @@
 # 잔향 회로
 
-귀여운 펜선·수채화 동료와 빛 회로 보드를 사용하는 독자적인 퍼즐 전투입니다. 42칸 hex 보드의 같은 색 연쇄·잔향·3개 스킬·과충전으로 온실의 적을 상대합니다. 기본 무음이며 로그인·광고·과금·추적·외부 에셋 요청이 없습니다.
+귀여운 펜선·수채화 동료와 빛 회로 보드를 사용하는 독자적인 퍼즐 전투입니다. 새 게임에서는 42개 기물이 아래로 떨어지고 서로 밀리며 빈 공간을 채웁니다. 맞닿은 같은 색 연쇄·잔향·3개 스킬·과충전으로 온실의 적을 상대합니다. 기본 무음이며 로그인·광고·과금·추적·외부 에셋 요청이 없습니다.
 
-현재판은 6개 방 탐험과 3전투 연습을 제공합니다. 탐험에는 잡몹·정예·상인·휴식·필수 중간보스·최종보스가 각각 다른 그림으로 등장합니다. 최신 결과는 [ENCOUNTER-REPORT.md](ENCOUNTER-REPORT.md)와 실제 플레이 녹화 `encounter-play.mp4`입니다.
+현재판은 6개 방 탐험과 3전투 연습을 제공합니다. 탐험에는 잡몹·정예·상인·휴식·필수 중간보스·최종보스가 각각 다른 그림으로 등장합니다. 전투 무대에는 독자적인 전신 캐릭터, 그 아래에는 큰 얼굴 파티 도크와 시안 체력바를 배치했습니다. 최신 결과는 [FLOW-REPORT.md](FLOW-REPORT.md)와 실제 플레이 녹화 `flow-play.mp4`입니다.
 
 ## 실행
 
@@ -20,6 +20,8 @@ python -m http.server 8000 --bind 127.0.0.1
 
 같은 색·문양을 누르면 미리보기, 같은 위치에서 떼면 확정합니다. 드래그·pointercancel은 취소합니다. 방향키로 타일을 이동하고 Enter/Space로 확정하며 Tab으로 다른 버튼에 접근합니다. 3탭 뒤 회복 → 적 피해 → 살아남은 적의 예고 반격을 정산합니다.
 
+새 보드는 정착한 실제 좌표로 연결과 터치를 판정합니다. 낙하 중에는 입력을 잠그며, 새로 맞닿은 기물은 다음 탭에서 선택할 수 있습니다. 접촉만으로 자동 소거하지 않습니다. 화면 크기나 효과 설정을 바꾸어도 같은 시드·입력의 정산과 최종 위치는 같습니다.
+
 공격색 5개 이상은 차지와 이웃 잔향, 10개 이상은 폭탄을 만듭니다. 다음 최초 연결이 기존 잔향에 닿으면 이전 표식 전체가 발동합니다. 폭발만 표식에 닿는 경우에는 다른 표식을 연쇄 발동하지 않습니다. 새 잔향은 만든 탭에서 발동하지 않습니다. 과충전은 게이지 55를 채운 뒤 턴 첫 탭 전에 사용합니다.
 
 스킬은 탭을 쓰지 않으며 3턴 뒤 다시 준비됩니다. 프리즘 링크는 색 전환과 다음 공격색 탭 추가 피해, 연쇄 점화는 폭탄 전환과 실제 폭탄 해소 보너스, 생명의 온실은 회복 타일 전환과 다음 반격 보호막 18을 제공합니다. 메뉴의 스킬 설명에서 대상 수와 쿨다운을 확인하세요. 덩굴은 이웃 소거·폭탄으로 껍질을 벗기고, 무지개는 한 색의 연결을 이어 줍니다. 첫 등장 시 실제 보드 안내를 제공합니다.
@@ -32,11 +34,11 @@ python -m http.server 8000 --bind 127.0.0.1
 
 ## 저장·소리·화면
 
-같은 브라우저·주소의 localStorage로 이어합니다. 이전 v1 탐험의 지도·수치·RNG·보상은 그대로 복구하며 새 탐험만 v2 지도를 사용합니다. 손상된 저장은 사용하지 않습니다. 저장이 막혀도 현재 플레이는 가능하지만 창을 닫은 뒤 복구되지 않습니다. 기기·주소 간 동기화는 없습니다.
+같은 브라우저·주소의 localStorage로 이어합니다. 이전 연습 v1과 탐험 v1/v2 저장의 지도·수치·RNG·보상은 그대로 복구합니다. 이전 저장은 42칸 hex 규칙을 유지하고 새 게임만 좌표 보드를 사용합니다. 보드 버전과 탐험 지도 버전은 별개입니다. 손상된 저장은 사용하지 않습니다. 저장이 막혀도 현재 플레이는 가능하지만 창을 닫은 뒤 복구되지 않습니다. 기기·주소 간 동기화는 없습니다.
 
 음향은 기본 꺼짐이며 직접 켜고 음량을 조절합니다. Web Audio 합성음만 사용하고 탭이 숨겨지면 정지합니다. `sound-check.html`과 `samples/`의 WAV도 포함합니다. 시스템 reduced-motion과 실행 중 효과 줄이기를 지원합니다. 색 이외 문양·정적 수치로 상태를 전달합니다.
 
-검수한 360×640 이상 화면에서 전투는 스크롤 없이 들어가며 메뉴는 오버레이로 엽니다. 가장 짧은 화면의 타일 높이는 40px이므로 모든 조작 영역이 44px인 것은 아닙니다. 실제 모바일 기기·Safari/Firefox·스크린리더·OS 큰 글자·청취·재미 평가는 남아 있습니다.
+검수한 360×640 이상 화면에서 전투는 스크롤 없이 들어가며 메뉴는 오버레이로 엽니다. 가장 짧은 화면의 기물 버튼 지름은 최소 40.3px이므로 모든 조작 영역이 44px인 것은 아닙니다. 실제 모바일 기기·Safari/Firefox·스크린리더·OS 큰 글자·청취·재미 평가는 남아 있습니다.
 
 ## 개발 검증과 구성
 
@@ -45,10 +47,12 @@ python agent-harness/harness.py check
 python -m unittest discover -s agent-harness/tests -v
 node --test agent-harness/games/resonance-circuit/*.test.mjs
 # 이미 설치된 Playwright 및 /usr/bin/chromium이 있는 개발 환경:
-python agent-harness/games/resonance-circuit/encounter_browser.py
-python agent-harness/games/resonance-circuit/mobile_frame_browser.py
+python agent-harness/games/resonance-circuit/flow_browser.py
+python agent-harness/games/resonance-circuit/flow_boundaries_browser.py
+python agent-harness/games/resonance-circuit/flow_legacy_browser.py
+python agent-harness/games/resonance-circuit/flow_scene_browser.py
 python agent-harness/games/resonance-circuit/expedition_browser.py
 python agent-harness/games/resonance-circuit/campaign_browser.py
 ```
 
-`engine.mjs`는 hex·연쇄 규칙, `campaign.mjs`는 연습, `expedition.mjs`는 탐험, `encounters.mjs`와 `encounter-ui.mjs`는 장면 분류·표시를 담당합니다. `package_game.py`는 독립 HTML/ZIP을 만듭니다. ZIP에는 현재 실행 구성·표시용 자산·최신 보고서·최신 영상만 담습니다. 원본 PNG와 이전 보고서·영상·로그는 Git 저장소에 보존합니다. 자동 완주를 재미나 상용 품질의 증명으로 보지 않습니다.
+`flow.mjs`는 고정 간격 물리 계산, `flow-ui.mjs`는 좌표 표시·낙하 재생, `engine.mjs`는 연쇄 규칙과 이전 hex 호환을 담당합니다. `campaign.mjs`는 연습, `expedition.mjs`는 탐험, `encounters.mjs`와 `encounter-ui.mjs`는 장면 분류·표시를 담당합니다. `package_game.py`는 독립 HTML/ZIP을 만듭니다. ZIP에는 현재 실행 구성·표시용 자산·최신 보고서·최신 영상만 담습니다. 원본 PNG와 이전 보고서·영상·로그는 Git 저장소에 보존합니다. 자동 완주를 재미나 상용 품질의 증명으로 보지 않습니다.

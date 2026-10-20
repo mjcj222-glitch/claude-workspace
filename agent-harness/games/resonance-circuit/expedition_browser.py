@@ -16,7 +16,7 @@ def run(b,w,h,motion,standalone):
   if phase in ['complete','defeat']:break
   if phase not in seen:
    if phase!='battle':page.locator('#journey').wait_for(state='visible')
-   page.screenshot(path=str(ROOT/f'expedition-{phase}-{w}-{motion}.png'),full_page=True);seen.add(phase)
+   page.screenshot(path=str(ROOT/f'flow-expedition-{phase}-{w}-{motion}.png'),full_page=True);seen.add(phase)
    # Resume at map/reward/room/battle without regenerating offers or entry effects.
    before=read(page);page.reload();page.evaluate("async()=>window.oracle=await import('/engine.mjs')");page.locator('#expeditionContinue').click();assert read(page)==before
   if phase=='map':
@@ -27,20 +27,20 @@ def run(b,w,h,motion,standalone):
    choice='gift' if e['map'][e['depth']][int(e['path'][-1][-1])]['type']=='event' and e['state']['hp']>60 and e['offer'] else 'rest'
    page.locator(f'[data-event="{choice}"]').evaluate('e=>{e.click();e.click()}')
   elif phase=='battle':
-   if e['depth']==5 and 'boss' not in seen:page.screenshot(path=str(ROOT/f'expedition-boss-{w}-{motion}.png'),full_page=True);seen.add('boss')
+   if e['depth']==5 and 'boss' not in seen:page.screenshot(path=str(ROOT/f'flow-expedition-boss-{w}-{motion}.png'),full_page=True);seen.add('boss')
    if e['state']['hp']<110 and page.locator('[data-skill="2"]').is_enabled():page.locator('[data-skill="2"]').click()
    for selector in ['[data-skill="0"]','[data-skill="1"]','#boost']:
     if page.locator(selector).is_enabled():page.locator(selector).click()
    index=page.evaluate("async()=>{const {relicEffects}=await import('/expedition.mjs');const e=JSON.parse(localStorage.getItem('resonance-expedition-v1')),s=e.state;let best=-1,index=0;for(let i=0;i<42;i++){const p=oracle.preview(s,i);if(!p.initial.length)continue;const f=relicEffects(e,p),score=p.damage+f.damage+Math.min(p.healing+f.healing,Math.max(0,180-s.hp-s.healing))*1.5+(p.echoHit?12:0)+f.shield;if(score>best){best=score;index=i}}return index}")
    page.locator('.tile').nth(index).tap();idle(page)
   n+=1
- e=read(page);assert e['phase']=='complete',(seed,e['phase'],e['total']);page.locator('#ending').wait_for(state='visible');assert page.locator('#retryBattle').is_hidden();page.screenshot(path=str(ROOT/f'expedition-result-{w}-{motion}.png'),full_page=True)
+ e=read(page);assert e['phase']=='complete',(seed,e['phase'],e['total']);page.locator('#ending').wait_for(state='visible');assert page.locator('#retryBattle').is_hidden();page.screenshot(path=str(ROOT/f'flow-expedition-result-{w}-{motion}.png'),full_page=True)
  assert page.evaluate("localStorage.getItem('resonance-circuit-v1')")==practice
  page.locator('#another').click();page.locator('#cancelNew').click();assert read(page)==e
  # Deterministic lethal fixture tests terminal save, no retry, and reload cannot revive.
  dead=page.evaluate("async()=>{const x=await import('/expedition.mjs');const e=x.createExpedition(53);x.enterRoom(e,x.availableRooms(e)[0].id);e.state.hp=1;e.state.taps=1;e.state.board.forEach((t,i)=>{t.color=['coral','blue','gold'][(Math.floor(i/7)+i%7)%3];t.kind='normal';});return e}")
  page.evaluate('(e)=>localStorage.setItem("resonance-expedition-v1",JSON.stringify(e))',dead);page.reload();page.locator('#expeditionContinue').click();page.locator('.tile').nth(0).tap();idle(page);page.locator('#ending').wait_for(state='visible');assert read(page)['phase']=='defeat';lost=read(page)
- page.reload();page.locator('#expeditionContinue').click();assert read(page)==lost;assert page.locator('#retryBattle').is_hidden();page.screenshot(path=str(ROOT/f'expedition-defeat-{w}-{motion}.png'),full_page=True)
+ page.reload();page.locator('#expeditionContinue').click();assert read(page)==lost;assert page.locator('#retryBattle').is_hidden();page.screenshot(path=str(ROOT/f'flow-expedition-defeat-{w}-{motion}.png'),full_page=True)
  page.locator('#endingMenu').click();page.locator('#continueRun').click();assert page.evaluate("localStorage.getItem('resonance-circuit-v1')")==practice
  assert not errors,errors
  print(json.dumps({'size':[w,h],'motion':motion,'standalone':standalone,'seed':seed,'rooms':e['path'],'relics':e['relics'],'total':e['total'],'result':'PASS'},ensure_ascii=False),flush=True);page.close()

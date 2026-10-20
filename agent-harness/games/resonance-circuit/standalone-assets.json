@@ -64,5 +64,11 @@
     "sha256": "4a113f424a349508a9715f0ac8f38116288725856cd33f3fbc4a3cf118e8a24c",
     "bytes": 2425578,
     "mime": "image/webp"
+  },
+  "af30890993fad0444": {
+    "path": "assets/enemy-foreground-sheet.png",
+    "sha256": "f30890993fad04445bd381b10dc6f1d5ba07cda224a512683ac8c59eba6cf3b7",
+    "bytes": 2313692,
+    "mime": "image/png"
   }
 }
