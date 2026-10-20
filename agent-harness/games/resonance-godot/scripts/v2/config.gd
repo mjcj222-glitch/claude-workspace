@@ -34,7 +34,7 @@ const COLOR_TYPES := ["red", "yellow", "blue"]
 const TYPE_WEIGHTS := {"red": 30, "yellow": 30, "blue": 30, "heart": 10}
 const TYPE_WEIGHT_TOTAL := 100
 const TYPE_HULLS := {"red": 0, "yellow": 2, "blue": 1, "heart": 3}
-const TYPE_COLORS := {"red": Color("ee426c"), "yellow": Color("ffc735"),
+const TYPE_COLORS := {"red": Color("f45c38"), "yellow": Color("ffc735"),
     "blue": Color("24bce5"), "heart": Color("f67bb1")}
 
 const MIN_GROUP := 3

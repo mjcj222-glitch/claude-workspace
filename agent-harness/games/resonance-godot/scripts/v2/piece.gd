@@ -74,19 +74,14 @@ func _draw() -> void:
     for point in polygon: rim.append(point * 0.96)
     rim.append(rim[0])
     draw_polyline(rim, color.lightened(0.35), 1.2, true)
-    draw_set_transform(Vector2.ZERO, -rotation)
-    # Every hull of a surface type uses this same large central motif.
+    # Keep inset markings proportional if the physical owner enlarges hulls.
+    var canonical := Geometry.Base.polygon(Geometry.HULL_MAP[hull_id],1.0)
+    var ink_scale := sqrt(Geometry.area(polygon)/Geometry.area(canonical))
+    draw_set_transform(Vector2.ZERO, -rotation, Vector2.ONE*ink_scale)
+    # Ordinary surfaces share a large central type motif; bombs use a type badge.
     var ink := Color("fff9ee")
     if bomb_tier > 0:
-        # Bomb decoration surrounds the shared type motif rather than replacing it.
-        draw_circle(Vector2.ZERO, 21, Color("243049"))
-        var tier_color: Color = [ink, ink, Color("ffd16d"), Color("ff8b76")][bomb_tier]
-        draw_arc(Vector2.ZERO, 22, 0, TAU, 48, tier_color, 2.0 + bomb_tier * 0.55, true)
-        draw_line(Vector2(9, -21), Vector2(12, -24), Color("ffc735"), 3, true)
-        draw_style_box(_tier_badge(), Rect2(-13,14,26,11))
-        for i in range(bomb_tier):
-            var x := (i - (bomb_tier - 1) * 0.5) * 6
-            draw_line(Vector2(x,16),Vector2(x,22),tier_color,3.0,true)
+        _draw_bomb(ink)
     if match_type == "red":
         draw_colored_polygon(PackedVector2Array([Vector2(0, -19), Vector2(12, -2), Vector2(10, 10),
             Vector2(0, 17), Vector2(-11, 10), Vector2(-13, 0), Vector2(-5, -10), Vector2(-4, 2)]), ink)
@@ -95,14 +90,14 @@ func _draw() -> void:
         for i in range(10):
             star.append(Vector2.from_angle(-PI / 2 + i * TAU / 10) * (18.0 if i % 2 == 0 else 8.0))
         draw_colored_polygon(star, ink)
-    elif match_type == "blue":
+    elif match_type == "blue" and bomb_tier == 0:
         for y in [-9, 0, 9]:
             var wave := PackedVector2Array()
             for i in range(17):
                 var x := -17.0 + i * 34.0 / 16
                 wave.append(Vector2(x, y + sin(x / 6.0) * 3.5))
             draw_polyline(wave, ink, 3.0, true)
-    else:
+    elif match_type == "heart":
         var heart := PackedVector2Array()
         for i in range(40):
             var t := i * TAU / 40
@@ -114,3 +109,32 @@ func _tier_badge() -> StyleBoxFlat:
     badge.bg_color = Color("152234")
     badge.set_corner_radius_all(4)
     return badge
+
+func _draw_bomb(ink: Color) -> void:
+    # The bomb body, lit fuse and explosion glyph carry the primary role.
+    # The smaller blue wave badge retains surface type without filling the core.
+    var tier_color: Color = [ink, ink, Color("ffd16d"), Color("ff8b76")][bomb_tier]
+    var center := Vector2(-2,0)
+    draw_circle(center,21,Color("10151d"))
+    draw_arc(center,21,0,TAU,48,tier_color,2.0+bomb_tier*0.55,true)
+    draw_arc(center,16,PI*1.05,PI*1.55,16,Color("647185"),3.0,true)
+    draw_line(Vector2(3,-18),Vector2(8,-22),Color("10151d"),8,true)
+    draw_polyline(PackedVector2Array([Vector2(5,-19),Vector2(10,-24),Vector2(11,-23)]),Color("ffd16d"),3.5,true)
+    for direction in [Vector2(1,0),Vector2(0,1),Vector2(0.7,0.7),Vector2(0.7,-0.7)]:
+        draw_line(Vector2(11,-23)-direction*3,Vector2(11,-23)+direction*3,ink,1.6,true)
+    var blast := PackedVector2Array()
+    for i in range(16):
+        blast.append(Vector2(-7,-2)+Vector2.from_angle(-PI/2+i*TAU/16)*(10.0 if i%2 == 0 else 4.5))
+    draw_colored_polygon(blast,ink)
+    draw_circle(Vector2(11,8),10.0,Config.TYPE_COLORS.blue.darkened(0.22))
+    draw_arc(Vector2(11,8),10.0,0,TAU,24,Config.TYPE_COLORS.blue.lightened(0.4),1.1,true)
+    for y in [-4,0,4]:
+        var wave := PackedVector2Array()
+        for i in range(13):
+            var x := -7.0+i*14.0/12
+            wave.append(Vector2(11+x,8+y+sin(x/2.5)*1.1))
+        draw_polyline(wave,ink,1.3,true)
+    draw_style_box(_tier_badge(),Rect2(-14,16,20,10))
+    for i in range(bomb_tier):
+        var x := -4+(i-(bomb_tier-1)*0.5)*6
+        draw_line(Vector2(x,18),Vector2(x,23),tier_color,3.0,true)

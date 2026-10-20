@@ -34,6 +34,8 @@ func _ready() -> void:
     queue_redraw()
 func _stage() -> void:
     var stage := get_node("EnemyStage")
+    stage.size = Vector2(720,320)
+    stage.clip_contents = true
     var backdrop := TextureRect.new()
     backdrop.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
     backdrop.texture = preload("res://assets/background.webp")

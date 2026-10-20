@@ -1,4 +1,5 @@
 extends SceneTree
+const Config = preload("res://scripts/v2/config.gd")
 const Board = preload("res://scripts/v2/board.gd")
 const Fixtures = preload("res://tests/v2/fixtures.gd")
 var checks := 0
@@ -17,10 +18,14 @@ func run() -> void:
     check(view.get_node("Party").get_child_count() == 1, "solo start has exactly one small portrait")
     check(view.get_node("Party").get_child(0).get_child(0).size == Vector2(62,62), "portrait texture obeys its small display bounds")
     check(view.get("hp_bar").size.y <= 8 and view.get("enemy_hp_bar").size.y <= 8, "HP bars stay thin after theme minimums")
-    check(view.get_node("EnemyStage").get_child(0).size == Vector2(672,280), "backdrop stays within enemy stage")
+    var stage: Rect2 = view.get_node("EnemyStage").get_global_rect()
+    check(stage.encloses(view.get_node("EnemyStage").get_child(0).get_global_rect()), "backdrop is contained by the actual enemy stage")
+    check(Config.TYPE_COLORS.red.h < 0.08 and Config.TYPE_COLORS.heart.h > 0.85, "normal red is warm red/orange while hearts remain pink")
     var cutin = view.get_node("CutinLayer")
     check(not cutin.get_node("Hero").visible, "full hero is hidden at rest")
-    check(cutin.get_node("Hero").size == Vector2(360,360), "cutin texture stays within its temporary stage")
+    check(stage.encloses(cutin.get_global_rect()), "cutin backdrop is inside enemy stage")
+    check(stage.encloses(cutin.get_node("Hero").get_global_rect()), "entire hero rectangle is inside enemy stage")
+    check(not cutin.get_global_rect().intersects(view.get_node("Party").get_global_rect()), "cutin never intersects party controls")
     var viewport = view.get_node("BoardViewport")
     check(viewport.size.x == viewport.size.y, "displayed board stays square")
     for p in [Vector2(40,550), Vector2(360,870), Vector2(679,1189)]:
@@ -64,13 +69,24 @@ func run() -> void:
     cutin.play(false)
     check(cutin.get_node("Hero").visible, "own skill briefly shows full hero")
     await create_timer(0.35).timeout
+    check(stage.encloses(cutin.get_node("Hero").get_global_rect()), "moving hero stays inside enemy stage")
     check(cutin.get_node("Hero").visible, "cutin remains visible during its 0.7 second window")
     await create_timer(0.40).timeout
     check(not cutin.get_node("Hero").visible and not cutin.visible, "cutin fully disappears after 0.7 seconds")
     cutin.play(true)
     check(cutin.get_node("Hero").visible, "reduced motion supports still cutin")
-    await create_timer(0.75).timeout
+    var still_position: Vector2 = cutin.get_node("Hero").position
+    var still_modulate: Color = cutin.get_node("Hero").modulate
+    await create_timer(0.35).timeout
+    check(cutin.get_node("Hero").position == still_position and cutin.get_node("Hero").modulate == still_modulate, "reduced cutin has no translation or fading")
+    check(cutin.find_children("*", "GPUParticles2D", true, false).is_empty() and cutin.find_children("*", "CPUParticles2D", true, false).is_empty(), "reduced cutin has no particle emitters")
+    check(stage.encloses(cutin.get_node("Hero").get_global_rect()), "still reduced hero stays inside enemy stage")
+    await create_timer(0.40).timeout
     check(not cutin.get_node("Hero").visible and not cutin.visible, "reduced cutin also returns to hidden")
+    view.show_state(Fixtures.combat(), ["hero","bomber"])
+    view.get_node("Party").get_child(1).pressed.emit()
+    view.show_plan(snapshot,action)
+    check(not cutin.visible and not cutin.get_node("Hero").visible, "companion request and ordinary plan presentation never dispatch hero cutin")
     print(JSON.stringify({"suite":"v2 presentation","checks":checks,"failures":failures}))
     view.free()
     quit(0 if failures == 0 else 1)

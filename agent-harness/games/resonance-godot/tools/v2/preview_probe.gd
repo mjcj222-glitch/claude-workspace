@@ -10,17 +10,19 @@ var fixture := "base"
 var output := "res://evidence/v2-local/checkpoint-a"
 var captures: Array = []
 var failures := 0
+var reduced := false
 func _initialize() -> void: call_deferred("run")
 func frames(count: int) -> void:
     for i in range(count): await process_frame
 func capture(label: String) -> void:
     await RenderingServer.frame_post_draw
-    var path := output.path_join(fixture+"-"+label+".png")
+    var path := output.path_join(fixture+("-reduced" if reduced else "")+"-"+label+".png")
     var result := root.get_texture().get_image().save_png(path)
-    captures.append({"path":path,"error":result,"frame":Engine.get_process_frames(),"hero_visible":view.get_node("CutinLayer/Hero").visible})
+    captures.append({"path":path,"error":result,"frame":Engine.get_process_frames(),"hero_visible":view.get_node("CutinLayer/Hero").visible,"hero_position":str(view.get_node("CutinLayer/Hero").position),"reduced":reduced})
     print(JSON.stringify(captures[-1]))
 func run() -> void:
     var args := OS.get_cmdline_user_args()
+    reduced = args.has("--reduced")
     var index := args.find("--fixture")
     if index >= 0 and index+1 < args.size(): fixture = args[index+1]
     DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output))
@@ -43,6 +45,7 @@ func run() -> void:
         quit(1)
         return
     if fixture == "bombs":
+        view.get_node("Bars").get_child(view.get_node("Bars").get_child_count()-1).text = "렌더링 시험 장면 · 42개 고정 배치 · 물리 시드 보드 아님"
         var tiles: Array = []
         for row in range(7):
             for col in range(6):
@@ -58,14 +61,19 @@ func run() -> void:
         if top.r <= bottom.r + 0.02:
             print("FAIL: glossy upper face must visibly reflect more light than lower face")
             failures += 1
-        var tier2 := pixels.get_pixel(272,51)
-        var tier3 := pixels.get_pixel(370,51)
+        var tier2 := pixels.get_pixel(269,51)
+        var tier3 := pixels.get_pixel(367,51)
         if not (tier2.r > tier2.b + 0.15):
             print("FAIL: tier 2 has a distinct gold rim")
             failures += 1
         if not (tier3.r > tier3.g + 0.15):
             print("FAIL: tier 3 has a distinct coral rim")
             failures += 1
+        for row in range(4):
+            var badge := pixels.get_pixel(163,67+row*82)
+            if not badge.b > badge.r + 0.20:
+                print("FAIL: smaller blue wave badge remains readable on hull "+str(row))
+                failures += 1
     var snapshot: Dictionary = board.capture()
     var plan: Dictionary = {}
     for piece in snapshot.pieces:
@@ -96,10 +104,12 @@ func run() -> void:
         await frames(3)
         await capture("refill-settled")
     if fixture == "cutin":
-        view.get_node("CutinLayer").play(false)
+        view.get_node("CutinLayer").play(reduced)
         await frames(12)
         await capture("hero-active")
-        await frames(36)
+        await frames(18)
+        await capture("hero-active-late")
+        await frames(18)
         await capture("hero-return")
     await frames(15)
     print(JSON.stringify({"fixture":fixture,"piece_count":board.capture().pieces.size(),"board_version":board.version,"captures":captures,"targets":plan.get("removed_ids",[]).size()}))
