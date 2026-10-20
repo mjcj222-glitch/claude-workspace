@@ -39,11 +39,11 @@ func inspect_groups() -> void:
         check(snap == before, "preview preserves original snapshot")
     var branched := Fixtures.snapshot([
         Fixtures.tile(8, "red", 0, Vector2.ZERO),
-        Fixtures.tile(2, "red", 0, Vector2(76.5, 0)),
-        Fixtures.tile(5, "red", 0, Vector2(-76.5, 0)),
-        Fixtures.tile(1, "red", 0, Vector2(0, 76.5)),
-        Fixtures.tile(3, "heart", 0, Vector2(0, -76.5)),
-        Fixtures.tile(4, "red", 0, Vector2(0, -153))])
+        Fixtures.tile(2, "red", 0, Vector2(Fixtures.circle_step(), 0)),
+        Fixtures.tile(5, "red", 0, Vector2(-Fixtures.circle_step(), 0)),
+        Fixtures.tile(1, "red", 0, Vector2(0, Fixtures.circle_step())),
+        Fixtures.tile(3, "heart", 0, Vector2(0, -Fixtures.circle_step())),
+        Fixtures.tile(4, "red", 0, Vector2(0, -2 * Fixtures.circle_step()))])
     check(SelectionV2.preview(branched, 8, 1).get("direct_ids") == [1, 2, 5, 8], "all contact branches are traversed without crossing a heart bridge")
     var mixed := Fixtures.snapshot([
         Fixtures.tile(3, "yellow", 3, Vector2.ZERO),
@@ -53,9 +53,9 @@ func inspect_groups() -> void:
     mixed.pieces[1].size = 0.97
     check(SelectionV2.preview(mixed, 1, 1).get("direct_ids") == [1, 2, 3], "same type matches across distinct rotated and scaled hulls")
     var contact := Fixtures.chain(3)
-    contact.pieces[2].x = 153.5
+    contact.pieces[2].x = Fixtures.circle_step() + Fixtures.circle_diameter() + 1.0
     check(SelectionV2.preview(contact, 1, 1).get("direct_ids") == [1, 2, 3], "one-unit hull gap is included")
-    contact.pieces[2].x = 153.51
+    contact.pieces[2].x = Fixtures.circle_step() + Fixtures.circle_diameter() + 1.01
     check(SelectionV2.preview(contact, 1, 1).is_empty(), "gap beyond one is not remotely joined")
 
 func inspect_bombs() -> void:

@@ -75,12 +75,26 @@ func make_refill(count: int) -> Array:
     return batch
 
 func apply_clear(ids: Array, batch: Array) -> void:
+    var openings: Array = []
+    for id in ids:
+        var removed = by_id(int(id))
+        if removed != null:
+            openings.append(removed.position.x)
     for id in ids:
         var piece = by_id(int(id))
         if piece != null:
             pieces.erase(piece)
             piece.free()
-    for item in batch:
+    for i in range(batch.size()):
+        var item: Dictionary = batch[i].duplicate(true)
+        if not openings.is_empty():
+            # Refill enters above the real cleared footprint; all descent and
+            # neighbor displacement still comes from rigid-body collisions.
+            var radius := 0.0
+            for point in Geometry.polygon(int(item.hull_id), float(item.size)):
+                radius = maxf(radius, point.length())
+            item.x = clampf(float(openings[i % openings.size()]), radius + 1, WIDTH - radius - 1)
+            item.y = Config.SPAWN_Y - i * Config.SPAWN_ROW_SPACING
         _spawn(item)
     _start_settling()
 

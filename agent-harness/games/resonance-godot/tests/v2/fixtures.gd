@@ -1,5 +1,6 @@
 extends RefCounted
 
+const Geometry = preload("res://scripts/v2/geometry.gd")
 const Config = preload("res://scripts/v2/config.gd")
 
 static func tile(id: int, type: String, hull_id: int, center: Vector2, bomb_tier: int = 0) -> Dictionary:
@@ -11,10 +12,18 @@ static func snapshot(tiles: Array, version: int = 1) -> Dictionary:
     ordered.sort_custom(func(a, b): return a.id < b.id)
     return {"version": version, "pieces": ordered}
 
+static func circle_diameter() -> float:
+    var diameter := 0.0
+    for point in Geometry.polygon(0): diameter = maxf(diameter, point.x * 2)
+    return diameter
+
+static func circle_step() -> float:
+    return circle_diameter() + 0.5
+
 static func chain(n: int, type: String = "red", bomb_tiers: Dictionary = {}) -> Dictionary:
     var tiles: Array = []
     for i in range(n):
-        tiles.append(tile(i + 1, type, 0, Vector2(i * 76.5, 100), int(bomb_tiers.get(i + 1, 0))))
+        tiles.append(tile(i + 1, type, 0, Vector2(i * circle_step(), 100), int(bomb_tiers.get(i + 1, 0))))
     return snapshot(tiles)
 
 static func combat(enemy_id: String = "hall1", turn: int = 1, hp: int = 72, energy: int = 4) -> Dictionary:

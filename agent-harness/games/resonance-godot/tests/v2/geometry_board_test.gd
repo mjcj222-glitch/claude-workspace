@@ -76,7 +76,7 @@ func inspect_graph() -> void:
     for angle in [0.0, 0.38, -0.9]:
         for gap in [0.5, 2.0]:
             var a := Fixtures.tile(2, "red", 0, Vector2.ZERO)
-            var b := Fixtures.tile(1, "heart", 0, Vector2(76 + gap, 0).rotated(angle))
+            var b := Fixtures.tile(1, "heart", 0, Vector2(Fixtures.circle_diameter() + gap, 0).rotated(angle))
             a.angle = angle
             b.angle = angle
             var snap := Fixtures.snapshot([a, b])

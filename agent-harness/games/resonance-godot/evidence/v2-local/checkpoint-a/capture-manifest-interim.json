@@ -1,0 +1,33 @@
+{
+  "status": "interim; independent visual review pending",
+  "source_commit": "65657fd64c16c353cc0ade9ab837e33fea87a38c",
+  "godot": "4.6.3.stable.official.7d41c59c4",
+  "video": {
+    "width": 720,
+    "height": 1280,
+    "fps": 60,
+    "duration_seconds": 9.25
+  },
+  "files": [
+    {
+      "file": "base-selection.png",
+      "size_bytes": 711225,
+      "sha256": "e77ef944a14840468ec1fd353d05a7cd345ee98f53492a811762532aa18d5d55"
+    },
+    {
+      "file": "bombs-selection.png",
+      "size_bytes": 766815,
+      "sha256": "212eb96f89d7579a7241910099b9d14469a2c219f7af0347c283711cc2fedf15"
+    },
+    {
+      "file": "bombs-tiers.png",
+      "size_bytes": 722616,
+      "sha256": "ddb1fd093137f970f41ff334fa25612988b1edef8e3f520c51d4ca75ac9f9056"
+    },
+    {
+      "file": "checkpoint-a.mp4",
+      "size_bytes": 1425240,
+      "sha256": "9c99855ba6e4359592f325a535981a48831d4767d8b2611d2782f5706c424e67"
+    }
+  ]
+}
