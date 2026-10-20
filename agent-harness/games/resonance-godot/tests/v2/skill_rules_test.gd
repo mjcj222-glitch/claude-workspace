@@ -31,10 +31,10 @@ func branch() -> Dictionary:
     # Hop-two ID 2 must win over ID 90 even though its parent is visited last.
     return Fixtures.snapshot([
         Fixtures.tile(1, "red", 0, Vector2(250, 250)),
-        Fixtures.tile(10, "red", 0, Vector2(173.5, 250)),
-        Fixtures.tile(20, "red", 0, Vector2(326.5, 250)),
-        Fixtures.tile(90, "red", 0, Vector2(97, 250)),
-        Fixtures.tile(2, "red", 0, Vector2(403, 250))], 17)
+        Fixtures.tile(10, "red", 0, Vector2(250-Fixtures.circle_step(), 250)),
+        Fixtures.tile(20, "red", 0, Vector2(250+Fixtures.circle_step(), 250)),
+        Fixtures.tile(90, "red", 0, Vector2(250-2*Fixtures.circle_step(), 250)),
+        Fixtures.tile(2, "red", 0, Vector2(250+2*Fixtures.circle_step(), 250))], 17)
 
 func inspect_hero() -> void:
     var snap := branch()

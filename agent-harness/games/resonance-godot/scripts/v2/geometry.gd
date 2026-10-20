@@ -7,7 +7,7 @@ const HULL_MAP := [0, 2, 1, 3]
 const CONTACT_EPS := Config.CONTACT_EPS
 
 static func polygon(hull_id: int, size: float = 1.0) -> PackedVector2Array:
-    return Base.polygon(HULL_MAP[hull_id], size)
+    return Base.polygon(HULL_MAP[hull_id], size * Config.BASE_HULL_SCALE)
 
 static func transformed(points: PackedVector2Array, origin: Vector2, angle: float) -> PackedVector2Array:
     return Base.transformed(points, origin, angle)
