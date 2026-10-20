@@ -1,0 +1,1095 @@
+{
+  "source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c",
+  "capture_mode": "ordinary-realtime",
+  "controlled_fixtures": false,
+  "context_note": "Naturally generated board in a configuredBattleContext: gate enemy,HP60,energy4,hero. Controller harness, not an unmodified three-battle expedition witness.",
+  "capture_timing": "No fixed-fps; realtime graphical path with maxfps60 and telemetry. Wall/simulation separately recorded.",
+  "raw_record_sha256": "4ce74e7ff2b62cafd33d1ec13f429b80946c4b09d581c9677eac394eaf9400e3",
+  "checks_failures": 0,
+  "records": [
+    {
+      "name": "Actual controller / natural seed41",
+      "seed": 41,
+      "phase": "initial",
+      "png": "step-01-seed41-initial.png",
+      "metrics": {
+        "area_ratio": 0.623993691145049,
+        "count": 42,
+        "max_overlap": 9.03125,
+        "physics_frame": 325,
+        "process_frame": 111,
+        "supported": true,
+        "top_empty_logical": 66.350700378418,
+        "wall_usec": 12722271
+      }
+    },
+    {
+      "name": "ordinary-seed41",
+      "phase": "preview",
+      "plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 1,
+        "combat_version": 1,
+        "direct_color_count": 7,
+        "direct_damage": 20,
+        "direct_ids": [
+          15,
+          16,
+          22,
+          23,
+          27,
+          28,
+          29
+        ],
+        "energy_effective": 2,
+        "energy_raw": 2,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          15,
+          16,
+          22,
+          23,
+          27,
+          28,
+          29
+        ],
+        "seed_id": 15,
+        "weaken_intent": false
+      },
+      "state": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 4,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 1,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "metrics": {
+        "area_ratio": 0.623993691145049,
+        "count": 42,
+        "max_overlap": 9.03125,
+        "physics_frame": 341,
+        "process_frame": 114,
+        "supported": true,
+        "top_empty_logical": 66.350700378418,
+        "wall_usec": 13172671
+      }
+    },
+    {
+      "name": "ordinary-seed41",
+      "phase": "READY",
+      "state": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 6,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 20,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "release_movie_frame": 136,
+      "ready_movie_frame": 334,
+      "events": [
+        {
+          "blast_damage": 0,
+          "direct_damage": 20,
+          "energy_effective": 2,
+          "energy_raw": 2,
+          "healing_effective": 0,
+          "healing_raw": 0,
+          "refill_tier": 0,
+          "type": "action_applied",
+          "weaken_intent": false
+        },
+        {
+          "generated_bombs": 0,
+          "type": "refill_finished"
+        }
+      ],
+      "metrics": {
+        "area_ratio": 0.614312040811115,
+        "count": 42,
+        "max_overlap": 8.796875,
+        "physics_frame": 962,
+        "process_frame": 334,
+        "supported": true,
+        "top_empty_logical": 57.9612045288086,
+        "wall_usec": 18434624
+      },
+      "actual_absent_ids": [
+        15,
+        16,
+        22,
+        23,
+        27,
+        28,
+        29
+      ],
+      "displayed_union_matches_actual": true,
+      "controller_timing": {
+        "action_lock": {
+          "end_frame": 961,
+          "physical_seconds": 4.44166666666668,
+          "removed_count": 7,
+          "simulation_seconds": 4.56666666666667,
+          "start_frame": 413,
+          "timed_out": false,
+          "wall_seconds": 4.568941
+        },
+        "phase_boundaries": [
+          {
+            "phase": "collapse",
+            "physical_elapsed": 0.0,
+            "physics_frame": 429,
+            "movie_frame": 142
+          },
+          {
+            "phase": "incoming",
+            "physical_elapsed": 1.79166666666666,
+            "physics_frame": 644,
+            "movie_frame": 219
+          }
+        ],
+        "collapse_physical_seconds": 1.79166666666666,
+        "incoming_physical_seconds": 2.65000000000002,
+        "compression_and_callback_alignment_sim_seconds": 0.12499999999999023,
+        "all_sampled_CCD_modes_are_shape2": true,
+        "motion_and_quiet_tails": [
+          {
+            "phase": "collapse",
+            "end_physical_elapsed": 1.79166666666666,
+            "last_above_production_speed_or_angular_threshold": 1.55,
+            "observed_tail_to_gate_seconds": 0.24166666666666003,
+            "last_meaningful_0_1s_window_end": 1.40833333333333,
+            "meaningful_proxy_tail_seconds": 0.38333333333333,
+            "all_bodies_unfrozen_during_phase": true
+          },
+          {
+            "phase": "incoming",
+            "end_physical_elapsed": 4.44166666666668,
+            "last_above_production_speed_or_angular_threshold": 4.2,
+            "observed_tail_to_gate_seconds": 0.24166666666667957,
+            "last_meaningful_0_1s_window_end": 4.15,
+            "meaningful_proxy_tail_seconds": 0.2916666666666794,
+            "all_bodies_unfrozen_during_phase": true
+          }
+        ],
+        "sampling_note": "Phase/quiet observations have at most one120Hz tick callback alignment; meaningful proxy is observed >3logicalpx or >0.04rad over a0.1s window, not a rule threshold. Compression prefix is intentional outline animation; Board is not additionally frozen after physical settled."
+      }
+    },
+    {
+      "name": "Actual controller / natural seed73",
+      "seed": 73,
+      "phase": "initial",
+      "png": "step-04-seed73-initial.png",
+      "metrics": {
+        "area_ratio": 0.62406890507804,
+        "count": 42,
+        "max_overlap": 2.578125,
+        "physics_frame": 1278,
+        "process_frame": 448,
+        "supported": true,
+        "top_empty_logical": 57.202938079834,
+        "wall_usec": 21136678
+      }
+    },
+    {
+      "name": "ordinary-seed73",
+      "phase": "preview",
+      "plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 3,
+        "combat_version": 1,
+        "direct_color_count": 4,
+        "direct_damage": 8,
+        "direct_ids": [
+          2,
+          8,
+          15,
+          16
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          2,
+          8,
+          15,
+          16
+        ],
+        "seed_id": 2,
+        "weaken_intent": false
+      },
+      "state": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 4,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 1,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "metrics": {
+        "area_ratio": 0.62406890507804,
+        "count": 42,
+        "max_overlap": 2.578125,
+        "physics_frame": 1294,
+        "process_frame": 451,
+        "supported": true,
+        "top_empty_logical": 57.202938079834,
+        "wall_usec": 21512156
+      }
+    },
+    {
+      "name": "ordinary-seed73",
+      "phase": "READY",
+      "state": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 5,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 8,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "release_movie_frame": 475,
+      "ready_movie_frame": 596,
+      "events": [
+        {
+          "blast_damage": 0,
+          "direct_damage": 8,
+          "energy_effective": 1,
+          "energy_raw": 1,
+          "healing_effective": 0,
+          "healing_raw": 0,
+          "refill_tier": 0,
+          "type": "action_applied",
+          "weaken_intent": false
+        },
+        {
+          "generated_bombs": 0,
+          "type": "refill_finished"
+        }
+      ],
+      "metrics": {
+        "area_ratio": 0.625917798868153,
+        "count": 42,
+        "max_overlap": 6.0703125,
+        "physics_frame": 1724,
+        "process_frame": 596,
+        "supported": true,
+        "top_empty_logical": 57.4193115234375,
+        "wall_usec": 25176713
+      },
+      "actual_absent_ids": [
+        2,
+        8,
+        15,
+        16
+      ],
+      "displayed_union_matches_actual": true,
+      "controller_timing": {
+        "action_lock": {
+          "end_frame": 1723,
+          "physical_seconds": 2.83333333333333,
+          "removed_count": 4,
+          "simulation_seconds": 2.95833333333333,
+          "start_frame": 1368,
+          "timed_out": false,
+          "wall_seconds": 2.937747
+        },
+        "phase_boundaries": [
+          {
+            "phase": "collapse",
+            "physical_elapsed": 0.0,
+            "physics_frame": 1384,
+            "movie_frame": 481
+          },
+          {
+            "phase": "incoming",
+            "physical_elapsed": 1.175,
+            "physics_frame": 1525,
+            "movie_frame": 528
+          }
+        ],
+        "collapse_physical_seconds": 1.175,
+        "incoming_physical_seconds": 1.6583333333333299,
+        "compression_and_callback_alignment_sim_seconds": 0.125,
+        "all_sampled_CCD_modes_are_shape2": true,
+        "motion_and_quiet_tails": [
+          {
+            "phase": "collapse",
+            "end_physical_elapsed": 1.175,
+            "last_above_production_speed_or_angular_threshold": 0.933333333333332,
+            "observed_tail_to_gate_seconds": 0.24166666666666803,
+            "last_meaningful_0_1s_window_end": 0.633333333333334,
+            "meaningful_proxy_tail_seconds": 0.5416666666666661,
+            "all_bodies_unfrozen_during_phase": true
+          },
+          {
+            "phase": "incoming",
+            "end_physical_elapsed": 2.83333333333333,
+            "last_above_production_speed_or_angular_threshold": 2.59166666666666,
+            "observed_tail_to_gate_seconds": 0.2416666666666698,
+            "last_meaningful_0_1s_window_end": 2.62499999999999,
+            "meaningful_proxy_tail_seconds": 0.20833333333334014,
+            "all_bodies_unfrozen_during_phase": true
+          }
+        ],
+        "sampling_note": "Phase/quiet observations have at most one120Hz tick callback alignment; meaningful proxy is observed >3logicalpx or >0.04rad over a0.1s window, not a rule threshold. Compression prefix is intentional outline animation; Board is not additionally frozen after physical settled."
+      }
+    },
+    {
+      "name": "Actual controller / natural seed991",
+      "seed": 991,
+      "phase": "initial",
+      "png": "step-07-seed991-initial.png",
+      "metrics": {
+        "area_ratio": 0.611732026449839,
+        "count": 42,
+        "max_overlap": 9.65234375,
+        "physics_frame": 2095,
+        "process_frame": 733,
+        "supported": true,
+        "top_empty_logical": 60.9109268188477,
+        "wall_usec": 28338173
+      }
+    },
+    {
+      "name": "ordinary-seed991",
+      "phase": "preview",
+      "plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 5,
+        "combat_version": 1,
+        "direct_color_count": 4,
+        "direct_damage": 8,
+        "direct_ids": [
+          7,
+          14,
+          19,
+          20
+        ],
+        "energy_effective": 1,
+        "energy_raw": 1,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          7,
+          14,
+          19,
+          20
+        ],
+        "seed_id": 7,
+        "weaken_intent": false
+      },
+      "state": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 4,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 1,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "metrics": {
+        "area_ratio": 0.611732026449839,
+        "count": 42,
+        "max_overlap": 9.65234375,
+        "physics_frame": 2109,
+        "process_frame": 736,
+        "supported": true,
+        "top_empty_logical": 60.9109268188477,
+        "wall_usec": 28696404
+      }
+    },
+    {
+      "name": "ordinary-seed991",
+      "phase": "READY",
+      "state": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 5,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 8,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "release_movie_frame": 758,
+      "ready_movie_frame": 928,
+      "events": [
+        {
+          "blast_damage": 0,
+          "direct_damage": 8,
+          "energy_effective": 1,
+          "energy_raw": 1,
+          "healing_effective": 0,
+          "healing_raw": 0,
+          "refill_tier": 0,
+          "type": "action_applied",
+          "weaken_intent": false
+        },
+        {
+          "generated_bombs": 0,
+          "type": "refill_finished"
+        }
+      ],
+      "metrics": {
+        "area_ratio": 0.617124557261997,
+        "count": 42,
+        "max_overlap": 8.7607421875,
+        "physics_frame": 2686,
+        "process_frame": 928,
+        "supported": true,
+        "top_empty_logical": 12.3662490844727,
+        "wall_usec": 33575575
+      },
+      "actual_absent_ids": [
+        7,
+        14,
+        19,
+        20
+      ],
+      "displayed_union_matches_actual": true,
+      "controller_timing": {
+        "action_lock": {
+          "end_frame": 2685,
+          "physical_seconds": 4.05833333333332,
+          "removed_count": 4,
+          "simulation_seconds": 4.19166666666667,
+          "start_frame": 2182,
+          "timed_out": false,
+          "wall_seconds": 4.182536
+        },
+        "phase_boundaries": [
+          {
+            "phase": "collapse",
+            "physical_elapsed": 0.0,
+            "physics_frame": 2199,
+            "movie_frame": 764
+          },
+          {
+            "phase": "incoming",
+            "physical_elapsed": 1.93333333333333,
+            "physics_frame": 2431,
+            "movie_frame": 843
+          }
+        ],
+        "collapse_physical_seconds": 1.93333333333333,
+        "incoming_physical_seconds": 2.1249999999999902,
+        "compression_and_callback_alignment_sim_seconds": 0.13333333333334974,
+        "all_sampled_CCD_modes_are_shape2": true,
+        "motion_and_quiet_tails": [
+          {
+            "phase": "collapse",
+            "end_physical_elapsed": 1.93333333333333,
+            "last_above_production_speed_or_angular_threshold": 1.69166666666666,
+            "observed_tail_to_gate_seconds": 0.24166666666667003,
+            "last_meaningful_0_1s_window_end": 1.39166666666666,
+            "meaningful_proxy_tail_seconds": 0.5416666666666701,
+            "all_bodies_unfrozen_during_phase": true
+          },
+          {
+            "phase": "incoming",
+            "end_physical_elapsed": 4.05833333333332,
+            "last_above_production_speed_or_angular_threshold": 3.81666666666666,
+            "observed_tail_to_gate_seconds": 0.24166666666666003,
+            "last_meaningful_0_1s_window_end": 3.72499999999999,
+            "meaningful_proxy_tail_seconds": 0.3333333333333304,
+            "all_bodies_unfrozen_during_phase": true
+          }
+        ],
+        "sampling_note": "Phase/quiet observations have at most one120Hz tick callback alignment; meaningful proxy is observed >3logicalpx or >0.04rad over a0.1s window, not a rule threshold. Compression prefix is intentional outline animation; Board is not additionally frozen after physical settled."
+      }
+    },
+    {
+      "name": "Actual controller / natural seed20261020",
+      "seed": 20261020,
+      "phase": "initial",
+      "png": "step-10-seed20261020-initial.png",
+      "metrics": {
+        "area_ratio": 0.62980945286221,
+        "count": 42,
+        "max_overlap": 9.6171875,
+        "physics_frame": 3091,
+        "process_frame": 1076,
+        "supported": true,
+        "top_empty_logical": 65.370979309082,
+        "wall_usec": 37040701
+      }
+    },
+    {
+      "name": "ordinary-seed20261020",
+      "phase": "preview",
+      "plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 7,
+        "combat_version": 1,
+        "direct_color_count": 7,
+        "direct_damage": 20,
+        "direct_ids": [
+          28,
+          30,
+          33,
+          34,
+          35,
+          36,
+          41
+        ],
+        "energy_effective": 2,
+        "energy_raw": 2,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          28,
+          30,
+          33,
+          34,
+          35,
+          36,
+          41
+        ],
+        "seed_id": 28,
+        "weaken_intent": false
+      },
+      "state": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 4,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 1,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "metrics": {
+        "area_ratio": 0.62980945286221,
+        "count": 42,
+        "max_overlap": 9.6171875,
+        "physics_frame": 3106,
+        "process_frame": 1079,
+        "supported": true,
+        "top_empty_logical": 65.370979309082,
+        "wall_usec": 37456723
+      }
+    },
+    {
+      "name": "ordinary-seed20261020",
+      "phase": "READY",
+      "state": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 6,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 20,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "release_movie_frame": 1101,
+      "ready_movie_frame": 1280,
+      "events": [
+        {
+          "blast_damage": 0,
+          "direct_damage": 20,
+          "energy_effective": 2,
+          "energy_raw": 2,
+          "healing_effective": 0,
+          "healing_raw": 0,
+          "refill_tier": 0,
+          "type": "action_applied",
+          "weaken_intent": false
+        },
+        {
+          "generated_bombs": 0,
+          "type": "refill_finished"
+        }
+      ],
+      "metrics": {
+        "area_ratio": 0.633276092889574,
+        "count": 42,
+        "max_overlap": 9.4921875,
+        "physics_frame": 3699,
+        "process_frame": 1280,
+        "supported": true,
+        "top_empty_logical": 35.8954849243164,
+        "wall_usec": 42467722
+      },
+      "actual_absent_ids": [
+        28,
+        30,
+        33,
+        34,
+        35,
+        36,
+        41
+      ],
+      "displayed_union_matches_actual": true,
+      "controller_timing": {
+        "action_lock": {
+          "end_frame": 3698,
+          "physical_seconds": 4.21666666666667,
+          "removed_count": 7,
+          "simulation_seconds": 4.33333333333333,
+          "start_frame": 3178,
+          "timed_out": false,
+          "wall_seconds": 4.315169
+        },
+        "phase_boundaries": [
+          {
+            "phase": "collapse",
+            "physical_elapsed": 0.0,
+            "physics_frame": 3193,
+            "movie_frame": 1106
+          },
+          {
+            "phase": "incoming",
+            "physical_elapsed": 2.40833333333333,
+            "physics_frame": 3482,
+            "movie_frame": 1208
+          }
+        ],
+        "collapse_physical_seconds": 2.40833333333333,
+        "incoming_physical_seconds": 1.8083333333333402,
+        "compression_and_callback_alignment_sim_seconds": 0.11666666666666003,
+        "all_sampled_CCD_modes_are_shape2": true,
+        "motion_and_quiet_tails": [
+          {
+            "phase": "collapse",
+            "end_physical_elapsed": 2.40833333333333,
+            "last_above_production_speed_or_angular_threshold": 2.16666666666666,
+            "observed_tail_to_gate_seconds": 0.24166666666667025,
+            "last_meaningful_0_1s_window_end": 1.91666666666666,
+            "meaningful_proxy_tail_seconds": 0.49166666666667,
+            "all_bodies_unfrozen_during_phase": true
+          },
+          {
+            "phase": "incoming",
+            "end_physical_elapsed": 4.21666666666667,
+            "last_above_production_speed_or_angular_threshold": 3.97499999999999,
+            "observed_tail_to_gate_seconds": 0.24166666666668046,
+            "last_meaningful_0_1s_window_end": 3.99999999999999,
+            "meaningful_proxy_tail_seconds": 0.21666666666668055,
+            "all_bodies_unfrozen_during_phase": true
+          }
+        ],
+        "sampling_note": "Phase/quiet observations have at most one120Hz tick callback alignment; meaningful proxy is observed >3logicalpx or >0.04rad over a0.1s window, not a rule threshold. Compression prefix is intentional outline animation; Board is not additionally frozen after physical settled."
+      }
+    },
+    {
+      "name": "Actual controller / natural seed121",
+      "seed": 121,
+      "phase": "initial",
+      "png": "step-13-seed121-initial.png",
+      "metrics": {
+        "area_ratio": 0.612162662294176,
+        "count": 42,
+        "max_overlap": 3.072265625,
+        "physics_frame": 4043,
+        "process_frame": 1416,
+        "supported": true,
+        "top_empty_logical": 98.8525390625,
+        "wall_usec": 45419448
+      }
+    },
+    {
+      "name": "ordinary-seed121",
+      "phase": "preview",
+      "plan": {
+        "blast_circles": [],
+        "blast_damage": 0,
+        "board_version": 9,
+        "combat_version": 1,
+        "direct_color_count": 6,
+        "direct_damage": 18,
+        "direct_ids": [
+          17,
+          18,
+          24,
+          30,
+          35,
+          36
+        ],
+        "energy_effective": 2,
+        "energy_raw": 2,
+        "extra_ids": [],
+        "fired_bomb_ids": [],
+        "healing_effective": 0,
+        "healing_raw": 0,
+        "mode": "color",
+        "refill_tier": 0,
+        "removed_ids": [
+          17,
+          18,
+          24,
+          30,
+          35,
+          36
+        ],
+        "seed_id": 17,
+        "weaken_intent": false
+      },
+      "state": {
+        "actions_left": 3,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 4,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 0,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 1,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "metrics": {
+        "area_ratio": 0.612162662294176,
+        "count": 42,
+        "max_overlap": 3.072265625,
+        "physics_frame": 4059,
+        "process_frame": 1419,
+        "supported": true,
+        "top_empty_logical": 98.8525390625,
+        "wall_usec": 45812689
+      }
+    },
+    {
+      "name": "ordinary-seed121",
+      "phase": "READY",
+      "state": {
+        "actions_left": 2,
+        "bomb_buff": {
+          "active": false,
+          "generated_count": 0,
+          "paid_cost": 0,
+          "refunded": false
+        },
+        "enemy_hp": 168,
+        "enemy_id": "gate",
+        "energy": 6,
+        "hero_limit": 3,
+        "hp": 60,
+        "intent": {
+          "base_damage": 16,
+          "kind": "normal",
+          "pressure": 0,
+          "total_damage": 16,
+          "weakened": false
+        },
+        "party": [
+          "hero"
+        ],
+        "pending_damage": 18,
+        "pending_heal": 0,
+        "refill_pending": false,
+        "revision": 3,
+        "status": "active",
+        "team_skill_used": false,
+        "turn": 1
+      },
+      "release_movie_frame": 1441,
+      "ready_movie_frame": 1605,
+      "events": [
+        {
+          "blast_damage": 0,
+          "direct_damage": 18,
+          "energy_effective": 2,
+          "energy_raw": 2,
+          "healing_effective": 0,
+          "healing_raw": 0,
+          "refill_tier": 0,
+          "type": "action_applied",
+          "weaken_intent": false
+        },
+        {
+          "generated_bombs": 0,
+          "type": "refill_finished"
+        }
+      ],
+      "metrics": {
+        "area_ratio": 0.611372483568721,
+        "count": 42,
+        "max_overlap": 8.267578125,
+        "physics_frame": 4615,
+        "process_frame": 1605,
+        "supported": true,
+        "top_empty_logical": 74.48974609375,
+        "wall_usec": 50519779
+      },
+      "actual_absent_ids": [
+        17,
+        18,
+        24,
+        30,
+        35,
+        36
+      ],
+      "displayed_union_matches_actual": true,
+      "controller_timing": {
+        "action_lock": {
+          "end_frame": 4614,
+          "physical_seconds": 3.88333333333332,
+          "removed_count": 6,
+          "simulation_seconds": 4.01666666666667,
+          "start_frame": 4132,
+          "timed_out": false,
+          "wall_seconds": 3.988927
+        },
+        "phase_boundaries": [
+          {
+            "phase": "collapse",
+            "physical_elapsed": 0.0,
+            "physics_frame": 4149,
+            "movie_frame": 1447
+          },
+          {
+            "phase": "incoming",
+            "physical_elapsed": 1.78333333333333,
+            "physics_frame": 4363,
+            "movie_frame": 1519
+          }
+        ],
+        "collapse_physical_seconds": 1.78333333333333,
+        "incoming_physical_seconds": 2.09999999999999,
+        "compression_and_callback_alignment_sim_seconds": 0.13333333333335018,
+        "all_sampled_CCD_modes_are_shape2": true,
+        "motion_and_quiet_tails": [
+          {
+            "phase": "collapse",
+            "end_physical_elapsed": 1.78333333333333,
+            "last_above_production_speed_or_angular_threshold": 1.54166666666666,
+            "observed_tail_to_gate_seconds": 0.24166666666667003,
+            "last_meaningful_0_1s_window_end": 1.34166666666666,
+            "meaningful_proxy_tail_seconds": 0.4416666666666702,
+            "all_bodies_unfrozen_during_phase": true
+          },
+          {
+            "phase": "incoming",
+            "end_physical_elapsed": 3.88333333333332,
+            "last_above_production_speed_or_angular_threshold": 3.64166666666666,
+            "observed_tail_to_gate_seconds": 0.24166666666666003,
+            "last_meaningful_0_1s_window_end": 3.64999999999999,
+            "meaningful_proxy_tail_seconds": 0.23333333333332984,
+            "all_bodies_unfrozen_during_phase": true
+          }
+        ],
+        "sampling_note": "Phase/quiet observations have at most one120Hz tick callback alignment; meaningful proxy is observed >3logicalpx or >0.04rad over a0.1s window, not a rule threshold. Compression prefix is intentional outline animation; Board is not additionally frozen after physical settled."
+      }
+    }
+  ]
+}

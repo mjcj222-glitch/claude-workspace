@@ -1,0 +1,314 @@
+{
+  "status": "Task6 independently accepted on cec5b64; controlled fixtures and ordinary evidence retain separate capture provenance; Tasks7–10 remain in progress",
+  "current_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf",
+  "original_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c",
+  "ordinary_context": "naturally generated boards in configured BattleContext; not unmodified three-battle expedition",
+  "fixture_context": "explicit controlled surface/bomb/turn fixtures using actual rules/controller/physics",
+  "sources": {
+    "4428d608a3eb0695a1728842f70c1901fa33a74c": {
+      "scripts/v2/battle.gd": "ed5f6e90f0bb220a57abeff0d929cb054b2d2430a21bd5dbf537a3c6eeff2b75",
+      "scenes/v2/battle.tscn": "0622cc55ce8e751e350c4ab5a5a84df5862adeb85d2addc8c6f57f44b2cfe99c",
+      "tests/v2/battle_integration_test.gd": "c137dcdf11be1aa383f26f9167731a29cd476cecc647beff8818b075ff95d6bc",
+      "scripts/v2/battle_view.gd": "5ed8a60451fab7000cd07a13bec5128d14c444d48f0ee619dd4046832b401dfe",
+      "scripts/v2/board_effects.gd": "c496903fcf86999b6fea30054f03e0e1cee96ebbd7537352db1cc232b660651b",
+      "scripts/v2/board.gd": "db2a4a962b4b097761fed6df05e1b937a3b15c041596228696b1cf57e58d4b30",
+      "tests/v2/physics_density_test.gd": "8647074cb5ef3987a02a5f8f63736f7a1955d936b705b60c150eea9522d32265"
+    },
+    "cec5b64f38fe8892411791477928c1ed29d72cdf": {
+      "scenes/v2/battle.tscn": "0622cc55ce8e751e350c4ab5a5a84df5862adeb85d2addc8c6f57f44b2cfe99c",
+      "scripts/v2/battle.gd": "a8b1e5b49b73906cedc5f6a2b740bdbacb39134833055b55afb7b34418771445",
+      "scripts/v2/battle_view.gd": "ab84f486a2f69ac670845afde82d7d83d60f259110e3b045a14a701e4a11946c",
+      "scripts/v2/board.gd": "db2a4a962b4b097761fed6df05e1b937a3b15c041596228696b1cf57e58d4b30",
+      "scripts/v2/board_effects.gd": "73e50d2c3a89879ff09a22c338ed63a73e9f1a25e48dc05e664eca3a4f59cf68",
+      "tests/v2/battle_integration_test.gd": "8ab94399aec6e5d74334668f5d3b36578bc5fcfa58c53d2b4c706bfbaa000eaa",
+      "tests/v2/physics_density_test.gd": "8647074cb5ef3987a02a5f8f63736f7a1955d936b705b60c150eea9522d32265",
+      "tests/v2/presentation_test.gd": "ff4b0e4398b4ba92c2d6cc78d8ae018611b2402c5868410b6b85242a5f2d7400"
+    }
+  },
+  "movies": [
+    {
+      "path": "checkpoint-b-fixtures.mp4",
+      "source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf",
+      "frames": 1979,
+      "fps": 60,
+      "duration_seconds": 32.983333333333334,
+      "capture_wall_seconds": 79,
+      "controlled": true
+    },
+    {
+      "path": "ordinary-controller.mp4",
+      "source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c",
+      "frames": 507,
+      "fps": 60,
+      "duration_seconds": 8.45,
+      "capture_wall_seconds": 27,
+      "controlled": false
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4681,
+      "sha256": "f78a60b87d348fce9f11531fd12e292fbfbceafff1f938c5711141bda904a0ac",
+      "capture_source_commit": null
+    },
+    {
+      "path": "checkpoint-b-fixtures.mp4",
+      "bytes": 5994593,
+      "sha256": "b7b56c775e127b995b7a6ee507d84bbb488dfcdd3599a3b9a310f6cc629acd9d",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-direct8-extra4-burst-collapse.png",
+      "bytes": 681288,
+      "sha256": "b3b65a851b9cf6f6363093f79d4c8f9b25895b1e671af46ccf7e0bc9336b0576",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-direct8-extra4-compression.png",
+      "bytes": 825042,
+      "sha256": "81ffa8a579bf43c76d33249cbe968a25b9962a1840d64f6504aeec16e2a12fc0",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-direct8-extra4-preview.png",
+      "bytes": 814770,
+      "sha256": "6a9bbbb61907cc3283f729a37935e0d37a48e47387725cd9a2963e8ab7b6a693",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-direct8-extra4-result.png",
+      "bytes": 748125,
+      "sha256": "75f63427fcb8f9149c2d8db3c4483e36825d31ffa64ce3b2d9b0b527174591f6",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-hero-cutin.png",
+      "bytes": 535123,
+      "sha256": "bddc17358192113077f863c1b1442f883ca02456c8865b136990e36887c869b0",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-hero-preview.png",
+      "bytes": 747063,
+      "sha256": "9906f1fb3309216892daadc24771ee6ea8d0595693705265bc501e82659c2a9c",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-hero-result.png",
+      "bytes": 741266,
+      "sha256": "00387cc8c3623c7ce95bc44bd1804e56b04ab1aef9be1da7ec911f8b3daf33c0",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-solo-bomb-burst-collapse.png",
+      "bytes": 670459,
+      "sha256": "4261a0c2fcc771fbe6abf633e6fb080789b4f97101e0e342ef999a8c9486749a",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-solo-bomb-compression.png",
+      "bytes": 792629,
+      "sha256": "b19624f8c10388037f1b8daaee9011c472adbc6c7863eed494bb90ae6a282862",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-solo-bomb-preview.png",
+      "bytes": 783862,
+      "sha256": "6de9377ae01d0f203cbe4649d1a354c1e525f94ccfaeaa3483dfe814f76a7d48",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-solo-bomb-result.png",
+      "bytes": 732260,
+      "sha256": "e293f0c62c8f54deae395b063476451c61bcb61b469ba293a51ce24eadbd9285",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-strong-weaken42-burst-collapse.png",
+      "bytes": 455493,
+      "sha256": "9c3303ac5df51365cd4970a171828657d0e259aa538c86ec1c8cc4d236803b06",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-strong-weaken42-compression.png",
+      "bytes": 979661,
+      "sha256": "252650b3cf911ef1809fef26e78cde258b20e3aa1fee7c1eec8926c274cabe72",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-strong-weaken42-preview.png",
+      "bytes": 933764,
+      "sha256": "612e928f1c82f56f00ddbe08d75d17c264c4bd04634a521a3e80dc0a2161d807",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/fixture-strong-weaken42-result.png",
+      "bytes": 739878,
+      "sha256": "e25497fefcc6c51ed02726b5b5f4a25473f50572efd9b682f42532cd7b4f20de",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/step-01-seed41-initial.png",
+      "bytes": 766118,
+      "sha256": "6059d0dd9b552e0ae35c53cbe998388d7ac113dd59734b858b1187e9ce0c8015",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/step-05-seed41-initial.png",
+      "bytes": 753949,
+      "sha256": "a852fc9e2acf45b98f2892c32d443fe1d646b5d64ea3abe87e7144297ed9db3c",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/step-08-seed41-initial.png",
+      "bytes": 740189,
+      "sha256": "1f81c7a9234a17fae8f90b3462596cda99baa7984d1dbc97c82c6492738b8b04",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/step-10-seed41-initial.png",
+      "bytes": 742852,
+      "sha256": "82a20487e21ebfd9fac8f2e0c6aee7dc91d78b2f3b624c8fa141eaaa250154f5",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "fixtures-movie/summary.json",
+      "bytes": 22163,
+      "sha256": "f134d1f82efc7b84244bf0be267e0261c2cffdac495dc175193f7b568f0b0ecf",
+      "capture_source_commit": "cec5b64f38fe8892411791477928c1ed29d72cdf"
+    },
+    {
+      "path": "ordinary-controller.mp4",
+      "bytes": 1512525,
+      "sha256": "c6ec57ee7ab025cdc76e07f2810a2cd167ab6e6f55d79c5f9ba42df910c65bfc",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-movie/ordinary-seed41-preview.png",
+      "bytes": 775183,
+      "sha256": "f0bf5d0d65c32f31427a0ec47b4a17e6a267e6bb71d507c0f9b7d0a4c4436330",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-movie/ordinary-seed41-result.png",
+      "bytes": 744479,
+      "sha256": "f9d4724ccec6e6916f456dc5bd4213f5549f485dfa210e5a8198870a0c090ae4",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-movie/step-01-seed41-initial.png",
+      "bytes": 751344,
+      "sha256": "8ba59103db1b5c1f77d633cb07eaf96c109241cbe3b43fdba0a5603cbb254cb5",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-movie/summary.json",
+      "bytes": 6708,
+      "sha256": "7c28ed9a706328dcc22dd042e354c925675c4eb2af61a2a68a76a1a069d3a510",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed121-preview.png",
+      "bytes": 757852,
+      "sha256": "52966fd825fb047c2002b2cd145ab4b1fe67e99d82c3db9ac7ba0c9d759e8b50",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed121-result.png",
+      "bytes": 740092,
+      "sha256": "d8c0d1706d26f28f6f9742278fc7b9350cd7cda5211f194899be67dfb569f505",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed20261020-preview.png",
+      "bytes": 770137,
+      "sha256": "b1b09f050e4eebf88e32250c1913bc55c38ccbdc0155d0721d4cbbcca00a88d0",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed20261020-result.png",
+      "bytes": 747632,
+      "sha256": "10bbc3645c1650befbdf3123be0902475533a7ce2459760aedffa78bdbefa2d0",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed41-preview.png",
+      "bytes": 775183,
+      "sha256": "f0bf5d0d65c32f31427a0ec47b4a17e6a267e6bb71d507c0f9b7d0a4c4436330",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed41-result.png",
+      "bytes": 744479,
+      "sha256": "f9d4724ccec6e6916f456dc5bd4213f5549f485dfa210e5a8198870a0c090ae4",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed73-preview.png",
+      "bytes": 770751,
+      "sha256": "548772c4c2f3064c7b2db5f022ed6b498cca61fc03c70cf999ee1201b139b6e2",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed73-result.png",
+      "bytes": 751643,
+      "sha256": "2b472299f9b899016dec6f58ba196a31bf40a64032b76ab70c04eee1dae65a5c",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed991-preview.png",
+      "bytes": 759525,
+      "sha256": "8643b69aaf5ed04f46df208bff016c3dd6d7ca8f2580ca8ad1d692c380828db0",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/ordinary-seed991-result.png",
+      "bytes": 739893,
+      "sha256": "275564aad115b7ee4a7bc24d61c7b85ae5a71727d6278bd4d37185316ea334d5",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/step-01-seed41-initial.png",
+      "bytes": 751344,
+      "sha256": "8ba59103db1b5c1f77d633cb07eaf96c109241cbe3b43fdba0a5603cbb254cb5",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/step-04-seed73-initial.png",
+      "bytes": 753891,
+      "sha256": "87bfb19e46e85c94f14338975962320bcc922bd09c6a5af549daae0a72481036",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/step-07-seed991-initial.png",
+      "bytes": 734854,
+      "sha256": "2a1e9bbfc32257035663579971b1317d7dc26f58cf98f9c00b014f49794b6c07",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/step-10-seed20261020-initial.png",
+      "bytes": 741759,
+      "sha256": "64fa9482f4b3054157ffb923103c563e04c5ebfda35d0d83f1f8c4df074ada36",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/step-13-seed121-initial.png",
+      "bytes": 733625,
+      "sha256": "8d6f1580484ad971d4a7c47dd33f92d1d47fcd868d277a179242881b076399d2",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "ordinary-realtime/summary.json",
+      "bytes": 31113,
+      "sha256": "949494b33d94475a980ed9bdffc5a1e16f4c8111a12abde7d4985523b30876d4",
+      "capture_source_commit": "4428d608a3eb0695a1728842f70c1901fa33a74c"
+    },
+    {
+      "path": "timing-summary.json",
+      "bytes": 4186,
+      "sha256": "a5460fab03ef288aaa46b9ee4b419804083d5146bf03dd6800000f281c606c99",
+      "capture_source_commit": null
+    }
+  ]
+}
