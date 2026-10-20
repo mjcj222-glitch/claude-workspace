@@ -12,18 +12,21 @@ export const RELICS=[
  {id:'brooch',name:'첫빛 브로치',text:'각 방 첫턴의 첫 성공스킬: 보호6, 방1회.'},
  {id:'umbrella',name:'반달 우산',text:'체력90 이하로 마지막 탭 시작: 보호6, 턴1회.'}
 ];
-const types=[['normal'],['normal','elite'],['rest','event'],['normal','elite'],['rest','event'],['boss']];
-export function createExpedition(seed=C.seed){
+const legacyTypes=[['normal'],['normal','elite'],['rest','event'],['normal','elite'],['rest','event'],['boss']];
+const types=[['normal'],['normal','elite'],['rest','event'],['midboss'],['rest','event'],['boss']];
+export const COMBAT_TYPES=['normal','elite','midboss','boss'];
+export function createExpedition(seed=C.seed,version=2){
+ if(![1,2].includes(version))throw new RangeError('Unsupported expedition version');
  const e=createRun(seed,false);let rng=(seed^0xa3c59ac3)>>>0;const next=()=>rng=(Math.imul(rng,1664525)+1013904223)>>>0;
- e.mode='expedition';e.phase='map';e.depth=0;e.path=[];e.relics=[];e.shield=0;e.firstSkill=false;e.offer=[];e.log=[];e.total={turns:0,echoes:0,damage:0,taken:0,healed:0};
- e.map=types.map((row,depth)=>row.map((type,i)=>{const order=RELICS.map(r=>r.id);for(let j=order.length-1;j>0;j--){const k=next()%(j+1);[order[j],order[k]]=[order[k],order[j]];}return {id:`${depth}-${i}`,type,depth,seed:next(),order};}));return e;
+ e.version=version;e.mode='expedition';e.phase='map';e.depth=0;e.path=[];e.relics=[];e.shield=0;e.firstSkill=false;e.offer=[];e.log=[];e.total={turns:0,echoes:0,damage:0,taken:0,healed:0};
+ e.map=(version===1?legacyTypes:types).map((row,depth)=>row.map((type,i)=>{const order=RELICS.map(r=>r.id);for(let j=order.length-1;j>0;j--){const k=next()%(j+1);[order[j],order[k]]=[order[k],order[j]];}return {id:`${depth}-${i}`,type,depth,seed:next(),order};}));return e;
 }
-export function roomRules(n){const stage=n.depth<1?0:n.depth<3?1:2;return {...C,panelStage:stage,echoWard:n.type==='elite',bossHP:n.type==='boss'?1000:n.depth===0?360:n.depth===1?(n.type==='elite'?600:500):(n.type==='elite'?780:650),attacks:n.type==='boss'?[16,24,34]:n.type==='elite'?[18,26]:[10,16]};}
+export function roomRules(n){const stage=n.depth<1?0:n.depth<3?1:2,strong=['elite','midboss'].includes(n.type);return {...C,panelStage:stage,echoWard:strong,bossHP:n.type==='boss'?1000:n.depth===0?360:n.depth===1?(strong?600:500):(strong?780:650),attacks:n.type==='boss'?[16,24,34]:n.type==='midboss'?[14,22,26]:strong?[18,26]:[10,16]};}
 export function currentRoom(e){return e.map.flat().find(n=>n.id===e.path.at(-1));}
 export function availableRooms(e){return e.phase==='map'?(e.map[e.depth]??[]):[];}
 export function enterRoom(e,id){
  const n=availableRooms(e).find(n=>n.id===id);if(!n)return false;e.path.push(id);e.offer=[];
- if(['normal','elite','boss'].includes(n.type)){
+ if(COMBAT_TYPES.includes(n.type)){
   const hp=e.state.hp,gauge=e.state.gauge;e.state=createGame(n.seed,roomRules(n));Object.assign(e.state,{hp,gauge});e.stage=e.state.rules.panelStage;e.phase='battle';e.shield=0;e.firstSkill=false;e.tutorial='done';e.panelLesson=e.stage&&!e.panelSeen[e.stage-1]?(e.stage===1?'vine':'rainbow'):null;
  }else {e.phase='room';e.offer=n.order.filter(id=>!e.relics.includes(id)).slice(0,1);}
  return true;
@@ -42,7 +45,7 @@ export function expeditionTap(e,index){
   skipTutorial(e);e.log.push({id:currentRoom(e).id,turns:s.turn,echoes:s.echoCount,maxChain:s.maxChain,result:s.status});e.total.echoes+=s.echoCount;
   if(s.status==='lost'){e.phase='defeat';e.offer=[];}
   else if(currentRoom(e).type==='boss'){e.depth=6;e.phase='complete';}
-  else {heal(e,currentRoom(e).type==='elite'?12:6);e.phase='reward';e.offer=currentRoom(e).order.filter(id=>!e.relics.includes(id)).slice(0,2);}
+  else {heal(e,['elite','midboss'].includes(currentRoom(e).type)?12:6);e.phase='reward';e.offer=currentRoom(e).order.filter(id=>!e.relics.includes(id)).slice(0,2);}
  }
  return result;
 }
@@ -56,14 +59,14 @@ export function resolveRoom(e,choice){
 }
 const expInt=(n,a,b)=>Number.isInteger(n)&&n>=a&&n<=b;
 export function decodeExpedition(raw){try{
- const e=JSON.parse(raw),s=e?.state;if(e?.version!==1||e.mode!=='expedition'||!expInt(e.seed,0,4294967295)||!['map','battle','reward','room','complete','defeat'].includes(e.phase)||!expInt(e.depth,0,6))return null;
- const generated=createExpedition(e.seed);if(JSON.stringify(e.map)!==JSON.stringify(generated.map))return null;
+ const e=JSON.parse(raw),s=e?.state;if(![1,2].includes(e?.version)||e.mode!=='expedition'||!expInt(e.seed,0,4294967295)||!['map','battle','reward','room','complete','defeat'].includes(e.phase)||!expInt(e.depth,0,6))return null;
+ const generated=createExpedition(e.seed,e.version);if(JSON.stringify(e.map)!==JSON.stringify(generated.map))return null;
  if(!Array.isArray(e.path)||e.path.length>6||e.path.some((id,d)=>!e.map[d].some(n=>n.id===id))||e.path.length!==e.depth+(['battle','reward','room','defeat'].includes(e.phase)?1:0))return null;
  if(!Array.isArray(e.relics)||new Set(e.relics).size!==e.relics.length||e.relics.some(id=>!RELICS.some(r=>r.id===id))||!expInt(e.shield,0,12)||typeof e.firstSkill!=='boolean')return null;
  if(!Array.isArray(e.offer)||e.offer.length>2||new Set(e.offer).size!==e.offer.length||e.offer.some(id=>!RELICS.some(r=>r.id===id)||e.relics.includes(id)))return null;
  if(!e.total||Object.keys(e.total).sort().join(',')!=='damage,echoes,healed,taken,turns'||Object.values(e.total).some(v=>!expInt(v,0,10000000))||!Array.isArray(e.log)||e.log.length>6)return null;
  if(!Array.isArray(e.panelSeen)||e.panelSeen.length!==2||e.panelSeen.some(v=>typeof v!=='boolean')||![null,'vine','rainbow'].includes(e.panelLesson)||!['done'].includes(e.tutorial))return null;
- const battleNode=[...e.path].reverse().map(id=>e.map.flat().find(n=>n.id===id)).find(n=>['normal','elite','boss'].includes(n.type));const rules=battleNode?roomRules(battleNode):generated.state.rules;
+ const battleNode=[...e.path].reverse().map(id=>e.map.flat().find(n=>n.id===id)).find(n=>COMBAT_TYPES.includes(n.type));const rules=battleNode?roomRules(battleNode):generated.state.rules;
  if(!s||!expInt(s.seed,0,4294967295)||s.seed!==(battleNode?.seed??e.seed)||!expInt(s.rng,0,4294967295)||!expInt(s.panelRng,0,4294967295)||!expInt(s.nextID,43,1000000)||!expInt(s.hp,0,180)||!expInt(s.bossHP,0,rules.bossHP)||!expInt(s.turn,1,10000)||!expInt(s.taps,0,3)||!expInt(s.gauge,0,55)||typeof s.boost!=='boolean'||typeof s.wardBroken!=='boolean')return null;
  if(!['playing','won','lost'].includes(s.status)||!s.buffs||typeof s.buffs.prism!=='boolean'||typeof s.buffs.ignition!=='boolean'||![0,18].includes(s.buffs.shield))return null;
  if(!Array.isArray(s.board)||s.board.length!==42||s.board.some(t=>!expInt(t.id,1,s.nextID-1)||!COLORS.includes(t.color)||!['normal','charge','bomb','rainbow'].includes(t.kind)||t.vine!==undefined&&typeof t.vine!=='boolean'||t.vine&&(t.kind!=='normal'||t.color==='heal'))||new Set(s.board.map(t=>t.id)).size!==42)return null;
@@ -77,7 +80,7 @@ export function decodeExpedition(raw){try{
  if(e.phase==='reward'&&(s.status!=='won'||s.bossHP!==0))return null;
  if(!['defeat'].includes(e.phase)&&!s.hp)return null;
  const n=currentRoom(e);if(e.phase==='room'&&!['rest','event'].includes(n?.type))return null;
- if(['battle','reward'].includes(e.phase)&&!['normal','elite','boss'].includes(n?.type))return null;
+ if(['battle','reward'].includes(e.phase)&&!COMBAT_TYPES.includes(n?.type))return null;
  if(e.phase==='map'&&e.depth===6)return null;
  if(e.phase==='reward'&&JSON.stringify(e.offer)!==JSON.stringify(n.order.filter(id=>!e.relics.includes(id)).slice(0,2)))return null;
  if(!expInt(e.stage,0,2)||e.stage!==(rules.panelStage??0))return null;

@@ -1,10 +1,10 @@
 /* Original storybook art. Each portrait is one exact 724×724 third of the 2172×724 sheet. */
 :root{--rune-coral:url('rune-coral.svg');--rune-blue:url('rune-blue.svg');--rune-gold:url('rune-gold.svg');--rune-heal:url('rune-heal.svg')}
-:root[data-art-battle=ready] .enemy .concept-boss,:root[data-art-battle=ready] .panel-learning .enemy .concept-boss{width:min(100cqw,calc(100cqh * 2));aspect-ratio:2/1;height:auto;background-image:url('storybook-battle.png');background-size:100% 100%;background-position:center;clip-path:none}
-:root[data-art-portraits=ready] .portrait{background-image:url('storybook-portraits.png');background-size:300% 100%;background-position-y:0;border-radius:3px}
-:root[data-art-portraits=ready] .portrait-0{background-position-x:0%}
+:root[data-art-battle=ready] .enemy .concept-boss,:root[data-art-battle=ready] .panel-learning .enemy .concept-boss{width:min(100cqw,calc(100cqh * 2));aspect-ratio:2/1;height:auto;background-image:url('storybook-battle.webp');background-size:100% 100%;background-position:center;clip-path:none}
+:root[data-art-portraits=ready] .portrait{background-image:url('portraits-cute.webp');background-size:420% 140%;background-position-y:50%;border-radius:3px}
+:root[data-art-portraits=ready] .portrait-0{background-position-x:6.25%}
 :root[data-art-portraits=ready] .portrait-1{background-position-x:50%}
-:root[data-art-portraits=ready] .portrait-2{background-position-x:100%}
+:root[data-art-portraits=ready] .portrait-2{background-position-x:93.75%}
 :root[data-art-panels=ready] .gem{background-size:100% 100%;background-position:center;clip-path:none}
 :root[data-art-panels=ready] .coral .gem{background-image:var(--rune-coral)}
 :root[data-art-panels=ready] .blue .gem{background-image:var(--rune-blue)}
@@ -13,3 +13,5 @@
 :root[data-art-panels=ready] .rainbow .gem{background:conic-gradient(from 25deg,#a76550,#bea268,#829477,#7595a4,#a18b9c,#a76550);clip-path:polygon(50% 3%,94% 26%,94% 74%,50% 97%,6% 74%,6% 26%);box-shadow:inset 0 0 0 2px #dbc495;filter:none}
 :root[data-art-panels=ready] .rainbow .gem:after{color:#fff0d2;text-shadow:0 1px 2px #493d2c}
 .vine-wrap{border-color:#65704b;box-shadow:0 0 0 1px #b6bc8a,inset 0 0 0 1px #a3ab75}.vine-wrap:before,.vine-wrap:after{background:#9ba570;border-color:#4d573b;box-shadow:inset 0 -2px #6c784b}
+
+.gem{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background-repeat:no-repeat;pointer-events:none}.portrait{display:block;background-repeat:no-repeat}.concept-boss{background-repeat:no-repeat}

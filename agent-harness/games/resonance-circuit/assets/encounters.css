@@ -1,0 +1,7 @@
+/* One decoded image per role, shared by battle stage and room inspection. */
+:root[data-art-encounters=ready] .enemy[data-encounter=normal] .concept-boss,#roomDetail[data-encounter=normal] .room-detail-art{background-image:url('encounter-mob.webp')}
+:root[data-art-encounters=ready] .enemy[data-encounter=elite] .concept-boss,#roomDetail[data-encounter=elite] .room-detail-art{background-image:url('storybook-battle.webp')}
+:root[data-art-encounters=ready] .enemy[data-encounter=midboss] .concept-boss,#roomDetail[data-encounter=midboss] .room-detail-art{background-image:url('encounter-midboss.webp')}
+:root[data-art-encounters=ready] .enemy[data-encounter=boss] .concept-boss,#roomDetail[data-encounter=boss] .room-detail-art{background-image:url('encounter-boss.webp')}
+:root[data-art-encounters=ready] .enemy[data-encounter=event] .concept-boss,#roomDetail[data-encounter=event] .room-detail-art,#roomScene[data-encounter=event] .room-scene-art{background-image:url('encounter-event.webp')}
+:root[data-art-encounters=ready] .enemy[data-encounter=rest] .concept-boss,#roomDetail[data-encounter=rest] .room-detail-art,#roomScene[data-encounter=rest] .room-scene-art{background-image:url('encounter-rest.webp')}
