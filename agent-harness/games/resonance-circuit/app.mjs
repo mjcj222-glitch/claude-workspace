@@ -52,6 +52,7 @@ function render(){
  $('pending').textContent=`턴 끝: 피해 ${pendingDamage(state)} · 회복 ${state.healing}${state.boost?' · 과충전 중':''} · 반격 패턴 ${attack.pattern}`;
  $('echo').textContent=state.echo.length?`◌ 잔향 ${state.echo.length}개 · 다음 연결로 발동`:'공격색 5개 이상 → 잔향 · 다음 연결을 준비하세요.';
  $('gauge').max=C.gauge;$('gauge').value=state.gauge;document.documentElement.style.setProperty('--flow-gauge',(state.gauge/C.gauge*100)+'%');$('gaugeText').textContent=`${state.gauge}/${C.gauge}`;
+ $('boost').firstChild.textContent=state.boost?'과충전 발동 중 ':state.gauge>=C.gauge&&state.taps===3?'과충전 발동 ':'과충전 ';
  $('boost').disabled=run.phase!=='battle'||state.gauge<C.gauge||state.taps!==3||state.boost;
  document.querySelectorAll('[data-skill]').forEach((b,i)=>{
   b.disabled=run.phase!=='battle'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';

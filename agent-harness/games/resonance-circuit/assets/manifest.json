@@ -261,5 +261,46 @@
       "short": 60,
       "regular": 64
     }
+  },
+  "foreground_sheet": {
+    "file": "assets/enemy-foreground-sheet.png",
+    "sha256": "f30890993fad04445bd381b10dc6f1d5ba07cda224a512683ac8c59eba6cf3b7",
+    "size": [
+      2172,
+      724
+    ],
+    "source": "Built-in image generation from the three original encounter paintings; corrected independent-cell layout",
+    "transparent": true,
+    "cells": [
+      "normal",
+      "midboss",
+      "boss"
+    ],
+    "cell_size": [
+      724,
+      724
+    ],
+    "visible_bounds_alpha_gt_32": [
+      [
+        52,
+        139,
+        667,
+        607
+      ],
+      [
+        77,
+        54,
+        683,
+        671
+      ],
+      [
+        50,
+        89,
+        690,
+        671
+      ]
+    ],
+    "original_style": "cute pen line and watercolor; no Crash Fever artwork used",
+    "revision": "flow foreground layout 2"
   }
 }

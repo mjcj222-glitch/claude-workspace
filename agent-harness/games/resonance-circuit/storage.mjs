@@ -39,7 +39,7 @@ export function decodeSave(raw){
  if(r.phase!=='battle'&&(buffs.prism||buffs.ignition||buffs.shield))return null;
  run.state.buffs={prism:buffs.prism,ignition:buffs.ignition,shield:buffs.shield};run.state.wardBroken=s.wardBroken??(r.stage===1);
  const keys=['seed','rng','nextID','hp','bossHP','turn','taps','damage','healing','gauge','boost','status','maxChain','echoCount'];for(const k of keys)run.state[k]=s[k];
- run.state.panelRng=s.panelRng??panelSeed(s.seed);run.state.rules=rules;run.state.board=s.board.map(({id,color,kind,vine,x,y,r,angle})=>({...{id,color,kind},...(vine===undefined?{}:{vine}),...(boardVersion?{x,y,r,angle}:{})}));run.state.echo=[...s.echo];run.state.ready=[...s.ready];
+ run.state.panelRng=s.panelRng??panelSeed(s.seed);run.state.rules=rules;run.state.board=s.board.map(t=>Object.fromEntries(Object.entries(t).filter(([k])=>['id','color','kind','vine',...(boardVersion?['x','y','r','angle']:[])].includes(k))));run.state.echo=[...s.echo];run.state.ready=[...s.ready];
  }
  return {version:1,run,learned:data.learned,audio:{enabled:data.audio.enabled,volume:data.audio.volume}};
  }catch{return null;}
