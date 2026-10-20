@@ -1,6 +1,7 @@
 extends Node
 ## Owns the displayed plan, physical board and the single pending refill.
 signal finished(outcome: Dictionary)
+signal checkpoint_available
 const Board = preload("res://scripts/v2/board.gd")
 const Combat = preload("res://scripts/v2/combat_rules.gd")
 const Skills = preload("res://scripts/v2/skill_rules.gd")
@@ -75,8 +76,13 @@ func restore_checkpoint(record: Dictionary) -> void:
     _reset_transients()
     _pending_refill = false
     phase = "RESTORING"
+    var previous_revision := int(state.get("revision",0))
     state = record.state.duplicate(true)
-    state.revision += 1
+    state.revision = maxi(previous_revision,int(state.revision)) + 1
+    _generated_bombs = 0
+    _pending_board_version = -1
+    _pending_epoch = -1
+    keyboard_id = -1
     reduced = bool(record.get("reduced",false))
     _finished_sent = state.status != "active"
     board.restore(record.board)
@@ -235,7 +241,9 @@ func commit_preview(plan: Dictionary) -> bool:
             phase = "CUTIN"
             view.get_node("CutinLayer").play(reduced)
             _finish_cutin(_epoch)
-        else: phase = "READY"
+        else:
+            phase = "READY"
+            checkpoint_available.emit()
     else:
         action_count += 1
         _lock_start_usec = release_usec
@@ -251,6 +259,7 @@ func _finish_cutin(epoch: int) -> void:
         if epoch != _epoch: return
     phase = "READY"
     _render_state()
+    checkpoint_available.emit()
 
 func _clear_and_refill(plan: Dictionary, epoch: int) -> void:
     var effects = view.get_node("BoardViewport").effects
@@ -290,6 +299,7 @@ func _on_settled(value: Dictionary) -> void:
     elif phase != "SETTLING": return
     phase = "READY" if state.status == "active" else "FINISHED"
     _render_state()
+    if phase == "READY": checkpoint_available.emit()
     if phase == "FINISHED" and not _finished_sent:
         _finished_sent = true
         finished.emit({"status":state.status,"hp":state.hp,"energy":state.energy,"enemy_id":state.enemy_id})

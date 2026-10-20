@@ -224,6 +224,11 @@ func live_ownership() -> void:
     var restarted = expedition.battle
     restarted.finished.emit({"status":"victory","hp":72,"energy":4,"enemy_id":"hall1"})
     check(expedition.run.stage == "battle1","active owner refuses forged terminal summary")
+    # A real Battle.finished follows the full physical board settling.
+    for frame in range(1800):
+        if restarted.phase in ["READY","ERROR"]: break
+        await process_frame
+    check(restarted.phase == "READY","loss fixture waits for stable restarted board")
     restarted.state = outcome(expedition.run,"defeat")
     restarted.phase = "FINISHED"
     restarted.finished.emit({"status":"defeat","hp":0,"energy":2,"enemy_id":"hall1"})
