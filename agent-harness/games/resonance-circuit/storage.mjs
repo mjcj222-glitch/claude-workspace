@@ -1,3 +1,4 @@
+import {validFlowBoard} from './flow.mjs';
 import {panelSeed} from './panels.mjs';
 import {C,COLORS} from './config.mjs';
 import {freshBuffs} from './skills.mjs';
@@ -12,10 +13,11 @@ export function decodeSave(raw){
  const r=data.run,s=r?.state;
  if(!r||r.version!==1||!integer(r.seed,0,4294967295)||!integer(r.stage,0,2)||!['battle','upgrade','complete','defeat'].includes(r.phase)||!['chain','echo','done'].includes(r.tutorial))return null;
  if(!Array.isArray(r.upgrades)||r.upgrades.length!==r.stage||r.upgrades.some((id,i)=>!CHOICES[i]?.some(c=>c.id===id)))return null;
+ const boardVersion=r.boardVersion??0;if(![0,1].includes(boardVersion)||boardVersion!== (s?.boardVersion??0)||boardVersion===1&&!validFlowBoard(s.board))return null;
  const panelVersion=r.panelVersion??0,panelLesson=r.panelLesson??null,panelSeen=r.panelSeen??[false,false];
  if(![0,1].includes(panelVersion)||!Array.isArray(panelSeen)||panelSeen.length!==2||panelSeen.some(x=>typeof x!=='boolean')||![null,'vine','rainbow'].includes(panelLesson))return null;
  if(panelLesson&&(r.phase!=='battle'||!panelVersion||r.stage!==(panelLesson==='vine'?1:2)||panelSeen[r.stage-1]))return null;
- const rules={...rulesFor(r.stage,r.upgrades),panelStage:panelVersion?r.stage:0};
+ const rules={...rulesFor(r.stage,r.upgrades),panelStage:panelVersion?r.stage:0,...(boardVersion?{boardVersion}:{})};
  if(!Array.isArray(r.retries)||r.retries.length!==3||r.retries.some(n=>!integer(n,0,10000))||!integer(r.entry?.hp,1,rules.hp)||!integer(r.entry?.gauge,0,C.gauge)||!Array.isArray(r.tutorialIDs)||r.tutorialIDs.length>8)return null;
  if(!s||!integer(s.seed,0,4294967295)||!integer(s.rng,0,4294967295)||!integer(s.nextID,43,1000000)||!integer(s.turn,1,10000)||!integer(s.taps,0,3)||!integer(s.hp,0,rules.hp)||!integer(s.bossHP,0,rules.bossHP)||!integer(s.gauge,0,C.gauge)||typeof s.boost!=='boolean'||!['playing','won','lost'].includes(s.status))return null;
  for(const key of ['damage','healing','maxChain','echoCount'])if(!integer(s[key],0,1000000))return null;
@@ -31,13 +33,13 @@ export function decodeSave(raw){
  if(r.phase==='upgrade'&&(s.status!=='won'||r.stage>=2||s.bossHP!==0)||r.phase==='complete'&&(s.status!=='won'||r.stage!==2||s.bossHP!==0)||r.phase==='defeat'&&(s.status!=='lost'||s.hp!==0))return null;
  if(r.tutorial!=='done'&&(r.stage!==0||r.phase!=='battle')||r.tutorial==='echo'&&!s.echo.length)return null;
  if(!Array.isArray(r.history)||r.history.length!==r.stage+(r.phase==='battle'?0:1)||r.history.some((h,i)=>h.stage!==i||!integer(h.turns,1,10000)||!integer(h.echoes,0,1000000)||!integer(h.maxChain,0,42)||!['won','lost'].includes(h.result)))return null;
- run=createRun(r.seed,false);Object.assign(run,{panelVersion,panelLesson,panelSeen:[...panelSeen],stage:r.stage,phase:r.phase,tutorial:r.tutorial,upgrades:[...r.upgrades],history:r.history.map(h=>({...h})),retries:[...r.retries],entry:{...r.entry},tutorialIDs:[...r.tutorialIDs]});
+ run=createRun(r.seed,false,boardVersion);Object.assign(run,{panelVersion,panelLesson,panelSeen:[...panelSeen],stage:r.stage,phase:r.phase,tutorial:r.tutorial,upgrades:[...r.upgrades],history:r.history.map(h=>({...h})),retries:[...r.retries],entry:{...r.entry},tutorialIDs:[...r.tutorialIDs]});
  const buffs=s.buffs===undefined?freshBuffs():s.buffs;
  if(!buffs||typeof buffs.prism!=='boolean'||typeof buffs.ignition!=='boolean'||![0,18].includes(buffs.shield)||s.wardBroken!==undefined&&typeof s.wardBroken!=='boolean')return null;
  if(r.phase!=='battle'&&(buffs.prism||buffs.ignition||buffs.shield))return null;
  run.state.buffs={prism:buffs.prism,ignition:buffs.ignition,shield:buffs.shield};run.state.wardBroken=s.wardBroken??(r.stage===1);
  const keys=['seed','rng','nextID','hp','bossHP','turn','taps','damage','healing','gauge','boost','status','maxChain','echoCount'];for(const k of keys)run.state[k]=s[k];
- run.state.panelRng=s.panelRng??panelSeed(s.seed);run.state.rules=rules;run.state.board=s.board.map(({id,color,kind,vine})=>({...{id,color,kind},...(vine===undefined?{}:{vine})}));run.state.echo=[...s.echo];run.state.ready=[...s.ready];
+ run.state.panelRng=s.panelRng??panelSeed(s.seed);run.state.rules=rules;run.state.board=s.board.map(({id,color,kind,vine,x,y,r,angle})=>({...{id,color,kind},...(vine===undefined?{}:{vine}),...(boardVersion?{x,y,r,angle}:{})}));run.state.echo=[...s.echo];run.state.ready=[...s.ready];
  }
  return {version:1,run,learned:data.learned,audio:{enabled:data.audio.enabled,volume:data.audio.volume}};
  }catch{return null;}

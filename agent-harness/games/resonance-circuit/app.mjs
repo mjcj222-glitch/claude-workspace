@@ -1,3 +1,4 @@
+import {createFlowUI} from './flow-ui.mjs';
 import {createEncounterUI} from './encounter-ui.mjs';
 import {createPresentation} from './presentation.mjs';
 import {setupMobileUI} from './mobile-ui.mjs';
@@ -15,7 +16,7 @@ import {createEffects} from './effects.mjs';
 const $=id=>document.getElementById(id),names={coral:'불꽃',gold:'별빛',blue:'물방울',heal:'회복 잎'};
 let storage;try{storage=localStorage;}catch{storage=null;}
 const loaded=loadProgress(storage);
-let run=loaded.data?.run??createRun(),state=run.state,learned=loaded.data?.learned??false;
+let run=loaded.data?.run??createRun(C.seed,true,1),state=run.state,learned=loaded.data?.learned??false;
 let started=!!loaded.data?.run,sessionPlaying=false,focus=1,pressed=null,guideStep=0,pendingFresh=false;
 let mode='practice',practiceSlot=loaded.data?.run??null,expeditionSlot=loadExpedition(storage);
 const settings=loaded.data?.audio??{enabled:false,volume:.3};
@@ -25,6 +26,7 @@ const skillUI=createSkillUI(()=>state);setupMobileUI();const presentation=create
 const tiles=Array.from({length:42},(_,i)=>{
  const b=document.createElement('button');b.className='tile';b.style.setProperty('--c',Math.floor(i/7)+1);b.style.setProperty('--r',i%7+1);b.dataset.index=i;$('board').append(b);return b;
 });
+const flowUI=createFlowUI(()=>state,reduced);
 function persist(){if(mode==='expedition'){expeditionSlot=run;const ok=saveExpedition(storage,run);saveProgress(storage,practiceSlot,learned,settings);$('saveStatus').textContent=ok?'저장됨':'저장 불가 · 플레이 가능';return ok;}practiceSlot=started?run:null;if(run.tutorial==='done'&&started)learned=true;const ok=saveProgress(storage,started?run:null,learned,settings);$('saveStatus').textContent=ok?'저장됨':'저장 불가 · 플레이 가능';return ok;}
 function blocked(){return !sessionPlaying||gate.locked||['guide','start','upgrade','confirmNew','ending','skillGuide','feedbackSettings','journey','relicGuide','gameMenu','roomDetail'].some(id=>$(id).open);}
 function showPreview(i){
@@ -39,7 +41,7 @@ function render(){
  tiles.forEach((b,i)=>{
   const t=state.board[i];b.className=`tile ${t.color} ${t.vine?'vine':''} ${t.kind==='rainbow'?'rainbow':''} ${Math.floor(i/7)%2?'odd':''} ${state.echo.includes(t.id)?'marked':''} ${targets.includes(i)?'lesson-target':''}`;
   b.innerHTML=`<span class="gem" aria-hidden="true"></span>${t.vine?'<span class=vine-wrap aria-hidden=true></span>':''}${t.kind==='normal'||t.kind==='rainbow'?'':`<small>${t.kind==='bomb'?'✹':'ϟ'}</small>`}`;
-  b.setAttribute('aria-label',`${Math.floor(i/7)+1}열 ${i%7+1}행 ${t.kind==='rainbow'?'무지개 · 가장 큰 연결색 자동 선택':names[t.color]} ${t.vine?'덩굴 · 직접 탭 무효, 이웃 소거로 해제':t.kind==='bomb'?'폭탄':t.kind==='charge'?'차지':'일반'}${state.echo.includes(t.id)?' 잔향':''}`);
+  b.setAttribute('aria-label',`${state.boardVersion===1?'기물 '+t.id:Math.floor(i/7)+1+'열 '+(i%7+1)+'행'} ${t.kind==='rainbow'?'무지개 · 가장 큰 연결색 자동 선택':names[t.color]} ${t.vine?'덩굴 · 직접 탭 무효, 이웃 소거로 해제':t.kind==='bomb'?'폭탄':t.kind==='charge'?'차지':'일반'}${state.echo.includes(t.id)?' 잔향':''}`);
   delete b.dataset.clearId;b.tabIndex=i===focus?0:-1;b.disabled=run.phase!=='battle';
  });
  document.body.classList.toggle('overcharged',state.boost);document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
@@ -49,13 +51,13 @@ function render(){
  $('health').textContent=`체력 ${state.hp}/${rules.hp}${mode==='expedition'&&run.shield?' · 유물보호 '+run.shield:''}`;$('turn').textContent=`${state.turn}턴`;$('taps').textContent=`남은 탭 ${state.taps}`;document.documentElement.style.setProperty('--player-health',String(state.hp/rules.hp));
  $('pending').textContent=`턴 끝: 피해 ${pendingDamage(state)} · 회복 ${state.healing}${state.boost?' · 과충전 중':''} · 반격 패턴 ${attack.pattern}`;
  $('echo').textContent=state.echo.length?`◌ 잔향 ${state.echo.length}개 · 다음 연결로 발동`:'공격색 5개 이상 → 잔향 · 다음 연결을 준비하세요.';
- $('gauge').max=C.gauge;$('gauge').value=state.gauge;$('gaugeText').textContent=`${state.gauge}/${C.gauge}`;
+ $('gauge').max=C.gauge;$('gauge').value=state.gauge;document.documentElement.style.setProperty('--flow-gauge',(state.gauge/C.gauge*100)+'%');$('gaugeText').textContent=`${state.gauge}/${C.gauge}`;
  $('boost').disabled=run.phase!=='battle'||state.gauge<C.gauge||state.taps!==3||state.boost;
  document.querySelectorAll('[data-skill]').forEach((b,i)=>{
   b.disabled=run.phase!=='battle'||state.turn<state.ready[i];b.title=state.turn<state.ready[i]?`${state.ready[i]}턴부터 재사용`:'지금 사용 가능';
   let status=b.querySelector('.cooldown');if(!status){status=document.createElement('span');status.className='cooldown';b.append(status);}status.textContent=state.turn<state.ready[i]?`${state.ready[i]-state.turn}턴 후`:'준비';
  });
- renderLesson();renderAudio();skillUI.render();encounterUI.render(run);presentation.update(state,run.phase);
+ flowUI.render();renderLesson();renderAudio();skillUI.render();encounterUI.render(run);presentation.update(state,run.phase);
 }
 function renderLesson(){
  document.body.classList.toggle('learning',run.tutorial!=='done'||!!run.panelLesson);document.body.classList.toggle('panel-learning',!!run.panelLesson);
@@ -110,7 +112,8 @@ async function commit(i){
   if(resolution==='reset'){fx.clear();render();return;}
   if(large&&resolution==='done'){fx.ring($('board'),color,'resonance');sound.play('resonance',{id:eventID});}
   const result=mode==='expedition'?expeditionTap(run,i):runTap(run,i);persist();render();
-  if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=fallOffset(old,now,scrollY);if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 1px',opacity:1,offset:.86},{translate:'0 0',opacity:1}],{duration:200,easing:'cubic-bezier(.16,.7,.3,1)'});});
+  if(result.flow)await flowUI.play(result.flow);
+  else if(!reduced.matches&&!document.hidden)state.board.forEach((t,j)=>{const old=positions.get(t.id),now=fx.point(tiles[j]),dy=fallOffset(old,now,scrollY);if(dy)tiles[j].animate([{translate:`0 ${dy}px`,opacity:old?1:0},{translate:'0 1px',opacity:1,offset:.86},{translate:'0 0',opacity:1}],{duration:200,easing:'cubic-bezier(.16,.7,.3,1)'});});
   if(resolution==='done')for(const kind of postFeedback(result,{bossHit:state.bossHP<oldHP,healed:settledHeal,status:state.status}))sound.play(kind,{id:eventID});
   if(settledHeal)fx.cue('heal',$('health'),'#c2eda9');if(result.blocked)fx.ring($('health'),'#c2eeeb','shield');
   if(state.bossHP<oldHP&&!document.hidden){fx.label($('enemy'),`−${oldHP-state.bossHP}`);$('enemy').classList.add('hit');setTimeout(()=>$('enemy').classList.remove('hit'),420);fx.link(tiles[i],$('enemy'),'#ffe4a9');}
@@ -122,10 +125,10 @@ async function commit(i){
 }
 for(const [i,b] of tiles.entries()){
  b.addEventListener('focus',()=>{showPreview(i);if(!blocked())fx.cue('select',b);});
- b.addEventListener('pointerdown',e=>{if(blocked()||e.button!==0)return;sound.unlock();sound.play('select');fx.cue('select',b);pressed={id:e.pointerId,i,x:e.clientX,y:e.clientY};showPreview(i);});
- b.addEventListener('pointerup',e=>{const p=pressed;pressed=null;if(p&&p.id===e.pointerId&&p.i===i&&Math.hypot(e.clientX-p.x,e.clientY-p.y)<12&&document.elementFromPoint(e.clientX,e.clientY)?.closest('.tile')===b)commit(i);});
+ b.addEventListener('pointerdown',e=>{if(blocked()||e.button!==0||state.boardVersion===1&&flowUI.hit(e.clientX,e.clientY)!==i)return;sound.unlock();sound.play('select');fx.cue('select',b);pressed={id:e.pointerId,i,x:e.clientX,y:e.clientY};showPreview(i);});
+ b.addEventListener('pointerup',e=>{const p=pressed;pressed=null;if(p&&p.id===e.pointerId&&p.i===i&&Math.hypot(e.clientX-p.x,e.clientY-p.y)<12&&document.elementFromPoint(e.clientX,e.clientY)?.closest('.tile')===b&&(state.boardVersion!==1||flowUI.hit(e.clientX,e.clientY)===i))commit(i);});
  b.addEventListener('click',e=>{if(e.detail===0)commit(i);});
- b.addEventListener('keydown',e=>{if(e.repeat){e.preventDefault();return;}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();if(!blocked()){sound.unlock();sound.play('select');focus=moveFocus(i,e.key);tiles[focus].focus({preventScroll:true});const box=tiles[focus].getBoundingClientRect();if(box.top<0||box.bottom>innerHeight)tiles[focus].scrollIntoView({block:"nearest"});}}});
+ b.addEventListener('keydown',e=>{if(e.repeat){e.preventDefault();return;}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();if(!blocked()){sound.unlock();sound.play('select');focus=moveFocus(i,e.key,state);tiles[focus].focus({preventScroll:true});const box=tiles[focus].getBoundingClientRect();if(box.top<0||box.bottom>innerHeight)tiles[focus].scrollIntoView({block:"nearest"});}}});
 }
 window.addEventListener('pointercancel',()=>pressed=null);window.addEventListener('pointerup',()=>pressed=null);
 window.addEventListener('pointermove',e=>{if(pressed&&Math.hypot(e.clientX-pressed.x,e.clientY-pressed.y)>=12)pressed=null;});
@@ -136,9 +139,10 @@ document.querySelectorAll('[data-skill]').forEach(b=>b.onclick=()=>{
 });
 $('boost').onclick=()=>{if(!blocked()&&runBoost(run)){sound.unlock();sound.play('boost');persist();render();showPreview(focus);fx.ring($('board'));$('notice').textContent='과충전 · 이번 턴 피해 2배';}};
 function begin(fresh){
+ flowUI.finish();
  presentation.clear();encounterUI.clear();
- if(mode==='expedition'){fx.clear();skillUI.clear();run=createExpedition(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed);state=run.state;started=true;sessionPlaying=true;for(const id of ['start','ending','confirmNew','upgrade','journey'])if($(id).open)$(id).close();persist();render();phaseDialog();return;}
- fx.clear();skillUI.clear();pressed=null;run=createRun(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed,!learned);state=run.state;started=true;sessionPlaying=true;
+ if(mode==='expedition'){fx.clear();skillUI.clear();run=createExpedition(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed,2,1);state=run.state;started=true;sessionPlaying=true;for(const id of ['start','ending','confirmNew','upgrade','journey'])if($(id).open)$(id).close();persist();render();phaseDialog();return;}
+ fx.clear();skillUI.clear();pressed=null;run=createRun(fresh?crypto.getRandomValues(new Uint32Array(1))[0]:run.seed,!learned,1);state=run.state;started=true;sessionPlaying=true;
  for(const id of ['start','ending','confirmNew','upgrade'])if($(id).open)$(id).close();persist();render();showPreview(1);tiles[1].focus({preventScroll:true});window.scrollTo(0,0);$('notice').textContent=STAGES[0].lesson;
 }
 function askNew(fresh){if(gate.locked&&!activeTimeline){queuedNew=fresh;return;}if(activeTimeline){activeTimeline.cancel('reset');sound.cancel();fx.clear();}pendingFresh=fresh;if(started&&(mode==='expedition'||['battle','upgrade'].includes(run.phase)))$('confirmNew').showModal();else begin(fresh);}
@@ -148,13 +152,13 @@ $('retryBattle').onclick=()=>{if(mode==='expedition'||gate.locked||!retryBattle(
 $('skipLesson').onclick=()=>{skipTutorial(run);learned=true;persist();renderLesson();showPreview(focus);};
 $('sound').onclick=()=>{sound.enable(!settings.enabled);persist();renderAudio();if(!sound.available)$('notice').textContent='이 환경에서는 음향을 사용할 수 없습니다. 플레이는 계속됩니다.';};
 $('volume').oninput=e=>{sound.volume(Number(e.target.value)/100);persist();};
-document.addEventListener('visibilitychange',()=>{if(document.hidden){pressed=null;activeTimeline?.cancel('finish');sound.hide();fx.clear();skillUI.clear();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){flowUI.finish();pressed=null;activeTimeline?.cancel('finish');sound.hide();fx.clear();skillUI.clear();}});
 const guide=[['빛을 이어 주세요','같은 색·모양을 눌러 미리 보고 같은 자리에서 떼면 확정. 방향키 이동, Enter/Space 확정. 드래그하면 취소됩니다.'],['다음 빛을 남기세요','공격색 5개 이상이면 이웃에 ◌ 잔향. 다음 최초 연결에 표식이 있으면 이전 잔향 전체가 발동합니다. 놓쳐도 플레이는 계속됩니다.'],['세 정원을 복구하세요','3탭 후 회복·피해·예고 공격을 정산합니다. 스킬은 탭을 쓰지 않고 3턴 뒤 재사용. 게이지가 차면 턴 첫 탭 전 과충전. 승리하면 성장 하나를 선택하고 체력45 회복·게이지 유지로 다음 전투에 갑니다.'],['덩굴을 벗기세요',PANEL_HELP.vine+' 직접 누르면 탭을 쓰지 않습니다. 해제한 타일은 다음 행동부터 연결돼요.'],['무지개를 이으세요',PANEL_HELP.rainbow+' 동률이면 불꽃·별빛·물방울·회복 순입니다. 미리보기의 확정색을 확인하세요.']];
 function tutorial(){const [title,body]=guide[guideStep];$('step').textContent=`규칙 ${guideStep+1}/${guide.length}`;$('guideTitle').textContent=title;$('guideText').textContent=body;$('guideNext').textContent=guideStep===guide.length-1?'돌아가기':'다음';if(!$('guide').open)$('guide').showModal();}
 $('guideNext').onclick=()=>{if(guideStep<guide.length-1){guideStep++;tutorial();}else{$('guide').close();tiles[focus].focus({preventScroll:true});}};
 $('skillHelp').onclick=()=>{if(!gate.locked)skillUI.describe();};$('closeSkills').onclick=()=>$('skillGuide').close();
 $('help').onclick=()=>{if(!gate.locked){guideStep=0;tutorial();}};
-function switchMode(next){presentation.clear();encounterUI.clear();if(mode!==next){persist();mode=next;run=(next==='expedition'?expeditionSlot:practiceSlot)??(next==='expedition'?createExpedition():createRun());started=!!(next==='expedition'?expeditionSlot:practiceSlot);state=run.state;}render();}
+function switchMode(next){presentation.clear();encounterUI.clear();if(mode!==next){persist();mode=next;run=(next==='expedition'?expeditionSlot:practiceSlot)??(next==='expedition'?createExpedition(C.seed,2,1):createRun(C.seed,true,1));started=!!(next==='expedition'?expeditionSlot:practiceSlot);state=run.state;}render();}
 function resumeMode(next){switchMode(next);sessionPlaying=true;$('start').close();sound.unlock();render();phaseDialog();if(run.phase==='battle'){tiles[focus].focus({preventScroll:true});window.scrollTo(0,0);}}
 function modeMenu(){if(gate.locked)return;persist();sessionPlaying=false;for(const id of ['journey','ending'])if($(id).open)$(id).close();$('continueRun').disabled=!practiceSlot;$('expeditionContinue').disabled=!expeditionSlot;$('start').showModal();}
 $('continueRun').disabled=!practiceSlot;$('continueRun').onclick=()=>resumeMode('practice');
@@ -169,7 +173,7 @@ $('loadNote').textContent=loaded.reason==='migrated'?'이전 저장을 보존해
 for(const id of ['start','upgrade'])$(id).addEventListener('cancel',e=>e.preventDefault());
 render();$('start').showModal();
 
-function motionChanged(){presentation.clear();encounterUI.clear();if(activeTimeline){activeTimeline.cancel('finish');sound.cancel();}fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
+function motionChanged(){flowUI.finish();presentation.clear();encounterUI.clear();if(activeTimeline){activeTimeline.cancel('finish');sound.cancel();}fx.clear();skillUI.clear();document.body.classList.toggle('fx-reduced',reduced.matches);}
 motionQuery.addEventListener('change',motionChanged);motionChanged();
 $('feedbackHelp').onclick=()=>{if(!gate.locked){$('previewEnable').textContent=settings.enabled?'소리 끄기':'소리 켜기';$('feedbackSettings').showModal();}};$('closeFeedback').onclick=()=>$('feedbackSettings').close();
 $('lessEffects').onchange=e=>{lessEffects=e.target.checked;motionChanged();};

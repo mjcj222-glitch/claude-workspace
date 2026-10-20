@@ -1,3 +1,4 @@
+import {FLOW,seedBodies,settleBodies,flowNeighbors,spatialFocus} from './flow.mjs';
 import {panelSeed,initialPanels,refillPanels} from './panels.mjs';
 import {C, COLORS} from './config.mjs';
 import {freshBuffs,skillCandidates} from './skills.mjs';
@@ -7,6 +8,7 @@ export function neighbors(i) {
     const x=c+dc,y=r+dr; if(x>=0&&x<C.cols&&y>=0&&y<C.rows) out.push(x*C.rows+y);
   } return out;
 }
+export function adjacent(s,i){return s.boardVersion===1?flowNeighbors(s.board,i):neighbors(i);}
 function random(s) { s.rng=(Math.imul(s.rng,1664525)+1013904223)>>>0; return s.rng/4294967296; }
 function tile(s,color) {return {id:s.nextID++,color:color??COLORS[Math.floor(random(s)*4)],kind:'normal'};}
 export function createGame(seed=C.seed, overrides=null) {
@@ -17,12 +19,13 @@ export function createGame(seed=C.seed, overrides=null) {
  for(const i of [1,2,3,8,9,10]) s.board[i].color='coral';
  for(const i of [0,4,7,11,15,16,17]) s.board[i].color='blue';
  initialPanels(s);
+ if(overrides?.boardVersion===1){s.boardVersion=1;s.board=seedBodies(s.board,s.seed);const start=s.board.findIndex(t=>!t.vine&&t.kind==='normal'),cluster=[start],seen=new Set(cluster);for(const i of cluster){for(const j of adjacent(s,i))if(!seen.has(j)&&!s.board[j].vine&&s.board[j].kind==='normal'&&cluster.length<6){seen.add(j);cluster.push(j);}if(cluster.length>=6)break;}for(const i of cluster)s.board[i].color='coral';}
  return s;
 }
 function colorGroup(s,index,color){
  if(!s.board[index]||s.board[index].vine)return [];
  const found=new Set([index]),queue=[index];
- for(const i of queue)for(const n of neighbors(i)){const t=s.board[n];if(!found.has(n)&&!t.vine&&(t.color===color||t.kind==='rainbow')){found.add(n);queue.push(n);}}
+ for(const i of queue)for(const n of adjacent(s,i)){const t=s.board[n];if(!found.has(n)&&!t.vine&&(t.color===color||t.kind==='rainbow')){found.add(n);queue.push(n);}}
  return queue;
 }
 function connection(s,index){
@@ -41,8 +44,8 @@ export function preview(s,index) {
  const hit=i=>{if(s.board[i].vine){unlocked.add(i);return;}if(!removed.has(i)){removed.add(i);queue.push(i);}};
  if(echoHit)s.board.forEach((t,i)=>{if(s.echo.includes(t.id))hit(i);});
  for(const i of queue){
-  for(const n of neighbors(i))if(s.board[n].vine)unlocked.add(n);
-  if(s.board[i].kind==='bomb')for(const n of neighbors(i))hit(n);
+  for(const n of adjacent(s,i))if(s.board[n].vine)unlocked.add(n);
+  if(s.board[i].kind==='bomb')for(const n of adjacent(s,i))hit(n);
  }
  const rules=s.rules??C,initialSet=new Set(initial);
  let damage=0,healing=0;
@@ -60,18 +63,19 @@ export function tap(s,index) {
  s.buffs??=freshBuffs();if(p.prismBonus)s.buffs.prism=false;if(p.ignitionBonus)s.buffs.ignition=false;
  if(rules.echoWard&&p.echoHit)s.wardBroken=true;
  const make=p.color!=='heal'&&p.initial.length>=5;
- const candidates=new Set(p.initial.flatMap(neighbors));
- s.echo=make?[...candidates].sort((a,b)=>a-b).filter(i=>!removed.has(i)&&!original[i].vine&&original[i].kind==='normal'&&original[i].color!=='heal').slice(0,8).map(i=>original[i].id):[];
+ const candidates=new Set(p.initial.flatMap(i=>adjacent(s,i)));
+ s.echo=make?[...candidates].sort((a,b)=>s.boardVersion===1?original[a].x-original[b].x||original[a].y-original[b].y||original[a].id-original[b].id:a-b).filter(i=>!removed.has(i)&&!original[i].vine&&original[i].kind==='normal'&&original[i].color!=='heal').slice(0,8).map(i=>original[i].id):[];
  for(const i of p.unlocked)delete original[i].vine;
  s.board=original.map((t,i)=>removed.has(i)?null:t);
  let special=null;
- if(make){special=tile(s,p.color);special.kind=p.initial.length>=10?'bomb':'charge';s.board[index]=special;}
- const refills=[];
- for(let c=0;c<C.cols;c++) {
+ if(make){special=tile(s,p.color);special.kind=p.initial.length>=10?'bomb':'charge';if(s.boardVersion===1)for(const k of ['x','y','r','angle'])special[k]=original[index][k];s.board[index]=special;}
+ const refills=[];let flow=null;
+ if(s.boardVersion===1){s.board=s.board.filter(Boolean);while(s.board.length<42){const t=tile(s);s.board.push(t);refills.push(t);}}else for(let c=0;c<C.cols;c++) {
    const survivors=s.board.slice(c*7,c*7+7).filter(Boolean), fresh=Array.from({length:7-survivors.length},()=>tile(s));
    refills.push(...fresh);s.board.splice(c*7,7,...fresh,...survivors);
  }
  refillPanels(s,refills);
+ if(s.boardVersion===1){flow=settleBodies(s.board,s.seed,{trace:true});s.board=flow.board;}
  s.damage+=p.damage;s.healing+=p.healing;s.maxChain=Math.max(s.maxChain,p.removed.length);s.echoCount+=Number(p.echoHit);
  if(!s.boost)s.gauge=Math.min(C.gauge,s.gauge+p.removed.length);
  s.taps--;
@@ -83,7 +87,7 @@ export function tap(s,index) {
    if(s.status==='playing'){s.turn++;s.taps=3;s.damage=0;s.healing=0;s.boost=false;s.wardBroken=false;}
    else{s.buffs=freshBuffs();}
  }
- return {...p,special,retaliation,incoming,blocked,wardAbsorbed};
+ return {...p,special,retaliation,incoming,blocked,wardAbsorbed,...(flow?{flow}:{} )};
 }
 export function useSkill(s,k) {
  if(s.status!=='playing'||!Number.isInteger(k)||k<0||k>2||s.turn<s.ready[k])return false;
@@ -99,7 +103,8 @@ export function overcharge(s) {
 }
 export function inputGate() {let locked=false;return {get locked(){return locked;},start(){if(locked)return false;locked=true;return true;},finish(){locked=false;}};}
 
-export function moveFocus(index,key) {
+export function moveFocus(index,key,s=null) {
+ if(s?.boardVersion===1)return spatialFocus(s.board,index,key);
  const col=Math.floor(index/C.rows), row=index%C.rows;
  const delta={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[key];
  if(!delta)return index;

@@ -1,3 +1,4 @@
+import {validFlowBoard} from './flow.mjs';
 import {C,COLORS} from './config.mjs';
 import {createGame,preview,tap,useSkill} from './engine.mjs';
 import {createRun,skipTutorial,skipPanelLesson} from './campaign.mjs';
@@ -15,9 +16,9 @@ export const RELICS=[
 const legacyTypes=[['normal'],['normal','elite'],['rest','event'],['normal','elite'],['rest','event'],['boss']];
 const types=[['normal'],['normal','elite'],['rest','event'],['midboss'],['rest','event'],['boss']];
 export const COMBAT_TYPES=['normal','elite','midboss','boss'];
-export function createExpedition(seed=C.seed,version=2){
+export function createExpedition(seed=C.seed,version=2,boardVersion=0){
  if(![1,2].includes(version))throw new RangeError('Unsupported expedition version');
- const e=createRun(seed,false);let rng=(seed^0xa3c59ac3)>>>0;const next=()=>rng=(Math.imul(rng,1664525)+1013904223)>>>0;
+ const e=createRun(seed,false,boardVersion);let rng=(seed^0xa3c59ac3)>>>0;const next=()=>rng=(Math.imul(rng,1664525)+1013904223)>>>0;
  e.version=version;e.mode='expedition';e.phase='map';e.depth=0;e.path=[];e.relics=[];e.shield=0;e.firstSkill=false;e.offer=[];e.log=[];e.total={turns:0,echoes:0,damage:0,taken:0,healed:0};
  e.map=(version===1?legacyTypes:types).map((row,depth)=>row.map((type,i)=>{const order=RELICS.map(r=>r.id);for(let j=order.length-1;j>0;j--){const k=next()%(j+1);[order[j],order[k]]=[order[k],order[j]];}return {id:`${depth}-${i}`,type,depth,seed:next(),order};}));return e;
 }
@@ -27,7 +28,7 @@ export function availableRooms(e){return e.phase==='map'?(e.map[e.depth]??[]):[]
 export function enterRoom(e,id){
  const n=availableRooms(e).find(n=>n.id===id);if(!n)return false;e.path.push(id);e.offer=[];
  if(COMBAT_TYPES.includes(n.type)){
-  const hp=e.state.hp,gauge=e.state.gauge;e.state=createGame(n.seed,roomRules(n));Object.assign(e.state,{hp,gauge});e.stage=e.state.rules.panelStage;e.phase='battle';e.shield=0;e.firstSkill=false;e.tutorial='done';e.panelLesson=e.stage&&!e.panelSeen[e.stage-1]?(e.stage===1?'vine':'rainbow'):null;
+  const hp=e.state.hp,gauge=e.state.gauge;e.state=createGame(n.seed,{...roomRules(n),...(e.boardVersion?{boardVersion:e.boardVersion}:{})});Object.assign(e.state,{hp,gauge});e.stage=e.state.rules.panelStage;e.phase='battle';e.shield=0;e.firstSkill=false;e.tutorial='done';e.panelLesson=e.stage&&!e.panelSeen[e.stage-1]?(e.stage===1?'vine':'rainbow'):null;
  }else {e.phase='room';e.offer=n.order.filter(id=>!e.relics.includes(id)).slice(0,1);}
  return true;
 }
@@ -60,13 +61,14 @@ export function resolveRoom(e,choice){
 const expInt=(n,a,b)=>Number.isInteger(n)&&n>=a&&n<=b;
 export function decodeExpedition(raw){try{
  const e=JSON.parse(raw),s=e?.state;if(![1,2].includes(e?.version)||e.mode!=='expedition'||!expInt(e.seed,0,4294967295)||!['map','battle','reward','room','complete','defeat'].includes(e.phase)||!expInt(e.depth,0,6))return null;
- const generated=createExpedition(e.seed,e.version);if(JSON.stringify(e.map)!==JSON.stringify(generated.map))return null;
+ const boardVersion=e.boardVersion??0;if(![0,1].includes(boardVersion)||boardVersion!==(s?.boardVersion??0)||boardVersion===1&&!validFlowBoard(s.board))return null;
+ const generated=createExpedition(e.seed,e.version,boardVersion);if(JSON.stringify(e.map)!==JSON.stringify(generated.map))return null;
  if(!Array.isArray(e.path)||e.path.length>6||e.path.some((id,d)=>!e.map[d].some(n=>n.id===id))||e.path.length!==e.depth+(['battle','reward','room','defeat'].includes(e.phase)?1:0))return null;
  if(!Array.isArray(e.relics)||new Set(e.relics).size!==e.relics.length||e.relics.some(id=>!RELICS.some(r=>r.id===id))||!expInt(e.shield,0,12)||typeof e.firstSkill!=='boolean')return null;
  if(!Array.isArray(e.offer)||e.offer.length>2||new Set(e.offer).size!==e.offer.length||e.offer.some(id=>!RELICS.some(r=>r.id===id)||e.relics.includes(id)))return null;
  if(!e.total||Object.keys(e.total).sort().join(',')!=='damage,echoes,healed,taken,turns'||Object.values(e.total).some(v=>!expInt(v,0,10000000))||!Array.isArray(e.log)||e.log.length>6)return null;
  if(!Array.isArray(e.panelSeen)||e.panelSeen.length!==2||e.panelSeen.some(v=>typeof v!=='boolean')||![null,'vine','rainbow'].includes(e.panelLesson)||!['done'].includes(e.tutorial))return null;
- const battleNode=[...e.path].reverse().map(id=>e.map.flat().find(n=>n.id===id)).find(n=>COMBAT_TYPES.includes(n.type));const rules=battleNode?roomRules(battleNode):generated.state.rules;
+ const battleNode=[...e.path].reverse().map(id=>e.map.flat().find(n=>n.id===id)).find(n=>COMBAT_TYPES.includes(n.type));const rules={...(battleNode?roomRules(battleNode):generated.state.rules),...(boardVersion?{boardVersion}:{})};
  if(!s||!expInt(s.seed,0,4294967295)||s.seed!==(battleNode?.seed??e.seed)||!expInt(s.rng,0,4294967295)||!expInt(s.panelRng,0,4294967295)||!expInt(s.nextID,43,1000000)||!expInt(s.hp,0,180)||!expInt(s.bossHP,0,rules.bossHP)||!expInt(s.turn,1,10000)||!expInt(s.taps,0,3)||!expInt(s.gauge,0,55)||typeof s.boost!=='boolean'||typeof s.wardBroken!=='boolean')return null;
  if(!['playing','won','lost'].includes(s.status)||!s.buffs||typeof s.buffs.prism!=='boolean'||typeof s.buffs.ignition!=='boolean'||![0,18].includes(s.buffs.shield))return null;
  if(!Array.isArray(s.board)||s.board.length!==42||s.board.some(t=>!expInt(t.id,1,s.nextID-1)||!COLORS.includes(t.color)||!['normal','charge','bomb','rainbow'].includes(t.kind)||t.vine!==undefined&&typeof t.vine!=='boolean'||t.vine&&(t.kind!=='normal'||t.color==='heal'))||new Set(s.board.map(t=>t.id)).size!==42)return null;

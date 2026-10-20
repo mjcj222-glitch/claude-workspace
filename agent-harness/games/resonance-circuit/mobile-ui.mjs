@@ -4,7 +4,8 @@ export function setupMobileUI(){
 
  for(const id of ['pending','preview','notice'])$('battleDetails').append($(id));$('battleDetails').append(document.querySelector('.echo-row'));
  $('enemy').prepend($('coach'));
- $('boost').firstChild.textContent='과충전 ×2 ';$('boost').setAttribute('aria-label','과충전: 이번 턴 피해 두 배');$('boost').append($('gaugeText'));$('gauge').setAttribute('aria-label','과충전 게이지');
+ const dock=document.querySelector('.skills');dock.classList.add('party-dock');document.querySelector('main').insertBefore(dock,document.querySelector('.circuit'));
+ $('boost').firstChild.textContent='OVERDRIVE · 과충전 '; $('boost').setAttribute('aria-label','과충전: 이번 턴 피해 두 배');$('boost').append($('gaugeText'));$('gauge').setAttribute('aria-label','과충전 게이지');
  $('menuOpen').onclick=()=>$('gameMenu').showModal();$('menuClose').onclick=()=>$('gameMenu').close();$('gameMenu').addEventListener('close',()=>{if(!document.querySelector('dialog[open]'))$('menuOpen').focus({preventScroll:true});});
  $('gameMenu').addEventListener('click',e=>{if(['modeMenu','restart','newSeed','help','skillHelp','feedbackHelp','relicHelp'].includes(e.target.closest('button')?.id))$('gameMenu').close();},true);
 }

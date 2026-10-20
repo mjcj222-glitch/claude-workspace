@@ -10,7 +10,7 @@ export const CHOICES=[
  [{id:'charge',name:'축전 수정',description:'차지의 추가 피해 +20. 일반 타일 피해는 그대로.'},{id:'healing',name:'재생의 잎',description:'회복 타일 1개당 회복 +3. 최대 체력 상한은 유지.'}]
 ];
 export function rulesFor(stage,upgrades){return {...C,bossHP:STAGES[stage].bossHP,attacks:[...STAGES[stage].attacks],echoWard:stage===1,panelStage:stage,hp:C.hp+(upgrades.includes('vitality')?50:0),attack:C.attack+(upgrades.includes('power')?1:0),charge:C.charge+(upgrades.includes('charge')?20:0),heal:C.heal+(upgrades.includes('healing')?3:0)};}
-export function createRun(seed=C.seed,learn=true){return {version:1,panelVersion:1,panelLesson:null,panelSeen:[false,false],seed:seed>>>0,stage:0,phase:'battle',upgrades:[],history:[],retries:[0,0,0],entry:{hp:C.hp,gauge:0},tutorialIDs:[],tutorial:learn?'chain':'done',state:createGame(seed,rulesFor(0,[]))};}
+export function createRun(seed=C.seed,learn=true,boardVersion=0){return {version:1,...(boardVersion?{boardVersion}:{}),panelVersion:1,panelLesson:null,panelSeen:[false,false],seed:seed>>>0,stage:0,phase:'battle',upgrades:[],history:[],retries:[0,0,0],entry:{hp:C.hp,gauge:0},tutorialIDs:[],tutorial:learn?'chain':'done',state:createGame(seed,{...rulesFor(0,[]),...(boardVersion?{boardVersion}:{} )})};}
 export function nextAttack(run){const stage=STAGES[run.stage],i=(run.state.turn-1)%stage.attacks.length;return {name:stage.patterns[i],damage:stage.attacks[i],pattern:stage.attacks.join(' → ')};}
 export const PANEL_HELP={vine:'덩굴 타일은 바로 지울 수 없어요. 옆 타일을 지우거나 폭탄을 맞히면 덩굴이 벗겨져요.',rainbow:'무지개는 같은 색 연결 사이를 이어 줘요. 직접 누르면 가장 많이 이어지는 색을 선택해요.'};
 export function tutorialTargets(run){
@@ -39,12 +39,12 @@ export function runBoost(run){return run.phase==='battle'&&overcharge(run.state)
 export function chooseUpgrade(run,id){
  if(run.phase!=='upgrade'||!CHOICES[run.stage]?.some(c=>c.id===id))return false;
  run.upgrades.push(id);run.stage++;run.phase='battle';run.tutorial='done';run.panelVersion=1;run.panelLesson=run.panelSeen[run.stage-1]?null:run.stage===1?'vine':'rainbow';
- const rules=rulesFor(run.stage,run.upgrades);run.entry={hp:Math.min(rules.hp,run.state.hp+45),gauge:run.state.gauge};
+ const rules={...rulesFor(run.stage,run.upgrades),...(run.boardVersion?{boardVersion:run.boardVersion}:{})};run.entry={hp:Math.min(rules.hp,run.state.hp+45),gauge:run.state.gauge};
  run.state=createGame((run.seed+run.stage*7919)>>>0,rules);Object.assign(run.state,run.entry);return true;
 }
 
 export function retryBattle(run){
  if(run.phase!=='defeat')return false;
  skipPanelLesson(run);run.retries[run.stage]++;run.history=run.history.slice(0,run.stage);run.phase='battle';run.tutorial='done';run.tutorialIDs=[];
- run.state=createGame((run.seed+run.stage*7919)>>>0,{...rulesFor(run.stage,run.upgrades),panelStage:run.panelVersion?run.stage:0});Object.assign(run.state,run.entry);return true;
+ run.state=createGame((run.seed+run.stage*7919)>>>0,{...rulesFor(run.stage,run.upgrades),panelStage:run.panelVersion?run.stage:0,...(run.boardVersion?{boardVersion:run.boardVersion}:{})});Object.assign(run.state,run.entry);return true;
 }

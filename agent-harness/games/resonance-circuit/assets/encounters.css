@@ -5,3 +5,11 @@
 :root[data-art-encounters=ready] .enemy[data-encounter=boss] .concept-boss,#roomDetail[data-encounter=boss] .room-detail-art{background-image:url('encounter-boss.webp')}
 :root[data-art-encounters=ready] .enemy[data-encounter=event] .concept-boss,#roomDetail[data-encounter=event] .room-detail-art,#roomScene[data-encounter=event] .room-scene-art{background-image:url('encounter-event.webp')}
 :root[data-art-encounters=ready] .enemy[data-encounter=rest] .concept-boss,#roomDetail[data-encounter=rest] .room-detail-art,#roomScene[data-encounter=rest] .room-scene-art{background-image:url('encounter-rest.webp')}
+
+/* Shared scene backing for the continuous mobile frame. */
+:root[data-encounter=normal]{--scene-image:url('encounter-mob.webp')}
+:root[data-encounter=elite]{--scene-image:url('storybook-battle.webp')}
+:root[data-encounter=midboss]{--scene-image:url('encounter-midboss.webp')}
+:root[data-encounter=boss]{--scene-image:url('encounter-boss.webp')}
+:root[data-encounter=rest]{--scene-image:url('encounter-rest.webp')}
+:root[data-encounter=event]{--scene-image:url('encounter-event.webp')}
