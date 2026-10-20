@@ -77,7 +77,8 @@ static func complete_battle(run: Dictionary, battle: Dictionary) -> Dictionary:
 
 static func choose_route(run: Dictionary, choice: String) -> Dictionary:
     if run.get("stage","") != "route_choice" or "route_choice" in run.applied_choices \
-        or choice not in ["safe","risk"]: return _rejected(run)
+        or choice not in ["safe","risk"] or run.completed_battles.is_empty() \
+        or run.completed_battles.back() != "battle1": return _rejected(run)
     var next := run.duplicate(true)
     next.applied_choices.append("route_choice")
     next.route = choice
@@ -90,7 +91,8 @@ static func choose_route(run: Dictionary, choice: String) -> Dictionary:
 
 static func choose_recruit(run: Dictionary, choice: String) -> Dictionary:
     if run.get("stage","") != "recruit_choice" or "recruit_choice" in run.applied_choices \
-        or choice not in ["bomber","gardener","skip"] or run.party != ["hero"]: return _rejected(run)
+        or choice not in ["bomber","gardener","skip"] or run.party != ["hero"] \
+        or run.completed_battles.is_empty() or run.completed_battles.back() != "battle2": return _rejected(run)
     var next := run.duplicate(true)
     next.applied_choices.append("recruit_choice")
     next.stage = "battle3"

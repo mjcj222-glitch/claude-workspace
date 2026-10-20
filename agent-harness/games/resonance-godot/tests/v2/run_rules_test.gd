@@ -36,6 +36,10 @@ func _run() -> void:
         check(false,"RunV2 script parses")
         finish()
         return
+    choice_predecessors()
+    if "--predecessor-only" in OS.get_cmdline_user_args():
+        finish()
+        return
     var fresh: Dictionary = RunV2.fresh(41)
     check(fresh.party == ["hero"] and fresh.hp == 72 and fresh.energy == 4 and fresh.hero_limit == 3,"solo configured start")
     check(fresh.stage == "battle1" and fresh.revision == 1 and fresh.route == "","first stage and revision")
@@ -146,6 +150,26 @@ func _run() -> void:
     rejected(RunV2.complete_battle(fresh,pending),fresh,"unfinished physical refill cannot progress")
     await live_ownership()
     finish()
+
+func choice_predecessors() -> void:
+    var fresh: Dictionary = RunV2.fresh(41)
+    var route: Dictionary = RunV2.complete_battle(fresh,outcome(fresh,"victory",20,0)).state
+    for history in [[],["battle2"],["battle1","battle2","battle3"]]:
+        for choice in ["safe","risk"]:
+            var fixture := route.duplicate(true)
+            fixture.completed_battles = history.duplicate()
+            var before := fixture.duplicate(true)
+            rejected(RunV2.choose_route(fixture,choice),before,"route rejects missing/wrong latest battle: %s %s" % [history,choice])
+            check(fixture == before,"rejected route prerequisite leaves input unchanged")
+    var second: Dictionary = RunV2.choose_route(route,"safe").state
+    var recruit: Dictionary = RunV2.complete_battle(second,outcome(second,"victory",20,0)).state
+    for history in [[],["battle1"],["battle1","battle2","battle3"]]:
+        for choice in ["bomber","gardener","skip"]:
+            var fixture := recruit.duplicate(true)
+            fixture.completed_battles = history.duplicate()
+            var before := fixture.duplicate(true)
+            rejected(RunV2.choose_recruit(fixture,choice),before,"recruit rejects missing/wrong latest battle: %s %s" % [history,choice])
+            check(fixture == before,"rejected recruit prerequisite leaves input unchanged")
 
 func live_ownership() -> void:
     if not ResourceLoader.exists("res://scenes/v2/expedition.tscn"):
