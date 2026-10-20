@@ -32,3 +32,5 @@ Draft PR: https://github.com/mjcj222-glitch/claude-workspace/pull/2
 최신 모바일 프레임: 스크롤 없는 전투와 메뉴 오버레이, 노드→상세→진입 지도. [보고서](MOBILE-FRAME-REPORT.md), `mobile-combat-*.png`, `mobile-play.mp4` 참고.
 
 최신 모바일 피드백: [PRESENTATION-REPORT.md](PRESENTATION-REPORT.md). HP 본체·잔상, 준비/과충전 배지, 짧은 화면 전환과 큰 보드 적용. 검수 영상: `presentation-play.mp4`.
+
+최신 아트판: 오리지널 수채화 온실 수호자·3인 초상과 펜선 룬 패널을 먹색/양피지/황동 HUD에 연결했습니다. [STORYBOOK-REPORT.md](STORYBOOK-REPORT.md), `storybook-play.mp4` 참조. 이전 영상은 과거 화면입니다.

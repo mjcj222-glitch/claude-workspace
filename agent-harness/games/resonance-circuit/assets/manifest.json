@@ -1,14 +1,15 @@
 {
-  "source": {
+  "temporary_characters": false,
+  "implementation": "assets/art-slots.css: full 2:1 battle, exact 3:1 portrait sprite, original vector rune panels; legacy image retained but not active",
+  "replacement": "Replace active local art slots and repackage; preserve rules and input code.",
+  "legacy_source": {
     "path": "approved-concept.png",
     "width": 940,
     "height": 1672,
     "git_blob": "733bb5464df6488a6fcafeb9d9424e3fa7c2e692",
     "preserve_original": true
   },
-  "temporary_characters": true,
-  "implementation": "assets/characters.css; CSS crops only, source image unchanged",
-  "slots": {
+  "legacy_slots": {
     "boss": {
       "source_rect": [
         0,
@@ -47,8 +48,7 @@
       "selector": ".portrait-2"
     }
   },
-  "replacement": "Replace each selector background-image/background-size/background-position in characters.css with a standalone character asset. Do not change engine or input code.",
-  "gems": {
+  "legacy_gems": {
     "source": "approved-concept.png",
     "crop_size": [
       120,
@@ -62,5 +62,78 @@
       "heal": 476
     },
     "implementation": ".gem sprite inside each of 42 independent buttons"
+  },
+  "active_assets": {
+    "storybook-battle.png": {
+      "git_blob": "31fd1ef48a32c1ff495a723a7cc946e3ff1887dc",
+      "sha256": "9a856a3cf622026b22f8efb9c330e35768cbd5ccec6b577fa061e6a27667a7e6",
+      "provenance": "Original generated art supplied and approved by user through parent; no reference artwork copied",
+      "width": 1774,
+      "height": 887,
+      "display": "contain exact 2:1, no cropping"
+    },
+    "storybook-portraits.png": {
+      "git_blob": "06d2083714876bd8f4119c8a488f4bf78519a2c8",
+      "sha256": "8cf9549a11b0f65c1bed72d72e22087f0b02d7280d818f5d42aea4c37266648c",
+      "provenance": "Original generated art supplied and approved by user through parent; no reference artwork copied",
+      "width": 2172,
+      "height": 724,
+      "crops": [
+        [
+          0,
+          0,
+          724,
+          724
+        ],
+        [
+          724,
+          0,
+          724,
+          724
+        ],
+        [
+          1448,
+          0,
+          724,
+          724
+        ]
+      ],
+      "css_positions": [
+        "0% 0px",
+        "50% 0px",
+        "100% 0px"
+      ],
+      "css_size": "300% 100%"
+    }
+  },
+  "runes": {
+    "coral": {
+      "path": "rune-coral.svg",
+      "width": 64,
+      "height": 64,
+      "symbol": "flame",
+      "provenance": "Original code-authored vector"
+    },
+    "blue": {
+      "path": "rune-blue.svg",
+      "width": 64,
+      "height": 64,
+      "symbol": "drop",
+      "provenance": "Original code-authored vector"
+    },
+    "gold": {
+      "path": "rune-gold.svg",
+      "width": 64,
+      "height": 64,
+      "symbol": "star",
+      "provenance": "Original code-authored vector"
+    },
+    "heal": {
+      "path": "rune-heal.svg",
+      "width": 64,
+      "height": 64,
+      "symbol": "leaf",
+      "provenance": "Original code-authored vector"
+    }
   }
 }

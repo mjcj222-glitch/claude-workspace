@@ -11,7 +11,7 @@ with sync_playwright() as p:
    assert dimensions['sw']<=w and dimensions['sh']<=h,dimensions
    for box in dimensions['tiles']+dimensions['dock']:assert box['x']>=0 and box['y']>=0 and box['x']+box['w']<=w+1 and box['y']+box['h']<=h+1 and box['h']>=39,box
    assert page.locator('#incoming').is_visible() and page.locator('#bossText').is_visible()
-   assert abs(dimensions['art']['w']/dimensions['art']['h']-940/492)<.01
+   assert abs(dimensions['art']['w']/dimensions['art']['h']-2)<.01
    page.wait_for_timeout(180);page.screenshot(path=str(ROOT/f'mobile-battle-{w}-{h}-{motion}.png'))
    page.locator('#skipLesson').click();page.wait_for_timeout(180);page.screenshot(path=str(ROOT/f'mobile-combat-{w}-{h}-{motion}.png'));before=page.evaluate("localStorage.getItem('resonance-circuit-v1')")
    for n in range(3):

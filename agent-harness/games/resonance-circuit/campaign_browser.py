@@ -10,7 +10,7 @@ def setup(page, standalone):
   name=route.request.url.split('resonance.test/')[-1].split('?')[0] or 'index.html'
   f=ROOT/('standalone.html' if standalone and name=='index.html' else name)
   if not f.resolve().is_relative_to(ROOT) or not f.is_file():route.fulfill(status=404,body='missing');return
-  mime='image/png' if f.suffix=='.png' else 'text/javascript' if f.suffix=='.mjs' else 'text/css' if f.suffix=='.css' else 'text/html'
+  mime='image/svg+xml' if f.suffix=='.svg' else 'image/png' if f.suffix=='.png' else 'text/javascript' if f.suffix=='.mjs' else 'text/css' if f.suffix=='.css' else 'text/html'
   route.fulfill(content_type=mime,body=f.read_bytes())
  page.route('http://resonance.test/**',serve)
  page.goto('http://resonance.test/')
