@@ -1,0 +1,21 @@
+{
+  "godot": "4.6.3.stable.official.7d41c59c4",
+  "commands": {
+    "godot": "/usr/local/bin/godot",
+    "java": "/usr/bin/java",
+    "javac": null,
+    "adb": null,
+    "sdkmanager": null,
+    "gradle": null,
+    "Xvfb": null,
+    "xvfb-run": null
+  },
+  "templates_candidates": {
+    "/home/agent/.local/share/godot/export_templates": false,
+    "/opt/godot/4.6.3/export_templates": false,
+    "/tmp/resonance-godot-data/godot/export_templates": true
+  },
+  "display_socket": false,
+  "installed_template_files": [],
+  "java_runtime": "OpenJDK 21.0.12.1"
+}

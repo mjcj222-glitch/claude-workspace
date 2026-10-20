@@ -1,0 +1,6 @@
+COMMAND: godot --path /workspace/resonance-godot/agent-harness/games/resonance-godot --headless --script tools/environment_probe.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+{"display":"headless","engine":"4.6.3-stable (official)","fall_and_collision":true,"final_y":366.029479980469,"linear_speed":0.000000119209289550781,"physics_ticks":300,"sleeping":true,"start_y":50.0}
+
+EXIT: 0

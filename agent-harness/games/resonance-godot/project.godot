@@ -1,0 +1,18 @@
+; Godot 4 project. The initial checkpoint is an environment probe, not a playable release.
+config_version=5
+
+[application]
+config/name="잔향 회로 · Godot 전투 프로토타입"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[display]
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+
+[physics]
+common/physics_ticks_per_second=120
