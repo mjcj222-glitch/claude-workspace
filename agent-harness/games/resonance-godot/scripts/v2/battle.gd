@@ -48,6 +48,7 @@ func _ready() -> void:
 func start_battle(context: Dictionary) -> void:
     cancel_input()
     _epoch += 1
+    _reset_transients()
     _pending_refill = false
     _finished_sent = false
     action_count = 0
@@ -71,18 +72,25 @@ func export_checkpoint() -> Dictionary:
 func restore_checkpoint(record: Dictionary) -> void:
     cancel_input()
     _epoch += 1
+    _reset_transients()
     _pending_refill = false
     phase = "RESTORING"
     state = record.state.duplicate(true)
     state.revision += 1
     reduced = bool(record.get("reduced",false))
     _finished_sent = state.status != "active"
-    view.get_node("CutinLayer").active = false
-    view.get_node("CutinLayer").hide()
     board.restore(record.board)
     snapshot = board.capture()
     phase = "READY" if state.status == "active" else "FINISHED"
     _render_state()
+
+func _reset_transients() -> void:
+    var cutin = view.get_node("CutinLayer")
+    cutin.active = false
+    cutin.elapsed = 0.0
+    cutin.get_node("Hero").hide()
+    cutin.hide()
+    view.get_node("BoardViewport").effects.reset_transients()
 
 func _render_state() -> void:
     view.show_state(state,state.get("party",[]))

@@ -1,4 +1,5 @@
 extends SceneTree
+const Combat = preload("res://scripts/v2/combat_rules.gd")
 const Config = preload("res://scripts/v2/config.gd")
 const Board = preload("res://scripts/v2/board.gd")
 const Fixtures = preload("res://tests/v2/fixtures.gd")
@@ -63,6 +64,24 @@ func run() -> void:
     action.merge({"direct_damage":6,"blast_damage":1,"healing_effective":3,"energy_effective":1})
     view.show_plan(snapshot, action)
     check(view.get_node("PreviewLine").text.contains("7") and view.get_node("PreviewLine").text.contains("3"), "action preview reads supplied damage and effective healing")
+    var solo_snapshot := Fixtures.chain(1,"blue",{1:1})
+    var solo_plan := Combat.preview(solo_snapshot,Fixtures.combat(),1)
+    view.show_plan(solo_snapshot,solo_plan)
+    check(view.get_node("PreviewLine").text == "폭탄 1 + 추가0  ·  피해0+0=0  ·  회복0  ·  기력0", "solo detonation has exact bomb1 label and no direct-color reward")
+    var active := Fixtures.combat()
+    active.bomb_buff.active = true
+    for example in [
+        {"n":3,"tier":1,"line":"직접3 + 추가0  ·  피해6+0=6  ·  회복0  ·  기력1 · 다음 파랑 소형"},
+        {"n":5,"tier":2,"line":"직접5 + 추가0  ·  피해16+0=16  ·  회복0  ·  기력2 · 다음 파랑 중형"},
+        {"n":8,"tier":3,"line":"직접8 + 추가0  ·  피해34+0=34  ·  회복0  ·  기력4 · 다음 파랑 대형"}]:
+        var example_snapshot := Fixtures.chain(example.n)
+        var actual_plan := Combat.preview(example_snapshot,active,1)
+        var original_plan := actual_plan.duplicate(true)
+        view.show_plan(example_snapshot,actual_plan)
+        check(actual_plan.refill_tier == example.tier and view.get_node("PreviewLine").text == example.line,"active bomber line shows exact supplied refill tier")
+        check(actual_plan == original_plan,"view does not mutate authoritative tier plan")
+    view.show_plan(Fixtures.chain(8),Combat.preview(Fixtures.chain(8),Fixtures.combat(),1))
+    check(not view.get_node("PreviewLine").text.contains("다음 파랑"),"inactive bomber has no future tier promise")
     view.show_selection(snapshot,{})
     if effects != null:
         check(effects.direct_ids.is_empty() and effects.extra_ids.is_empty(), "cancel clears every selection mark")

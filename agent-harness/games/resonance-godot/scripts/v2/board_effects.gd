@@ -18,6 +18,14 @@ func show_selection(snapshot: Dictionary, plan: Dictionary) -> void:
     extra_contours = _contours(snapshot, extra_ids)
     blast_circles = plan.get("blast_circles",[]).duplicate(true)
     queue_redraw()
+func reset_transients() -> void:
+    show_selection({}, {})
+    compression_contours.clear()
+    compression_time = -1.0
+    bursts.clear()
+    burst_time = 0.0
+    queue_redraw()
+
 func _contours(snapshot: Dictionary, ids: Array) -> Array:
     var contours: Array = []
     for piece in snapshot.get("pieces",[]):

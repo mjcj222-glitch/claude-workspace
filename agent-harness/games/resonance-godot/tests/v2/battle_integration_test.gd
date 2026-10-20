@@ -540,6 +540,7 @@ func run() -> void:
                 await repeated_restores(battle)
                 await phase_lifecycle(battle)
                 await final_refund_case(battle)
+                await transient_lifecycle(battle)
     battle.free()
     print(JSON.stringify({"suite":"v2 battle integration","checks":checks,"failures":failures}))
     quit(1 if failures else 0)
@@ -923,3 +924,37 @@ func final_refund_case(battle: Node) -> void:
     battle.restore_checkpoint(record)
     battle.board.settled.emit(battle.board.capture())
     check(battle.state.energy==10 and battle.state.team_skill_used,"completed restore never refunds last batch again")
+
+func transient_lifecycle(battle: Node) -> void:
+    for transition in ["start","restore"]:
+        for transient in ["cutin","compression","blast"]:
+            await fresh(battle,41,["hero"])
+            battle.reduced=false
+            var record: Dictionary=battle.export_checkpoint()
+            if transient=="cutin":
+                await portrait_hold(battle,"hero")
+                var destination_control:=battle.view.get_node("Bars/Destinations/Blue") as Control
+                await touch(destination_control.get_global_rect().get_center(),true)
+                await touch(destination_control.get_global_rect().get_center(),false)
+                await touch(point(battle,1),true)
+                await touch(point(battle,1),false)
+                check(battle.view.get_node("CutinLayer").active,"real own hero cutin is active before "+transition)
+            else:
+                battle.snapshot=battle.board.apply_types({1:"blue"})
+                battle.board.by_id(1).bomb_tier=1
+                battle.board.by_id(1).queue_redraw()
+                battle.snapshot=battle.board.capture()
+                await touch(point(battle,1),true)
+                await touch(point(battle,1),false)
+                if transient=="blast":
+                    for frame in range(20):await physics_frame
+                var effects=battle.view.get_node("BoardViewport").effects
+                check(not effects.compression_contours.is_empty() if transient=="compression" else not effects.bursts.is_empty(),"real "+transient+" is active before "+transition)
+            if transition=="restore":battle.restore_checkpoint(record)
+            else:battle.start_battle({"enemy_id":"hall1","seed":73,"hp":72,"energy":4,"party":["hero"],"hero_limit":3,"reduced":false})
+            var cutin=battle.view.get_node("CutinLayer")
+            var effects=battle.view.get_node("BoardViewport").effects
+            check(not cutin.active and not cutin.visible and not cutin.get_node("Hero").visible,"all old cutin state hidden on "+transition+" from "+transient)
+            check(effects.compression_contours.is_empty() and effects.compression_time<0 and effects.bursts.is_empty(),"all old board effect state cleared on "+transition+" from "+transient)
+            await wait_ready(battle)
+            check(battle.phase=="READY" and not battle.state.refill_pending,"old callbacks do not finish/refill new state")

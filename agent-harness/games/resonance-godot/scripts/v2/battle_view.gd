@@ -158,11 +158,17 @@ func show_selection(snapshot: Dictionary, plan: Dictionary) -> void:
     if plan.is_empty():
         preview.text = "같은 문양 3개 이상을 눌러 확인"
     else:
-        preview.text = "직접 %d   +   폭발 %d   =   %d개" % [plan.get("direct_ids",[]).size(),plan.get("extra_ids",[]).size(),plan.get("removed_ids",[]).size()]
+        var direct := "폭탄 1" if plan.get("mode","") == "solo_bomb" else "직접 %d" % plan.get("direct_ids",[]).size()
+        preview.text = "%s   +   폭발 %d   =   %d개" % [direct,plan.get("extra_ids",[]).size(),plan.get("removed_ids",[]).size()]
 func show_plan(snapshot: Dictionary, plan: Dictionary) -> void:
     show_selection(snapshot,plan)
     if plan.is_empty(): return
-    get_node("PreviewLine").text = "직접%d + 추가%d  ·  피해%d+%d=%d  ·  회복%d  ·  기력%d%s" % [plan.get("direct_ids",[]).size(),plan.get("extra_ids",[]).size(),plan.get("direct_damage",0),plan.get("blast_damage",0),int(plan.get("direct_damage",0))+int(plan.get("blast_damage",0)),plan.get("healing_effective",0),plan.get("energy_effective",0)," · 약화" if plan.get("weaken_intent",false) else ""]
+    var direct := "폭탄 1" if plan.get("mode","") == "solo_bomb" else "직접%d" % plan.get("direct_ids",[]).size()
+    var suffix := " · 약화" if plan.get("weaken_intent",false) else ""
+    var tier := int(plan.get("refill_tier",0))
+    if Config.BOMB_RADIUS_MULTIPLIERS.has(tier):
+        suffix += " · 다음 파랑 " + {1:"소형",2:"중형",3:"대형"}[tier]
+    get_node("PreviewLine").text = "%s + 추가%d  ·  피해%d+%d=%d  ·  회복%d  ·  기력%d%s" % [direct,plan.get("extra_ids",[]).size(),plan.get("direct_damage",0),plan.get("blast_damage",0),int(plan.get("direct_damage",0))+int(plan.get("blast_damage",0)),plan.get("healing_effective",0),plan.get("energy_effective",0),suffix]
     get_node("PreviewLine").add_theme_font_size_override("font_size",18)
 func _draw() -> void:
     draw_rect(Rect2(0,0,720,1280),Color("14171e"))
