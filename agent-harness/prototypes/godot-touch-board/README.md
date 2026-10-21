@@ -1,6 +1,8 @@
+> **현재 실행: 3전투 짧은 탐험.** 적의 반격 예고 → 승리 유물 → 다음 전투 → 최종 승리/패배를 연결했습니다. [계약과 검증](docs/COMBAT.md). 아래 ZIP은 갱신하지 않은 이전 자료입니다.
+
 > **현재 표현 보강:** 큰 파괴 개수·핵 발동 수·유물 아이콘/보유 설명과 [화면·영상·검증](docs/PRESENTATION.md)을 추가했습니다. 실행은 최신 Godot 소스 기준이며 이전 ZIP은 갱신하지 않았습니다.
 
-> **현재 성장 실험:** 유물3종 중3회·6회에 하나씩 선택하고9회에 구간 요약을 봅니다. [구현·실제 검증](docs/GROWTH.md). 기존 ZIP은 이 소스의 실행 파일이 아닙니다.
+> **이전 성장 실험 (`--sandbox` 전용):** 유물3종 중3회·6회에 하나씩 선택하고9회에 구간 요약을 봅니다. [구현·실제 검증](docs/GROWTH.md). 기존 ZIP은 이 소스의 실행 파일이 아닙니다.
 
 > **최신 품질 보강:** 원본 캐릭터·표적, 작은 창 조작 검사와 긴 연쇄 단축 결과는 [품질 보고](docs/POLISH.md)에 있습니다. 기존 ZIP은 업데이트하지 않았습니다.
 
@@ -17,9 +19,11 @@
 - 일반/하트는 2개부터. 직접 일반 공격 패널6~11개는 일반 물감핵,12개 이상은 강화핵을 만듭니다. 응축 렌즈를 고르면 기준이5/11개로 바뀝니다. 핵은 다음 행동부터 사용합니다.
 - 핵은 하나만 눌러도 발동합니다. 속성은 색 테두리와 작은 문양입니다. 일반은 접촉 1단계, 강화는 2단계 변환/연쇄이며 하트는 보호됩니다.
 - 아래 붓 버튼 → 색 선택 → 일반 패널을 눌러 최대 4개 변환 미리보기 → 놓아 적용. 스킬은 자동 소거하지 않고 소거 횟수를 쓰지 않습니다. 번짐 안료를 고르면 최대5개가 됩니다. 기본 수동 소거3회로 재충전되며 잿빛 보석은 직접 일반6개 소거로 다음 스킬 사용 후의2회 충전을 예약합니다.
-- 표적은 반격하지 않습니다. 수동 소거 3회가 턴 카운터입니다. 일반당 피해1, 하트당 회복2는 논리 확인용 임시 수치입니다.
-- 성장 검증 모드: 유효 소거3회 후3종 중 하나,6회 후 미보유2종 중 하나를 고릅니다.9회 후 세 구간 요약을 보고 계속할 수 있습니다. 보상은 소거·연쇄·낙하가 끝난 뒤 열립니다.
-- 리셋은 보드·체력·유물·보상·예약·충전·구간 기록을 모두 초기화합니다. 보충 중에는 입력을 무시합니다. 소리 버튼으로 음소거합니다.
+- 현재 실행은 3전투 탐험입니다. 생명30과 준비된 스킬로 시작하며 유효 소거3회마다 예고된 반격을 받습니다. 일반당 피해1, 하트당 회복2입니다. 처치하면 반격보다 승리가 우선합니다.
+- 전투1(HP24, 공격4), 전투2(HP36, 경감/일반5교대), 전투3(HP48, 공격6/8교대)는 실험 수치입니다. 경감 조건은 턴 시작에 기회가 있을 때만 예고하며 직접4개 연결을 한 번 소거하면7→3피해로 줄어듭니다.
+- 첫 두 전투 승리 후 미보유 유물을 하나씩 고르고 **다음 전투**를 누릅니다. 생명·스킬충전·유물·예약을 유지하고 보드만 새로 만듭니다. 최종 승리/패배에서는 새 탐험을 시작할 수 있습니다.
+- 이전3/6/9행동 성장 실험은 `-- --sandbox`로만 실행하며 실제 탐험에는 행동수 보상이나9행동 종료가 없습니다.
+- 리셋은 보드·체력·유물·보상·예약·충전·구간 기록을 모두 초기화합니다. 보충·반격·전환 중에는 리셋 외 보드 입력을 무시합니다. 소리 버튼으로 음소거합니다.
 
 ## 실행
 Godot 4.6.3에서 이 폴더의 `project.godot`를 열고 실행하거나:
@@ -39,16 +43,19 @@ godot --path agent-harness/prototypes/godot-touch-board
 godot --headless --path . --script tests/test_rules.gd
 godot --headless --path . --script tests/test_relic_rules.gd
 godot --headless --path . --script tests/test_growth_session.gd
-godot --headless --path . --script tests/test_reward_input.gd
+godot --headless --path . --script tests/test_combat.gd
+godot --headless --path . --script tests/test_run_session.gd
+godot --headless --path . --script tests/test_run_input.gd
+godot --headless --path . --script tests/test_reward_input.gd -- --sandbox
 godot --headless --path . --script tests/test_refill_inlet.gd
 godot --headless --path . --script tests/test_motion_paths.gd
 godot --headless --path . --script tests/test_motion_cycles.gd
 godot --headless --path . --script tests/test_interaction.gd
-godot --headless --path . --script tests/test_scene.gd
+godot --headless --path . --script tests/test_scene.gd -- --sandbox
 ```
-실제 렌더러에서 `tests/capture_board.gd`는 캡처, `tests/live_benchmark.gd`는 실시간 벽시계/프레임 기록을 만듭니다. 후자는 테스트 전용 자동 입력입니다. `-- --demo --capture`는 고정 영상 제작용이며 `--write-movie`와 함께 사용합니다. 테스트·증거 파일은 배포 빌드에서 제외합니다.
+실제 렌더러에서 `tests/capture_board.gd`는 캡처, `tests/live_benchmark.gd`는 실시간 벽시계/프레임 기록을 만듭니다. 후자는 테스트 전용 자동 입력입니다. `-- --sandbox --demo --capture`는 고정 영상 제작용이며 `--write-movie`와 함께 사용합니다. 테스트·증거 파일은 배포 빌드에서 제외합니다.
 
-화면·영상·측정은 `evidence/`, 실행 계약과 판단은 `docs/`에 있습니다. 영상은 고정 프레임 녹화로 입력 성능 근거가 아닙니다. Android 실물, 모바일 음향·지연, 사용자 재미는 미검증입니다. 지도·상점·영구 저장·파티·보스·적 패턴·피버는 없습니다.
+화면·영상·측정은 `evidence/`, 실행 계약과 판단은 `docs/`에 있습니다. 영상은 고정 프레임 녹화로 입력 성능 근거가 아닙니다. Android 실물, 모바일 음향·지연, 사용자 재미는 미검증입니다. 지도·상점·영구 저장·파티·보스·추가 적 패턴 시스템·피버는 없습니다.
 
 ## 자산
 패널: 이번 승인된 새 원본 PNG atlas. `assets/ART.md` 참조. 캐릭터/표적: 승인된 원본 RGBA PNG 초상/젤리 골렘. 이번 성장 단계는 새 그림·효과음·VFX를 추가하지 않았습니다. 효과음: 새 합성 PCM(6 voices 제한). 글꼴: 시스템 Noto Sans CJK의 한국어 부분집합, SIL OFL(`assets/FONT-LICENSE.txt`). 사용자 참조 원본 이미지는 포함하지 않습니다.

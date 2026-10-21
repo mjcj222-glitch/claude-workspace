@@ -1,0 +1,2321 @@
+{
+  "carry": {
+    "actions": 18,
+    "ash_reserved": true,
+    "charge": 1,
+    "charge_required": 2,
+    "hp": 19,
+    "relics": [
+      "lens",
+      "ash"
+    ]
+  },
+  "combat": {
+    "actions_in_turn": 3,
+    "attacks_total": 4,
+    "encounter": 2,
+    "enemies_defeated": 3,
+    "enemy_hp": 0,
+    "enemy_max_hp": 48,
+    "fallback_plain": false,
+    "incoming_damage": 6,
+    "last_attack_damage": 8,
+    "mitigation_active": false,
+    "mitigation_success": false,
+    "turn": 2
+  },
+  "effects_observed": {
+    "ash_consumptions": 3,
+    "ash_reservations": 4,
+    "lens_eleven_strong": 0,
+    "lens_five_core": 0,
+    "mitigation_latched": 1,
+    "pigment_five_targets": 0
+  },
+  "errors": [],
+  "events": [
+    {
+      "carry": {
+        "actions": 0,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 30,
+        "relics": []
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 0,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 24,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "rng_state": "-5356253348628742232",
+      "seed": 20261022,
+      "type": "initialize"
+    },
+    {
+      "after": {
+        "actions": 0,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 3,
+        "hp": 30,
+        "relics": []
+      },
+      "before": {
+        "actions": 0,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 30,
+        "relics": []
+      },
+      "color": 2,
+      "connected_ids": [
+        29,
+        22,
+        24,
+        31,
+        38,
+        16,
+        18,
+        32,
+        43,
+        9,
+        40,
+        39
+      ],
+      "consumed_ash": false,
+      "start_id": 29,
+      "target_ids": [
+        29,
+        22,
+        24,
+        31
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 1,
+        "ash_reserved": false,
+        "charge": 1,
+        "charge_required": 3,
+        "hp": 30,
+        "relics": []
+      },
+      "before": {
+        "actions": 0,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 3,
+        "hp": 30,
+        "relics": []
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 0,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 24,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "burst_rng_draws": 168,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 0,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 12,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "core_created": "strong",
+      "damage": 12,
+      "direct_ids": [
+        9,
+        18,
+        22,
+        16,
+        29,
+        31,
+        24,
+        38,
+        43,
+        32,
+        40,
+        39
+      ],
+      "direct_normals": 12,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.783333333333333,
+      "removed_ids": [
+        9,
+        18,
+        22,
+        16,
+        29,
+        31,
+        24,
+        38,
+        43,
+        32,
+        40,
+        39
+      ],
+      "rng_state": "8420805759276448041",
+      "sequence": [
+        9,
+        18,
+        22,
+        16,
+        29,
+        31,
+        24,
+        38,
+        43,
+        32,
+        40,
+        39
+      ],
+      "start_id": 9,
+      "type": "clear"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 2,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 30,
+        "relics": []
+      },
+      "before": {
+        "actions": 1,
+        "ash_reserved": false,
+        "charge": 1,
+        "charge_required": 3,
+        "hp": 30,
+        "relics": []
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 0,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 12,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "burst_rng_draws": 70,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 0,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 7,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "core_created": "",
+      "damage": 5,
+      "direct_ids": [
+        1,
+        11,
+        20,
+        14,
+        21
+      ],
+      "direct_normals": 5,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.741666666666666,
+      "removed_ids": [
+        1,
+        11,
+        20,
+        14,
+        21
+      ],
+      "rng_state": "673672776194197156",
+      "sequence": [
+        1,
+        11,
+        20,
+        14,
+        21
+      ],
+      "start_id": 1,
+      "type": "clear"
+    },
+    {
+      "activated": [
+        49
+      ],
+      "after": {
+        "actions": 3,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": []
+      },
+      "before": {
+        "actions": 2,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 30,
+        "relics": []
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 0,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 7,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "burst_rng_draws": 98,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 1,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 1,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "core_created": "",
+      "damage": 6,
+      "direct_ids": [
+        49
+      ],
+      "direct_normals": 0,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "enemy_attack",
+      "refill_sim_seconds": 0.575,
+      "removed_ids": [
+        49,
+        25,
+        36,
+        45,
+        56,
+        52,
+        61
+      ],
+      "rng_state": "-6672708462486017083",
+      "sequence": [
+        49,
+        25,
+        36,
+        45,
+        56,
+        52,
+        61
+      ],
+      "start_id": 49,
+      "type": "clear"
+    },
+    {
+      "after": {
+        "actions": 3,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": []
+      },
+      "before": {
+        "actions": 3,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": []
+      },
+      "before_combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 1,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 1,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 1,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 1,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "phase": "ready",
+      "type": "enemy_attack"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 4,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": []
+      },
+      "before": {
+        "actions": 3,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": []
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 1,
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 1,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "burst_rng_draws": 42,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 1,
+        "encounter": 0,
+        "enemies_defeated": 1,
+        "enemy_hp": 0,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "core_created": "",
+      "damage": 3,
+      "direct_ids": [
+        10,
+        19,
+        13
+      ],
+      "direct_normals": 3,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "reward",
+      "refill_sim_seconds": 0.525000000000001,
+      "removed_ids": [
+        10,
+        19,
+        13
+      ],
+      "rng_state": "7898392718103056246",
+      "sequence": [
+        10,
+        19,
+        13
+      ],
+      "start_id": 10,
+      "type": "clear"
+    },
+    {
+      "accepted": true,
+      "after": {
+        "actions": 4,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 4,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": []
+      },
+      "id": "lens",
+      "phase": "between",
+      "type": "reward"
+    },
+    {
+      "after": {
+        "actions": 4,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 4,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 1,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 36,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 7,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "phase": "ready",
+      "rng_state": "-6144882154133302458",
+      "type": "next_fight"
+    },
+    {
+      "after": {
+        "actions": 4,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 4,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "color": 2,
+      "connected_ids": [
+        81,
+        77,
+        83,
+        78,
+        82,
+        91,
+        92,
+        84,
+        99,
+        100,
+        108,
+        113,
+        122
+      ],
+      "consumed_ash": false,
+      "start_id": 81,
+      "target_ids": [
+        81,
+        77,
+        83,
+        78
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 5,
+        "ash_reserved": false,
+        "charge": 1,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 4,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 1,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 36,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 7,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "burst_rng_draws": 182,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 1,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 23,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0
+      },
+      "core_created": "strong",
+      "damage": 13,
+      "direct_ids": [
+        77,
+        78,
+        81,
+        83,
+        84,
+        92,
+        82,
+        91,
+        99,
+        100,
+        108,
+        113,
+        122
+      ],
+      "direct_normals": 13,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 1.13333333333333,
+      "removed_ids": [
+        77,
+        78,
+        81,
+        83,
+        84,
+        92,
+        82,
+        91,
+        99,
+        100,
+        108,
+        113,
+        122
+      ],
+      "rng_state": "-5196358551960419618",
+      "sequence": [
+        77,
+        78,
+        81,
+        83,
+        84,
+        92,
+        82,
+        91,
+        99,
+        100,
+        108,
+        113,
+        122
+      ],
+      "start_id": 77,
+      "type": "clear"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 6,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 5,
+        "ash_reserved": false,
+        "charge": 1,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 1,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 23,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0
+      },
+      "burst_rng_draws": 98,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 1,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 16,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0
+      },
+      "core_created": "core",
+      "damage": 7,
+      "direct_ids": [
+        76,
+        88,
+        96,
+        103,
+        104,
+        112,
+        120
+      ],
+      "direct_normals": 7,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.608333333333334,
+      "removed_ids": [
+        76,
+        88,
+        96,
+        103,
+        104,
+        112,
+        120
+      ],
+      "rng_state": "9160861851874828680",
+      "sequence": [
+        76,
+        88,
+        96,
+        103,
+        104,
+        112,
+        120
+      ],
+      "start_id": 76,
+      "type": "clear"
+    },
+    {
+      "activated": [
+        124
+      ],
+      "after": {
+        "actions": 7,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 6,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 26,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 1,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 16,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0
+      },
+      "burst_rng_draws": 98,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 2,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 10,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 3,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0
+      },
+      "core_created": "",
+      "damage": 6,
+      "direct_ids": [
+        124
+      ],
+      "direct_normals": 0,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "enemy_attack",
+      "refill_sim_seconds": 0.616666666666667,
+      "removed_ids": [
+        124,
+        94,
+        97,
+        90,
+        101,
+        102,
+        107
+      ],
+      "rng_state": "6374633219543740025",
+      "sequence": [
+        124,
+        94,
+        97,
+        90,
+        101,
+        102,
+        107
+      ],
+      "start_id": 124,
+      "type": "clear"
+    },
+    {
+      "after": {
+        "actions": 7,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 7,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 2,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 10,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 3,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 10,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "phase": "ready",
+      "type": "enemy_attack"
+    },
+    {
+      "after": {
+        "actions": 7,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 7,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "color": 1,
+      "connected_ids": [
+        125,
+        136,
+        139,
+        145,
+        126,
+        141,
+        133,
+        148
+      ],
+      "consumed_ash": false,
+      "start_id": 125,
+      "target_ids": [
+        125,
+        136,
+        139,
+        145
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 8,
+        "ash_reserved": false,
+        "charge": 1,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 7,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 10,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "burst_rng_draws": 112,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 2,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 2,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "core_created": "core",
+      "damage": 8,
+      "direct_ids": [
+        125,
+        136,
+        139,
+        145,
+        126,
+        141,
+        133,
+        148
+      ],
+      "direct_normals": 8,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.65,
+      "removed_ids": [
+        125,
+        136,
+        139,
+        145,
+        126,
+        141,
+        133,
+        148
+      ],
+      "rng_state": "4737360907215694154",
+      "sequence": [
+        125,
+        136,
+        139,
+        145,
+        126,
+        141,
+        133,
+        148
+      ],
+      "start_id": 125,
+      "type": "clear"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 9,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before": {
+        "actions": 8,
+        "ash_reserved": false,
+        "charge": 1,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 2,
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 2,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "burst_rng_draws": 56,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 2,
+        "encounter": 1,
+        "enemies_defeated": 2,
+        "enemy_hp": 0,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "core_created": "",
+      "damage": 4,
+      "direct_ids": [
+        138,
+        144,
+        143,
+        150
+      ],
+      "direct_normals": 4,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "reward",
+      "refill_sim_seconds": 0.658333333333333,
+      "removed_ids": [
+        138,
+        144,
+        143,
+        150
+      ],
+      "rng_state": "-3445639647373520626",
+      "sequence": [
+        138,
+        144,
+        143,
+        150
+      ],
+      "start_id": 138,
+      "type": "clear"
+    },
+    {
+      "accepted": true,
+      "after": {
+        "actions": 9,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 9,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens"
+        ]
+      },
+      "id": "ash",
+      "phase": "between",
+      "type": "reward"
+    },
+    {
+      "after": {
+        "actions": 9,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 9,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 48,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "phase": "ready",
+      "rng_state": "6531858118187903710",
+      "type": "next_fight"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 10,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 9,
+        "ash_reserved": false,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 48,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "burst_rng_draws": 56,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 2,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 44,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "core_created": "",
+      "damage": 4,
+      "direct_ids": [
+        173,
+        179,
+        183,
+        190
+      ],
+      "direct_normals": 4,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.608333333333334,
+      "removed_ids": [
+        173,
+        179,
+        183,
+        190
+      ],
+      "rng_state": "5616600580371422946",
+      "sequence": [
+        173,
+        179,
+        183,
+        190
+      ],
+      "start_id": 173,
+      "type": "clear"
+    },
+    {
+      "after": {
+        "actions": 10,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 10,
+        "ash_reserved": false,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "color": 3,
+      "connected_ids": [
+        199,
+        191,
+        194,
+        202,
+        186,
+        209,
+        210,
+        206,
+        212
+      ],
+      "consumed_ash": false,
+      "start_id": 199,
+      "target_ids": [
+        199,
+        191,
+        194,
+        202
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 11,
+        "ash_reserved": true,
+        "charge": 1,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 10,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 2,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 44,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "burst_rng_draws": 126,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 2,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 35,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "core_created": "core",
+      "damage": 9,
+      "direct_ids": [
+        186,
+        191,
+        194,
+        199,
+        202,
+        209,
+        210,
+        206,
+        212
+      ],
+      "direct_normals": 9,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.8,
+      "removed_ids": [
+        186,
+        191,
+        194,
+        199,
+        202,
+        209,
+        210,
+        206,
+        212
+      ],
+      "rng_state": "-940124285512884362",
+      "sequence": [
+        186,
+        191,
+        194,
+        199,
+        202,
+        209,
+        210,
+        206,
+        212
+      ],
+      "start_id": 186,
+      "type": "clear"
+    },
+    {
+      "activated": [
+        215
+      ],
+      "after": {
+        "actions": 12,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 17,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 11,
+        "ash_reserved": true,
+        "charge": 1,
+        "charge_required": 3,
+        "hp": 23,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 2,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 35,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "burst_rng_draws": 84,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 3,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 30,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 6,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "core_created": "",
+      "damage": 5,
+      "direct_ids": [
+        215
+      ],
+      "direct_normals": 0,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "enemy_attack",
+      "refill_sim_seconds": 0.75,
+      "removed_ids": [
+        215,
+        178,
+        181,
+        208,
+        216,
+        187
+      ],
+      "rng_state": "-7878071386034044492",
+      "sequence": [
+        215,
+        178,
+        181,
+        208,
+        216,
+        187
+      ],
+      "start_id": 215,
+      "type": "clear"
+    },
+    {
+      "after": {
+        "actions": 12,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 17,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 12,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 17,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 3,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 30,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 6,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 3,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 30,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 8,
+        "last_attack_damage": 6,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "phase": "ready",
+      "type": "enemy_attack"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 13,
+        "ash_reserved": true,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 27,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 12,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 3,
+        "hp": 17,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 3,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 30,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 8,
+        "last_attack_damage": 6,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "burst_rng_draws": 70,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 3,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 30,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 8,
+        "last_attack_damage": 6,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "core_created": "",
+      "damage": 0,
+      "direct_ids": [
+        189,
+        196,
+        197,
+        205,
+        228
+      ],
+      "direct_normals": 0,
+      "heal_effective": 10,
+      "heal_overflow": 0,
+      "heal_raw": 10,
+      "phase": "ready",
+      "refill_sim_seconds": 1.20833333333333,
+      "removed_ids": [
+        189,
+        196,
+        197,
+        205,
+        228
+      ],
+      "rng_state": "4427305160612112339",
+      "sequence": [
+        189,
+        196,
+        197,
+        205,
+        228
+      ],
+      "start_id": 189,
+      "type": "clear"
+    },
+    {
+      "after": {
+        "actions": 13,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 2,
+        "hp": 27,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 13,
+        "ash_reserved": true,
+        "charge": 3,
+        "charge_required": 3,
+        "hp": 27,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "color": 2,
+      "connected_ids": [
+        172,
+        166,
+        218,
+        222,
+        171,
+        225,
+        163,
+        176,
+        198
+      ],
+      "consumed_ash": true,
+      "start_id": 172,
+      "target_ids": [
+        172,
+        166,
+        218,
+        222
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 14,
+        "ash_reserved": true,
+        "charge": 1,
+        "charge_required": 2,
+        "hp": 27,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 13,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 2,
+        "hp": 27,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 3,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 30,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 8,
+        "last_attack_damage": 6,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "burst_rng_draws": 126,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 3,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 21,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 8,
+        "last_attack_damage": 6,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "core_created": "core",
+      "damage": 9,
+      "direct_ids": [
+        163,
+        171,
+        176,
+        166,
+        198,
+        222,
+        225,
+        172,
+        218
+      ],
+      "direct_normals": 9,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.666666666666667,
+      "removed_ids": [
+        163,
+        171,
+        176,
+        166,
+        198,
+        222,
+        225,
+        172,
+        218
+      ],
+      "rng_state": "-572941509739579017",
+      "sequence": [
+        163,
+        171,
+        176,
+        166,
+        198,
+        222,
+        225,
+        172,
+        218
+      ],
+      "start_id": 163,
+      "type": "clear"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 15,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 14,
+        "ash_reserved": true,
+        "charge": 1,
+        "charge_required": 2,
+        "hp": 27,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 3,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 21,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 8,
+        "last_attack_damage": 6,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "burst_rng_draws": 28,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 19,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 8,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "core_created": "",
+      "damage": 2,
+      "direct_ids": [
+        182,
+        185
+      ],
+      "direct_normals": 2,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "enemy_attack",
+      "refill_sim_seconds": 0.608333333333334,
+      "removed_ids": [
+        182,
+        185
+      ],
+      "rng_state": "-8941342716354636327",
+      "sequence": [
+        182,
+        185
+      ],
+      "start_id": 182,
+      "type": "clear"
+    },
+    {
+      "after": {
+        "actions": 15,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 15,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 19,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 8,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 19,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 2
+      },
+      "phase": "ready",
+      "type": "enemy_attack"
+    },
+    {
+      "after": {
+        "actions": 15,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 15,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "color": 3,
+      "connected_ids": [
+        175,
+        165,
+        174,
+        180,
+        177,
+        188,
+        192
+      ],
+      "consumed_ash": true,
+      "start_id": 175,
+      "target_ids": [
+        175,
+        165,
+        174,
+        180
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 16,
+        "ash_reserved": true,
+        "charge": 1,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 15,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 19,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 2
+      },
+      "burst_rng_draws": 98,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 12,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 2
+      },
+      "core_created": "core",
+      "damage": 7,
+      "direct_ids": [
+        165,
+        174,
+        175,
+        177,
+        180,
+        192,
+        188
+      ],
+      "direct_normals": 7,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.625,
+      "removed_ids": [
+        165,
+        174,
+        175,
+        177,
+        180,
+        192,
+        188
+      ],
+      "rng_state": "-2002151907398062757",
+      "sequence": [
+        165,
+        174,
+        175,
+        177,
+        180,
+        192,
+        188
+      ],
+      "start_id": 165,
+      "type": "clear"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 17,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 16,
+        "ash_reserved": true,
+        "charge": 1,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 12,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 2
+      },
+      "burst_rng_draws": 56,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 8,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 2
+      },
+      "core_created": "",
+      "damage": 4,
+      "direct_ids": [
+        214,
+        220,
+        240,
+        249
+      ],
+      "direct_normals": 4,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.450000000000001,
+      "removed_ids": [
+        214,
+        220,
+        240,
+        249
+      ],
+      "rng_state": "1378830998296309743",
+      "sequence": [
+        214,
+        220,
+        240,
+        249
+      ],
+      "start_id": 214,
+      "type": "clear"
+    },
+    {
+      "after": {
+        "actions": 17,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 17,
+        "ash_reserved": true,
+        "charge": 2,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "color": 1,
+      "connected_ids": [
+        232,
+        224,
+        229,
+        223,
+        233,
+        211,
+        236,
+        219,
+        226
+      ],
+      "consumed_ash": true,
+      "start_id": 232,
+      "target_ids": [
+        232,
+        224,
+        229,
+        223
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 18,
+        "ash_reserved": true,
+        "charge": 1,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before": {
+        "actions": 17,
+        "ash_reserved": false,
+        "charge": 0,
+        "charge_required": 2,
+        "hp": 19,
+        "relics": [
+          "lens",
+          "ash"
+        ]
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 8,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 2
+      },
+      "burst_rng_draws": 126,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 4,
+        "encounter": 2,
+        "enemies_defeated": 3,
+        "enemy_hp": 0,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 8,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 2
+      },
+      "core_created": "core",
+      "damage": 9,
+      "direct_ids": [
+        211,
+        219,
+        223,
+        226,
+        229,
+        232,
+        236,
+        224,
+        233
+      ],
+      "direct_normals": 9,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "phase": "victory",
+      "refill_sim_seconds": 0.608333333333334,
+      "removed_ids": [
+        211,
+        219,
+        223,
+        226,
+        229,
+        232,
+        236,
+        224,
+        233
+      ],
+      "rng_state": "-8449772314796328109",
+      "sequence": [
+        211,
+        219,
+        223,
+        226,
+        229,
+        232,
+        236,
+        224,
+        233
+      ],
+      "start_id": 211,
+      "type": "clear"
+    }
+  ],
+  "method": "pure headless normal-play simulation; fixed-step physics; not real-time GPU/input evidence",
+  "pair": [
+    "lens",
+    "ash"
+  ],
+  "pair_index": 2,
+  "policy": "lethal first; active four-normal mitigation next; damage/removed plus effective healing; largest legal skill connection",
+  "restrictions": "no recolor, favorable fixture, forced charge, HP injection, board rescue or intermediate reset",
+  "rng_parity": "same game RNG; fourteen burst draws per unique actually removed ID before refill; visual effect RNG unused",
+  "seed": 20261022,
+  "session_phase": "victory",
+  "terminal": "victory"
+}

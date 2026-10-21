@@ -1,0 +1,31 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL fresh run starts full and skill ready
+FAIL initialize installs first board and fight
+FAIL damage is recorded on commit before refill
+FAIL first-action kill grants reward without retaliation
+FAIL chosen reward moves to between phase
+FAIL between advances to a newly supplied board
+FAIL next fight uses new board and index
+FAIL hp charge requirement ash and relics carry unchanged
+FAIL third-action kill wins before enemy attack
+FAIL heart clear heals and consumes one turn action
+FAIL solo core is one valid turn action
+FAIL third surviving clear applies enemy damage once
+FAIL repeated refill cannot repeat attack
+FAIL attack completion starts next turn without old three-action reward
+FAIL attack completion is exact-once
+FAIL lethal attack clamps hp and retains attack presentation phase
+FAIL lethal attack completion is terminal defeat
+FAIL terminal defeat rejects continuation and delayed callbacks
+FAIL only first two kills offer remaining relics
+FAIL progression accepts each earned choice
+FAIL progression begins next encounter
+FAIL only first two kills offer remaining relics
+FAIL progression accepts each earned choice
+FAIL progression begins next encounter
+FAIL third win is victory with no extra reward
+FAIL run totals span encounters
+FAIL victory is terminal
+FAIL new instance restart has no carry from previous run
+RUN_SESSION checks=40 failures=28

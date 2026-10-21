@@ -1,6 +1,6 @@
 config_version=5
 [application]
-config/name="CHROMA / Touch Lab"
+config/name="CHROMA / Short Exploration"
 run/main_scene="res://main.tscn"
 [display]
 window/size/viewport_width=720

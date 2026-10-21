@@ -1,5 +1,7 @@
 extends Node2D
 const Session = preload("res://scripts/board_session.gd")
+const RunSession = preload("res://scripts/board_run_session.gd")
+const ATTACK_SECONDS := 0.45
 const Motion = preload("res://scripts/board_motion.gd")
 const Rules = preload("res://scripts/board_rules.gd")
 const Art = preload("res://scripts/board_art.gd")
@@ -11,7 +13,10 @@ const BOARD := Rect2(30, 290, 660, 530)
 const RESET = UI.RESET
 const SKILL = UI.SKILL
 const MUTE = UI.MUTE
-var session = Session.new()
+var session = RunSession.new()
+var sandbox := false
+var run_seed := 20261021
+var attack_clock := 0.0
 var rng := RandomNumberGenerator.new()
 var sound: Node
 var font: Font
@@ -82,7 +87,10 @@ func _ready() -> void:
 	RenderingServer.frame_post_draw.connect(_after_draw)
 	run_start = Time.get_ticks_usec()
 	var args := OS.get_cmdline_user_args()
-	demo = "--demo" in args
+	sandbox = "--sandbox" in args
+	for arg in args:
+		if arg.begins_with("--seed="): run_seed = int(arg.trim_prefix("--seed="))
+	demo = "--demo" in args and sandbox
 	capture_mode = "--capture" in args
 	board_surface = BoardSurface.new()
 	board_surface.presenter = self
@@ -100,36 +108,71 @@ func reset_board() -> void:
 	_cancel_modal()
 	detail_relic=""
 	feedback.reset()
-	rng.seed = 20261021
-	session = Session.new()
+	rng.seed = run_seed
+	session = Session.new() if sandbox else RunSession.new()
 	session.bounds = BOARD
 	var packed := Motion.initial_board(BOARD, 48, 1, rng)
-	session.panels = packed.panels
-	session.next_id = packed.next_id
-	# First board guarantees a readable six-link and one two-heart opportunity.
-	var graph := Rules.contact_graph(session.panels)
-	var start: int = session.panels[22].id
-	var queue: Array = [start]
-	var group: Array = []
-	while not queue.is_empty() and group.size() < 7:
-		var id: int = queue.pop_front()
-		if id in group:
-			continue
-		group.append(id)
-		for n in graph[id]:
-			if n not in group: queue.append(n)
-	for p in session.panels:
-		if p.id in group:
-			p.color = 0
-			p.kind = "normal"
+	if sandbox:
+		session.panels = packed.panels
+		session.next_id = packed.next_id
+		# First board guarantees a readable six-link and one two-heart opportunity.
+		var graph := Rules.contact_graph(session.panels)
+		var start: int = session.panels[22].id
+		var queue: Array = [start]
+		var group: Array = []
+		while not queue.is_empty() and group.size() < 7:
+			var id: int = queue.pop_front()
+			if id in group:
+				continue
+			group.append(id)
+			for n in graph[id]:
+				if n not in group: queue.append(n)
+		for p in session.panels:
+			if p.id in group:
+				p.color = 0
+				p.kind = "normal"
+	else:
+		session.initialize_board(packed.panels, packed.next_id)
 	visual = session.panels.duplicate(true)
 	particles.clear()
 	active_plan = {}
 	falling = false
+	motion_state = {}
 	action_clock = 0
+	attack_clock = 0
+	fall_clock = 0
+	played = 0
+	clear_duration = 0
+	target_hit = 0
+	hero_active = 0
+	feedback_pending = false
+	primary_touch = -99
+	if sound:
+		for voice in sound.voices: voice.stop()
+		sound.cursor = 0
 	landing = 1
 	status = "누르고 확인 · 놓으면 소거"
 	last_summary = "같은 색 2개부터"
+	queue_redraw()
+
+func _advance_fight() -> void:
+	if sandbox or session.phase != "between": return
+	var packed := Motion.initial_board(BOARD, 48, session.next_id, rng)
+	if not session.begin_next_fight(packed.panels, packed.next_id): return
+	_cancel_modal()
+	detail_relic = ""
+	feedback.reset()
+	particles.clear()
+	active_plan = {}
+	motion_state = {}
+	falling = false
+	action_clock = 0
+	attack_clock = 0
+	feedback_pending = false
+	landing = 1
+	visual = session.panels.duplicate(true)
+	status = "누르고 확인 · 놓으면 소거"
+	last_summary = "전투 %d / 3 · 생명과 충전을 이어갑니다" % (session.combat.encounter + 1)
 	queue_redraw()
 
 func _text(at: Vector2, text: String, size: int, color: Color = Color("f3f2ef")) -> void:
@@ -227,6 +270,7 @@ func _process(delta: float) -> void:
 				session.panels = motion_state.panels.duplicate(true)
 				falling = false
 				session.finish_refill()
+				attack_clock = 0
 				_cancel_modal()
 				visual = session.panels.duplicate(true)
 				landing = 0
@@ -242,6 +286,12 @@ func _process(delta: float) -> void:
 					timings.append(metric)
 					print("TIMING ", JSON.stringify(metric))
 				active_plan = {}
+	elif not sandbox and session.phase == "enemy_attack":
+		attack_clock += delta
+		if attack_clock >= ATTACK_SECONDS:
+			session.finish_attack()
+			attack_clock = 0
+			status = "반격 완료 · 다음 연결을 선택하세요"
 	if demo: _demo(delta)
 	queue_redraw()
 	if board_surface: board_surface.queue_redraw()
@@ -305,6 +355,10 @@ func move_pointer(pos: Vector2, pointer: int) -> void:
 		if not rect.has_point(pos): _cancel_modal()
 
 func press(pos: Vector2, pointer: int) -> void:
+	# Reset is the only transition input; all clocks and pending effects are owned here.
+	if not sandbox and RESET.has_point(pos):
+		reset_board()
+		return
 	if detail_relic!="":
 		if RESET.has_point(pos):reset_board();return
 		if detail_pointer==-99 and _detail_close_hit(pos):
@@ -312,7 +366,7 @@ func press(pos: Vector2, pointer: int) -> void:
 			detail_action="close"
 		return
 	if detail_pointer!=-99:return
-	if session.phase in ["reward","summary"]:
+	if session.phase in ["reward","summary","between","victory","defeat"]:
 		if RESET.has_point(pos):
 			reset_board()
 			return
@@ -370,7 +424,7 @@ func release(pos: Vector2, pointer: int) -> void:
 			detail_relic=session.relics[index]
 			session.cancel()
 		return
-	if session.phase in ["reward","summary"] or modal_pointer != -99:
+	if session.phase in ["reward","summary","between","victory","defeat"] or modal_pointer != -99:
 		if pointer != modal_pointer: return
 		var index := modal_index
 		var serial := modal_offer
@@ -381,7 +435,11 @@ func release(pos: Vector2, pointer: int) -> void:
 			var id: String=session.reward_options[index]
 			if session.choose_relic(id,serial):
 				last_summary = Session.Relics.DEFS[id].name+" 획득"
-				status="새 유물 적용 · 다음 연결을 선택하세요"
+				status="새 유물 적용 · 다음 연결을 선택하세요" if sandbox else "다음 전투를 눌러 출발하세요"
+		elif session.phase == "between" and UI.SUMMARY_CONTINUE.has_point(pos):
+			_advance_fight()
+		elif session.phase in ["victory","defeat"] and UI.SUMMARY_CONTINUE.has_point(pos):
+			reset_board()
 		elif session.phase == "summary" and UI.SUMMARY_CONTINUE.has_point(pos):
 			session.continue_summary()
 			status="보상 2회 완료 · 자유롭게 계속 시험하세요"

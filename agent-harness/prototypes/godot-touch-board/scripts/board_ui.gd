@@ -34,30 +34,38 @@ static func draw(view) -> void:
 	view.draw_rect(Rect2(0, 0, 720, 208), Color("131925"))
 	view.draw_rect(Rect2(28, 28, 3, 38), MINT)
 	view._text(Vector2(44, 48), "C H R O M A", 25)
-	view._text(Vector2(45, 74), "물감 연쇄 실험실", 20, MUTED)
+	view._text(Vector2(45, 74), "물감 연쇄 실험실" if view.sandbox else "짧은 연금술 탐험 · 시제품", 20, MUTED)
 	view._box(RESET, Color("222c3b"), 18, Color("354358"))
 	view._center(RESET.get_center() + Vector2(0,-5), "↻", 29, Color("e2e8f1"))
 	view._center(RESET.get_center() + Vector2(0,23), "리셋", 22, MUTED)
 
 	# Target has a reserved central portrait band, with counters to either side.
-	view._text(Vector2(31, 113), "피해", 22, MUTED)
-	view._text(Vector2(29, 158), str(session.damage_total).pad_zeros(3), 41, COLORS[0])
-	view._text(Vector2(31, 183), "반격 없는 표적", 20, MUTED)
+	if view.sandbox:
+		view._text(Vector2(31, 113), "피해", 22, MUTED)
+		view._text(Vector2(29, 158), str(session.damage_total).pad_zeros(3), 41, COLORS[0])
+		view._text(Vector2(31, 183), "반격 없는 표적", 20, MUTED)
+	else:
+		view._text(Vector2(31,113), "%s %d/3" % [session.combat.enemy_name,session.combat.encounter+1],22,MUTED)
+		view._text(Vector2(29,158), "%d / %d" % [session.combat.enemy_hp,session.combat.enemy_max_hp],41,COLORS[0])
+		view._text(Vector2(31,183), "예고 %d 피해" % session.combat.incoming_damage,22,COLORS[2])
 	Art.draw_target(view, TARGET_RECT.get_center(), view.time, view.target_hit)
 	view._text(Vector2(528, 123), "생명", 22, MUTED)
 	view._text(Vector2(527, 158), "%d / %d" % [session.hp, session.max_hp], 27, COLORS[4])
 	view._box(Rect2(529, 174, 160, 6), Color("342a39"), 3)
 	view._box(Rect2(529, 174, 160 * float(session.hp) / session.max_hp, 6), COLORS[4], 3)
 
-	view._text(Vector2(30, 207), "TURN %02d" % (session.actions / 3 + 1), 22, Color("c3ccdc"))
+	view._text(Vector2(30, 207), "TURN %02d" % (session.actions / 3 + 1) if view.sandbox else "행동 %d/3" % session.combat.actions_in_turn, 22, Color("c3ccdc"))
 	for i in range(3):
-		view.draw_circle(Vector2(143+i*21,201), 5, COLORS[2] if i < session.actions % 3 else Color("3d4657"))
+		view.draw_circle(Vector2(143+i*21,201), 5, COLORS[2] if i < (session.actions % 3 if view.sandbox else session.combat.actions_in_turn) else Color("3d4657"))
 	view._text(Vector2(536, 207), "충전 %d / %d" % [session.charge, session.charge_required], 22, MINT if skill_ready else MUTED)
 
 	# Full 660x530 body field is retained; no high/low rows are cropped.
 	view._box(Rect2(24, 214, 672, 578), Color("05080d"), 22, Color("3a465c"))
 	view._box(Rect2(32, 221, 656, 26), Color("161e2a"), 10)
 	var headline: String = view.status
+	if not view.sandbox:
+		if session.phase == "ready": headline = session.combat.telegraph_text()
+		elif session.phase == "enemy_attack": headline = "적의 반격 · %d 피해" % session.combat.last_attack_damage
 	var result: String = view.last_summary
 	var result_color := Color("bfcbdc")
 	if not preview.is_empty():
@@ -81,6 +89,8 @@ static func draw(view) -> void:
 
 	# A single character and one actionable ability; palette is contextual.
 	Art.draw_hero(view, HERO_RECT.get_center(), view.time, view.hero_active > 0.0)
+	if not view.sandbox and session.phase == "enemy_attack":
+		view.draw_rect(HERO_RECT,Color(1.0,0.2,0.2,0.22 * sin(PI * minf(1.0,view.attack_clock/view.ATTACK_SECONDS))))
 	view._center(Vector2(HERO_RECT.get_center().x,971), "리오 · 변환사", 20, MUTED)
 	var skill_bg := Color("203c3e") if skill_ready else Color("222938")
 	view._box(SKILL, skill_bg, 20, MINT if session.skill_mode else Color("3b555e"))
@@ -103,10 +113,10 @@ static func draw(view) -> void:
 			view._text(rect.position+Vector2(61,42),"✓" if selected else "",22,Color.WHITE)
 			view._center(rect.position+Vector2(60,73),["불꽃","새잎","번개","물결"][i],24,COLORS[i])
 	else:
-		view._text(Vector2(181,988), "성장 실험 · 3/6회 유물 · 9회 요약", 20, Color("bac6d8"))
+		view._text(Vector2(181,988), "성장 실험 · 3/6회 유물 · 9회 요약" if view.sandbox else "짧은 탐험 · 전투 %d / 3" % (session.combat.encounter+1), 20, Color("bac6d8"))
 		if session.relics.is_empty():
 			view._text(Vector2(181,1020), "누르고 확인, 놓으면 소거", 22, Color("e6edf7"))
-			view._text(Vector2(181,1048), "보드 밖으로 움직이면 취소", 20, MUTED)
+			view._text(Vector2(181,1048), "보드 밖으로 움직이면 취소" if view.sandbox else "3회 소거마다 적이 반격해요", 20, MUTED)
 		else:
 			# Owned strip replaces helper copy; palette owns the same area only
 			# while skill mode is open. Each hit target remains44px at360wide.
@@ -118,9 +128,11 @@ static func draw(view) -> void:
 			if session.relics.size()<=2:
 				view._text(Vector2(399,989), "보유 유물 %d"%session.relics.size(),22,MINT)
 				view._text(Vector2(399,1018), "아이콘을 눌러 설명",22,Color("d8e3ef"))
-				view._text(Vector2(399,1047), "다음 스킬 후 충전 2회" if session.ash_reserved else "3/6회 선택 · 9회 요약",20,MUTED)
+				view._text(Vector2(399,1047), "다음 스킬 후 충전 2회" if session.ash_reserved else ("3/6회 선택 · 9회 요약" if view.sandbox else "전투 %d/3 · 처치 %d" % [session.combat.encounter+1,session.combat.enemies_defeated]),20,MUTED)
 
 const SUMMARY_CONTINUE = Rect2(84, 670, 552, 88)
+const NEXT_BATTLE = SUMMARY_CONTINUE
+const RESTART = SUMMARY_CONTINUE
 const RELIC_COPY = {
 	"pigment": {"name":"번짐 안료", "change":"스킬 변환 4개 → 5개", "lines":["선택한 패널을 포함해", "일반 패널을 최대 5개 변환해요."]},
 	"lens": {"name":"응축 렌즈", "change":"물감핵 생성 6/12개 → 5/11개", "lines":["직접 연결한 일반 공격 패널로", "물감핵을 더 빨리 만들어요."]},
@@ -148,13 +160,16 @@ static func _modal_text(view, canvas: CanvasItem, at: Vector2, text: String, siz
 
 static func draw_modal(view, canvas: CanvasItem) -> void:
 	var session = view.session
+	if session.phase in ["between","victory","defeat"]:
+		draw_run_modal(view,canvas)
+		return
 	if session.phase != "reward" and session.phase != "summary":
 		return
 	# Overlay child renders after the board. Reset remains visible and usable.
 	canvas.draw_rect(Rect2(0,208,720,872),Color(0.025,0.035,0.055,0.92))
 	_modal_box(canvas,Rect2(32,216,656,576),Color("151e2c"),Color("526579"),24)
 	if session.phase == "reward":
-		_modal_text(view,canvas,Vector2(64,257),"유물을 골라주세요",30,Color("f1fff8"))
+		_modal_text(view,canvas,Vector2(64,257),"유물을 골라주세요" if view.sandbox else "승리 보상 · 유물을 골라주세요",30,Color("f1fff8"))
 		_modal_text(view,canvas,Vector2(64,287),"%d / 2 선택 · 새로운 유물 하나를 골라요" % session.reward_round,22,MUTED)
 		var count: int = session.reward_options.size()
 		for i in range(count):
@@ -208,10 +223,32 @@ static func draw_details(view,canvas:CanvasItem)->void:
 	_modal_box(canvas,DETAIL_PANEL,Color("172333"),Color("819691"),24)
 	RelicArt.draw_icon(canvas,id,Rect2(76,337,116,116))
 	_modal_text(view,canvas,Vector2(210,380),copy.name,32,MINT)
-	_modal_text(view,canvas,Vector2(210,419),"보유 중 · 성장 실험 유물",22,MUTED)
+	_modal_text(view,canvas,Vector2(210,419),"보유 중 · 성장 실험 유물" if view.sandbox else "보유 중 · 이번 탐험에 적용",22,MUTED)
 	_modal_text(view,canvas,Vector2(84,493),copy.change,25,Color("fff0c7"))
 	for row in range(copy.lines.size()):
 		_modal_text(view,canvas,Vector2(84,540+32*row),copy.lines[row],24,Color("d5dfec"))
 	_modal_text(view,canvas,Vector2(360,620),"설명을 닫아도 보드와 충전은 유지돼요",22,MUTED,true)
 	_modal_box(canvas,DETAIL_CLOSE,Color("28564e"),MINT,18)
 	_modal_text(view,canvas,DETAIL_CLOSE.get_center()+Vector2(0,9),"닫기",28,Color("e9fff7"),true)
+
+
+static func draw_run_modal(view,canvas:CanvasItem)->void:
+	var session = view.session
+	var combat = session.combat
+	canvas.draw_rect(Rect2(0,208,720,872),Color(0.025,0.035,0.055,0.94))
+	_modal_box(canvas,Rect2(32,216,656,576),Color("151e2c"),Color("526579"),24)
+	var heading: String = "다음 전투 준비" if session.phase == "between" else ("탐험 성공!" if session.phase == "victory" else "탐험 종료")
+	_modal_text(view,canvas,Vector2(360,278),heading,36,MINT,true)
+	var lines: Array[String] = []
+	if session.phase == "between":
+		lines = ["전투 %d 승리 · 유물 획득 완료" % (combat.encounter+1), "생명 %d / 30 · 충전 %d / %d" % [session.hp,session.charge,session.charge_required], "생명·충전·유물·예약을 이어갑니다", "새 보드에서 전투 %d / 3 시작" % (combat.encounter+2)]
+	elif session.phase == "victory":
+		lines = ["적 3명 처치", "남은 생명 %d / 30" % session.hp, "유효 소거 %d회 · 보유 유물 %d개" % [session.actions,session.relics.size()], "짧은 탐험을 끝까지 완료했어요"]
+	else:
+		lines = ["도달 전투 %d / 3" % (combat.encounter+1), "적 %d명 처치 · 유물 %d개" % [combat.enemies_defeated,session.relics.size()], "유효 소거 %d회" % session.actions, "새 탐험은 모든 상태를 초기화해요"]
+	for i in range(lines.size()):
+		_modal_text(view,canvas,Vector2(360,352+i*56),lines[i],26,Color("eff4fc") if i<2 else MUTED,true)
+	for i in range(session.relics.size()):
+		RelicArt.draw_icon(canvas,session.relics[i],Rect2(280+i*88,554,72,72))
+	_modal_box(canvas,SUMMARY_CONTINUE,Color("28564e"),MINT,18)
+	_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"다음 전투" if session.phase == "between" else "새 탐험 시작",28,Color("e9fff7"),true)
