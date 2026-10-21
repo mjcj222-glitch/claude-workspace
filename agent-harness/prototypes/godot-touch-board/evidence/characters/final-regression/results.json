@@ -1,0 +1,541 @@
+[
+  {
+    "test": "test_balance",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.117,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_balance.gd"
+    ]
+  },
+  {
+    "test": "test_balance_refill",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.296,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_balance_refill.gd"
+    ]
+  },
+  {
+    "test": "test_boss_combat",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.313,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_boss_combat.gd"
+    ]
+  },
+  {
+    "test": "test_clear_timeline",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.017,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_clear_timeline.gd"
+    ]
+  },
+  {
+    "test": "test_combat",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.489,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_combat.gd"
+    ]
+  },
+  {
+    "test": "test_elemental_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 17.428,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_input.gd"
+    ]
+  },
+  {
+    "test": "test_elemental_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.296,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_rules.gd"
+    ]
+  },
+  {
+    "test": "test_elemental_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.282,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_session.gd"
+    ]
+  },
+  {
+    "test": "test_elemental_ui",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.556,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_ui.gd"
+    ]
+  },
+  {
+    "test": "test_feedback",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.274,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_feedback.gd"
+    ]
+  },
+  {
+    "test": "test_growth_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.269,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_growth_session.gd"
+    ]
+  },
+  {
+    "test": "test_hit_audio",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.457,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_audio.gd"
+    ]
+  },
+  {
+    "test": "test_hit_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 7.379,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_scene.gd"
+    ]
+  },
+  {
+    "test": "test_hit_sync",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.486,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_sync.gd"
+    ]
+  },
+  {
+    "test": "test_interaction",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.284,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_interaction.gd"
+    ]
+  },
+  {
+    "test": "test_motion",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.367,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion.gd"
+    ]
+  },
+  {
+    "test": "test_motion_cycles",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 8.398,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion_cycles.gd"
+    ]
+  },
+  {
+    "test": "test_motion_paths",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.593,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion_paths.gd"
+    ]
+  },
+  {
+    "test": "test_premium_art",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.479,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_art.gd"
+    ]
+  },
+  {
+    "test": "test_premium_layout",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.794,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_layout.gd"
+    ]
+  },
+  {
+    "test": "test_premium_skill",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.285,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_skill.gd"
+    ]
+  },
+  {
+    "test": "test_presentation_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.864,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_presentation_scene.gd",
+      "--",
+      "--sandbox"
+    ]
+  },
+  {
+    "test": "test_quality_fonts",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.504,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_fonts.gd"
+    ]
+  },
+  {
+    "test": "test_quality_fx",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.968,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_fx.gd"
+    ]
+  },
+  {
+    "test": "test_quality_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 6.172,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_scene.gd"
+    ]
+  },
+  {
+    "test": "test_refill_inlet",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.432,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_refill_inlet.gd"
+    ]
+  },
+  {
+    "test": "test_relic_details",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 11.224,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_relic_details.gd"
+    ]
+  },
+  {
+    "test": "test_relic_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.277,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_relic_rules.gd"
+    ]
+  },
+  {
+    "test": "test_reward_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.113,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_reward_input.gd",
+      "--",
+      "--sandbox"
+    ]
+  },
+  {
+    "test": "test_route_combat",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.272,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_combat.gd"
+    ]
+  },
+  {
+    "test": "test_route_economy",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.271,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_economy.gd"
+    ]
+  },
+  {
+    "test": "test_route_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 12.115,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_input.gd"
+    ]
+  },
+  {
+    "test": "test_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.272,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_rules.gd"
+    ]
+  },
+  {
+    "test": "test_run_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 20.229,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_run_input.gd"
+    ]
+  },
+  {
+    "test": "test_run_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.415,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_run_session.gd"
+    ]
+  },
+  {
+    "test": "test_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.5,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_scene.gd",
+      "--",
+      "--sandbox"
+    ]
+  },
+  {
+    "test": "test_skin",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.758,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_skin.gd"
+    ]
+  },
+  {
+    "test": "test_transition_reentry",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 9.266,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_transition_reentry.gd"
+    ]
+  },
+  {
+    "test": "test_characters",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.291,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_characters.gd"
+    ]
+  },
+  {
+    "test": "test_character_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.317,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_character_input.gd"
+    ]
+  },
+  {
+    "test": "test_character_interactions",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.589,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_character_interactions.gd"
+    ]
+  }
+]

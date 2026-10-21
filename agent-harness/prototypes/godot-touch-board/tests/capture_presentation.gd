@@ -55,6 +55,7 @@ func run()->void:
 	movie="--capture" in OS.get_cmdline_user_args()
 	scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	await create_timer(0.45).timeout
 	await clear_panel(small_panel(),"small")
 	# Same fixture procedure as timing probe; this board follows one small clear.

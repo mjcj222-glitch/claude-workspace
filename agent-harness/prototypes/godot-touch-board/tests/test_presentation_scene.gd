@@ -15,7 +15,7 @@ func panel(id: int, point: Vector2, color: int, kind: String = "normal") -> Dict
 	return {"id":id,"pos":point,"radius":10.0,"color":color,"kind":kind}
 
 func fixture(scene, panels: Array) -> void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.session.panels = panels.duplicate(true)
 	scene.visual = panels.duplicate(true)
 	scene.session.next_id = 100
@@ -46,6 +46,7 @@ func _initialize() -> void:
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	scene.record_timings = false
 	scene.sound.muted = true
@@ -128,7 +129,7 @@ func run() -> void:
 	commit(scene,start)
 	scene._burst(1,0)
 	check(scene.feedback.visible and not scene.feedback.particles.is_empty(), "reset fixture first has visible effects")
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	check(scene.feedback.count == 0 and scene.feedback.core_count == 0 and scene.feedback.expected_count == 0 and not scene.feedback.visible, "reset clears all counters and visibility")
 	check(scene.feedback.particles.is_empty() and scene.feedback.rings.is_empty() and scene.particles.is_empty(), "reset clears both new and legacy effects")
 	scene.feedback.finish()

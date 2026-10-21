@@ -159,6 +159,7 @@ func reset_board() -> void:
 				p.kind = "normal"
 	else:
 		session.initialize_board(packed.panels, packed.next_id)
+		session.open_departure()
 	visual = session.panels.duplicate(true)
 	particles.clear()
 	active_plan = {}
@@ -243,7 +244,8 @@ func draw_panels(canvas: CanvasItem) -> void:
 			if preview.mode == "skill":
 				if p.id in preview.targets:
 					emphasis = "convert"
-					p.color = preview.converted[p.id]
+					if preview.converted.has(p.id):p.color = preview.converted[p.id]
+					if preview.get("planted",{}).has(p.id):p.kind=preview.planted[p.id]
 				elif p.id in preview.connected: emphasis = "chain"
 			else:
 				if p.id in preview.direct: emphasis = "direct"
@@ -447,6 +449,9 @@ func press(pos: Vector2, pointer: int) -> void:
 	if not sandbox and RESET.has_point(pos):
 		reset_board()
 		return
+	if MUTE.has_point(pos) and session.owner==-99 and modal_pointer==-99 and detail_pointer==-99:
+		sound.muted=not sound.muted
+		return
 	if UI.EFFECTS.has_point(pos) and session.owner==-99 and modal_pointer==-99 and detail_pointer==-99:
 		reduced_effects=not reduced_effects
 		quality_fx.reduced_effects=reduced_effects
@@ -461,12 +466,16 @@ func press(pos: Vector2, pointer: int) -> void:
 			detail_action="close"
 		return
 	if detail_pointer!=-99:return
-	if session.phase in ["reward","summary","route","shop","between","victory","defeat"]:
+	if session.phase in ["departure","reward","summary","route","shop","between","victory","defeat"]:
 		if RESET.has_point(pos):
 			reset_board()
 			return
 		if modal_pointer != -99: return
-		if session.phase == "reward":
+		if session.phase=="departure":
+			for i in range(2):
+				if UI.character_rect(i).has_point(pos):modal_index=i
+			if UI.DEPART.has_point(pos):modal_index=2
+		elif session.phase == "reward":
 			for i in range(session.reward_options.size()):
 				if UI.reward_rect(i,session.reward_options.size()).has_point(pos):modal_index=i
 		elif session.phase in ["route","shop"]:
@@ -486,9 +495,6 @@ func press(pos: Vector2, pointer: int) -> void:
 	if RESET.has_point(pos):
 		reset_board()
 		return
-	if MUTE.has_point(pos):
-		sound.muted = not sound.muted
-		return
 	if session.phase != "ready": return
 	if not session.skill_mode:
 		for i in range(session.relics.size()):
@@ -500,10 +506,10 @@ func press(pos: Vector2, pointer: int) -> void:
 	if SKILL.has_point(pos):
 		if session.charge >= session.charge_required:
 			session.skill_mode = not session.skill_mode
-			status = "색 선택 → 패널 선택" if session.skill_mode else "누르고 확인 · 놓으면 소거"
+			status = ("일반 패널 선택 → 핵 심기" if session.character_id=="noa" else "색 선택 → 패널 선택") if session.skill_mode else "누르고 확인 · 놓으면 소거"
 		return
 	for i in range(4):
-		if session.skill_mode and UI.color_rect(i).has_point(pos):
+		if session.skill_mode and session.character_id!="noa" and UI.color_rect(i).has_point(pos):
 			session.skill_color = i
 			return
 	pressed_us = Time.get_ticks_usec()
@@ -524,14 +530,20 @@ func release(pos: Vector2, pointer: int) -> void:
 			detail_relic=session.relics[index]
 			session.cancel()
 		return
-	if session.phase in ["reward","summary","route","shop","between","victory","defeat"] or modal_pointer != -99:
+	if session.phase in ["departure","reward","summary","route","shop","between","victory","defeat"] or modal_pointer != -99:
 		if pointer != modal_pointer: return
 		var index := modal_index
 		var serial := modal_offer
 		var previous_phase := modal_phase
 		_cancel_modal()
 		if session.phase != previous_phase or serial != session.offer_serial: return
-		if session.phase == "reward" and index < session.reward_options.size() and UI.reward_rect(index,session.reward_options.size()).has_point(pos):
+		if session.phase=="departure" and UI.modal_rect("departure",index).has_point(pos):
+			if index in [0,1]:session.select_departure(Session.Characters.IDS[index],serial)
+			elif index==2 and session.start_departure(serial):
+				transition_repeat_at=pos
+				transition_repeat_until_ms=Time.get_ticks_msec()+TRANSITION_REPEAT_MS
+				status="능력을 확인하고 첫 연결을 선택하세요"
+		elif session.phase == "reward" and index < session.reward_options.size() and UI.reward_rect(index,session.reward_options.size()).has_point(pos):
 			var id: String=session.reward_options[index]
 			if session.choose_relic(id,serial):
 				last_summary = Session.Relics.DEFS[id].name+" 획득"
@@ -571,8 +583,8 @@ func release(pos: Vector2, pointer: int) -> void:
 		quality_fx.skill_activated(changed)
 		visual = session.panels.duplicate(true)
 		sound.tone(6, true)
-		last_summary = "%d개 변환 완료 · 다음 소거로 연결하세요" % result.targets.size()
-		status = "변환 완료 · 소거 횟수는 그대로"
+		last_summary = "핵 설치 완료 · 다음 입력에서 눌러 기동" if session.character_id=="noa" else "%d개 변환 완료 · 다음 소거로 연결하세요" % result.targets.size()
+		status = "핵 심기 완료 · 소거 횟수는 그대로" if session.character_id=="noa" else "변환 완료 · 소거 횟수는 그대로"
 		return
 	feedback.start(result,visual)
 	active_plan = result

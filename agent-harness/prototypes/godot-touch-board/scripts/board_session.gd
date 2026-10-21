@@ -1,6 +1,9 @@
 extends RefCounted
 const Relics = preload("res://scripts/board_relics.gd")
 const Rules = preload("res://scripts/board_rules.gd")
+const Characters = preload("res://scripts/board_characters.gd")
+var character_id := "rio"
+var skill_uses := 0
 var panels: Array = []
 var bounds := Rect2(30, 290, 660, 530)
 var hp := 14
@@ -67,6 +70,9 @@ func release(point: Vector2, pointer: int) -> Dictionary:
 		for p in panels:
 			if result.converted.has(p.id):
 				p.color = result.converted[p.id]
+			if result.get("planted",{}).has(p.id):
+				p.kind = result.planted[p.id]
+		skill_uses += 1
 		charge = 0
 		charge_required = result.recharge_required
 		if result.consume_ash: ash_reserved = false
@@ -103,7 +109,7 @@ func plan_for(id: int) -> Dictionary:
 	return Rules.plan(panels, id, hp, max_hp, relics.duplicate())
 
 func skill_plan_for(id: int, color: int) -> Dictionary:
-	return Rules.skill_plan(panels, id, color, relics.duplicate())
+	return Characters.skill_plan(panels, id, color, relics.duplicate(), character_id)
 
 func finish_refill() -> void:
 	if phase != "busy": return

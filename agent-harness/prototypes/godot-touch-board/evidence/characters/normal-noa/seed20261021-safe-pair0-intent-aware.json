@@ -1,0 +1,3823 @@
+{
+  "audit": {
+    "checks": 115,
+    "errors": []
+  },
+  "boss_summary": {
+    "actual_damage_taken": 4,
+    "attacks": 1,
+    "clears": 6,
+    "deaths": 0,
+    "fallback_turns": 0,
+    "mitigation_latches": 1,
+    "plain_turns": 1,
+    "slam_turns": 1,
+    "turns_observed": 2,
+    "weak_bonus_total": 12
+  },
+  "carry": {
+    "actions": 16,
+    "ash_reserved": false,
+    "character_id": "noa",
+    "charge": 1,
+    "charge_required": 3,
+    "gold": 8,
+    "gold_spent": 0,
+    "hp": 26,
+    "relics": [
+      "pigment",
+      "lens"
+    ],
+    "route": "safe",
+    "shop_closed": true,
+    "shop_heal_sold": false,
+    "shop_relic_sold": false
+  },
+  "combat": {
+    "actions_in_turn": 3,
+    "attacks_total": 3,
+    "damage_context": {
+      "incoming_damage": 6,
+      "intent": "plain",
+      "intent_serial": 6,
+      "mitigation_success": false,
+      "slam_normal_required": 8,
+      "slam_weak_required": 2,
+      "weakness_color": 3
+    },
+    "encounter": 2,
+    "enemies_defeated": 3,
+    "enemy_hp": 0,
+    "enemy_max_hp": 48,
+    "fallback_plain": false,
+    "incoming_damage": 6,
+    "last_attack_damage": 4,
+    "mitigation_active": false,
+    "mitigation_success": false,
+    "turn": 1,
+    "weak_color": 3
+  },
+  "comparison_limit": "Same initial seeds; selected actions change later RNG consumption/boards. This is not an identical-board causal comparison.",
+  "effects_observed": {
+    "ash_consumptions": 0,
+    "ash_reservations": 0,
+    "lens_eleven_strong": 0,
+    "lens_five_core": 0,
+    "mitigation_latched": 2,
+    "pigment_five_targets": 0
+  },
+  "errors": [],
+  "events": [
+    {
+      "carry": {
+        "actions": 0,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 0,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 1,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 24,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 0
+      },
+      "rng_state": "-7467519963207423173",
+      "seed": 20261021,
+      "type": "initialize"
+    },
+    {
+      "after": {
+        "actions": 0,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 0,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "color": 0,
+      "connected_ids": [
+        38,
+        29,
+        30,
+        37,
+        45,
+        46,
+        22,
+        35
+      ],
+      "consumed_ash": false,
+      "planted": {
+        "38": "core"
+      },
+      "start_id": 38,
+      "target_ids": [
+        38
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [
+        38
+      ],
+      "after": {
+        "actions": 1,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 7,
+      "before": {
+        "actions": 0,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 0,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 1,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 24,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 0
+      },
+      "burst_rng_draws": 112,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 0,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 1,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 14,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 0
+      },
+      "combat_context": {
+        "incoming_damage": 4,
+        "intent": "plain",
+        "intent_serial": 1,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 0
+      },
+      "core_created": "",
+      "damage": 10,
+      "direct_ids": [
+        38
+      ],
+      "direct_normals": 0,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 7,
+      "phase": "ready",
+      "refill_sim_seconds": 0.874999999999999,
+      "removed_ids": [
+        38,
+        29,
+        30,
+        37,
+        45,
+        46,
+        22,
+        35
+      ],
+      "rng_state": "5955007520805501091",
+      "sequence": [
+        38,
+        29,
+        30,
+        37,
+        45,
+        46,
+        22,
+        35
+      ],
+      "start_id": 38,
+      "type": "clear",
+      "weak_bonus": 3,
+      "weak_count": 7
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 2,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 5,
+      "before": {
+        "actions": 1,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 0,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 1,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 14,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 0
+      },
+      "burst_rng_draws": 70,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 0,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 1,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 7,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 0
+      },
+      "combat_context": {
+        "incoming_damage": 4,
+        "intent": "plain",
+        "intent_serial": 1,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 0
+      },
+      "core_created": "",
+      "damage": 7,
+      "direct_ids": [
+        16,
+        25,
+        31,
+        40,
+        43
+      ],
+      "direct_normals": 5,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 5,
+      "phase": "ready",
+      "refill_sim_seconds": 0.575,
+      "removed_ids": [
+        16,
+        25,
+        31,
+        40,
+        43
+      ],
+      "rng_state": "5896841339730309526",
+      "sequence": [
+        16,
+        25,
+        31,
+        40,
+        43
+      ],
+      "start_id": 16,
+      "type": "clear",
+      "weak_bonus": 2,
+      "weak_count": 5
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 3,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 3,
+      "before": {
+        "actions": 2,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 0,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 1,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 7,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 0
+      },
+      "burst_rng_draws": 42,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 1,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 4,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 0
+      },
+      "combat_context": {
+        "incoming_damage": 4,
+        "intent": "plain",
+        "intent_serial": 1,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 0
+      },
+      "core_created": "",
+      "damage": 3,
+      "direct_ids": [
+        7,
+        9,
+        18
+      ],
+      "direct_normals": 3,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 3,
+      "phase": "enemy_attack",
+      "refill_sim_seconds": 0.608333333333334,
+      "removed_ids": [
+        7,
+        9,
+        18
+      ],
+      "rng_state": "5404238647253944075",
+      "sequence": [
+        7,
+        9,
+        18
+      ],
+      "start_id": 7,
+      "type": "clear",
+      "weak_bonus": 0,
+      "weak_count": 0
+    },
+    {
+      "after": {
+        "actions": 3,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 3,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 1,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 4,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 0
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 2,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 4,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 0
+      },
+      "phase": "ready",
+      "type": "enemy_attack"
+    },
+    {
+      "after": {
+        "actions": 3,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 3,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "color": 1,
+      "connected_ids": [
+        19,
+        13,
+        14,
+        21,
+        28,
+        49,
+        44,
+        55,
+        57
+      ],
+      "consumed_ash": false,
+      "planted": {
+        "19": "core"
+      },
+      "start_id": 19,
+      "target_ids": [
+        19
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [
+        19
+      ],
+      "after": {
+        "actions": 4,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 8,
+      "before": {
+        "actions": 3,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 0,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 2,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 0,
+        "enemy_hp": 4,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 0
+      },
+      "burst_rng_draws": 126,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 2,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "encounter": 0,
+        "enemies_defeated": 1,
+        "enemy_hp": 0,
+        "enemy_max_hp": 24,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 0
+      },
+      "combat_context": {
+        "incoming_damage": 4,
+        "intent": "plain",
+        "intent_serial": 2,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 0
+      },
+      "core_created": "",
+      "damage": 8,
+      "direct_ids": [
+        19,
+        28,
+        44
+      ],
+      "direct_normals": 2,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 8,
+      "phase": "reward",
+      "refill_sim_seconds": 0.883333333333333,
+      "removed_ids": [
+        19,
+        13,
+        14,
+        21,
+        28,
+        49,
+        44,
+        55,
+        57
+      ],
+      "rng_state": "8105042709380261858",
+      "sequence": [
+        19,
+        13,
+        14,
+        21,
+        28,
+        49,
+        44,
+        55,
+        57
+      ],
+      "start_id": 19,
+      "type": "clear",
+      "weak_bonus": 0,
+      "weak_count": 0
+    },
+    {
+      "accepted": true,
+      "after": {
+        "actions": 4,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 4,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "id": "pigment",
+      "phase": "route",
+      "type": "reward"
+    },
+    {
+      "accepted": true,
+      "after": {
+        "actions": 4,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 4,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "choice": "safe",
+      "phase": "between",
+      "type": "route"
+    },
+    {
+      "after": {
+        "actions": 4,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 4,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 7,
+          "intent": "direct4",
+          "intent_serial": 3,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 36,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 7,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 1
+      },
+      "phase": "ready",
+      "rng_state": "-3985892764631245134",
+      "type": "next_fight"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 5,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 5,
+      "before": {
+        "actions": 4,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 7,
+          "intent": "direct4",
+          "intent_serial": 3,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 36,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 7,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 1
+      },
+      "burst_rng_draws": 70,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 3,
+          "intent": "direct4",
+          "intent_serial": 3,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 31,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 1
+      },
+      "combat_context": {
+        "incoming_damage": 7,
+        "intent": "direct4",
+        "intent_serial": 3,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 1
+      },
+      "core_created": "",
+      "damage": 5,
+      "direct_ids": [
+        89,
+        97,
+        104,
+        112,
+        118
+      ],
+      "direct_normals": 5,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": true,
+      "normal_count": 5,
+      "phase": "ready",
+      "refill_sim_seconds": 0.533333333333334,
+      "removed_ids": [
+        89,
+        97,
+        104,
+        112,
+        118
+      ],
+      "rng_state": "4529503087675149305",
+      "sequence": [
+        89,
+        97,
+        104,
+        112,
+        118
+      ],
+      "start_id": 89,
+      "type": "clear",
+      "weak_bonus": 0,
+      "weak_count": 0
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 6,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 3,
+      "before": {
+        "actions": 5,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 3,
+          "intent": "direct4",
+          "intent_serial": 3,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 31,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 1
+      },
+      "burst_rng_draws": 42,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 3,
+          "intent": "direct4",
+          "intent_serial": 3,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 27,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 1
+      },
+      "combat_context": {
+        "incoming_damage": 3,
+        "intent": "direct4",
+        "intent_serial": 3,
+        "mitigation_success": true,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 1
+      },
+      "core_created": "",
+      "damage": 4,
+      "direct_ids": [
+        111,
+        120,
+        113
+      ],
+      "direct_normals": 3,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 3,
+      "phase": "ready",
+      "refill_sim_seconds": 0.483333333333334,
+      "removed_ids": [
+        111,
+        120,
+        113
+      ],
+      "rng_state": "5831685370936963706",
+      "sequence": [
+        111,
+        120,
+        113
+      ],
+      "start_id": 111,
+      "type": "clear",
+      "weak_bonus": 1,
+      "weak_count": 3
+    },
+    {
+      "after": {
+        "actions": 6,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 6,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "color": 2,
+      "connected_ids": [
+        101,
+        93,
+        107,
+        109,
+        83,
+        86,
+        99,
+        114,
+        119,
+        126,
+        75,
+        105,
+        106,
+        121,
+        122,
+        129
+      ],
+      "consumed_ash": false,
+      "planted": {
+        "101": "strong"
+      },
+      "start_id": 101,
+      "target_ids": [
+        101
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [
+        101
+      ],
+      "after": {
+        "actions": 7,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 23,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 15,
+      "before": {
+        "actions": 6,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 1,
+        "damage_context": {
+          "incoming_damage": 3,
+          "intent": "direct4",
+          "intent_serial": 3,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 27,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 1
+      },
+      "burst_rng_draws": 224,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 3,
+          "intent": "direct4",
+          "intent_serial": 3,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 12,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 3,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 1
+      },
+      "combat_context": {
+        "incoming_damage": 3,
+        "intent": "direct4",
+        "intent_serial": 3,
+        "mitigation_success": true,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 1
+      },
+      "core_created": "",
+      "damage": 15,
+      "direct_ids": [
+        101
+      ],
+      "direct_normals": 0,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 15,
+      "phase": "enemy_attack",
+      "refill_sim_seconds": 1.075,
+      "removed_ids": [
+        101,
+        93,
+        107,
+        109,
+        83,
+        86,
+        99,
+        114,
+        119,
+        126,
+        75,
+        105,
+        106,
+        121,
+        122,
+        129
+      ],
+      "rng_state": "4372076633266811146",
+      "sequence": [
+        101,
+        93,
+        107,
+        109,
+        83,
+        86,
+        99,
+        114,
+        119,
+        126,
+        75,
+        105,
+        106,
+        121,
+        122,
+        129
+      ],
+      "start_id": 101,
+      "type": "clear",
+      "weak_bonus": 0,
+      "weak_count": 0
+    },
+    {
+      "after": {
+        "actions": 7,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 23,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 7,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 23,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 3,
+          "intent": "direct4",
+          "intent_serial": 3,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 12,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 3,
+        "last_attack_damage": 3,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 1
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 5,
+          "intent": "plain",
+          "intent_serial": 4,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 12,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 1
+      },
+      "phase": "ready",
+      "type": "enemy_attack"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 8,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 0,
+      "before": {
+        "actions": 7,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 23,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 5,
+          "intent": "plain",
+          "intent_serial": 4,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 12,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 1
+      },
+      "burst_rng_draws": 112,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 5,
+          "intent": "plain",
+          "intent_serial": 4,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 12,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 1
+      },
+      "combat_context": {
+        "incoming_damage": 5,
+        "intent": "plain",
+        "intent_serial": 4,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 1
+      },
+      "core_created": "",
+      "damage": 0,
+      "direct_ids": [
+        91,
+        115,
+        123,
+        92,
+        100,
+        127,
+        130,
+        94
+      ],
+      "direct_normals": 0,
+      "heal_effective": 7,
+      "heal_overflow": 9,
+      "heal_raw": 16,
+      "mitigates_intent": false,
+      "normal_count": 0,
+      "phase": "ready",
+      "refill_sim_seconds": 0.966666666666666,
+      "removed_ids": [
+        91,
+        115,
+        123,
+        92,
+        100,
+        127,
+        130,
+        94
+      ],
+      "rng_state": "-6166155719580214318",
+      "sequence": [
+        91,
+        115,
+        123,
+        92,
+        100,
+        127,
+        130,
+        94
+      ],
+      "start_id": 91,
+      "type": "clear",
+      "weak_bonus": 0,
+      "weak_count": 0
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 9,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 5,
+      "before": {
+        "actions": 8,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 5,
+          "intent": "plain",
+          "intent_serial": 4,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 12,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 1
+      },
+      "burst_rng_draws": 70,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 5,
+          "intent": "plain",
+          "intent_serial": 4,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 7,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 1
+      },
+      "combat_context": {
+        "incoming_damage": 5,
+        "intent": "plain",
+        "intent_serial": 4,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 1
+      },
+      "core_created": "",
+      "damage": 5,
+      "direct_ids": [
+        85,
+        117,
+        133,
+        140,
+        146
+      ],
+      "direct_normals": 5,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 5,
+      "phase": "ready",
+      "refill_sim_seconds": 0.949999999999999,
+      "removed_ids": [
+        85,
+        117,
+        133,
+        140,
+        146
+      ],
+      "rng_state": "-1606415026327563623",
+      "sequence": [
+        85,
+        117,
+        133,
+        140,
+        146
+      ],
+      "start_id": 85,
+      "type": "clear",
+      "weak_bonus": 0,
+      "weak_count": 0
+    },
+    {
+      "after": {
+        "actions": 9,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 9,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "color": 1,
+      "connected_ids": [
+        95,
+        88,
+        90,
+        110,
+        81,
+        82,
+        84,
+        98,
+        103,
+        116,
+        131,
+        135,
+        77,
+        138,
+        152,
+        151
+      ],
+      "consumed_ash": false,
+      "planted": {
+        "95": "strong"
+      },
+      "start_id": 95,
+      "target_ids": [
+        95
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [
+        95
+      ],
+      "after": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 15,
+      "before": {
+        "actions": 9,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 4,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 5,
+          "intent": "plain",
+          "intent_serial": 4,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 1,
+        "enemy_hp": 7,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 1
+      },
+      "burst_rng_draws": 224,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 5,
+          "intent": "plain",
+          "intent_serial": 4,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 1
+        },
+        "encounter": 1,
+        "enemies_defeated": 2,
+        "enemy_hp": 0,
+        "enemy_max_hp": 36,
+        "fallback_plain": false,
+        "incoming_damage": 5,
+        "last_attack_damage": 3,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 1
+      },
+      "combat_context": {
+        "incoming_damage": 5,
+        "intent": "plain",
+        "intent_serial": 4,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 1
+      },
+      "core_created": "",
+      "damage": 22,
+      "direct_ids": [
+        95
+      ],
+      "direct_normals": 0,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 15,
+      "phase": "reward",
+      "refill_sim_seconds": 0.999999999999999,
+      "removed_ids": [
+        95,
+        88,
+        90,
+        110,
+        81,
+        82,
+        84,
+        98,
+        103,
+        116,
+        131,
+        135,
+        77,
+        138,
+        152,
+        151
+      ],
+      "rng_state": "5874767842474019817",
+      "sequence": [
+        95,
+        88,
+        90,
+        110,
+        81,
+        82,
+        84,
+        98,
+        103,
+        116,
+        131,
+        135,
+        77,
+        138,
+        152,
+        151
+      ],
+      "start_id": 95,
+      "type": "clear",
+      "weak_bonus": 7,
+      "weak_count": 15
+    },
+    {
+      "accepted": true,
+      "after": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "id": "lens",
+      "phase": "shop",
+      "type": "reward"
+    },
+    {
+      "carry": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "heal_gain": 0,
+      "purchase_policy": [
+        "heal"
+      ],
+      "remaining_relic": "ash",
+      "type": "shop_enter"
+    },
+    {
+      "carry": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "item": "heal",
+      "reason": "full_hp",
+      "type": "shop_skip"
+    },
+    {
+      "after": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": false,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "phase": "between",
+      "type": "shop_leave"
+    },
+    {
+      "after": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 10,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 48,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 10,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "phase": "ready",
+      "rng_state": "-6031303683520912775",
+      "type": "next_fight"
+    },
+    {
+      "candidates": [
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 176,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 178,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 183,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 186,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 187,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 191,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 3,
+          "mitigates_intent": true,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 192,
+          "weak_bonus": 1,
+          "weak_count": 2
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 193,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 4,
+          "mitigates_intent": true,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 196,
+          "weak_bonus": 1,
+          "weak_count": 3
+        },
+        {
+          "base_damage": 4,
+          "damage": 4,
+          "mitigates_intent": false,
+          "normal_count": 4,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 198,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 3,
+          "mitigates_intent": true,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 201,
+          "weak_bonus": 1,
+          "weak_count": 2
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 202,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 4,
+          "mitigates_intent": true,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 204,
+          "weak_bonus": 1,
+          "weak_count": 3
+        },
+        {
+          "base_damage": 4,
+          "damage": 4,
+          "mitigates_intent": false,
+          "normal_count": 4,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 205,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 208,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 4,
+          "mitigates_intent": true,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 209,
+          "weak_bonus": 1,
+          "weak_count": 3
+        },
+        {
+          "base_damage": 0,
+          "damage": 0,
+          "mitigates_intent": false,
+          "normal_count": 0,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 210,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 4,
+          "damage": 4,
+          "mitigates_intent": false,
+          "normal_count": 4,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 212,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 0,
+          "damage": 0,
+          "mitigates_intent": false,
+          "normal_count": 0,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 213,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 215,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 0,
+          "damage": 0,
+          "mitigates_intent": false,
+          "normal_count": 0,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 218,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 4,
+          "damage": 4,
+          "mitigates_intent": false,
+          "normal_count": 4,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 220,
+          "weak_bonus": 0,
+          "weak_count": 0
+        }
+      ],
+      "carry": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 10,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 48,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 10,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "eligible_legal_start_count": 5,
+      "note": "Observed before this turn's first skill/clear. Multiple starts can represent the same group. Raw threshold existence is distinct from the frozen scheduled intent.",
+      "type": "boss_turn_start"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 11,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 3,
+      "before": {
+        "actions": 10,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 10,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 48,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 10,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": false,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "burst_rng_draws": 42,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 44,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "combat_context": {
+        "incoming_damage": 10,
+        "intent": "slam",
+        "intent_serial": 5,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 3
+      },
+      "core_created": "",
+      "damage": 4,
+      "direct_ids": [
+        196,
+        204,
+        209
+      ],
+      "direct_normals": 3,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": true,
+      "normal_count": 3,
+      "phase": "ready",
+      "refill_sim_seconds": 0.583333333333334,
+      "removed_ids": [
+        196,
+        204,
+        209
+      ],
+      "rng_state": "601943520525312762",
+      "sequence": [
+        196,
+        204,
+        209
+      ],
+      "start_id": 196,
+      "type": "clear",
+      "weak_bonus": 1,
+      "weak_count": 3
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 12,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 4,
+      "before": {
+        "actions": 11,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 44,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "burst_rng_draws": 56,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 40,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "combat_context": {
+        "incoming_damage": 4,
+        "intent": "slam",
+        "intent_serial": 5,
+        "mitigation_success": true,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 3
+      },
+      "core_created": "",
+      "damage": 4,
+      "direct_ids": [
+        198,
+        205,
+        212,
+        220
+      ],
+      "direct_normals": 4,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 4,
+      "phase": "ready",
+      "refill_sim_seconds": 0.55,
+      "removed_ids": [
+        198,
+        205,
+        212,
+        220
+      ],
+      "rng_state": "-5908456281795274306",
+      "sequence": [
+        198,
+        205,
+        212,
+        220
+      ],
+      "start_id": 198,
+      "type": "clear",
+      "weak_bonus": 0,
+      "weak_count": 0
+    },
+    {
+      "after": {
+        "actions": 12,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 12,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "color": 3,
+      "connected_ids": [
+        194,
+        184,
+        186,
+        193,
+        197,
+        203,
+        175,
+        176,
+        177,
+        187,
+        191,
+        201,
+        202,
+        206,
+        192,
+        221
+      ],
+      "consumed_ash": false,
+      "planted": {
+        "194": "strong"
+      },
+      "start_id": 194,
+      "target_ids": [
+        194
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [
+        194
+      ],
+      "after": {
+        "actions": 13,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 15,
+      "before": {
+        "actions": 12,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 30,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 2,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 40,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 0,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "burst_rng_draws": 224,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 18,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "combat_context": {
+        "incoming_damage": 4,
+        "intent": "slam",
+        "intent_serial": 5,
+        "mitigation_success": true,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 3
+      },
+      "core_created": "",
+      "damage": 22,
+      "direct_ids": [
+        194
+      ],
+      "direct_normals": 0,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": true,
+      "normal_count": 15,
+      "phase": "enemy_attack",
+      "refill_sim_seconds": 0.966666666666666,
+      "removed_ids": [
+        194,
+        184,
+        186,
+        193,
+        197,
+        203,
+        175,
+        176,
+        177,
+        187,
+        191,
+        201,
+        202,
+        206,
+        192,
+        221
+      ],
+      "rng_state": "-2421752867595231922",
+      "sequence": [
+        194,
+        184,
+        186,
+        193,
+        197,
+        203,
+        175,
+        176,
+        177,
+        187,
+        191,
+        201,
+        202,
+        206,
+        192,
+        221
+      ],
+      "start_id": 194,
+      "type": "clear",
+      "weak_bonus": 7,
+      "weak_count": 15
+    },
+    {
+      "after": {
+        "actions": 13,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 13,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 4,
+          "intent": "slam",
+          "intent_serial": 5,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 18,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 4,
+        "last_attack_damage": 4,
+        "mitigation_active": true,
+        "mitigation_success": true,
+        "turn": 0,
+        "weak_color": 3
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 6,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 18,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 3
+      },
+      "phase": "ready",
+      "type": "enemy_attack"
+    },
+    {
+      "candidates": [
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 190,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 0,
+          "damage": 0,
+          "mitigates_intent": false,
+          "normal_count": 0,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 195,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 3,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 199,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 0,
+          "damage": 0,
+          "mitigates_intent": false,
+          "normal_count": 0,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 207,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 0,
+          "damage": 0,
+          "mitigates_intent": false,
+          "normal_count": 0,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 210,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 0,
+          "damage": 0,
+          "mitigates_intent": false,
+          "normal_count": 0,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 213,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 3,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 214,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 215,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 216,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 0,
+          "damage": 0,
+          "mitigates_intent": false,
+          "normal_count": 0,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 218,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 3,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 222,
+          "weak_bonus": 1,
+          "weak_count": 2
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 223,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 224,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 225,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 227,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 4,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 228,
+          "weak_bonus": 1,
+          "weak_count": 3
+        },
+        {
+          "base_damage": 3,
+          "damage": 3,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 230,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 2,
+          "damage": 2,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 231,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 4,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 232,
+          "weak_bonus": 1,
+          "weak_count": 3
+        },
+        {
+          "base_damage": 2,
+          "damage": 3,
+          "mitigates_intent": false,
+          "normal_count": 2,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 233,
+          "weak_bonus": 1,
+          "weak_count": 2
+        },
+        {
+          "base_damage": 3,
+          "damage": 3,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 234,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 4,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": true,
+          "start_id": 235,
+          "weak_bonus": 1,
+          "weak_count": 3
+        },
+        {
+          "base_damage": 3,
+          "damage": 3,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 237,
+          "weak_bonus": 0,
+          "weak_count": 0
+        },
+        {
+          "base_damage": 3,
+          "damage": 3,
+          "mitigates_intent": false,
+          "normal_count": 3,
+          "qualifies_raw_slam_threshold": false,
+          "start_id": 243,
+          "weak_bonus": 0,
+          "weak_count": 0
+        }
+      ],
+      "carry": {
+        "actions": 13,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 6,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 18,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 3
+      },
+      "eligible_legal_start_count": 5,
+      "note": "Observed before this turn's first skill/clear. Multiple starts can represent the same group. Raw threshold existence is distinct from the frozen scheduled intent.",
+      "type": "boss_turn_start"
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 14,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 3,
+      "before": {
+        "actions": 13,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 0,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 6,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 18,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 3
+      },
+      "burst_rng_draws": 42,
+      "combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 6,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 14,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 3
+      },
+      "combat_context": {
+        "incoming_damage": 6,
+        "intent": "plain",
+        "intent_serial": 6,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 3
+      },
+      "core_created": "",
+      "damage": 4,
+      "direct_ids": [
+        228,
+        232,
+        235
+      ],
+      "direct_normals": 3,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 3,
+      "phase": "ready",
+      "refill_sim_seconds": 0.433333333333334,
+      "removed_ids": [
+        228,
+        232,
+        235
+      ],
+      "rng_state": "6165801121013624227",
+      "sequence": [
+        228,
+        232,
+        235
+      ],
+      "start_id": 228,
+      "type": "clear",
+      "weak_bonus": 1,
+      "weak_count": 3
+    },
+    {
+      "activated": [],
+      "after": {
+        "actions": 15,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 7,
+      "before": {
+        "actions": 14,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 2,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 1,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 6,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 14,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 3
+      },
+      "burst_rng_draws": 98,
+      "combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 6,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 7,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 3
+      },
+      "combat_context": {
+        "incoming_damage": 6,
+        "intent": "plain",
+        "intent_serial": 6,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 3
+      },
+      "core_created": "core",
+      "damage": 7,
+      "direct_ids": [
+        219,
+        236,
+        230,
+        242,
+        237,
+        243,
+        246
+      ],
+      "direct_normals": 7,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 7,
+      "phase": "ready",
+      "refill_sim_seconds": 0.741666666666666,
+      "removed_ids": [
+        219,
+        236,
+        230,
+        242,
+        237,
+        243,
+        246
+      ],
+      "rng_state": "-6993294640672718475",
+      "sequence": [
+        219,
+        236,
+        230,
+        242,
+        237,
+        243,
+        246
+      ],
+      "start_id": 219,
+      "type": "clear",
+      "weak_bonus": 0,
+      "weak_count": 0
+    },
+    {
+      "after": {
+        "actions": 15,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before": {
+        "actions": 15,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 3,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "color": 3,
+      "connected_ids": [
+        222,
+        226,
+        229,
+        233,
+        223,
+        238,
+        247,
+        249,
+        185,
+        225,
+        248,
+        181
+      ],
+      "consumed_ash": false,
+      "planted": {
+        "222": "strong"
+      },
+      "start_id": 222,
+      "target_ids": [
+        222
+      ],
+      "type": "skill"
+    },
+    {
+      "activated": [
+        222,
+        249
+      ],
+      "after": {
+        "actions": 16,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 1,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "base_damage": 10,
+      "before": {
+        "actions": 15,
+        "ash_reserved": false,
+        "character_id": "noa",
+        "charge": 0,
+        "charge_required": 3,
+        "gold": 8,
+        "gold_spent": 0,
+        "hp": 26,
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "route": "safe",
+        "shop_closed": true,
+        "shop_heal_sold": false,
+        "shop_relic_sold": false
+      },
+      "before_combat": {
+        "actions_in_turn": 2,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 6,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 2,
+        "enemy_hp": 7,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 3
+      },
+      "burst_rng_draws": 168,
+      "combat": {
+        "actions_in_turn": 3,
+        "attacks_total": 3,
+        "damage_context": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 6,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 3
+        },
+        "encounter": 2,
+        "enemies_defeated": 3,
+        "enemy_hp": 0,
+        "enemy_max_hp": 48,
+        "fallback_plain": false,
+        "incoming_damage": 6,
+        "last_attack_damage": 4,
+        "mitigation_active": false,
+        "mitigation_success": false,
+        "turn": 1,
+        "weak_color": 3
+      },
+      "combat_context": {
+        "incoming_damage": 6,
+        "intent": "plain",
+        "intent_serial": 6,
+        "mitigation_success": false,
+        "slam_normal_required": 8,
+        "slam_weak_required": 2,
+        "weakness_color": 3
+      },
+      "core_created": "",
+      "damage": 13,
+      "direct_ids": [
+        222,
+        233
+      ],
+      "direct_normals": 1,
+      "heal_effective": 0,
+      "heal_overflow": 0,
+      "heal_raw": 0,
+      "mitigates_intent": false,
+      "normal_count": 10,
+      "phase": "victory",
+      "refill_sim_seconds": 1.59166666666666,
+      "removed_ids": [
+        222,
+        226,
+        229,
+        233,
+        223,
+        238,
+        247,
+        249,
+        185,
+        225,
+        248,
+        181
+      ],
+      "rng_state": "-699886358915300015",
+      "sequence": [
+        222,
+        226,
+        229,
+        233,
+        223,
+        238,
+        247,
+        249,
+        185,
+        225,
+        248,
+        181
+      ],
+      "start_id": 222,
+      "type": "clear",
+      "weak_bonus": 3,
+      "weak_count": 6
+    }
+  ],
+  "method": "pure headless normal-play simulation; fixed-step physics; not real-time GPU/input evidence",
+  "pair": [
+    "pigment",
+    "lens"
+  ],
+  "pair_index": 0,
+  "policy": "intent-aware",
+  "policy_detail": "both lethal-first and same damage/healing weights + maximum-connection skill; intent-aware additionally prioritizes one plan that mitigates active unlatched intent; damage-first does not",
+  "restrictions": "no recolor, favorable fixture, forced charge, HP injection, board rescue or intermediate reset",
+  "rng_parity": "same game RNG; fourteen burst draws per unique actually removed ID before refill; visual effect RNG unused",
+  "route": "safe",
+  "seed": 20261021,
+  "session_phase": "victory",
+  "terminal": "victory"
+}

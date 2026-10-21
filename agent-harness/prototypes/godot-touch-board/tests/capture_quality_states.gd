@@ -32,7 +32,7 @@ func gesture(stage: String, point: Vector2, action: String = "click", capture: S
 	await process_frame
 	await process_frame
 func reset() -> void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	scene.record_timings=false
 	scene.sound.muted=true
@@ -45,6 +45,7 @@ func run() -> void:
 	root.size=Vector2i(int(args[0]),int(args[1]))
 	scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	reset()
 	await process_frame
 	print("QUALITY FIXTURES: injected states and frozen presentation ages; NOT normal progression or performance evidence")

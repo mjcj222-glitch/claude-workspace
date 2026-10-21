@@ -1,0 +1,4 @@
+before 0b4e0a7 /tmp/chroma-character-performance/before
+after 0b4e0a7 /tmp/chroma-character-performance/after
+Current production sources/assets copied; only shared timing wrappers added to main.
+Same recorded16-action route; import both copies before timing.

@@ -11,6 +11,7 @@ func run()->void:
 	var recorded=JSON.parse_string(FileAccess.get_file_as_string("res://evidence/growth/play-pair0-before-inlet.json"))
 	var scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	await create_timer(0.3).timeout
 	var results:Array=[]
 	for item in recorded.inputs:

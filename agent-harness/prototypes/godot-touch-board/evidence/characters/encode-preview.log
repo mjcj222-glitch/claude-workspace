@@ -1,0 +1,85 @@
+ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 14 (Debian 14.2.0-19)
+  configuration: --prefix=/usr --extra-version=0+deb13u1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-libmfx --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libcaca --enable-libdvdnav --enable-libdvdread --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.103 / 61.  7.103
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  5.100 / 10.  5.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[aist#0:1/pcm_s16le @ 0x559af070b280] Guessed Channel Layout: stereo
+Input #0, avi, from '/tmp/chroma-character-run.avi':
+  Duration: 00:01:00.57, start: 0.000000, bitrate: 33798 kb/s
+  Stream #0:0: Video: mjpeg (Baseline) (MJPG / 0x47504A4D), yuvj420p(pc, bt470bg/unknown/unknown), 720x1080 [SAR 1:1 DAR 2:3], 32268 kb/s, 30 fps, 30 tbr, 30 tbn
+  Stream #0:1: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+Stream mapping:
+  Stream #0:0 (mjpeg) -> trim:default
+  Stream #0:0 (mjpeg) -> trim:default
+  Stream #0:0 (mjpeg) -> trim:default
+  Stream #0:0 (mjpeg) -> trim:default
+  Stream #0:0 (mjpeg) -> trim:default
+  Stream #0:0 (mjpeg) -> trim:default
+  Stream #0:1 (pcm_s16le) -> atrim:default
+  Stream #0:1 (pcm_s16le) -> atrim:default
+  Stream #0:1 (pcm_s16le) -> atrim:default
+  Stream #0:1 (pcm_s16le) -> atrim:default
+  Stream #0:1 (pcm_s16le) -> atrim:default
+  Stream #0:1 (pcm_s16le) -> atrim:default
+  concat -> Stream #0:0 (libx264)
+  concat -> Stream #0:1 (aac)
+Press [q] to stop, [?] for help
+[swscaler @ 0x7fb5fc0510c0] deprecated pixel format used, make sure you did set range correctly
+[libx264 @ 0x559af070f640] using SAR=1/1
+[libx264 @ 0x559af070f640] MB rate (3060000000) > level limit (16711680)
+[libx264 @ 0x559af070f640] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x559af070f640] profile High, level 6.2, 4:2:0, 8-bit
+[libx264 @ 0x559af070f640] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=7 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=20.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'evidence/characters/characters-preview.mp4':
+  Metadata:
+    encoder         : Lavf61.7.103
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(pc, bt470bg/unknown/unknown, progressive), 720x1080 [SAR 1:1 DAR 2:3], q=2-31, 1000k tbn
+      Metadata:
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 128 kb/s
+      Metadata:
+        encoder         : Lavc61.19.101 aac
+frame=   89 fps=0.0 q=26.0 size=       0KiB time=00:00:02.86 bitrate=   0.1kbits/s speed=5.73x
+frame=  187 fps=187 q=26.0 size=     256KiB time=00:00:06.13 bitrate= 342.0kbits/s speed=6.13x
+frame=  210 fps=140 q=26.0 size=     512KiB time=00:00:06.90 bitrate= 607.9kbits/s speed= 4.6x
+frame=  334 fps=167 q=26.0 size=     768KiB time=00:00:11.03 bitrate= 570.3kbits/s speed=5.51x
+frame=  375 fps=150 q=26.0 size=    1024KiB time=00:00:12.40 bitrate= 676.5kbits/s speed=4.96x
+frame=  415 fps=138 q=26.0 size=    1280KiB time=00:00:13.73 bitrate= 763.6kbits/s speed=4.57x
+frame=  432 fps=123 q=26.0 size=    1536KiB time=00:00:14.30 bitrate= 880.0kbits/s speed=4.08x
+frame=  537 fps=134 q=26.0 size=    1792KiB time=00:00:17.80 bitrate= 824.7kbits/s speed=4.43x
+frame=  604 fps=134 q=26.0 size=    2304KiB time=00:00:20.03 bitrate= 942.2kbits/s speed=4.44x
+frame=  604 fps=120 q=26.0 size=    2304KiB time=00:00:20.03 bitrate= 942.2kbits/s speed=3.99x
+frame=  684 fps=124 q=26.0 size=    2560KiB time=00:00:22.70 bitrate= 923.9kbits/s speed=4.11x
+frame=  716 fps=119 q=26.0 size=    3072KiB time=00:00:23.76 bitrate=1058.9kbits/s speed=3.95x
+frame=  755 fps=116 q=26.0 size=    3328KiB time=00:00:25.06 bitrate=1087.6kbits/s speed=3.85x
+frame=  880 fps=125 q=26.0 size=    3584KiB time=N/A bitrate=N/A speed=N/A
+[mp4 @ 0x559af071e300] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x559af070d2c0] video:3673KiB audio:57KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.024078%
+frame=  898 fps=127 q=-1.0 Lsize=    3768KiB time=00:00:29.85 bitrate=1034.2kbits/s speed=4.24x
+[libx264 @ 0x559af070f640] frame I:6     Avg QP:14.37  size:145292
+[libx264 @ 0x559af070f640] frame P:268   Avg QP:16.51  size:  8739
+[libx264 @ 0x559af070f640] frame B:624   Avg QP:16.25  size:   876
+[libx264 @ 0x559af070f640] consecutive B-frames:  6.7%  1.3%  2.0% 90.0%
+[libx264 @ 0x559af070f640] mb I  I16..4: 37.9% 46.2% 15.9%
+[libx264 @ 0x559af070f640] mb P  I16..4:  1.3%  2.0%  0.6%  P16..4:  3.1%  1.4%  1.4%  0.0%  0.0%    skip:90.2%
+[libx264 @ 0x559af070f640] mb B  I16..4:  0.1%  0.1%  0.1%  B16..8:  1.3%  0.6%  0.1%  direct: 0.4%  skip:97.2%  L0:43.7% L1:38.8% BI:17.6%
+[libx264 @ 0x559af070f640] 8x8 transform intra:45.7% inter:66.9%
+[libx264 @ 0x559af070f640] coded y,uvDC,uvAC intra: 44.4% 51.0% 39.6% inter: 1.3% 2.2% 1.8%
+[libx264 @ 0x559af070f640] i16 v,h,dc,p: 30% 66%  3%  1%
+[libx264 @ 0x559af070f640] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 18% 25% 23%  5%  5%  6%  6%  5%  6%
+[libx264 @ 0x559af070f640] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 24% 29% 14%  5%  6%  6%  6%  5%  5%
+[libx264 @ 0x559af070f640] i8c dc,h,v,p: 39% 41% 15%  5%
+[libx264 @ 0x559af070f640] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x559af070f640] ref P L0: 66.4% 33.6%
+[libx264 @ 0x559af070f640] ref B L0: 80.7% 19.3%
+[libx264 @ 0x559af070f640] ref B L1: 96.1%  3.9%
+[libx264 @ 0x559af070f640] kb/s:1004.51
+[aac @ 0x559af07182c0] Qavg: 60604.836

@@ -17,7 +17,7 @@ func triple(color: int) -> Array:
 	result.append(panel(3,Vector2(308,450),color))
 	return result
 func fixture(scene, panels: Array, fight: int = 0, route: String = "safe") -> void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	scene.record_timings = false
 	scene.sound.muted = true
@@ -49,6 +49,7 @@ func finish(scene) -> void:
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	await process_frame
 	fixture(scene, pair(0))

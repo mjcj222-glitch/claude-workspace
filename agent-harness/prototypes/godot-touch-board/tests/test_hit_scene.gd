@@ -8,6 +8,7 @@ func check(ok:bool,label:String)->void:
 func _initialize()->void:call_deferred("run")
 func run()->void:
 	var scene=load("res://main.tscn").instantiate();root.add_child(scene);scene.set_process(false)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	await process_frame
 	scene.sound.muted=true;scene.record_timings=true
 	check(scene.quality_fx.has_method("take_impact"),"controller owns synchronized impact")
@@ -35,7 +36,7 @@ func run()->void:
 	while scene.session.phase=="busy" and steps<600:scene._process(1.0/120);steps+=1
 	check(scene.session.phase=="ready" and scene.quality_fx.display_enemy_hp(now_hp)==now_hp,"visual finish never delays or alters natural readiness")
 	check(scene.timings.filter(func(x):return x.event=="attack_impact").size()==1,"longer processing cannot duplicate hit")
-	scene.reset_board();check(scene.reduced_effects and scene.quality_fx.impact_remaining==0 and scene.quality_fx.take_impact().is_empty(),"reset clears hit but retains reduced-effects preference")
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene);check(scene.reduced_effects and scene.quality_fx.impact_remaining==0 and scene.quality_fx.take_impact().is_empty(),"reset clears hit but retains reduced-effects preference")
 	# Third-action lethal boundary: ordinary canonical group, explicit enemy fixture.
 	chosen={}
 	for p in scene.session.panels:
@@ -53,7 +54,7 @@ func run()->void:
 	var id:String=scene.session.reward_options[0];scene.session.choose_relic(id,scene.session.offer_serial);scene.session.choose_route("elite")
 	scene._advance_fight()
 	check(scene.session.combat.encounter==1 and scene.quality_fx.impact_remaining==0 and scene.quality_fx.take_impact().is_empty() and scene.quality_fx.display_enemy_hp(44)==44,"new encounter has no stale hit or HP hold")
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	# Heart fixture: healing remains real and cannot produce enemy response.
 	scene.session.hp=25
 	scene.session.panels=[{"id":1,"kind":"heart","color":4,"radius":37.0,"pos":Vector2(160,450)},{"id":2,"kind":"heart","color":4,"radius":37.0,"pos":Vector2(234,450)}]
@@ -61,7 +62,7 @@ func run()->void:
 	point=scene.board_to_screen(Vector2(160,450));scene.press(point,-1);scene.release(point,-1)
 	for i in range(30):scene._process(1.0/120)
 	check(scene.session.hp==29 and scene.session.combat.enemy_hp==24 and scene.quality_fx.damage_amount==0 and scene.quality_fx.impact_remaining==0,"heart healing is separate from attack")
-	scene.reset_board();scene._process(0.2)
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene);scene._process(0.2)
 	check(scene.quality_fx.take_impact().is_empty() and scene.quality_fx.display_enemy_hp(24)==24,"reset during delivery cancels stale pending impact")
 	scene.queue_free();await process_frame;await create_timer(0.25).timeout
 	print("HIT_SCENE checks=",checks," failures=",failures);quit(1 if failures else 0)

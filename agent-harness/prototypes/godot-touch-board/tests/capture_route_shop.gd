@@ -144,6 +144,7 @@ func run() -> void:
 	began_us = Time.get_ticks_usec()
 	scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	await process_frame
 	if scene.sandbox or scene.session.get("combat") == null:
 		printerr("CAPTURE_ROUTE_SHOP requires default actual-run mode, no --sandbox")

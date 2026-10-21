@@ -3,6 +3,7 @@ func _initialize() -> void: call_deferred("run")
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	await create_timer(0.4).timeout
 	for p in scene.session.panels:
 		if scene.Rules.plan(scene.session.panels,p.id,scene.session.hp,scene.session.max_hp).valid:

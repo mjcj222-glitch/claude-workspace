@@ -31,7 +31,7 @@ func gesture(stage: String, point: Vector2, action: String = "click", capture: S
 	await process_frame
 	await process_frame
 func route_fixture() -> void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.session.phase = "route"
 	scene.session.gold = 4
 	scene.session.combat.enemy_hp = 0
@@ -40,7 +40,7 @@ func route_fixture() -> void:
 	scene.session.rewards_taken = 1
 	scene.session.offer_serial = 9
 func shop_fixture(funds: int = 12, hp: int = 17) -> void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.session.phase = "shop"
 	scene.session.route = "elite" if funds == 12 else "safe"
 	scene.session.combat.encounter = 1
@@ -56,6 +56,7 @@ func run() -> void:
 	root.size = Vector2i(int(args[0]), int(args[1]))
 	scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	scene.record_timings = false
 	scene.sound.muted = true
@@ -113,7 +114,7 @@ func run() -> void:
 	check(scene.session.phase == "ready" and scene.session.route == "" and scene.session.gold == 0 and scene.session.relics.is_empty(), "OS shop reset clears route gold and relics")
 	route_fixture()
 	await gesture("armed_route", first, "down")
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	route_fixture()
 	await gesture("old_route_release", first, "up")
 	check(scene.session.phase == "route" and scene.session.route == "", "OS held route across reset cannot choose new offer")

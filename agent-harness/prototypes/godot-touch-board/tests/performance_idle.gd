@@ -4,6 +4,7 @@ func _initialize() -> void:call_deferred("run")
 func run() -> void:
 	var scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	var rid:=root.get_viewport_rid()
 	RenderingServer.viewport_set_measure_render_time(rid,true)
 	for i in range(60):

@@ -81,6 +81,7 @@ func run()->void:
 	else:
 		scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	await create_timer(0.3).timeout
 	for action in range(1,10):
 		check(scene.session.phase=="ready","normal gameplay ready before action")

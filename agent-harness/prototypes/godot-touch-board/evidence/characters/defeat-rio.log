@@ -1,0 +1,4 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+CHARACTER_NORMAL seed=20261021 route=elite pair=0 policy=attrition terminal=defeat hp=0 actions=20 gold=4 spent=0 effects={ "pigment_five_targets": 0, "lens_five_core": 0, "lens_eleven_strong": 0, "ash_reservations": 0, "ash_consumptions": 0, "mitigation_latched": 0 } errors=[] audit={ "checks": 142, "errors": [] }
+CHARACTER_NORMAL runs=1 incomplete_or_errors=0 (defeat is an honest completed outcome, not an assertion failure)

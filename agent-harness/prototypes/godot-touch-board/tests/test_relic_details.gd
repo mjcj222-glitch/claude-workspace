@@ -29,7 +29,7 @@ func escape(scene) -> void:
 	scene._input(event)
 
 func fixture(scene) -> void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.session.relics = ["pigment", "lens", "ash"]
 	scene.session.phase = "ready"
 	scene.session.panels = [
@@ -55,6 +55,7 @@ func finish(scene) -> void:
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.record_timings = false
 	scene.sound.muted = true
 	scene.set_process(false)
@@ -168,12 +169,12 @@ func run() -> void:
 	fixture(scene)
 	click(scene, first)
 	click(scene, scene.UI.RESET.get_center())
-	check(scene.detail_relic == "" and scene.session.relics.is_empty() and scene.session.actions == 0 and scene.session.phase == "ready", "reset allowed while detail open and clears all detail/session state")
+	check(scene.detail_relic == "" and scene.session.relics.is_empty() and scene.session.actions == 0 and scene.session.phase == "departure", "reset allowed while detail open and clears all detail/session state")
 	scene.release(close, -1)
 	check(scene.session.actions == 0 and scene.detail_relic == "", "stale detail release after reset has no effect")
 	fixture(scene)
 	scene.press(first, -1)
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.release(first, -1)
 	check(scene.detail_relic == "" and scene.session.relics.is_empty() and scene.session.selection.is_empty(), "reset clears pending icon candidate before stale release")
 	await finish(scene)

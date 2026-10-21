@@ -13,6 +13,7 @@ func offer(scene)->void:
 func run()->void:
 	var scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	await process_frame
 	offer(scene)
 	var card:Vector2=scene.UI.reward_rect(0,3).get_center()

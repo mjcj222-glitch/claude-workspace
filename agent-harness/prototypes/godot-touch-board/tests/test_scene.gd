@@ -9,6 +9,7 @@ func _initialize() -> void:
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.record_timings = false
 	await process_frame
 	check(scene.session.panels.size() == 48, "actual scene creates dense free-position board")

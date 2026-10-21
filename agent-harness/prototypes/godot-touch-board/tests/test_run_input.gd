@@ -25,7 +25,7 @@ func click(scene, point: Vector2) -> void:
 	scene.release(point, -1)
 
 func fresh(scene) -> void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	scene.record_timings = false
 	scene.sound.muted = true
@@ -49,6 +49,7 @@ func finish(scene) -> void:
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	await process_frame
 	if scene.get("sandbox") == null:
@@ -164,7 +165,7 @@ func run() -> void:
 		scene.release(next, -1)
 		check(scene.session.phase == phase, phase + " stale release cannot restart")
 		click(scene, next)
-		check(scene.session.phase == "ready" and scene.session.hp == 30 and scene.session.charge == 3 and scene.session.charge_required == 3, phase + " fresh restart restores health and charge")
+		check(scene.session.phase == "departure" and scene.session.hp == 30 and scene.session.charge == 3 and scene.session.charge_required == 3, phase + " fresh restart restores health and charge")
 		check(scene.session.relics.is_empty() and not scene.session.ash_reserved and scene.session.actions == 0 and scene.session.combat.encounter == 0, phase + " restart clears run growth and counters")
 		scene.release(next, -1)
 		check(scene.session.actions == 0 and scene.session.selection.is_empty(), phase + " restart release cannot select board")
@@ -183,10 +184,10 @@ func run() -> void:
 		scene.modal_index = 0
 		# Reset is the one accepted action even during attack/busy animation.
 		scene.press(scene.RESET.get_center(), -1)
-		check(scene.session.phase == "ready" and scene.session.hp == 30, phase + " reset works immediately")
+		check(scene.session.phase == "departure" and scene.session.hp == 30, phase + " reset works immediately")
 		check(scene.attack_clock == 0 and scene.motion_state.is_empty() and scene.active_plan.is_empty() and scene.particles.is_empty() and not scene.feedback.visible, phase + " reset clears delayed presentation state")
 		check(scene.modal_pointer == -99 and scene.detail_pointer == -99 and scene.session.owner == -99 and scene.session.selection.is_empty(), phase + " reset cancels all candidates")
 		scene.release(next, -1)
 		scene._process(1.0)
-		check(scene.session.hp == 30 and scene.session.phase == "ready" and scene.session.actions == 0 and scene.session.combat.attacks_total == 0, phase + " late process and release cannot damage fresh run")
+		check(scene.session.hp == 30 and scene.session.phase == "departure" and scene.session.actions == 0 and scene.session.combat.attacks_total == 0, phase + " late process and release cannot damage fresh run")
 	await finish(scene)

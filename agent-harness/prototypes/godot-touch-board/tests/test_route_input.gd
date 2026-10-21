@@ -18,7 +18,7 @@ func touch(scene, p: Vector2, index: int, down: bool, canceled: bool = false) ->
 	event.canceled = canceled
 	scene._input(event)
 func fresh(scene) -> void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	scene.record_timings = false
 	scene.sound.muted = true
@@ -52,6 +52,7 @@ func finish(scene) -> void:
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	await process_frame
 	# Contract coordinates let missing scene routing fail behaviorally before
@@ -129,7 +130,7 @@ func run() -> void:
 		scene.press(scene.RESET.get_center(), -1)
 		scene.release(first, -1)
 		scene._process(1.0)
-		check(scene.session.phase == "ready" and scene.session.hp == 30 and scene.session.gold == 0 and scene.session.route == "" and scene.session.relics.is_empty(), phase + " reset clears run and rejects late release")
+		check(scene.session.phase == "departure" and scene.session.hp == 30 and scene.session.gold == 0 and scene.session.route == "" and scene.session.relics.is_empty(), phase + " reset clears run and rejects late release")
 		check(scene.modal_pointer == -99 and scene.detail_pointer == -99 and scene.session.selection.is_empty(), phase + " reset clears all candidates")
 
 	shop_fixture(scene)

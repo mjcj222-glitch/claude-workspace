@@ -20,6 +20,7 @@ func run()->void:
 	print("SCALE mode=",root.content_scale_mode," factor=",root.content_scale_factor," base=",root.content_scale_size)
 	scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	prefix="res://evidence/%s/small-%dx%d"%[args[2] if args.size()>2 else "growth",root.size.x,root.size.y]
 	await create_timer(0.3).timeout
 	check(scene.board_to_screen(scene.BOARD.position)==scene.UI.BOARD_SCREEN.position,"board top coordinate correspondence")
@@ -144,7 +145,7 @@ func wait_ack(stage:String)->void:
 	await process_frame
 
 func open_reward_fixture(second:bool)->void:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.session.actions=6 if second else 3
 	if second:
 		scene.session.relics=["pigment"]

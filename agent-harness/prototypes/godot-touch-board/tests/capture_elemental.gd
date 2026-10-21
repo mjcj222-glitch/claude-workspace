@@ -23,6 +23,8 @@ var quality_mode := false
 var premium_mode := false
 var impact_mode := false
 var impact_label := "after"
+var characters_mode := false
+var hero := "rio"
 var boss_turns_seen: Dictionary = {}
 
 func _initialize() -> void:
@@ -31,7 +33,7 @@ func _initialize() -> void:
 func state() -> Dictionary:
 	var s = scene.session
 	var c = s.combat
-	return {"phase":s.phase,"encounter":c.encounter,"enemy_hp":c.enemy_hp,
+	return {"phase":s.phase,"character_id":s.character_id,"skill_uses":s.skill_uses,"encounter":c.encounter,"enemy_hp":c.enemy_hp,
 		"enemy_max_hp":c.enemy_max_hp,"turn":c.turn,"actions_in_turn":c.actions_in_turn,
 		"weak_color":c.weak_color,"combat_context":c.damage_context(),
 		"incoming_damage":c.incoming_damage,"mitigation_active":c.mitigation_active,
@@ -77,6 +79,8 @@ func direct_count(plan: Dictionary) -> int:
 
 func best_clear() -> Dictionary:
 	var s = scene.session
+	if selected_policy=="attrition":
+		return preload("res://tests/character_policy.gd").weak_clear(s)
 	if balance_mode:
 		return BalancePolicy.best_clear(s,selected_policy)
 	var best: Dictionary = {}
@@ -96,23 +100,7 @@ func best_clear() -> Dictionary:
 	return best
 
 func best_skill() -> Dictionary:
-	var s = scene.session
-	var best: Dictionary = {}
-	var best_value := -1
-	for panel in s.panels:
-		if panel.kind != "normal": continue
-		for color in range(4):
-			var plan: Dictionary = s.skill_plan_for(panel.id,color)
-			if not plan.get("valid",false): continue
-			var changed := 0
-			for candidate in s.panels:
-				if candidate.id in plan.targets and candidate.color != color: changed += 1
-			if changed == 0: continue
-			var value: int = plan.connected.size()*100+changed
-			if value > best_value:
-				best_value = value
-				best = {"id":panel.id,"point":panel.pos,"color":color,"plan":plan}
-	return best
+	return preload("res://tests/character_policy.gd").best_skill(scene.session)
 
 func use_skill(skill: Dictionary) -> void:
 	var actions_before: int = scene.session.actions
@@ -120,14 +108,14 @@ func use_skill(skill: Dictionary) -> void:
 	if not scene.session.skill_mode:
 		errors.append("ready skill button did not enter color selection")
 		return
-	await gesture(scene.UI.color_rect(skill.color).get_center(),0.12)
+	if hero!="noa": await gesture(scene.UI.color_rect(skill.color).get_center(),0.12)
 	var preview: Dictionary = await gesture(scene.board_to_screen(skill.point))
 	if preview.get("mode","") != "skill" or not preview.get("valid",false) or preview.get("targets",[]) != skill.plan.targets:
 		errors.append("skill legal preview differs from chosen plan")
 	if scene.session.actions != actions_before or scene.session.skill_mode:
 		errors.append("skill did not execute for free through UI")
-	record("skill",{"start_id":skill.id,"color":skill.color,"targets":preview.get("targets",[]),"connected":preview.get("connected",[])})
-	if quality_mode or premium_mode: await snapshot("activation-%02d"%clear_count)
+	record("skill",{"start_id":skill.id,"color":skill.color,"targets":preview.get("targets",[]),"connected":preview.get("connected",[]),"planted":preview.get("planted",{})})
+	if quality_mode or premium_mode or characters_mode: await snapshot("activation-%02d"%clear_count)
 	await create_timer(0.20).timeout
 
 func wait_resolution() -> void:
@@ -160,12 +148,14 @@ func run() -> void:
 	quality_mode = "--quality" in OS.get_cmdline_user_args()
 	premium_mode = "--premium" in OS.get_cmdline_user_args()
 	impact_mode="--impact" in OS.get_cmdline_user_args()
+	characters_mode="--characters" in OS.get_cmdline_user_args()
 	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--hero="):hero=arg.substr(7)
 		if arg.begins_with("--impact-label="):impact_label=arg.substr(15)
 		if arg.begins_with("--route="): route_choice = arg.substr(8)
 		if arg.begins_with("--policy="): selected_policy = arg.substr(9)
 		if arg.begins_with("--pair="): pair_index = int(arg.substr(7))
-	var policies := ["intent-aware","immediate-damage","avoid-intent"] if balance_mode else ["intent-aware","damage-first"]
+	var policies := ["intent-aware","immediate-damage","avoid-intent"] if balance_mode else ["intent-aware","damage-first","attrition"]
 	if route_choice not in ["safe","elite"] or selected_policy not in policies or pair_index not in [0,1,2]:
 		printerr("invalid route, policy or relic pair for capture mode")
 		quit(2)
@@ -174,13 +164,22 @@ func run() -> void:
 	var capture_seed := "20261021"
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--seed="): capture_seed = arg.substr(7)
-	var category: String = ("impact/"+impact_label) if impact_mode else ("premium" if premium_mode else ("quality" if quality_mode else ("balance" if balance_mode else "elemental")))
+	var category: String = ("characters/"+hero) if characters_mode else ("impact/"+impact_label) if impact_mode else ("premium" if premium_mode else ("quality" if quality_mode else ("balance" if balance_mode else "elemental")))
 	output_dir = "res://evidence/%s/capture-%s-%s-pair%d-%s-%s" % [category,capture_seed,route_choice,pair_index,selected_policy,"movie" if movie else "live"]
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_dir))
 	began_us = Time.get_ticks_usec()
 	scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
 	await process_frame
+	if characters_mode:
+		await snapshot("departure")
+		await create_timer(1.5).timeout
+		await gesture(scene.UI.character_rect(0 if hero=="rio" else 1).get_center())
+		await snapshot("character-chosen")
+		await create_timer(1.0).timeout
+		await gesture(scene.UI.DEPART.get_center())
+		if scene.session.character_id!=hero:errors.append("departure did not commit hero")
+	else:preload("res://tests/enter_adventure.gd").enter(scene,hero)
 	if scene.sandbox or scene.session.get("combat") == null:
 		printerr("CAPTURE_ELEMENTAL requires default actual-run mode, no --sandbox")
 		quit(2)
@@ -253,7 +252,7 @@ func run() -> void:
 			"ready":
 				await observe_boss_turn()
 				var selected := best_clear()
-				if scene.session.charge >= scene.session.charge_required and (selected.is_empty() or selected.plan.damage < scene.session.combat.enemy_hp):
+				if (selected_policy!="attrition" or scene.session.skill_uses==0) and scene.session.charge >= scene.session.charge_required and (selected.is_empty() or selected.plan.damage < scene.session.combat.enemy_hp):
 					var skill := best_skill()
 					if not skill.is_empty():
 						await use_skill(skill)
@@ -286,7 +285,14 @@ func run() -> void:
 		await snapshot("defeat" if scene.session.phase == "defeat" else "stopped")
 		await create_timer(2.0).timeout
 		if errors.is_empty() and scene.session.phase != "defeat": errors.append("did not reach terminal state: "+scene.session.phase)
-	var trace := {"method":"actual main.tscn, real press/release routing, natural _process/refill/attack; automated legal decisions, not hardware touch","movie":movie,"timing_note":"MovieWriter is fixed-frame evidence, not wall-clock performance; live timings include concurrent screenshot I/O" if movie else "live rendered wall-clock; screenshots/driver decisions add overhead, not a dedicated performance benchmark","seed":scene.run_seed,"rewards":rewards,"route":route_choice,"policy":selected_policy,"balance_comparison":balance_mode,"selection_note":"Normal seed/route/policy, no fixture; compare balance or elemental normal records. avoid-intent is adversarial diagnostic, not human skill. Movie and live are not performance benchmarks.","pair_index":pair_index,"shop_policy":"same as pure: safe pair0 heal, safe pair1/2 relic; elite pair0 heal then relic, pair1/2 relic then heal; skip unavailable/full HP","no_fixtures":true,"terminal":scene.session.phase,"errors":errors,"observed_counterattack":saw_attack,"observed_mitigation":saw_mitigation,"events":events,"timings":scene.timings.duplicate(true),"screenshots":snapshots,"final":state()}
+	var terminal_state:Dictionary=state()
+	if characters_mode and scene.session.phase in ["victory","defeat"]:
+		await gesture(scene.UI.SUMMARY_CONTINUE.get_center())
+		if scene.session.phase!="departure" or scene.session.character_id!="":errors.append("terminal did not return to selection")
+		record("return_to_departure")
+		await snapshot("returned-to-selection")
+		await create_timer(1.8).timeout
+	var trace := {"method":"actual main.tscn, real press/release routing, natural _process/refill/attack; automated legal decisions, not hardware touch","movie":movie,"timing_note":"MovieWriter is fixed-frame evidence, not wall-clock performance; live timings include concurrent screenshot I/O" if movie else "live rendered wall-clock; screenshots/driver decisions add overhead, not a dedicated performance benchmark","seed":scene.run_seed,"rewards":rewards,"route":route_choice,"policy":selected_policy,"balance_comparison":balance_mode,"selection_note":"Normal seed/route/policy, no fixture; compare balance or elemental normal records. avoid-intent is adversarial diagnostic, not human skill. Movie and live are not performance benchmarks.","pair_index":pair_index,"shop_policy":"same as pure: safe pair0 heal, safe pair1/2 relic; elite pair0 heal then relic, pair1/2 relic then heal; skip unavailable/full HP","no_fixtures":true,"terminal":terminal_state.phase,"character":hero,"returned_to_selection":scene.session.phase=="departure","errors":errors,"observed_counterattack":saw_attack,"observed_mitigation":saw_mitigation,"events":events,"timings":scene.timings.duplicate(true),"screenshots":snapshots,"final":terminal_state}
 	var file := FileAccess.open(output_dir.path_join("trace.json"),FileAccess.WRITE)
 	file.store_string(JSON.stringify(trace,"  "))
 	print("CAPTURE_ELEMENTAL terminal=",scene.session.phase," clears=",clear_count," errors=",errors)

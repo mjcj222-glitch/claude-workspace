@@ -9,6 +9,7 @@ func run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://evidence/premium"))
 	var scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	await create_timer(0.6).timeout
 	await capture("ready-first-actual")
 	scene.press(scene.SKILL.get_center(),-1);scene.release(scene.SKILL.get_center(),-1)

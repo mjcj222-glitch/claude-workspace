@@ -4,6 +4,9 @@ extends RefCounted
 const RelicArt = preload("res://scripts/board_relic_art.gd")
 const MaterialArt = preload("res://scripts/board_premium_skin.gd")
 const SkillState = preload("res://scripts/board_skill_presentation.gd")
+const CharacterUI = preload("res://scripts/board_character_ui.gd")
+const Characters = preload("res://scripts/board_characters.gd")
+const DEPART = CharacterUI.DEPART
 const Art = preload("res://scripts/board_art.gd")
 const COLORS = [Color("ff705d"), Color("6edb6b"), Color("ffcf5b"), Color("61b7ff"), Color("ff86b5")]
 const BOARD_SCREEN = Rect2(30,390,660,530)
@@ -69,8 +72,10 @@ static func draw(view) -> void:
 		view.draw_rect(Rect2(40,335,640*float(shown_hp)/session.combat.enemy_max_hp,3),Color("ed3465"))
 	var lines: Array = [view.status,""] if view.sandbox else intent_lines(context)
 	if not preview.is_empty():
-		if not preview.get("valid",false): lines=["같은 색 2개부터 골라주세요","놓아도 행동을 쓰지 않아요"]
-		elif preview.mode == "skill": lines=["%d개 변환 → 연결 %d개"%[preview.targets.size(),preview.connected.size()],"놓으면 변환 · 소거 행동 없음"]
+		if not preview.get("valid",false):
+			lines=["일반 공격 패널을 골라주세요","하트·기존 핵에는 심을 수 없어요" if session.character_id=="noa" else "하트·핵은 변환하지 않아요"] if preview.get("mode","")=="skill" else ["같은 색 2개부터 골라주세요","놓아도 행동을 쓰지 않아요"]
+		elif preview.mode == "skill":
+			lines=["%d개 변환 → 연결 %d개"%[preview.targets.size(),preview.connected.size()],"놓으면 변환 · 소거 행동 없음"] if session.character_id!="noa" else ["강화핵 심기" if "pigment" in session.relics else "물감핵 심기","놓으면 설치 · 다음 입력에서 핵을 눌러 기동"]
 		else:
 			lines=["직접 %d · 연쇄 %d"%[preview.direct.size(),preview.removed.size()-preview.direct.size()],preview_effect_line(preview)]
 			var effects := "회복 %d → %d · 초과 %d"%[preview.heal_raw,preview.heal_effective,preview.heal_overflow]
@@ -79,6 +84,12 @@ static func draw(view) -> void:
 			view.draw_rect(Rect2(32,278,656,30),Color(0.035,0.015,0.065,0.90))
 			_line(view,Vector2(360,300),effects,22,640,Color("fff0d3"))
 	elif session.phase=="enemy_attack": lines=["적의 반격 · %d 피해"%session.combat.last_attack_damage,""]
+	if not view.sandbox and session.phase=="ready" and session.combat.encounter==0 and session.actions<3 and preview.is_empty():
+		var hint:String="스킬 → 색 → 일반 패널 · 변환 후 직접 소거" if session.character_id=="rio" else "스킬 → 일반 패널에 핵 심기 → 핵을 눌러 기동"
+		view.draw_rect(Rect2(16,260,688,38),Color(0.035,0.015,0.065,0.9))
+		if session.skill_uses>0:
+			hint=("심은 핵을 눌러 폭발 · 단독 기동도 행동1회" if session.character_id=="noa" else "변환한 같은 색 묶음을 누르고 놓아 소거") if session.actions==0 else "소거3회 충전 · 하트도 행동 · 예고를 확인하세요"
+		_line(view,Vector2(360,286),hint,23,672,MINT)
 	_line(view,Vector2(360,361),lines[0],22,640,Color("fff0e6"))
 	_line(view,Vector2(360,384),lines[1],22,640,MINT)
 	# One cached mesh shades the board once. Logical coordinates are unchanged.
@@ -86,21 +97,21 @@ static func draw(view) -> void:
 	# The dock never overlaps a live panel or ingress area.
 	MaterialArt.frame(view,Rect2(4,922,712,154),MaterialArt.GOLD,true)
 	Art.draw_premium_hero(view,HERO_RECT,view.time,view.hero_active>0.0)
-	view._text(Vector2(22,1067),"리오",22,Color("fff0dc"))
+	view._text(Vector2(22,1067),Characters.definition(session.character_id).name+(" · 임시 초상" if session.character_id=="noa" else ""),22,Color("fff0dc"))
 	view.draw_rect(Rect2(199,928,491,17),Color("321f45"))
 	view.draw_rect(Rect2(201,930,487*float(session.hp)/session.max_hp,13),Color("a650df"))
 	_modal_text(view,view,Vector2(446,946),"생명 %d / %d"%[session.hp,session.max_hp],22,Color.WHITE,true)
 	Art.draw_skill_button(view,SKILL,skill.illuminated,0.0 if view.reduced_effects else float(view.ready_age))
-	_modal_text(view,view,Vector2(310,1006),"변환",30,Color("fff0ff") if skill.illuminated else MUTED,true,true)
-	_modal_text(view,view,Vector2(310,1032),("색 선택" if session.skill_mode else skill.status_text)+" · "+skill.charge_text,22,Color("f3d6ff") if skill.illuminated else MUTED,true)
-	view._center(Vector2(310,1070),"최대 %d개 · 소거 무료"%skill.conversion_max,22,MUTED)
+	_modal_text(view,view,Vector2(310,1006),Characters.definition(session.character_id).button,30,Color("fff0ff") if skill.illuminated else MUTED,true,true)
+	_modal_text(view,view,Vector2(310,1032),(("패널 선택" if skill.plants_core else "색 선택") if session.skill_mode else skill.status_text)+" · "+skill.charge_text,22,Color("f3d6ff") if skill.illuminated else MUTED,true)
+	view._center(Vector2(310,1070),("강화핵1개 · 행동 없음" if "pigment" in session.relics else "물감핵1개 · 행동 없음") if skill.plants_core else "최대 %d개 · 행동 없음"%skill.conversion_max,22,MUTED)
 	if skill.reservation_text!="":view._text(Vector2(446,970),skill.reservation_text,22,MINT)
 	for i in range(3):
 		var rect := owned_rect(i)
 		MaterialArt.frame(view,rect,MaterialArt.GOLD)
 		if i<session.relics.size(): RelicArt.draw_icon(view,session.relics[i],rect.grow(-6))
 		else: view._center(rect.get_center()+Vector2(0,8),"·",28,Color("66536f"))
-	if session.skill_mode:
+	if session.skill_mode and not skill.plants_core:
 		for i in range(4):
 			var rect := color_rect(i)
 			var selected: bool = session.skill_color==i
@@ -138,6 +149,9 @@ static func _modal_text(view, canvas: CanvasItem, at: Vector2, text: String, siz
 
 static func draw_modal(view, canvas: CanvasItem) -> void:
 	var session = view.session
+	if session.phase=="departure":
+		CharacterUI.draw(view,canvas)
+		return
 	if session.phase in ["route","shop"]:
 		draw_route_shop_modal(view,canvas)
 		return
@@ -155,7 +169,7 @@ static func draw_modal(view, canvas: CanvasItem) -> void:
 		var count: int = session.reward_options.size()
 		for i in range(count):
 			var id: String = session.reward_options[i]
-			var copy: Dictionary = RELIC_COPY[id]
+			var copy: Dictionary = relic_copy(id,session)
 			var rect := reward_rect(i,count)
 			var tint: Color = [MINT,COLORS[2],COLORS[3]][["pigment","lens","ash"].find(id)]
 			MaterialArt.button(canvas,rect,tint,"pressed" if view.modal_phase == "reward" and view.modal_index == i else "normal")
@@ -199,7 +213,7 @@ static func draw_details(view,canvas:CanvasItem)->void:
 	if view.detail_relic=="":return
 	var id:String=view.detail_relic
 	if not RELIC_COPY.has(id):return
-	var copy:Dictionary=RELIC_COPY[id]
+	var copy:Dictionary=relic_copy(id,view.session)
 	canvas.draw_rect(Rect2(0,208,720,872),Color(0.035,0.015,0.065,0.94))
 	_modal_box(canvas,DETAIL_PANEL,Color("211432"),Color("c8a676"),24)
 	RelicArt.draw_icon(canvas,id,Rect2(76,337,116,116))
@@ -229,10 +243,12 @@ static func draw_run_modal(view,canvas:CanvasItem)->void:
 		lines = ["도달 전투 %d / 3 · 적 %d명 처치" % [combat.encounter+1,combat.enemies_defeated], "선택 경로 · " + route_name(session.route), "사용 %d G · 남은 %d G" % [session.gold_spent,session.gold], "유효 소거 %d회 · 보유 유물 %d개" % [session.actions,session.relics.size()]]
 	for i in range(lines.size()):
 		_modal_text(view,canvas,Vector2(360,352+i*56),lines[i],26,Color("f7efff") if i<2 else MUTED,true)
+	if session.phase in ["victory","defeat"]:
+		_modal_text(view,canvas,Vector2(360,315),Characters.definition(session.character_id).name+" · "+Characters.definition(session.character_id).role,24,MINT,true)
 	for i in range(session.relics.size()):
 		RelicArt.draw_icon(canvas,session.relics[i],Rect2(360-(session.relics.size()*88-16)/2.0+i*88,554,72,72))
 	MaterialArt.button(canvas,SUMMARY_CONTINUE,MINT,"pressed" if view.modal_index >= 0 and view.modal_phase == session.phase and (session.phase != "shop" or view.modal_index == 2) else "ready")
-	_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"다음 전투" if session.phase == "between" else "새 탐험 시작",28,Color("fff0ff"),true)
+	_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"다음 전투" if session.phase == "between" else "캐릭터 선택으로",28,Color("fff0ff"),true)
 
 
 static func route_name(id:String)->String:
@@ -245,6 +261,7 @@ static func shop_rect(index:int)->Rect2:
 	return route_rect(index)
 
 static func modal_rect(phase:String,index:int,reward_count:int=0)->Rect2:
+	if phase=="departure":return character_rect(index) if index<2 else DEPART
 	if phase == "reward": return reward_rect(index,reward_count)
 	if phase == "route": return route_rect(index)
 	if phase == "shop" and index < 2: return shop_rect(index)
@@ -292,7 +309,7 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 		_modal_text(view,canvas,rect.position+Vector2(119,32),name,27,tint)
 		var change: String = "4 G · 생명 %d → %d (+%d)" % [session.hp,session.hp+gain,gain] if i == 0 else "8 G · 남은 유물 1개 획득"
 		_modal_text(view,canvas,rect.position+Vector2(119,63),change,24,Color("f2f5fa") if enabled else MUTED)
-		var effect: String = "최대 8 회복 · 한 번만 구매" if i == 0 else (RELIC_COPY[relic].change if relic != "" else "새로운 유물은 추가하지 않아요")
+		var effect: String = "최대 8 회복 · 한 번만 구매" if i == 0 else (relic_copy(relic,session).change if relic != "" else "새로운 유물은 추가하지 않아요")
 		_modal_text(view,canvas,rect.position+Vector2(119,94),effect,22,MUTED)
 		var state: String = "구매 완료" if sold else ("생명 가득 · 구매 불가" if i == 0 and gain == 0 else ("골드 부족" if session.gold < price else "눌렀다 놓으면 구매"))
 		_modal_text(view,canvas,rect.position+Vector2(119,124),state,22,tint)
@@ -302,6 +319,12 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 
 static func weakness_name(color:int)->String:
 	return ELEMENT_NAMES[color] if color >= 0 and color < ELEMENT_NAMES.size() else "없음"
+
+static func character_rect(index:int)->Rect2:
+	return CharacterUI.character_rect(index)
+
+static func relic_copy(id:String,session)->Dictionary:
+	return Characters.pigment_copy(session.character_id) if id=="pigment" else RELIC_COPY[id]
 
 static func damage_line(plan:Dictionary)->String:
 	return "피해 %d = 기본 %d + 약점 %d" % [plan.get("damage",0),plan.get("base_damage",plan.get("damage",0)),plan.get("weak_bonus",0)]

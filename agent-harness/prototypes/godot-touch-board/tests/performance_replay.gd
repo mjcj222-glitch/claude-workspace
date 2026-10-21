@@ -83,6 +83,7 @@ func run() -> void:
 	commands=JSON.parse_string(FileAccess.get_file_as_string("res://tests/performance_commands.json"))
 	scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	viewport_rid=root.get_viewport_rid()
 	RenderingServer.viewport_set_measure_render_time(viewport_rid,true)
 	RenderingServer.frame_post_draw.connect(after_frame)

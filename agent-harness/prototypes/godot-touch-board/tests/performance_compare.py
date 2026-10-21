@@ -54,6 +54,7 @@ def prepare(label, revision):
     script.write_text(text)
     (dest / 'tests').mkdir(exist_ok=True)
     (dest / 'tests/performance_replay.gd').write_bytes((PROJECT / 'tests/performance_replay.gd').read_bytes())
+    (dest / 'tests/enter_adventure.gd').write_bytes((PROJECT / 'tests/enter_adventure.gd').read_bytes())
     trace = json.loads((PROJECT / 'evidence/quality/capture-20261021-elite-pair0-intent-aware-live/trace.json').read_text())
     types = {'skill', 'clear', 'reward_chosen', 'route_chosen', 'shop_purchase', 'shop_exit'}
     commands = [{'type': e['type'], 'details': e['details']} for e in trace['events'] if e['type'] in types]

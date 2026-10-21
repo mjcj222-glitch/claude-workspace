@@ -35,6 +35,7 @@ func run() -> void:
 	root.size = Vector2i(int(args[0]), int(args[1]))
 	scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	scene.record_timings = false
 	scene.sound.muted = true

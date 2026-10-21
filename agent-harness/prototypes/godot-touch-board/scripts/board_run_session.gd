@@ -12,6 +12,8 @@ var shop_heal_sold: bool = false
 var shop_relic_sold: bool = false
 var shop_closed: bool = false
 var _paid_encounters: Dictionary = {}
+var departure_choice := ""
+var departure_started := false
 
 func _init() -> void:
 	hp = max_hp
@@ -23,6 +25,33 @@ func initialize_board(fresh_panels: Array, fresh_next_id: int) -> void:
 	skill_mode = false
 	combat.start_fight(0, panels)
 	phase = "ready"
+
+func open_departure() -> void:
+	# Only a fresh session may enter departure. Mid-run APIs cannot change hero.
+	if departure_started or actions != 0 or skill_uses != 0 or not relics.is_empty() or combat.encounter != 0:return
+	cancel()
+	skill_mode=false
+	character_id=""
+	departure_choice=""
+	phase="departure"
+	offer_serial+=1
+
+func select_departure(id:String,serial:int)->bool:
+	if phase!="departure" or serial!=offer_serial or id not in Characters.IDS:return false
+	departure_choice=id
+	cancel()
+	offer_serial+=1
+	return true
+
+func start_departure(serial:int)->bool:
+	if phase!="departure" or serial!=offer_serial or departure_choice not in Characters.IDS:return false
+	character_id=departure_choice
+	departure_started=true
+	cancel()
+	skill_mode=false
+	offer_serial+=1
+	phase="ready"
+	return true
 
 func release(point: Vector2, pointer: int) -> Dictionary:
 	var result: Dictionary = super.release(point, pointer)

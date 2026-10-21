@@ -235,5 +235,6 @@ func draw_overlay(view,canvas) -> void:
 	# Clip the face's right edge with the same strip color, preserving eyes/mouth.
 	canvas.draw_colored_polygon(PackedVector2Array([Vector2(238,920),Vector2(238,1080),Vector2(210,1080)]),Color(0.14,0.055,0.23,alpha))
 	canvas.draw_line(Vector2(238,920),Vector2(210,1080),Color(0.85,0.74,0.43,alpha),3.0,true)
-	_text(canvas,body,Vector2(435+slide,972),"리오 · 변환사",22,Color(0.88,0.74,0.96,alpha))
-	_text(canvas,display,Vector2(435+slide,1030),"물감 변환",34,Color(0.96,0.92,0.73,alpha),3)
+	var identity:Dictionary=preload("res://scripts/board_characters.gd").definition(view.session.character_id if view.get("session")!=null else "rio")
+	_text(canvas,body,Vector2(435+slide,972),identity.name+" · "+identity.role,22,Color(0.88,0.74,0.96,alpha))
+	_text(canvas,display,Vector2(435+slide,1030),identity.skill,34,Color(0.96,0.92,0.73,alpha),3)

@@ -10,6 +10,7 @@ func _initialize() -> void: call_deferred("run")
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	await process_frame
 	var names: Array=[]
@@ -39,7 +40,7 @@ func run() -> void:
 	check(scene.rng.state==initial_rng,"skill visuals do not consume game randomness")
 	scene.quality_fx.update(0.6)
 	check(scene.quality_fx.cutin_remaining==0,"cutin finishes without scheduled gameplay callback")
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	check(scene.session.panels==initial_panels and scene.rng.state==initial_rng and scene.quality_fx.cutin_remaining==0,"reset restores identical normal board and clears effects")
 	# Use an actual canonical clear from the normal board, not recolored panels.
 	var chosen: Dictionary={}
@@ -58,7 +59,7 @@ func run() -> void:
 		scene._burst(id,0);scene._burst(id,0)
 	check(scene.rng.state==legacy.state,"visual RNG is separate while fixed legacy clear budget preserves next-board RNG")
 	check(scene.quality_fx.damage_amount==preview.damage and scene.feedback.count==preview.removed.size(),"duplicate FX reachability cannot change actual count or total damage")
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	check(scene.quality_fx.trails.is_empty() and scene.quality_fx.total_remaining==0 and scene.selection_trace.is_empty(),"reset clears trails, numbers and contact trace")
 	# Conversion FX must use the same final color that earned weakness damage.
 	var converted_board: Array=[]

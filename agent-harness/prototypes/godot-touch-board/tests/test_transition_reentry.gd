@@ -22,7 +22,7 @@ func touch(scene,p:Vector2,down:bool)->void:
 	e.pressed=down
 	scene._input(e)
 func depart(scene,kind:String,input_kind:String)->Vector2:
-	scene.reset_board()
+	scene.reset_board();preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	scene.record_timings=false
 	scene.sound.muted=true
@@ -52,6 +52,7 @@ func depart(scene,kind:String,input_kind:String)->Vector2:
 func run()->void:
 	var scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	scene.set_process(false)
 	await process_frame
 	for kind in ["route","shop"]:
@@ -77,7 +78,7 @@ func run()->void:
 		check(scene.session.actions==1,"same position works after repeat window expires")
 		p=depart(scene,"route","mouse")
 		scene.reset_board()
-		check(scene.transition_repeat_until_ms==0,"restart clears repeat guard")
+		check(scene.session.phase=="departure" and scene.transition_repeat_until_ms==0,"restart clears repeat guard")
 	scene.queue_free()
 	await process_frame
 	await process_frame

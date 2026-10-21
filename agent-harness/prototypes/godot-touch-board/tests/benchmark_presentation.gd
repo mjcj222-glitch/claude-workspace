@@ -9,6 +9,7 @@ func accept_reward(scene) -> void:
 func run() -> void:
 	var scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
+	preload("res://tests/enter_adventure.gd").enter(scene)
 	for i in range(5): await process_frame
 	for trial in range(5):
 		var best: Dictionary = {}
