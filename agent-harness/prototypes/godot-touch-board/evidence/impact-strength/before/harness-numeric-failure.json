@@ -1,0 +1,426 @@
+{
+  "clears": 0,
+  "errors": [
+    "skill mismatch"
+  ],
+  "final": {
+    "actions": 0,
+    "ash": false,
+    "charge": 0,
+    "enemy_hp": 24,
+    "gold": 0,
+    "hp": 30,
+    "intent": {
+      "incoming_damage": 4,
+      "intent": "plain",
+      "intent_serial": 2,
+      "mitigation_success": false,
+      "slam_normal_required": 8,
+      "slam_weak_required": 2,
+      "weakness_color": 0
+    },
+    "node": "entry",
+    "panels": [
+      {
+        "color": 4,
+        "from": "(191.3438, 253.0)",
+        "id": 1,
+        "kind": "heart",
+        "pos": "(191.3438, 783.0)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(322.1989, 215.0)",
+        "id": 2,
+        "kind": "heart",
+        "pos": "(322.1989, 783.0)",
+        "radius": 37.0
+      },
+      {
+        "color": 2,
+        "from": "(396.1989, 177.0)",
+        "id": 3,
+        "kind": "normal",
+        "pos": "(396.1989, 783.0)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(470.1989, 139.0)",
+        "id": 4,
+        "kind": "normal",
+        "pos": "(470.1989, 783.0)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(544.1989, 253.0)",
+        "id": 5,
+        "kind": "normal",
+        "pos": "(544.1989, 783.0)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(618.1989, 215.0)",
+        "id": 6,
+        "kind": "heart",
+        "pos": "(618.1989, 783.0)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(117.3438, 177.0)",
+        "id": 7,
+        "kind": "normal",
+        "pos": "(117.3438, 783.0)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(256.7713, 139.0)",
+        "id": 8,
+        "kind": "heart",
+        "pos": "(256.7713, 748.4279)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(67.0, 253.0)",
+        "id": 9,
+        "kind": "normal",
+        "pos": "(67.0, 728.7643)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(359.1989, 215.0)",
+        "id": 10,
+        "kind": "normal",
+        "pos": "(359.1989, 718.9141)",
+        "radius": 37.0
+      },
+      {
+        "color": 2,
+        "from": "(154.3438, 177.0)",
+        "id": 11,
+        "kind": "normal",
+        "pos": "(154.3438, 718.9141)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(433.1989, 139.0)",
+        "id": 12,
+        "kind": "heart",
+        "pos": "(433.1989, 718.9141)",
+        "radius": 37.0
+      },
+      {
+        "color": 2,
+        "from": "(507.1989, 253.0)",
+        "id": 13,
+        "kind": "normal",
+        "pos": "(507.1989, 718.9141)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(581.1989, 215.0)",
+        "id": 14,
+        "kind": "normal",
+        "pos": "(581.1989, 718.9141)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(653.0, 177.0)",
+        "id": 15,
+        "kind": "normal",
+        "pos": "(653.0, 701.0087)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(219.7713, 139.0)",
+        "id": 16,
+        "kind": "normal",
+        "pos": "(219.7713, 684.342)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(293.7713, 253.0)",
+        "id": 17,
+        "kind": "heart",
+        "pos": "(293.7713, 684.342)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(104.0, 215.0)",
+        "id": 18,
+        "kind": "normal",
+        "pos": "(104.0, 664.6785)",
+        "radius": 37.0
+      },
+      {
+        "color": 1,
+        "from": "(544.1989, 177.0)",
+        "id": 19,
+        "kind": "normal",
+        "pos": "(544.1989, 654.8282)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(396.1989, 139.0)",
+        "id": 20,
+        "kind": "normal",
+        "pos": "(396.1989, 654.8282)",
+        "radius": 37.0
+      },
+      {
+        "color": 2,
+        "from": "(470.1989, 253.0)",
+        "id": 21,
+        "kind": "normal",
+        "pos": "(470.1989, 654.8282)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(616.0001, 215.0)",
+        "id": 22,
+        "kind": "normal",
+        "pos": "(616.0001, 636.9228)",
+        "radius": 37.0
+      },
+      {
+        "color": 1,
+        "from": "(169.4276, 177.0)",
+        "id": 23,
+        "kind": "normal",
+        "pos": "(169.4276, 630.1063)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(330.7713, 139.0)",
+        "id": 24,
+        "kind": "heart",
+        "pos": "(330.7713, 620.2561)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(256.7713, 253.0)",
+        "id": 25,
+        "kind": "normal",
+        "pos": "(256.7713, 620.2561)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(67.0, 215.0)",
+        "id": 26,
+        "kind": "heart",
+        "pos": "(67.0, 600.5926)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(433.1989, 177.0)",
+        "id": 27,
+        "kind": "heart",
+        "pos": "(433.1989, 590.7424)",
+        "radius": 37.0
+      },
+      {
+        "color": 1,
+        "from": "(507.1989, 139.0)",
+        "id": 28,
+        "kind": "normal",
+        "pos": "(507.1989, 590.7424)",
+        "radius": 37.0
+      },
+      {
+        "color": 2,
+        "from": "(579.0, 253.0)",
+        "id": 29,
+        "kind": "normal",
+        "pos": "(579.0, 572.837)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(653.0, 215.0)",
+        "id": 30,
+        "kind": "normal",
+        "pos": "(653.0, 572.8369)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(206.4276, 177.0)",
+        "id": 31,
+        "kind": "normal",
+        "pos": "(206.4276, 566.0204)",
+        "radius": 37.0
+      },
+      {
+        "color": 2,
+        "from": "(132.4276, 139.0)",
+        "id": 32,
+        "kind": "normal",
+        "pos": "(132.4276, 566.0204)",
+        "radius": 37.0
+      },
+      {
+        "color": 1,
+        "from": "(293.7713, 253.0)",
+        "id": 33,
+        "kind": "normal",
+        "pos": "(293.7713, 556.1702)",
+        "radius": 37.0
+      },
+      {
+        "color": 2,
+        "from": "(367.7713, 215.0)",
+        "id": 34,
+        "kind": "normal",
+        "pos": "(367.7713, 556.1702)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(470.1989, 177.0)",
+        "id": 35,
+        "kind": "normal",
+        "pos": "(470.1989, 526.6565)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(69.77343, 139.0)",
+        "id": 36,
+        "kind": "normal",
+        "pos": "(69.77343, 526.6446)",
+        "radius": 37.0
+      },
+      {
+        "color": 1,
+        "from": "(542.0001, 253.0)",
+        "id": 37,
+        "kind": "normal",
+        "pos": "(542.0001, 508.7511)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(616.0001, 215.0)",
+        "id": 38,
+        "kind": "core",
+        "pos": "(616.0001, 508.7509)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(243.4276, 177.0)",
+        "id": 39,
+        "kind": "heart",
+        "pos": "(243.4276, 501.9346)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(169.4276, 139.0)",
+        "id": 40,
+        "kind": "normal",
+        "pos": "(169.4276, 501.9346)",
+        "radius": 37.0
+      },
+      {
+        "color": 1,
+        "from": "(404.7713, 253.0)",
+        "id": 41,
+        "kind": "normal",
+        "pos": "(404.7713, 492.0844)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(330.7713, 215.0)",
+        "id": 42,
+        "kind": "normal",
+        "pos": "(330.7713, 492.0844)",
+        "radius": 37.0
+      },
+      {
+        "color": 0,
+        "from": "(106.7734, 177.0)",
+        "id": 43,
+        "kind": "normal",
+        "pos": "(106.7734, 462.5587)",
+        "radius": 37.0
+      },
+      {
+        "color": 1,
+        "from": "(490.593, 139.0)",
+        "id": 44,
+        "kind": "normal",
+        "pos": "(490.593, 455.5222)",
+        "radius": 37.0
+      },
+      {
+        "color": 2,
+        "from": "(578.9999, 253.0)",
+        "id": 45,
+        "kind": "normal",
+        "pos": "(578.9999, 444.6651)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(653.0, 215.0)",
+        "id": 46,
+        "kind": "normal",
+        "pos": "(653.0, 444.665)",
+        "radius": 37.0
+      },
+      {
+        "color": 4,
+        "from": "(206.4276, 177.0)",
+        "id": 47,
+        "kind": "heart",
+        "pos": "(206.4276, 437.8487)",
+        "radius": 37.0
+      },
+      {
+        "color": 3,
+        "from": "(280.4276, 139.0)",
+        "id": 48,
+        "kind": "normal",
+        "pos": "(280.4276, 437.8487)",
+        "radius": 37.0
+      }
+    ],
+    "phase": "ready",
+    "relics": [],
+    "requirement": 3,
+    "rng": -7467519963207423173
+  },
+  "frames": [],
+  "method": "Preloaded normal Noa area inputs; no search or fixture injection. No screenshots/files inside benchmark. Fixedfps capture separately labelled.",
+  "movie": true,
+  "rows": [],
+  "snapshots": [],
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 20.058
+    }
+  ]
+}

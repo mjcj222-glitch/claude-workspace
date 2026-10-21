@@ -1,0 +1,55 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS W0 bonus floors once
+PASS W0 base ordinary formula preserved
+PASS W0 effective colors exclude core
+PASS W0 plain intent never mitigated
+PASS W1 bonus floors once
+PASS W1 base ordinary formula preserved
+PASS W1 effective colors exclude core
+PASS W1 plain intent never mitigated
+PASS W2 bonus floors once
+PASS W2 base ordinary formula preserved
+PASS W2 effective colors exclude core
+PASS W2 plain intent never mitigated
+PASS W3 bonus floors once
+PASS W3 base ordinary formula preserved
+PASS W3 effective colors exclude core
+PASS W3 plain intent never mitigated
+PASS W4 bonus floors once
+PASS W4 base ordinary formula preserved
+PASS W4 effective colors exclude core
+PASS W4 plain intent never mitigated
+PASS two normals clear through distinct core waves
+PASS separate one-weak waves aggregate before rounding
+PASS wave effective colors use final conversion
+PASS mixed final attack colors count only weakness
+PASS mixed waves retain per-panel effective color
+PASS conversion into weakness increases weak count
+PASS conversion out of weakness removes weak eligibility
+PASS first-claim conflict color remains canonical for weakness
+PASS fixture has converted but unremoved normal
+PASS unremoved conversion earns no weakness or base damage
+PASS duplicate input IDs invalid with safe elemental defaults
+PASS protected new core never adds weakness or base damage
+PASS elemental damage leaves ash direct-count trigger unchanged
+PASS lens five-normal threshold remains independent of bonus damage
+PASS hearts excluded from every attack count
+PASS heart healing unchanged and direct-four intent still qualifies
+PASS existing cores have no intrinsic damage but direct-four qualifies
+PASS slam normal threshold 7 uses actual normal removals
+PASS slam normal threshold 8 uses actual normal removals
+PASS slam normal threshold 9 uses actual normal removals
+PASS slam normal threshold 10 uses actual normal removals
+PASS slam weakness threshold W1
+PASS slam weakness threshold W2
+PASS slam weakness threshold W3
+PASS unknown intent does not acquire implicit conditions
+PASS core chain extras do not satisfy direct-four intent
+PASS default no-context calls preserve old damage formula
+PASS combat context is deeply frozen
+PASS later context mutation cannot change computed outcome or input panels
+PASS explicit frozen weakness threshold overrides canonical default
+PASS explicit frozen normal threshold overrides canonical default
+PASS free skill does not gain elemental damage fields
+ELEMENTAL RULES checks=52 failures=0

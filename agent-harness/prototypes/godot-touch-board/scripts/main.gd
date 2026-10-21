@@ -11,6 +11,7 @@ const Rules = preload("res://scripts/board_rules.gd")
 const Layout = preload("res://scripts/board_layout.gd")
 const Art = preload("res://scripts/board_art.gd")
 const UI = preload("res://scripts/board_ui.gd")
+const Bombs=preload("res://scripts/board_bombs.gd")
 const Feedback = preload("res://scripts/board_feedback.gd")
 const QualityFX = preload("res://scripts/board_quality_fx.gd")
 const Sound = preload("res://scripts/board_audio.gd")
@@ -253,6 +254,9 @@ func screen_to_board(pos: Vector2) -> Vector2:
 func draw_panels(canvas: CanvasItem) -> void:
 	canvas.draw_set_transform(-BOARD.position)
 	var preview: Dictionary = session.selection
+	if preview.get("valid",false) and preview.get("mode","")=="clear":
+		for blast in preview.get("blasts",[]):
+			canvas.draw_arc(blast.pos,blast.radius,0,TAU,64,Color(1,.68,.25,.7),2.4,true)
 	for source in visual:
 		var p: Dictionary = source.duplicate()
 		var emphasis := ""
@@ -382,10 +386,10 @@ func _burst(id: int, index: int) -> void:
 	for p in visual:
 		if p.id != id: continue
 		var color_index: int=active_plan.get("effective_colors",{}).get(id,p.color) if p.kind=="normal" else p.color
-		var effect_color: Color=COLORS[color_index]
+		var effect_color: Color=Color("ffad51") if Bombs.is_bomb(p.kind) else COLORS[color_index]
 		if not feedback.consume(id,p.pos,effect_color): return
 		quality_fx.panel_removed(id,p.pos,effect_color,p.kind)
-		sound.tone(index)
+		sound.panel(index,p.kind)
 		_advance_clear_rng_budget()
 		for i in range(7):
 			var angle := TAU * i / 7.0
@@ -404,6 +408,7 @@ func _start_fall() -> void:
 	quality_fx.action_finished()
 	fall_started_us=Time.get_ticks_usec()
 	motion_state = Motion.start(session.panels, BOARD, 48, session.next_id, rng)
+	Bombs.prepare_supply(motion_state.pending,String(active_plan.get("bomb_spawn_kind","")))
 	session.next_id = motion_state.next_id
 	visual = motion_state.panels
 	falling = true
@@ -624,6 +629,7 @@ func release(pos: Vector2, pointer: int) -> void:
 	committed_us = Time.get_ticks_usec()
 	committed_frame = Engine.get_process_frames()
 	last_summary = UI.damage_line(result) + " · 회복 %d" % result.heal_effective if not sandbox else "피해 %d  ·  회복 %d (유효 %d / 초과 %d)" % [result.damage,result.heal_raw,result.heal_effective,result.heal_overflow]
+	if result.get("bomb_spawn_kind","")!="":last_summary+=" · "+("대형 폭탄 준비" if result.bomb_spawn_kind=="big_bomb" else "폭탄 준비")
 	if not result.spawn.is_empty(): last_summary += "  ·  " + ("강화핵 생성" if result.spawn.kind == "strong" else "물감핵 생성")
 	status = "연쇄!" if result.activated.size() > 0 else "팝!"
 

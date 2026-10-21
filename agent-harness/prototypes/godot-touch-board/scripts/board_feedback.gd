@@ -18,6 +18,10 @@ var particles: Array = []
 var rings: Array = []
 var _eligible: Dictionary = {}
 var _cores: Dictionary = {}
+var _core_kinds:Dictionary={}
+var bomb_count:=0
+var total_bombs:=0
+var _bombs:Dictionary={}
 var _consumed: Dictionary = {}
 var _active: bool = false
 var _finish_age: float = 0.0
@@ -43,8 +47,12 @@ func start(plan: Dictionary, panels: Array) -> void:
 	for id in plan.get("activated", []):
 		if _eligible.has(int(id)) and actual.get(int(id), "") in ["core", "strong"]:
 			_cores[int(id)] = true
+			_core_kinds[int(id)]=actual[int(id)]
+		elif _eligible.has(int(id)) and actual.get(int(id), "") in ["bomb","big_bomb"]:
+			_bombs[int(id)]=actual[int(id)]
 	expected_count = _eligible.size()
 	total_cores = _cores.size()
+	total_bombs=_bombs.size()
 	_active = expected_count > 0
 
 func consume(id: int, pos: Vector2, color: Color) -> bool:
@@ -57,7 +65,8 @@ func consume(id: int, pos: Vector2, color: Color) -> bool:
 		core_count += 1
 	visible = true
 	_pulse = 1.0
-	_burst(pos, color, is_core)
+	if _bombs.has(id):bomb_count+=1
+	_burst(pos, color, String(_bombs.get(id,_core_kinds.get(id,"normal"))))
 	return true
 
 func finish() -> void:
@@ -65,6 +74,7 @@ func finish() -> void:
 		return
 	count = expected_count
 	core_count = total_cores
+	bomb_count=total_bombs
 	finished = true
 	visible = count > 0
 	_finish_age = 0.0
@@ -72,6 +82,10 @@ func finish() -> void:
 
 func reset() -> void:
 	count = 0
+	bomb_count=0
+	total_bombs=0
+	_bombs.clear()
+	_core_kinds.clear()
 	core_count = 0
 	expected_count = 0
 	total_cores = 0
@@ -87,28 +101,32 @@ func reset() -> void:
 	particles.clear()
 	rings.clear()
 
-func _burst(pos: Vector2, color: Color, is_core: bool) -> void:
-	var strength := clampf(float(expected_count) / 24.0, 0.2, 1.0)
+func _burst(pos: Vector2, color: Color, kind:String) -> void:
+	var is_core:=kind in ["core","strong","bomb","big_bomb"]
+	var large:=kind in ["strong","big_bomb"]
+	var strength := clampf(float(count) / 20.0, 0.2, 1.0)
 	var amount := 0 if reduced_effects else 13 + int(strength * 7.0) + (12 if is_core else 0)
 	for i in range(amount):
 		if particles.size() >= PARTICLE_LIMIT:
 			particles.pop_front()
 		var angle := TAU * float(i) / float(amount) + _effects_rng.randf_range(-0.16, 0.16)
-		var speed := _effects_rng.randf_range(65.0, 190.0) * (1.3 if is_core else 1.0)
+		var speed := _effects_rng.randf_range(95.0, 245.0) * (1.65 if large else (1.3 if is_core else 1.0))
 		var tint := color.lerp(Color.WHITE, _effects_rng.randf_range(0.1, 0.7))
 		if i % 5 == 0:
 			tint = Color.from_hsv(fposmod(color.h + _effects_rng.randf_range(-0.14, 0.14), 1.0), 0.52, 1.0)
 		particles.append({"pos":pos, "velocity":Vector2.from_angle(angle)*speed,
 			"age":0.0, "life":_effects_rng.randf_range(0.28, 0.62),
-			"size":_effects_rng.randf_range(2.2, 5.4), "angle":angle,
+			"size":_effects_rng.randf_range(3.2, 7.2), "angle":angle,
 			"spin":_effects_rng.randf_range(-7.0, 7.0), "color":tint, "shard":i % 3 != 0})
 	_add_ring(pos, color.lightened(0.24), 0.0, 0.32, 48.0 + strength*15.0, false)
 	_add_ring(pos, Color.WHITE, 0.0, 0.11, 29.0, true)
 	if is_core:
+		var blast:float=164.0 if kind=="big_bomb" else 98.0
+		var bomb:bool=kind in ["bomb","big_bomb"]
 		# Three staggered concentric waves clearly separate core activation.
-		_add_ring(pos, color.lightened(0.35), 0.03, 0.43, 92.0, false, true)
-		_add_ring(pos, Color("ffe4a1"), 0.10, 0.48, 115.0, false, true)
-		_add_ring(pos, color.lightened(0.5), 0.19, 0.51, 132.0, false, true)
+		_add_ring(pos, color.lightened(0.35), 0.03, 0.43, (blast*.70 if bomb else (158.0 if large else 100.0)), false, true)
+		_add_ring(pos, Color("ffe4a1"), 0.10, 0.48, (blast*.85 if bomb else (182.0 if large else 124.0)), false, true)
+		_add_ring(pos, color.lightened(0.5), 0.19, 0.51, (blast if bomb else (208.0 if large else 142.0)), false, true)
 
 func _add_ring(pos: Vector2, color: Color, delay: float, life: float, radius: float, flash: bool, core_priority: bool = false) -> void:
 	if rings.size() >= RING_LIMIT:
@@ -155,12 +173,12 @@ func draw_effects(canvas: CanvasItem) -> void:
 		var t: float = clampf(ring.age / ring.life, 0.0, 1.0)
 		var tint: Color = ring.color
 		if ring.flash:
-			tint.a = 0.26 * (1.0-t) * (1.0-t)
+			tint.a = 0.34 * (1.0-t) * (1.0-t)
 			canvas.draw_circle(ring.pos, ring.radius*(0.65+0.35*t), tint)
 		else:
 			var radius: float = lerpf(10.0, ring.radius, 1.0-pow(1.0-t, 2.0))
-			tint.a = 0.62*(1.0-t)
-			canvas.draw_arc(ring.pos, radius, 0, TAU, 48, tint, 2.2*(1.0-t)+0.7, true)
+			tint.a = 0.85*(1.0-t)
+			canvas.draw_arc(ring.pos, radius, 0, TAU, 48, tint, 3.5*(1.0-t)+0.7, true)
 	for p in particles:
 		var t: float = p.age/p.life
 		var tint: Color = p.color
@@ -203,7 +221,7 @@ func draw_hud(view, canvas: CanvasItem) -> void:
 	var number_size := int((66.0 if count < 100 else 56.0) + _pulse*5.0)
 	_centered(canvas, display, Vector2(169,210), str(count), number_size, Color(1.0,1.0,1.0,alpha), 3)
 	_centered(canvas, font, Vector2(280,205), "패널", 20, Color(0.80,0.73,0.87,alpha))
-	if total_cores > 0:
-		_centered(canvas, font, Vector2(176,250), "핵 연쇄 · %d회 발동" % core_count, 21, mint)
+	if total_cores > 0 or total_bombs>0:
+		_centered(canvas, font, Vector2(176,250), "핵 %d · 폭탄 %d회" % [core_count,bomb_count] if total_bombs>0 else "핵 연쇄 · %d회 발동" % core_count, 21, mint)
 	else:
 		_centered(canvas, font, Vector2(176,250), "연결 소거", 19, Color(0.80,0.73,0.87,alpha))

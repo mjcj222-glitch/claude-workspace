@@ -82,6 +82,7 @@ static func draw(view) -> void:
 			lines=["직접 %d · 연쇄 %d"%[preview.direct.size(),preview.removed.size()-preview.direct.size()],preview_effect_line(preview)]
 			var effects := "회복 %d → %d · 초과 %d"%[preview.heal_raw,preview.heal_effective,preview.heal_overflow]
 			if not preview.spawn.is_empty(): effects += " · "+("강화핵 생성" if preview.spawn.kind=="strong" else "물감핵 생성")
+			if preview.get("bomb_spawn_kind","")!="":effects+=" · "+("대형 폭탄 준비" if preview.bomb_spawn_kind=="big_bomb" else "폭탄 준비")
 			if preview.get("ash_reserve",false): effects += " · 충전 예약"
 			view.draw_rect(Rect2(32,278,656,30),Color(0.035,0.015,0.065,0.90))
 			_line(view,Vector2(360,300),effects,22,640,Color("fff0d3"))
@@ -127,7 +128,7 @@ const NEXT_BATTLE = SUMMARY_CONTINUE
 const RESTART = SUMMARY_CONTINUE
 const RELIC_COPY = {
 	"pigment": {"name":"번짐 안료", "change":"스킬 변환 4개 → 5개", "lines":["선택한 패널을 포함해", "일반 패널을 최대 5개 변환해요."]},
-	"lens": {"name":"응축 렌즈", "change":"물감핵 생성 6/12개 → 5/11개", "lines":["직접 연결한 일반 공격 패널로", "물감핵을 더 빨리 만들어요."]},
+	"lens": {"name":"응축 렌즈", "change":"핵 6/12 → 5/11 · 폭탄 대형화", "lines":["직접 연결 핵 기준 감소.", "강화핵 발동 뒤 대형 폭탄 준비."]},
 	"ash": {"name":"잿빛 보석", "change":"일반 공격 6개 직접 연결 → 예약", "lines":["다음 스킬 사용 후 충전이 3회 → 2회.", "한 번만 적용되며 예약은 쌓이지 않아요."]}
 }
 

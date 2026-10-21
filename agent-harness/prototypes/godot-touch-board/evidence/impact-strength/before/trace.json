@@ -1,0 +1,5106 @@
+{
+  "clears": 7,
+  "errors": [],
+  "final": {
+    "actions": 7,
+    "ash": false,
+    "charge": 1,
+    "enemy_hp": 14,
+    "gold": 1,
+    "hp": 22,
+    "intent": {
+      "incoming_damage": 6,
+      "intent": "plain",
+      "intent_serial": 5,
+      "mitigation_success": false,
+      "slam_normal_required": 8,
+      "slam_weak_required": 2,
+      "weakness_color": 2
+    },
+    "node": "elite",
+    "panels": [
+      {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 5,
+        "from": "(480.973, 253.0)",
+        "id": 74,
+        "kind": "normal",
+        "pos": "(480.973, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 95,
+        "from": "(638.5116, 177.0)",
+        "id": 76,
+        "kind": "normal",
+        "pos": "(638.5116, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 42,
+        "from": "(122.7122, 139.0)",
+        "id": 77,
+        "kind": "normal",
+        "pos": "(122.7122, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 1,
+        "from": "(406.973, 253.0)",
+        "id": 78,
+        "kind": "heart",
+        "pos": "(406.973, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 2,
+        "contact_count": 9,
+        "from": "(332.973, 215.0)",
+        "id": 79,
+        "kind": "normal",
+        "pos": "(332.973, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 3,
+        "contact_count": 34,
+        "from": "(207.7925, 177.0)",
+        "id": 80,
+        "kind": "normal",
+        "pos": "(207.7925, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 2984,
+        "from": "(443.973, 215.0)",
+        "id": 87,
+        "kind": "normal",
+        "pos": "(443.973, 718.9141)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 2609,
+        "from": "(653.0, 215.0)",
+        "id": 91,
+        "kind": "heart",
+        "pos": "(653.0, 710.4314)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 3976,
+        "from": "(485.7423, 177.0)",
+        "id": 92,
+        "kind": "heart",
+        "pos": "(522.581, 721.7388)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 0,
+        "contact_count": 2239,
+        "from": "(559.7423, 139.0)",
+        "id": 93,
+        "kind": "normal",
+        "pos": "(564.0926, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 3774,
+        "from": "(406.973, 253.0)",
+        "id": 94,
+        "kind": "heart",
+        "pos": "(369.9721, 718.8085)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 28,
+        "from": "(264.8426, 177.0)",
+        "id": 96,
+        "kind": "heart",
+        "pos": "(270.3832, 743.5215)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 2,
+        "contact_count": 10840,
+        "from": "(611.2307, 215.0)",
+        "id": 99,
+        "kind": "normal",
+        "pos": "(584.8293, 681.7294)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 4,
+        "contact_count": 17884,
+        "from": "(448.7423, 177.0)",
+        "id": 100,
+        "kind": "heart",
+        "pos": "(444.7779, 644.9374)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 14466,
+        "from": "(522.7423, 139.0)",
+        "id": 101,
+        "kind": "normal",
+        "pos": "(519.054, 647.8226)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 93,
+        "from": "(129.5903, 253.0)",
+        "id": 102,
+        "kind": "heart",
+        "pos": "(165.2528, 722.4492)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 2,
+        "contact_count": 7217,
+        "from": "(653.0, 253.0)",
+        "id": 106,
+        "kind": "normal",
+        "pos": "(653.0, 636.4313)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 0,
+        "contact_count": 13096,
+        "from": "(574.2307, 215.0)",
+        "id": 107,
+        "kind": "normal",
+        "pos": "(584.7973, 607.739)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 35,
+        "from": "(67.0, 177.0)",
+        "id": 108,
+        "kind": "normal",
+        "pos": "(67.0, 734.2947)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 3,
+        "contact_count": 14784,
+        "from": "(485.7423, 139.0)",
+        "id": 109,
+        "kind": "normal",
+        "pos": "(484.3854, 582.4506)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 1,
+        "contact_count": 14547,
+        "from": "(423.1521, 139.0)",
+        "id": 113,
+        "kind": "normal",
+        "pos": "(370.7804, 644.8165)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 3,
+        "contact_count": 6774,
+        "from": "(616.0, 253.0)",
+        "id": 114,
+        "kind": "normal",
+        "pos": "(652.5117, 562.4319)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 4,
+        "contact_count": 15958,
+        "from": "(537.2307, 215.0)",
+        "id": 115,
+        "kind": "heart",
+        "pos": "(547.5038, 543.8281)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 3,
+        "contact_count": 12494,
+        "from": "(474.6405, 215.0)",
+        "id": 119,
+        "kind": "normal",
+        "pos": "(407.9705, 580.7414)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 1,
+        "contact_count": 11610,
+        "from": "(380.6119, 177.0)",
+        "id": 120,
+        "kind": "normal",
+        "pos": "(314.7025, 596.5391)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 11046,
+        "from": "(579.0, 139.0)",
+        "id": 121,
+        "kind": "normal",
+        "pos": "(579.85, 477.2775)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 7610,
+        "id": 124,
+        "kind": "heart",
+        "pos": "(653.0, 488.4334)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 349,
+        "id": 126,
+        "kind": "heart",
+        "pos": "(67.0, 660.2941)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 4,
+        "contact_count": 8780,
+        "id": 127,
+        "kind": "heart",
+        "pos": "(482.4935, 508.4799)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 4,
+        "contact_count": 6887,
+        "id": 128,
+        "kind": "heart",
+        "pos": "(351.8316, 532.5271)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 102,
+        "id": 129,
+        "kind": "heart",
+        "pos": "(140.6067, 652.6732)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 0,
+        "contact_count": 133,
+        "id": 130,
+        "kind": "normal",
+        "pos": "(227.8431, 682.97)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 1,
+        "contact_count": 3000,
+        "id": 131,
+        "kind": "normal",
+        "pos": "(251.8563, 557.4728)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 4089,
+        "id": 132,
+        "kind": "normal",
+        "pos": "(411.2639, 488.4345)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 3,
+        "contact_count": 737,
+        "id": 133,
+        "kind": "normal",
+        "pos": "(97.20387, 592.7382)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 38,
+        "id": 134,
+        "kind": "heart",
+        "pos": "(652.8502, 414.4326)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 3321,
+        "id": 135,
+        "kind": "normal",
+        "pos": "(514.8403, 441.926)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 0,
+        "contact_count": 980,
+        "id": 136,
+        "kind": "normal",
+        "pos": "(203.1851, 613.2068)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 4,
+        "contact_count": 2725,
+        "id": 137,
+        "kind": "heart",
+        "pos": "(346.295, 453.0116)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 2164,
+        "id": 138,
+        "kind": "normal",
+        "pos": "(282.1926, 489.9808)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 3,
+        "contact_count": 386,
+        "id": 139,
+        "kind": "normal",
+        "pos": "(66.99966, 525.1818)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 0,
+        "contact_count": 1480,
+        "id": 140,
+        "kind": "normal",
+        "pos": "(443.6073, 421.8701)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 784,
+        "id": 141,
+        "kind": "normal",
+        "pos": "(578.9952, 403.2814)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 2,
+        "contact_count": 184,
+        "id": 142,
+        "kind": "normal",
+        "pos": "(159.8917, 553.1915)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 4,
+        "contact_count": 658,
+        "id": 143,
+        "kind": "heart",
+        "pos": "(374.821, 384.7297)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 3,
+        "contact_count": 445,
+        "id": 144,
+        "kind": "normal",
+        "pos": "(232.0688, 435.5404)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 96,
+        "id": 145,
+        "kind": "normal",
+        "pos": "(67.02573, 451.1816)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      },
+      {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 340,
+        "id": 146,
+        "kind": "normal",
+        "pos": "(501.5747, 369.1237)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    ],
+    "phase": "ready",
+    "relics": [
+      "pigment",
+      "lens"
+    ],
+    "requirement": 3,
+    "rng": -6440045493221013034
+  },
+  "frames": [],
+  "method": "Preloaded normal Noa area inputs; no search or fixture injection. No screenshots/files inside benchmark. Fixedfps capture separately labelled.",
+  "movie": true,
+  "rows": [
+    {
+      "clear": 1,
+      "event": "resolved",
+      "frames": 38,
+      "plan": {
+        "activated": [
+          38
+        ],
+        "ash_reserve": false,
+        "base_damage": 7,
+        "combat_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 2,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "converted": {
+          "29": 0,
+          "30": 0,
+          "37": 0,
+          "45": 0,
+          "46": 0
+        },
+        "damage": 10,
+        "direct": [
+          38
+        ],
+        "direct_normals": 0,
+        "effective_colors": {
+          "22": 0,
+          "29": 0,
+          "30": 0,
+          "35": 0,
+          "37": 0,
+          "45": 0,
+          "46": 0
+        },
+        "heal_effective": 0,
+        "heal_overflow": 0,
+        "heal_raw": 0,
+        "mitigates_intent": false,
+        "mode": "clear",
+        "normal_count": 7,
+        "removed": [
+          38,
+          29,
+          30,
+          37,
+          45,
+          46,
+          22,
+          35
+        ],
+        "sequence": [
+          38,
+          29,
+          30,
+          37,
+          45,
+          46,
+          22,
+          35
+        ],
+        "spawn": {
+
+        },
+        "valid": true,
+        "weak_bonus": 3,
+        "weak_count": 7
+      },
+      "state": {
+        "actions": 1,
+        "ash": false,
+        "charge": 1,
+        "enemy_hp": 14,
+        "gold": 0,
+        "hp": 30,
+        "intent": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 2,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "node": "entry",
+        "panels": [
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(191.3438, 253.0)",
+            "id": 1,
+            "kind": "heart",
+            "pos": "(191.3438, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(322.1989, 215.0)",
+            "id": 2,
+            "kind": "heart",
+            "pos": "(322.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(396.1989, 177.0)",
+            "id": 3,
+            "kind": "normal",
+            "pos": "(396.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(470.1989, 139.0)",
+            "id": 4,
+            "kind": "normal",
+            "pos": "(470.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(544.1989, 253.0)",
+            "id": 5,
+            "kind": "normal",
+            "pos": "(544.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(618.1989, 215.0)",
+            "id": 6,
+            "kind": "heart",
+            "pos": "(618.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(117.3438, 177.0)",
+            "id": 7,
+            "kind": "normal",
+            "pos": "(117.3438, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(256.7713, 139.0)",
+            "id": 8,
+            "kind": "heart",
+            "pos": "(256.7713, 748.4279)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(67.0, 253.0)",
+            "id": 9,
+            "kind": "normal",
+            "pos": "(67.0, 728.7643)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(359.1989, 215.0)",
+            "id": 10,
+            "kind": "normal",
+            "pos": "(359.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(154.3438, 177.0)",
+            "id": 11,
+            "kind": "normal",
+            "pos": "(154.3438, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(433.1989, 139.0)",
+            "id": 12,
+            "kind": "heart",
+            "pos": "(433.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(507.1989, 253.0)",
+            "id": 13,
+            "kind": "normal",
+            "pos": "(507.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(581.1989, 215.0)",
+            "id": 14,
+            "kind": "normal",
+            "pos": "(581.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 4,
+            "from": "(653.0, 177.0)",
+            "id": 15,
+            "kind": "normal",
+            "pos": "(653.0, 701.0087)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(219.7713, 139.0)",
+            "id": 16,
+            "kind": "normal",
+            "pos": "(219.7713, 684.342)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(293.7713, 253.0)",
+            "id": 17,
+            "kind": "heart",
+            "pos": "(293.7713, 684.342)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(104.0, 215.0)",
+            "id": 18,
+            "kind": "normal",
+            "pos": "(104.0, 664.6785)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 3,
+            "from": "(544.1989, 177.0)",
+            "id": 19,
+            "kind": "normal",
+            "pos": "(544.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(396.1989, 139.0)",
+            "id": 20,
+            "kind": "normal",
+            "pos": "(396.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(470.1989, 253.0)",
+            "id": 21,
+            "kind": "normal",
+            "pos": "(470.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(169.4276, 177.0)",
+            "id": 23,
+            "kind": "normal",
+            "pos": "(169.4276, 630.1063)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(330.7713, 139.0)",
+            "id": 24,
+            "kind": "heart",
+            "pos": "(330.7713, 620.2561)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(256.7713, 253.0)",
+            "id": 25,
+            "kind": "normal",
+            "pos": "(256.7713, 620.2561)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(67.0, 215.0)",
+            "id": 26,
+            "kind": "heart",
+            "pos": "(67.0, 600.5926)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1,
+            "from": "(433.1989, 177.0)",
+            "id": 27,
+            "kind": "heart",
+            "pos": "(433.1989, 590.7424)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 16,
+            "from": "(507.1989, 139.0)",
+            "id": 28,
+            "kind": "normal",
+            "pos": "(507.1989, 590.7424)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(206.4276, 177.0)",
+            "id": 31,
+            "kind": "normal",
+            "pos": "(206.4276, 566.0204)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(132.4276, 139.0)",
+            "id": 32,
+            "kind": "normal",
+            "pos": "(132.4276, 566.0204)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(293.7713, 253.0)",
+            "id": 33,
+            "kind": "normal",
+            "pos": "(293.7713, 556.1702)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 34,
+            "from": "(367.7713, 215.0)",
+            "id": 34,
+            "kind": "normal",
+            "pos": "(367.7713, 556.1702)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(69.77343, 139.0)",
+            "id": 36,
+            "kind": "normal",
+            "pos": "(69.77343, 526.6446)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(243.4276, 177.0)",
+            "id": 39,
+            "kind": "heart",
+            "pos": "(243.4276, 501.9346)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(169.4276, 139.0)",
+            "id": 40,
+            "kind": "normal",
+            "pos": "(169.4276, 501.9346)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 78,
+            "from": "(404.7713, 253.0)",
+            "id": 41,
+            "kind": "normal",
+            "pos": "(430.5014, 516.7905)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 3,
+            "from": "(330.7713, 215.0)",
+            "id": 42,
+            "kind": "normal",
+            "pos": "(330.7713, 492.0844)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 14,
+            "from": "(106.7734, 177.0)",
+            "id": 43,
+            "kind": "normal",
+            "pos": "(106.7734, 462.5587)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 73,
+            "from": "(490.593, 139.0)",
+            "id": 44,
+            "kind": "normal",
+            "pos": "(506.9682, 516.7418)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 27,
+            "from": "(206.4276, 177.0)",
+            "id": 47,
+            "kind": "heart",
+            "pos": "(206.4276, 437.8487)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 12,
+            "from": "(280.4276, 139.0)",
+            "id": 48,
+            "kind": "normal",
+            "pos": "(280.4276, 437.8487)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 24,
+            "id": 49,
+            "kind": "normal",
+            "pos": "(615.9998, 636.9218)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 20,
+            "id": 50,
+            "kind": "normal",
+            "pos": "(393.4352, 452.7221)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 48,
+            "id": 51,
+            "kind": "normal",
+            "pos": "(578.9992, 572.8351)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 7,
+            "id": 52,
+            "kind": "normal",
+            "pos": "(66.98945, 400.1617)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 14,
+            "id": 53,
+            "kind": "normal",
+            "pos": "(143.7873, 398.4489)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 36,
+            "id": 54,
+            "kind": "normal",
+            "pos": "(243.4379, 373.7557)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 22,
+            "id": 55,
+            "kind": "normal",
+            "pos": "(653.0186, 572.8457)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 34,
+            "id": 56,
+            "kind": "normal",
+            "pos": "(468.7534, 453.3716)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          }
+        ],
+        "phase": "ready",
+        "relics": [],
+        "requirement": 3,
+        "rng": 5955007520805501091
+      },
+      "wall_ms": 1578.281
+    },
+    {
+      "clear": 2,
+      "event": "resolved",
+      "frames": 27,
+      "plan": {
+        "activated": [],
+        "ash_reserve": false,
+        "base_damage": 5,
+        "combat_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 2,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "converted": {
+
+        },
+        "damage": 7,
+        "direct": [
+          16,
+          25,
+          31,
+          40,
+          43
+        ],
+        "direct_normals": 5,
+        "effective_colors": {
+          "16": 0,
+          "25": 0,
+          "31": 0,
+          "40": 0,
+          "43": 0
+        },
+        "heal_effective": 0,
+        "heal_overflow": 0,
+        "heal_raw": 0,
+        "mitigates_intent": false,
+        "mode": "clear",
+        "normal_count": 5,
+        "removed": [
+          16,
+          25,
+          31,
+          40,
+          43
+        ],
+        "sequence": [
+          16,
+          25,
+          31,
+          40,
+          43
+        ],
+        "spawn": {
+
+        },
+        "valid": true,
+        "weak_bonus": 2,
+        "weak_count": 5
+      },
+      "state": {
+        "actions": 2,
+        "ash": false,
+        "charge": 2,
+        "enemy_hp": 7,
+        "gold": 0,
+        "hp": 30,
+        "intent": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 2,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "node": "entry",
+        "panels": [
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(191.3438, 253.0)",
+            "id": 1,
+            "kind": "heart",
+            "pos": "(191.3438, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(322.1989, 215.0)",
+            "id": 2,
+            "kind": "heart",
+            "pos": "(322.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(396.1989, 177.0)",
+            "id": 3,
+            "kind": "normal",
+            "pos": "(396.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(470.1989, 139.0)",
+            "id": 4,
+            "kind": "normal",
+            "pos": "(470.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(544.1989, 253.0)",
+            "id": 5,
+            "kind": "normal",
+            "pos": "(544.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(618.1989, 215.0)",
+            "id": 6,
+            "kind": "heart",
+            "pos": "(618.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(117.3438, 177.0)",
+            "id": 7,
+            "kind": "normal",
+            "pos": "(117.3438, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1,
+            "from": "(256.7713, 139.0)",
+            "id": 8,
+            "kind": "heart",
+            "pos": "(256.7713, 748.4279)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(67.0, 253.0)",
+            "id": 9,
+            "kind": "normal",
+            "pos": "(67.0, 728.7643)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(359.1989, 215.0)",
+            "id": 10,
+            "kind": "normal",
+            "pos": "(359.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 43,
+            "from": "(154.3438, 177.0)",
+            "id": 11,
+            "kind": "normal",
+            "pos": "(154.3438, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(433.1989, 139.0)",
+            "id": 12,
+            "kind": "heart",
+            "pos": "(433.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(507.1989, 253.0)",
+            "id": 13,
+            "kind": "normal",
+            "pos": "(507.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(581.1989, 215.0)",
+            "id": 14,
+            "kind": "normal",
+            "pos": "(581.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 4,
+            "from": "(653.0, 177.0)",
+            "id": 15,
+            "kind": "normal",
+            "pos": "(653.0, 701.0087)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 4,
+            "from": "(293.7713, 253.0)",
+            "id": 17,
+            "kind": "heart",
+            "pos": "(293.7713, 684.342)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 25,
+            "from": "(104.0, 215.0)",
+            "id": 18,
+            "kind": "normal",
+            "pos": "(104.0, 664.6785)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 3,
+            "from": "(544.1989, 177.0)",
+            "id": 19,
+            "kind": "normal",
+            "pos": "(544.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(396.1989, 139.0)",
+            "id": 20,
+            "kind": "normal",
+            "pos": "(396.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(470.1989, 253.0)",
+            "id": 21,
+            "kind": "normal",
+            "pos": "(470.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 88,
+            "from": "(169.4276, 177.0)",
+            "id": 23,
+            "kind": "normal",
+            "pos": "(219.7703, 684.3401)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1105,
+            "from": "(330.7713, 139.0)",
+            "id": 24,
+            "kind": "heart",
+            "pos": "(330.7713, 620.2561)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 804,
+            "from": "(67.0, 215.0)",
+            "id": 26,
+            "kind": "heart",
+            "pos": "(67.0, 600.5926)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1,
+            "from": "(433.1989, 177.0)",
+            "id": 27,
+            "kind": "heart",
+            "pos": "(433.1989, 590.7424)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 16,
+            "from": "(507.1989, 139.0)",
+            "id": 28,
+            "kind": "normal",
+            "pos": "(507.1989, 590.7424)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 687,
+            "from": "(132.4276, 139.0)",
+            "id": 32,
+            "kind": "normal",
+            "pos": "(169.4266, 630.1031)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 3018,
+            "from": "(293.7713, 253.0)",
+            "id": 33,
+            "kind": "normal",
+            "pos": "(268.2833, 580.6519)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 734,
+            "from": "(367.7713, 215.0)",
+            "id": 34,
+            "kind": "normal",
+            "pos": "(367.7713, 556.1702)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 1944,
+            "from": "(69.77343, 139.0)",
+            "id": 36,
+            "kind": "normal",
+            "pos": "(123.3773, 552.6742)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 3202,
+            "from": "(243.4276, 177.0)",
+            "id": 39,
+            "kind": "heart",
+            "pos": "(196.8573, 561.3753)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 850,
+            "from": "(404.7713, 253.0)",
+            "id": 41,
+            "kind": "normal",
+            "pos": "(430.5014, 516.7905)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 3660,
+            "from": "(330.7713, 215.0)",
+            "id": 42,
+            "kind": "normal",
+            "pos": "(305.235, 516.5408)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 214,
+            "from": "(490.593, 139.0)",
+            "id": 44,
+            "kind": "normal",
+            "pos": "(506.9682, 516.7418)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 3755,
+            "from": "(206.4276, 177.0)",
+            "id": 47,
+            "kind": "heart",
+            "pos": "(199.8477, 487.4368)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 3384,
+            "from": "(280.4276, 139.0)",
+            "id": 48,
+            "kind": "normal",
+            "pos": "(265.8175, 453.9118)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 24,
+            "id": 49,
+            "kind": "normal",
+            "pos": "(615.9998, 636.9218)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 3035,
+            "id": 50,
+            "kind": "normal",
+            "pos": "(367.9473, 477.2579)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 50,
+            "id": 51,
+            "kind": "normal",
+            "pos": "(578.9992, 572.8351)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 1207,
+            "id": 52,
+            "kind": "normal",
+            "pos": "(66.99284, 504.7477)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 2086,
+            "id": 53,
+            "kind": "normal",
+            "pos": "(130.6982, 461.0863)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 1254,
+            "id": 54,
+            "kind": "normal",
+            "pos": "(199.2191, 413.4384)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 112,
+            "id": 55,
+            "kind": "normal",
+            "pos": "(653.0186, 572.8457)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 54,
+            "id": 56,
+            "kind": "normal",
+            "pos": "(468.7534, 453.3716)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 230,
+            "id": 57,
+            "kind": "normal",
+            "pos": "(652.6029, 498.8465)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 282,
+            "id": 58,
+            "kind": "heart",
+            "pos": "(578.6043, 498.2478)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 1292,
+            "id": 59,
+            "kind": "normal",
+            "pos": "(328.5305, 414.6277)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 554,
+            "id": 60,
+            "kind": "normal",
+            "pos": "(406.1628, 413.8882)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 510,
+            "id": 61,
+            "kind": "normal",
+            "pos": "(66.99893, 423.4226)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          }
+        ],
+        "phase": "ready",
+        "relics": [],
+        "requirement": 3,
+        "rng": 5896841339730309526
+      },
+      "wall_ms": 1135.762
+    },
+    {
+      "clear": 3,
+      "event": "resolved",
+      "frames": 40,
+      "plan": {
+        "activated": [],
+        "ash_reserve": false,
+        "base_damage": 3,
+        "combat_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 2,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "converted": {
+
+        },
+        "damage": 3,
+        "direct": [
+          7,
+          9,
+          18
+        ],
+        "direct_normals": 3,
+        "effective_colors": {
+          "7": 3,
+          "9": 3,
+          "18": 3
+        },
+        "heal_effective": 0,
+        "heal_overflow": 0,
+        "heal_raw": 0,
+        "mitigates_intent": false,
+        "mode": "clear",
+        "normal_count": 3,
+        "removed": [
+          7,
+          9,
+          18
+        ],
+        "sequence": [
+          7,
+          9,
+          18
+        ],
+        "spawn": {
+
+        },
+        "valid": true,
+        "weak_bonus": 0,
+        "weak_count": 0
+      },
+      "state": {
+        "actions": 3,
+        "ash": false,
+        "charge": 3,
+        "enemy_hp": 4,
+        "gold": 0,
+        "hp": 26,
+        "intent": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 3,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "node": "entry",
+        "panels": [
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 19,
+            "from": "(191.3438, 253.0)",
+            "id": 1,
+            "kind": "heart",
+            "pos": "(191.3438, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(322.1989, 215.0)",
+            "id": 2,
+            "kind": "heart",
+            "pos": "(322.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(396.1989, 177.0)",
+            "id": 3,
+            "kind": "normal",
+            "pos": "(396.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(470.1989, 139.0)",
+            "id": 4,
+            "kind": "normal",
+            "pos": "(470.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(544.1989, 253.0)",
+            "id": 5,
+            "kind": "normal",
+            "pos": "(544.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(618.1989, 215.0)",
+            "id": 6,
+            "kind": "heart",
+            "pos": "(618.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 898,
+            "from": "(256.7713, 139.0)",
+            "id": 8,
+            "kind": "heart",
+            "pos": "(256.7713, 748.4279)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(359.1989, 215.0)",
+            "id": 10,
+            "kind": "normal",
+            "pos": "(359.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 219,
+            "from": "(154.3438, 177.0)",
+            "id": 11,
+            "kind": "normal",
+            "pos": "(110.9036, 783.0021)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(433.1989, 139.0)",
+            "id": 12,
+            "kind": "heart",
+            "pos": "(433.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(507.1989, 253.0)",
+            "id": 13,
+            "kind": "normal",
+            "pos": "(507.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(581.1989, 215.0)",
+            "id": 14,
+            "kind": "normal",
+            "pos": "(581.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 4,
+            "from": "(653.0, 177.0)",
+            "id": 15,
+            "kind": "normal",
+            "pos": "(653.0, 701.0087)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 570,
+            "from": "(293.7713, 253.0)",
+            "id": 17,
+            "kind": "heart",
+            "pos": "(293.7713, 684.342)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 3,
+            "from": "(544.1989, 177.0)",
+            "id": 19,
+            "kind": "normal",
+            "pos": "(544.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(396.1989, 139.0)",
+            "id": 20,
+            "kind": "normal",
+            "pos": "(396.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(470.1989, 253.0)",
+            "id": 21,
+            "kind": "normal",
+            "pos": "(470.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 2685,
+            "from": "(169.4276, 177.0)",
+            "id": 23,
+            "kind": "normal",
+            "pos": "(211.2859, 690.073)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1964,
+            "from": "(330.7713, 139.0)",
+            "id": 24,
+            "kind": "heart",
+            "pos": "(330.7713, 620.2561)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1331,
+            "from": "(67.0, 215.0)",
+            "id": 26,
+            "kind": "heart",
+            "pos": "(66.99847, 723.4329)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1,
+            "from": "(433.1989, 177.0)",
+            "id": 27,
+            "kind": "heart",
+            "pos": "(433.1989, 590.7424)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 16,
+            "from": "(507.1989, 139.0)",
+            "id": 28,
+            "kind": "normal",
+            "pos": "(507.1989, 590.7424)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 2925,
+            "from": "(132.4276, 139.0)",
+            "id": 32,
+            "kind": "normal",
+            "pos": "(141.934, 715.8447)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 5853,
+            "from": "(293.7713, 253.0)",
+            "id": 33,
+            "kind": "normal",
+            "pos": "(248.2719, 625.9911)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 1487,
+            "from": "(367.7713, 215.0)",
+            "id": 34,
+            "kind": "normal",
+            "pos": "(367.7713, 556.1702)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 4479,
+            "from": "(69.77343, 139.0)",
+            "id": 36,
+            "kind": "normal",
+            "pos": "(98.06173, 656.2695)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 5701,
+            "from": "(243.4276, 177.0)",
+            "id": 39,
+            "kind": "heart",
+            "pos": "(167.4268, 630.47)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 984,
+            "from": "(404.7713, 253.0)",
+            "id": 41,
+            "kind": "normal",
+            "pos": "(430.5014, 516.7905)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 6223,
+            "from": "(330.7713, 215.0)",
+            "id": 42,
+            "kind": "normal",
+            "pos": "(285.2686, 561.8978)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 214,
+            "from": "(490.593, 139.0)",
+            "id": 44,
+            "kind": "normal",
+            "pos": "(506.9682, 516.7418)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 6733,
+            "from": "(206.4276, 177.0)",
+            "id": 47,
+            "kind": "heart",
+            "pos": "(210.3369, 562.4623)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 5953,
+            "from": "(280.4276, 139.0)",
+            "id": 48,
+            "kind": "normal",
+            "pos": "(253.054, 495.278)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 24,
+            "id": 49,
+            "kind": "normal",
+            "pos": "(615.9998, 636.9218)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 5152,
+            "id": 50,
+            "kind": "normal",
+            "pos": "(341.8289, 486.8665)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 50,
+            "id": 51,
+            "kind": "normal",
+            "pos": "(578.9992, 572.8351)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 3335,
+            "id": 52,
+            "kind": "normal",
+            "pos": "(66.9867, 589.1158)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 3894,
+            "id": 53,
+            "kind": "normal",
+            "pos": "(136.3456, 563.3115)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 3048,
+            "id": 54,
+            "kind": "normal",
+            "pos": "(179.0563, 495.3998)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 112,
+            "id": 55,
+            "kind": "normal",
+            "pos": "(653.0186, 572.8457)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 491,
+            "id": 56,
+            "kind": "normal",
+            "pos": "(468.7534, 453.3716)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 246,
+            "id": 57,
+            "kind": "normal",
+            "pos": "(652.6029, 498.8465)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 298,
+            "id": 58,
+            "kind": "heart",
+            "pos": "(578.6043, 498.2478)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 2769,
+            "id": 59,
+            "kind": "normal",
+            "pos": "(291.863, 432.27)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 1617,
+            "id": 60,
+            "kind": "normal",
+            "pos": "(396.5703, 437.0717)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 1725,
+            "id": 61,
+            "kind": "normal",
+            "pos": "(66.99747, 515.1178)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 36,
+            "id": 62,
+            "kind": "normal",
+            "pos": "(616.0452, 434.4173)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 23,
+            "id": 63,
+            "kind": "normal",
+            "pos": "(540.4033, 434.8693)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 929,
+            "id": 64,
+            "kind": "normal",
+            "pos": "(114.8261, 458.6504)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          }
+        ],
+        "phase": "ready",
+        "relics": [],
+        "requirement": 3,
+        "rng": 5404238647253944075
+      },
+      "wall_ms": 1536.043
+    },
+    {
+      "clear": 4,
+      "event": "resolved",
+      "frames": 39,
+      "plan": {
+        "activated": [
+          19
+        ],
+        "ash_reserve": false,
+        "base_damage": 8,
+        "combat_context": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 3,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "converted": {
+          "13": 1,
+          "14": 1,
+          "21": 1,
+          "49": 1
+        },
+        "damage": 8,
+        "direct": [
+          19,
+          28,
+          44
+        ],
+        "direct_normals": 2,
+        "effective_colors": {
+          "13": 1,
+          "14": 1,
+          "21": 1,
+          "28": 1,
+          "44": 1,
+          "49": 1,
+          "55": 1,
+          "57": 1
+        },
+        "heal_effective": 0,
+        "heal_overflow": 0,
+        "heal_raw": 0,
+        "mitigates_intent": false,
+        "mode": "clear",
+        "normal_count": 8,
+        "removed": [
+          19,
+          13,
+          14,
+          21,
+          28,
+          49,
+          44,
+          55,
+          57
+        ],
+        "sequence": [
+          19,
+          13,
+          14,
+          21,
+          28,
+          49,
+          44,
+          55,
+          57
+        ],
+        "spawn": {
+
+        },
+        "valid": true,
+        "weak_bonus": 0,
+        "weak_count": 0
+      },
+      "state": {
+        "actions": 4,
+        "ash": false,
+        "charge": 1,
+        "enemy_hp": 0,
+        "gold": 4,
+        "hp": 26,
+        "intent": {
+          "incoming_damage": 4,
+          "intent": "plain",
+          "intent_serial": 3,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 0
+        },
+        "node": "entry",
+        "panels": [
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 21,
+            "from": "(191.3438, 253.0)",
+            "id": 1,
+            "kind": "heart",
+            "pos": "(191.3438, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(322.1989, 215.0)",
+            "id": 2,
+            "kind": "heart",
+            "pos": "(322.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(396.1989, 177.0)",
+            "id": 3,
+            "kind": "normal",
+            "pos": "(396.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(470.1989, 139.0)",
+            "id": 4,
+            "kind": "normal",
+            "pos": "(470.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 5031,
+            "from": "(544.1989, 253.0)",
+            "id": 5,
+            "kind": "normal",
+            "pos": "(544.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 6,
+            "from": "(618.1989, 215.0)",
+            "id": 6,
+            "kind": "heart",
+            "pos": "(618.1989, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 4691,
+            "from": "(256.7713, 139.0)",
+            "id": 8,
+            "kind": "heart",
+            "pos": "(256.7713, 748.4279)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(359.1989, 215.0)",
+            "id": 10,
+            "kind": "normal",
+            "pos": "(359.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 3909,
+            "from": "(154.3438, 177.0)",
+            "id": 11,
+            "kind": "normal",
+            "pos": "(110.9036, 783.0021)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 4879,
+            "from": "(433.1989, 139.0)",
+            "id": 12,
+            "kind": "heart",
+            "pos": "(433.1989, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 8209,
+            "from": "(653.0, 177.0)",
+            "id": 15,
+            "kind": "normal",
+            "pos": "(653.0, 717.6939)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 3464,
+            "from": "(293.7713, 253.0)",
+            "id": 17,
+            "kind": "heart",
+            "pos": "(293.7713, 684.342)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 3815,
+            "from": "(396.1989, 139.0)",
+            "id": 20,
+            "kind": "normal",
+            "pos": "(396.1989, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 17725,
+            "from": "(169.4276, 177.0)",
+            "id": 23,
+            "kind": "normal",
+            "pos": "(216.5185, 686.3328)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 2992,
+            "from": "(330.7713, 139.0)",
+            "id": 24,
+            "kind": "heart",
+            "pos": "(330.7713, 620.2561)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 5004,
+            "from": "(67.0, 215.0)",
+            "id": 26,
+            "kind": "heart",
+            "pos": "(66.99847, 723.4329)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 17347,
+            "from": "(433.1989, 177.0)",
+            "id": 27,
+            "kind": "heart",
+            "pos": "(505.9927, 705.7233)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 13984,
+            "from": "(132.4276, 139.0)",
+            "id": 32,
+            "kind": "normal",
+            "pos": "(151.0573, 720.8432)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 19459,
+            "from": "(293.7713, 253.0)",
+            "id": 33,
+            "kind": "normal",
+            "pos": "(253.51, 622.2419)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 2692,
+            "from": "(367.7713, 215.0)",
+            "id": 34,
+            "kind": "normal",
+            "pos": "(393.3655, 580.7839)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 18798,
+            "from": "(69.77343, 139.0)",
+            "id": 36,
+            "kind": "normal",
+            "pos": "(107.1526, 661.2744)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 18764,
+            "from": "(243.4276, 177.0)",
+            "id": 39,
+            "kind": "heart",
+            "pos": "(172.6134, 626.7643)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 9951,
+            "from": "(404.7713, 253.0)",
+            "id": 41,
+            "kind": "normal",
+            "pos": "(469.0139, 641.637)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 17212,
+            "from": "(330.7713, 215.0)",
+            "id": 42,
+            "kind": "normal",
+            "pos": "(290.3651, 558.0724)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 19725,
+            "from": "(206.4276, 177.0)",
+            "id": 47,
+            "kind": "heart",
+            "pos": "(209.6047, 562.673)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 19507,
+            "from": "(280.4276, 139.0)",
+            "id": 48,
+            "kind": "normal",
+            "pos": "(246.4602, 498.5032)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 15404,
+            "id": 50,
+            "kind": "normal",
+            "pos": "(353.057, 518.7255)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 17018,
+            "id": 51,
+            "kind": "normal",
+            "pos": "(579.0191, 717.7074)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 14477,
+            "id": 52,
+            "kind": "normal",
+            "pos": "(67.0, 599.1143)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 13301,
+            "id": 53,
+            "kind": "normal",
+            "pos": "(132.4609, 564.6049)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 14369,
+            "id": 54,
+            "kind": "normal",
+            "pos": "(169.4518, 500.5138)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 7313,
+            "id": 56,
+            "kind": "normal",
+            "pos": "(478.8055, 550.9059)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 12516,
+            "id": 58,
+            "kind": "heart",
+            "pos": "(552.7425, 648.363)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 12674,
+            "id": 59,
+            "kind": "normal",
+            "pos": "(309.139, 459.1658)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 12368,
+            "id": 60,
+            "kind": "normal",
+            "pos": "(424.7459, 500.3738)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 9032,
+            "id": 61,
+            "kind": "normal",
+            "pos": "(67.0, 525.1139)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 9984,
+            "id": 62,
+            "kind": "normal",
+            "pos": "(626.7427, 648.5096)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 6280,
+            "id": 63,
+            "kind": "normal",
+            "pos": "(548.9568, 574.4594)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 11078,
+            "id": 64,
+            "kind": "normal",
+            "pos": "(106.0919, 462.2818)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 8379,
+            "id": 65,
+            "kind": "normal",
+            "pos": "(206.3342, 436.3263)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 2493,
+            "id": 66,
+            "kind": "normal",
+            "pos": "(67.0, 399.4499)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 5866,
+            "id": 67,
+            "kind": "heart",
+            "pos": "(653.0008, 579.3242)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 1331,
+            "id": 68,
+            "kind": "normal",
+            "pos": "(533.3075, 500.7485)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 3614,
+            "id": 69,
+            "kind": "heart",
+            "pos": "(380.8278, 440.8153)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 2637,
+            "id": 70,
+            "kind": "normal",
+            "pos": "(142.9622, 398.1157)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 2888,
+            "id": 71,
+            "kind": "normal",
+            "pos": "(269.013, 396.9892)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 3897,
+            "id": 72,
+            "kind": "normal",
+            "pos": "(603.4343, 524.376)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 1584,
+            "id": 73,
+            "kind": "normal",
+            "pos": "(465.6098, 438.6798)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          }
+        ],
+        "phase": "reward",
+        "relics": [],
+        "requirement": 3,
+        "rng": 8105042709380261858
+      },
+      "wall_ms": 2145.293
+    },
+    {
+      "clear": 5,
+      "event": "resolved",
+      "frames": 26,
+      "plan": {
+        "activated": [],
+        "ash_reserve": false,
+        "base_damage": 5,
+        "combat_context": {
+          "incoming_damage": 8,
+          "intent": "direct4",
+          "intent_serial": 4,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 2
+        },
+        "converted": {
+
+        },
+        "damage": 5,
+        "direct": [
+          89,
+          97,
+          104,
+          112,
+          118
+        ],
+        "direct_normals": 5,
+        "effective_colors": {
+          "89": 0,
+          "97": 0,
+          "104": 0,
+          "112": 0,
+          "118": 0
+        },
+        "heal_effective": 0,
+        "heal_overflow": 0,
+        "heal_raw": 0,
+        "mitigates_intent": true,
+        "mode": "clear",
+        "normal_count": 5,
+        "removed": [
+          89,
+          97,
+          104,
+          112,
+          118
+        ],
+        "sequence": [
+          89,
+          97,
+          104,
+          112,
+          118
+        ],
+        "spawn": {
+          "color": 0,
+          "kind": "core",
+          "pos": "(307.3828, 679.4368)"
+        },
+        "valid": true,
+        "weak_bonus": 0,
+        "weak_count": 0
+      },
+      "state": {
+        "actions": 5,
+        "ash": false,
+        "charge": 2,
+        "enemy_hp": 39,
+        "gold": 1,
+        "hp": 26,
+        "intent": {
+          "incoming_damage": 4,
+          "intent": "direct4",
+          "intent_serial": 4,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 2
+        },
+        "node": "elite",
+        "panels": [
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(480.973, 253.0)",
+            "id": 74,
+            "kind": "normal",
+            "pos": "(480.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(564.5116, 215.0)",
+            "id": 75,
+            "kind": "normal",
+            "pos": "(564.5116, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(638.5116, 177.0)",
+            "id": 76,
+            "kind": "normal",
+            "pos": "(638.5116, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(122.7122, 139.0)",
+            "id": 77,
+            "kind": "normal",
+            "pos": "(122.7122, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(406.973, 253.0)",
+            "id": 78,
+            "kind": "heart",
+            "pos": "(406.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(332.973, 215.0)",
+            "id": 79,
+            "kind": "normal",
+            "pos": "(332.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(207.7925, 177.0)",
+            "id": 80,
+            "kind": "normal",
+            "pos": "(207.7925, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(270.3828, 139.0)",
+            "id": 81,
+            "kind": "normal",
+            "pos": "(270.3828, 743.5226)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(67.0, 253.0)",
+            "id": 82,
+            "kind": "normal",
+            "pos": "(67.0, 734.2953)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(522.7423, 215.0)",
+            "id": 83,
+            "kind": "normal",
+            "pos": "(522.7423, 721.9154)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(165.2524, 177.0)",
+            "id": 84,
+            "kind": "normal",
+            "pos": "(165.2524, 722.4497)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(369.973, 139.0)",
+            "id": 85,
+            "kind": "normal",
+            "pos": "(369.973, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(601.5116, 253.0)",
+            "id": 86,
+            "kind": "normal",
+            "pos": "(601.5116, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(443.973, 215.0)",
+            "id": 87,
+            "kind": "normal",
+            "pos": "(443.973, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(227.8426, 177.0)",
+            "id": 88,
+            "kind": "normal",
+            "pos": "(227.8426, 682.9724)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(109.5401, 253.0)",
+            "id": 90,
+            "kind": "normal",
+            "pos": "(109.5401, 673.745)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(653.0, 215.0)",
+            "id": 91,
+            "kind": "heart",
+            "pos": "(653.0, 665.7639)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(485.7423, 177.0)",
+            "id": 92,
+            "kind": "heart",
+            "pos": "(485.7423, 657.8295)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(559.7423, 139.0)",
+            "id": 93,
+            "kind": "normal",
+            "pos": "(559.7423, 657.8295)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 9,
+            "from": "(406.973, 253.0)",
+            "id": 94,
+            "kind": "heart",
+            "pos": "(406.973, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(172.1304, 215.0)",
+            "id": 95,
+            "kind": "normal",
+            "pos": "(172.1304, 634.2676)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 13,
+            "from": "(264.8426, 177.0)",
+            "id": 96,
+            "kind": "heart",
+            "pos": "(264.8426, 618.8865)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(67.0, 253.0)",
+            "id": 98,
+            "kind": "normal",
+            "pos": "(67.0, 613.1947)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(611.2307, 215.0)",
+            "id": 99,
+            "kind": "normal",
+            "pos": "(611.2307, 604.6793)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 64,
+            "from": "(448.7423, 177.0)",
+            "id": 100,
+            "kind": "heart",
+            "pos": "(448.7423, 593.7437)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(522.7423, 139.0)",
+            "id": 101,
+            "kind": "normal",
+            "pos": "(522.7423, 593.7437)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(129.5903, 253.0)",
+            "id": 102,
+            "kind": "heart",
+            "pos": "(129.5903, 573.7173)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 23,
+            "from": "(209.1304, 215.0)",
+            "id": 103,
+            "kind": "normal",
+            "pos": "(209.1304, 570.1818)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 62,
+            "from": "(386.152, 139.0)",
+            "id": 105,
+            "kind": "normal",
+            "pos": "(344.2997, 615.3019)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(653.0, 253.0)",
+            "id": 106,
+            "kind": "normal",
+            "pos": "(653.0, 543.5947)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(574.2307, 215.0)",
+            "id": 107,
+            "kind": "normal",
+            "pos": "(574.2307, 540.5934)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(67.0, 177.0)",
+            "id": 108,
+            "kind": "normal",
+            "pos": "(67.0, 534.24)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 53,
+            "from": "(485.7423, 139.0)",
+            "id": 109,
+            "kind": "normal",
+            "pos": "(485.7423, 529.6578)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 27,
+            "from": "(166.5903, 253.0)",
+            "id": 110,
+            "kind": "normal",
+            "pos": "(166.5903, 509.6315)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 91,
+            "from": "(246.1304, 215.0)",
+            "id": 111,
+            "kind": "normal",
+            "pos": "(301.8809, 554.6861)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 208,
+            "from": "(423.1521, 139.0)",
+            "id": 113,
+            "kind": "normal",
+            "pos": "(386.1543, 554.2792)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 5,
+            "from": "(616.0, 253.0)",
+            "id": 114,
+            "kind": "normal",
+            "pos": "(616.0, 479.5089)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 15,
+            "from": "(537.2307, 215.0)",
+            "id": 115,
+            "kind": "heart",
+            "pos": "(537.2307, 476.5076)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 6,
+            "from": "(104.0, 177.0)",
+            "id": 116,
+            "kind": "normal",
+            "pos": "(104.0, 470.1541)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 72,
+            "from": "(203.5903, 139.0)",
+            "id": 117,
+            "kind": "normal",
+            "pos": "(246.125, 506.03)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 42,
+            "from": "(474.6405, 215.0)",
+            "id": 119,
+            "kind": "normal",
+            "pos": "(423.0771, 490.1477)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 107,
+            "from": "(380.6119, 177.0)",
+            "id": 120,
+            "kind": "normal",
+            "pos": "(343.7431, 493.6374)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(579.0, 139.0)",
+            "id": 121,
+            "kind": "normal",
+            "pos": "(579.0, 415.423)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 1,
+            "id": 122,
+            "kind": "core",
+            "pos": "(307.3828, 679.4368)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 13,
+            "id": 123,
+            "kind": "normal",
+            "pos": "(287.9753, 444.9948)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 5,
+            "id": 124,
+            "kind": "heart",
+            "pos": "(653.0121, 415.4288)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 23,
+            "id": 125,
+            "kind": "normal",
+            "pos": "(211.1921, 440.7932)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 5,
+            "id": 126,
+            "kind": "heart",
+            "pos": "(66.98742, 406.0743)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          }
+        ],
+        "phase": "ready",
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "requirement": 3,
+        "rng": 6445311864449308418
+      },
+      "wall_ms": 1099.814
+    },
+    {
+      "clear": 6,
+      "event": "resolved",
+      "frames": 28,
+      "plan": {
+        "activated": [],
+        "ash_reserve": false,
+        "base_damage": 3,
+        "combat_context": {
+          "incoming_damage": 4,
+          "intent": "direct4",
+          "intent_serial": 4,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 2
+        },
+        "converted": {
+
+        },
+        "damage": 4,
+        "direct": [
+          75,
+          83,
+          86
+        ],
+        "direct_normals": 3,
+        "effective_colors": {
+          "75": 2,
+          "83": 2,
+          "86": 2
+        },
+        "heal_effective": 0,
+        "heal_overflow": 0,
+        "heal_raw": 0,
+        "mitigates_intent": false,
+        "mode": "clear",
+        "normal_count": 3,
+        "removed": [
+          75,
+          83,
+          86
+        ],
+        "sequence": [
+          75,
+          83,
+          86
+        ],
+        "spawn": {
+
+        },
+        "valid": true,
+        "weak_bonus": 1,
+        "weak_count": 3
+      },
+      "state": {
+        "actions": 6,
+        "ash": false,
+        "charge": 3,
+        "enemy_hp": 35,
+        "gold": 1,
+        "hp": 26,
+        "intent": {
+          "incoming_damage": 4,
+          "intent": "direct4",
+          "intent_serial": 4,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 2
+        },
+        "node": "elite",
+        "panels": [
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 5,
+            "from": "(480.973, 253.0)",
+            "id": 74,
+            "kind": "normal",
+            "pos": "(480.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 95,
+            "from": "(638.5116, 177.0)",
+            "id": 76,
+            "kind": "normal",
+            "pos": "(638.5116, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(122.7122, 139.0)",
+            "id": 77,
+            "kind": "normal",
+            "pos": "(122.7122, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(406.973, 253.0)",
+            "id": 78,
+            "kind": "heart",
+            "pos": "(406.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(332.973, 215.0)",
+            "id": 79,
+            "kind": "normal",
+            "pos": "(332.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(207.7925, 177.0)",
+            "id": 80,
+            "kind": "normal",
+            "pos": "(207.7925, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(270.3828, 139.0)",
+            "id": 81,
+            "kind": "normal",
+            "pos": "(270.3828, 743.5226)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(67.0, 253.0)",
+            "id": 82,
+            "kind": "normal",
+            "pos": "(67.0, 734.2953)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(165.2524, 177.0)",
+            "id": 84,
+            "kind": "normal",
+            "pos": "(165.2524, 722.4497)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(369.973, 139.0)",
+            "id": 85,
+            "kind": "normal",
+            "pos": "(369.973, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 1141,
+            "from": "(443.973, 215.0)",
+            "id": 87,
+            "kind": "normal",
+            "pos": "(443.973, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 0,
+            "from": "(227.8426, 177.0)",
+            "id": 88,
+            "kind": "normal",
+            "pos": "(227.8426, 682.9724)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 0,
+            "from": "(109.5401, 253.0)",
+            "id": 90,
+            "kind": "normal",
+            "pos": "(109.5401, 673.745)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1497,
+            "from": "(653.0, 215.0)",
+            "id": 91,
+            "kind": "heart",
+            "pos": "(653.0, 710.4314)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 3351,
+            "from": "(485.7423, 177.0)",
+            "id": 92,
+            "kind": "heart",
+            "pos": "(522.581, 721.7388)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 2239,
+            "from": "(559.7423, 139.0)",
+            "id": 93,
+            "kind": "normal",
+            "pos": "(564.0926, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 2517,
+            "from": "(406.973, 253.0)",
+            "id": 94,
+            "kind": "heart",
+            "pos": "(406.973, 654.8282)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(172.1304, 215.0)",
+            "id": 95,
+            "kind": "normal",
+            "pos": "(172.1304, 634.2676)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 13,
+            "from": "(264.8426, 177.0)",
+            "id": 96,
+            "kind": "heart",
+            "pos": "(264.8426, 618.8865)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 0,
+            "from": "(67.0, 253.0)",
+            "id": 98,
+            "kind": "normal",
+            "pos": "(67.0, 613.1947)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 6442,
+            "from": "(611.2307, 215.0)",
+            "id": 99,
+            "kind": "normal",
+            "pos": "(607.2155, 652.3179)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 9967,
+            "from": "(448.7423, 177.0)",
+            "id": 100,
+            "kind": "heart",
+            "pos": "(468.8371, 614.2502)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 7528,
+            "from": "(522.7423, 139.0)",
+            "id": 101,
+            "kind": "normal",
+            "pos": "(542.8093, 615.913)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 0,
+            "from": "(129.5903, 253.0)",
+            "id": 102,
+            "kind": "heart",
+            "pos": "(129.5903, 573.7173)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 23,
+            "from": "(209.1304, 215.0)",
+            "id": 103,
+            "kind": "normal",
+            "pos": "(209.1304, 570.1818)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 2355,
+            "from": "(386.152, 139.0)",
+            "id": 105,
+            "kind": "normal",
+            "pos": "(344.2997, 615.3019)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 4907,
+            "from": "(653.0, 253.0)",
+            "id": 106,
+            "kind": "normal",
+            "pos": "(653.0089, 594.1883)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 9683,
+            "from": "(574.2307, 215.0)",
+            "id": 107,
+            "kind": "normal",
+            "pos": "(588.5884, 557.7771)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 0,
+            "from": "(67.0, 177.0)",
+            "id": 108,
+            "kind": "normal",
+            "pos": "(67.0, 534.24)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 7219,
+            "from": "(485.7423, 139.0)",
+            "id": 109,
+            "kind": "normal",
+            "pos": "(501.6764, 547.936)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 28,
+            "from": "(166.5903, 253.0)",
+            "id": 110,
+            "kind": "normal",
+            "pos": "(166.5903, 509.6315)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 1332,
+            "from": "(246.1304, 215.0)",
+            "id": 111,
+            "kind": "normal",
+            "pos": "(301.8809, 554.6861)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 8565,
+            "from": "(423.1521, 139.0)",
+            "id": 113,
+            "kind": "normal",
+            "pos": "(406.2339, 574.8046)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 5196,
+            "from": "(616.0, 253.0)",
+            "id": 114,
+            "kind": "normal",
+            "pos": "(652.3326, 520.1908)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 8886,
+            "from": "(537.2307, 215.0)",
+            "id": 115,
+            "kind": "heart",
+            "pos": "(551.849, 493.5432)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 7,
+            "from": "(104.0, 177.0)",
+            "id": 116,
+            "kind": "normal",
+            "pos": "(104.0, 470.1541)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 1146,
+            "from": "(203.5903, 139.0)",
+            "id": 117,
+            "kind": "normal",
+            "pos": "(246.125, 506.03)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 7472,
+            "from": "(474.6405, 215.0)",
+            "id": 119,
+            "kind": "normal",
+            "pos": "(439.068, 508.4858)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 6939,
+            "from": "(380.6119, 177.0)",
+            "id": 120,
+            "kind": "normal",
+            "pos": "(363.8079, 514.176)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 5015,
+            "from": "(579.0, 139.0)",
+            "id": 121,
+            "kind": "normal",
+            "pos": "(581.8389, 425.8913)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 1,
+            "id": 122,
+            "kind": "core",
+            "pos": "(307.3828, 679.4368)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 3144,
+            "id": 123,
+            "kind": "normal",
+            "pos": "(308.0516, 465.5199)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 5016,
+            "id": 124,
+            "kind": "heart",
+            "pos": "(653.0006, 446.193)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 34,
+            "id": 125,
+            "kind": "normal",
+            "pos": "(203.6414, 445.4387)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 6,
+            "id": 126,
+            "kind": "heart",
+            "pos": "(66.98742, 406.0743)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 3199,
+            "id": 127,
+            "kind": "heart",
+            "pos": "(489.2418, 454.0913)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 2573,
+            "id": 128,
+            "kind": "heart",
+            "pos": "(396.6385, 447.8564)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 3,
+            "id": 129,
+            "kind": "heart",
+            "pos": "(141.0144, 406.0179)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          }
+        ],
+        "phase": "ready",
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "requirement": 3,
+        "rng": 233934037336068135
+      },
+      "wall_ms": 1436.286
+    },
+    {
+      "clear": 7,
+      "event": "resolved",
+      "frames": 56,
+      "plan": {
+        "activated": [
+          103,
+          122
+        ],
+        "ash_reserve": false,
+        "base_damage": 15,
+        "combat_context": {
+          "incoming_damage": 4,
+          "intent": "direct4",
+          "intent_serial": 4,
+          "mitigation_success": true,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 2
+        },
+        "converted": {
+          "81": 0,
+          "85": 0,
+          "88": 2,
+          "90": 2,
+          "95": 2,
+          "110": 2,
+          "111": 2,
+          "116": 2,
+          "117": 2,
+          "125": 2
+        },
+        "damage": 21,
+        "direct": [
+          103
+        ],
+        "direct_normals": 0,
+        "effective_colors": {
+          "81": 0,
+          "82": 2,
+          "84": 2,
+          "85": 0,
+          "88": 2,
+          "90": 2,
+          "95": 2,
+          "98": 2,
+          "105": 2,
+          "110": 2,
+          "111": 2,
+          "116": 2,
+          "117": 2,
+          "123": 2,
+          "125": 2
+        },
+        "heal_effective": 0,
+        "heal_overflow": 0,
+        "heal_raw": 0,
+        "mitigates_intent": false,
+        "mode": "clear",
+        "normal_count": 15,
+        "removed": [
+          103,
+          95,
+          110,
+          117,
+          88,
+          90,
+          111,
+          116,
+          122,
+          123,
+          125,
+          81,
+          82,
+          84,
+          85,
+          98,
+          105
+        ],
+        "sequence": [
+          103,
+          95,
+          110,
+          117,
+          88,
+          90,
+          111,
+          116,
+          122,
+          123,
+          125,
+          81,
+          82,
+          84,
+          85,
+          98,
+          105
+        ],
+        "spawn": {
+
+        },
+        "valid": true,
+        "weak_bonus": 6,
+        "weak_count": 13
+      },
+      "state": {
+        "actions": 7,
+        "ash": false,
+        "charge": 1,
+        "enemy_hp": 14,
+        "gold": 1,
+        "hp": 22,
+        "intent": {
+          "incoming_damage": 6,
+          "intent": "plain",
+          "intent_serial": 5,
+          "mitigation_success": false,
+          "slam_normal_required": 8,
+          "slam_weak_required": 2,
+          "weakness_color": 2
+        },
+        "node": "elite",
+        "panels": [
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 5,
+            "from": "(480.973, 253.0)",
+            "id": 74,
+            "kind": "normal",
+            "pos": "(480.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 95,
+            "from": "(638.5116, 177.0)",
+            "id": 76,
+            "kind": "normal",
+            "pos": "(638.5116, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 42,
+            "from": "(122.7122, 139.0)",
+            "id": 77,
+            "kind": "normal",
+            "pos": "(122.7122, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 1,
+            "from": "(406.973, 253.0)",
+            "id": 78,
+            "kind": "heart",
+            "pos": "(406.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 9,
+            "from": "(332.973, 215.0)",
+            "id": 79,
+            "kind": "normal",
+            "pos": "(332.973, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 34,
+            "from": "(207.7925, 177.0)",
+            "id": 80,
+            "kind": "normal",
+            "pos": "(207.7925, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 2984,
+            "from": "(443.973, 215.0)",
+            "id": 87,
+            "kind": "normal",
+            "pos": "(443.973, 718.9141)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 2609,
+            "from": "(653.0, 215.0)",
+            "id": 91,
+            "kind": "heart",
+            "pos": "(653.0, 710.4314)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 3976,
+            "from": "(485.7423, 177.0)",
+            "id": 92,
+            "kind": "heart",
+            "pos": "(522.581, 721.7388)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 2239,
+            "from": "(559.7423, 139.0)",
+            "id": 93,
+            "kind": "normal",
+            "pos": "(564.0926, 783.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 3774,
+            "from": "(406.973, 253.0)",
+            "id": 94,
+            "kind": "heart",
+            "pos": "(369.9721, 718.8085)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 28,
+            "from": "(264.8426, 177.0)",
+            "id": 96,
+            "kind": "heart",
+            "pos": "(270.3832, 743.5215)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 10840,
+            "from": "(611.2307, 215.0)",
+            "id": 99,
+            "kind": "normal",
+            "pos": "(584.8293, 681.7294)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 17884,
+            "from": "(448.7423, 177.0)",
+            "id": 100,
+            "kind": "heart",
+            "pos": "(444.7779, 644.9374)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 14466,
+            "from": "(522.7423, 139.0)",
+            "id": 101,
+            "kind": "normal",
+            "pos": "(519.054, 647.8226)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 93,
+            "from": "(129.5903, 253.0)",
+            "id": 102,
+            "kind": "heart",
+            "pos": "(165.2528, 722.4492)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 7217,
+            "from": "(653.0, 253.0)",
+            "id": 106,
+            "kind": "normal",
+            "pos": "(653.0, 636.4313)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 13096,
+            "from": "(574.2307, 215.0)",
+            "id": 107,
+            "kind": "normal",
+            "pos": "(584.7973, 607.739)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 35,
+            "from": "(67.0, 177.0)",
+            "id": 108,
+            "kind": "normal",
+            "pos": "(67.0, 734.2947)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 14784,
+            "from": "(485.7423, 139.0)",
+            "id": 109,
+            "kind": "normal",
+            "pos": "(484.3854, 582.4506)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 14547,
+            "from": "(423.1521, 139.0)",
+            "id": 113,
+            "kind": "normal",
+            "pos": "(370.7804, 644.8165)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 6774,
+            "from": "(616.0, 253.0)",
+            "id": 114,
+            "kind": "normal",
+            "pos": "(652.5117, 562.4319)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 15958,
+            "from": "(537.2307, 215.0)",
+            "id": 115,
+            "kind": "heart",
+            "pos": "(547.5038, 543.8281)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 12494,
+            "from": "(474.6405, 215.0)",
+            "id": 119,
+            "kind": "normal",
+            "pos": "(407.9705, 580.7414)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 11610,
+            "from": "(380.6119, 177.0)",
+            "id": 120,
+            "kind": "normal",
+            "pos": "(314.7025, 596.5391)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 11046,
+            "from": "(579.0, 139.0)",
+            "id": 121,
+            "kind": "normal",
+            "pos": "(579.85, 477.2775)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 7610,
+            "id": 124,
+            "kind": "heart",
+            "pos": "(653.0, 488.4334)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 349,
+            "id": 126,
+            "kind": "heart",
+            "pos": "(67.0, 660.2941)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 8780,
+            "id": 127,
+            "kind": "heart",
+            "pos": "(482.4935, 508.4799)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 6887,
+            "id": 128,
+            "kind": "heart",
+            "pos": "(351.8316, 532.5271)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 102,
+            "id": 129,
+            "kind": "heart",
+            "pos": "(140.6067, 652.6732)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 133,
+            "id": 130,
+            "kind": "normal",
+            "pos": "(227.8431, 682.97)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 3000,
+            "id": 131,
+            "kind": "normal",
+            "pos": "(251.8563, 557.4728)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 4089,
+            "id": 132,
+            "kind": "normal",
+            "pos": "(411.2639, 488.4345)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 737,
+            "id": 133,
+            "kind": "normal",
+            "pos": "(97.20387, 592.7382)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 4,
+            "contact_count": 38,
+            "id": 134,
+            "kind": "heart",
+            "pos": "(652.8502, 414.4326)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 3321,
+            "id": 135,
+            "kind": "normal",
+            "pos": "(514.8403, 441.926)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 0,
+            "contact_count": 980,
+            "id": 136,
+            "kind": "normal",
+            "pos": "(203.1851, 613.2068)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 2725,
+            "id": 137,
+            "kind": "heart",
+            "pos": "(346.295, 453.0116)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 2164,
+            "id": 138,
+            "kind": "normal",
+            "pos": "(282.1926, 489.9808)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 3,
+            "contact_count": 386,
+            "id": 139,
+            "kind": "normal",
+            "pos": "(66.99966, 525.1818)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 1480,
+            "id": 140,
+            "kind": "normal",
+            "pos": "(443.6073, 421.8701)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 784,
+            "id": 141,
+            "kind": "normal",
+            "pos": "(578.9952, 403.2814)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 2,
+            "contact_count": 184,
+            "id": 142,
+            "kind": "normal",
+            "pos": "(159.8917, 553.1915)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 658,
+            "id": 143,
+            "kind": "heart",
+            "pos": "(374.821, 384.7297)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 445,
+            "id": 144,
+            "kind": "normal",
+            "pos": "(232.0688, 435.5404)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": true,
+            "color": 1,
+            "contact_count": 96,
+            "id": 145,
+            "kind": "normal",
+            "pos": "(67.02573, 451.1816)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          },
+          {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 340,
+            "id": 146,
+            "kind": "normal",
+            "pos": "(501.5747, 369.1237)",
+            "radius": 37.0,
+            "vel": "(0.0, 0.0)"
+          }
+        ],
+        "phase": "ready",
+        "relics": [
+          "pigment",
+          "lens"
+        ],
+        "requirement": 3,
+        "rng": -6440045493221013034
+      },
+      "wall_ms": 2430.887
+    }
+  ],
+  "snapshots": [
+    "hit-01",
+    "hit-02",
+    "hit-03",
+    "hit-04",
+    "hit-05",
+    "hit-06",
+    "hit-07"
+  ],
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 20.93
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 23.0
+    },
+    {
+      "action_clock": 0.366666666666667,
+      "base_damage": 7,
+      "damage": 10,
+      "encounter": 0,
+      "event": "attack_impact",
+      "weak_bonus": 3
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 38,
+      "movie": true,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 77876,
+        "clear_wall_ms": 447.261,
+        "fall_sim_s": 0.874999999999999,
+        "fall_wall_ms": 1114.029,
+        "inside_sim_s": 0.483333333333334,
+        "iterations": 214,
+        "last_spawn_sim_s": 0.325,
+        "pending_sim_s": 0.325,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 17979,
+        "spawn_us": 5367,
+        "ticks": 105
+      },
+      "removed": 8,
+      "specials": 1,
+      "wall_ms": 1561.28
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 18.53
+    },
+    {
+      "action_clock": 0.3,
+      "base_damage": 5,
+      "damage": 7,
+      "encounter": 0,
+      "event": "attack_impact",
+      "weak_bonus": 2
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 27,
+      "movie": true,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 60810,
+        "clear_wall_ms": 277.63,
+        "fall_sim_s": 0.575,
+        "fall_wall_ms": 842.316,
+        "inside_sim_s": 0.358333333333334,
+        "iterations": 1106,
+        "last_spawn_sim_s": 0.2,
+        "pending_sim_s": 0.2,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 83578,
+        "spawn_us": 3856,
+        "ticks": 69
+      },
+      "removed": 5,
+      "specials": 0,
+      "wall_ms": 1119.936
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 17.988
+    },
+    {
+      "action_clock": 0.233333333333333,
+      "base_damage": 3,
+      "damage": 3,
+      "encounter": 0,
+      "event": "attack_impact",
+      "weak_bonus": 0
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 26,
+      "movie": true,
+      "next_phase": "enemy_attack",
+      "profile": {
+        "anchor_us": 67256,
+        "clear_wall_ms": 217.214,
+        "fall_sim_s": 0.608333333333334,
+        "fall_wall_ms": 882.635,
+        "inside_sim_s": 0.275,
+        "iterations": 931,
+        "last_spawn_sim_s": 0.116666666666667,
+        "pending_sim_s": 0.116666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 82254,
+        "spawn_us": 2129,
+        "ticks": 73
+      },
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 1099.839
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 20.295
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 19.708
+    },
+    {
+      "action_clock": 0.4,
+      "base_damage": 8,
+      "damage": 8,
+      "encounter": 0,
+      "event": "attack_impact",
+      "weak_bonus": 0
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 39,
+      "movie": true,
+      "next_phase": "reward",
+      "profile": {
+        "anchor_us": 109466,
+        "clear_wall_ms": 413.032,
+        "fall_sim_s": 0.883333333333333,
+        "fall_wall_ms": 1700.633,
+        "inside_sim_s": 0.525000000000001,
+        "iterations": 5783,
+        "last_spawn_sim_s": 0.366666666666667,
+        "pending_sim_s": 0.366666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 604266,
+        "spawn_us": 6703,
+        "ticks": 106
+      },
+      "removed": 9,
+      "specials": 1,
+      "wall_ms": 2113.655
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 18.207
+    },
+    {
+      "action_clock": 0.3,
+      "base_damage": 5,
+      "damage": 5,
+      "encounter": 1,
+      "event": "attack_impact",
+      "weak_bonus": 0
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 26,
+      "movie": true,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 62818,
+        "clear_wall_ms": 284.643,
+        "fall_sim_s": 0.55,
+        "fall_wall_ms": 796.414,
+        "inside_sim_s": 0.316666666666667,
+        "iterations": 183,
+        "last_spawn_sim_s": 0.158333333333333,
+        "pending_sim_s": 0.158333333333333,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 13868,
+        "spawn_us": 2846,
+        "ticks": 66
+      },
+      "removed": 5,
+      "specials": 0,
+      "wall_ms": 1081.048
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 24.603
+    },
+    {
+      "action_clock": 0.233333333333333,
+      "base_damage": 3,
+      "damage": 4,
+      "encounter": 1,
+      "event": "attack_impact",
+      "weak_bonus": 1
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 28,
+      "movie": true,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 125636,
+        "clear_wall_ms": 212.081,
+        "fall_sim_s": 0.675,
+        "fall_wall_ms": 1206.93,
+        "inside_sim_s": 0.275,
+        "iterations": 2508,
+        "last_spawn_sim_s": 0.116666666666667,
+        "pending_sim_s": 0.116666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 224847,
+        "spawn_us": 2298,
+        "ticks": 81
+      },
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 1419.0
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 22.993
+    },
+    {
+      "event": "press_to_draw",
+      "movie": true,
+      "wall_ms": 24.26
+    },
+    {
+      "action_clock": 0.4,
+      "base_damage": 15,
+      "damage": 21,
+      "encounter": 1,
+      "event": "attack_impact",
+      "weak_bonus": 6
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 42,
+      "movie": true,
+      "next_phase": "enemy_attack",
+      "profile": {
+        "anchor_us": 87109,
+        "clear_wall_ms": 502.277,
+        "fall_sim_s": 0.999999999999999,
+        "fall_wall_ms": 1478.085,
+        "inside_sim_s": 0.858333333333333,
+        "iterations": 2276,
+        "last_spawn_sim_s": 0.7,
+        "pending_sim_s": 0.7,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 218290,
+        "spawn_us": 10348,
+        "ticks": 120
+      },
+      "removed": 17,
+      "specials": 2,
+      "wall_ms": 1980.352
+    }
+  ]
+}

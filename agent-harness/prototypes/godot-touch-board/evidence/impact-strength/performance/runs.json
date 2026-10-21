@@ -1,0 +1,50 @@
+[
+  {
+    "name": "before-1",
+    "exit": 0,
+    "errors": [],
+    "clears": 7,
+    "started_unix": 1792593231.657046,
+    "total_wall_s": 30.44714665412903
+  },
+  {
+    "name": "after-1",
+    "exit": 0,
+    "errors": [],
+    "clears": 7,
+    "started_unix": 1792593262.104829,
+    "total_wall_s": 33.420042514801025
+  },
+  {
+    "name": "after-2",
+    "exit": 0,
+    "errors": [],
+    "clears": 7,
+    "started_unix": 1792593295.5253727,
+    "total_wall_s": 31.085888385772705
+  },
+  {
+    "name": "before-2",
+    "exit": 0,
+    "errors": [],
+    "clears": 7,
+    "started_unix": 1792593326.611746,
+    "total_wall_s": 33.094356298446655
+  },
+  {
+    "name": "before-3",
+    "exit": 0,
+    "errors": [],
+    "clears": 7,
+    "started_unix": 1792593359.7067122,
+    "total_wall_s": 32.10783886909485
+  },
+  {
+    "name": "after-3",
+    "exit": 0,
+    "errors": [],
+    "clears": 7,
+    "started_unix": 1792593391.815098,
+    "total_wall_s": 32.30332565307617
+  }
+]

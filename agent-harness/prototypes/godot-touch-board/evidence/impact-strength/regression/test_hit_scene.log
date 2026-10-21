@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TIMING {"event":"commit_to_ready","frames":0,"movie":false,"next_phase":"ready","profile":{"anchor_us":47700,"clear_wall_ms":0.986,"fall_sim_s":0.35,"fall_wall_ms":461.206,"inside_sim_s":0.233333333333333,"iterations":3756,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":409533,"spawn_us":1429,"ticks":42},"removed":2,"specials":0,"wall_ms":462.182}
+TIMING {"event":"commit_to_ready","frames":0,"movie":false,"next_phase":"reward","profile":{"anchor_us":46765,"clear_wall_ms":0.392,"fall_sim_s":0.35,"fall_wall_ms":468.985,"inside_sim_s":0.233333333333333,"iterations":3756,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":418346,"spawn_us":1864,"ticks":42},"removed":2,"specials":0,"wall_ms":469.366}
+HIT_SCENE checks=16 failures=0

@@ -24,6 +24,8 @@ var impact_tier := 0
 var weak_bonus := 0
 var base_damage := 0
 var core_activations := 0
+var strong_cores:=0
+var bomb_activations:=0
 var skill_link := false
 var _skill_converted:Dictionary={}
 var _elapsed := 0.0
@@ -50,6 +52,8 @@ func _clear_action() -> void:
 	weak_bonus=0
 	base_damage=0
 	core_activations=0
+	strong_cores=0
+	bomb_activations=0
 	skill_link=false
 	damage_amount = 0
 	heal_raw = 0
@@ -91,7 +95,13 @@ func action_started(plan: Dictionary, panels: Array, impact_due: float=0.0, enem
 	for id in plan.get("activated",[]):
 		if _eligible.has(int(id)) and actual.get(int(id),"") in ["core","strong"]:unique_cores[int(id)]=true
 	core_activations=unique_cores.size()
-	impact_tier=2 if _eligible.size()>=12 or core_activations>0 else (1 if _eligible.size()>=6 else 0)
+	for id in unique_cores:
+		if actual[id]=="strong":strong_cores+=1
+	var bombs:Dictionary={}
+	for id in plan.get("activated",[]):
+		if _eligible.has(int(id)) and actual.get(int(id),"") in ["bomb","big_bomb"]:bombs[int(id)]=true
+	bomb_activations=bombs.size()
+	impact_tier=2 if _eligible.size()>=12 or core_activations>0 or bomb_activations>0 else (1 if _eligible.size()>=6 else 0)
 	skill_link=false
 	for id in _eligible:
 		if _eligible[id]=="normal" and _skill_converted.has(id) and not plan.get("converted",{}).has(id) and plan.get("effective_colors",{}).get(id,_skill_converted[id])==_skill_converted[id]:skill_link=true
@@ -110,11 +120,11 @@ func panel_removed(id: int, pos: Vector2, color: Color, _kind: String) -> bool:
 	var actual_kind: String = _eligible[id]
 	# Existing feedback owns core rings/shards. Delivery cues distinguish
 	# damage (including core objects) from heart healing and overflow.
-	if actual_kind in ["normal","heart","core","strong"]:
+	if actual_kind in ["normal","heart","core","strong","bomb","big_bomb"]:
 		if trails.size() >= TRAIL_LIMIT: trails.pop_front()
 		trails.append({"pos":pos,"color":color,"age":0.0,
 			"life":maxf(0.05,_impact_due-_elapsed) if actual_kind!="heart" and _impact_due>0 else _effects_rng.randf_range(0.22,0.32),
-			"core":actual_kind in ["core","strong"],
+			"core":actual_kind in ["core","strong","bomb","big_bomb"],
 			"bend":_effects_rng.randf_range(-40.0,40.0),
 			"kind":"heal" if actual_kind=="heart" else "damage"})
 	return true
@@ -139,7 +149,7 @@ func stage_offset() -> Vector2:
 	if reduced_effects or impact_remaining<=0:return Vector2.ZERO
 	var t:float=1.0-impact_remaining/IMPACT_SECONDS
 	var recoil:float=sin(t*PI*3.0)*pow(1.0-t,2)
-	return Vector2(6+impact_tier*3,-3)*recoil
+	return Vector2(9+impact_tier*4,-4)*recoil
 
 func hit_flash() -> float:
 	if reduced_effects or impact_remaining<=0:return 0.0
@@ -152,7 +162,7 @@ func update(delta: float) -> void:
 	if _finished and not _impacted and _elapsed>=_impact_due and damage_amount>0:
 		_impacted=true
 		impact_remaining=IMPACT_SECONDS
-		_pending_impact={"damage":damage_amount,"base_damage":base_damage,"weak_bonus":weak_bonus,"cores":core_activations,"tier":impact_tier,"skill_link":skill_link}
+		_pending_impact={"damage":damage_amount,"base_damage":base_damage,"weak_bonus":weak_bonus,"cores":core_activations,"strong_cores":strong_cores,"bombs":bomb_activations,"tier":impact_tier,"skill_link":skill_link}
 	cutin_remaining = maxf(0.0,cutin_remaining-dt)
 	total_remaining = maxf(0.0,total_remaining-dt)
 	for i in range(trails.size()-1,-1,-1):
@@ -194,22 +204,32 @@ func draw_overlay(view,canvas) -> void:
 			canvas.draw_line(previous,current,tail_color,1.0+float(segment)*0.32,true)
 			previous = current
 		canvas.draw_line(previous,head,Color(1,0.96,0.82,tint.a),4.0 if trail.get("core",false) else 2.0,true)
-		canvas.draw_circle(head,6.5 if trail.get("core",false) else 4.0,Color(1.0,1.0,0.95,tint.a))
+		canvas.draw_circle(head,8.0 if trail.get("core",false) else 4.8,Color(1.0,1.0,0.95,tint.a))
 		if trail.kind=="heal":
 			canvas.draw_colored_polygon(Art._heart_points(head+Vector2(0,-5),5.0),tint)
 	if impact_remaining>0:
 		var t:float=1.0-impact_remaining/IMPACT_SECONDS
-		var strength:float=1.0+impact_tier*0.45
+		var strength:float=1.0+impact_tier*0.45+minf(strong_cores+bomb_activations,2)*0.15
 		var tint:=Color("e6c2ff") if weak_bonus>0 else Color("ffe2ab")
 		tint.a=(1.0-t)*0.8
 		if reduced_effects:
 			canvas.draw_arc(target,24,0,TAU,24,Color(tint,0.3*(1.0-t)),2,true)
 		else:
-			canvas.draw_arc(target,lerpf(10,62*strength,t),0,TAU,40,tint,3*(1.0-t)+1,true)
+			canvas.draw_arc(target,lerpf(10,65*strength,t),0,TAU,40,Color(.16,.025,.24,(1-t)*.78),9*(1-t)+1,true)
+			canvas.draw_arc(target,lerpf(10,65*strength,t),0,TAU,40,tint,5*(1.0-t)+1,true)
+			canvas.draw_arc(target,lerpf(7,46*strength,t),0,TAU,32,Color(1,.95,.8,tint.a*.65),2.5*(1-t)+.6,true)
+			if t<.30:
+				var shape:=PackedVector2Array()
+				for i in range(8):
+					shape.append(target+Vector2.from_angle(i*TAU/8+.18)*32*strength*(1-t/.30)*(1.0 if i%2==0 else .26))
+				var shadow:=PackedVector2Array()
+				for point in shape:shadow.append(target+(point-target)*1.18)
+				canvas.draw_colored_polygon(shadow,Color(.28,.035,.38,(1-t/.30)*.9))
+				canvas.draw_colored_polygon(shape,Color(1,.92,.72,(1-t/.30)*.85))
 			for i in range(6+impact_tier*3):
 				var angle:float=TAU*i/(6+impact_tier*3)
 				var direction:=Vector2.from_angle(angle)
-				canvas.draw_line(target+direction*(9+t*18),target+direction*(18+t*58*strength),tint,2.5*(1.0-t)+0.5,true)
+				canvas.draw_line(target+direction*(9+t*18),target+direction*(18+t*58*strength),tint,4.0*(1.0-t)+0.5,true)
 	var body := _font(view,"font_body")
 	var display := _font(view,"font_display")
 	if total_remaining > 0.0:

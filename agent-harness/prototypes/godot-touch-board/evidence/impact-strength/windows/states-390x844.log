@@ -1,0 +1,31 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS OS driver acknowledged 01-two-bombs-fixture
+PASS OS driver acknowledged bomb-down-cancel
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":32.505}
+PASS OS held preview covers both actual bomb ranges
+PASS OS driver acknowledged 02-chain-preview
+PASS OS driver acknowledged bomb-up-cancel
+PASS OS canceled bomb has no action or heal
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":56.892}
+PASS OS driver acknowledged bomb-down
+PASS OS driver acknowledged bomb-up
+PASS OS committed chain equals held plan
+PASS OS driver acknowledged 03-chain-impact
+PASS OS driver acknowledged reduce
+PASS OS reduced mode suppresses enhanced reaction
+PASS OS driver acknowledged 04-reduced-impact
+PASS OS driver acknowledged sound-on
+PASS OS driver acknowledged sound-off
+PASS OS mute stops active explosion tails
+PASS OS driver acknowledged modal-board
+PASS OS reward modal blocks board attack passthrough
+PASS OS driver acknowledged 05-reward-lens-fixture
+PASS OS driver acknowledged 06-event-lens-fixture
+PASS OS driver acknowledged 07-shop-lens-fixture
+PASS OS driver acknowledged reset
+PASS OS reset cancels blast and transitions
+BOMB_WINDOW checks=23 failures=0 size=(390, 844)

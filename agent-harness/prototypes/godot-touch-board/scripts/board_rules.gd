@@ -1,4 +1,5 @@
 extends RefCounted
+const Bombs=preload("res://scripts/board_bombs.gd")
 const SLAM_WEAK_REQUIRED := 2
 const SLAM_NORMAL_REQUIRED := 8
 ## Pure, deterministic plans over a frozen contact snapshot. No animation or state mutation.
@@ -49,9 +50,10 @@ static func _ordered(ids: Array, distance: Dictionary) -> Array:
 	return out
 
 static func _special(panel: Dictionary) -> bool:
-	return panel.kind == "core" or panel.kind == "strong"
+	return panel.kind == "core" or panel.kind == "strong" or Bombs.is_bomb(panel.kind)
 
 static func _component(graph: Dictionary, indexed: Dictionary, colors: Dictionary, start: int) -> Array:
+	if Bombs.is_bomb(indexed[start].kind):return [start]
 	var is_heart: bool = indexed[start].kind == "heart"
 	var color: int = colors[start]
 	var found: Dictionary = {start: true}
@@ -61,7 +63,7 @@ static func _component(graph: Dictionary, indexed: Dictionary, colors: Dictionar
 		var id: int = queue[cursor]
 		cursor += 1
 		for neighbor in graph[id]:
-			if found.has(neighbor):
+			if found.has(neighbor) or Bombs.is_bomb(indexed[neighbor].kind):
 				continue
 			if (indexed[neighbor].kind == "heart") != is_heart:
 				continue
@@ -72,7 +74,7 @@ static func _component(graph: Dictionary, indexed: Dictionary, colors: Dictionar
 	return queue
 
 static func _empty_plan() -> Dictionary:
-	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": [], "direct_normals": 0, "ash_reserve": false, "base_damage": 0, "weak_count": 0, "weak_bonus": 0, "normal_count": 0, "effective_colors": {}, "combat_context": {}, "mitigates_intent": false}
+	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": [], "direct_normals": 0, "ash_reserve": false, "base_damage": 0, "weak_count": 0, "weak_bonus": 0, "normal_count": 0, "effective_colors": {}, "combat_context": {}, "mitigates_intent": false, "blasts":[], "bomb_spawn_kind":""}
 
 static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Array = [], combat_context: Dictionary = {}) -> Dictionary:
 	# Evaluate relic ownership once; the returned plan contains values, not live state.
@@ -113,6 +115,16 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Arr
 		activated[core_id] = true
 		removed[core_id] = true
 		result.activated.append(core_id)
+		if Bombs.is_bomb(indexed[core_id].kind):
+			var blast_radius:float=Bombs.radius(indexed[core_id].kind)
+			result.blasts.append({"id":core_id,"pos":indexed[core_id].pos,"radius":blast_radius,"kind":indexed[core_id].kind})
+			for id in _ordered(indexed.keys(),distance):
+				if indexed[id].pos.distance_squared_to(indexed[core_id].pos)>blast_radius*blast_radius:continue
+				removed[id]=true
+				if _special(indexed[id]) and not activated.has(id):pending[id]=true
+			continue
+		if indexed[core_id].kind=="strong":
+			result.bomb_spawn_kind="big_bomb" if has_lens else "bomb"
 		var radius := 2 if indexed[core_id].kind == "strong" else 1
 		var core_distance := _distances(graph, core_id)
 		var core_color: int = colors[core_id]
