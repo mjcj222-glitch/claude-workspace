@@ -1,0 +1,3 @@
+2026-10-21: Chromium154 launched via Playwright1.62 with chromium_sandbox=True against local http://127.0.0.1:8765 Web export. Process aborted before browser page load:
+FATAL:sandbox/linux/suid/client/setuid_sandbox_host.cc:172 The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now.
+No permission or sandbox setting was changed. No --no-sandbox retry. Web export completed, browser play unverified. This was an application launch failure, not an automatic approval-review denial.

@@ -1,0 +1,17 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":35.193}
+TIMING {"event":"commit_to_ready","frames":15,"movie":false,"removed":2,"specials":0,"wall_ms":659.388}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":32.763}
+TIMING {"event":"commit_to_ready","frames":15,"movie":false,"removed":2,"specials":0,"wall_ms":661.213}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":36.895}
+TIMING {"event":"commit_to_ready","frames":16,"movie":false,"removed":2,"specials":0,"wall_ms":684.145}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":46.394}
+TIMING {"event":"commit_to_ready","frames":8,"movie":false,"removed":2,"specials":0,"wall_ms":778.806}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":62.54}
+TIMING {"event":"commit_to_ready","frames":11,"movie":false,"removed":2,"specials":0,"wall_ms":906.322}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":44.327}
+TIMING {"event":"commit_to_ready","frames":29,"movie":false,"removed":35,"specials":2,"wall_ms":1177.731}

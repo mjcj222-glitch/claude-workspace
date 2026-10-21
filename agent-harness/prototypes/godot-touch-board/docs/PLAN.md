@@ -14,10 +14,10 @@ Spec: User execution contract summarized below; no map/shop/save/party/boss/feve
 4 attack colors + hearts; one conversion hero; target never attacks. Normal/heart minimum 2; 3 valid manual clears/turn. Direct 6..11 normals create core, 12+ strong, only after chain, at original touch center, never triggered this action. Cores can activate alone. Core converts normal graph radius 1/2 then clears connected color; hearts excluded, specials in radius activate irrespective of color. Snapshot graph and order by start graph distance then ID. Count each clear/heal/activation once. Refill once at end, no auto-clears. Skill max4 normals through normal-only graph, nearest then ID; ready initially, reload on 3 manual clears, no action cost. Damage1/normal, heal2/heart, cap/overflow displayed. Cancel outside/focus/cancel; extra fingers ignored; no queued inputs during refill.
 
 ## Tasks and gates
-- [ ] Rules: write behavioral fixtures for 2/6/12, solo/chain special, protected spawn, conflicts/hearts, skill paths and healing; observe RED then implement and GREEN.
-- [ ] Motion/input: compare rigid settling vs controlled free-position circle solver; test contact from current positions, bounded refill and freeze, cancellation/charging/action count, no queued touch; RED then GREEN.
-- [ ] Presentation: shaded dimensional panels, 4 distinct glyphs, cores, small hero and hit dummy, previews with direct/chain distinction, generated bounded-voice stepped audio and landing squash; render review at narrow/wide sizes.
-- [ ] Evidence: headless suites, real renderer screenshots and sound video, real wall-clock/frame timing separate from movie capture, playable artifact if available. Independent spec/code review, fix material findings, final report. Commit/push only additive prototype/evidence paths on existing PR3 branch.
+- [x] Rules: write behavioral fixtures for 2/6/12, solo/chain special, protected spawn, conflicts/hearts, skill paths and healing; observe RED then implement and GREEN.
+- [x] Motion/input: compare rigid settling vs controlled free-position circle solver; test contact from current positions, bounded refill and freeze, cancellation/charging/action count, no queued touch; RED then GREEN.
+- [x] Presentation: shaded dimensional panels, 4 distinct glyphs, cores, small hero and hit dummy, previews with direct/chain distinction, generated bounded-voice stepped audio and landing squash; render review at narrow/wide sizes.
+- [x] Evidence: headless suites, real renderer screenshots and sound video, real wall-clock/frame timing separate from movie capture, playable artifact if available. Independent spec/code review, fix material findings, final report. Commit/push only additive prototype/evidence paths on existing PR3 branch.
 
 ## Review focus
 - Pointer leaves/re-enters, focus loss, second finger cannot accidentally commit.
@@ -35,3 +35,5 @@ Spec: User execution contract summarized below; no map/shop/save/party/boss/feve
 - Presentation complete for first checkpoint: approved original atlas materialized and inspected in this environment; colored core badge, original vector hero/target, generated PCM, clipped fall area, brief squash. User reference download failed twice and stopped; no reference pixels claimed.
 - Independent review: three material findings (pile overflow, busy reset, UI-first second finger), all fixed with reproduced failing tests. Headless audio cleanup warning fixed by stopping voices and clearing streams on exit.
 - Evidence in progress: 720x1080 rendered screenshots, 10.2s sound movie, live wall-clock+frame measures separated. Web export succeeded but Chromium sandbox abort blocks browser validation; no sandbox changes or retries via weaker security.
+
+- Checkpoint complete: native Linux smoke + OS mouse interaction passed; current media and raw measurements packaged. Browser sandbox blocker retained. No user-reference publication or Library upload.
