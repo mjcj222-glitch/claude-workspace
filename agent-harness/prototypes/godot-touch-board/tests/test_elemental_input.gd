@@ -69,7 +69,7 @@ func run() -> void:
 	check(scene.session.combat.enemy_hp == 21 and scene.session.damage_total == 3 and scene.session.actions == 1, "base plus weakness commits once to enemy hp and total")
 	scene.release(p, -1)
 	check(scene.session.combat.enemy_hp == 21 and scene.session.actions == 1, "duplicate release cannot apply weakness twice")
-	check(scene.UI.BOARD_SCREEN == Rect2(30,268,660,530) and scene.board_to_screen(scene.BOARD.end) == Vector2(690,798), "two status lines preserve full physical board visibility")
+	check(scene.UI.BOARD_SCREEN == Rect2(30,390,660,530) and scene.board_to_screen(scene.BOARD.end) == Vector2(690,920), "premium composition preserves full physical board visibility")
 
 	# Final restored contract: weak pairs or eight ordinary panels qualify;
 	# seven ordinary panels do not. floor(W/2) damage remains unchanged.

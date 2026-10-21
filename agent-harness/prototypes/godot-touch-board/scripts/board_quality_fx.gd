@@ -4,9 +4,9 @@ const Art = preload("res://scripts/board_art.gd")
 const CUTIN_SECONDS := 0.5
 const TRAIL_LIMIT := 48
 const TOTAL_SECONDS := 0.9
-const CUTIN_RECT := Rect2(30,842,562,112)
-const FACE_REGION := Rect2(250,240,590,280)
-const HEAL_STRIP := Rect2(72,799,576,29)
+const CUTIN_RECT := Rect2(8,920,688,160)
+const FACE_REGION := Rect2(250,180,590,590.0*160.0/230.0)
+const HEAL_STRIP := Rect2(32,272,656,32)
 var cutin_remaining := 0.0
 var total_remaining := 0.0
 var damage_amount := 0
@@ -134,16 +134,16 @@ func draw_overlay(view,canvas) -> void:
 			var a := HEAL_STRIP.position
 			var b := HEAL_STRIP.end
 			canvas.draw_colored_polygon(PackedVector2Array([a,Vector2(b.x,a.y),b,Vector2(a.x,b.y)]),Color(0.045,0.065,0.09,0.96*alpha))
-			_text(canvas,body,Vector2(360,820),"회복 +%d · 초과 %d (전체 %d)" % [heal_effective,heal_overflow,heal_raw],22,Color(1.0,0.75,0.87,alpha))
+			_text(canvas,body,Vector2(360,296),"회복 +%d · 초과 %d (전체 %d)" % [heal_effective,heal_overflow,heal_raw],22,Color(1.0,0.75,0.87,alpha))
 	if cutin_remaining <= 0.0: return
 	# Footer-only strip: board, targeting palette and reset/cancel remain exposed.
 	var age := CUTIN_SECONDS-cutin_remaining
 	var alpha := minf(1.0,age/0.055)*minf(1.0,cutin_remaining/0.12)
 	var slide := 14.0*(1.0-minf(1.0,age/0.10))
-	canvas.draw_colored_polygon(PackedVector2Array([Vector2(238,842),Vector2(592,842),Vector2(565,954),Vector2(238,954)]),Color(0.035,0.19,0.20,0.96*alpha))
-	canvas.draw_texture_rect_region(Art.HERO_TEXTURE,Rect2(30,842,236,112),FACE_REGION,Color(1,1,1,alpha))
+	canvas.draw_colored_polygon(PackedVector2Array([Vector2(210,920),Vector2(696,920),Vector2(669,1080),Vector2(210,1080)]),Color(0.14,0.055,0.23,0.96*alpha))
+	canvas.draw_texture_rect_region(Art.HERO_TEXTURE,Rect2(8,920,230,160),FACE_REGION,Color(1,1,1,alpha))
 	# Clip the face's right edge with the same strip color, preserving eyes/mouth.
-	canvas.draw_colored_polygon(PackedVector2Array([Vector2(266,842),Vector2(266,954),Vector2(238,954)]),Color(0.035,0.19,0.20,alpha))
-	canvas.draw_line(Vector2(266,842),Vector2(238,954),Color(0.85,0.74,0.43,alpha),3.0,true)
-	_text(canvas,body,Vector2(420+slide,876),"리오 · 변환사",20,Color(0.70,0.88,0.83,alpha))
-	_text(canvas,display,Vector2(420+slide,920),"물감 변환",34,Color(0.96,0.92,0.73,alpha),3)
+	canvas.draw_colored_polygon(PackedVector2Array([Vector2(238,920),Vector2(238,1080),Vector2(210,1080)]),Color(0.14,0.055,0.23,alpha))
+	canvas.draw_line(Vector2(238,920),Vector2(210,1080),Color(0.85,0.74,0.43,alpha),3.0,true)
+	_text(canvas,body,Vector2(435+slide,972),"리오 · 변환사",22,Color(0.88,0.74,0.96,alpha))
+	_text(canvas,display,Vector2(435+slide,1030),"물감 변환",34,Color(0.96,0.92,0.73,alpha),3)

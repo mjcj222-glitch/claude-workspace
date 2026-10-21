@@ -1,0 +1,38 @@
+[
+  {
+    "test": "test_premium_art",
+    "exit": 0,
+    "wall_seconds": 3.475,
+    "errors": []
+  },
+  {
+    "test": "test_premium_skill",
+    "exit": 0,
+    "wall_seconds": 3.333,
+    "errors": []
+  },
+  {
+    "test": "test_premium_layout",
+    "exit": 0,
+    "wall_seconds": 4.667,
+    "errors": []
+  },
+  {
+    "test": "test_skin",
+    "exit": 0,
+    "wall_seconds": 3.458,
+    "errors": []
+  },
+  {
+    "test": "test_quality_fx",
+    "exit": 0,
+    "wall_seconds": 3.601,
+    "errors": []
+  },
+  {
+    "test": "test_elemental_ui",
+    "exit": 0,
+    "wall_seconds": 3.455,
+    "errors": []
+  }
+]

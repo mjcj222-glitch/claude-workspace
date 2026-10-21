@@ -6,6 +6,7 @@ const TRANSITION_REPEAT_MS := 500
 const TRANSITION_REPEAT_RADIUS := 44.0
 const Motion = preload("res://scripts/board_motion.gd")
 const Rules = preload("res://scripts/board_rules.gd")
+const Layout = preload("res://scripts/board_layout.gd")
 const Art = preload("res://scripts/board_art.gd")
 const UI = preload("res://scripts/board_ui.gd")
 const Feedback = preload("res://scripts/board_feedback.gd")
@@ -111,8 +112,9 @@ func _ready() -> void:
 	capture_mode = "--capture" in args
 	board_surface = BoardSurface.new()
 	board_surface.presenter = self
-	board_surface.position = UI.BOARD_SCREEN.position
+	board_surface.position = Layout.board_to_screen(BOARD.position,BOARD,UI.BOARD_SCREEN)
 	board_surface.size = BOARD.size
+	board_surface.scale = Layout.board_scale(BOARD,UI.BOARD_SCREEN)
 	board_surface.clip_contents = true
 	board_surface.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(board_surface)
@@ -224,10 +226,10 @@ func _draw() -> void:
 	UI.draw(self)
 
 func board_to_screen(pos: Vector2) -> Vector2:
-	return pos - BOARD.position + UI.BOARD_SCREEN.position
+	return Layout.board_to_screen(pos,BOARD,UI.BOARD_SCREEN)
 
 func screen_to_board(pos: Vector2) -> Vector2:
-	return pos - UI.BOARD_SCREEN.position + BOARD.position
+	return Layout.screen_to_board(pos,BOARD,UI.BOARD_SCREEN)
 
 func draw_panels(canvas: CanvasItem) -> void:
 	canvas.draw_set_transform(-BOARD.position)

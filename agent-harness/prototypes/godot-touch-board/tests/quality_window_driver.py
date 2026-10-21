@@ -9,8 +9,9 @@ from pathlib import Path
 base = Path(__file__).resolve().parents[1]
 width, height = map(int, sys.argv[1:3])
 effects_only = "--effects-only" in sys.argv
+premium = "--premium" in sys.argv
 log_suffix = "-effects" if effects_only else ""
-evidence = base / 'evidence' / 'quality'
+evidence = base / 'evidence' / ('premium' if premium else 'quality')
 evidence.mkdir(parents=True, exist_ok=True)
 request = Path('/tmp/chroma-quality-window-request.json')
 ack = Path('/tmp/chroma-quality-window-ack.json')

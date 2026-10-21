@@ -1,6 +1,8 @@
 extends RefCounted
 const HERO_TEXTURE = preload("res://assets/alchemist-portrait-v1.png")
 const TARGET_TEXTURE = preload("res://assets/training-jelly-golem-v1.png")
+const DRAGON_TEXTURE = preload("res://assets/premium/amethyst-dragon-arena-v1.png")
+const SKILL_TEXTURE = preload("res://assets/premium/skill-button-amethyst-base-v1.png")
 ## Original approved atlas panels with immediate-mode selection/character art.
 ## Opaque panel bodies match the circular contact envelope.
 
@@ -115,3 +117,59 @@ static func draw_target(canvas: CanvasItem, center: Vector2, time: float, hit: f
 		for i in range(5):
 			var a := i*TAU/5+time
 			_star(canvas,center+Vector2(cos(a)*97,sin(a)*69),4*hit,Color("fff0bb"))
+
+static func stage_variant(encounter: int) -> String:
+	return "dragon" if encounter==2 else "training"
+
+static func draw_battle_stage(view,canvas: CanvasItem,rect: Rect2) -> void:
+	var encounter: int=-1 if view.sandbox else view.session.combat.encounter
+	if stage_variant(encounter)=="dragon":
+		# Wide portrait crop of the original illustration; no fabricated wing motion.
+		var source_height:=1536.0*rect.size.y/rect.size.x
+		var source:=Rect2(0,60,1536,source_height)
+		canvas.draw_texture_rect_region(DRAGON_TEXTURE,rect,source)
+		if view.target_hit>0:
+			canvas.draw_rect(rect,Color(0.78,0.08,0.19,view.target_hit*0.075))
+	else:
+		var points:=PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y)])
+		canvas.draw_polygon(points,PackedColorArray([Color("20122f"),Color("291638"),Color("0b0912"),Color("0b0912")]))
+		var center:=rect.get_center()+Vector2(0,110)
+		_ellipse(canvas,center,Vector2(235,40),Color("17111e"))
+		for ring in range(2):
+			var ellipse:=PackedVector2Array()
+			for i in range(49):
+				var angle:=TAU*i/48.0
+				ellipse.append(center+Vector2(cos(angle)*(218-ring*28),sin(angle)*(33-ring*6)))
+			canvas.draw_polyline(ellipse,Color(0.62,0.39,0.73,0.24),1.2,true)
+		# Same original early enemy, substantially larger than the old HUD thumbnail.
+		var height:=235.0
+		var size:=Vector2(1131.0/974.0*height,height)
+		var offset:=Vector2(sin(view.time*39)*view.target_hit*4,-view.target_hit*3)
+		var dest:=Rect2(Vector2(360,185)-size*0.5+offset,size)
+		canvas.draw_texture_rect_region(TARGET_TEXTURE,dest,Rect2(68,136,1131,974),Color.WHITE.lerp(Color("fff2d0"),view.target_hit*0.35))
+
+static func draw_premium_hero(canvas: CanvasItem,rect: Rect2,_time: float,active: bool) -> void:
+	# Explicit temporary original portrait: violet portrait's official download
+	# failed twice. Preserve face colors; never represent this as the new asset.
+	canvas.draw_texture_rect_region(HERO_TEXTURE,rect,Rect2(130,0,780,694))
+	canvas.draw_rect(rect,Color("d5b377"),false,1.5)
+	if active:canvas.draw_rect(rect.grow(2),Color(0.82,0.55,1.0,0.5),false,2)
+
+static func skill_button_rect(control: Rect2) -> Rect2:
+	var ratio:=minf(control.size.x/1983.0,control.size.y/793.0)
+	var size:=Vector2(1983,793)*ratio
+	return Rect2(control.get_center()-size*0.5,size)
+
+static func skill_illumination(available: bool,age: float) -> float:
+	return 0.34+0.025*sin(maxf(0,age)*TAU/3.2) if available else 0.0
+
+static func draw_skill_button(canvas: CanvasItem,rect: Rect2,illuminated: bool,age: float) -> void:
+	var fitted:=skill_button_rect(rect)
+	canvas.draw_texture_rect(SKILL_TEXTURE,fitted,false,Color.WHITE if illuminated else Color(0.62,0.60,0.67,1))
+	var light:=skill_illumination(illuminated,age)
+	if light<=0:return
+	# Local light stays inside the gemstone's dark inset; gold geometry and the
+	# original transparent padding remain identical in both gameplay states.
+	var center:=fitted.get_center()
+	_ellipse(canvas,center,Vector2(fitted.size.x*0.37,fitted.size.y*0.23),Color(0.47,0.08,0.95,light))
+	_ellipse(canvas,center,Vector2(fitted.size.x*0.30,fitted.size.y*0.16),Color(0.68,0.21,1.0,light*0.28))

@@ -71,7 +71,7 @@ func run() -> void:
 	var close: Vector2 = scene.UI.DETAIL_CLOSE.get_center()
 	var outside: Vector2 = scene.board_to_screen(Vector2(200, 800))
 	var inside: Vector2 = scene.board_to_screen(Vector2(200, 440))
-	check(scene.UI.owned_rect(0) == Rect2(180, 974, 88, 88) and scene.UI.owned_rect(2) == Rect2(388, 974, 88, 88), "owned icons expose agreed touch hitboxes")
+	check(scene.UI.owned_rect(0) == Rect2(440, 976, 88, 88) and scene.UI.owned_rect(2) == Rect2(616, 976, 88, 88), "owned dock keeps44px small-window touch targets")
 	check(scene.UI.DETAIL_PANEL == Rect2(48, 310, 624, 430) and scene.UI.DETAIL_CLOSE == Rect2(84, 650, 552, 88), "detail panel and close bounds match contract")
 	scene.press(first, -1)
 	check(scene.detail_relic == "", "owned icon press alone does not open detail")

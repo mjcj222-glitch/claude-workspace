@@ -189,19 +189,19 @@ func draw_hud(view, canvas: CanvasItem) -> void:
 		alpha = clampf(1.0-(_finish_age-HOLD_SECONDS)/FADE_SECONDS, 0.0, 1.0)
 	var gold := Color("fff2cb")
 	gold.a = alpha
-	var mint := Color("b6f9ee")
+	var mint := Color("e7bcff")
 	mint.a = alpha
-	var rect := Rect2(200,253,320,94)
-	MaterialArt._surface(canvas,rect,Color(0.70,0.60,0.38,0.82*alpha),Color(0.10,0.22,0.24,0.85*alpha))
-	MaterialArt._surface(canvas,rect.grow(-2),Color(0.08,0.20,0.23,0.94*alpha),Color(0.02,0.06,0.09,0.94*alpha))
-	canvas.draw_line(Vector2(220,258),Vector2(500,258),Color(0.65,0.96,0.86,0.66*alpha),1.2,true)
+	var rect := Rect2(392,174,304,94)
+	MaterialArt._surface(canvas,rect,Color(0.70,0.60,0.38,0.82*alpha),Color(0.17,0.08,0.24,0.85*alpha))
+	MaterialArt._surface(canvas,rect.grow(-2),Color(0.16,0.075,0.23,0.94*alpha),Color(0.04,0.02,0.08,0.94*alpha))
+	canvas.draw_line(Vector2(412,179),Vector2(676,179),Color(0.90,0.68,1.0,0.66*alpha),1.2,true)
 	var font: Font = view.font
 	var display: Font = view.get("font_display") if view.get("font_display") is Font else font
-	_centered(canvas, font, Vector2(262, 284), "합계" if finished else "파괴", 22, gold)
+	_centered(canvas, font, Vector2(440,205), "합계" if finished else "파괴", 22, gold)
 	var number_size := int((66.0 if count < 100 else 56.0) + _pulse*5.0)
-	_centered(canvas, display, Vector2(350, 289), str(count), number_size, Color(1.0,1.0,1.0,alpha), 3)
-	_centered(canvas, font, Vector2(459, 284), "패널", 20, Color(0.72,0.79,0.88,alpha))
+	_centered(canvas, display, Vector2(537,210), str(count), number_size, Color(1.0,1.0,1.0,alpha), 3)
+	_centered(canvas, font, Vector2(648,205), "패널", 20, Color(0.80,0.73,0.87,alpha))
 	if total_cores > 0:
-		_centered(canvas, font, Vector2(360, 329), "핵 연쇄 · %d회 발동" % core_count, 21, mint)
+		_centered(canvas, font, Vector2(544,250), "핵 연쇄 · %d회 발동" % core_count, 21, mint)
 	else:
-		_centered(canvas, font, Vector2(360, 329), "연결 소거", 19, Color(0.72,0.79,0.88,alpha))
+		_centered(canvas, font, Vector2(544,250), "연결 소거", 19, Color(0.80,0.73,0.87,alpha))

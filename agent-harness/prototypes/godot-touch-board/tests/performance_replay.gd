@@ -108,11 +108,16 @@ func run() -> void:
 				await gesture(scene.UI.reward_rect(scene.session.reward_options.find(cmd.details.id),scene.session.reward_options.size()).get_center(),"reward")
 			"route_chosen":
 				await gesture(scene.UI.route_rect(0 if cmd.details.choice=="safe" else 1).get_center(),"route")
+				# Match the recorded normal flow's deliberate transition pause.
+				# Frame counts alone can be shorter than its existing500ms
+				# duplicate-tap guard when a renderer is faster.
+				await create_timer(0.8).timeout
 				await sample_frames(18,"next_fight")
 			"shop_purchase":
 				await gesture(scene.UI.shop_rect(0 if cmd.details.item=="heal" else 1).get_center(),"shop")
 			"shop_exit":
 				await gesture(scene.UI.SUMMARY_CONTINUE.get_center(),"shop_exit")
+				await create_timer(0.8).timeout
 				await sample_frames(18,"next_fight")
 	await sample_frames(18,"terminal")
 	recording=false

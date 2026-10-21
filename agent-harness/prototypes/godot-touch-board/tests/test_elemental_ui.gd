@@ -30,7 +30,7 @@ func run()->void:
 	var font:Font=load("res://assets/ChromaSans.otf")
 	for line in lines+success+fallback+[ui.preview_effect_line(plan)]:
 		check(font.get_string_size(line,HORIZONTAL_ALIGNMENT_LEFT,-1,22).x<=628,"critical line fits at22px: "+line)
-	check(ui.BOARD_SCREEN==Rect2(30,268,660,530) and ui.BOARD_SCREEN.end.y<799,"two-line status reserves space without cropping full board or footer")
+	check(ui.BOARD_SCREEN==Rect2(30,390,660,530) and ui.BOARD_SCREEN.end.y<=ui.HERO_RECT.position.y,"new battle composition preserves full board above footer")
 	# Prior draw literal is the fallback until the layout exposes its actual baseline.
 	var baseline: Vector2 = ui.get_script_constant_map().get("WEAKNESS_BASELINE",Vector2(529,100))
 	for color in range(4):
