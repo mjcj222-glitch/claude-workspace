@@ -1,0 +1,18 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":18.762}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":17.224}
+TIMING {"event":"commit_to_ready","frames":89,"movie":false,"next_phase":"ready","profile":{"anchor_us":118681,"clear_wall_ms":386.968,"fall_sim_s":1.025,"fall_wall_ms":1043.419,"inside_sim_s":0.741666666666666,"iterations":781,"last_spawn_sim_s":0.583333333333334,"pending_sim_s":0.583333333333334,"quiet_sim_s":0.0583333333333333,"solve_us":52507,"spawn_us":9305,"ticks":123},"removed":15,"specials":0,"wall_ms":1430.378}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.405}
+TIMING {"event":"commit_to_ready","frames":46,"movie":false,"next_phase":"ready","profile":{"anchor_us":106222,"clear_wall_ms":251.896,"fall_sim_s":0.541666666666667,"fall_wall_ms":569.874,"inside_sim_s":0.316666666666667,"iterations":1017,"last_spawn_sim_s":0.158333333333333,"pending_sim_s":0.158333333333333,"quiet_sim_s":0.0583333333333333,"solve_us":68925,"spawn_us":3448,"ticks":65},"removed":4,"specials":0,"wall_ms":821.761}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":14.645}
+TIMING {"event":"commit_to_ready","frames":41,"movie":false,"next_phase":"reward","profile":{"anchor_us":174118,"clear_wall_ms":222.921,"fall_sim_s":0.816666666666666,"fall_wall_ms":953.186,"inside_sim_s":0.275,"iterations":1356,"last_spawn_sim_s":0.116666666666667,"pending_sim_s":0.116666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":101588,"spawn_us":2186,"ticks":98},"removed":3,"specials":0,"wall_ms":1176.098}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":39.113}
+FAIL original coordinate remains legal
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":40.907}
+FAIL recorded gesture increments once
+FAIL same literal input sequence passes former seventh-clear stall
+INPUT_REPLAY failures=3 actions=3 phase=ready

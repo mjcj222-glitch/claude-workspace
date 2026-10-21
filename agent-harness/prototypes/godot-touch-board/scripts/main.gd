@@ -46,12 +46,22 @@ var demo_id := -1
 var demo_point := Vector2.ZERO
 var primary_touch := -99
 var board_surface: Control
+var overlay_surface: Node2D
+var modal_pointer := -99
+var modal_index := -1
+var modal_offer := -1
+var modal_phase := ""
 
 class BoardSurface extends Control:
 	var presenter: Node2D
 	func _draw() -> void:
 		if presenter: presenter.draw_panels(self)
 
+
+class ModalSurface extends Node2D:
+	var presenter: Node2D
+	func _draw() -> void:
+		if presenter: presenter.UI.draw_modal(presenter,self)
 
 func _ready() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
@@ -71,9 +81,13 @@ func _ready() -> void:
 	board_surface.clip_contents = true
 	board_surface.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(board_surface)
+	overlay_surface = ModalSurface.new()
+	overlay_surface.presenter = self
+	add_child(overlay_surface)
 	reset_board()
 
 func reset_board() -> void:
+	_cancel_modal()
 	rng.seed = 20261021
 	session = Session.new()
 	session.bounds = BOARD
@@ -197,12 +211,13 @@ func _process(delta: float) -> void:
 			if motion_state.ready:
 				session.panels = motion_state.panels.duplicate(true)
 				falling = false
-				session.phase = "ready"
+				session.finish_refill()
+				_cancel_modal()
 				visual = session.panels.duplicate(true)
 				landing = 0
 				sound.tone(0, false, true)
 				status = "다음 연결을 찾아보세요"
-				var metric := {"event":"commit_to_ready", "wall_ms":(Time.get_ticks_usec()-committed_us)/1000.0,"frames":Engine.get_process_frames()-committed_frame,"specials":active_plan.activated.size(),"removed":active_plan.removed.size(),"movie":capture_mode}
+				var metric := {"event":"commit_to_ready", "wall_ms":(Time.get_ticks_usec()-committed_us)/1000.0,"frames":Engine.get_process_frames()-committed_frame,"specials":active_plan.activated.size(),"removed":active_plan.removed.size(),"movie":capture_mode,"next_phase":session.phase}
 				metric.profile=motion_state.profile.duplicate(true)
 				metric.profile.clear_wall_ms=(fall_started_us-committed_us)/1000.0
 				metric.profile.fall_wall_ms=(Time.get_ticks_usec()-fall_started_us)/1000.0
@@ -215,6 +230,7 @@ func _process(delta: float) -> void:
 	if demo: _demo(delta)
 	queue_redraw()
 	if board_surface: board_surface.queue_redraw()
+	if overlay_surface: overlay_surface.queue_redraw()
 
 func _burst(id: int, index: int) -> void:
 	for p in visual:
@@ -243,7 +259,37 @@ func _after_draw() -> void:
 		print("TIMING ", JSON.stringify(metric))
 		feedback_pending = false
 
+func _cancel_modal() -> void:
+	modal_pointer = -99
+	modal_index = -1
+	modal_offer = -1
+	modal_phase = ""
+
+func cancel_input() -> void:
+	session.cancel()
+	_cancel_modal()
+
+func move_pointer(pos: Vector2, pointer: int) -> void:
+	session.move(screen_to_board(pos),pointer)
+	if pointer == modal_pointer:
+		var rect: Rect2 = UI.reward_rect(modal_index,session.reward_options.size()) if modal_phase == "reward" else UI.SUMMARY_CONTINUE
+		if not rect.has_point(pos): _cancel_modal()
+
 func press(pos: Vector2, pointer: int) -> void:
+	if session.phase in ["reward","summary"]:
+		if RESET.has_point(pos):
+			reset_board()
+			return
+		if modal_pointer != -99: return
+		if session.phase == "reward":
+			for i in range(session.reward_options.size()):
+				if UI.reward_rect(i,session.reward_options.size()).has_point(pos):modal_index=i
+		elif UI.SUMMARY_CONTINUE.has_point(pos):modal_index=0
+		if modal_index>=0:
+			modal_pointer=pointer
+			modal_offer=session.offer_serial
+			modal_phase=session.phase
+		return
 	if session.phase == "stalled" and RESET.has_point(pos):
 		reset_board()
 		return
@@ -256,7 +302,7 @@ func press(pos: Vector2, pointer: int) -> void:
 		return
 	if session.phase != "ready": return
 	if SKILL.has_point(pos):
-		if session.charge >= 3:
+		if session.charge >= session.charge_required:
 			session.skill_mode = not session.skill_mode
 			status = "색 선택 → 패널 선택" if session.skill_mode else "누르고 확인 · 놓으면 소거"
 		return
@@ -271,6 +317,22 @@ func press(pos: Vector2, pointer: int) -> void:
 		queue_redraw()
 
 func release(pos: Vector2, pointer: int) -> void:
+	if session.phase in ["reward","summary"] or modal_pointer != -99:
+		if pointer != modal_pointer: return
+		var index := modal_index
+		var serial := modal_offer
+		var previous_phase := modal_phase
+		_cancel_modal()
+		if session.phase != previous_phase: return
+		if session.phase == "reward" and index < session.reward_options.size() and UI.reward_rect(index,session.reward_options.size()).has_point(pos):
+			var id: String=session.reward_options[index]
+			if session.choose_relic(id,serial):
+				last_summary = Session.Relics.DEFS[id].name+" 획득"
+				status="새 유물 적용 · 다음 연결을 선택하세요"
+		elif session.phase == "summary" and UI.SUMMARY_CONTINUE.has_point(pos):
+			session.continue_summary()
+			status="보상 2회 완료 · 자유롭게 계속 시험하세요"
+		return
 	var result: Dictionary = session.release(screen_to_board(pos), pointer)
 	if result.is_empty(): return
 	if result.mode == "skill":
@@ -300,27 +362,31 @@ func _input(event: InputEvent) -> void:
 			primary_touch = event.index
 			press(event.position, event.index)
 		elif event.index == primary_touch:
-			if event.canceled: session.cancel()
+			if event.canceled: cancel_input()
 			else: release(event.position, event.index)
 			primary_touch = -99
 	elif event is InputEventScreenDrag:
-		session.move(screen_to_board(event.position), event.index)
+		move_pointer(event.position, event.index)
 	elif event is InputEventMouseButton and not event.device == InputEvent.DEVICE_ID_EMULATION:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed: press(event.position, -1)
 			else: release(event.position, -1)
 	elif event is InputEventMouseMotion:
-		session.move(screen_to_board(event.position), -1)
+		move_pointer(event.position, -1)
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		session.cancel()
+		cancel_input()
 		session.skill_mode = false
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_MOUSE_EXIT:
-		if session != null: session.cancel()
+		if session != null: cancel_input()
 		primary_touch = -99
 
 func _demo(delta: float) -> void:
+	if session.phase == "reward":
+		var point: Vector2=UI.reward_rect(0,session.reward_options.size()).get_center()
+		press(point,-1)
+		release(point,-1)
 	demo_wait += delta
 	if demo_step == 0 and demo_wait > 1.0:
 		_demo_select(false, 6)
@@ -369,13 +435,13 @@ func _demo_select(special: bool, minimum: int) -> void:
 	var best: Dictionary = {}
 	for p in session.panels:
 		if special and p.kind not in ["core", "strong"]: continue
-		var plan: Dictionary = Rules.plan(session.panels, p.id, session.hp, session.max_hp)
+		var plan: Dictionary = session.plan_for(p.id)
 		if plan.valid and plan.removed.size() >= minimum:
 			best = p
 			break
 	if best.is_empty():
 		for p in session.panels:
-			if Rules.plan(session.panels,p.id,session.hp,session.max_hp).valid:
+			if session.plan_for(p.id).valid:
 				best = p
 				break
 	if not best.is_empty():

@@ -1,0 +1,36 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:90)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+     at: initialize (servers/audio/audio_server.cpp:247)
+
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":14.919}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":18.132}
+TIMING {"event":"commit_to_ready","frames":81,"movie":false,"next_phase":"ready","profile":{"anchor_us":132744,"clear_wall_ms":401.164,"fall_sim_s":1.10833333333333,"fall_wall_ms":1172.606,"inside_sim_s":0.733333333333333,"iterations":854,"last_spawn_sim_s":0.575,"pending_sim_s":0.575,"quiet_sim_s":0.0583333333333333,"solve_us":56627,"spawn_us":9199,"ticks":133},"removed":15,"specials":0,"wall_ms":1573.76}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":43.388}
+TIMING {"event":"commit_to_ready","frames":12,"movie":false,"next_phase":"ready","profile":{"anchor_us":228912,"clear_wall_ms":326.166,"fall_sim_s":0.541666666666667,"fall_wall_ms":637.203,"inside_sim_s":0.316666666666667,"iterations":1007,"last_spawn_sim_s":0.158333333333333,"pending_sim_s":0.158333333333333,"quiet_sim_s":0.0583333333333333,"solve_us":96319,"spawn_us":2951,"ticks":65},"removed":4,"specials":0,"wall_ms":963.359}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":18.339}
+TIMING {"event":"commit_to_ready","frames":41,"movie":false,"next_phase":"reward","profile":{"anchor_us":198582,"clear_wall_ms":396.021,"fall_sim_s":0.941666666666666,"fall_wall_ms":1067.847,"inside_sim_s":0.275,"iterations":1411,"last_spawn_sim_s":0.116666666666667,"pending_sim_s":0.116666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":115681,"spawn_us":2384,"ticks":113},"removed":3,"specials":0,"wall_ms":1463.858}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.97}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.84}
+TIMING {"event":"commit_to_ready","frames":68,"movie":false,"next_phase":"ready","profile":{"anchor_us":137133,"clear_wall_ms":425.449,"fall_sim_s":0.8,"fall_wall_ms":835.496,"inside_sim_s":0.616666666666667,"iterations":1430,"last_spawn_sim_s":0.450000000000001,"pending_sim_s":0.450000000000001,"quiet_sim_s":0.0583333333333333,"solve_us":129014,"spawn_us":6962,"ticks":96},"removed":12,"specials":0,"wall_ms":1260.936}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.33}
+TIMING {"event":"commit_to_ready","frames":31,"movie":false,"next_phase":"ready","profile":{"anchor_us":104370,"clear_wall_ms":205.403,"fall_sim_s":0.441666666666667,"fall_wall_ms":496.794,"inside_sim_s":0.275,"iterations":1322,"last_spawn_sim_s":0.116666666666667,"pending_sim_s":0.116666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":134801,"spawn_us":2182,"ticks":53},"removed":3,"specials":0,"wall_ms":702.189}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":73.584}
+TIMING {"event":"commit_to_ready","frames":32,"movie":false,"next_phase":"reward","profile":{"anchor_us":135736,"clear_wall_ms":203.479,"fall_sim_s":0.55,"fall_wall_ms":592.746,"inside_sim_s":0.275,"iterations":1541,"last_spawn_sim_s":0.116666666666667,"pending_sim_s":0.116666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":150526,"spawn_us":2350,"ticks":66},"removed":3,"specials":0,"wall_ms":796.217}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":18.314}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":22.441}
+FAIL natural refill completes
+FAIL nine normal clears reach summary
+NORMAL_GROWTH pair=0 failures=2 actions=7

@@ -1,0 +1,6 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL defer outside landing despite free spawn point
+FAIL same seventh-clear start finishes without teleport or timeout extension
+FAIL repro full body inside 94
+REFILL_INLET failures=3 sim_s=4.00833333333332

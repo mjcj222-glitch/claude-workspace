@@ -1,0 +1,114 @@
+{
+  "base_commit": "353ece0fef9ad097b7f285f64a7fd7cae79fa923",
+  "engine": "Godot 4.6.3 official",
+  "mode": "two relic rewards at clear3/6, summary9, no permanent save",
+  "normal_runs": [
+    {
+      "file": "play-pair0.json",
+      "pair": [
+        "pigment",
+        "lens"
+      ],
+      "failures": 0,
+      "stats": [
+        {
+          "actions": 3,
+          "cores": 2,
+          "removed": 19
+        },
+        {
+          "actions": 3,
+          "cores": 1,
+          "removed": 11
+        },
+        {
+          "actions": 3,
+          "cores": 1,
+          "removed": 13
+        }
+      ]
+    },
+    {
+      "file": "play-pair1.json",
+      "pair": [
+        "pigment",
+        "ash"
+      ],
+      "failures": 0,
+      "stats": [
+        {
+          "actions": 3,
+          "cores": 2,
+          "removed": 19
+        },
+        {
+          "actions": 3,
+          "cores": 1,
+          "removed": 11
+        },
+        {
+          "actions": 3,
+          "cores": 1,
+          "removed": 11
+        }
+      ]
+    },
+    {
+      "file": "play-pair2.json",
+      "pair": [
+        "lens",
+        "ash"
+      ],
+      "failures": 0,
+      "stats": [
+        {
+          "actions": 3,
+          "cores": 2,
+          "removed": 19
+        },
+        {
+          "actions": 3,
+          "cores": 1,
+          "removed": 10
+        },
+        {
+          "actions": 3,
+          "cores": 1,
+          "removed": 10
+        }
+      ]
+    }
+  ],
+  "diagnostics": {
+    "before_inlet": "expected failure at action7 using prior condition",
+    "literal_input_replay": "not passed: original target becomes invalid after contact paths change at action4",
+    "ID_input_replay": "not passed: same ID becomes isolated after earlier contact changes",
+    "exact_seventh_refill_start": "test_refill_inlet.gd: passed with saved positions, IDs, pending panels; unchanged four-second limit"
+  },
+  "artifacts": {
+    "chroma-growth.mp4": {
+      "bytes": 2928026,
+      "sha256": "d21b7b26b66aa30f022ee28a1596faa96804d99ec834a79b4e8fe6dbb604b993"
+    },
+    "reward1-pair1.png": {
+      "bytes": 183627,
+      "sha256": "905ee12c42fe29f6ad5a608bb569b0dd3ccf5cfdc6e0716f4263173459126a0d"
+    },
+    "reward2-pair1.png": {
+      "bytes": 167967,
+      "sha256": "cedb36ebe12ee8f61e9d5d8381e11a921977d96a6dd37a1ee5d5b7a0c6d437ed"
+    },
+    "summary-pair1.png": {
+      "bytes": 157321,
+      "sha256": "b88e0f03d2eb9921d2f9fee2425e55951dbdc9fe6f93039a411d0db78e384ac6"
+    },
+    "ash-consumed-pair1.png": {
+      "bytes": 637968,
+      "sha256": "47d4e1c6b7de250cf09fd9f9497686d0281fef68f223bd95cef02ec39d91e8e1"
+    },
+    "stall-start-pair0.dat": {
+      "bytes": 10360,
+      "sha256": "57fddaf890cb1da801ca3501a46a9988ef67565ee0b8c451c061620df402100e"
+    }
+  }
+}

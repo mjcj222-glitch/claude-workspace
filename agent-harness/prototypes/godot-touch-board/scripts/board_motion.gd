@@ -111,7 +111,10 @@ static func _spawn(state: Dictionary,bounds: Rect2) -> void:
 			var dx: float=absf(p.pos.x-x)
 			var reach: float=p.radius+RADIUS
 			if dx<reach:clearance=minf(clearance,p.pos.y-sqrt(reach*reach-dx*dx))
-		if free and clearance>best_clearance:
+		# A clear spawn point can still sit above a surface too high to hold
+		# the full body inside. Wait for a usable CURRENT inlet instead of
+		# stacking an unrecoverable overhang while other bodies are in flight.
+		if free and clearance >= bounds.position.y+RADIUS and clearance>best_clearance:
 			best_x=x
 			best_clearance=clearance
 	if best_clearance>-INF:

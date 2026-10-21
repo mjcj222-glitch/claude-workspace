@@ -1,4 +1,5 @@
 extends RefCounted
+const Relics = preload("res://scripts/board_relics.gd")
 const Rules = preload("res://scripts/board_rules.gd")
 var panels: Array = []
 var bounds := Rect2(30, 290, 660, 530)
@@ -7,6 +8,15 @@ var max_hp := 30
 var damage_total := 0
 var actions := 0
 var charge := 3
+var charge_required := 3
+var ash_reserved := false
+var relics: Array = []
+var reward_options: Array = []
+var reward_round := 0
+var rewards_taken := 0
+var offer_serial := 0
+var summary_shown := false
+var stats: Array = [{"actions":0,"removed":0,"cores":0},{"actions":0,"removed":0,"cores":0},{"actions":0,"removed":0,"cores":0}]
 var phase := "ready"
 var selection: Dictionary = {}
 var owner := -99
@@ -27,11 +37,13 @@ func begin(point: Vector2, pointer: int) -> bool:
 	if id < 0:
 		return false
 	owner = pointer
-	if skill_mode and charge >= 3:
-		selection = Rules.skill_plan(panels, id, skill_color)
+	if skill_mode and charge >= charge_required:
+		selection = Rules.skill_plan(panels, id, skill_color, relics.duplicate())
+		selection["consume_ash"] = ash_reserved
+		selection["recharge_required"] = 2 if ash_reserved else 3
 		selection["mode"] = "skill"
 	else:
-		selection = Rules.plan(panels, id, hp, max_hp)
+		selection = plan_for(id)
 		selection["mode"] = "clear"
 	return true
 
@@ -44,7 +56,7 @@ func cancel() -> void:
 	owner = -99
 
 func release(point: Vector2, pointer: int) -> Dictionary:
-	if pointer != owner:
+	if phase != "ready" or pointer != owner:
 		return {}
 	if not bounds.has_point(point) or selection.is_empty() or not selection.get("valid", false):
 		cancel()
@@ -56,11 +68,19 @@ func release(point: Vector2, pointer: int) -> Dictionary:
 			if result.converted.has(p.id):
 				p.color = result.converted[p.id]
 		charge = 0
+		charge_required = result.recharge_required
+		if result.consume_ash: ash_reserved = false
 		skill_mode = false
 		return result
 	phase = "busy"
 	actions += 1
-	charge = mini(charge + 1, 3)
+	charge = mini(charge + 1, charge_required)
+	if result.ash_reserve: ash_reserved = true
+	if actions <= 9:
+		var stage: Dictionary = stats[(actions-1)/3]
+		stage.actions += 1
+		stage.removed += result.removed.size()
+		if not result.spawn.is_empty(): stage.cores += 1
 	damage_total += result.damage
 	hp += result.heal_effective
 	var survivors: Array = []
@@ -78,3 +98,39 @@ func release(point: Vector2, pointer: int) -> Dictionary:
 		survivors.append(p)
 	panels = survivors
 	return result
+
+func plan_for(id: int) -> Dictionary:
+	return Rules.plan(panels, id, hp, max_hp, relics.duplicate())
+
+func skill_plan_for(id: int, color: int) -> Dictionary:
+	return Rules.skill_plan(panels, id, color, relics.duplicate())
+
+func finish_refill() -> void:
+	if phase != "busy": return
+	cancel()
+	skill_mode = false
+	if (actions == 3 and rewards_taken == 0) or (actions == 6 and rewards_taken == 1):
+		reward_round = rewards_taken + 1
+		reward_options = Relics.available(relics)
+		offer_serial += 1
+		phase = "reward"
+	elif actions == 9 and not summary_shown:
+		summary_shown = true
+		phase = "summary"
+	else:
+		phase = "ready"
+
+func choose_relic(id: String, serial: int) -> bool:
+	if phase != "reward" or serial != offer_serial or id not in reward_options or id in relics:
+		return false
+	relics.append(id)
+	rewards_taken += 1
+	reward_options = []
+	cancel()
+	phase = "ready"
+	return true
+
+func continue_summary() -> void:
+	if phase == "summary":
+		cancel()
+		phase = "ready"

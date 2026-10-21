@@ -70,9 +70,12 @@ static func _component(graph: Dictionary, indexed: Dictionary, colors: Dictionar
 	return queue
 
 static func _empty_plan() -> Dictionary:
-	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": []}
+	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": [], "direct_normals": 0, "ash_reserve": false}
 
-static func plan(panels: Array, start_id: int, hp: int, max_hp: int) -> Dictionary:
+static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Array = []) -> Dictionary:
+	# Evaluate relic ownership once; the returned plan contains values, not live state.
+	var has_lens := relics.has("lens")
+	var has_ash := relics.has("ash")
 	var result := _empty_plan()
 	var indexed := _index(panels)
 	if not indexed.has(start_id) or indexed.size() != panels.size():
@@ -135,11 +138,16 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int) -> Dictiona
 			result.heal_raw += 2
 	result.heal_effective = mini(int(result.heal_raw), maxi(0, max_hp - hp))
 	result.heal_overflow = int(result.heal_raw) - int(result.heal_effective)
-	if direct_normals >= 6:
-		result.spawn = {"pos": indexed[start_id].pos, "color": int(indexed[start_id].color), "kind": "strong" if direct_normals >= 12 else "core"}
+	result.direct_normals = direct_normals
+	result.ash_reserve = has_ash and direct_normals >= 6
+	var core_threshold := 5 if has_lens else 6
+	var strong_threshold := 11 if has_lens else 12
+	if direct_normals >= core_threshold:
+		result.spawn = {"pos": indexed[start_id].pos, "color": int(indexed[start_id].color), "kind": "strong" if direct_normals >= strong_threshold else "core"}
 	return result
 
-static func skill_plan(panels: Array, start_id: int, target_color: int) -> Dictionary:
+static func skill_plan(panels: Array, start_id: int, target_color: int, relics: Array = []) -> Dictionary:
+	var target_limit := 5 if relics.has("pigment") else 4
 	var result := {"valid": false, "targets": [], "converted": {}, "connected": []}
 	var indexed := _index(panels)
 	if not indexed.has(start_id) or indexed.size() != panels.size() or indexed[start_id].kind != "normal" or target_color < 0 or target_color > 3:
@@ -152,7 +160,7 @@ static func skill_plan(panels: Array, start_id: int, target_color: int) -> Dicti
 			normals.append(panel)
 	var normal_graph := contact_graph(normals)
 	var distances := _distances(normal_graph, start_id)
-	var targets := _ordered(distances.keys(), distances).slice(0, 4)
+	var targets := _ordered(distances.keys(), distances).slice(0, target_limit)
 	result.valid = true
 	result.targets = targets
 	for id in targets:
