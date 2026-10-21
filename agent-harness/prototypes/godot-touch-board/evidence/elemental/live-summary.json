@@ -1,0 +1,82 @@
+{
+  "method": "live actual main.tscn automated legal actions, llvmpipe software renderer, Dummy audio; screenshot/choice overhead mixed in; not dedicated performance or mobile benchmark",
+  "press_to_draw": {
+    "n": 21,
+    "min_ms": 14.108,
+    "median_ms": 15.966,
+    "max_ms": 19.087
+  },
+  "no_existing_core_resolution": {
+    "n": 13,
+    "min_ms": 692.081,
+    "median_ms": 1179.689,
+    "max_ms": 1494.341
+  },
+  "existing_core_resolution": {
+    "n": 2,
+    "min_ms": 1140.093,
+    "median_ms": 1334.459,
+    "max_ms": 1528.825
+  },
+  "resolution_frames": [
+    65,
+    42,
+    42,
+    53,
+    52,
+    50,
+    55,
+    50,
+    29,
+    57,
+    58,
+    36,
+    50,
+    33,
+    40
+  ],
+  "final": {
+    "actions": 15,
+    "actions_in_turn": 1,
+    "ash_reserved": true,
+    "attacks_total": 3,
+    "charge": 1,
+    "charge_required": 2,
+    "combat_context": {
+      "incoming_damage": 4,
+      "intent": "slam",
+      "intent_serial": 6,
+      "mitigation_success": true,
+      "weakness_color": 3
+    },
+    "encounter": 2,
+    "enemies_defeated": 3,
+    "enemy_hp": 0,
+    "enemy_max_hp": 48,
+    "fallback_plain": false,
+    "gold": 0,
+    "gold_spent": 12,
+    "hp": 20,
+    "incoming_damage": 4,
+    "last_attack_damage": 6,
+    "mitigation_active": true,
+    "mitigation_success": true,
+    "phase": "victory",
+    "process_frame": 2885,
+    "relics": [
+      "pigment",
+      "lens",
+      "ash"
+    ],
+    "route": "elite",
+    "scene_seconds": 58.9433333333333,
+    "shop_closed": true,
+    "shop_heal_sold": true,
+    "shop_relic_sold": true,
+    "turn": 2,
+    "wall_ms": 59908.824,
+    "weak_color": 3
+  },
+  "errors": [],
+  "note": "Accepted press samples exclude transition-duplicate suppression. Refill completion differs from next input when attack/modal follows. Fixed-frame capture must not be treated as real-time performance."
+}

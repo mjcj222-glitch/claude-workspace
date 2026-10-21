@@ -1,0 +1,158 @@
+[
+  {
+    "test": "test_rules",
+    "exit": 0,
+    "wall_seconds": 0.281,
+    "errors": []
+  },
+  {
+    "test": "test_relic_rules",
+    "exit": 0,
+    "wall_seconds": 0.274,
+    "errors": []
+  },
+  {
+    "test": "test_growth_session",
+    "exit": 0,
+    "wall_seconds": 0.169,
+    "errors": []
+  },
+  {
+    "test": "test_interaction",
+    "exit": 0,
+    "wall_seconds": 0.264,
+    "errors": []
+  },
+  {
+    "test": "test_scene",
+    "exit": 0,
+    "wall_seconds": 1.102,
+    "errors": []
+  },
+  {
+    "test": "test_reward_input",
+    "exit": 0,
+    "wall_seconds": 1.107,
+    "errors": []
+  },
+  {
+    "test": "test_feedback",
+    "exit": 0,
+    "wall_seconds": 0.266,
+    "errors": []
+  },
+  {
+    "test": "test_presentation_scene",
+    "exit": 0,
+    "wall_seconds": 1.676,
+    "errors": []
+  },
+  {
+    "test": "test_relic_details",
+    "exit": 0,
+    "wall_seconds": 3.334,
+    "errors": []
+  },
+  {
+    "test": "test_clear_timeline",
+    "exit": 0,
+    "wall_seconds": 3.482,
+    "errors": []
+  },
+  {
+    "test": "test_motion",
+    "exit": 0,
+    "wall_seconds": 3.364,
+    "errors": []
+  },
+  {
+    "test": "test_motion_paths",
+    "exit": 0,
+    "wall_seconds": 4.641,
+    "errors": []
+  },
+  {
+    "test": "test_motion_cycles",
+    "exit": 0,
+    "wall_seconds": 8.418,
+    "errors": []
+  },
+  {
+    "test": "test_refill_inlet",
+    "exit": 0,
+    "wall_seconds": 3.736,
+    "errors": []
+  },
+  {
+    "test": "test_combat",
+    "exit": 0,
+    "wall_seconds": 3.273,
+    "errors": []
+  },
+  {
+    "test": "test_run_session",
+    "exit": 0,
+    "wall_seconds": 3.271,
+    "errors": []
+  },
+  {
+    "test": "test_run_input",
+    "exit": 0,
+    "wall_seconds": 7.835,
+    "errors": []
+  },
+  {
+    "test": "test_route_combat",
+    "exit": 0,
+    "wall_seconds": 3.271,
+    "errors": []
+  },
+  {
+    "test": "test_route_economy",
+    "exit": 0,
+    "wall_seconds": 3.277,
+    "errors": []
+  },
+  {
+    "test": "test_route_input",
+    "exit": 0,
+    "wall_seconds": 6.061,
+    "errors": []
+  },
+  {
+    "test": "test_transition_reentry",
+    "exit": 0,
+    "wall_seconds": 5.435,
+    "errors": []
+  },
+  {
+    "test": "test_elemental_rules",
+    "exit": 0,
+    "wall_seconds": 3.273,
+    "errors": []
+  },
+  {
+    "test": "test_boss_combat",
+    "exit": 0,
+    "wall_seconds": 3.271,
+    "errors": []
+  },
+  {
+    "test": "test_elemental_session",
+    "exit": 0,
+    "wall_seconds": 3.271,
+    "errors": []
+  },
+  {
+    "test": "test_elemental_input",
+    "exit": 0,
+    "wall_seconds": 5.785,
+    "errors": []
+  },
+  {
+    "test": "test_elemental_ui",
+    "exit": 0,
+    "wall_seconds": 3.364,
+    "errors": []
+  }
+]

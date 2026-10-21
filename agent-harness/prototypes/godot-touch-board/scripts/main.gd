@@ -498,7 +498,7 @@ func release(pos: Vector2, pointer: int) -> void:
 		clear_duration = _clear_onset(result.sequence.size()-1) + 0.10
 	committed_us = Time.get_ticks_usec()
 	committed_frame = Engine.get_process_frames()
-	last_summary = "피해 %d  ·  회복 %d (유효 %d / 초과 %d)" % [result.damage,result.heal_raw,result.heal_effective,result.heal_overflow]
+	last_summary = UI.damage_line(result) + " · 회복 %d" % result.heal_effective if not sandbox else "피해 %d  ·  회복 %d (유효 %d / 초과 %d)" % [result.damage,result.heal_raw,result.heal_effective,result.heal_overflow]
 	if not result.spawn.is_empty(): last_summary += "  ·  " + ("강화핵 생성" if result.spawn.kind == "strong" else "물감핵 생성")
 	status = "연쇄!" if result.activated.size() > 0 else "팝!"
 

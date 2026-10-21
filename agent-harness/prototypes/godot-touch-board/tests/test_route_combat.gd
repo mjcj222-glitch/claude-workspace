@@ -82,7 +82,7 @@ func _init() -> void:
 	c.start_fight(2,board(4),"elite")
 	check(c.enemy_hp==48 and c.incoming_damage==6 and finish_turn(c)==6, "final fight first attack unaffected by elite")
 	c.next_turn(board(4))
-	check(c.incoming_damage==8 and finish_turn(c)==8, "final fight alternation unaffected by elite")
+	check(c.incoming_damage==6 and finish_turn(c)==6, "boss odd plain six unaffected by elite")
 	c.start_fight(1,board(4),"safe")
 	check(c.enemy_hp==36 and c.incoming_damage==7 and c.telegraph_text()=="4개 이상 연결을 한 번 지우면 공격 7 → 3", "explicit safe resets elite bonuses")
 	c.record_clear(clear_plan(0,[0,1,2,3]))

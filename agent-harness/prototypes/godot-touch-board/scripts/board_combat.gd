@@ -31,6 +31,7 @@ var _victory_counted: bool = false
 func start_fight(index: int, panels: Array, selected_route: String = "safe") -> void:
 	route = selected_route if ROUTES.has(selected_route) else "safe"
 	encounter = clampi(index, 0, FIGHTS.size()-1)
+	weak_color = 0 if encounter == 0 else (3 if encounter == 2 else (2 if route == "elite" else 1))
 	var definition: Dictionary = FIGHTS[encounter]
 	enemy_max_hp = int(ROUTES[route].hp) if encounter == 1 else int(definition.hp)
 	enemy_hp = enemy_max_hp
@@ -44,25 +45,40 @@ func start_fight(index: int, panels: Array, selected_route: String = "safe") -> 
 	prepare_turn(panels)
 
 func prepare_turn(panels: Array) -> void:
-	# Freeze this turn's condition against its initial settled board only.
-	# A refill later in the same turn cannot introduce or remove the condition.
+	# Each intent is frozen from the CURRENT settled board. Query the same
+	# canonical rule planner used by player previews; no skill/future/RNG search.
 	if _turn_prepared:
 		return
 	_turn_prepared = true
+	intent_serial += 1
+	intent = "plain"
 	mitigation_active = false
 	mitigation_success = false
 	fallback_plain = false
 	if encounter == 0:
 		incoming_damage = 4
 	elif encounter == 2:
-		incoming_damage = 6 if turn % 2 == 0 else 8
+		incoming_damage = 6
+		if turn % 2 == 0:
+			intent = "slam"
+			incoming_damage = 10
+			for panel in panels:
+				var candidate: Dictionary = Rules.plan(panels, int(panel.id), 0, 1, [], damage_context())
+				if candidate.get("valid", false) and candidate.get("mitigates_intent", false):
+					mitigation_active = true
+					break
+			if not mitigation_active:
+				intent = "plain"
+				incoming_damage = 6
+				fallback_plain = true
 	else:
 		incoming_damage = 5 + _route_attack_bonus()
 		if turn % 2 == 0:
 			for panel in panels:
-				var candidate: Dictionary = Rules.plan(panels, int(panel.id), 0, 1)
+				var candidate: Dictionary = Rules.plan(panels, int(panel.id), 0, 1, [], damage_context())
 				if candidate.get("valid", false) and _direct_count(candidate) >= 4:
 					mitigation_active = true
+					intent = "direct4"
 					incoming_damage = 7 + _route_attack_bonus()
 					break
 			fallback_plain = not mitigation_active
@@ -85,9 +101,13 @@ func record_clear(plan: Dictionary) -> void:
 		return
 	enemy_hp = maxi(0, enemy_hp - maxi(0, int(plan.get("damage", 0))))
 	actions_in_turn += 1
-	if mitigation_active and _direct_count(plan) >= 4:
-		mitigation_success = true
-		incoming_damage = 3 + _route_attack_bonus()
+	if mitigation_active:
+		if intent == "slam" and (int(plan.get("weak_count",0)) >= 2 or int(plan.get("normal_count",0)) >= 8):
+			mitigation_success = true
+			incoming_damage = 4
+		elif intent == "direct4" and _direct_count(plan) >= 4:
+			mitigation_success = true
+			incoming_damage = 3 + _route_attack_bonus()
 
 func resolve() -> String:
 	# Victory precedes the third-clear retaliation check.
@@ -120,5 +140,14 @@ func telegraph_text() -> String:
 	if mitigation_active:
 		if mitigation_success:
 			return "조건 성공 · 다음 공격 %d" % incoming_damage
+		if intent == "slam":
+			return "약점 2개 또는 일반 패널 8개를 한 번에 지우면 강타 10 → 4"
 		return "4개 이상 연결을 한 번 지우면 공격 %d → %d" % [7 + _route_attack_bonus(), 3 + _route_attack_bonus()]
 	return "3회 소거 후 공격 %d" % incoming_damage
+
+var weak_color: int = 0
+var intent: String = "plain"
+var intent_serial: int = 0
+func damage_context() -> Dictionary:
+	return {"weakness_color":weak_color,"intent":intent,"intent_serial":intent_serial,
+		"incoming_damage":incoming_damage,"mitigation_success":mitigation_success}

@@ -1,0 +1,50 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS W0 bonus floors once
+PASS W0 base ordinary formula preserved
+PASS W0 effective colors exclude core
+PASS W0 plain intent never mitigated
+FAIL W1 bonus floors once
+FAIL W1 base ordinary formula preserved
+FAIL W1 effective colors exclude core
+PASS W1 plain intent never mitigated
+FAIL W2 bonus floors once
+FAIL W2 base ordinary formula preserved
+FAIL W2 effective colors exclude core
+PASS W2 plain intent never mitigated
+FAIL W3 bonus floors once
+FAIL W3 base ordinary formula preserved
+FAIL W3 effective colors exclude core
+PASS W3 plain intent never mitigated
+FAIL W4 bonus floors once
+FAIL W4 base ordinary formula preserved
+FAIL W4 effective colors exclude core
+PASS W4 plain intent never mitigated
+FAIL two normals clear through distinct core waves
+FAIL separate one-weak waves aggregate before rounding
+FAIL wave effective colors use final conversion
+FAIL mixed final attack colors count only weakness
+FAIL mixed waves retain per-panel effective color
+FAIL conversion into weakness increases weak count
+PASS conversion out of weakness removes weak eligibility
+FAIL first-claim conflict color remains canonical for weakness
+PASS fixture has converted but unremoved normal
+PASS unremoved conversion earns no weakness or base damage
+PASS duplicate input IDs invalid with safe elemental defaults
+FAIL protected new core never adds weakness or base damage
+PASS elemental damage leaves ash direct-count trigger unchanged
+PASS lens five-normal threshold remains independent of bonus damage
+PASS hearts excluded from every attack count
+FAIL heart healing unchanged and direct-four intent still qualifies
+FAIL existing cores have no intrinsic damage but direct-four qualifies
+PASS slam normal threshold 7 uses actual normal removals
+FAIL slam normal threshold 8 uses actual normal removals
+PASS slam weakness threshold W1
+FAIL slam weakness threshold W2
+PASS unknown intent does not acquire implicit conditions
+PASS core chain extras do not satisfy direct-four intent
+FAIL default no-context calls preserve old damage formula
+PASS combat context is deeply frozen
+FAIL later context mutation cannot change computed outcome or input panels
+PASS free skill does not gain elemental damage fields
+ELEMENTAL RULES checks=47 failures=26

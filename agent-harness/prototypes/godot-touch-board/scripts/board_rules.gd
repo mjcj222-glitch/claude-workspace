@@ -70,13 +70,14 @@ static func _component(graph: Dictionary, indexed: Dictionary, colors: Dictionar
 	return queue
 
 static func _empty_plan() -> Dictionary:
-	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": [], "direct_normals": 0, "ash_reserve": false}
+	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": [], "direct_normals": 0, "ash_reserve": false, "base_damage": 0, "weak_count": 0, "weak_bonus": 0, "normal_count": 0, "effective_colors": {}, "combat_context": {}, "mitigates_intent": false}
 
-static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Array = []) -> Dictionary:
+static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Array = [], combat_context: Dictionary = {}) -> Dictionary:
 	# Evaluate relic ownership once; the returned plan contains values, not live state.
 	var has_lens := relics.has("lens")
 	var has_ash := relics.has("ash")
 	var result := _empty_plan()
+	result.combat_context = combat_context.duplicate(true)
 	var indexed := _index(panels)
 	if not indexed.has(start_id) or indexed.size() != panels.size():
 		return result
@@ -131,11 +132,27 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Arr
 				pending[id] = true
 	result.removed = _ordered(removed.keys(), distance)
 	result.sequence = result.removed.duplicate()
+	# Only canonical, actually removed normals participate, using the color left
+	# by all ordered core conversions. Aggregate once across the whole action.
+	var weakness_color := int(result.combat_context.get("weakness_color", -1))
 	for id in result.removed:
 		if indexed[id].kind == "normal":
 			result.damage += 1
+			result.normal_count += 1
+			result.effective_colors[id] = int(colors[id])
+			if weakness_color >= 0 and weakness_color < 4 and int(colors[id]) == weakness_color:
+				result.weak_count += 1
 		elif indexed[id].kind == "heart":
 			result.heal_raw += 2
+	result.base_damage = result.damage
+	result.weak_bonus = int(int(result.weak_count) / 2)
+	result.damage = int(result.base_damage) + int(result.weak_bonus)
+	var intent := String(result.combat_context.get("intent", "plain"))
+	if intent == "slam":
+		result.mitigates_intent = int(result.weak_count) >= 2 or int(result.normal_count) >= 8
+	elif intent == "direct4":
+		# direct was constructed by a visited-set traversal; its IDs are unique.
+		result.mitigates_intent = result.direct.size() >= 4
 	result.heal_effective = mini(int(result.heal_raw), maxi(0, max_hp - hp))
 	result.heal_overflow = int(result.heal_raw) - int(result.heal_effective)
 	result.direct_normals = direct_normals

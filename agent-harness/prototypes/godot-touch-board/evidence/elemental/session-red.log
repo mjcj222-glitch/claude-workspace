@@ -1,0 +1,12 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL run clear preview passes enemy weakness into canonical rules
+FAIL clear plan carries frozen intent serial
+FAIL release executes exact snapshot despite live weakness mutation
+FAIL virtual skill hook attaches current combat context
+FAIL boss preview forecasts mitigation without committing
+FAIL valid boss clear latches frozen intent
+FAIL third clear applies reduced attack before intent advances
+FAIL only settled attack completion advances boss intent
+FAIL new run resets intent and weakness to first encounter
+ELEMENTAL_SESSION checks=14 failures=9

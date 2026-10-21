@@ -152,3 +152,11 @@ func begin_next_fight(fresh_panels: Array, fresh_next_id: int) -> bool:
 	combat.start_fight(combat.encounter + 1, panels, route)
 	phase = "ready"
 	return true
+
+func plan_for(id: int) -> Dictionary:
+	return Rules.plan(panels, id, hp, max_hp, relics.duplicate(), combat.damage_context())
+
+func skill_plan_for(id: int, color: int) -> Dictionary:
+	var result: Dictionary = super.skill_plan_for(id, color)
+	result["combat_context"] = combat.damage_context().duplicate(true)
+	return result

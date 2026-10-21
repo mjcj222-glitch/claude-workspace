@@ -38,7 +38,7 @@ func begin(point: Vector2, pointer: int) -> bool:
 		return false
 	owner = pointer
 	if skill_mode and charge >= charge_required:
-		selection = Rules.skill_plan(panels, id, skill_color, relics.duplicate())
+		selection = skill_plan_for(id, skill_color)
 		selection["consume_ash"] = ash_reserved
 		selection["recharge_required"] = 2 if ash_reserved else 3
 		selection["mode"] = "skill"

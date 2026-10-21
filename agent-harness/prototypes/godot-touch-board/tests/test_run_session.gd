@@ -7,10 +7,12 @@ func check(ok: bool, label: String) -> void:
 	if not ok:
 		failures += 1
 		printerr("FAIL " + label)
+# Yellow fixtures isolate existing resource/turn accounting from first enemy red weakness.
+# test_elemental_session separately verifies weakness-adjusted damage and snapshots.
 func board(count: int = 2, kind: String = "normal", first_id: int = 1) -> Array:
 	var result: Array = []
 	for i in range(count):
-		result.append({"id":first_id+i,"pos":Vector2(90+(i%7)*74,400+(i/7)*74),"radius":37.0,"kind":kind,"color":4 if kind == "heart" else 0})
+		result.append({"id":first_id+i,"pos":Vector2(90+(i%7)*74,400+(i/7)*74),"radius":37.0,"kind":kind,"color":4 if kind == "heart" else 2})
 	return result
 func make_run():
 	var result = Run.new()
@@ -53,7 +55,7 @@ func _init() -> void:
 	check(s.combat.encounter == 1 and s.panels[0].id == 201 and s.next_id == 203, "next fight uses new board and index")
 	check(s.hp == 17 and s.charge == 1 and s.charge_required == 2 and s.ash_reserved and s.relics == ["ash","pigment"], "hp charge requirement ash and relics carry unchanged")
 	fresh[0].color = 3
-	check(s.panels[0].color == 0, "incoming board ownership is isolated")
+	check(s.panels[0].color == 2, "incoming board ownership is isolated")
 	# Third clear kill has priority over a scheduled attack.
 	s = make_run()
 	s.combat.enemy_hp = 6

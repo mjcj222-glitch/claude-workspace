@@ -4,7 +4,9 @@ extends RefCounted
 const RelicArt = preload("res://scripts/board_relic_art.gd")
 const Art = preload("res://scripts/board_art.gd")
 const COLORS = [Color("ff705d"), Color("6edb6b"), Color("ffcf5b"), Color("61b7ff"), Color("ff86b5")]
-const BOARD_SCREEN = Rect2(30, 250, 660, 530)
+const BOARD_SCREEN = Rect2(30, 268, 660, 530)
+const WEAKNESS_BASELINE := Vector2(529,127)
+const ELEMENT_NAMES := ["불꽃","새잎","번개","물결"]
 const RESET = Rect2(608, 12, 88, 88)
 const SKILL = Rect2(180, 846, 412, 100)
 const MUTE = Rect2(608, 850, 88, 88)
@@ -29,6 +31,9 @@ static func draw(view) -> void:
 	var session = view.session
 	var preview: Dictionary = session.selection
 	var skill_ready: bool = session.charge >= session.charge_required
+	var context: Dictionary = {}
+	if not view.sandbox:
+		context = preview.get("combat_context",session.combat.damage_context())
 	view.draw_rect(Rect2(0, 0, 720, 1080), Color("0e121b"))
 	# Quiet warm top band, thin accent and restrained typography.
 	view.draw_rect(Rect2(0, 0, 720, 208), Color("131925"))
@@ -41,18 +46,24 @@ static func draw(view) -> void:
 
 	if not view.sandbox:
 		view._text(Vector2(529,74), "%d G" % session.gold,22,COLORS[2])
+		var weak: int = context.get("weakness_color",session.combat.weak_color)
+		Art.draw_panel(view,{"pos":WEAKNESS_BASELINE+Vector2(-20,-7),"radius":14.0,"color":weak,"kind":"normal"},view.time)
+		view._text(WEAKNESS_BASELINE,"약점 · "+weakness_name(weak),22,COLORS[weak])
 	# Target has a reserved central portrait band, with counters to either side.
 	if view.sandbox:
 		view._text(Vector2(31, 113), "피해", 22, MUTED)
 		view._text(Vector2(29, 158), str(session.damage_total).pad_zeros(3), 41, COLORS[0])
 		view._text(Vector2(31, 183), "반격 없는 표적", 20, MUTED)
 	else:
-		view._text(Vector2(31,113), "%s %d/3" % ["정예 표적" if session.combat.encounter == 1 and session.route == "elite" else session.combat.enemy_name,session.combat.encounter+1],22,MUTED)
+		view._text(Vector2(31,113), "%s %d/3" % ["강타 수호자" if session.combat.encounter == 2 else ("정예 표적" if session.combat.encounter == 1 and session.route == "elite" else session.combat.enemy_name),session.combat.encounter+1],22,MUTED)
 		view._text(Vector2(29,158), "%d / %d" % [session.combat.enemy_hp,session.combat.enemy_max_hp],41,COLORS[0])
-		view._text(Vector2(31,183), "예고 %d 피해" % session.combat.incoming_damage,22,COLORS[2])
+		view._text(Vector2(31,183), "예고 %d 피해" % int(context.get("incoming_damage",session.combat.incoming_damage)),22,COLORS[2])
 	Art.draw_target(view, TARGET_RECT.get_center(), view.time, view.target_hit)
-	view._text(Vector2(528, 123), "생명", 22, MUTED)
-	view._text(Vector2(527, 158), "%d / %d" % [session.hp, session.max_hp], 27, COLORS[4])
+	if view.sandbox:
+		view._text(Vector2(528,123),"생명",22,MUTED)
+		view._text(Vector2(527,158),"%d / %d" % [session.hp,session.max_hp],27,COLORS[4])
+	else:
+		view._text(Vector2(527,158),"생명 %d / %d" % [session.hp,session.max_hp],25,COLORS[4])
 	view._box(Rect2(529, 174, 160, 6), Color("342a39"), 3)
 	view._box(Rect2(529, 174, 160 * float(session.hp) / session.max_hp, 6), COLORS[4], 3)
 
@@ -62,19 +73,26 @@ static func draw(view) -> void:
 	view._text(Vector2(536, 207), "충전 %d / %d" % [session.charge, session.charge_required], 22, MINT if skill_ready else MUTED)
 
 	# Full 660x530 body field is retained; no high/low rows are cropped.
-	view._box(Rect2(24, 214, 672, 578), Color("05080d"), 22, Color("3a465c"))
-	view._box(Rect2(32, 221, 656, 26), Color("161e2a"), 10)
+	view._box(Rect2(24, 214, 672, 596), Color("05080d"), 22, Color("3a465c"))
+	view._box(Rect2(32, 216, 656, 48), Color("161e2a"), 10)
 	var headline: String = view.status
+	var secondary := ""
 	if not view.sandbox:
-		if session.phase == "ready": headline = session.combat.telegraph_text()
+		if session.phase == "ready":
+			var intent_copy: Array = intent_lines(context)
+			headline = intent_copy[0]
+			secondary = intent_copy[1]
 		elif session.phase == "enemy_attack": headline = "적의 반격 · %d 피해" % session.combat.last_attack_damage
 	var result: String = view.last_summary
+	if not view.sandbox and session.phase == "ready": result = "약점 패널 2개당 피해 +1"
 	var result_color := Color("bfcbdc")
 	if not preview.is_empty():
 		if not preview.get("valid", false):
 			headline = "같은 색 2개부터 골라주세요"
+			secondary = "놓아도 행동을 쓰지 않아요"
 		elif preview.mode == "skill":
 			headline = "%d개 변환 → 연결 %d개" % [preview.targets.size(), preview.connected.size()]
+			secondary = "변환만 적용 · 피해와 소거 행동 없음"
 			result = "놓으면 변환 · 소거 횟수는 그대로"
 			result_color = MINT
 		else:
@@ -82,9 +100,11 @@ static func draw(view) -> void:
 			if not preview.spawn.is_empty(): outcome = "강화핵 생성" if preview.spawn.kind == "strong" else "물감핵 생성"
 			if preview.get("ash_reserve", false): outcome += " · 충전 예약"
 			headline = "직접 %d · 연쇄 %d / %s" % [preview.direct.size(), preview.removed.size()-preview.direct.size(), outcome]
-			result = "피해 %d   회복 %d → %d  (초과 %d)" % [preview.damage,preview.heal_raw,preview.heal_effective,preview.heal_overflow]
+			secondary = preview_effect_line(preview)
+			result = "공격 %d개 · 약점 %d개 · 회복 %d → %d (초과 %d)" % [preview.get("normal_count",0),preview.get("weak_count",0),preview.heal_raw,preview.heal_effective,preview.heal_overflow] if not view.sandbox else "피해 %d   회복 %d → %d  (초과 %d)" % [preview.damage,preview.heal_raw,preview.heal_effective,preview.heal_overflow]
 			result_color = Color("fff0c7")
-	_line(view, Vector2(360,241), headline, 22, 628, Color("eef2f9"))
+	_line(view, Vector2(360,236), headline, 22, 628, Color("eef2f9"))
+	_line(view, Vector2(360,260), secondary, 22, 628, MINT if preview.get("mitigates_intent",false) else Color("c5d4e5"))
 	view.draw_line(Vector2(32,813),Vector2(688,813),Color("273245"),1)
 	view._box(Rect2(72,799,576,29),Color("0e121b"),0)
 	_line(view, Vector2(360,820), result, 22, 626, result_color)
@@ -113,7 +133,7 @@ static func draw(view) -> void:
 			# Atlas glyphs make color choice identifiable without reading labels.
 			Art.draw_panel(view,{"pos":rect.position+Vector2(34,34),"radius":19.0,"color":i,"kind":"normal"},view.time)
 			view._text(rect.position+Vector2(61,42),"✓" if selected else "",22,Color.WHITE)
-			view._center(rect.position+Vector2(60,73),["불꽃","새잎","번개","물결"][i],24,COLORS[i])
+			view._center(rect.position+Vector2(60,73),ELEMENT_NAMES[i],24,COLORS[i])
 	else:
 		view._text(Vector2(181,988), "성장 실험 · 3/6회 유물 · 9회 요약" if view.sandbox else "짧은 탐험 · 전투 %d / 3" % (session.combat.encounter+1), 20, Color("bac6d8"))
 		if session.relics.is_empty():
@@ -322,3 +342,30 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 		_modal_text(view,canvas,rect.position+Vector2(119,124),state,22,tint)
 	_modal_box(canvas,SUMMARY_CONTINUE,Color("28564e"),MINT,18)
 	_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"최종 전투로",28,Color("e9fff7"),true)
+
+
+static func weakness_name(color:int)->String:
+	return ELEMENT_NAMES[color] if color >= 0 and color < ELEMENT_NAMES.size() else "없음"
+
+static func damage_line(plan:Dictionary)->String:
+	return "피해 %d = 기본 %d + 약점 %d" % [plan.get("damage",0),plan.get("base_damage",plan.get("damage",0)),plan.get("weak_bonus",0)]
+
+static func intent_lines(context:Dictionary)->Array[String]:
+	var incoming: int = context.get("incoming_damage",0)
+	var intent: String = context.get("intent","plain")
+	if intent == "slam":
+		if context.get("mitigation_success",false): return ["강타 약화 · 피해%d" % incoming, "이번 턴 동안 약화를 유지해요"]
+		return ["강타 10 → 4: 한 번에 약점 2개", "또는 공격 패널 8개 소거"]
+	if intent == "direct4":
+		if context.get("mitigation_success",false): return ["조건 성공 · 다음 공격 %d" % incoming, ""]
+		return ["4개 이상 연결을 한 번 지우면 공격 %d → %d" % [incoming,incoming-4], ""]
+	return ["3회 소거 후 공격 %d" % incoming, ""]
+
+static func preview_effect_line(plan:Dictionary)->String:
+	var text := damage_line(plan)
+	var context: Dictionary = plan.get("combat_context",{})
+	if context.get("intent","") == "slam":
+		text += " · " + ("강타 약화 유지" if context.get("mitigation_success",false) else ("강타 약화" if plan.get("mitigates_intent",false) else "강타 조건 미충족"))
+	elif context.get("intent","") == "direct4":
+		text += " · " + ("경감 유지" if context.get("mitigation_success",false) else ("공격 경감" if plan.get("mitigates_intent",false) else "경감 조건 미충족"))
+	return text

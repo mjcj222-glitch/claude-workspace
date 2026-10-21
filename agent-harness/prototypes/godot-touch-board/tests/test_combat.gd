@@ -104,9 +104,9 @@ func _init() -> void:
 	check(c.enemy_hp==48 and c.enemy_max_hp==48 and c.turn==0 and c.incoming_damage==6 and not c.mitigation_active, "third fight starts six and clears previous mitigation state")
 	check(complete_turn(c)==6, "third fight first attack six")
 	c.next_turn(board(4))
-	check(c.incoming_damage==8 and complete_turn(c)==8, "third fight second attack eight")
+	check(c.incoming_damage==6 and complete_turn(c)==6, "boss odd turn remains plain six")
 	c.next_turn(board(4))
-	check(c.incoming_damage==6 and complete_turn(c)==6, "third fight alternates back to six")
+	check(c.incoming_damage==6 and complete_turn(c)==6, "boss unavailable even turn falls back six")
 	c.start_fight(2,board(4))
 	var before_actions: int=c.actions_in_turn
 	var before_hp: int=c.enemy_hp
@@ -119,6 +119,6 @@ func _init() -> void:
 	complete_turn(c)
 	c.next_turn(board(4))
 	c.next_turn(board(4))
-	check(c.turn==1 and c.incoming_damage==8, "duplicate next_turn after one attack cannot skip alternation")
+	check(c.turn==1 and c.incoming_damage==6, "duplicate next_turn after one attack cannot skip prepared intent")
 	print("COMBAT checks=",checks," failures=",failures)
 	quit(1 if failures else 0)
