@@ -43,4 +43,4 @@ Output #0, image2, to 'evidence/impact-strength/before-source.png':
 [image2 @ 0x55d1611a9900] The specified filename 'evidence/impact-strength/before-source.png' does not contain an image sequence pattern or a pattern is invalid.
 [image2 @ 0x55d1611a9900] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
 [out#0/image2 @ 0x55d161358500] video:303KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
-frame=    1 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.03 bitrate=N/A speed=0.313x    
+frame=    1 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.03 bitrate=N/A speed=0.313x

@@ -47,5 +47,5 @@ Output #0, mp4, to 'evidence/impact-strength/after-level-matched.mp4':
         encoder         : Lavc61.19.101 aac
 [mp4 @ 0x55abff695200] Starting second pass: moving the moov atom to the beginning of the file
 [out#0/mp4 @ 0x55abff685d40] video:3989KiB audio:105KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.710196%
-frame=  780 fps=0.0 q=-1.0 Lsize=    4123KiB time=00:00:25.93 bitrate=1302.4kbits/s speed=68.4x    
+frame=  780 fps=0.0 q=-1.0 Lsize=    4123KiB time=00:00:25.93 bitrate=1302.4kbits/s speed=68.4x
 [aac @ 0x55abff686e40] Qavg: 56652.164

@@ -34,9 +34,17 @@ Output #0, mp4, to 'evidence/impact-strength/after.mp4':
   Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 160 kb/s
       Metadata:
         encoder         : Lavc61.19.101 aac
-frame=   65 fps=0.0 q=27.0 size=     256KiB time=00:00:02.10 bitrate= 998.8kbits/s speed=4.18x    frame=  148 fps=148 q=27.0 size=     512KiB time=00:00:04.86 bitrate= 861.9kbits/s speed=4.86x    frame=  224 fps=149 q=27.0 size=    1280KiB time=00:00:07.40 bitrate=1417.0kbits/s speed=4.93x    frame=  316 fps=158 q=27.0 size=    1792KiB time=00:00:10.46 bitrate=1402.6kbits/s speed=5.23x    frame=  441 fps=176 q=27.0 size=    2048KiB time=00:00:14.63 bitrate=1146.5kbits/s speed=5.85x    frame=  538 fps=179 q=27.0 size=    2560KiB time=00:00:17.86 bitrate=1173.8kbits/s speed=5.95x    frame=  623 fps=178 q=27.0 size=    3072KiB time=00:00:20.70 bitrate=1215.8kbits/s speed=5.91x    frame=  690 fps=172 q=27.0 size=    3840KiB time=00:00:22.93 bitrate=1371.7kbits/s speed=5.73x    [mp4 @ 0x558440f30080] Starting second pass: moving the moov atom to the beginning of the file
+frame=   65 fps=0.0 q=27.0 size=     256KiB time=00:00:02.10 bitrate= 998.8kbits/s speed=4.18x
+frame=  148 fps=148 q=27.0 size=     512KiB time=00:00:04.86 bitrate= 861.9kbits/s speed=4.86x
+frame=  224 fps=149 q=27.0 size=    1280KiB time=00:00:07.40 bitrate=1417.0kbits/s speed=4.93x
+frame=  316 fps=158 q=27.0 size=    1792KiB time=00:00:10.46 bitrate=1402.6kbits/s speed=5.23x
+frame=  441 fps=176 q=27.0 size=    2048KiB time=00:00:14.63 bitrate=1146.5kbits/s speed=5.85x
+frame=  538 fps=179 q=27.0 size=    2560KiB time=00:00:17.86 bitrate=1173.8kbits/s speed=5.95x
+frame=  623 fps=178 q=27.0 size=    3072KiB time=00:00:20.70 bitrate=1215.8kbits/s speed=5.91x
+frame=  690 fps=172 q=27.0 size=    3840KiB time=00:00:22.93 bitrate=1371.7kbits/s speed=5.73x
+[mp4 @ 0x558440f30080] Starting second pass: moving the moov atom to the beginning of the file
 [out#0/mp4 @ 0x558440f2ff80] video:3989KiB audio:105KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.710398%
-frame=  780 fps=183 q=-1.0 Lsize=    4123KiB time=00:00:25.93 bitrate=1302.4kbits/s speed=6.07x    
+frame=  780 fps=183 q=-1.0 Lsize=    4123KiB time=00:00:25.93 bitrate=1302.4kbits/s speed=6.07x
 [libx264 @ 0x558440f1bc40] frame I:5     Avg QP:15.60  size:142510
 [libx264 @ 0x558440f1bc40] frame P:235   Avg QP:18.08  size: 10945
 [libx264 @ 0x558440f1bc40] frame B:540   Avg QP:17.46  size:  1481

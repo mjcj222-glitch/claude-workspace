@@ -45,7 +45,10 @@ Output #0, null, to 'pipe:':
         handler_name    : SoundHandler
         vendor_id       : [0][0][0][0]
         encoder         : Lavc61.19.101 pcm_s16le
-frame=  535 fps=0.0 q=-0.0 size=N/A time=00:00:17.83 bitrate=N/A speed=35.7x    frame= 1013 fps=1011 q=-0.0 size=N/A time=00:00:33.76 bitrate=N/A speed=33.7x    frame= 1508 fps=1004 q=-0.0 size=N/A time=00:00:50.26 bitrate=N/A speed=33.5x    [Parsed_astats_0 @ 0x7ff2600025c0] Channel: 1
+frame=  535 fps=0.0 q=-0.0 size=N/A time=00:00:17.83 bitrate=N/A speed=35.7x
+frame= 1013 fps=1011 q=-0.0 size=N/A time=00:00:33.76 bitrate=N/A speed=33.7x
+frame= 1508 fps=1004 q=-0.0 size=N/A time=00:00:50.26 bitrate=N/A speed=33.5x
+[Parsed_astats_0 @ 0x7ff2600025c0] Channel: 1
 [Parsed_astats_0 @ 0x7ff2600025c0] DC offset: 0.000090
 [Parsed_astats_0 @ 0x7ff2600025c0] Min level: -0.322375
 [Parsed_astats_0 @ 0x7ff2600025c0] Max level: 0.317093
@@ -121,4 +124,4 @@ frame=  535 fps=0.0 q=-0.0 size=N/A time=00:00:17.83 bitrate=N/A speed=35.7x    
 [Parsed_astats_0 @ 0x7ff2600025c0] Number of Infs: 0.000000
 [Parsed_astats_0 @ 0x7ff2600025c0] Number of denormals: 0.000000
 [out#0/null @ 0x55d2ec358800] video:810KiB audio:11776KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
-frame= 1884 fps=983 q=-0.0 Lsize=N/A time=00:01:02.80 bitrate=N/A speed=32.8x    
+frame= 1884 fps=983 q=-0.0 Lsize=N/A time=00:01:02.80 bitrate=N/A speed=32.8x

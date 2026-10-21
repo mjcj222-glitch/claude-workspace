@@ -69,9 +69,15 @@ Output #0, mp4, to 'evidence/impact-strength/comparison-after-audio.mp4':
         handler_name    : SoundHandler
         vendor_id       : [0][0][0][0]
         encoder         : Lavc61.19.101 aac
-frame=   79 fps=0.0 q=27.0 size=       0KiB time=00:00:02.56 bitrate=   0.1kbits/s speed=5.13x    frame=  183 fps=183 q=27.0 size=     512KiB time=00:00:06.03 bitrate= 695.3kbits/s speed=6.03x    frame=  301 fps=201 q=27.0 size=    1024KiB time=00:00:09.96 bitrate= 841.7kbits/s speed=6.64x    frame=  440 fps=220 q=27.0 size=    1280KiB time=00:00:14.60 bitrate= 718.2kbits/s speed= 7.3x    frame=  563 fps=225 q=27.0 size=    1792KiB time=00:00:18.70 bitrate= 785.1kbits/s speed=7.48x    frame=  661 fps=220 q=27.0 size=    2048KiB time=00:00:21.96 bitrate= 763.8kbits/s speed=7.32x    [mp4 @ 0x55938ad8be00] Starting second pass: moving the moov atom to the beginning of the file
+frame=   79 fps=0.0 q=27.0 size=       0KiB time=00:00:02.56 bitrate=   0.1kbits/s speed=5.13x
+frame=  183 fps=183 q=27.0 size=     512KiB time=00:00:06.03 bitrate= 695.3kbits/s speed=6.03x
+frame=  301 fps=201 q=27.0 size=    1024KiB time=00:00:09.96 bitrate= 841.7kbits/s speed=6.64x
+frame=  440 fps=220 q=27.0 size=    1280KiB time=00:00:14.60 bitrate= 718.2kbits/s speed= 7.3x
+frame=  563 fps=225 q=27.0 size=    1792KiB time=00:00:18.70 bitrate= 785.1kbits/s speed=7.48x
+frame=  661 fps=220 q=27.0 size=    2048KiB time=00:00:21.96 bitrate= 763.8kbits/s speed=7.32x
+[mp4 @ 0x55938ad8be00] Starting second pass: moving the moov atom to the beginning of the file
 [out#0/mp4 @ 0x55938ad41640] video:2462KiB audio:104KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.133668%
-frame=  780 fps=237 q=-1.0 Lsize=    2596KiB time=00:00:25.93 bitrate= 819.9kbits/s speed=7.86x    
+frame=  780 fps=237 q=-1.0 Lsize=    2596KiB time=00:00:25.93 bitrate= 819.9kbits/s speed=7.86x
 [libx264 @ 0x55938adebe40] frame I:6     Avg QP:16.25  size: 98191
 [libx264 @ 0x55938adebe40] frame P:237   Avg QP:21.46  size:  6709
 [libx264 @ 0x55938adebe40] frame B:537   Avg QP:30.16  size:   636

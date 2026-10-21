@@ -34,9 +34,33 @@ Output #0, mp4, to 'evidence/impact-strength/normal-full.mp4':
   Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 160 kb/s
       Metadata:
         encoder         : Lavc61.19.101 aac
-frame=   78 fps=0.0 q=27.0 size=       0KiB time=00:00:02.53 bitrate=   0.2kbits/s speed=5.02x    frame=  152 fps=151 q=27.0 size=     512KiB time=00:00:05.00 bitrate= 838.9kbits/s speed=4.98x    frame=  215 fps=143 q=27.0 size=    1024KiB time=00:00:07.10 bitrate=1181.5kbits/s speed=4.72x    frame=  275 fps=137 q=27.0 size=    1536KiB time=00:00:09.10 bitrate=1382.8kbits/s speed=4.54x    frame=  351 fps=140 q=27.0 size=    1792KiB time=00:00:11.63 bitrate=1261.9kbits/s speed=4.64x    frame=  463 fps=154 q=27.0 size=    2048KiB time=00:00:15.36 bitrate=1091.8kbits/s speed=5.11x    frame=  527 fps=150 q=27.0 size=    2304KiB time=00:00:17.50 bitrate=1078.6kbits/s speed=4.99x    frame=  590 fps=147 q=27.0 size=    2816KiB time=00:00:19.60 bitrate=1177.0kbits/s speed=4.89x    frame=  632 fps=140 q=27.0 size=    3328KiB time=00:00:21.00 bitrate=1298.3kbits/s speed=4.66x    frame=  705 fps=141 q=27.0 size=    3840KiB time=00:00:23.43 bitrate=1342.4kbits/s speed=4.68x    frame=  769 fps=140 q=27.0 size=    4608KiB time=00:00:25.56 bitrate=1476.5kbits/s speed=4.64x    frame=  876 fps=146 q=27.0 size=    4864KiB time=00:00:29.13 bitrate=1367.7kbits/s speed=4.85x    frame=  935 fps=144 q=27.0 size=    5632KiB time=00:00:31.10 bitrate=1483.5kbits/s speed=4.78x    frame=  999 fps=143 q=27.0 size=    5888KiB time=00:00:33.23 bitrate=1451.4kbits/s speed=4.74x    frame= 1057 fps=141 q=27.0 size=    6400KiB time=00:00:35.16 bitrate=1490.9kbits/s speed=4.68x    frame= 1129 fps=141 q=27.0 size=    7168KiB time=00:00:37.56 bitrate=1563.1kbits/s speed=4.69x    frame= 1232 fps=145 q=27.0 size=    7168KiB time=00:00:41.00 bitrate=1432.2kbits/s speed=4.82x    frame= 1336 fps=148 q=27.0 size=    7424KiB time=00:00:44.53 bitrate=1365.7kbits/s speed=4.94x    frame= 1407 fps=148 q=27.0 size=    8192KiB time=00:00:46.83 bitrate=1432.9kbits/s speed=4.92x    frame= 1464 fps=146 q=27.0 size=    8960KiB time=00:00:48.73 bitrate=1506.2kbits/s speed=4.87x    frame= 1526 fps=145 q=27.0 size=    9472KiB time=00:00:50.80 bitrate=1527.5kbits/s speed=4.83x    frame= 1579 fps=143 q=27.0 size=    9984KiB time=00:00:52.56 bitrate=1555.9kbits/s speed=4.77x    frame= 1634 fps=142 q=27.0 size=   10752KiB time=00:00:54.40 bitrate=1619.1kbits/s speed=4.72x    frame= 1705 fps=142 q=27.0 size=   11264KiB time=00:00:56.80 bitrate=1624.6kbits/s speed=4.73x    [mp4 @ 0x5572c8e07d40] Starting second pass: moving the moov atom to the beginning of the file
+frame=   78 fps=0.0 q=27.0 size=       0KiB time=00:00:02.53 bitrate=   0.2kbits/s speed=5.02x
+frame=  152 fps=151 q=27.0 size=     512KiB time=00:00:05.00 bitrate= 838.9kbits/s speed=4.98x
+frame=  215 fps=143 q=27.0 size=    1024KiB time=00:00:07.10 bitrate=1181.5kbits/s speed=4.72x
+frame=  275 fps=137 q=27.0 size=    1536KiB time=00:00:09.10 bitrate=1382.8kbits/s speed=4.54x
+frame=  351 fps=140 q=27.0 size=    1792KiB time=00:00:11.63 bitrate=1261.9kbits/s speed=4.64x
+frame=  463 fps=154 q=27.0 size=    2048KiB time=00:00:15.36 bitrate=1091.8kbits/s speed=5.11x
+frame=  527 fps=150 q=27.0 size=    2304KiB time=00:00:17.50 bitrate=1078.6kbits/s speed=4.99x
+frame=  590 fps=147 q=27.0 size=    2816KiB time=00:00:19.60 bitrate=1177.0kbits/s speed=4.89x
+frame=  632 fps=140 q=27.0 size=    3328KiB time=00:00:21.00 bitrate=1298.3kbits/s speed=4.66x
+frame=  705 fps=141 q=27.0 size=    3840KiB time=00:00:23.43 bitrate=1342.4kbits/s speed=4.68x
+frame=  769 fps=140 q=27.0 size=    4608KiB time=00:00:25.56 bitrate=1476.5kbits/s speed=4.64x
+frame=  876 fps=146 q=27.0 size=    4864KiB time=00:00:29.13 bitrate=1367.7kbits/s speed=4.85x
+frame=  935 fps=144 q=27.0 size=    5632KiB time=00:00:31.10 bitrate=1483.5kbits/s speed=4.78x
+frame=  999 fps=143 q=27.0 size=    5888KiB time=00:00:33.23 bitrate=1451.4kbits/s speed=4.74x
+frame= 1057 fps=141 q=27.0 size=    6400KiB time=00:00:35.16 bitrate=1490.9kbits/s speed=4.68x
+frame= 1129 fps=141 q=27.0 size=    7168KiB time=00:00:37.56 bitrate=1563.1kbits/s speed=4.69x
+frame= 1232 fps=145 q=27.0 size=    7168KiB time=00:00:41.00 bitrate=1432.2kbits/s speed=4.82x
+frame= 1336 fps=148 q=27.0 size=    7424KiB time=00:00:44.53 bitrate=1365.7kbits/s speed=4.94x
+frame= 1407 fps=148 q=27.0 size=    8192KiB time=00:00:46.83 bitrate=1432.9kbits/s speed=4.92x
+frame= 1464 fps=146 q=27.0 size=    8960KiB time=00:00:48.73 bitrate=1506.2kbits/s speed=4.87x
+frame= 1526 fps=145 q=27.0 size=    9472KiB time=00:00:50.80 bitrate=1527.5kbits/s speed=4.83x
+frame= 1579 fps=143 q=27.0 size=    9984KiB time=00:00:52.56 bitrate=1555.9kbits/s speed=4.77x
+frame= 1634 fps=142 q=27.0 size=   10752KiB time=00:00:54.40 bitrate=1619.1kbits/s speed=4.72x
+frame= 1705 fps=142 q=27.0 size=   11264KiB time=00:00:56.80 bitrate=1624.6kbits/s speed=4.73x
+[mp4 @ 0x5572c8e07d40] Starting second pass: moving the moov atom to the beginning of the file
 [out#0/mp4 @ 0x5572c8e07c40] video:11182KiB audio:286KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.559832%
-frame= 1769 fps=145 q=-1.0 Lsize=   11533KiB time=00:00:58.90 bitrate=1604.0kbits/s speed=4.83x    
+frame= 1769 fps=145 q=-1.0 Lsize=   11533KiB time=00:00:58.90 bitrate=1604.0kbits/s speed=4.83x
 [libx264 @ 0x5572c8e02c40] frame I:13    Avg QP:15.53  size:130744
 [libx264 @ 0x5572c8e02c40] frame P:536   Avg QP:18.18  size: 13314
 [libx264 @ 0x5572c8e02c40] frame B:1220  Avg QP:19.43  size:  2143

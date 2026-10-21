@@ -216,7 +216,8 @@ Output #0, null, to 'pipe:':
 [Parsed_ebur128_0 @ 0x7faef4002500] t: 16.899979  TARGET:-23 LUFS    M: -24.8 S: -32.2     I: -26.4 LUFS       LRA:   9.9 LU  FTPK: -52.0 -52.0 dBFS  TPK:  -9.2  -9.2 dBFS
 [Parsed_ebur128_0 @ 0x7faef4002500] t: 16.999979  TARGET:-23 LUFS    M: -24.8 S: -32.2     I: -26.4 LUFS       LRA:   9.9 LU  FTPK:  -inf  -inf dBFS  TPK:  -9.2  -9.2 dBFS
 [Parsed_ebur128_0 @ 0x7faef4002500] t: 17.099979  TARGET:-23 LUFS    M: -34.1 S: -32.2     I: -26.4 LUFS       LRA:   9.9 LU  FTPK:  -inf  -inf dBFS  TPK:  -9.2  -9.2 dBFS
-frame=  512 fps=0.0 q=-0.0 size=N/A time=00:00:17.06 bitrate=N/A speed=33.9x    [Parsed_ebur128_0 @ 0x7faef4002500] t: 17.199979  TARGET:-23 LUFS    M: -72.3 S: -32.2     I: -26.4 LUFS       LRA:   9.9 LU  FTPK:  -inf  -inf dBFS  TPK:  -9.2  -9.2 dBFS
+frame=  512 fps=0.0 q=-0.0 size=N/A time=00:00:17.06 bitrate=N/A speed=33.9x
+[Parsed_ebur128_0 @ 0x7faef4002500] t: 17.199979  TARGET:-23 LUFS    M: -72.3 S: -32.2     I: -26.4 LUFS       LRA:   9.9 LU  FTPK:  -inf  -inf dBFS  TPK:  -9.2  -9.2 dBFS
 [Parsed_ebur128_0 @ 0x7faef4002500] t: 17.299979  TARGET:-23 LUFS    M: -40.7 S: -32.1     I: -26.4 LUFS       LRA:   9.9 LU  FTPK: -24.8 -24.8 dBFS  TPK:  -9.2  -9.2 dBFS
 [Parsed_ebur128_0 @ 0x7faef4002500] t: 17.399979  TARGET:-23 LUFS    M: -40.7 S: -32.1     I: -26.4 LUFS       LRA:   9.9 LU  FTPK: -119.5 -119.5 dBFS  TPK:  -9.2  -9.2 dBFS
 [Parsed_ebur128_0 @ 0x7faef4002500] t: 17.499979  TARGET:-23 LUFS    M: -40.7 S: -32.1     I: -26.4 LUFS       LRA:   8.9 LU  FTPK:  -inf  -inf dBFS  TPK:  -9.2  -9.2 dBFS
@@ -320,4 +321,4 @@ frame=  512 fps=0.0 q=-0.0 size=N/A time=00:00:17.06 bitrate=N/A speed=33.9x    
   True peak:
     Peak:       -9.2 dBFS
 [out#0/null @ 0x55dd557b3d00] video:335KiB audio:4876KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
-frame=  780 fps=0.0 q=-0.0 Lsize=N/A time=00:00:26.00 bitrate=N/A speed=34.1x    
+frame=  780 fps=0.0 q=-0.0 Lsize=N/A time=00:00:26.00 bitrate=N/A speed=34.1x
