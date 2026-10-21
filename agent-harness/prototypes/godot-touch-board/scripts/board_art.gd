@@ -1,4 +1,7 @@
 extends RefCounted
+const PanelView = preload("res://scripts/board_panel_view.gd")
+const BOMB_NORMAL = preload("res://assets/bombs/bomb-normal.svg")
+const BOMB_LARGE = preload("res://assets/bombs/bomb-large.svg")
 const HERO_TEXTURE = preload("res://assets/alchemist-portrait-v1.png")
 const TARGET_TEXTURE = preload("res://assets/training-jelly-golem-v1.png")
 const DRAGON_TEXTURE = preload("res://assets/premium/amethyst-dragon-arena-v1.png")
@@ -101,22 +104,10 @@ static func draw_panel(canvas: CanvasItem, panel: Dictionary, time: float, empha
 			_star(canvas, center+Vector2(radius*0.54,radius*0.52), radius*0.20, Color("e4fff1"))
 
 static func draw_bomb(canvas:CanvasItem,center:Vector2,radius:float,large:bool,emphasis:String="")->void:
-	# Same collision envelope; larger casing/glyph and disclosed blast are separate.
-	var body:float=radius*(.94 if large else .78)
-	canvas.draw_circle(center+Vector2(0,3),body,Color("080a12"))
-	canvas.draw_circle(center,body,Color("40273d") if large else Color("272b3e"))
-	_ring(canvas,center,body,Color("ffb04b") if large else Color("d9b584"),2.6)
-	canvas.draw_arc(center+Vector2(0,1),body*.84,PI*1.10,PI*1.92,22,Color("ffdb9a"),3.0,true)
-	canvas.draw_arc(center,body*.87,.20,2.15,22,Color("120f1c"),4.0,true)
-	_ellipse(canvas,center+Vector2(-body*.27,-body*.33),Vector2(body*.33,body*.16),Color(1,.91,.79,.38))
-	_star(canvas,center,body*.45,Color("ff9237") if large else Color("edce94"),6 if large else 4)
-	canvas.draw_line(center+Vector2(body*.45,-body*.54),center+Vector2(body*.55,-body*.85),Color("d8af6a"),4,true)
-	_star(canvas,center+Vector2(body*.55,-body*.88),4,Color("ffed9a"))
-	if large:
-		_ring(canvas,center,body*.64,Color("ff9b57"),1.4)
-		for x in [-1,1]:canvas.draw_line(center+Vector2(x*body*.32,body*.68),center+Vector2(x*body*.08,body*.68),Color("ffe3a0"),3,true)
+	var visible:float=PanelView.visual_radius({"radius":radius,"kind":"big_bomb" if large else "bomb"})
+	canvas.draw_texture_rect(BOMB_LARGE if large else BOMB_NORMAL,Rect2(center-Vector2.ONE*visible,Vector2.ONE*visible*2),false)
 	if emphasis in ["direct","chain"]:
-		_ring(canvas,center,radius*.98,Color("fff8d9") if emphasis=="direct" else Color("ffd28c"),2.8)
+		_ring(canvas,center,visible*.98,Color("fff8d9") if emphasis=="direct" else Color("ffd28c"),2.8)
 
 static func draw_hero(canvas: CanvasItem, center: Vector2, time: float, active: bool) -> void:
 	# Face-led portrait crops within the supplied original, not a new character.

@@ -1,0 +1,34 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS OS driver acknowledged 01-dense-size-fixture
+PASS OS driver acknowledged outer-rim-down
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":20.909}
+PASS OS exposed body beyond37 selects large bomb
+PASS OS driver acknowledged 02-rim-preview
+PASS OS driver acknowledged cancel-move
+PASS OS driver acknowledged cancel-up
+PASS OS outer-rim cancellation has no action
+PASS OS driver acknowledged front-down
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.818}
+PASS OS front chip owns overlapping visible area
+PASS OS driver acknowledged front-up
+PASS front invalid single cannot leak through to bomb
+PASS OS driver acknowledged reduced
+PASS OS reduced enabled
+PASS OS driver acknowledged 03-reduced-same-size
+PASS OS driver acknowledged edge-down
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":19.955}
+PASS OS visible wall fragment remains selectable
+PASS OS driver acknowledged 04-edge-preview
+PASS OS driver acknowledged edge-up
+PASS OS driver acknowledged wall-outside
+PASS OS clipped outside rim cannot select
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":14.803}
+PASS OS driver acknowledged edge-commit
+PASS OS edge release preserves164 blast and one action
+PASS OS driver acknowledged reset
+PASS OS reset clears body selection and effects
+BOMB_BODY_WINDOW checks=24 failures=0 size=(360, 640)

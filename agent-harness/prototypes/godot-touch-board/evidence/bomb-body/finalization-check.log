@@ -1,0 +1,2 @@
+First checksum/report command used the evidence directory with prototype-relative paths and failed before checksum creation. Re-run from prototype root succeeded; no gameplay code or evidence was lost.
+Staged whitespace check stopped before commit on trailing blank lines in a new log and capture helper. Removed only trailing blank lines and repeated the check.

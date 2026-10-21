@@ -1,0 +1,117 @@
+{
+  "baseline": "001548a48a9d0d3747cb12ec21928a174e1f610e",
+  "visual_radius": {
+    "normal_chip": 37,
+    "normal_bomb": 30,
+    "large_bomb": 48
+  },
+  "physical_bomb_radius": 37,
+  "blast_radius": {
+    "bomb": 98,
+    "big_bomb": 164
+  },
+  "scripts": 48,
+  "failures": 0,
+  "body_checks": 15,
+  "OS_checks_each": 24,
+  "OS_sizes": [
+    "720x1080",
+    "360x640",
+    "390x844"
+  ],
+  "normal_runs": [
+    {
+      "hero": "noa",
+      "actions": 19,
+      "hp": 28,
+      "gold": 17,
+      "errors": [],
+      "falling_samples": [
+        {
+          "id": 130,
+          "kind": "big_bomb",
+          "physical_radius": 37.0,
+          "position": "(231.8125, 375.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 214,
+          "kind": "big_bomb",
+          "physical_radius": 37.0,
+          "position": "(213.5, 375.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 250,
+          "kind": "big_bomb",
+          "physical_radius": 37.0,
+          "position": "(341.6875, 375.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 317,
+          "kind": "big_bomb",
+          "physical_radius": 37.0,
+          "position": "(341.6875, 375.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 339,
+          "kind": "big_bomb",
+          "physical_radius": 37.0,
+          "position": "(341.6875, 375.75)",
+          "visual_radius": 48.0
+        }
+      ]
+    },
+    {
+      "hero": "rio",
+      "actions": 23,
+      "hp": 20,
+      "gold": 18,
+      "errors": [],
+      "falling_samples": [
+        {
+          "id": 131,
+          "kind": "bomb",
+          "physical_radius": 37.0,
+          "position": "(561.4375, 375.75)",
+          "visual_radius": 30.0
+        },
+        {
+          "id": 156,
+          "kind": "bomb",
+          "physical_radius": 37.0,
+          "position": "(195.1875, 375.75)",
+          "visual_radius": 30.0
+        }
+      ]
+    }
+  ],
+  "same_input_comparison": [
+    {
+      "hero": "noa",
+      "all_clear_ID_damage_blast_supply_equal": true,
+      "resources_relic_charge_equal": true,
+      "actions": 19
+    },
+    {
+      "hero": "rio",
+      "all_clear_ID_damage_blast_supply_equal": true,
+      "resources_relic_charge_equal": true,
+      "actions": 23
+    }
+  ],
+  "limitations": [
+    "Visual shell can extend behind neighbors and board wall; it is not an enlarged collider.",
+    "Existing ordinary nearest-body selection is preserved; no claim of pixel-perfect hit on all alpha shapes.",
+    "Fixedfps automated movie is not human fun, mobile or real-time performance evidence.",
+    "No new dedicated performance benchmark; earlier timing tails remain documented.",
+    "Shared temporary hero portrait, old Windows/Web packages and no save/resume remain."
+  ],
+  "reduced_body_pixel_difference": {
+    "720x1080": null,
+    "360x640": null,
+    "390x844": null
+  }
+}

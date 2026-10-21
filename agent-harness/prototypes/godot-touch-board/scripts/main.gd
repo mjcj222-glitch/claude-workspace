@@ -9,6 +9,7 @@ const TRANSITION_REPEAT_RADIUS := 44.0
 const Motion = preload("res://scripts/board_motion.gd")
 const Rules = preload("res://scripts/board_rules.gd")
 const Layout = preload("res://scripts/board_layout.gd")
+const PanelView = preload("res://scripts/board_panel_view.gd")
 const Art = preload("res://scripts/board_art.gd")
 const UI = preload("res://scripts/board_ui.gd")
 const Bombs=preload("res://scripts/board_bombs.gd")
@@ -257,7 +258,7 @@ func draw_panels(canvas: CanvasItem) -> void:
 	if preview.get("valid",false) and preview.get("mode","")=="clear":
 		for blast in preview.get("blasts",[]):
 			canvas.draw_arc(blast.pos,blast.radius,0,TAU,64,Color(1,.68,.25,.7),2.4,true)
-	for source in visual:
+	for source in PanelView.draw_order(visual):
 		var p: Dictionary = source.duplicate()
 		var emphasis := ""
 		var scale_factor := 1.0
@@ -281,7 +282,7 @@ func draw_panels(canvas: CanvasItem) -> void:
 		if scale_factor <= 0.01: continue
 		# Landing squash is only visual; frozen selection suppresses residual motion.
 		var squash := 1.0
-		if not reduced_effects and session.selection.is_empty() and landing < 0.18:
+		if not Bombs.is_bomb(p.kind) and not reduced_effects and session.selection.is_empty() and landing < 0.18:
 			squash = 1.0 - sin(landing / 0.18 * PI) * 0.08
 		var origin: Vector2 = p.pos
 		canvas.draw_set_transform(origin - BOARD.position, 0, Vector2(1.0 + (1.0-squash)*0.5, squash))

@@ -1,4 +1,5 @@
 extends RefCounted
+const PanelView = preload("res://scripts/board_panel_view.gd")
 const Relics = preload("res://scripts/board_relics.gd")
 const Rules = preload("res://scripts/board_rules.gd")
 const Characters = preload("res://scripts/board_characters.gd")
@@ -30,13 +31,7 @@ var next_id := 1
 func begin(point: Vector2, pointer: int) -> bool:
 	if phase != "ready" or owner != -99 or not bounds.has_point(point):
 		return false
-	var id := -1
-	var nearest := INF
-	for p in panels:
-		var distance: float = point.distance_to(p.pos)
-		if distance <= p.radius and distance < nearest:
-			id = p.id
-			nearest = distance
+	var id: int = PanelView.hit_test(panels, point)
 	if id < 0:
 		return false
 	owner = pointer
