@@ -15,12 +15,13 @@ marker.unlink(missing_ok=True)
 ack.unlink(missing_ok=True)
 width, height = map(int, sys.argv[1:3])
 base = Path(__file__).resolve().parents[1]
-evidence = base / 'evidence/growth'
+category = 'presentation' if '--presentation' in sys.argv[3:] else 'growth'
+evidence = base / 'evidence' / category
 evidence.mkdir(parents=True, exist_ok=True)
 log = (evidence / f'small-{width}x{height}.log').open('w')
 p = subprocess.Popen(
     ['godot', '--path', str(base), '--audio-driver', 'Dummy', '--position', '20,20',
-     '--script', 'tests/small_window_probe.gd', '--', str(width), str(height)],
+     '--script', 'tests/small_window_probe.gd', '--', str(width), str(height), category],
     stdout=log, stderr=subprocess.STDOUT)
 seen = set()
 end = time.monotonic() + 180
@@ -52,7 +53,9 @@ try:
                     capture_window(data, suffix)
                 action = data.get('action', 'click')
                 coordinates = [str(round(data['x'])), str(round(data['y']))]
-                if action == 'down':
+                if action == 'capture':
+                    pass
+                elif action == 'down':
                     subprocess.run(pointer + ['move'] + coordinates, check=True)
                     subprocess.run(pointer + ['down'], check=True)
                 elif action == 'up':

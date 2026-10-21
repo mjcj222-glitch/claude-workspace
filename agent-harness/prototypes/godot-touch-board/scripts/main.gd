@@ -4,6 +4,7 @@ const Motion = preload("res://scripts/board_motion.gd")
 const Rules = preload("res://scripts/board_rules.gd")
 const Art = preload("res://scripts/board_art.gd")
 const UI = preload("res://scripts/board_ui.gd")
+const Feedback = preload("res://scripts/board_feedback.gd")
 const Sound = preload("res://scripts/board_audio.gd")
 const COLORS := [Color("ff705d"), Color("6edb6b"), Color("ffcf5b"), Color("61b7ff"), Color("ff86b5")]
 const BOARD := Rect2(30, 290, 660, 530)
@@ -18,6 +19,11 @@ var font_bold: Font
 var time := 0.0
 var visual: Array = []
 var particles: Array = []
+var feedback = Feedback.new()
+var detail_relic := ""
+var detail_pointer := -99
+var detail_index := -1
+var detail_action := ""
 var active_plan: Dictionary = {}
 var action_clock := 0.0
 var fall_clock := 0.0
@@ -61,7 +67,11 @@ class BoardSurface extends Control:
 class ModalSurface extends Node2D:
 	var presenter: Node2D
 	func _draw() -> void:
-		if presenter: presenter.UI.draw_modal(presenter,self)
+		if presenter:
+			if presenter.session.phase in ["ready","busy"] and presenter.detail_relic=="" and presenter.session.selection.is_empty():
+				presenter.feedback.draw_hud(presenter,self)
+			presenter.UI.draw_modal(presenter,self)
+			presenter.UI.draw_details(presenter,self)
 
 func _ready() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
@@ -88,6 +98,8 @@ func _ready() -> void:
 
 func reset_board() -> void:
 	_cancel_modal()
+	detail_relic=""
+	feedback.reset()
 	rng.seed = 20261021
 	session = Session.new()
 	session.bounds = BOARD
@@ -177,6 +189,8 @@ func draw_panels(canvas: CanvasItem) -> void:
 		var alpha: float = maxf(0.0, 1.0 - particle.age / particle.life)
 		canvas.draw_circle(particle.pos, particle.size * alpha, Color(particle.color, alpha))
 
+	feedback.draw_effects(canvas)
+
 func _clear_onset(index: int) -> float:
 	var count: int = active_plan.get("removed", []).size()
 	var spacing := maxf(0.011, 0.032 - count * 0.0005)
@@ -187,6 +201,7 @@ func _clear_onset(index: int) -> float:
 
 func _process(delta: float) -> void:
 	time += delta
+	feedback.update(delta)
 	target_hit = maxf(0, target_hit - delta * 4)
 	hero_active = maxf(0, hero_active - delta * 2)
 	landing += delta
@@ -235,6 +250,7 @@ func _process(delta: float) -> void:
 func _burst(id: int, index: int) -> void:
 	for p in visual:
 		if p.id != id: continue
+		if not feedback.consume(id,p.pos,COLORS[p.color]): return
 		sound.tone(index)
 		for i in range(7):
 			var angle := TAU * i / 7.0
@@ -243,6 +259,7 @@ func _burst(id: int, index: int) -> void:
 		break
 
 func _start_fall() -> void:
+	feedback.finish()
 	fall_started_us=Time.get_ticks_usec()
 	motion_state = Motion.start(session.panels, BOARD, 48, session.next_id, rng)
 	session.next_id = motion_state.next_id
@@ -260,10 +277,19 @@ func _after_draw() -> void:
 		feedback_pending = false
 
 func _cancel_modal() -> void:
+	_cancel_detail_candidate()
 	modal_pointer = -99
 	modal_index = -1
 	modal_offer = -1
 	modal_phase = ""
+
+func _cancel_detail_candidate() -> void:
+	detail_pointer=-99
+	detail_index=-1
+	detail_action=""
+
+func _detail_close_hit(pos:Vector2) -> bool:
+	return UI.DETAIL_CLOSE.has_point(pos) or (Rect2(0,0,720,1080).has_point(pos) and not UI.DETAIL_PANEL.has_point(pos))
 
 func cancel_input() -> void:
 	session.cancel()
@@ -271,11 +297,21 @@ func cancel_input() -> void:
 
 func move_pointer(pos: Vector2, pointer: int) -> void:
 	session.move(screen_to_board(pos),pointer)
+	if pointer==detail_pointer:
+		if (detail_action=="open" and not UI.owned_rect(detail_index).has_point(pos)) or (detail_action=="close" and not _detail_close_hit(pos)):
+			_cancel_detail_candidate()
 	if pointer == modal_pointer:
 		var rect: Rect2 = UI.reward_rect(modal_index,session.reward_options.size()) if modal_phase == "reward" else UI.SUMMARY_CONTINUE
 		if not rect.has_point(pos): _cancel_modal()
 
 func press(pos: Vector2, pointer: int) -> void:
+	if detail_relic!="":
+		if RESET.has_point(pos):reset_board();return
+		if detail_pointer==-99 and _detail_close_hit(pos):
+			detail_pointer=pointer
+			detail_action="close"
+		return
+	if detail_pointer!=-99:return
 	if session.phase in ["reward","summary"]:
 		if RESET.has_point(pos):
 			reset_board()
@@ -301,6 +337,13 @@ func press(pos: Vector2, pointer: int) -> void:
 		sound.muted = not sound.muted
 		return
 	if session.phase != "ready": return
+	if not session.skill_mode:
+		for i in range(session.relics.size()):
+			if UI.owned_rect(i).has_point(pos):
+				detail_pointer=pointer
+				detail_index=i
+				detail_action="open"
+				return
 	if SKILL.has_point(pos):
 		if session.charge >= session.charge_required:
 			session.skill_mode = not session.skill_mode
@@ -317,6 +360,16 @@ func press(pos: Vector2, pointer: int) -> void:
 		queue_redraw()
 
 func release(pos: Vector2, pointer: int) -> void:
+	if detail_relic!="" or detail_pointer!=-99:
+		if pointer!=detail_pointer:return
+		var index:=detail_index
+		var action:=detail_action
+		_cancel_detail_candidate()
+		if action=="close" and detail_relic!="" and _detail_close_hit(pos):detail_relic=""
+		elif action=="open" and session.phase=="ready" and not session.skill_mode and session.owner==-99 and index>=0 and index<session.relics.size() and UI.owned_rect(index).has_point(pos):
+			detail_relic=session.relics[index]
+			session.cancel()
+		return
 	if session.phase in ["reward","summary"] or modal_pointer != -99:
 		if pointer != modal_pointer: return
 		var index := modal_index
@@ -342,6 +395,7 @@ func release(pos: Vector2, pointer: int) -> void:
 		last_summary = "%d개 변환 완료 · 다음 소거로 연결하세요" % result.targets.size()
 		status = "변환 완료 · 소거 횟수는 그대로"
 		return
+	feedback.start(result,visual)
 	active_plan = result
 	action_clock = 0
 	played = 0
@@ -374,6 +428,7 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion:
 		move_pointer(event.position, -1)
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		detail_relic=""
 		cancel_input()
 		session.skill_mode = false
 

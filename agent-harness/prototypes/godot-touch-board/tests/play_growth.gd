@@ -4,6 +4,7 @@ var failures:=0
 var events:Array=[]
 var scene
 var pair_index:=0
+var evidence_dir:="growth"
 var movie:=false
 var greedy_stress:=false
 var before_inlet:=false
@@ -27,7 +28,7 @@ func gesture(point:Vector2,hold:float=0.08)->Dictionary:
 func snapshot(name:String)->void:
 	await process_frame
 	await RenderingServer.frame_post_draw
-	root.get_texture().get_image().save_png("res://evidence/growth/%s-pair%d.png"%[name,pair_index])
+	root.get_texture().get_image().save_png("res://evidence/%s/%s-pair%d.png"%[evidence_dir,name,pair_index])
 func desired_size()->int:
 	if "ash" in scene.session.relics and not scene.session.ash_reserved:return 6
 	return 5 if "lens" in scene.session.relics else 6
@@ -59,6 +60,7 @@ func motion_snapshot()->Dictionary:
 	return {"elapsed":state.get("elapsed",0),"pending":state.get("pending",[]).size(),"profile":state.get("profile",{}),"bodies":bodies}
 func run()->void:
 	var args:=OS.get_cmdline_user_args()
+	evidence_dir="presentation" if "--presentation" in args else "growth"
 	for a in args:
 		if a.begins_with("--pair="):pair_index=int(a.substr(7))
 	movie="--capture" in args
@@ -105,9 +107,9 @@ func run()->void:
 			await process_frame
 		check(scene.session.phase!="busy" and scene.session.phase!="stalled","natural refill completes")
 		if scene.session.phase in ["busy","stalled"]:
-			var diagnostic:=FileAccess.open("res://evidence/growth/stall-pair%d.json"%pair_index,FileAccess.WRITE)
+			var diagnostic:=FileAccess.open("res://evidence/%s/stall-pair%d.json"%[evidence_dir,pair_index],FileAccess.WRITE)
 			diagnostic.store_string(JSON.stringify(motion_snapshot(),"  "))
-			var fixture:=FileAccess.open("res://evidence/growth/stall-start-pair%d.dat"%pair_index,FileAccess.WRITE)
+			var fixture:=FileAccess.open("res://evidence/%s/stall-start-pair%d.dat"%[evidence_dir,pair_index],FileAccess.WRITE)
 			fixture.store_var(motion_start)
 			events.append({"type":"stalled_clear","action":action,"start_id":start_id,"removed_ids":preview.removed,"direct_ids":preview.direct,"owned":owned})
 			await snapshot("stall")
@@ -135,7 +137,7 @@ func run()->void:
 			await use_skill()
 			check(not scene.session.ash_reserved and scene.session.charge_required==2 and scene.session.actions==9,"naturally earned ash consumed by next skill after summary")
 			await snapshot("ash-consumed")
-	var f:=FileAccess.open("res://evidence/growth/play-pair%d%s.json"%[pair_index,"-before-inlet" if before_inlet else "-greedy" if greedy_stress else "-movie" if movie else ""],FileAccess.WRITE)
+	var f:=FileAccess.open("res://evidence/%s/play-pair%d%s.json"%[evidence_dir,pair_index,"-before-inlet" if before_inlet else "-greedy" if greedy_stress else "-movie" if movie else ""],FileAccess.WRITE)
 	f.store_string(JSON.stringify({"pair":PAIRS[pair_index],"failures":failures,"policy":"maximum connection stress" if greedy_stress else "prefer lens five / ash six direct normals", "method":"normal UI gestures; no fixture injection, forced charge, or intermediate board reset","inputs":input_records,"events":events,"stats":scene.session.stats,"timings":scene.timings},"  "))
 	print("NORMAL_GROWTH pair=",pair_index," failures=",failures," actions=",scene.session.actions)
 	scene.queue_free();await process_frame;await create_timer(0.3).timeout

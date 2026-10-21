@@ -1,0 +1,178 @@
+{
+  "method": "live rendered process frames; engine-dispatched input, no movie mode; first reward chosen after action3; long-chain board is an explicit fixture",
+  "relics": [
+    "pigment",
+    "lens"
+  ],
+  "renderer": "llvmpipe software OpenGL",
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 19.428
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 19,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 50356,
+        "clear_wall_ms": 189.6,
+        "fall_sim_s": 0.35,
+        "fall_wall_ms": 623.581,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 3751,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 452351,
+        "spawn_us": 1497,
+        "ticks": 42
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 813.171
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 13.979
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 21,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 50299,
+        "clear_wall_ms": 181.383,
+        "fall_sim_s": 0.366666666666667,
+        "fall_wall_ms": 453.081,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 1951,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 274987,
+        "spawn_us": 1398,
+        "ticks": 44
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 634.454
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 13.759
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 24,
+      "movie": false,
+      "next_phase": "reward",
+      "profile": {
+        "anchor_us": 54924,
+        "clear_wall_ms": 180.591,
+        "fall_sim_s": 0.391666666666667,
+        "fall_wall_ms": 536.746,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 2516,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 321151,
+        "spawn_us": 1497,
+        "ticks": 47
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 717.329
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 13.478
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 29,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 75951,
+        "clear_wall_ms": 220.025,
+        "fall_sim_s": 0.491666666666667,
+        "fall_wall_ms": 502.982,
+        "inside_sim_s": 0.275,
+        "iterations": 2263,
+        "last_spawn_sim_s": 0.116666666666667,
+        "pending_sim_s": 0.116666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 227470,
+        "spawn_us": 2198,
+        "ticks": 59
+      },
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 722.998
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 13.735
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 39,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 75306,
+        "clear_wall_ms": 212.535,
+        "fall_sim_s": 0.558333333333334,
+        "fall_wall_ms": 558.629,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 948,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 99560,
+        "spawn_us": 1492,
+        "ticks": 67
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 771.154
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 22.347
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 103,
+      "movie": false,
+      "next_phase": "reward",
+      "profile": {
+        "anchor_us": 100769,
+        "clear_wall_ms": 367.25,
+        "fall_sim_s": 1.76666666666666,
+        "fall_wall_ms": 2022.864,
+        "inside_sim_s": 1.56666666666666,
+        "iterations": 9176,
+        "last_spawn_sim_s": 1.40833333333333,
+        "pending_sim_s": 1.40833333333333,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 707550,
+        "spawn_us": 16411,
+        "ticks": 212
+      },
+      "removed": 35,
+      "specials": 2,
+      "wall_ms": 2390.104
+    }
+  ]
+}

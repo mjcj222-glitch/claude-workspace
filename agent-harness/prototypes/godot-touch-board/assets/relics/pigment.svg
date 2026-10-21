@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+<defs>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2be"/><stop offset=".27" stop-color="#e7bc63"/><stop offset=".55" stop-color="#8f552b"/><stop offset=".8" stop-color="#e5b45c"/><stop offset="1" stop-color="#754321"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edfff7"/><stop offset=".23" stop-color="#72c9ba"/><stop offset=".65" stop-color="#214c58"/><stop offset="1" stop-color="#101d37"/></linearGradient>
+ <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b3ffe3"/><stop offset=".3" stop-color="#47edbb"/><stop offset=".62" stop-color="#119d9b"/><stop offset="1" stop-color="#235eaf"/></linearGradient>
+ <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffde9b"/><stop offset=".36" stop-color="#b47c43"/><stop offset="1" stop-color="#654022"/></linearGradient>
+</defs>
+<ellipse cx="163" cy="281" rx="91" ry="15" fill="#000a19" opacity=".45"/>
+<!-- Thick blown-glass bottle with a narrow brass neck. -->
+<path d="M120 68 H200 V109 C204 126 245 140 253 177 L263 238 Q265 273 230 281 H90 Q55 273 58 239 L68 177 C75 142 116 126 120 109 Z" fill="#172534" stroke="#061420" stroke-width="9" stroke-linejoin="round"/>
+<path d="M125 77 H195 V110 C197 134 239 148 245 181 L254 237 Q256 265 227 271 H94 Q66 266 68 239 L77 182 C82 149 124 134 125 110 Z" fill="url(#glass)" stroke="#98dfcc" stroke-width="3"/>
+<path d="M82 185 Q113 166 160 182 Q206 199 240 181 L249 237 Q251 259 225 264 H96 Q73 260 75 239 Z" fill="url(#ink)"/>
+<path d="M82 185 Q119 167 160 184 Q202 201 240 181" fill="none" stroke="#c5fff0" stroke-width="5" opacity=".75"/>
+<path d="M94 171 Q109 146 132 135 L130 213 Q127 233 114 238 Q97 234 96 218 Z" fill="#effff8" opacity=".28"/>
+<path d="M84 198 L78 235 Q77 254 95 257" fill="none" stroke="#d4fff0" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<path d="M235 205 L242 236 Q244 253 226 257" fill="none" stroke="#6fdace" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+<path d="M117 67 H203 V96 Q160 108 117 96 Z" fill="url(#gold)" stroke="#794e2e" stroke-width="5"/>
+<path d="M125 57 Q126 44 140 42 H180 Q194 44 195 57 V75 Q160 84 125 75 Z" fill="url(#cap)" stroke="#5a3828" stroke-width="5"/>
+<ellipse cx="160" cy="48" rx="28" ry="8" fill="#f5d2a0"/>
+<path d="M127 88 Q159 96 194 88" fill="none" stroke="#fff0b8" stroke-width="4" stroke-linecap="round"/>
+<!-- Brass droplet seal; deliberately much larger than incidental detail. -->
+<path d="M160 157 C147 176 125 194 125 215 A35 35 0 0 0 195 215 C195 194 173 176 160 157 Z" fill="url(#gold)" stroke="#66442c" stroke-width="5"/>
+<path d="M160 173 C149 190 137 204 137 216 A23 23 0 0 0 183 216 C183 203 169 188 160 173 Z" fill="#163e4a"/>
+<path d="M151 199 Q142 212 147 223" fill="none" stroke="#c2ffeb" stroke-width="5" stroke-linecap="round"/>
+<path d="M101 139 L105 127 L109 139 L121 143 L109 147 L105 159 L101 147 L89 143 Z" fill="#f4fff1"/>
+</svg>

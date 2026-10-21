@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL canonical removed intersects real IDs, includes heart
+FAIL activation dedup and actual core kinds only
+FAIL heart counts as one removed panel
+FAIL heart updates visible counter
+FAIL repeated reachability never duplicates clear
+FAIL core consumes once
+FAIL core activation is distinct counter
+FAIL core activation produces multiple local waves
+FAIL finish reconciles missing sequence against canonical totals
+FAIL finished count remains readable
+FAIL next action starts clean
+FAIL visual budget cannot suppress actual accounting
+FEEDBACK checks=23 failures=12

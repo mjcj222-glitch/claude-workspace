@@ -1,0 +1,47 @@
+{
+  "base_commit": "be5c003943857f21732c60cd7ea54538deb096c7",
+  "regressions": {
+    "regression-clear_timeline.log": "TIMELINE failures=0",
+    "regression-feedback.log": "FEEDBACK checks=32 failures=0",
+    "regression-growth_session.log": "GROWTH_SESSION failures=0",
+    "regression-interaction.log": "INTERACTION failures=0",
+    "regression-motion_cycles.log": "CYCLES failures=0 durations=[1.09166666666667, 0.875, 0.88333333333333, 1.06666666666667, 1.16666666666666, 0.85833333333333, 0.9, 0.93333333333333, 0.90833333333333, 0.99166666666667]",
+    "regression-motion_paths.log": "PATH failures=0",
+    "regression-presentation_scene.log": "PRESENTATION SCENE fixture checks=32 failures=0",
+    "regression-refill_inlet.log": "REFILL_INLET failures=0 sim_s=0.81666666666667",
+    "regression-relic_details.log": "RELIC DETAILS checks=36 failures=0",
+    "regression-relic_rules.log": "RELIC RULES: 64 checks, 0 failures",
+    "regression-reward_input.log": "REWARD_INPUT failures=0",
+    "regression-rules.log": "RULES: 44 checks, 0 failures",
+    "regression-scene.log": "SCENE failures=0"
+  },
+  "current_normal_nine_pair": [
+    "pigment",
+    "lens"
+  ],
+  "other_pairs": "prior be5c003 normal runs retained; not newly claimed",
+  "motion_profiles_match": true,
+  "video": "fixed30fps; long38/2core fixture explicitly captioned; last frame verified",
+  "artifacts": {
+    "chroma-presentation.mp4": {
+      "bytes": 2121415,
+      "sha256": "d78e60d070ce70650570c99fbd28905b4d90cc2a50ed7022f1427a9cda3df83e"
+    },
+    "core-chain-fixture-effects.png": {
+      "bytes": 361665,
+      "sha256": "51d9eb40c1963b2bc40bb28189b0ae7522ce9452adeb525f247611ac0a3ff46f"
+    },
+    "reward-icons.png": {
+      "bytes": 209000,
+      "sha256": "c9f74a8d0214bacb8aad1dfcf5d571a7e249c2ae4739e4a672551a879827bfab"
+    },
+    "owned-details.png": {
+      "bytes": 181491,
+      "sha256": "ef1ab81e6f4295df7f52acc2b87241af40c2a34741802c3145480b1b1f70a385"
+    },
+    "last-frame.png": {
+      "bytes": 958849,
+      "sha256": "8b785c3abdba0b45a32b4be521952c3d6d9542c4f39cdb42199c983d8f7cda4f"
+    }
+  }
+}

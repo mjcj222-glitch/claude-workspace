@@ -1,0 +1,209 @@
+{
+  "events": [
+    {
+      "at": 1.878756,
+      "cores": 0,
+      "count_trace": [
+        {
+          "cores": 0,
+          "frame": 66,
+          "panels": 0
+        },
+        {
+          "cores": 0,
+          "frame": 68,
+          "panels": 1
+        },
+        {
+          "cores": 0,
+          "frame": 70,
+          "panels": 2
+        }
+      ],
+      "label": "small",
+      "panels": 2,
+      "ready_while_feedback_visible": true,
+      "ready_while_particles_alive": false
+    },
+    {
+      "at": 5.91343766666667,
+      "cores": 2,
+      "count_trace": [
+        {
+          "cores": 0,
+          "frame": 170,
+          "panels": 0
+        },
+        {
+          "cores": 2,
+          "frame": 172,
+          "panels": 3
+        },
+        {
+          "cores": 2,
+          "frame": 173,
+          "panels": 5
+        },
+        {
+          "cores": 2,
+          "frame": 174,
+          "panels": 8
+        },
+        {
+          "cores": 2,
+          "frame": 175,
+          "panels": 10
+        },
+        {
+          "cores": 2,
+          "frame": 176,
+          "panels": 14
+        },
+        {
+          "cores": 2,
+          "frame": 177,
+          "panels": 17
+        },
+        {
+          "cores": 2,
+          "frame": 178,
+          "panels": 20
+        },
+        {
+          "cores": 2,
+          "frame": 179,
+          "panels": 24
+        },
+        {
+          "cores": 2,
+          "frame": 180,
+          "panels": 30
+        },
+        {
+          "cores": 2,
+          "frame": 181,
+          "panels": 38
+        }
+      ],
+      "label": "core-chain-fixture",
+      "panels": 38,
+      "ready_while_feedback_visible": false,
+      "ready_while_particles_alive": false
+    },
+    {
+      "at": 8.42836411111111,
+      "cores": 0,
+      "count_trace": [
+        {
+          "cores": 0,
+          "frame": 378,
+          "panels": 0
+        },
+        {
+          "cores": 0,
+          "frame": 380,
+          "panels": 1
+        },
+        {
+          "cores": 0,
+          "frame": 382,
+          "panels": 2
+        }
+      ],
+      "label": "third-clear",
+      "panels": 2,
+      "ready_while_feedback_visible": true,
+      "ready_while_particles_alive": false
+    }
+  ],
+  "failures": 0,
+  "final_hold_seconds": 1.6,
+  "long_clear_is_fixture": true,
+  "movie": false,
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 16.526
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 15,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 52879,
+        "clear_wall_ms": 196.747,
+        "fall_sim_s": 0.35,
+        "fall_wall_ms": 736.899,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 3751,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 454157,
+        "spawn_us": 1526,
+        "ticks": 42
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 933.635
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 28.715
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 120,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 121211,
+        "clear_wall_ms": 375.627,
+        "fall_sim_s": 1.95,
+        "fall_wall_ms": 1990.683,
+        "inside_sim_s": 1.70833333333333,
+        "iterations": 1786,
+        "last_spawn_sim_s": 1.55,
+        "pending_sim_s": 1.55,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 124036,
+        "spawn_us": 17136,
+        "ticks": 234
+      },
+      "removed": 38,
+      "specials": 2,
+      "wall_ms": 2366.264
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 14.048
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 24,
+      "movie": false,
+      "next_phase": "reward",
+      "profile": {
+        "anchor_us": 107559,
+        "clear_wall_ms": 191.411,
+        "fall_sim_s": 0.625,
+        "fall_wall_ms": 706.341,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 2630,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 226031,
+        "spawn_us": 1510,
+        "ticks": 75
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 897.701
+    }
+  ]
+}

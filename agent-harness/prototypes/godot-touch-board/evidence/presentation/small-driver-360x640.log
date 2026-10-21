@@ -1,0 +1,1 @@
+360 640 stages ['color', 'counter_read', 'done', 'growth_final_reset', 'modal_reset', 'owned_close', 'owned_inside', 'owned_open', 'owned_stale_up', 'panel', 'reset', 'reward_first', 'reward_second', 'reward_skill', 'reward_skill_panel', 'skill', 'small_clear', 'stale_down', 'stale_up'] exit 0

@@ -1,6 +1,7 @@
 extends RefCounted
 ## Presentation only. BOARD_SCREEN translates the unchanged logical board;
 ## controller must translate pointer positions back before calling session.
+const RelicArt = preload("res://scripts/board_relic_art.gd")
 const Art = preload("res://scripts/board_art.gd")
 const COLORS = [Color("ff705d"), Color("6edb6b"), Color("ffcf5b"), Color("61b7ff"), Color("ff86b5")]
 const BOARD_SCREEN = Rect2(30, 250, 660, 530)
@@ -103,10 +104,21 @@ static func draw(view) -> void:
 			view._center(rect.position+Vector2(60,73),["불꽃","새잎","번개","물결"][i],24,COLORS[i])
 	else:
 		view._text(Vector2(181,988), "성장 실험 · 3/6회 유물 · 9회 요약", 20, Color("bac6d8"))
-		var owned_names: Array[String] = []
-		for id in session.relics: owned_names.append(RELIC_COPY[id].name)
-		view._text(Vector2(181,1020), "누르고 확인, 놓으면 소거" if owned_names.is_empty() else " + ".join(owned_names), 22, Color("e6edf7"))
-		view._text(Vector2(181,1048), "충전 예약 · 다음 스킬 사용 후 2회" if session.ash_reserved else "보드 밖으로 움직이면 취소", 20, MUTED)
+		if session.relics.is_empty():
+			view._text(Vector2(181,1020), "누르고 확인, 놓으면 소거", 22, Color("e6edf7"))
+			view._text(Vector2(181,1048), "보드 밖으로 움직이면 취소", 20, MUTED)
+		else:
+			# Owned strip replaces helper copy; palette owns the same area only
+			# while skill mode is open. Each hit target remains44px at360wide.
+			view.draw_rect(Rect2(176,966,520,104),Color("0e121b"))
+			for i in range(session.relics.size()):
+				var rect:=owned_rect(i)
+				view._box(rect,Color("1c2837"),16,Color("41566d"))
+				RelicArt.draw_icon(view,session.relics[i],rect.grow(-5))
+			if session.relics.size()<=2:
+				view._text(Vector2(399,989), "보유 유물 %d"%session.relics.size(),22,MINT)
+				view._text(Vector2(399,1018), "아이콘을 눌러 설명",22,Color("d8e3ef"))
+				view._text(Vector2(399,1047), "다음 스킬 후 충전 2회" if session.ash_reserved else "3/6회 선택 · 9회 요약",20,MUTED)
 
 const SUMMARY_CONTINUE = Rect2(84, 670, 552, 88)
 const RELIC_COPY = {
@@ -152,10 +164,11 @@ static func draw_modal(view, canvas: CanvasItem) -> void:
 			var tint: Color = [MINT,COLORS[2],COLORS[3]][["pigment","lens","ash"].find(id)]
 			_modal_box(canvas,rect,Color("213041"),tint.darkened(0.35))
 			canvas.draw_rect(Rect2(rect.position+Vector2(0,20),Vector2(3,86)),tint)
-			_modal_text(view,canvas,rect.position+Vector2(22,31),copy.name,27,tint)
-			_modal_text(view,canvas,rect.position+Vector2(22,60),copy.change,22,Color("f2f5fa"))
+			RelicArt.draw_icon(canvas,id,Rect2(rect.position+Vector2(10,15),Vector2(100,100)))
+			_modal_text(view,canvas,rect.position+Vector2(119,31),copy.name,27,tint)
+			_modal_text(view,canvas,rect.position+Vector2(119,60),copy.change,22,Color("f2f5fa"))
 			for row in range(copy.lines.size()):
-				_modal_text(view,canvas,rect.position+Vector2(22,85+25*row),copy.lines[row],22,Color("b9c7db"))
+				_modal_text(view,canvas,rect.position+Vector2(119,85+25*row),copy.lines[row],22,Color("b9c7db"))
 		_modal_text(view,canvas,Vector2(360,768),"원하는 카드 위에서 눌렀다 놓으세요",22,MUTED,true)
 	else:
 		_modal_text(view,canvas,Vector2(64,259),"9회 성장 실험 완료",30,Color("f1fff8"))
@@ -178,3 +191,27 @@ static func draw_modal(view, canvas: CanvasItem) -> void:
 		_modal_text(view,canvas,Vector2(360,623),"이후에는 추가 보상 없이 자유롭게 플레이해요.",22,MUTED,true)
 		_modal_box(canvas,SUMMARY_CONTINUE,Color("28564e"),MINT,18)
 		_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"계속 플레이",28,Color("e9fff7"),true)
+
+
+const DETAIL_PANEL = Rect2(48,310,624,430)
+const DETAIL_CLOSE = Rect2(84,650,552,88)
+
+static func owned_rect(index:int)->Rect2:
+	return Rect2(180+104*index,974,88,88)
+
+static func draw_details(view,canvas:CanvasItem)->void:
+	if view.detail_relic=="":return
+	var id:String=view.detail_relic
+	if not RELIC_COPY.has(id):return
+	var copy:Dictionary=RELIC_COPY[id]
+	canvas.draw_rect(Rect2(0,208,720,872),Color(0.025,0.035,0.055,0.92))
+	_modal_box(canvas,DETAIL_PANEL,Color("172333"),Color("819691"),24)
+	RelicArt.draw_icon(canvas,id,Rect2(76,337,116,116))
+	_modal_text(view,canvas,Vector2(210,380),copy.name,32,MINT)
+	_modal_text(view,canvas,Vector2(210,419),"보유 중 · 성장 실험 유물",22,MUTED)
+	_modal_text(view,canvas,Vector2(84,493),copy.change,25,Color("fff0c7"))
+	for row in range(copy.lines.size()):
+		_modal_text(view,canvas,Vector2(84,540+32*row),copy.lines[row],24,Color("d5dfec"))
+	_modal_text(view,canvas,Vector2(360,620),"설명을 닫아도 보드와 충전은 유지돼요",22,MUTED,true)
+	_modal_box(canvas,DETAIL_CLOSE,Color("28564e"),MINT,18)
+	_modal_text(view,canvas,DETAIL_CLOSE.get_center()+Vector2(0,9),"닫기",28,Color("e9fff7"),true)

@@ -1,0 +1,80 @@
+{
+  "motion_profile_matches_all_six_actions": true,
+  "method": "same seed and input procedure; live llvmpipe; fixed movie separate",
+  "before": [
+    {
+      "panels": 2,
+      "cores": 0,
+      "wall_ms": 813.171,
+      "frames": 19
+    },
+    {
+      "panels": 2,
+      "cores": 0,
+      "wall_ms": 634.454,
+      "frames": 21
+    },
+    {
+      "panels": 2,
+      "cores": 0,
+      "wall_ms": 717.329,
+      "frames": 24
+    },
+    {
+      "panels": 3,
+      "cores": 0,
+      "wall_ms": 722.998,
+      "frames": 29
+    },
+    {
+      "panels": 2,
+      "cores": 0,
+      "wall_ms": 771.154,
+      "frames": 39
+    },
+    {
+      "panels": 35,
+      "cores": 2,
+      "wall_ms": 2390.104,
+      "frames": 103
+    }
+  ],
+  "after": [
+    {
+      "panels": 2,
+      "cores": 0,
+      "wall_ms": 774.859,
+      "frames": 17
+    },
+    {
+      "panels": 2,
+      "cores": 0,
+      "wall_ms": 622.774,
+      "frames": 19
+    },
+    {
+      "panels": 2,
+      "cores": 0,
+      "wall_ms": 715.968,
+      "frames": 22
+    },
+    {
+      "panels": 3,
+      "cores": 0,
+      "wall_ms": 731.415,
+      "frames": 27
+    },
+    {
+      "panels": 2,
+      "cores": 0,
+      "wall_ms": 760.212,
+      "frames": 38
+    },
+    {
+      "panels": 35,
+      "cores": 2,
+      "wall_ms": 2382.361,
+      "frames": 88
+    }
+  ]
+}

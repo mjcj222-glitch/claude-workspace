@@ -20,7 +20,7 @@ func run()->void:
 	print("SCALE mode=",root.content_scale_mode," factor=",root.content_scale_factor," base=",root.content_scale_size)
 	scene=load("res://main.tscn").instantiate()
 	root.add_child(scene)
-	prefix="res://evidence/growth/small-%dx%d"%[root.size.x,root.size.y]
+	prefix="res://evidence/%s/small-%dx%d"%[args[2] if args.size()>2 else "growth",root.size.x,root.size.y]
 	await create_timer(0.3).timeout
 	check(scene.board_to_screen(scene.BOARD.position)==scene.UI.BOARD_SCREEN.position,"board top coordinate correspondence")
 	check(scene.board_to_screen(scene.BOARD.end)==scene.UI.BOARD_SCREEN.end,"full board extent remains visible")
@@ -58,6 +58,18 @@ func run()->void:
 	await wait_ack("reward_first")
 	check(scene.session.phase=="ready" and scene.session.relics.size()==1,"OS first reward card selects one relic")
 	check(scene.session.actions==3,"reward selection does not consume action")
+	await signal_click("owned_open",scene.UI.owned_rect(0).get_center(),"click","owned-strip")
+	await wait_ack("owned_open")
+	check(scene.detail_relic=="pigment","OS owned icon opens correct detail")
+	await signal_click("owned_inside",Vector2(400,470),"click","owned-details")
+	await wait_ack("owned_inside")
+	check(scene.detail_relic=="pigment" and scene.session.actions==3,"OS detail interior cannot clear board")
+	await signal_click("owned_close",scene.UI.DETAIL_CLOSE.get_center())
+	await wait_ack("owned_close")
+	check(scene.detail_relic=="" and scene.session.actions==3,"OS close does not pass through")
+	await signal_click("owned_stale_up",Vector2(200,600),"up")
+	await wait_ack("owned_stale_up")
+	check(scene.session.actions==3,"stale OS detail release ignored")
 	await signal_click("reward_skill",scene.SKILL.get_center())
 	await wait_ack("reward_skill")
 	check(scene.session.skill_mode,"OS skill input works after reward")
@@ -95,6 +107,22 @@ func run()->void:
 	await signal_click("growth_final_reset",scene.RESET.get_center())
 	await wait_ack("growth_final_reset")
 	check(scene.session.actions==0 and scene.session.relics.is_empty(),"OS final reset clears growth")
+	# Real initial board and actual OS clear: counter is not a modal fixture.
+	var small:Dictionary={}
+	for panel in scene.session.panels:
+		var plan:Dictionary=scene.session.plan_for(panel.id)
+		if plan.valid and plan.removed.size()==2 and plan.activated.is_empty():small=panel;break
+	check(not small.is_empty(),"normal small clear exists")
+	if not small.is_empty():
+		await signal_click("small_clear",scene.board_to_screen(small.pos))
+		await wait_ack("small_clear")
+		deadline=Time.get_ticks_msec()+12000
+		while not scene.feedback.finished and Time.get_ticks_msec()<deadline:await process_frame
+		check(scene.feedback.count==2 and scene.feedback.core_count==0,"actual OS small clear counts two panels")
+		await signal_click("counter_read",Vector2.ZERO,"capture","counter")
+		await wait_ack("counter_read")
+		while scene.session.phase=="busy" and Time.get_ticks_msec()<deadline:await process_frame
+		check(scene.session.phase=="ready","effects do not block actual OS clear readiness")
 	await signal_click("done",Vector2.ZERO)
 	print("SMALL_WINDOW failures=",failures," window=",root.size," content=",root.get_texture().get_size())
 	await create_timer(0.3).timeout

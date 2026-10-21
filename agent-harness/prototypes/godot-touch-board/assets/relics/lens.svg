@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+<defs>
+ <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7cb"/><stop offset=".27" stop-color="#eec86b"/><stop offset=".5" stop-color="#9e6129"/><stop offset=".72" stop-color="#f8d87c"/><stop offset="1" stop-color="#804c22"/></linearGradient>
+ <radialGradient id="lens" cx=".35" cy=".28" r=".8"><stop stop-color="#f4fff9"/><stop offset=".25" stop-color="#b7efee"/><stop offset=".55" stop-color="#4da3b9"/><stop offset=".8" stop-color="#244f7e"/><stop offset="1" stop-color="#172a48"/></radialGradient>
+ <linearGradient id="handle" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#79634c"/><stop offset=".4" stop-color="#233749"/><stop offset=".7" stop-color="#152232"/><stop offset="1" stop-color="#070f1d"/></linearGradient>
+</defs>
+<ellipse cx="171" cy="281" rx="102" ry="15" fill="#000a19" opacity=".45"/>
+<!-- The strong diagonal handle keeps this distinct from round core panels. -->
+<path d="M199 196 L224 183 L282 247 Q293 262 280 278 Q265 291 250 279 L190 219 Z" fill="url(#handle)" stroke="#0a1524" stroke-width="9" stroke-linejoin="round"/>
+<path d="M217 207 L267 262" fill="none" stroke="#bba16e" stroke-width="7" stroke-linecap="round"/>
+<path d="M245 249 L257 237 L279 260 Q280 268 272 275 L263 278 Z" fill="url(#brass)" stroke="#79512d" stroke-width="3"/>
+<path d="M193 202 L211 185 L233 211 L214 229 Z" fill="url(#brass)" stroke="#70502b" stroke-width="4"/>
+<circle cx="140" cy="139" r="105" fill="#17232b" stroke="#08131e" stroke-width="9"/>
+<circle cx="140" cy="135" r="101" fill="url(#brass)" stroke="#7e592b" stroke-width="3"/>
+<circle cx="140" cy="135" r="83" fill="#78532e"/>
+<circle cx="140" cy="131" r="78" fill="url(#lens)" stroke="#fff2b3" stroke-width="4"/>
+<path d="M66 113 Q81 62 133 57" fill="none" stroke="#fff9d4" stroke-width="8" stroke-linecap="round"/>
+<path d="M83 177 Q128 219 185 178" fill="none" stroke="#75cfdf" stroke-width="6" opacity=".8" stroke-linecap="round"/>
+<path d="M80 122 Q90 82 127 74 Q146 71 141 84 Q100 101 96 134 Q85 149 80 122" fill="#ffffff" opacity=".65"/>
+<!-- A focused golden ray, not a generic gemstone glyph. -->
+<path d="M140 91 L150 123 L183 133 L150 143 L140 175 L130 143 L97 133 L130 123 Z" fill="#fff4c4" stroke="#9e7839" stroke-width="2"/>
+<circle cx="140" cy="133" r="11" fill="#ffffff"/>
+<path d="M195 66 L199 51 L203 66 L218 70 L203 74 L199 89 L195 74 L180 70 Z" fill="#fff8dc"/>
+<circle cx="141" cy="41" r="4" fill="#fff3ba"/>
+<circle cx="46" cy="136" r="4" fill="#fff3ba"/>
+<circle cx="140" cy="228" r="4" fill="#fff3ba"/>
+</svg>
