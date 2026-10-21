@@ -7,6 +7,7 @@ const SkillState = preload("res://scripts/board_skill_presentation.gd")
 const CharacterUI = preload("res://scripts/board_character_ui.gd")
 const Characters = preload("res://scripts/board_characters.gd")
 const DEPART = CharacterUI.DEPART
+const AreaUI=preload("res://scripts/board_area_ui.gd")
 const Art = preload("res://scripts/board_art.gd")
 const COLORS = [Color("ff705d"), Color("6edb6b"), Color("ffcf5b"), Color("61b7ff"), Color("ff86b5")]
 const BOARD_SCREEN = Rect2(30,390,660,530)
@@ -46,9 +47,10 @@ static func draw(view) -> void:
 	view.draw_rect(Rect2(0,0,720,58),Color(0.035,0.015,0.065,0.84))
 	view.draw_line(Vector2(0,58),Vector2(720,58),MaterialArt.GOLD.darkened(0.5),1)
 	_modal_text(view,view,Vector2(23,40),"CHROMA",30,MaterialArt.GOLD,false,true)
-	_modal_text(view,view,Vector2(322,39),"실험" if view.sandbox else "%d / 3"%(session.combat.encounter+1),26,Color("fff0d3"),true)
-	view.draw_rect(Rect2(280,62,160,30),Color(0.035,0.015,0.065,0.85))
-	view._center(Vector2(360,85),"행동 %d / 3"%(session.actions%3 if view.sandbox else session.combat.actions_in_turn),22,MUTED)
+	_modal_text(view,view,Vector2(322,39),"실험" if view.sandbox else ("구역1" if session.get("area_mode")==true else "%d / 3"%(session.combat.encounter+1)),26,Color("fff0d3"),true)
+	if session.get("area_mode")!=true or session.phase in ["ready","busy","enemy_attack","stalled"]:
+		view.draw_rect(Rect2(280,62,160,30),Color(0.035,0.015,0.065,0.85))
+		view._center(Vector2(360,85),"행동 %d / 3"%(session.actions%3 if view.sandbox else session.combat.actions_in_turn),22,MUTED)
 	view._text(Vector2(187,39),"%d G"%(0 if view.sandbox else session.gold),24,MaterialArt.GOLD)
 	Art._star(view,EFFECTS.get_center()+Vector2(0,-13),12,Color("ad8dc8") if view.reduced_effects else Color("e3c2ff"))
 	view._center(EFFECTS.get_center()+Vector2(0,18),"절제" if view.reduced_effects else "효과",20,MUTED)
@@ -149,6 +151,8 @@ static func _modal_text(view, canvas: CanvasItem, at: Vector2, text: String, siz
 
 static func draw_modal(view, canvas: CanvasItem) -> void:
 	var session = view.session
+	if AreaUI.active(session.phase):
+		AreaUI.draw(view,canvas);return
 	if session.phase=="departure":
 		CharacterUI.draw(view,canvas)
 		return
@@ -165,7 +169,7 @@ static func draw_modal(view, canvas: CanvasItem) -> void:
 	_modal_box(canvas,Rect2(32,216,656,576),Color("1a1029"),Color("b59164"),24)
 	if session.phase == "reward":
 		_modal_text(view,canvas,Vector2(64,257),"유물을 골라주세요" if view.sandbox else "승리 보상 · 유물을 골라주세요",30,Color("fff1ff"),false,true)
-		_modal_text(view,canvas,Vector2(64,287),"%d / 2 선택 · 새로운 유물 하나를 골라요" % session.reward_round if view.sandbox else "승리 골드 지급 · %d G 보유 · 유물 %d / 2" % [session.gold,session.reward_round],22,MUTED)
+		_modal_text(view,canvas,Vector2(64,287),"%d / 2 선택 · 새로운 유물 하나를 골라요" % session.reward_round if view.sandbox else "승리 골드 지급 · %d G · 미보유 유물 하나" % session.gold if session.get("area_mode")==true else "승리 골드 지급 · %d G 보유 · 유물 %d / 2" % [session.gold,session.reward_round],22,MUTED)
 		var count: int = session.reward_options.size()
 		for i in range(count):
 			var id: String = session.reward_options[i]
@@ -238,9 +242,12 @@ static func draw_run_modal(view,canvas:CanvasItem)->void:
 	if session.phase == "between":
 		lines = ["전투 %d 승리 · 유물 획득 완료" % (combat.encounter+1), "생명 %d / 30 · 충전 %d / %d" % [session.hp,session.charge,session.charge_required], "생명·충전·유물·예약을 이어갑니다", "새 보드에서 전투 %d / 3 시작" % (combat.encounter+2)]
 	elif session.phase == "victory":
-		lines = ["적 3명 처치 · 생명 %d / 30" % session.hp, "선택 경로 · " + route_name(session.route), "사용 %d G · 남은 %d G" % [session.gold_spent,session.gold], "유효 소거 %d회 · 보유 유물 %d개" % [session.actions,session.relics.size()]]
+		lines = ["적 %d명 처치 · 생명 %d / 30" % [combat.enemies_defeated,session.hp], "선택 경로 · " + route_name(session.route), "사용 %d G · 남은 %d G" % [session.gold_spent,session.gold], "유효 소거 %d회 · 보유 유물 %d개" % [session.actions,session.relics.size()]]
 	else:
 		lines = ["도달 전투 %d / 3 · 적 %d명 처치" % [combat.encounter+1,combat.enemies_defeated], "선택 경로 · " + route_name(session.route), "사용 %d G · 남은 %d G" % [session.gold_spent,session.gold], "유효 소거 %d회 · 보유 유물 %d개" % [session.actions,session.relics.size()]]
+	if session.get("area_mode")==true and session.phase in ["victory","defeat"]:
+		lines[0]="적 %d명 처치 · 생명 %d / 30"%[combat.enemies_defeated,session.hp] if session.phase=="victory" else "도달 · "+session.NODES[session.current_node].name+" · 적%d명 처치"%combat.enemies_defeated
+		lines[1]=session.route_summary()
 	for i in range(lines.size()):
 		_modal_text(view,canvas,Vector2(360,352+i*56),lines[i],26,Color("f7efff") if i<2 else MUTED,true)
 	if session.phase in ["victory","defeat"]:
@@ -261,6 +268,7 @@ static func shop_rect(index:int)->Rect2:
 	return route_rect(index)
 
 static func modal_rect(phase:String,index:int,reward_count:int=0)->Rect2:
+	if AreaUI.active(phase):return AreaUI.rect(phase,index)
 	if phase=="departure":return character_rect(index) if index<2 else DEPART
 	if phase == "reward": return reward_rect(index,reward_count)
 	if phase == "route": return route_rect(index)
@@ -314,7 +322,7 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 		var state: String = "구매 완료" if sold else ("생명 가득 · 구매 불가" if i == 0 and gain == 0 else ("골드 부족" if session.gold < price else "눌렀다 놓으면 구매"))
 		_modal_text(view,canvas,rect.position+Vector2(119,124),state,22,tint)
 	MaterialArt.button(canvas,SUMMARY_CONTINUE,MINT,"pressed" if view.modal_index >= 0 and view.modal_phase == session.phase and (session.phase != "shop" or view.modal_index == 2) else "ready")
-	_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"최종 전투로",28,Color("fff0ff"),true)
+	_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),("지도로" if session.get("area_mode")==true else "최종 전투로"),28,Color("fff0ff"),true)
 
 
 static func weakness_name(color:int)->String:

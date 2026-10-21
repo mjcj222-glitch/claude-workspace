@@ -1,0 +1,162 @@
+{
+  "baseline": "24f9f19a247006d5ce9faef7dcb8e8eedf13a602",
+  "area_nodes": 8,
+  "combat_count_range": [
+    3,
+    4
+  ],
+  "legacy_suites_explicit_short_run": 41,
+  "new_default_area_suites": 3,
+  "total_scripts": 44,
+  "suite_failures": 0,
+  "new_detailed_checks": 76,
+  "OS_checks_each": 24,
+  "OS_sizes": [
+    "360x640",
+    "390x844"
+  ],
+  "normal_native_runs": [
+    {
+      "trace": "noa-risk-attrition-live/trace.json",
+      "character": "noa",
+      "route": "risk",
+      "policy": "attrition",
+      "outcome": "defeat",
+      "clears": 20,
+      "hp": 0,
+      "gold": 1,
+      "history": [
+        "entry",
+        "event",
+        "elite"
+      ],
+      "fallbacks": 0,
+      "returned": true,
+      "errors": []
+    },
+    {
+      "trace": "noa-risk-intent-aware-live/trace.json",
+      "character": "noa",
+      "route": "risk",
+      "policy": "intent-aware",
+      "outcome": "victory",
+      "clears": 24,
+      "hp": 30,
+      "gold": 21,
+      "history": [
+        "entry",
+        "event",
+        "elite",
+        "extra",
+        "shop",
+        "boss"
+      ],
+      "fallbacks": 1,
+      "returned": true,
+      "errors": []
+    },
+    {
+      "trace": "noa-safe-intent-aware-live/trace.json",
+      "character": "noa",
+      "route": "safe",
+      "policy": "intent-aware",
+      "outcome": "victory",
+      "clears": 16,
+      "hp": 21,
+      "gold": 5,
+      "history": [
+        "entry",
+        "rest",
+        "safe",
+        "boss"
+      ],
+      "fallbacks": 0,
+      "returned": true,
+      "errors": []
+    },
+    {
+      "trace": "rio-risk-attrition-live/trace.json",
+      "character": "rio",
+      "route": "risk",
+      "policy": "attrition",
+      "outcome": "defeat",
+      "clears": 20,
+      "hp": 0,
+      "gold": 1,
+      "history": [
+        "entry",
+        "event",
+        "elite"
+      ],
+      "fallbacks": 0,
+      "returned": true,
+      "errors": []
+    },
+    {
+      "trace": "rio-risk-intent-aware-live/trace.json",
+      "character": "rio",
+      "route": "risk",
+      "policy": "intent-aware",
+      "outcome": "victory",
+      "clears": 25,
+      "hp": 24,
+      "gold": 18,
+      "history": [
+        "entry",
+        "event",
+        "elite",
+        "extra",
+        "shop",
+        "boss"
+      ],
+      "fallbacks": 0,
+      "returned": true,
+      "errors": []
+    },
+    {
+      "trace": "rio-safe-shop-intent-aware-live/trace.json",
+      "character": "rio",
+      "route": "safe-shop",
+      "policy": "intent-aware",
+      "outcome": "victory",
+      "clears": 13,
+      "hp": 20,
+      "gold": 8,
+      "history": [
+        "entry",
+        "rest",
+        "safe",
+        "shop",
+        "boss"
+      ],
+      "fallbacks": 0,
+      "returned": true,
+      "errors": []
+    }
+  ],
+  "excluded_startup_attempt": {
+    "trace": "rio-risk-intent-aware-live-startup-cancelled/trace.json",
+    "phase": "departure",
+    "actions": 0,
+    "errors": [
+      "unexpected area phase: departure"
+    ],
+    "cause": "Selection canceled during overlapping native-window/OS tests; exact external notification not instrumented. Same Rio risk path succeeded in isolated replay; failed attempt retained."
+  },
+  "performance": "No new dedicated timing benchmark. Captures include policy, I/O and some concurrent execution; fixed30fps video is not real-time evidence.",
+  "limits": [
+    "No human fun/balance validation or physical device/audio tests.",
+    "Current Windows/Web packages remain old; no save/resume.",
+    "Existing shared temporary hero portrait; no failed transfer retry.",
+    "Exact old saved stall regression passes; full historical input-ID parity remains a separate earlier limitation."
+  ],
+  "final_owned_relic_name_row": true,
+  "final_default_smoke_checks": 76,
+  "final_small_window_recheck_each": 24,
+  "final_movie": {
+    "clears": 24,
+    "hp": 30,
+    "gold": 21,
+    "fallbacks": 1
+  }
+}

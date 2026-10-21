@@ -8,6 +8,11 @@ static func enter(scene,hero:String="rio")->void:
 	scene.press(card,-1);scene.release(card,-1)
 	var button:Vector2=scene.UI.DEPART.get_center()
 	scene.press(button,-1);scene.release(button,-1)
+	if scene.session.phase=="map":
+		var node:Vector2=scene.AreaUI.node_rect(0).get_center()
+		scene.press(node,-1);scene.release(node,-1)
+		node=scene.AreaUI.ENTER.get_center()
+		scene.press(node,-1);scene.release(node,-1)
 	assert(scene.session.phase=="ready" and scene.session.character_id==hero)
 	# Outside any timed interaction; let the real departing-control double-tap
 	# guard expire before legacy fixture assertions start.

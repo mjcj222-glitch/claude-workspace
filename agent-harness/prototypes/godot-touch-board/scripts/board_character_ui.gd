@@ -13,7 +13,7 @@ static func draw(view,canvas:CanvasItem)->void:
 	var session=view.session
 	canvas.draw_rect(Rect2(0,88,720,992),Color("100b1b"))
 	ui._modal_text(view,canvas,Vector2(360,159),"한 명을 골라 출발하세요",36,Color("fff0d3"),true,true)
-	ui._modal_text(view,canvas,Vector2(360,200),"선택한 한 캐릭터로 세 전투를 진행합니다",25,Color("dfc8ec"),true)
+	ui._modal_text(view,canvas,Vector2(360,200),"선택한 한 캐릭터로 한 구역을 탐험합니다",25,Color("dfc8ec"),true)
 	ui._modal_text(view,canvas,Vector2(360,240),"능력은 다르게 · 초상화는 공용 임시 자산",22,ui.MUTED,true)
 	for i in range(Characters.IDS.size()):
 		var id:String=Characters.IDS[i]

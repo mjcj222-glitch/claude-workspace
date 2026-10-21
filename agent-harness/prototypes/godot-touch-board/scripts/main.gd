@@ -1,6 +1,8 @@
 extends Node2D
 const Session = preload("res://scripts/board_session.gd")
-const RunSession = preload("res://scripts/board_run_session.gd")
+const LegacyRunSession = preload("res://scripts/board_run_session.gd")
+const RunSession = preload("res://scripts/board_area_session.gd")
+const AreaUI = preload("res://scripts/board_area_ui.gd")
 const ATTACK_SECONDS := 0.45
 const TRANSITION_REPEAT_MS := 500
 const TRANSITION_REPEAT_RADIUS := 44.0
@@ -19,6 +21,7 @@ const SKILL = UI.SKILL
 const MUTE = UI.MUTE
 var session = RunSession.new()
 var sandbox := false
+var short_run := false
 var run_seed := 20261021
 var attack_clock := 0.0
 var transition_repeat_until_ms := 0
@@ -107,6 +110,7 @@ func _ready() -> void:
 	run_start = Time.get_ticks_usec()
 	var args := OS.get_cmdline_user_args()
 	sandbox = "--sandbox" in args
+	short_run = "--short-run" in args
 	for arg in args:
 		if arg.begins_with("--seed="): run_seed = int(arg.trim_prefix("--seed="))
 	demo = "--demo" in args and sandbox
@@ -135,7 +139,7 @@ func reset_board() -> void:
 	_skill_was_ready = true
 	rng.seed = run_seed
 	particle_rng.seed = run_seed ^ 0x514C495459
-	session = Session.new() if sandbox else RunSession.new()
+	session = Session.new() if sandbox else (LegacyRunSession.new() if short_run else RunSession.new())
 	session.bounds = BOARD
 	var packed := Motion.initial_board(BOARD, 48, 1, rng)
 	if sandbox:
@@ -211,6 +215,19 @@ func _advance_fight(departure_point: Vector2 = Vector2.INF) -> void:
 	status = "누르고 확인 · 놓으면 소거"
 	last_summary = "전투 %d / 3 · 생명과 충전을 이어갑니다" % (session.combat.encounter + 1)
 	queue_redraw()
+
+func _enter_area_node(at:Vector2,serial:int)->void:
+	if session.phase!="map" or session.selected_node=="":return
+	var node:Dictionary=session.NODES[session.selected_node]
+	var packed:Dictionary={"panels":[],"next_id":session.next_id}
+	if node.kind=="fight":
+		packed={"panels":session.panels.duplicate(true),"next_id":session.next_id} if session.history.is_empty() else Motion.initial_board(BOARD,48,session.next_id,rng)
+	if not session.enter_node(serial,packed.panels,packed.next_id):return
+	transition_repeat_at=at;transition_repeat_until_ms=Time.get_ticks_msec()+TRANSITION_REPEAT_MS
+	feedback.reset();quality_fx.reset();selection_trace.clear();particles.clear();active_plan={};motion_state={};falling=false
+	action_clock=0;attack_clock=0;feedback_pending=false;target_hit=0;hero_active=0;landing=1
+	visual=session.panels.duplicate(true)
+	status="누르고 확인 · 놓으면 소거"
 
 func _text(at: Vector2, text: String, size: int, color: Color = Color("f3f2ef")) -> void:
 	draw_string(font, at, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, color)
@@ -466,12 +483,14 @@ func press(pos: Vector2, pointer: int) -> void:
 			detail_action="close"
 		return
 	if detail_pointer!=-99:return
-	if session.phase in ["departure","reward","summary","route","shop","between","victory","defeat"]:
+	if session.phase in ["map","rest","event","spoils","departure","reward","summary","route","shop","between","victory","defeat"]:
 		if RESET.has_point(pos):
 			reset_board()
 			return
 		if modal_pointer != -99: return
-		if session.phase=="departure":
+		if AreaUI.active(session.phase):
+			modal_index=AreaUI.hit(session.phase,pos)
+		elif session.phase=="departure":
 			for i in range(2):
 				if UI.character_rect(i).has_point(pos):modal_index=i
 			if UI.DEPART.has_point(pos):modal_index=2
@@ -530,14 +549,21 @@ func release(pos: Vector2, pointer: int) -> void:
 			detail_relic=session.relics[index]
 			session.cancel()
 		return
-	if session.phase in ["departure","reward","summary","route","shop","between","victory","defeat"] or modal_pointer != -99:
+	if session.phase in ["map","rest","event","spoils","departure","reward","summary","route","shop","between","victory","defeat"] or modal_pointer != -99:
 		if pointer != modal_pointer: return
 		var index := modal_index
 		var serial := modal_offer
 		var previous_phase := modal_phase
 		_cancel_modal()
 		if session.phase != previous_phase or serial != session.offer_serial: return
-		if session.phase=="departure" and UI.modal_rect("departure",index).has_point(pos):
+		if AreaUI.active(session.phase) and AreaUI.rect(session.phase,index).has_point(pos):
+			if session.phase=="map":
+				if index<8:session.select_node(AreaUI.ORDER[index],serial)
+				else:_enter_area_node(pos,serial)
+			elif session.phase=="rest":session.rest_choice("heal" if index==0 else "leave",serial)
+			elif session.phase=="event":session.event_choice("trade" if index==0 else "supplies",serial)
+			else:session.confirm_spoils(serial)
+		elif session.phase=="departure" and UI.modal_rect("departure",index).has_point(pos):
 			if index in [0,1]:session.select_departure(Session.Characters.IDS[index],serial)
 			elif index==2 and session.start_departure(serial):
 				transition_repeat_at=pos
