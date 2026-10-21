@@ -1,0 +1,25 @@
+{
+  "test": "test_reward_input",
+  "exit": 1,
+  "errors": [
+    "FAIL outside cancellation keeps reward",
+    "FAIL focus loss does not consume reward",
+    "FAIL system cancellation keeps offer",
+    "FAIL modal blocks skill",
+    "FAIL single atomic choice",
+    "FAIL ninth completed action opens summary",
+    "FAIL old release cannot dismiss new summary",
+    "FAIL outside and reenter cannot dismiss cancelled summary press",
+    "FAIL focus loss cancels summary press without dismissal",
+    "FAIL extra finger cannot dismiss summary",
+    "FAIL system cancellation and stale release preserve summary"
+  ],
+  "wall_seconds": 4.292,
+  "command": [
+    "--headless",
+    "--path",
+    "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+    "--script",
+    "tests/test_reward_input.gd"
+  ]
+}

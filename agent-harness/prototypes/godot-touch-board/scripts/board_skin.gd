@@ -2,6 +2,8 @@ extends RefCounted
 ## Original code-native material artwork, CC0. No external textures or RNG.
 const GOLD := Color("cdb583")
 const LIGHT := Color("c3fff0")
+const FRAME_CACHE_LIMIT := 64
+static var _frame_cache: Dictionary = {}
 
 static func contour(rect: Rect2, cut: float = 12.0) -> PackedVector2Array:
 	var c := minf(cut,minf(rect.size.x,rect.size.y)*0.25)
@@ -16,11 +18,53 @@ static func _surface(canvas: CanvasItem, rect: Rect2, top: Color, bottom: Color,
 		colors.append(top.lerp(bottom,(point.y-rect.position.y)/maxf(1,rect.size.y)))
 	canvas.draw_polygon(points,colors)
 
+static func _ring(parts: Array, outer: Rect2, inner: Rect2, top: Color, bottom: Color) -> void:
+	var a:=contour(outer)
+	var b:=contour(inner)
+	for i in range(a.size()):
+		var next: int=(i+1)%a.size()
+		parts.append({"points":PackedVector2Array([a[i],a[next],b[next],b[i]]),"gradient":outer,"top":top,"bottom":bottom})
+
+static func frame_mesh(rect: Rect2,tint: Color) -> ArrayMesh:
+	# The old four opaque silhouettes shaded the entire board four times.
+	# Only their visible regions are needed. Keep the exact original gradients.
+	var key: Array=[rect,tint]
+	if _frame_cache.has(key):return _frame_cache[key]
+	var parts: Array=[]
+	var shadow:=Rect2(rect.position+Vector2(0,5),rect.size)
+	for polygon in Geometry2D.clip_polygons(contour(shadow),contour(rect)):
+		parts.append({"points":polygon,"gradient":shadow,"top":Color("020709"),"bottom":Color("020405")})
+	_ring(parts,rect,rect.grow(-2),Color("74998e").lerp(tint,0.2),Color("243c3d"))
+	_ring(parts,rect.grow(-2),rect.grow(-6),Color("1d353b"),Color("071317"))
+	parts.append({"points":contour(rect.grow(-6)),"gradient":rect.grow(-6),"top":Color("183239").lerp(tint,0.055),"bottom":Color("09171e")})
+	var vertices:=PackedVector3Array()
+	var colors:=PackedColorArray()
+	var indices:=PackedInt32Array()
+	for part in parts:
+		var base:=vertices.size()
+		for point in part.points:
+			vertices.append(Vector3(point.x,point.y,0))
+			colors.append(part.top.lerp(part.bottom,(point.y-part.gradient.position.y)/maxf(1,part.gradient.size.y)))
+		for index in Geometry2D.triangulate_polygon(part.points):indices.append(base+index)
+	var arrays: Array=[]
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX]=vertices
+	arrays[Mesh.ARRAY_COLOR]=colors
+	arrays[Mesh.ARRAY_INDEX]=indices
+	var mesh:=ArrayMesh.new()
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+	if _frame_cache.size()>=FRAME_CACHE_LIMIT:_frame_cache.clear()
+	_frame_cache[key]=mesh
+	return mesh
+
 static func frame(canvas: CanvasItem, rect: Rect2, tint: Color, ornamented: bool = false) -> void:
-	_surface(canvas,Rect2(rect.position+Vector2(0,5),rect.size),Color("020709"),Color("020405"))
-	_surface(canvas,rect,Color("74998e").lerp(tint,0.2),Color("243c3d"))
-	_surface(canvas,rect.grow(-2),Color("1d353b"),Color("071317"))
-	_surface(canvas,rect.grow(-6),Color("183239").lerp(tint,0.055),Color("09171e"))
+	if tint.a < 1.0 or minf(rect.size.x,rect.size.y)<=36:
+		# Preserve compositing for translucent or unusually tiny callers.
+		_surface(canvas,Rect2(rect.position+Vector2(0,5),rect.size),Color("020709"),Color("020405"))
+		_surface(canvas,rect,Color("74998e").lerp(tint,0.2),Color("243c3d"))
+		_surface(canvas,rect.grow(-2),Color("1d353b"),Color("071317"))
+		_surface(canvas,rect.grow(-6),Color("183239").lerp(tint,0.055),Color("09171e"))
+	else:canvas.draw_mesh(frame_mesh(rect,tint),null)
 	var inner := rect.grow(-8)
 	canvas.draw_line(inner.position+Vector2(12,0),Vector2(inner.end.x-12,inner.position.y),Color("82baa9"),1.0,true)
 	canvas.draw_line(Vector2(inner.position.x+12,inner.end.y),inner.end-Vector2(12,0),Color("020b10"),2.0,true)
