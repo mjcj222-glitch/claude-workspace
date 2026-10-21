@@ -1,0 +1,3723 @@
+{
+  "canonical_final_panels_match_archive": true,
+  "inlet255": [
+    {
+      "inlet": [
+        {
+          "first": 228.0,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 252,
+            "kind": "normal",
+            "pos": "(67.0, 302.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 750.0)"
+          },
+          "x": 67.0
+        },
+        {
+          "first": 230.301657315179,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 252,
+            "kind": "normal",
+            "pos": "(67.0, 302.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 750.0)"
+          },
+          "x": 85.3125
+        },
+        {
+          "first": 237.699071740759,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 252,
+            "kind": "normal",
+            "pos": "(67.0, 302.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 750.0)"
+          },
+          "x": 103.625
+        },
+        {
+          "first": 252.423079021081,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 252,
+            "kind": "normal",
+            "pos": "(67.0, 302.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 750.0)"
+          },
+          "x": 121.9375
+        },
+        {
+          "first": 291.491075221508,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 252,
+            "kind": "normal",
+            "pos": "(67.0, 302.0)",
+            "radius": 37.0,
+            "vel": "(0.0, 750.0)"
+          },
+          "x": 140.25
+        },
+        {
+          "first": 247.741075221508,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 158.5625
+        },
+        {
+          "first": 208.673079021081,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 176.875
+        },
+        {
+          "first": 193.949071740759,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 195.1875
+        },
+        {
+          "first": 186.551657315179,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 213.5
+        },
+        {
+          "first": 184.25,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 231.8125
+        },
+        {
+          "first": 186.551657315179,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 250.125
+        },
+        {
+          "first": 193.949071740759,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 268.4375
+        },
+        {
+          "first": 208.673079021081,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 286.75
+        },
+        {
+          "first": 247.741075221508,
+          "hit": {
+            "anchored": false,
+            "color": 3,
+            "contact_count": 0,
+            "id": 254,
+            "kind": "normal",
+            "pos": "(231.8125, 258.25)",
+            "radius": 37.0,
+            "vel": "(0.0, 250.0)"
+          },
+          "x": 305.0625
+        },
+        {
+          "first": 310.916625976562,
+          "hit": {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 0,
+            "id": 250,
+            "kind": "normal",
+            "pos": "(323.375, 384.9166)",
+            "radius": 37.0,
+            "vel": "(0.0, 1100.0)"
+          },
+          "x": 323.375
+        },
+        {
+          "first": 313.218283291742,
+          "hit": {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 0,
+            "id": 250,
+            "kind": "normal",
+            "pos": "(323.375, 384.9166)",
+            "radius": 37.0,
+            "vel": "(0.0, 1100.0)"
+          },
+          "x": 341.6875
+        },
+        {
+          "first": 320.615697717322,
+          "hit": {
+            "anchored": false,
+            "color": 2,
+            "contact_count": 0,
+            "id": 250,
+            "kind": "normal",
+            "pos": "(323.375, 384.9166)",
+            "radius": 37.0,
+            "vel": "(0.0, 1100.0)"
+          },
+          "x": 360.0
+        },
+        {
+          "first": 328.991075221508,
+          "hit": {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 0,
+            "id": 251,
+            "kind": "normal",
+            "pos": "(451.5625, 339.5)",
+            "radius": 37.0,
+            "vel": "(0.0, 1000.0)"
+          },
+          "x": 378.3125
+        },
+        {
+          "first": 289.923079021081,
+          "hit": {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 0,
+            "id": 251,
+            "kind": "normal",
+            "pos": "(451.5625, 339.5)",
+            "radius": 37.0,
+            "vel": "(0.0, 1000.0)"
+          },
+          "x": 396.625
+        },
+        {
+          "first": 275.199071740759,
+          "hit": {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 0,
+            "id": 251,
+            "kind": "normal",
+            "pos": "(451.5625, 339.5)",
+            "radius": 37.0,
+            "vel": "(0.0, 1000.0)"
+          },
+          "x": 414.9375
+        },
+        {
+          "first": 267.801657315179,
+          "hit": {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 0,
+            "id": 251,
+            "kind": "normal",
+            "pos": "(451.5625, 339.5)",
+            "radius": 37.0,
+            "vel": "(0.0, 1000.0)"
+          },
+          "x": 433.25
+        },
+        {
+          "first": 265.5,
+          "hit": {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 0,
+            "id": 251,
+            "kind": "normal",
+            "pos": "(451.5625, 339.5)",
+            "radius": 37.0,
+            "vel": "(0.0, 1000.0)"
+          },
+          "x": 451.5625
+        },
+        {
+          "first": 267.801657315179,
+          "hit": {
+            "anchored": false,
+            "color": 0,
+            "contact_count": 0,
+            "id": 251,
+            "kind": "normal",
+            "pos": "(451.5625, 339.5)",
+            "radius": 37.0,
+            "vel": "(0.0, 1000.0)"
+          },
+          "x": 469.875
+        },
+        {
+          "first": 264.407731715649,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 488.1875
+        },
+        {
+          "first": 225.339735515221,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 506.5
+        },
+        {
+          "first": 210.6157282349,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 524.8125
+        },
+        {
+          "first": 203.21831380932,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 543.125
+        },
+        {
+          "first": 200.916656494141,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 561.4375
+        },
+        {
+          "first": 203.21831380932,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 579.75
+        },
+        {
+          "first": 210.6157282349,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 598.0625
+        },
+        {
+          "first": 225.339735515221,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 616.375
+        },
+        {
+          "first": 264.407731715649,
+          "hit": {
+            "anchored": false,
+            "color": 1,
+            "contact_count": 0,
+            "id": 253,
+            "kind": "normal",
+            "pos": "(561.4375, 274.9167)",
+            "radius": 37.0,
+            "vel": "(0.0, 500.0)"
+          },
+          "x": 634.6875
+        },
+        {
+          "first": 332.872290152639,
+          "hit": {
+            "anchored": false,
+            "color": 4,
+            "contact_count": 179,
+            "id": 248,
+            "kind": "heart",
+            "pos": "(624.62, 401.2139)",
+            "radius": 37.0,
+            "vel": "(1.906725, -0.776184)"
+          },
+          "x": 653.0
+        }
+      ],
+      "time": 0.491666666666667
+    }
+  ],
+  "rows": [
+    {
+      "max_speed": 600.0,
+      "quiet": 0.0,
+      "time": 0.1,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 0,
+          "id": 244,
+          "kind": "heart",
+          "pos": "(250.125, 267.0)",
+          "radius": 37.0,
+          "vel": "(0.0, 400.0)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 0,
+          "id": 245,
+          "kind": "normal",
+          "pos": "(414.9375, 254.5)",
+          "radius": 37.0,
+          "vel": "(0.0, 150.0)"
+        }
+      ]
+    },
+    {
+      "max_speed": 1100.0,
+      "quiet": 0.0,
+      "time": 0.2,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 0,
+          "id": 244,
+          "kind": "heart",
+          "pos": "(250.125, 339.5)",
+          "radius": 37.0,
+          "vel": "(0.0, 1000.0)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 0,
+          "id": 245,
+          "kind": "normal",
+          "pos": "(414.9375, 302.0)",
+          "radius": 37.0,
+          "vel": "(0.0, 750.0)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 246,
+          "kind": "normal",
+          "pos": "(85.3125, 274.9167)",
+          "radius": 37.0,
+          "vel": "(0.0, 500.0)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 247,
+          "kind": "normal",
+          "pos": "(543.125, 258.25)",
+          "radius": 37.0,
+          "vel": "(0.0, 250.0)"
+        }
+      ]
+    },
+    {
+      "max_speed": 1100.0,
+      "quiet": 0.0,
+      "time": 0.3,
+      "top": [
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 0,
+          "id": 245,
+          "kind": "normal",
+          "pos": "(414.9375, 403.2499)",
+          "radius": 37.0,
+          "vel": "(0.0, 1100.0)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 246,
+          "kind": "normal",
+          "pos": "(85.3125, 357.4167)",
+          "radius": 37.0,
+          "vel": "(0.0, 1100.0)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 247,
+          "kind": "normal",
+          "pos": "(543.125, 315.75)",
+          "radius": 37.0,
+          "vel": "(0.0, 850.0)"
+        },
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 0,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6875, 284.5)",
+          "radius": 37.0,
+          "vel": "(0.0, 600.0)"
+        },
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 0,
+          "id": 249,
+          "kind": "heart",
+          "pos": "(176.875, 263.6667)",
+          "radius": 37.0,
+          "vel": "(0.0, 350.0)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 0,
+          "id": 250,
+          "kind": "normal",
+          "pos": "(323.375, 253.25)",
+          "radius": 37.0,
+          "vel": "(0.0, 100.0)"
+        }
+      ]
+    },
+    {
+      "max_speed": 1100.0,
+      "quiet": 0.0,
+      "time": 0.4,
+      "top": [
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 27,
+          "id": 247,
+          "kind": "normal",
+          "pos": "(544.7612, 417.5392)",
+          "radius": 37.0,
+          "vel": "(246.5924, 121.787)"
+        },
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 0,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6875, 375.75)",
+          "radius": 37.0,
+          "vel": "(0.0, 1100.0)"
+        },
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 0,
+          "id": 249,
+          "kind": "heart",
+          "pos": "(176.875, 331.1667)",
+          "radius": 37.0,
+          "vel": "(0.0, 950.0)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 0,
+          "id": 250,
+          "kind": "normal",
+          "pos": "(323.375, 295.75)",
+          "radius": 37.0,
+          "vel": "(0.0, 700.0)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 251,
+          "kind": "normal",
+          "pos": "(451.5625, 270.75)",
+          "radius": 37.0,
+          "vel": "(0.0, 450.0)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 0,
+          "id": 252,
+          "kind": "normal",
+          "pos": "(67.0, 256.1667)",
+          "radius": 37.0,
+          "vel": "(0.0, 200.0)"
+        }
+      ]
+    },
+    {
+      "max_speed": 1100.0,
+      "quiet": 0.0,
+      "time": 0.500000000000001,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 210,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(624.6808, 401.1895)",
+          "radius": 37.0,
+          "vel": "(3.603557, -1.43473)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 0,
+          "id": 250,
+          "kind": "normal",
+          "pos": "(323.375, 394.0833)",
+          "radius": 37.0,
+          "vel": "(0.0, 1100.0)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 251,
+          "kind": "normal",
+          "pos": "(451.5625, 348.25)",
+          "radius": 37.0,
+          "vel": "(0.0, 1050.0)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 0,
+          "id": 252,
+          "kind": "normal",
+          "pos": "(67.0, 308.6667)",
+          "radius": 37.0,
+          "vel": "(0.0, 800.0)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 0,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(561.4375, 279.5)",
+          "radius": 37.0,
+          "vel": "(0.0, 550.0)"
+        },
+        {
+          "anchored": false,
+          "color": 3,
+          "contact_count": 0,
+          "id": 254,
+          "kind": "normal",
+          "pos": "(231.8125, 260.75)",
+          "radius": 37.0,
+          "vel": "(0.0, 300.0)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 0,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0, 252.4167)",
+          "radius": 37.0,
+          "vel": "(0.0, 50.0)"
+        }
+      ]
+    },
+    {
+      "max_speed": 1100.0,
+      "quiet": 0.0,
+      "time": 0.6,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 593,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(627.3456, 400.1451)",
+          "radius": 37.0,
+          "vel": "(36.05595, -13.4065)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 0,
+          "id": 252,
+          "kind": "normal",
+          "pos": "(67.0, 412.4166)",
+          "radius": 37.0,
+          "vel": "(0.0, 1100.0)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 58,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(562.4533, 351.5949)",
+          "radius": 37.0,
+          "vel": "(38.82663, 31.37175)"
+        },
+        {
+          "anchored": false,
+          "color": 3,
+          "contact_count": 0,
+          "id": 254,
+          "kind": "normal",
+          "pos": "(231.8125, 323.25)",
+          "radius": 37.0,
+          "vel": "(0.0, 900.0)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 0,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0, 289.9167)",
+          "radius": 37.0,
+          "vel": "(0.0, 650.0)"
+        },
+        {
+          "anchored": false,
+          "color": 3,
+          "contact_count": 0,
+          "id": 256,
+          "kind": "normal",
+          "pos": "(378.3125, 267.0)",
+          "radius": 37.0,
+          "vel": "(0.0, 400.0)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 257,
+          "kind": "normal",
+          "pos": "(140.25, 254.5)",
+          "radius": 37.0,
+          "vel": "(0.0, 150.0)"
+        }
+      ]
+    },
+    {
+      "max_speed": 1100.0,
+      "quiet": 0.0,
+      "time": 0.7,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 1247,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(629.126, 399.5139)",
+          "radius": 37.0,
+          "vel": "(4.004638, -1.35227)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 358,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(564.1915, 353.3373)",
+          "radius": 37.0,
+          "vel": "(5.420079, 8.684884)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 174,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0007, 329.47)",
+          "radius": 37.0,
+          "vel": "(0.008866, -2.714249)"
+        },
+        {
+          "anchored": false,
+          "color": 3,
+          "contact_count": 0,
+          "id": 256,
+          "kind": "normal",
+          "pos": "(378.3125, 339.5)",
+          "radius": 37.0,
+          "vel": "(0.0, 1000.0)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 257,
+          "kind": "normal",
+          "pos": "(140.25, 302.0)",
+          "radius": 37.0,
+          "vel": "(0.0, 750.0)"
+        }
+      ]
+    },
+    {
+      "max_speed": 1100.0,
+      "quiet": 0.0,
+      "time": 0.8,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 2213,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(630.7637, 398.9769)",
+          "radius": 37.0,
+          "vel": "(10.23656, -3.232092)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 680,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(564.7315, 355.3236)",
+          "radius": 37.0,
+          "vel": "(2.539642, 7.821761)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 496,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0009, 328.3961)",
+          "radius": 37.0,
+          "vel": "(0.014875, -6.452533)"
+        },
+        {
+          "anchored": false,
+          "color": 0,
+          "contact_count": 0,
+          "id": 257,
+          "kind": "normal",
+          "pos": "(140.25, 403.2499)",
+          "radius": 37.0,
+          "vel": "(0.0, 1100.0)"
+        }
+      ]
+    },
+    {
+      "max_speed": 135.341613769531,
+      "quiet": 0.0,
+      "time": 0.899999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 3184,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(633.0763, 398.2888)",
+          "radius": 37.0,
+          "vel": "(5.048191, -1.485426)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 1008,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(564.7792, 357.9691)",
+          "radius": 37.0,
+          "vel": "(-1.667546, 15.18382)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 824,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0006, 327.0205)",
+          "radius": 37.0,
+          "vel": "(0.002931, -2.895913)"
+        }
+      ]
+    },
+    {
+      "max_speed": 37.6786727905273,
+      "quiet": 0.0,
+      "time": 0.999999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 4156,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6289, 397.8728)",
+          "radius": 37.0,
+          "vel": "(-2.152702, 0.645259)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 1351,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(564.1635, 361.0599)",
+          "radius": 37.0,
+          "vel": "(-7.701221, 0.178984)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 1167,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.1885)",
+          "radius": 37.0,
+          "vel": "(0.019905, 1.202061)"
+        }
+      ]
+    },
+    {
+      "max_speed": 46.2849922180176,
+      "quiet": 0.0,
+      "time": 1.1,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 5032,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6298, 397.8725)",
+          "radius": 37.0,
+          "vel": "(-2.115788, 0.633952)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 1675,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(562.8217, 361.1768)",
+          "radius": 37.0,
+          "vel": "(-9.855387, 0.438549)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 1491,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.188)",
+          "radius": 37.0,
+          "vel": "(0.019576, 1.181181)"
+        }
+      ]
+    },
+    {
+      "max_speed": 11.9861879348755,
+      "quiet": 0.0,
+      "time": 1.2,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 5910,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6304, 397.8724)",
+          "radius": 37.0,
+          "vel": "(-2.29616, 0.684427)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 1999,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(561.1852, 361.3929)",
+          "radius": 37.0,
+          "vel": "(-11.90755, 1.370735)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 1815,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.1878)",
+          "radius": 37.0,
+          "vel": "(0.019952, 1.277956)"
+        }
+      ]
+    },
+    {
+      "max_speed": 14.568603515625,
+      "quiet": 0.0,
+      "time": 1.3,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 6788,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6324, 397.8719)",
+          "radius": 37.0,
+          "vel": "(-2.22824, 0.664845)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 2323,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(559.1982, 361.6744)",
+          "radius": 37.0,
+          "vel": "(-14.42672, 2.028299)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 2139,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.1867)",
+          "radius": 37.0,
+          "vel": "(0.01959, 1.24081)"
+        }
+      ]
+    },
+    {
+      "max_speed": 18.1742076873779,
+      "quiet": 0.0,
+      "time": 1.4,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 7654,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6313, 397.8719)",
+          "radius": 37.0,
+          "vel": "(-2.355587, 0.677848)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 2642,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(556.775, 362.0922)",
+          "radius": 37.0,
+          "vel": "(-17.90141, 3.137114)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 2458,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0005, 326.1871)",
+          "radius": 37.0,
+          "vel": "(0.032526, 1.289801)"
+        }
+      ]
+    },
+    {
+      "max_speed": 22.5446224212646,
+      "quiet": 0.0,
+      "time": 1.5,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 8506,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6326, 397.8716)",
+          "radius": 37.0,
+          "vel": "(-2.329421, 0.669975)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 2954,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(553.7926, 362.7182)",
+          "radius": 37.0,
+          "vel": "(-22.03737, 4.755429)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 2770,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0005, 326.1864)",
+          "radius": 37.0,
+          "vel": "(0.031982, 1.275036)"
+        }
+      ]
+    },
+    {
+      "max_speed": 27.4452629089355,
+      "quiet": 0.0,
+      "time": 1.6,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 9357,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6358, 397.8708)",
+          "radius": 37.0,
+          "vel": "(-2.213528, 0.637182)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 3266,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(550.1896, 363.6501)",
+          "radius": 37.0,
+          "vel": "(-26.51646, 7.079539)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 3082,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0005, 326.1848)",
+          "radius": 37.0,
+          "vel": "(0.03079, 1.212135)"
+        }
+      ]
+    },
+    {
+      "max_speed": 33.3114318847656,
+      "quiet": 0.0,
+      "time": 1.7,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 10201,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6396, 397.87)",
+          "radius": 37.0,
+          "vel": "(-2.070053, 0.621465)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 3578,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(545.8804, 365.025)",
+          "radius": 37.0,
+          "vel": "(-31.61443, 10.49663)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 3394,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.183)",
+          "radius": 37.0,
+          "vel": "(0.019441, 1.156634)"
+        }
+      ]
+    },
+    {
+      "max_speed": 42.1856536865234,
+      "quiet": 0.0,
+      "time": 1.8,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 11022,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6382, 397.8701)",
+          "radius": 37.0,
+          "vel": "(-2.152563, 0.621811)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 3880,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(540.6882, 367.0779)",
+          "radius": 37.0,
+          "vel": "(-38.94331, 16.21875)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 3696,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0005, 326.1835)",
+          "radius": 37.0,
+          "vel": "(0.031277, 1.181192)"
+        }
+      ]
+    },
+    {
+      "max_speed": 51.0017318725586,
+      "quiet": 0.0,
+      "time": 1.9,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 11837,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6418, 397.8692)",
+          "radius": 37.0,
+          "vel": "(-2.011165, 0.58104)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 4180,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(534.5645, 370.116)",
+          "radius": 37.0,
+          "vel": "(-45.11964, 23.77802)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 3996,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.1816)",
+          "radius": 37.0,
+          "vel": "(0.029315, 1.103592)"
+        }
+      ]
+    },
+    {
+      "max_speed": 64.0726013183594,
+      "quiet": 0.0,
+      "time": 2.0,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 12620,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.64, 397.8699)",
+          "radius": 37.0,
+          "vel": "(-2.052436, 0.619435)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 4469,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(527.4597, 374.5999)",
+          "radius": 37.0,
+          "vel": "(-52.88683, 36.17017)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 4285,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.1827)",
+          "radius": 37.0,
+          "vel": "(0.020478, 1.150344)"
+        }
+      ]
+    },
+    {
+      "max_speed": 76.0193710327148,
+      "quiet": 0.0,
+      "time": 2.1,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 13397,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6403, 397.8701)",
+          "radius": 37.0,
+          "vel": "(-1.970418, 0.619135)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 4757,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(519.6402, 381.0265)",
+          "radius": 37.0,
+          "vel": "(-56.58422, 50.76584)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 4573,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0003, 326.1829)",
+          "radius": 37.0,
+          "vel": "(0.018503, 1.128523)"
+        }
+      ]
+    },
+    {
+      "max_speed": 90.1050643920898,
+      "quiet": 0.0,
+      "time": 2.19999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 14159,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6343, 397.8716)",
+          "radius": 37.0,
+          "vel": "(-1.997078, 0.624241)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 5040,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(511.6028, 389.9359)",
+          "radius": 37.0,
+          "vel": "(-56.81908, 69.93221)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 4856,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0003, 326.1859)",
+          "radius": 37.0,
+          "vel": "(0.017745, 1.140442)"
+        }
+      ]
+    },
+    {
+      "max_speed": 101.638198852539,
+      "quiet": 0.0,
+      "time": 2.29999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 14923,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.6243, 397.8742)",
+          "radius": 37.0,
+          "vel": "(-2.113922, 0.658069)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 5325,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(504.316, 401.5584)",
+          "radius": 37.0,
+          "vel": "(-49.41655, 88.81627)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 5142,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0003, 326.1911)",
+          "radius": 37.0,
+          "vel": "(0.018294, 1.204665)"
+        }
+      ]
+    },
+    {
+      "max_speed": 43.8236541748047,
+      "quiet": 0.0,
+      "time": 2.39999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 15763,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5988, 397.8808)",
+          "radius": 37.0,
+          "vel": "(-3.01108, 0.90703)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 5563,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(497.4877, 415.3543)",
+          "radius": 37.0,
+          "vel": "(-41.69914, 13.47941)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 5456,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0003, 326.2042)",
+          "radius": 37.0,
+          "vel": "(0.01344, 1.683515)"
+        }
+      ]
+    },
+    {
+      "max_speed": 27.7632675170898,
+      "quiet": 0.0,
+      "time": 2.49999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 16750,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5866, 397.8833)",
+          "radius": 37.0,
+          "vel": "(-3.203658, 0.89965)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 5931,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(493.2528, 416.7242)",
+          "radius": 37.0,
+          "vel": "(-25.71511, 10.46576)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 5824,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2099)",
+          "radius": 37.0,
+          "vel": "(0.027451, 1.729762)"
+        }
+      ]
+    },
+    {
+      "max_speed": 33.1373291015625,
+      "quiet": 0.0,
+      "time": 2.59999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 17722,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5894, 397.8826)",
+          "radius": 37.0,
+          "vel": "(-3.130438, 0.879292)"
+        },
+        {
+          "anchored": false,
+          "color": 1,
+          "contact_count": 6291,
+          "id": 253,
+          "kind": "normal",
+          "pos": "(488.7526, 418.4581)",
+          "radius": 37.0,
+          "vel": "(-29.99355, 14.08792)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 6184,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2085)",
+          "radius": 37.0,
+          "vel": "(0.027033, 1.690353)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.44420146942139,
+      "quiet": 0.0,
+      "time": 2.69999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 18691,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5901, 397.8824)",
+          "radius": 37.0,
+          "vel": "(-3.336746, 0.934361)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 6543,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2081)",
+          "radius": 37.0,
+          "vel": "(0.027071, 1.798393)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.25519800186157,
+      "quiet": 0.0,
+      "time": 2.79999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 19630,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5886, 397.8831)",
+          "radius": 37.0,
+          "vel": "(-3.161317, 0.907545)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 6892,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0003, 326.2091)",
+          "radius": 37.0,
+          "vel": "(0.015431, 1.723594)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.07794380187988,
+      "quiet": 0.0,
+      "time": 2.89999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 20568,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5914, 397.8825)",
+          "radius": 37.0,
+          "vel": "(-2.984737, 0.876612)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 7241,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0003, 326.2079)",
+          "radius": 37.0,
+          "vel": "(0.013171, 1.646595)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.25486850738525,
+      "quiet": 0.0,
+      "time": 2.99999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 21504,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5889, 397.8832)",
+          "radius": 37.0,
+          "vel": "(-3.14972, 0.927448)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 7589,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0003, 326.2092)",
+          "radius": 37.0,
+          "vel": "(0.014489, 1.740264)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.25853300094604,
+      "quiet": 0.0,
+      "time": 3.09999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 22442,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5889, 397.883)",
+          "radius": 37.0,
+          "vel": "(-3.161712, 0.907518)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 7938,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.209)",
+          "radius": 37.0,
+          "vel": "(0.015421, 1.723652)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.250648021698,
+      "quiet": 0.0,
+      "time": 3.19999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 23381,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5887, 397.8828)",
+          "radius": 37.0,
+          "vel": "(-3.178233, 0.892602)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 8287,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2089)",
+          "radius": 37.0,
+          "vel": "(0.027194, 1.716015)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.24999094009399,
+      "quiet": 0.0,
+      "time": 3.29999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 24319,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5886, 397.8829)",
+          "radius": 37.0,
+          "vel": "(-3.178213, 0.892598)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 8636,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2089)",
+          "radius": 37.0,
+          "vel": "(0.027186, 1.716013)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.2512412071228,
+      "quiet": 0.0,
+      "time": 3.39999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 25255,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5886, 397.8829)",
+          "radius": 37.0,
+          "vel": "(-3.178734, 0.892745)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 8984,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2089)",
+          "radius": 37.0,
+          "vel": "(0.02719, 1.716292)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.24999666213989,
+      "quiet": 0.0,
+      "time": 3.49999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 26193,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5886, 397.8829)",
+          "radius": 37.0,
+          "vel": "(-3.178774, 0.892877)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 9333,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2089)",
+          "radius": 37.0,
+          "vel": "(0.027232, 1.716446)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.24980592727661,
+      "quiet": 0.0,
+      "time": 3.59999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 27129,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5886, 397.8829)",
+          "radius": 37.0,
+          "vel": "(-3.17842, 0.892654)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 9681,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2089)",
+          "radius": 37.0,
+          "vel": "(0.027188, 1.716124)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.07897424697876,
+      "quiet": 0.0,
+      "time": 3.69999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 28067,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5914, 397.8825)",
+          "radius": 37.0,
+          "vel": "(-2.985439, 0.87681)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 10030,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0003, 326.2079)",
+          "radius": 37.0,
+          "vel": "(0.013172, 1.646974)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.24950551986694,
+      "quiet": 0.0,
+      "time": 3.79999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 29005,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5887, 397.8828)",
+          "radius": 37.0,
+          "vel": "(-3.177974, 0.89253)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 10379,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2089)",
+          "radius": 37.0,
+          "vel": "(0.027185, 1.715878)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.25002908706665,
+      "quiet": 0.0,
+      "time": 3.89999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 29941,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5886, 397.8829)",
+          "radius": 37.0,
+          "vel": "(-3.178168, 0.892588)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 10727,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2089)",
+          "radius": 37.0,
+          "vel": "(0.027188, 1.715989)"
+        }
+      ]
+    },
+    {
+      "max_speed": 6.2500581741333,
+      "quiet": 0.0,
+      "time": 3.99999999999999,
+      "top": [
+        {
+          "anchored": false,
+          "color": 4,
+          "contact_count": 30879,
+          "id": 248,
+          "kind": "heart",
+          "pos": "(634.5886, 397.8829)",
+          "radius": 37.0,
+          "vel": "(-3.178523, 0.892684)"
+        },
+        {
+          "anchored": false,
+          "color": 2,
+          "contact_count": 11076,
+          "id": 255,
+          "kind": "normal",
+          "pos": "(653.0004, 326.2089)",
+          "radius": 37.0,
+          "vel": "(0.027187, 1.716176)"
+        }
+      ]
+    }
+  ],
+  "support_graph": [
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": -74.0,
+          "dy": 0.0,
+          "id": 164
+        },
+        {
+          "anchored": true,
+          "distance": 73.9967880249023,
+          "dx": 36.8933715820312,
+          "dy": -64.1436157226562,
+          "id": 188
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": 74.0,
+          "dy": 0.0,
+          "id": 243
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 736,
+        "from": "(229.8667, 139.0)",
+        "id": 162,
+        "kind": "heart",
+        "pos": "(229.8667, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": 74.0,
+          "dy": 0.0,
+          "id": 162
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": -74.0,
+          "dy": 0.0,
+          "id": 165
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": -37.0,
+          "dy": -64.0858764648438,
+          "id": 170
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 0,
+        "from": "(155.8667, 215.0)",
+        "id": 164,
+        "kind": "heart",
+        "pos": "(155.8667, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": 74.0,
+          "dy": 0.0,
+          "id": 164
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": 37.0,
+          "dy": -64.0858764648438,
+          "id": 170
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 3,
+        "contact_count": 0,
+        "from": "(81.86673, 177.0)",
+        "id": 165,
+        "kind": "normal",
+        "pos": "(81.86673, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0660858154297,
+          "dx": -37.0761108398438,
+          "dy": -64.1182250976562,
+          "id": 195
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009689331055,
+          "dx": 50.7178344726562,
+          "dy": -53.8873291015625,
+          "id": 201
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": 44.64501953125,
+          "dy": 59.0154418945312,
+          "id": 213
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": -44.64501953125,
+          "dy": 59.0154418945312,
+          "id": 243
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 586,
+        "from": "(348.5117, 215.0)",
+        "id": 168,
+        "kind": "heart",
+        "pos": "(348.5117, 723.9846)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": 37.0,
+          "dy": 64.0858764648438,
+          "id": 164
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": -37.0,
+          "dy": 64.0858764648438,
+          "id": 165
+        },
+        {
+          "anchored": true,
+          "distance": 73.8979873657227,
+          "dx": 73.8949279785156,
+          "dy": -0.67218017578125,
+          "id": 181
+        },
+        {
+          "anchored": true,
+          "distance": 74.0004272460938,
+          "dx": -51.8667297363281,
+          "dy": -52.7816772460938,
+          "id": 211
+        },
+        {
+          "anchored": true,
+          "distance": 74.1049346923828,
+          "dx": 36.4678649902344,
+          "dy": -64.5107421875,
+          "id": 234
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 1068,
+        "from": "(118.8667, 139.0)",
+        "id": 170,
+        "kind": "heart",
+        "pos": "(118.8667, 718.9141)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0381164550781,
+          "dx": -50.8226318359375,
+          "dy": -53.839599609375,
+          "id": 193
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 7056,
+        "from": "(476.3295, 215.0)",
+        "id": 176,
+        "kind": "heart",
+        "pos": "(494.7467, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 73.8979873657227,
+          "dx": -73.8949279785156,
+          "dy": 0.67218017578125,
+          "id": 170
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": 73.9984436035156,
+          "dy": 0.61444091796875,
+          "id": 188
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009841918945,
+          "dx": 37.4879913330078,
+          "dy": -63.8027954101562,
+          "id": 191
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": -37.4270629882812,
+          "dy": -63.8385620117188,
+          "id": 234
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 5538,
+        "from": "(155.8667, 177.0)",
+        "id": 181,
+        "kind": "heart",
+        "pos": "(192.7617, 718.2419)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 73.9967880249023,
+          "dx": -36.8933715820312,
+          "dy": 64.1436157226562,
+          "id": 162
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": -73.9984436035156,
+          "dy": -0.61444091796875,
+          "id": 181
+        },
+        {
+          "anchored": true,
+          "distance": 74.0445404052734,
+          "dx": -36.5104522705078,
+          "dy": -64.417236328125,
+          "id": 191
+        },
+        {
+          "anchored": true,
+          "distance": 73.9981689453125,
+          "dx": 44.675537109375,
+          "dy": -58.9900512695312,
+          "id": 195
+        },
+        {
+          "anchored": true,
+          "distance": 74.1033401489258,
+          "dx": 37.1066284179688,
+          "dy": 64.1436157226562,
+          "id": 243
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 5199,
+        "from": "(192.8667, 215.0)",
+        "id": 188,
+        "kind": "heart",
+        "pos": "(266.7601, 718.8564)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 73.9998550415039,
+          "dx": 71.928466796875,
+          "dy": -17.3860473632812,
+          "id": 197
+        },
+        {
+          "anchored": true,
+          "distance": 74.000129699707,
+          "dx": -0.0400390625,
+          "dy": -74.0001220703125,
+          "id": 222
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 14911,
+        "from": "(569.8272, 139.0)",
+        "id": 190,
+        "kind": "heart",
+        "pos": "(581.1105, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0009841918945,
+          "dx": -37.4879913330078,
+          "dy": 63.8027954101562,
+          "id": 181
+        },
+        {
+          "anchored": true,
+          "distance": 74.0445404052734,
+          "dx": 36.5104522705078,
+          "dy": 64.417236328125,
+          "id": 188
+        },
+        {
+          "anchored": true,
+          "distance": 74.0543441772461,
+          "dx": 44.7669830322266,
+          "dy": -58.9912109375,
+          "id": 244
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 0,
+        "contact_count": 9342,
+        "from": "(141.0, 253.0)",
+        "id": 191,
+        "kind": "normal",
+        "pos": "(230.2496, 654.4391)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0381164550781,
+          "dx": 50.8226318359375,
+          "dy": 53.839599609375,
+          "id": 176
+        },
+        {
+          "anchored": true,
+          "distance": 74.0679321289062,
+          "dx": -44.6945190429688,
+          "dy": -59.0631713867188,
+          "id": 201
+        },
+        {
+          "anchored": true,
+          "distance": 74.0001678466797,
+          "dx": -50.767333984375,
+          "dy": 53.839599609375,
+          "id": 213
+        },
+        {
+          "anchored": true,
+          "distance": 73.9707489013672,
+          "dx": 64.795166015625,
+          "dy": -35.6827392578125,
+          "id": 226
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 15539,
+        "from": "(394.6845, 177.0)",
+        "id": 193,
+        "kind": "heart",
+        "pos": "(443.9241, 729.1604)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0660858154297,
+          "dx": 37.0761108398438,
+          "dy": 64.1182250976562,
+          "id": 168
+        },
+        {
+          "anchored": true,
+          "distance": 73.9981689453125,
+          "dx": -44.675537109375,
+          "dy": 58.9900512695312,
+          "id": 188
+        },
+        {
+          "anchored": false,
+          "distance": 73.9981689453125,
+          "dx": 39.2707824707031,
+          "dy": -62.7178955078125,
+          "id": 240
+        },
+        {
+          "anchored": true,
+          "distance": 74.0005035400391,
+          "dx": -36.4190063476562,
+          "dy": -64.4183959960938,
+          "id": 244
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 27903,
+        "from": "(311.5117, 253.0)",
+        "id": 195,
+        "kind": "heart",
+        "pos": "(311.4356, 659.8663)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 73.9998550415039,
+          "dx": -71.928466796875,
+          "dy": 17.3860473632812,
+          "id": 190
+        },
+        {
+          "anchored": true,
+          "distance": 74.0010528564453,
+          "dx": -0.0400390625,
+          "dy": -74.0010375976562,
+          "id": 205
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 2,
+        "contact_count": 11870,
+        "from": "(616.0, 177.0)",
+        "id": 197,
+        "kind": "normal",
+        "pos": "(653.039, 765.614)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0009689331055,
+          "dx": -50.7178344726562,
+          "dy": 53.8873291015625,
+          "id": 168
+        },
+        {
+          "anchored": true,
+          "distance": 74.0679321289062,
+          "dx": 44.6945190429688,
+          "dy": 59.0631713867188,
+          "id": 193
+        },
+        {
+          "anchored": false,
+          "distance": 73.9820404052734,
+          "dx": 25.397705078125,
+          "dy": -69.4859619140625,
+          "id": 210
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 0,
+        "contact_count": 23452,
+        "from": "(357.6845, 177.0)",
+        "id": 201,
+        "kind": "normal",
+        "pos": "(399.2296, 670.0972)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0010528564453,
+          "dx": 0.0400390625,
+          "dy": 74.0010375976562,
+          "id": 197
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": -0.27252197265625,
+          "dy": -74.00048828125,
+          "id": 216
+        },
+        {
+          "anchored": true,
+          "distance": 74.0000762939453,
+          "dx": -71.928466796875,
+          "dy": 17.386962890625,
+          "id": 222
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 3,
+        "contact_count": 6287,
+        "from": "(653.0, 177.0)",
+        "id": 205,
+        "kind": "normal",
+        "pos": "(652.999, 691.6129)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 73.9820404052734,
+          "dx": -25.397705078125,
+          "dy": 69.4859619140625,
+          "id": 201
+        },
+        {
+          "anchored": false,
+          "distance": 74.0523452758789,
+          "dx": 71.30615234375,
+          "dy": 19.9795532226562,
+          "id": 229
+        },
+        {
+          "anchored": false,
+          "distance": 73.9828033447266,
+          "dx": 52.5611877441406,
+          "dy": -52.0651245117188,
+          "id": 238
+        },
+        {
+          "anchored": false,
+          "distance": 74.0019302368164,
+          "dx": -73.9208679199219,
+          "dy": -3.46282958984375,
+          "id": 240
+        },
+        {
+          "anchored": false,
+          "distance": 73.9988403320312,
+          "dx": -33.9472045898438,
+          "dy": -65.752685546875,
+          "id": 245
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 4,
+        "contact_count": 77415,
+        "id": 210,
+        "kind": "heart",
+        "pos": "(424.6273, 600.6113)",
+        "radius": 37.0,
+        "vel": "(-0.35468, 0.386979)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0004272460938,
+          "dx": 51.8667297363281,
+          "dy": 52.7816772460938,
+          "id": 170
+        },
+        {
+          "anchored": true,
+          "distance": 74.0001220703125,
+          "dx": 0.00234222412109375,
+          "dy": -74.0001220703125,
+          "id": 219
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 6477,
+        "id": 211,
+        "kind": "heart",
+        "pos": "(67.0, 666.1324)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": -44.64501953125,
+          "dy": -59.0154418945312,
+          "id": 168
+        },
+        {
+          "anchored": true,
+          "distance": 74.0001678466797,
+          "dx": 50.767333984375,
+          "dy": -53.839599609375,
+          "id": 193
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 87,
+        "id": 213,
+        "kind": "strong",
+        "pos": "(393.1568, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": 0.27252197265625,
+          "dy": 74.00048828125,
+          "id": 205
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": 0.2735595703125,
+          "dy": -74.00048828125,
+          "id": 227
+        },
+        {
+          "anchored": true,
+          "distance": 73.9964981079102,
+          "dx": -71.9224853515625,
+          "dy": 17.396484375,
+          "id": 230
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 4422,
+        "id": 216,
+        "kind": "heart",
+        "pos": "(652.7264, 617.6124)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0001220703125,
+          "dx": -0.00234222412109375,
+          "dy": 74.0001220703125,
+          "id": 211
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": -0.00234222412109375,
+          "dy": -74.0,
+          "id": 232
+        },
+        {
+          "anchored": true,
+          "distance": 74.000373840332,
+          "dx": 73.2959518432617,
+          "dy": -10.1862182617188,
+          "id": 246
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 1827,
+        "id": 219,
+        "kind": "heart",
+        "pos": "(67.00234, 592.1323)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.000129699707,
+          "dx": 0.0400390625,
+          "dy": 74.0001220703125,
+          "id": 190
+        },
+        {
+          "anchored": true,
+          "distance": 74.0000762939453,
+          "dx": 71.928466796875,
+          "dy": -17.386962890625,
+          "id": 205
+        },
+        {
+          "anchored": true,
+          "distance": 73.9975662231445,
+          "dx": -72.3512268066406,
+          "dy": -15.522216796875,
+          "id": 226
+        },
+        {
+          "anchored": true,
+          "distance": 73.9914474487305,
+          "dx": -0.26654052734375,
+          "dy": -73.990966796875,
+          "id": 230
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 6294,
+        "id": 222,
+        "kind": "heart",
+        "pos": "(581.0705, 708.9999)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 73.9707489013672,
+          "dx": -64.795166015625,
+          "dy": 35.6827392578125,
+          "id": 193
+        },
+        {
+          "anchored": true,
+          "distance": 73.9975662231445,
+          "dx": 72.3512268066406,
+          "dy": 15.522216796875,
+          "id": 222
+        },
+        {
+          "anchored": false,
+          "distance": 73.9997940063477,
+          "dx": -12.7858276367188,
+          "dy": -72.8868408203125,
+          "id": 229
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 23486,
+        "id": 226,
+        "kind": "heart",
+        "pos": "(508.7193, 693.4777)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": -0.2735595703125,
+          "dy": 74.00048828125,
+          "id": 216
+        },
+        {
+          "anchored": true,
+          "distance": 74.0556640625,
+          "dx": 0.0,
+          "dy": -74.0556640625,
+          "id": 233
+        },
+        {
+          "anchored": false,
+          "distance": 74.096923828125,
+          "dx": -64.1198120117188,
+          "dy": -37.1349487304688,
+          "id": 239
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 5706,
+        "id": 227,
+        "kind": "normal",
+        "pos": "(653.0, 543.6119)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 74.0523452758789,
+          "dx": -71.30615234375,
+          "dy": -19.9795532226562,
+          "id": 210
+        },
+        {
+          "anchored": true,
+          "distance": 73.9997940063477,
+          "dx": 12.7858276367188,
+          "dy": 72.8868408203125,
+          "id": 226
+        },
+        {
+          "anchored": false,
+          "distance": 74.000114440918,
+          "dx": 52.5240173339844,
+          "dy": -52.127197265625,
+          "id": 237
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 0,
+        "contact_count": 40011,
+        "id": 229,
+        "kind": "normal",
+        "pos": "(495.9334, 620.5908)",
+        "radius": 37.0,
+        "vel": "(1.23863, -0.145913)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 73.9964981079102,
+          "dx": 71.9224853515625,
+          "dy": -17.396484375,
+          "id": 216
+        },
+        {
+          "anchored": true,
+          "distance": 73.9914474487305,
+          "dx": 0.26654052734375,
+          "dy": 73.990966796875,
+          "id": 222
+        },
+        {
+          "anchored": false,
+          "distance": 73.990348815918,
+          "dx": -32.3464965820312,
+          "dy": -66.5452880859375,
+          "id": 237
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 27439,
+        "id": 230,
+        "kind": "heart",
+        "pos": "(580.804, 635.0089)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": 0.00234222412109375,
+          "dy": 74.0,
+          "id": 219
+        },
+        {
+          "anchored": true,
+          "distance": 74.0010070800781,
+          "dx": 0.0,
+          "dy": -74.0010070800781,
+          "id": 252
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 901,
+        "id": 232,
+        "kind": "heart",
+        "pos": "(67.0, 518.1323)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0556640625,
+          "dx": 0.0,
+          "dy": 74.0556640625,
+          "id": 227
+        },
+        {
+          "anchored": false,
+          "distance": 73.9897918701172,
+          "dx": -64.1198120117188,
+          "dy": 36.9207153320312,
+          "id": 239
+        },
+        {
+          "anchored": false,
+          "distance": 74.0000152587891,
+          "dx": -18.4085083007812,
+          "dy": -71.6737670898438,
+          "id": 248
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 21596,
+        "id": 233,
+        "kind": "normal",
+        "pos": "(653.0, 469.5563)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.1049346923828,
+          "dx": -36.4678649902344,
+          "dy": 64.5107421875,
+          "id": 170
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": 37.4270629882812,
+          "dy": 63.8385620117188,
+          "id": 181
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": -15.0363006591797,
+          "dy": -72.457275390625,
+          "id": 246
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 3,
+        "contact_count": 538,
+        "id": 234,
+        "kind": "normal",
+        "pos": "(155.3346, 654.4034)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 74.000114440918,
+          "dx": -52.5240173339844,
+          "dy": 52.127197265625,
+          "id": 229
+        },
+        {
+          "anchored": true,
+          "distance": 73.990348815918,
+          "dx": 32.3464965820312,
+          "dy": 66.5452880859375,
+          "id": 230
+        },
+        {
+          "anchored": false,
+          "distance": 73.9998245239258,
+          "dx": -71.2689819335938,
+          "dy": -19.91748046875,
+          "id": 238
+        },
+        {
+          "anchored": false,
+          "distance": 74.0022964477539,
+          "dx": 40.4227294921875,
+          "dy": -61.9866333007812,
+          "id": 239
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 0,
+        "contact_count": 55131,
+        "id": 237,
+        "kind": "normal",
+        "pos": "(548.4575, 568.4636)",
+        "radius": 37.0,
+        "vel": "(1.072208, -0.218495)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 73.9828033447266,
+          "dx": -52.5611877441406,
+          "dy": 52.0651245117188,
+          "id": 210
+        },
+        {
+          "anchored": false,
+          "distance": 73.9998245239258,
+          "dx": 71.2689819335938,
+          "dy": 19.91748046875,
+          "id": 237
+        },
+        {
+          "anchored": false,
+          "distance": 73.9935302734375,
+          "dx": 40.4187622070312,
+          "dy": -61.978759765625,
+          "id": 242
+        },
+        {
+          "anchored": false,
+          "distance": 74.0009918212891,
+          "dx": -33.9271850585938,
+          "dy": -65.7654418945312,
+          "id": 251
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 1,
+        "contact_count": 55279,
+        "id": 238,
+        "kind": "normal",
+        "pos": "(477.1885, 548.5461)",
+        "radius": 37.0,
+        "vel": "(0.512339, 1.945371)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.096923828125,
+          "dx": 64.1198120117188,
+          "dy": 37.1349487304688,
+          "id": 227
+        },
+        {
+          "anchored": true,
+          "distance": 73.9897918701172,
+          "dx": 64.1198120117188,
+          "dy": -36.9207153320312,
+          "id": 233
+        },
+        {
+          "anchored": false,
+          "distance": 74.0022964477539,
+          "dx": -40.4227294921875,
+          "dy": 61.9866333007812,
+          "id": 237
+        },
+        {
+          "anchored": false,
+          "distance": 74.0015258789062,
+          "dx": -71.27294921875,
+          "dy": -19.9096069335938,
+          "id": 242
+        },
+        {
+          "anchored": false,
+          "distance": 74.0786895751953,
+          "dx": -18.4596557617188,
+          "dy": -71.7418518066406,
+          "id": 247
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 0,
+        "contact_count": 47435,
+        "id": 239,
+        "kind": "normal",
+        "pos": "(588.8802, 506.477)",
+        "radius": 37.0,
+        "vel": "(-0.353756, -1.1737)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 73.9981689453125,
+          "dx": -39.2707824707031,
+          "dy": 62.7178955078125,
+          "id": 195
+        },
+        {
+          "anchored": false,
+          "distance": 74.0019302368164,
+          "dx": 73.9208679199219,
+          "dy": 3.46282958984375,
+          "id": 210
+        },
+        {
+          "anchored": false,
+          "distance": 74.0129699707031,
+          "dx": 39.9736633300781,
+          "dy": -62.2898559570312,
+          "id": 245
+        },
+        {
+          "anchored": false,
+          "distance": 74.0001220703125,
+          "dx": -36.3047485351562,
+          "dy": -64.482421875,
+          "id": 250
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 0,
+        "contact_count": 41086,
+        "id": 240,
+        "kind": "normal",
+        "pos": "(350.7064, 597.1484)",
+        "radius": 37.0,
+        "vel": "(-0.347285, -0.119672)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 73.9935302734375,
+          "dx": -40.4187622070312,
+          "dy": 61.978759765625,
+          "id": 238
+        },
+        {
+          "anchored": false,
+          "distance": 74.0015258789062,
+          "dx": 71.27294921875,
+          "dy": 19.9096069335938,
+          "id": 239
+        },
+        {
+          "anchored": false,
+          "distance": 73.9988174438477,
+          "dx": 52.8132934570312,
+          "dy": -51.8322448730469,
+          "id": 247
+        },
+        {
+          "anchored": false,
+          "distance": 74.0010299682617,
+          "dx": -33.9131774902344,
+          "dy": -65.772705078125,
+          "id": 253
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 41173,
+        "id": 242,
+        "kind": "normal",
+        "pos": "(517.6072, 486.5674)",
+        "radius": 37.0,
+        "vel": "(-1.012637, 1.149325)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": -74.0,
+          "dy": 0.0,
+          "id": 162
+        },
+        {
+          "anchored": true,
+          "distance": 74.0,
+          "dx": 44.64501953125,
+          "dy": -59.0154418945312,
+          "id": 168
+        },
+        {
+          "anchored": true,
+          "distance": 74.1033401489258,
+          "dx": -37.1066284179688,
+          "dy": -64.1436157226562,
+          "id": 188
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 2,
+        "contact_count": 0,
+        "id": 243,
+        "kind": "strong",
+        "pos": "(303.8667, 783.0)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0543441772461,
+          "dx": -44.7669830322266,
+          "dy": 58.9912109375,
+          "id": 191
+        },
+        {
+          "anchored": true,
+          "distance": 74.0005035400391,
+          "dx": 36.4190063476562,
+          "dy": 64.4183959960938,
+          "id": 195
+        },
+        {
+          "anchored": true,
+          "distance": 74.0010223388672,
+          "dx": -64.3792266845703,
+          "dy": -36.4892578125,
+          "id": 249
+        },
+        {
+          "anchored": false,
+          "distance": 74.1130981445312,
+          "dx": 39.3850402832031,
+          "dy": -62.7819213867188,
+          "id": 250
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 1972,
+        "id": 244,
+        "kind": "heart",
+        "pos": "(275.0166, 595.4479)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 73.9988403320312,
+          "dx": 33.9472045898438,
+          "dy": 65.752685546875,
+          "id": 210
+        },
+        {
+          "anchored": false,
+          "distance": 74.0129699707031,
+          "dx": -39.9736633300781,
+          "dy": 62.2898559570312,
+          "id": 240
+        },
+        {
+          "anchored": false,
+          "distance": 74.0060043334961,
+          "dx": 52.5812072753906,
+          "dy": -52.077880859375,
+          "id": 251
+        },
+        {
+          "anchored": false,
+          "distance": 74.0010070800781,
+          "dx": -36.3182067871094,
+          "dy": -64.4758605957031,
+          "id": 256
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 1,
+        "contact_count": 33712,
+        "id": 245,
+        "kind": "normal",
+        "pos": "(390.6801, 534.8586)",
+        "radius": 37.0,
+        "vel": "(0.20037, 0.157055)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.000373840332,
+          "dx": -73.2959518432617,
+          "dy": 10.1862182617188,
+          "id": 219
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009918212891,
+          "dx": 15.0363006591797,
+          "dy": 72.457275390625,
+          "id": 234
+        },
+        {
+          "anchored": true,
+          "distance": 74.0000839233398,
+          "dx": 70.339111328125,
+          "dy": -22.9874267578125,
+          "id": 249
+        },
+        {
+          "anchored": true,
+          "distance": 74.0243072509766,
+          "dx": 15.2795104980469,
+          "dy": -72.4302062988281,
+          "id": 257
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 0,
+        "contact_count": 218,
+        "id": 246,
+        "kind": "normal",
+        "pos": "(140.2983, 581.9461)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 74.0786895751953,
+          "dx": 18.4596557617188,
+          "dy": 71.7418518066406,
+          "id": 239
+        },
+        {
+          "anchored": false,
+          "distance": 73.9988174438477,
+          "dx": -52.8132934570312,
+          "dy": 51.8322448730469,
+          "id": 242
+        },
+        {
+          "anchored": false,
+          "distance": 74.0001907348633,
+          "dx": 64.1709594726562,
+          "dy": -36.8526306152344,
+          "id": 248
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 0,
+        "contact_count": 34082,
+        "id": 247,
+        "kind": "normal",
+        "pos": "(570.4205, 434.7351)",
+        "radius": 37.0,
+        "vel": "(-5.253273, -3.056793)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0000152587891,
+          "dx": 18.4085083007812,
+          "dy": 71.6737670898438,
+          "id": 233
+        },
+        {
+          "anchored": false,
+          "distance": 74.0001907348633,
+          "dx": -64.1709594726562,
+          "dy": 36.8526306152344,
+          "id": 247
+        },
+        {
+          "anchored": false,
+          "distance": 74.0010070800781,
+          "dx": 18.4088134765625,
+          "dy": -71.6747131347656,
+          "id": 255
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 4,
+        "contact_count": 30959,
+        "id": 248,
+        "kind": "heart",
+        "pos": "(634.5915, 397.8825)",
+        "radius": 37.0,
+        "vel": "(-2.984562, 0.876573)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0010223388672,
+          "dx": 64.3792266845703,
+          "dy": 36.4892578125,
+          "id": 244
+        },
+        {
+          "anchored": true,
+          "distance": 74.0000839233398,
+          "dx": -70.339111328125,
+          "dy": 22.9874267578125,
+          "id": 246
+        },
+        {
+          "anchored": false,
+          "distance": 74.0002670288086,
+          "dx": 39.3294219970703,
+          "dy": -62.6836242675781,
+          "id": 254
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009994506836,
+          "dx": -55.0596008300781,
+          "dy": -49.4427795410156,
+          "id": 257
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 4,
+        "contact_count": 3691,
+        "id": 249,
+        "kind": "heart",
+        "pos": "(210.6374, 558.9587)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 74.0001220703125,
+          "dx": 36.3047485351562,
+          "dy": 64.482421875,
+          "id": 240
+        },
+        {
+          "anchored": true,
+          "distance": 74.1130981445312,
+          "dx": -39.3850402832031,
+          "dy": 62.7819213867188,
+          "id": 244
+        },
+        {
+          "anchored": false,
+          "distance": 74.0010223388672,
+          "dx": -64.4348449707031,
+          "dy": -36.3909606933594,
+          "id": 254
+        },
+        {
+          "anchored": false,
+          "distance": 74.0001831054688,
+          "dx": 39.960205078125,
+          "dy": -62.2832946777344,
+          "id": 256
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 30661,
+        "id": 250,
+        "kind": "normal",
+        "pos": "(314.4017, 532.666)",
+        "radius": 37.0,
+        "vel": "(2.895097, -1.900939)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 74.0009918212891,
+          "dx": 33.9271850585938,
+          "dy": 65.7654418945312,
+          "id": 238
+        },
+        {
+          "anchored": false,
+          "distance": 74.0060043334961,
+          "dx": -52.5812072753906,
+          "dy": 52.077880859375,
+          "id": 245
+        },
+        {
+          "anchored": false,
+          "distance": 74.0072708129883,
+          "dx": 40.4327697753906,
+          "dy": -61.9860229492188,
+          "id": 253
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 0,
+        "contact_count": 19290,
+        "id": 251,
+        "kind": "normal",
+        "pos": "(443.2613, 482.7807)",
+        "radius": 37.0,
+        "vel": "(1.68258, 1.341666)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0010070800781,
+          "dx": 0.0,
+          "dy": 74.0010070800781,
+          "id": 232
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 1,
+        "contact_count": 2,
+        "id": 252,
+        "kind": "normal",
+        "pos": "(67.0, 444.1313)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 74.0010299682617,
+          "dx": 33.9131774902344,
+          "dy": 65.772705078125,
+          "id": 242
+        },
+        {
+          "anchored": false,
+          "distance": 74.0072708129883,
+          "dx": -40.4327697753906,
+          "dy": 61.9860229492188,
+          "id": 251
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 1,
+        "contact_count": 13739,
+        "id": 253,
+        "kind": "normal",
+        "pos": "(483.6941, 420.7947)",
+        "radius": 37.0,
+        "vel": "(0.19078, 0.528829)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0002670288086,
+          "dx": -39.3294219970703,
+          "dy": 62.6836242675781,
+          "id": 249
+        },
+        {
+          "anchored": false,
+          "distance": 74.0010223388672,
+          "dx": 64.4348449707031,
+          "dy": 36.3909606933594,
+          "id": 250
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 3,
+        "contact_count": 14126,
+        "id": 254,
+        "kind": "normal",
+        "pos": "(249.9668, 496.2751)",
+        "radius": 37.0,
+        "vel": "(1.327104, 0.875395)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 74.0010070800781,
+          "dx": -18.4088134765625,
+          "dy": 71.6747131347656,
+          "id": 248
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 2,
+        "contact_count": 11106,
+        "id": 255,
+        "kind": "normal",
+        "pos": "(653.0003, 326.2078)",
+        "radius": 37.0,
+        "vel": "(0.013196, 1.646512)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": false,
+          "distance": 74.0010070800781,
+          "dx": 36.3182067871094,
+          "dy": 64.4758605957031,
+          "id": 245
+        },
+        {
+          "anchored": false,
+          "distance": 74.0001831054688,
+          "dx": -39.960205078125,
+          "dy": 62.2832946777344,
+          "id": 250
+        }
+      ],
+      "panel": {
+        "anchored": false,
+        "color": 3,
+        "contact_count": 18471,
+        "id": 256,
+        "kind": "normal",
+        "pos": "(354.3619, 470.3827)",
+        "radius": 37.0,
+        "vel": "(3.521816, -1.713861)"
+      }
+    },
+    {
+      "contacts": [
+        {
+          "anchored": true,
+          "distance": 74.0243072509766,
+          "dx": -15.2795104980469,
+          "dy": 72.4302062988281,
+          "id": 246
+        },
+        {
+          "anchored": true,
+          "distance": 74.0009994506836,
+          "dx": 55.0596008300781,
+          "dy": 49.4427795410156,
+          "id": 249
+        }
+      ],
+      "panel": {
+        "anchored": true,
+        "color": 0,
+        "contact_count": 11,
+        "id": 257,
+        "kind": "normal",
+        "pos": "(155.5778, 509.5159)",
+        "radius": 37.0,
+        "vel": "(0.0, 0.0)"
+      }
+    }
+  ]
+}

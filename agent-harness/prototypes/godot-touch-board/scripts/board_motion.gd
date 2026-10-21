@@ -104,17 +104,25 @@ static func _spawn(state: Dictionary,bounds: Rect2) -> void:
 		var position := Vector2(x,bounds.position.y-RADIUS-1.0)
 		var free := true
 		var clearance := bounds.end.y-RADIUS
+		var rising_surface := false
 		for p in state.panels:
 			if p.pos.distance_to(position)<p.radius+RADIUS+1.0:
 				free=false
 				break
 			var dx: float=absf(p.pos.x-x)
 			var reach: float=p.radius+RADIUS
-			if dx<reach:clearance=minf(clearance,p.pos.y-sqrt(reach*reach-dx*dx))
+			if dx<reach:
+				var landing:float=p.pos.y-sqrt(reach*reach-dx*dx)
+				if landing<clearance:
+					clearance=landing
+					rising_surface=p.vel.y<0.0
 		# A clear spawn point can still sit above a surface too high to hold
 		# the full body inside. Wait for a usable CURRENT inlet instead of
 		# stacking an unrecoverable overhang while other bodies are in flight.
-		if free and clearance >= bounds.position.y+RADIUS and clearance>best_clearance:
+		# A first-hit surface already rising can lift the new body back out,
+		# especially against a wall. Keep searching other CURRENT inlets;
+		# stationary and descending surfaces need no global settle wait.
+		if free and not rising_surface and clearance >= bounds.position.y+RADIUS and clearance>best_clearance:
 			best_x=x
 			best_clearance=clearance
 	if best_clearance>-INF:

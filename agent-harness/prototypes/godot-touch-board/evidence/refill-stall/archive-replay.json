@@ -1,0 +1,59 @@
+{
+  "clears": [
+    {
+      "action": 1,
+      "elapsed": 0.75,
+      "id": 1.0,
+      "pending": 0,
+      "ready": true
+    },
+    {
+      "action": 2,
+      "elapsed": 0.408333333333334,
+      "id": 12.0,
+      "pending": 0,
+      "ready": true
+    },
+    {
+      "action": 3,
+      "elapsed": 0.816666666666666,
+      "id": 15.0,
+      "pending": 0,
+      "ready": true
+    },
+    {
+      "action": 4,
+      "elapsed": 0.841666666666666,
+      "id": 70.0,
+      "pending": 0,
+      "ready": true
+    },
+    {
+      "action": 5,
+      "elapsed": 0.591666666666667,
+      "id": 117.0,
+      "pending": 0,
+      "ready": true
+    }
+  ],
+  "detail": {
+    "action": 6,
+    "actual": [
+      110,
+      115,
+      113
+    ],
+    "archived": [
+      110.0,
+      115.0,
+      113.0,
+      129.0
+    ],
+    "id": 110.0,
+    "note": "Changed inlet/contact geometry; full old sequence is inconclusive, not reported as victory or successful strict replay.",
+    "type": "clear"
+  },
+  "full_sequence_conclusive": false,
+  "source": "res://evidence/balance/baseline/seed20261023-elite-pair0-avoid-intent.json",
+  "status": "archived_plan_diverged"
+}

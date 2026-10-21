@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL exact seed23 clear20 refill resolves before unchanged4s limit
+FAIL all bodies fully inside before readiness
+EXACT_REFILL red failures=2 elapsed=4.00833333333332 outside=1 moving=12

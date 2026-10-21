@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+REFILL_NORMAL seed20261021-safe-pair0-intent-aware complete=true terminal=victory hp=20 actions=13
+REFILL_NORMAL seed20261021-safe-pair1-intent-aware complete=true terminal=victory hp=26 actions=12
+REFILL_NORMAL seed20261021-safe-pair2-intent-aware complete=true terminal=victory hp=20 actions=13
+REFILL_NORMAL seed20261021-elite-pair0-intent-aware complete=true terminal=victory hp=24 actions=16
+REFILL_NORMAL seed20261021-elite-pair1-intent-aware complete=true terminal=victory hp=24 actions=16
+REFILL_NORMAL seed20261021-elite-pair2-intent-aware complete=true terminal=victory hp=20 actions=17
+REFILL_NORMAL seed20261023-elite-pair0-avoid-intent complete=true terminal=victory hp=12 actions=17

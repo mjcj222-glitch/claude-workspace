@@ -1,0 +1,94 @@
+{
+  "before_sha256": "e8df397a4f51546fe4e558ea78d73c26fe60bce42758599e6688aca0e3289087",
+  "after_sha256": "3aa14d621285c5001d4d8c32821bbf18f4094e6098594a384a9e90c56b923e9a",
+  "cases": {
+    "center": {
+      "frames_identical": true,
+      "first_difference": null,
+      "old_seconds": 1.09166666666667,
+      "new_seconds": 1.09166666666667,
+      "validation": {
+        "floor_drift": 0.0,
+        "max_overlap": 0.032501220703125,
+        "max_step": 9.16665649414062,
+        "ready": true,
+        "removed": [
+          10,
+          17,
+          20,
+          24,
+          25,
+          27,
+          33,
+          34
+        ],
+        "seconds": 1.09166666666667,
+        "swept_overlap": 0.0391921997070312,
+        "uncaused_sideways": 0
+      }
+    },
+    "left_column": {
+      "frames_identical": true,
+      "first_difference": null,
+      "old_seconds": 1.15833333333333,
+      "new_seconds": 1.15833333333333,
+      "validation": {
+        "floor_drift": 0.0,
+        "max_overlap": 0.0301589965820312,
+        "max_step": 9.16668701171875,
+        "ready": true,
+        "removed": [
+          7,
+          9,
+          18,
+          26,
+          32,
+          36,
+          43
+        ],
+        "seconds": 1.15833333333333,
+        "swept_overlap": 0.0493698120117188,
+        "uncaused_sideways": 0
+      }
+    },
+    "two": {
+      "frames_identical": false,
+      "first_difference": {
+        "frame_index": 4,
+        "time": 0.041666666666666664,
+        "ids": [
+          49
+        ],
+        "old": [
+          [
+            49,
+            360.0,
+            252.41667175293
+          ]
+        ],
+        "new": [
+          [
+            49,
+            378.3125,
+            252.41667175293
+          ]
+        ]
+      },
+      "old_seconds": 0.366666666666667,
+      "new_seconds": 0.416666666666667,
+      "validation": {
+        "floor_drift": 0.0,
+        "max_overlap": 0.0283050537109375,
+        "max_step": 9.16665649414062,
+        "ready": true,
+        "removed": [
+          23,
+          24
+        ],
+        "seconds": 0.416666666666667,
+        "swept_overlap": 0.0283050537109375,
+        "uncaused_sideways": 0
+      }
+    }
+  }
+}
