@@ -1,0 +1,7 @@
+# Combat hit feedback follow-through
+
+Base8a017da. Cause: canonical damage is immediate on commit, while existing independent trails, per-panel target shake, generic clear tones and finish-only number have no shared enemy-impact event. The baked dragon has only a faint full-stage tint. No complete game-system claim is appropriate.
+
+Bounded implementation: preserve pure combat/rules/physics and immediate canonical commit. Hold only presented enemy HP until a single action-impact signal, emitted after the last clear during the existing clear/refill schedule. Synchronize delivered energy, stage-local enemy recoil/flash, exact base+weakness number and a cached bounded impact sound. Hearts stay hero-bound; conversion itself has no attack. Large clears/core/weakness and actual skill-created connections use committed metadata, never damage multipliers. Add a readable reduced-effects toggle without input passthrough or readiness gating; preserve mute. Clear presentation at reset/new encounter.
+
+TDD: new pure feedback/sound and real controller tests first, including duplicate events, heart-only/skill, display HP, reset/cancel/transitions/death/reward. Then existing35 core suites, paths, ordinary native run, small-window OS input, independent code/pixel review. Compare baseline/current same preloaded legal inputs with screenshots/search outside measured windows; videos fixedfps/audio separately. Document missing systems/next bounded run-completeness proposal, not implement those systems. PR3 only.

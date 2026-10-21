@@ -1,0 +1,35 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS actual scene owns production feedback module
+PASS heart fixture uses actual two-heart Rules plan
+PASS heart release preserves exact preview as active plan
+PASS committing starts canonical eligible count without prematurely displaying removed count
+PASS actual heart clear event increments count once
+PASS heart clear does not trigger enemy hit
+PASS first event preserves seven legacy particles and fourteen gameplay RNG draws
+PASS duplicate and absent heart events add no feedback
+PASS duplicate and absent events add no legacy RNG or particles
+PASS heart finish reports exactly two canonical removed panels
+PASS heart effects do not add gameplay RNG beyond legacy draws
+FAIL feedback leaves plan and canonical action/heal results unchanged
+PASS multi-core fixture has two activations and four actual removals
+PASS multi-core active plan and feedback eligibility match frozen preview
+PASS overlapping repeated event 10 is deduplicated
+PASS overlapping repeated event 11 is deduplicated
+PASS overlapping repeated event 12 is deduplicated
+PASS overlapping repeated event 13 is deduplicated
+PASS each existing core counted once; enemy hit waits for delivery
+PASS repeated finish retains canonical four panels and two cores
+PASS multi-core extra effects leave legacy gameplay RNG sequence unchanged
+PASS multi-core feedback never changes damage/action/plan
+PASS six-direct fixture creates protected core but activates none
+PASS new protected core never contributes to current removal or activation count
+PASS preview alone shows no committed-effect count
+PASS canceled preview cannot trigger eligible clear feedback
+PASS skill fixture executes actual shown conversion
+PASS skill conversion gives zero clear count and no action consumption
+PASS reset fixture first has visible effects
+PASS reset clears all counters and visibility
+PASS reset clears both new and legacy effects
+PASS late finish/event cannot resurrect reset feedback
+PRESENTATION SCENE fixture checks=32 failures=1

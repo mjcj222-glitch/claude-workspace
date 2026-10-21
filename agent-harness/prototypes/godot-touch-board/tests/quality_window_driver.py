@@ -10,15 +10,16 @@ base = Path(__file__).resolve().parents[1]
 width, height = map(int, sys.argv[1:3])
 effects_only = "--effects-only" in sys.argv
 premium = "--premium" in sys.argv
+impact = "--impact" in sys.argv
 log_suffix = "-effects" if effects_only else ""
-evidence = base / 'evidence' / ('premium' if premium else 'quality')
+evidence = base / 'evidence' / ('impact/windows' if impact else ('premium' if premium else 'quality'))
 evidence.mkdir(parents=True, exist_ok=True)
 request = Path('/tmp/chroma-quality-window-request.json')
 ack = Path('/tmp/chroma-quality-window-ack.json')
 request.unlink(missing_ok=True)
 ack.unlink(missing_ok=True)
 log = (evidence / f'states-{width}x{height}{log_suffix}.log').open('w')
-process = subprocess.Popen(['godot', '--path', str(base), '--audio-driver', 'Dummy', '--position', '0,0', '--script', 'tests/capture_quality_states.gd', '--', str(width), str(height)] + (["--effects-only"] if effects_only else []), stdout=log, stderr=subprocess.STDOUT)
+process = subprocess.Popen(['godot', '--path', str(base), '--audio-driver', 'Dummy', '--position', '0,0', '--script', 'tests/capture_quality_states.gd', '--', str(width), str(height)] + (["--effects-only"] if effects_only else []) + (["--hit-controls"] if impact else []), stdout=log, stderr=subprocess.STDOUT)
 pointer = [sys.executable, str(base / 'tests/x11_pointer.py')]
 seen = set()
 deadline = time.monotonic() + 220

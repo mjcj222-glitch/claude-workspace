@@ -37,6 +37,7 @@ var visual: Array = []
 var particles: Array = []
 var feedback = Feedback.new()
 var quality_fx = QualityFX.new()
+var reduced_effects := false
 var selection_trace: Array = []
 var detail_relic := ""
 var detail_pointer := -99
@@ -257,7 +258,7 @@ func draw_panels(canvas: CanvasItem) -> void:
 		if scale_factor <= 0.01: continue
 		# Landing squash is only visual; frozen selection suppresses residual motion.
 		var squash := 1.0
-		if session.selection.is_empty() and landing < 0.18:
+		if not reduced_effects and session.selection.is_empty() and landing < 0.18:
 			squash = 1.0 - sin(landing / 0.18 * PI) * 0.08
 		var origin: Vector2 = p.pos
 		canvas.draw_set_transform(origin - BOARD.position, 0, Vector2(1.0 + (1.0-squash)*0.5, squash))
@@ -278,7 +279,7 @@ func draw_panels(canvas: CanvasItem) -> void:
 				points.append(middle+direction*lerpf(-10,10,t)+direction.orthogonal()*sin(PI*t)*2.5)
 			canvas.draw_polyline(points,Color(0.15,0.95,0.83,0.30),7,true)
 			canvas.draw_polyline(points,Color("e8fff4"),2.1,true)
-	for particle in particles:
+	for particle in ([] if reduced_effects else particles):
 		var alpha: float = maxf(0.0, 1.0 - particle.age / particle.life)
 		canvas.draw_circle(particle.pos, particle.size * alpha, Color(particle.color, alpha))
 
@@ -295,7 +296,6 @@ func _clear_onset(index: int) -> float:
 func _process(delta: float) -> void:
 	time += delta
 	feedback.update(delta)
-	quality_fx.update(delta)
 	var now_ready: bool = session.charge >= session.charge_required
 	if now_ready and not _skill_was_ready: ready_age = 0.0
 	if now_ready and session.phase == "ready": ready_age += delta
@@ -348,6 +348,12 @@ func _process(delta: float) -> void:
 			session.finish_attack()
 			attack_clock = 0
 			status = "반격 완료 · 다음 연결을 선택하세요"
+	quality_fx.update(delta)
+	var impact:Dictionary=quality_fx.take_impact()
+	if not impact.is_empty():
+		target_hit=1.0
+		sound.impact(int(impact.tier),int(impact.weak_bonus)>0)
+		if record_timings:timings.append({"event":"attack_impact","damage":impact.damage,"base_damage":impact.base_damage,"weak_bonus":impact.weak_bonus,"action_clock":action_clock,"encounter":-1 if sandbox else session.combat.encounter})
 	if demo: _demo(delta)
 	queue_redraw()
 	if board_surface: board_surface.queue_redraw()
@@ -365,7 +371,6 @@ func _burst(id: int, index: int) -> void:
 		for i in range(7):
 			var angle := TAU * i / 7.0
 			particles.append({"pos":p.pos,"vel":Vector2.from_angle(angle)*particle_rng.randf_range(65,180),"size":particle_rng.randf_range(2,6),"color":effect_color,"age":0.0,"life":0.25})
-		if p.kind != "heart": target_hit = 1
 		break
 
 func _advance_clear_rng_budget() -> void:
@@ -441,6 +446,11 @@ func press(pos: Vector2, pointer: int) -> void:
 	# Reset is the only transition input; all clocks and pending effects are owned here.
 	if not sandbox and RESET.has_point(pos):
 		reset_board()
+		return
+	if UI.EFFECTS.has_point(pos) and session.owner==-99 and modal_pointer==-99 and detail_pointer==-99:
+		reduced_effects=not reduced_effects
+		quality_fx.reduced_effects=reduced_effects
+		feedback.reduced_effects=reduced_effects
 		return
 	if session.phase == "ready" and Time.get_ticks_msec() < transition_repeat_until_ms and pos.distance_to(transition_repeat_at) <= TRANSITION_REPEAT_RADIUS:
 		return
@@ -549,19 +559,22 @@ func release(pos: Vector2, pointer: int) -> void:
 			session.continue_summary()
 			status="보상 2회 완료 · 자유롭게 계속 시험하세요"
 		return
+	var hp_before:int=-1 if sandbox else session.combat.enemy_hp
 	var result: Dictionary = session.release(screen_to_board(pos), pointer)
 	selection_trace.clear()
 	if result.is_empty(): return
 	if result.mode == "skill":
 		hero_active = 1
-		quality_fx.skill_activated()
+		var changed:Dictionary={}
+		for p in visual:
+			if result.converted.has(p.id) and p.color!=result.converted[p.id]:changed[p.id]=result.converted[p.id]
+		quality_fx.skill_activated(changed)
 		visual = session.panels.duplicate(true)
 		sound.tone(6, true)
 		last_summary = "%d개 변환 완료 · 다음 소거로 연결하세요" % result.targets.size()
 		status = "변환 완료 · 소거 횟수는 그대로"
 		return
 	feedback.start(result,visual)
-	quality_fx.action_started(result,visual)
 	active_plan = result
 	action_clock = 0
 	played = 0
@@ -569,6 +582,7 @@ func release(pos: Vector2, pointer: int) -> void:
 	clear_duration = _clear_onset(result.sequence.size()) + 0.12
 	if result.sequence.size() > 12:
 		clear_duration = _clear_onset(result.sequence.size()-1) + 0.10
+	quality_fx.action_started(result,visual,clear_duration,hp_before)
 	committed_us = Time.get_ticks_usec()
 	committed_frame = Engine.get_process_frames()
 	last_summary = UI.damage_line(result) + " · 회복 %d" % result.heal_effective if not sandbox else "피해 %d  ·  회복 %d (유효 %d / 초과 %d)" % [result.damage,result.heal_raw,result.heal_effective,result.heal_overflow]

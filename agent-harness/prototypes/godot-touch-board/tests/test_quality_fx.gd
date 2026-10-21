@@ -10,6 +10,7 @@ class DrawProbe extends RefCounted:
 	func draw_colored_polygon(_points, _color): calls += 1
 	func draw_line(_a,_b,_color,_width=1.0,_aa=false): calls += 1
 	func draw_circle(_center,_radius,_color): calls += 1
+	func draw_arc(_center,_radius,_from,_to,_points,_color,_width=1.0,_aa=false):calls+=1
 	func draw_texture_rect_region(texture,dest,source,_modulate=Color.WHITE,_transpose=false,_clip=true):
 		calls += 1
 		textures.append({"texture":texture,"dest":dest,"source":source})
@@ -46,7 +47,7 @@ func _init() -> void:
 	check(not f.panel_removed(1,Vector2.ZERO,Color.RED,"normal") and f.trails.size()==1,"duplicate ID cannot duplicate trail")
 	check(not f.panel_removed(4,Vector2.ZERO,Color.RED,"normal") and not f.panel_removed(404,Vector2.ZERO,Color.RED,"normal"),"surviving and missing panel IDs cannot emit")
 	check(f.panel_removed(2,Vector2(120,400),Color.PINK,"heart") and f.trails.size()==2 and f.trails[1].get("kind")=="heal","heart emits hero-bound healing trail")
-	check(f.panel_removed(3,Vector2(140,400),Color.CYAN,"core") and f.trails.size()==2,"core event deduplicates without copying existing core bursts")
+	check(f.panel_removed(3,Vector2(140,400),Color.CYAN,"core") and f.trails.size()==3 and f.trails.back().core,"core delivers energy without duplicating existing core bursts")
 	f.action_finished()
 	check(f.total_remaining==FX.TOTAL_SECONDS,"finished action shows one canonical total")
 	f.update(0.2)

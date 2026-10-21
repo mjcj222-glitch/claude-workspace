@@ -121,15 +121,54 @@ static func draw_target(canvas: CanvasItem, center: Vector2, time: float, hit: f
 static func stage_variant(encounter: int) -> String:
 	return "dragon" if encounter==2 else "training"
 
+static func impact_point(encounter:int)->Vector2:
+	return Vector2(548,162) if encounter==2 else Vector2(360,185)
+
+static var _dragon_hit_mesh:ArrayMesh=ArrayMesh.new()
+static var _dragon_mesh_arrays:Array=[]
+static var _dragon_mesh_rect:=Rect2()
+static func _draw_dragon_hit(canvas:CanvasItem,rect:Rect2,source:Rect2,offset:Vector2,flash:float)->void:
+	# A small illustrated head/neck region reacts; the surrounding arena stays
+	# fixed. This is a bounded91-vertex texture deformation, not rigged wing art.
+	if _dragon_mesh_arrays.is_empty() or _dragon_mesh_rect!=rect:
+		_dragon_mesh_rect=rect
+		var vertices:=PackedVector3Array();var uv:=PackedVector2Array();var indices:=PackedInt32Array()
+		for y in range(7):
+			for x in range(13):
+				var f:=Vector2(x/12.0,y/6.0)
+				var position:=rect.position+rect.size*f
+				vertices.append(Vector3(position.x,position.y,0))
+				uv.append((source.position+source.size*f)/Vector2(DRAGON_TEXTURE.get_size()))
+		for y in range(6):
+			for x in range(12):
+				var i:=y*13+x
+				indices.append_array(PackedInt32Array([i,i+1,i+13,i+1,i+14,i+13]))
+		_dragon_mesh_arrays.resize(Mesh.ARRAY_MAX)
+		_dragon_mesh_arrays[Mesh.ARRAY_VERTEX]=vertices
+		_dragon_mesh_arrays[Mesh.ARRAY_TEX_UV]=uv
+		_dragon_mesh_arrays[Mesh.ARRAY_INDEX]=indices
+	var arrays:=_dragon_mesh_arrays.duplicate()
+	var vertices:PackedVector3Array=arrays[Mesh.ARRAY_VERTEX].duplicate()
+	var colors:=PackedColorArray()
+	for i in range(vertices.size()):
+		var p:=Vector2(vertices[i].x,vertices[i].y)
+		var mask:=1.0-smoothstep(35.0,145.0,p.distance_to(impact_point(2)))
+		vertices[i]+=Vector3(offset.x,offset.y,0)*mask
+		colors.append(Color(1+flash*mask*0.85,1+flash*mask*0.5,1+flash*mask*0.7,1))
+	arrays[Mesh.ARRAY_VERTEX]=vertices;arrays[Mesh.ARRAY_COLOR]=colors
+	_dragon_hit_mesh.clear_surfaces()
+	_dragon_hit_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+	canvas.draw_mesh(_dragon_hit_mesh,DRAGON_TEXTURE)
+
 static func draw_battle_stage(view,canvas: CanvasItem,rect: Rect2) -> void:
 	var encounter: int=-1 if view.sandbox else view.session.combat.encounter
 	if stage_variant(encounter)=="dragon":
 		# Wide portrait crop of the original illustration; no fabricated wing motion.
 		var source_height:=1536.0*rect.size.y/rect.size.x
 		var source:=Rect2(0,60,1536,source_height)
-		canvas.draw_texture_rect_region(DRAGON_TEXTURE,rect,source)
-		if view.target_hit>0:
-			canvas.draw_rect(rect,Color(0.78,0.08,0.19,view.target_hit*0.075))
+		if view.quality_fx.impact_remaining>0 and not view.reduced_effects:
+			_draw_dragon_hit(canvas,rect,source,view.quality_fx.stage_offset(),view.quality_fx.hit_flash())
+		else:canvas.draw_texture_rect_region(DRAGON_TEXTURE,rect,source)
 	else:
 		var points:=PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y)])
 		canvas.draw_polygon(points,PackedColorArray([Color("20122f"),Color("291638"),Color("0b0912"),Color("0b0912")]))
@@ -144,9 +183,9 @@ static func draw_battle_stage(view,canvas: CanvasItem,rect: Rect2) -> void:
 		# Same original early enemy, substantially larger than the old HUD thumbnail.
 		var height:=235.0
 		var size:=Vector2(1131.0/974.0*height,height)
-		var offset:=Vector2(sin(view.time*39)*view.target_hit*4,-view.target_hit*3)
+		var offset:Vector2=view.quality_fx.stage_offset()
 		var dest:=Rect2(Vector2(360,185)-size*0.5+offset,size)
-		canvas.draw_texture_rect_region(TARGET_TEXTURE,dest,Rect2(68,136,1131,974),Color.WHITE.lerp(Color("fff2d0"),view.target_hit*0.35))
+		canvas.draw_texture_rect_region(TARGET_TEXTURE,dest,Rect2(68,136,1131,974),Color(1+view.quality_fx.hit_flash()*0.7,1+view.quality_fx.hit_flash()*0.5,1+view.quality_fx.hit_flash()*0.5))
 
 static func draw_premium_hero(canvas: CanvasItem,rect: Rect2,_time: float,active: bool) -> void:
 	# Explicit temporary original portrait: violet portrait's official download

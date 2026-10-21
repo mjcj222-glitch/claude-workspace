@@ -7,6 +7,7 @@ const PARTICLE_LIMIT := 320
 const RING_LIMIT := 24
 const HOLD_SECONDS := 1.3
 const FADE_SECONDS := 0.4
+var reduced_effects := false
 var count: int = 0
 var core_count: int = 0
 var expected_count: int = 0
@@ -88,7 +89,7 @@ func reset() -> void:
 
 func _burst(pos: Vector2, color: Color, is_core: bool) -> void:
 	var strength := clampf(float(expected_count) / 24.0, 0.2, 1.0)
-	var amount := 13 + int(strength * 7.0) + (12 if is_core else 0)
+	var amount := 0 if reduced_effects else 13 + int(strength * 7.0) + (12 if is_core else 0)
 	for i in range(amount):
 		if particles.size() >= PARTICLE_LIMIT:
 			particles.pop_front()
@@ -147,6 +148,7 @@ func update(delta: float) -> void:
 			visible = false
 
 func draw_effects(canvas: CanvasItem) -> void:
+	if reduced_effects:return
 	for ring in rings:
 		if ring.age < 0.0:
 			continue
@@ -191,17 +193,17 @@ func draw_hud(view, canvas: CanvasItem) -> void:
 	gold.a = alpha
 	var mint := Color("e7bcff")
 	mint.a = alpha
-	var rect := Rect2(392,174,304,94)
+	var rect := Rect2(24,174,304,94)
 	MaterialArt._surface(canvas,rect,Color(0.70,0.60,0.38,0.82*alpha),Color(0.17,0.08,0.24,0.85*alpha))
 	MaterialArt._surface(canvas,rect.grow(-2),Color(0.16,0.075,0.23,0.94*alpha),Color(0.04,0.02,0.08,0.94*alpha))
-	canvas.draw_line(Vector2(412,179),Vector2(676,179),Color(0.90,0.68,1.0,0.66*alpha),1.2,true)
+	canvas.draw_line(Vector2(44,179),Vector2(308,179),Color(0.90,0.68,1.0,0.66*alpha),1.2,true)
 	var font: Font = view.font
 	var display: Font = view.get("font_display") if view.get("font_display") is Font else font
-	_centered(canvas, font, Vector2(440,205), "합계" if finished else "파괴", 22, gold)
+	_centered(canvas, font, Vector2(72,205), "합계" if finished else "파괴", 22, gold)
 	var number_size := int((66.0 if count < 100 else 56.0) + _pulse*5.0)
-	_centered(canvas, display, Vector2(537,210), str(count), number_size, Color(1.0,1.0,1.0,alpha), 3)
-	_centered(canvas, font, Vector2(648,205), "패널", 20, Color(0.80,0.73,0.87,alpha))
+	_centered(canvas, display, Vector2(169,210), str(count), number_size, Color(1.0,1.0,1.0,alpha), 3)
+	_centered(canvas, font, Vector2(280,205), "패널", 20, Color(0.80,0.73,0.87,alpha))
 	if total_cores > 0:
-		_centered(canvas, font, Vector2(544,250), "핵 연쇄 · %d회 발동" % core_count, 21, mint)
+		_centered(canvas, font, Vector2(176,250), "핵 연쇄 · %d회 발동" % core_count, 21, mint)
 	else:
-		_centered(canvas, font, Vector2(544,250), "연결 소거", 19, Color(0.80,0.73,0.87,alpha))
+		_centered(canvas, font, Vector2(176,250), "연결 소거", 19, Color(0.80,0.73,0.87,alpha))

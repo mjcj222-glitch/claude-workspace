@@ -1,0 +1,20 @@
+{
+  "baseline": "8a017da1a9a580e92978eae19e118fef01c3f3a9",
+  "suites": 38,
+  "suite_failures": 0,
+  "native_render_mismatched_samples": 0,
+  "normal_capture_clears": 16,
+  "normal_capture_final_hp": 24,
+  "native_window_checks_each": 57,
+  "post_HUD_window_effects_checks_each": 24,
+  "native_timing_one_pair_only": true,
+  "rules_physics_and_final_state_parity": true,
+  "new_feature_scope": "combat presentation only; missing systems proposal documented, not implemented",
+  "portrait_transfer": "not retried; original temporary portrait unchanged",
+  "remaining_limits": [
+    "No physical audio/device validation or human feel/completeness approval.",
+    "Ordinary-clear target not met for every sample; no timing parity claim.",
+    "Old strict seed23 input sequence diverges after corrected contacts; its exact saved refill regression passes.",
+    "No new current Windows/Web build."
+  ]
+}

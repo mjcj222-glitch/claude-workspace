@@ -92,7 +92,7 @@ func run() -> void:
 		seen.append(id)
 		scene._burst(id,seen.size()-1)
 		check(scene.feedback.count == seen.size(), "overlapping repeated event %d is deduplicated" % id)
-	check(scene.feedback.core_count == 2 and scene.target_hit == 1.0, "each existing core counted once and attack event triggers hit")
+	check(scene.feedback.core_count == 2 and scene.target_hit == 0.0, "each existing core counted once; enemy hit waits for delivery")
 	scene.feedback.finish()
 	scene.feedback.finish()
 	check(scene.feedback.count == 4 and scene.feedback.core_count == 2, "repeated finish retains canonical four panels and two cores")

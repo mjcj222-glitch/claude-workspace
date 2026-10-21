@@ -37,7 +37,7 @@ func reset() -> void:
 	scene.record_timings=false
 	scene.sound.muted=true
 func shot(name:String) -> void:
-	if effects_only and name not in ["05-activation-120ms","08-heal-overheal-fx"]: return
+	if effects_only and name not in ["05-activation-120ms","07-chain-damage-fx","08-heal-overheal-fx"]: return
 	await gesture(name,Vector2.ZERO,"capture",name)
 func run() -> void:
 	var args := OS.get_cmdline_user_args()
@@ -49,6 +49,15 @@ func run() -> void:
 	await process_frame
 	print("QUALITY FIXTURES: injected states and frozen presentation ages; NOT normal progression or performance evidence")
 	await shot("01-ready")
+	if "--hit-controls" in args:
+		await gesture("effects-reduced",scene.UI.EFFECTS.get_center())
+		check(scene.reduced_effects and scene.session.actions==0 and scene.session.selection.is_empty(),"OS reduced-effects control toggles without board passthrough")
+		await shot("01b-reduced")
+		await gesture("effects-full",scene.UI.EFFECTS.get_center())
+		check(not scene.reduced_effects and scene.session.actions==0,"OS full effects restored without action")
+		await gesture("audio-toggle",scene.MUTE.get_center())
+		check(not scene.sound.muted and scene.session.actions==0,"OS mute control preserved")
+		scene.sound.muted=true
 	scene.session.charge=1
 	await shot("02-charging-three")
 	scene.session.charge_required=2
@@ -86,7 +95,7 @@ func run() -> void:
 	await gesture("chain-up",at,"up")
 	for id in plan.get("sequence",[]): scene._burst(id,0)
 	scene.quality_fx.action_finished()
-	scene.quality_fx.update(0.12)
+	scene.quality_fx.update(scene.clear_duration+0.04)
 	await shot("07-chain-damage-fx")
 	reset()
 	board=[]

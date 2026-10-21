@@ -1,0 +1,58 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS fresh safe route card starts second encounter
+PASS route touch geometry matches contract
+PASS shop touch geometry matches contract
+PASS first route card maps to safe
+PASS stale route release does not depart
+PASS route down alone does not depart
+PASS wrong pointer cannot commit route
+PASS fresh route commits chosen branch without extra between step
+PASS route supplies fresh next fight board
+PASS route keeps player resources and relic
+PASS route release cannot double-advance or clear board
+PASS stale route release does not depart
+PASS route down alone does not depart
+PASS wrong pointer cannot commit route
+PASS fresh route commits chosen branch without extra between step
+PASS route supplies fresh next fight board
+PASS route keeps player resources and relic
+PASS route release cannot double-advance or clear board
+PASS route outside/reentry cancels card
+PASS route focus loss cancels candidate
+PASS route ignores additional finger
+PASS route system cancellation keeps modal
+PASS route offer serial change invalidates card
+PASS route release over different card cannot buy or choose
+PASS route blocks skill and owned detail
+PASS route blocks underlying board
+PASS route reset clears run and rejects late release
+PASS route reset clears all candidates
+PASS shop outside/reentry cancels card
+PASS shop focus loss cancels candidate
+PASS shop ignores additional finger
+PASS shop system cancellation keeps modal
+PASS shop offer serial change invalidates card
+PASS shop release over different card cannot buy or choose
+PASS shop blocks skill and owned detail
+PASS shop blocks underlying board
+PASS shop reset clears run and rejects late release
+PASS shop reset clears all candidates
+PASS stale shop release cannot spend
+PASS fresh healing purchase applies eight hp for four gold once
+PASS duplicate/heal sold click cannot charge again
+PASS fresh relic purchase grants only remaining relic for eight gold
+PASS sold relic cannot duplicate
+PASS stale exit release cannot leave shop
+PASS shop exit waits for release
+PASS fresh exit goes straight to third fight
+PASS shop departure retains purchases
+PASS shop exit release cannot clear underlying board
+PASS insufficient funds purchases do nothing
+PASS full health disables heal without payment
+PASS partial useful heal caps at max without free purchase
+PASS changed offer invalidates armed shop exit
+PASS focus cancels exit without departure
+PASS second finger cannot exit shop
+PASS system-canceled exit keeps shop
+ROUTE_INPUT checks=55 failures=0

@@ -21,6 +21,8 @@ var selected_policy := "intent-aware"
 var balance_mode := false
 var quality_mode := false
 var premium_mode := false
+var impact_mode := false
+var impact_label := "after"
 var boss_turns_seen: Dictionary = {}
 
 func _initialize() -> void:
@@ -131,10 +133,17 @@ func use_skill(skill: Dictionary) -> void:
 func wait_resolution() -> void:
 	var deadline := Time.get_ticks_msec()+120000
 	var attack_recorded := false
+	var hit_recorded := false
 	while scene.session.phase in ["busy","enemy_attack"]:
 		if Time.get_ticks_msec() > deadline:
 			errors.append("natural animation/refill exceeded safety deadline")
 			return
+		if impact_mode and not hit_recorded and scene.session.phase=="busy":
+			var remaining=scene.quality_fx.get("impact_remaining")
+			if (remaining!=null and remaining>0.2) or (remaining==null and scene.falling):
+				hit_recorded=true
+				record("hit_visual",{"canonical_hp":scene.session.combat.enemy_hp,"shown_hp":scene.quality_fx.display_enemy_hp(scene.session.combat.enemy_hp) if remaining!=null else scene.session.combat.enemy_hp})
+				await snapshot("hit-%02d"%clear_count)
 		if scene.session.phase == "enemy_attack" and not attack_recorded:
 			attack_recorded = true
 			saw_attack = true
@@ -150,7 +159,9 @@ func run() -> void:
 	balance_mode = "--balance" in OS.get_cmdline_user_args()
 	quality_mode = "--quality" in OS.get_cmdline_user_args()
 	premium_mode = "--premium" in OS.get_cmdline_user_args()
+	impact_mode="--impact" in OS.get_cmdline_user_args()
 	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--impact-label="):impact_label=arg.substr(15)
 		if arg.begins_with("--route="): route_choice = arg.substr(8)
 		if arg.begins_with("--policy="): selected_policy = arg.substr(9)
 		if arg.begins_with("--pair="): pair_index = int(arg.substr(7))
@@ -163,7 +174,7 @@ func run() -> void:
 	var capture_seed := "20261021"
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--seed="): capture_seed = arg.substr(7)
-	var category: String = "premium" if premium_mode else ("quality" if quality_mode else ("balance" if balance_mode else "elemental"))
+	var category: String = ("impact/"+impact_label) if impact_mode else ("premium" if premium_mode else ("quality" if quality_mode else ("balance" if balance_mode else "elemental")))
 	output_dir = "res://evidence/%s/capture-%s-%s-pair%d-%s-%s" % [category,capture_seed,route_choice,pair_index,selected_policy,"movie" if movie else "live"]
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_dir))
 	began_us = Time.get_ticks_usec()

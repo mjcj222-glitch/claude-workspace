@@ -12,6 +12,7 @@ const WEAKNESS_BASELINE := Vector2(552,329)
 const ELEMENT_NAMES := ["불꽃","새잎","번개","물결"]
 const RESET = Rect2(616,0,88,88)
 const SKILL = Rect2(190,950,240,112)
+const EFFECTS = Rect2(424,0,88,88)
 const MUTE = Rect2(520,0,88,88)
 const HERO_RECT = Rect2(8,920,180,160)
 const TARGET_RECT = Rect2(180,68,360,235)
@@ -45,7 +46,9 @@ static func draw(view) -> void:
 	_modal_text(view,view,Vector2(322,39),"실험" if view.sandbox else "%d / 3"%(session.combat.encounter+1),26,Color("fff0d3"),true)
 	view.draw_rect(Rect2(280,62,160,30),Color(0.035,0.015,0.065,0.85))
 	view._center(Vector2(360,85),"행동 %d / 3"%(session.actions%3 if view.sandbox else session.combat.actions_in_turn),22,MUTED)
-	view._text(Vector2(420,39),"%d G"%(0 if view.sandbox else session.gold),24,MaterialArt.GOLD)
+	view._text(Vector2(187,39),"%d G"%(0 if view.sandbox else session.gold),24,MaterialArt.GOLD)
+	Art._star(view,EFFECTS.get_center()+Vector2(0,-13),12,Color("ad8dc8") if view.reduced_effects else Color("e3c2ff"))
+	view._center(EFFECTS.get_center()+Vector2(0,18),"절제" if view.reduced_effects else "효과",20,MUTED)
 	MaterialArt.glyph(view,MUTE.get_center()+Vector2(0,-13),"muted" if view.sound.muted else "sound",MUTED,27)
 	view._center(MUTE.get_center()+Vector2(0,18),"OFF" if view.sound.muted else "ON",20,MUTED)
 	MaterialArt.glyph(view,RESET.get_center()+Vector2(0,-13),"reset",MaterialArt.GOLD,28)
@@ -55,14 +58,15 @@ static func draw(view) -> void:
 	var enemy_name: String = "반격 없는 표적" if view.sandbox else ("결정룡 · 최종 전투" if session.combat.encounter==2 else session.combat.enemy_name)
 	if not view.sandbox and session.combat.encounter==1 and session.route=="elite":enemy_name="정예 "+enemy_name
 	view._text(Vector2(38,329),enemy_name,22,Color("fff0da"))
-	var hp_text: String = "피해 %d"%session.damage_total if view.sandbox else "%d / %d"%[session.combat.enemy_hp,session.combat.enemy_max_hp]
+	var shown_hp:int=0 if view.sandbox else view.quality_fx.display_enemy_hp(session.combat.enemy_hp)
+	var hp_text: String = "피해 %d"%session.damage_total if view.sandbox else "%d / %d"%[shown_hp,session.combat.enemy_max_hp]
 	_modal_text(view,view,Vector2(385,329),hp_text,24,Color("ffe8ee"),true)
 	if not view.sandbox:
 		var weak: int = context.get("weakness_color",session.combat.weak_color)
 		Art.draw_panel(view,{"pos":WEAKNESS_BASELINE+Vector2(-21,-7),"radius":12.0,"color":weak,"kind":"normal"},view.time)
 		view._text(WEAKNESS_BASELINE,"약점 "+weakness_name(weak),22,COLORS[weak])
 		view.draw_rect(Rect2(40,335,640,3),Color("321329"))
-		view.draw_rect(Rect2(40,335,640*float(session.combat.enemy_hp)/session.combat.enemy_max_hp,3),Color("ed3465"))
+		view.draw_rect(Rect2(40,335,640*float(shown_hp)/session.combat.enemy_max_hp,3),Color("ed3465"))
 	var lines: Array = [view.status,""] if view.sandbox else intent_lines(context)
 	if not preview.is_empty():
 		if not preview.get("valid",false): lines=["같은 색 2개부터 골라주세요","놓아도 행동을 쓰지 않아요"]
@@ -86,7 +90,7 @@ static func draw(view) -> void:
 	view.draw_rect(Rect2(199,928,491,17),Color("321f45"))
 	view.draw_rect(Rect2(201,930,487*float(session.hp)/session.max_hp,13),Color("a650df"))
 	_modal_text(view,view,Vector2(446,946),"생명 %d / %d"%[session.hp,session.max_hp],22,Color.WHITE,true)
-	Art.draw_skill_button(view,SKILL,skill.illuminated,float(view.ready_age))
+	Art.draw_skill_button(view,SKILL,skill.illuminated,0.0 if view.reduced_effects else float(view.ready_age))
 	_modal_text(view,view,Vector2(310,1006),"변환",30,Color("fff0ff") if skill.illuminated else MUTED,true,true)
 	_modal_text(view,view,Vector2(310,1032),("색 선택" if session.skill_mode else skill.status_text)+" · "+skill.charge_text,22,Color("f3d6ff") if skill.illuminated else MUTED,true)
 	view._center(Vector2(310,1070),"최대 %d개 · 소거 무료"%skill.conversion_max,22,MUTED)
