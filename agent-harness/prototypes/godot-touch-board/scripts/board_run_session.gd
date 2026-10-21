@@ -1,7 +1,17 @@
 extends "res://scripts/board_session.gd"
-## Three-fight orchestration; inherited clear/skill accounting remains the only
-## authority for player resources. No timers, visual callbacks or motion rules.
+## Three-fight orchestration. Clear/skill accounting remains inherited; route
+## and shop transactions never mutate combat plans, charge or previous results.
+const SHOP_HEAL_PRICE := 4
+const SHOP_RELIC_PRICE := 8
+const SHOP_HEAL_AMOUNT := 8
 var combat = preload("res://scripts/board_combat.gd").new()
+var route: String = ""
+var gold: int = 0
+var gold_spent: int = 0
+var shop_heal_sold: bool = false
+var shop_relic_sold: bool = false
+var shop_closed: bool = false
+var _paid_encounters: Dictionary = {}
 
 func _init() -> void:
 	hp = max_hp
@@ -25,15 +35,27 @@ func finish_refill() -> void:
 		return
 	cancel()
 	skill_mode = false
-	# Enemy death precedes a scheduled third-action retaliation, while the
-	# killing clear has already received all ordinary accounting in release.
+	# Killing actions have already received normal charge/heal/ash accounting;
+	# victory precedes scheduled retaliation and pays once per encounter.
 	var outcome: String = combat.resolve()
 	if outcome == "win":
 		if combat.encounter < 2:
-			reward_round = rewards_taken + 1
-			reward_options = Relics.available(relics)
-			offer_serial += 1
-			phase = "reward"
+			if not _paid_encounters.has(combat.encounter):
+				var payout := 8 if combat.encounter == 1 and route == "elite" else 4
+				gold += payout
+				_paid_encounters[combat.encounter] = payout
+			if rewards_taken <= combat.encounter:
+				reward_round = combat.encounter + 1
+				if reward_options.is_empty():
+					reward_options = Relics.available(relics)
+					offer_serial += 1
+				phase = "reward"
+			elif combat.encounter == 0:
+				# Even a stale externally reentered busy phase cannot repay or
+				# reopen an already claimed earned reward.
+				phase = "route" if route.is_empty() else "between"
+			else:
+				phase = "between" if shop_closed else "shop"
 		else:
 			reward_options = []
 			phase = "victory"
@@ -55,18 +77,78 @@ func finish_attack() -> void:
 		phase = "ready"
 
 func choose_relic(id: String, serial: int) -> bool:
+	if combat.encounter >= 2 or rewards_taken != combat.encounter:
+		return false
 	if not super.choose_relic(id, serial):
 		return false
+	phase = "route" if combat.encounter == 0 else "shop"
+	skill_mode = false
+	offer_serial += 1
+	return true
+
+func choose_route(id: String) -> bool:
+	if phase != "route" or not route.is_empty() or id not in ["safe", "elite"]:
+		return false
+	route = id
+	cancel()
+	skill_mode = false
+	offer_serial += 1
+	phase = "between"
+	return true
+
+func shop_heal_gain() -> int:
+	return mini(SHOP_HEAL_AMOUNT, maxi(0, max_hp - hp))
+
+func shop_remaining_relic() -> String:
+	var remaining: Array = Relics.available(relics)
+	return String(remaining[0]) if remaining.size() == 1 else ""
+
+func buy_shop(item: String) -> bool:
+	if phase != "shop" or shop_closed:
+		return false
+	if item == "heal":
+		var gain := shop_heal_gain()
+		if shop_heal_sold or gain <= 0 or gold < SHOP_HEAL_PRICE:
+			return false
+		gold -= SHOP_HEAL_PRICE
+		gold_spent += SHOP_HEAL_PRICE
+		hp += gain
+		shop_heal_sold = true
+	elif item == "relic":
+		var id := shop_remaining_relic()
+		if shop_relic_sold or id.is_empty() or gold < SHOP_RELIC_PRICE:
+			return false
+		gold -= SHOP_RELIC_PRICE
+		gold_spent += SHOP_RELIC_PRICE
+		relics.append(id)
+		shop_relic_sold = true
+	else:
+		return false
+	# A transaction invalidates armed UI candidates, but is not a clear or
+	# an earned reward and never changes charge, ash or prior-action effects.
+	cancel()
+	offer_serial += 1
+	return true
+
+func leave_shop() -> bool:
+	if phase != "shop" or shop_closed:
+		return false
+	shop_closed = true
+	cancel()
+	skill_mode = false
+	offer_serial += 1
 	phase = "between"
 	return true
 
 func begin_next_fight(fresh_panels: Array, fresh_next_id: int) -> bool:
 	if phase != "between" or combat.encounter >= 2:
 		return false
+	if (combat.encounter == 0 and route.is_empty()) or (combat.encounter == 1 and not shop_closed):
+		return false
 	panels = fresh_panels.duplicate(true)
 	next_id = fresh_next_id
 	cancel()
 	skill_mode = false
-	combat.start_fight(combat.encounter + 1, panels)
+	combat.start_fight(combat.encounter + 1, panels, route)
 	phase = "ready"
 	return true

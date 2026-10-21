@@ -1,0 +1,4 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+COMBAT_NORMAL seed=20261021 pair=0 terminal=victory hp=30 actions=19 effects={ "pigment_five_targets": 5, "lens_five_core": 0, "lens_eleven_strong": 0, "ash_reservations": 0, "ash_consumptions": 0, "mitigation_latched": 1 } errors=[]
+COMBAT_NORMAL runs=1 incomplete_or_errors=0 (defeat is an honest completed outcome, not an assertion failure)

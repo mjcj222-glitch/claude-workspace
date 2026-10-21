@@ -5,6 +5,11 @@ const FIGHTS := [
 	{"name":"수호 표적", "hp":36, "attack":5, "every":3},
 	{"name":"격동 표적", "hp":48, "attack":6, "every":3},
 ]
+const ROUTES := {
+	"safe": {"name":"안전한 길", "hp":36, "gold":4, "pattern":"경감 7→3 · 일반 5"},
+	"elite": {"name":"정예의 길", "hp":44, "gold":8, "pattern":"경감 8→4 · 일반 6"},
+}
+var route: String = "safe"
 var encounter: int = 0
 var enemy_hp: int = 24
 var enemy_max_hp: int = 24
@@ -23,11 +28,12 @@ var _turn_prepared: bool = false
 var _attack_taken: bool = false
 var _victory_counted: bool = false
 
-func start_fight(index: int, panels: Array) -> void:
+func start_fight(index: int, panels: Array, selected_route: String = "safe") -> void:
+	route = selected_route if ROUTES.has(selected_route) else "safe"
 	encounter = clampi(index, 0, FIGHTS.size()-1)
 	var definition: Dictionary = FIGHTS[encounter]
-	enemy_hp = definition.hp
-	enemy_max_hp = definition.hp
+	enemy_max_hp = int(ROUTES[route].hp) if encounter == 1 else int(definition.hp)
+	enemy_hp = enemy_max_hp
 	enemy_name = definition.name
 	turn = 0
 	actions_in_turn = 0
@@ -51,15 +57,18 @@ func prepare_turn(panels: Array) -> void:
 	elif encounter == 2:
 		incoming_damage = 6 if turn % 2 == 0 else 8
 	else:
-		incoming_damage = 5
+		incoming_damage = 5 + _route_attack_bonus()
 		if turn % 2 == 0:
 			for panel in panels:
 				var candidate: Dictionary = Rules.plan(panels, int(panel.id), 0, 1)
 				if candidate.get("valid", false) and _direct_count(candidate) >= 4:
 					mitigation_active = true
-					incoming_damage = 7
+					incoming_damage = 7 + _route_attack_bonus()
 					break
 			fallback_plain = not mitigation_active
+
+func _route_attack_bonus() -> int:
+	return 1 if encounter == 1 and route == "elite" else 0
 
 func _direct_count(plan: Dictionary) -> int:
 	var unique: Dictionary = {}
@@ -78,7 +87,7 @@ func record_clear(plan: Dictionary) -> void:
 	actions_in_turn += 1
 	if mitigation_active and _direct_count(plan) >= 4:
 		mitigation_success = true
-		incoming_damage = 3
+		incoming_damage = 3 + _route_attack_bonus()
 
 func resolve() -> String:
 	# Victory precedes the third-clear retaliation check.
@@ -110,6 +119,6 @@ func next_turn(panels: Array) -> void:
 func telegraph_text() -> String:
 	if mitigation_active:
 		if mitigation_success:
-			return "조건 성공 · 다음 공격 3"
-		return "4개 이상 연결을 한 번 지우면 공격 7 → 3"
+			return "조건 성공 · 다음 공격 %d" % incoming_damage
+		return "4개 이상 연결을 한 번 지우면 공격 %d → %d" % [7 + _route_attack_bonus(), 3 + _route_attack_bonus()]
 	return "3회 소거 후 공격 %d" % incoming_damage

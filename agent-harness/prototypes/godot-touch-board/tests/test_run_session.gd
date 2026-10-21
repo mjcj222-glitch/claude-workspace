@@ -43,8 +43,9 @@ func _init() -> void:
 	s.finish_refill();s.finish_attack()
 	check(s.offer_serial == serial and s.rewards_taken == 0, "repeated completion cannot duplicate reward")
 	check(not s.choose_relic("pigment",serial+1), "stale reward serial rejected")
-	check(s.choose_relic("pigment",serial) and s.phase == "between", "chosen reward moves to between phase")
+	check(s.choose_relic("pigment",serial) and s.phase == "route", "chosen first reward moves to route phase")
 	check(not s.choose_relic("lens",serial), "reward can only be claimed once")
+	check(s.choose_route("safe") and s.phase == "between", "route choice unlocks next fight")
 	var fresh: Array = board(2,"normal",201)
 	s.hp = 17
 	s.charge_required = 2
@@ -131,6 +132,10 @@ func _init() -> void:
 			check(s.phase == "reward" and s.reward_options.size() == 3-fight and s.reward_round == fight+1, "only first two kills offer remaining relics")
 			var choice: String = s.reward_options[0] if not s.reward_options.is_empty() else ""
 			check(s.choose_relic(choice,s.offer_serial), "progression accepts each earned choice")
+			if fight == 0:
+				check(s.choose_route("safe"), "progression explicitly selects route")
+			else:
+				check(s.leave_shop(), "progression may leave shop without purchasing")
 			check(s.begin_next_fight(board(2,"normal",300+fight*10),400+fight*10), "progression begins next encounter")
 		else:
 			check(s.phase == "victory" and s.rewards_taken == 2 and s.reward_options.is_empty(), "third win is victory with no extra reward")

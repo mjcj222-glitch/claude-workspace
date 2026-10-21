@@ -90,24 +90,25 @@ func run() -> void:
 	scene.release(card, -1)
 	check(scene.session.phase == "reward" and scene.session.relics.is_empty(), "changed offer serial invalidates armed choice")
 	click(scene, card)
-	check(scene.session.phase == "between" and scene.session.relics == ["pigment"], "reward choice enters between instead of ready")
+	check(scene.session.phase == "route" and scene.session.relics == ["pigment"], "first reward choice enters explicit route selection")
 	check(scene.session.rewards_taken == 1 and scene.session.combat.encounter == 0, "choice is atomic and does not advance encounter")
 	scene.release(card, -1)
 	scene.release(next, -1)
 	scene._process(0.1)
-	check(scene.session.phase == "between" and scene.session.combat.encounter == 0, "held old release and elapsed frames cannot auto-advance")
+	check(scene.session.phase == "route" and scene.session.combat.encounter == 0, "held old release and elapsed frames cannot auto-advance")
 
+	var route_point: Vector2 = scene.UI.route_rect(0).get_center()
 	var previous_board: Array = scene.session.panels.duplicate(true)
 	scene.session.hp = 17
 	scene.session.charge = 1
 	scene.session.charge_required = 2
 	scene.session.ash_reserved = true
-	scene.press(next, -1)
-	check(scene.session.phase == "between", "next button down waits for matching release")
-	scene.release(next, 1)
-	check(scene.session.phase == "between", "wrong pointer cannot advance next battle")
-	scene.release(next, -1)
-	check(scene.session.phase == "ready" and scene.session.combat.encounter == 1, "fresh next gesture advances exactly one encounter")
+	scene.press(route_point, -1)
+	check(scene.session.phase == "route", "route down waits for matching release")
+	scene.release(route_point, 1)
+	check(scene.session.phase == "route", "wrong pointer cannot choose route")
+	scene.release(route_point, -1)
+	check(scene.session.phase == "ready" and scene.session.combat.encounter == 1, "fresh route gesture advances exactly one encounter")
 	check(scene.session.panels.size() == 48 and scene.session.panels != previous_board, "next encounter receives a fresh full board")
 	check(scene.session.hp == 17 and scene.session.charge == 1 and scene.session.charge_required == 2 and scene.session.ash_reserved and scene.session.relics == ["pigment"], "next fight retains hp charge and growth state")
 	scene.release(next, -1)
@@ -135,7 +136,7 @@ func run() -> void:
 		scene.release(next, -1)
 		check(scene.session.phase == phase, phase + " system cancel preserves modal")
 
-	for phase in ["busy", "enemy_attack", "reward", "between", "victory", "defeat"]:
+	for phase in ["busy", "enemy_attack", "reward", "route", "shop", "between", "victory", "defeat"]:
 		fresh(scene)
 		scene.session.phase = phase
 		scene.session.relics = ["pigment"]
@@ -168,7 +169,7 @@ func run() -> void:
 		scene.release(next, -1)
 		check(scene.session.actions == 0 and scene.session.selection.is_empty(), phase + " restart release cannot select board")
 
-	for phase in ["busy", "enemy_attack", "reward", "between", "victory", "defeat"]:
+	for phase in ["busy", "enemy_attack", "reward", "route", "shop", "between", "victory", "defeat"]:
 		fresh(scene)
 		scene.session.phase = phase
 		scene.session.hp = 9

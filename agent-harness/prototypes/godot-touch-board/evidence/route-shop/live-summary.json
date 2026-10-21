@@ -1,0 +1,77 @@
+{
+  "method": "live actual main.tscn, automated legal input, llvmpipe renderer, Dummy audio; screenshot I/O and choice CPU can affect observations; not dedicated benchmark",
+  "press_to_draw": {
+    "n": 24,
+    "min_ms": 14.247,
+    "median_ms": 15.72,
+    "max_ms": 243.026
+  },
+  "no_existing_core_resolution": {
+    "n": 15,
+    "min_ms": 720.583,
+    "median_ms": 1208.821,
+    "max_ms": 2090.595
+  },
+  "existing_core_resolution": {
+    "n": 3,
+    "min_ms": 889.359,
+    "median_ms": 1081.733,
+    "max_ms": 1531.122
+  },
+  "resolution_frames": [
+    61,
+    41,
+    15,
+    62,
+    45,
+    11,
+    66,
+    50,
+    30,
+    32,
+    12,
+    48,
+    44,
+    60,
+    30,
+    57,
+    39,
+    10
+  ],
+  "final": {
+    "actions": 18,
+    "actions_in_turn": 3,
+    "ash_reserved": true,
+    "attacks_total": 4,
+    "charge": 2,
+    "charge_required": 2,
+    "encounter": 2,
+    "enemies_defeated": 3,
+    "enemy_hp": 0,
+    "enemy_max_hp": 48,
+    "fallback_plain": false,
+    "gold": 0,
+    "gold_spent": 12,
+    "hp": 24,
+    "incoming_damage": 8,
+    "last_attack_damage": 6,
+    "mitigation_active": false,
+    "mitigation_success": false,
+    "phase": "victory",
+    "process_frame": 2259,
+    "relics": [
+      "pigment",
+      "lens",
+      "ash"
+    ],
+    "route": "elite",
+    "scene_seconds": 55.0372270000004,
+    "shop_closed": true,
+    "shop_heal_sold": true,
+    "shop_relic_sold": true,
+    "turn": 1,
+    "wall_ms": 57439.302
+  },
+  "errors": [],
+  "note": "Accepted press-to-next-draw samples exclude intentionally ignored duplicate-control taps. Resolution ends at refill completion and can lead to enemy_attack/reward; the0.45s attack presentation and user modal decisions are separate. Fixed-frame movie timings are not performance evidence."
+}

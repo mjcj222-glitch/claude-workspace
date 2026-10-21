@@ -2,6 +2,8 @@ extends Node2D
 const Session = preload("res://scripts/board_session.gd")
 const RunSession = preload("res://scripts/board_run_session.gd")
 const ATTACK_SECONDS := 0.45
+const TRANSITION_REPEAT_MS := 500
+const TRANSITION_REPEAT_RADIUS := 44.0
 const Motion = preload("res://scripts/board_motion.gd")
 const Rules = preload("res://scripts/board_rules.gd")
 const Art = preload("res://scripts/board_art.gd")
@@ -17,6 +19,8 @@ var session = RunSession.new()
 var sandbox := false
 var run_seed := 20261021
 var attack_clock := 0.0
+var transition_repeat_until_ms := 0
+var transition_repeat_at := Vector2.INF
 var rng := RandomNumberGenerator.new()
 var sound: Node
 var font: Font
@@ -40,6 +44,7 @@ var played := 0
 var target_hit := 0.0
 var hero_active := 0.0
 var landing := 1.0
+var shop_notice := ""
 var status := "누르고 확인 · 놓으면 소거"
 var last_summary := "같은 색 2개부터"
 var pressed_us := 0
@@ -107,6 +112,7 @@ func _ready() -> void:
 func reset_board() -> void:
 	_cancel_modal()
 	detail_relic=""
+	shop_notice=""
 	feedback.reset()
 	rng.seed = run_seed
 	session = Session.new() if sandbox else RunSession.new()
@@ -147,6 +153,8 @@ func reset_board() -> void:
 	hero_active = 0
 	feedback_pending = false
 	primary_touch = -99
+	transition_repeat_until_ms = 0
+	transition_repeat_at = Vector2.INF
 	if sound:
 		for voice in sound.voices: voice.stop()
 		sound.cursor = 0
@@ -155,12 +163,18 @@ func reset_board() -> void:
 	last_summary = "같은 색 2개부터"
 	queue_redraw()
 
-func _advance_fight() -> void:
+func _advance_fight(departure_point: Vector2 = Vector2.INF) -> void:
 	if sandbox or session.phase != "between": return
 	var packed := Motion.initial_board(BOARD, 48, session.next_id, rng)
 	if not session.begin_next_fight(packed.panels, packed.next_id): return
+	if departure_point.is_finite():
+		# Suppress only a repeated departing-control tap. Other board targets
+		# remain available immediately; physics/readiness are unchanged.
+		transition_repeat_at = departure_point
+		transition_repeat_until_ms = Time.get_ticks_msec() + TRANSITION_REPEAT_MS
 	_cancel_modal()
 	detail_relic = ""
+	shop_notice = ""
 	feedback.reset()
 	particles.clear()
 	active_plan = {}
@@ -351,13 +365,15 @@ func move_pointer(pos: Vector2, pointer: int) -> void:
 		if (detail_action=="open" and not UI.owned_rect(detail_index).has_point(pos)) or (detail_action=="close" and not _detail_close_hit(pos)):
 			_cancel_detail_candidate()
 	if pointer == modal_pointer:
-		var rect: Rect2 = UI.reward_rect(modal_index,session.reward_options.size()) if modal_phase == "reward" else UI.SUMMARY_CONTINUE
+		var rect: Rect2 = UI.modal_rect(modal_phase,modal_index,session.reward_options.size())
 		if not rect.has_point(pos): _cancel_modal()
 
 func press(pos: Vector2, pointer: int) -> void:
 	# Reset is the only transition input; all clocks and pending effects are owned here.
 	if not sandbox and RESET.has_point(pos):
 		reset_board()
+		return
+	if session.phase == "ready" and Time.get_ticks_msec() < transition_repeat_until_ms and pos.distance_to(transition_repeat_at) <= TRANSITION_REPEAT_RADIUS:
 		return
 	if detail_relic!="":
 		if RESET.has_point(pos):reset_board();return
@@ -366,7 +382,7 @@ func press(pos: Vector2, pointer: int) -> void:
 			detail_action="close"
 		return
 	if detail_pointer!=-99:return
-	if session.phase in ["reward","summary","between","victory","defeat"]:
+	if session.phase in ["reward","summary","route","shop","between","victory","defeat"]:
 		if RESET.has_point(pos):
 			reset_board()
 			return
@@ -374,6 +390,10 @@ func press(pos: Vector2, pointer: int) -> void:
 		if session.phase == "reward":
 			for i in range(session.reward_options.size()):
 				if UI.reward_rect(i,session.reward_options.size()).has_point(pos):modal_index=i
+		elif session.phase in ["route","shop"]:
+			for i in range(2):
+				if UI.modal_rect(session.phase,i).has_point(pos): modal_index=i
+			if session.phase == "shop" and UI.SUMMARY_CONTINUE.has_point(pos): modal_index=2
 		elif UI.SUMMARY_CONTINUE.has_point(pos):modal_index=0
 		if modal_index>=0:
 			modal_pointer=pointer
@@ -424,18 +444,33 @@ func release(pos: Vector2, pointer: int) -> void:
 			detail_relic=session.relics[index]
 			session.cancel()
 		return
-	if session.phase in ["reward","summary","between","victory","defeat"] or modal_pointer != -99:
+	if session.phase in ["reward","summary","route","shop","between","victory","defeat"] or modal_pointer != -99:
 		if pointer != modal_pointer: return
 		var index := modal_index
 		var serial := modal_offer
 		var previous_phase := modal_phase
 		_cancel_modal()
-		if session.phase != previous_phase: return
+		if session.phase != previous_phase or serial != session.offer_serial: return
 		if session.phase == "reward" and index < session.reward_options.size() and UI.reward_rect(index,session.reward_options.size()).has_point(pos):
 			var id: String=session.reward_options[index]
 			if session.choose_relic(id,serial):
 				last_summary = Session.Relics.DEFS[id].name+" 획득"
-				status="새 유물 적용 · 다음 연결을 선택하세요" if sandbox else "다음 전투를 눌러 출발하세요"
+				status="새 유물 적용 · 다음 연결을 선택하세요" if sandbox else "다음 경로를 골라주세요"
+				shop_notice=""
+		elif session.phase == "route" and index in [0,1] and UI.route_rect(index).has_point(pos):
+			if session.choose_route("safe" if index == 0 else "elite"):
+				_advance_fight(pos)
+		elif session.phase == "shop" and UI.modal_rect("shop",index).has_point(pos):
+			if index == 2:
+				if session.leave_shop(): _advance_fight(pos)
+			elif index in [0,1]:
+				var hp_before: int = session.hp
+				var gold_before: int = session.gold
+				var bought_relic: String = session.shop_remaining_relic()
+				if session.buy_shop("heal" if index == 0 else "relic"):
+					shop_notice = ("생명 +%d" % (session.hp-hp_before) if index == 0 else Session.Relics.DEFS[bought_relic].name+" 획득") + " · %d G 사용" % (gold_before-session.gold)
+				else:
+					shop_notice = "잔액·재고·생명을 확인해 주세요"
 		elif session.phase == "between" and UI.SUMMARY_CONTINUE.has_point(pos):
 			_advance_fight()
 		elif session.phase in ["victory","defeat"] and UI.SUMMARY_CONTINUE.has_point(pos):
@@ -481,6 +516,8 @@ func _input(event: InputEvent) -> void:
 		move_pointer(event.position, event.index)
 	elif event is InputEventMouseButton and not event.device == InputEvent.DEVICE_ID_EMULATION:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed and event.double_click and session.phase == "ready" and transition_repeat_until_ms > 0 and event.position.distance_to(transition_repeat_at) <= TRANSITION_REPEAT_RADIUS:
+				return
 			if event.pressed: press(event.position, -1)
 			else: release(event.position, -1)
 	elif event is InputEventMouseMotion:

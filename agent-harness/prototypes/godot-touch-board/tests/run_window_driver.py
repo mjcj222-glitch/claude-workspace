@@ -8,7 +8,8 @@ from pathlib import Path
 
 base = Path(__file__).resolve().parents[1]
 width, height = map(int, sys.argv[1:3])
-evidence = base / 'evidence' / 'combat'
+# Keep the original combat evidence immutable after the route contract update.
+evidence = base / 'evidence' / 'route-shop' / 'legacy-window'
 evidence.mkdir(parents=True, exist_ok=True)
 request = Path('/tmp/chroma-run-window-request.json')
 ack = Path('/tmp/chroma-run-window-ack.json')

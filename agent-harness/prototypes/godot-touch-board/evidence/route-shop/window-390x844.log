@@ -1,0 +1,51 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ROUTE_SHOP_FIXTURES: injected earned-modal resources; not natural progression
+PASS default starts actual game
+PASS OS driver acknowledged route_stale
+PASS OS stale release keeps route
+PASS OS driver acknowledged route_down
+PASS OS route down does not depart
+PASS OS driver acknowledged route_up
+PASS OS safe route starts fight two
+PASS OS driver acknowledged route_duplicate
+PASS OS route release cannot clear underlying board
+PASS OS driver acknowledged route_elite
+PASS OS elite route starts with gold preserved
+PASS OS driver acknowledged elite_read
+PASS OS driver acknowledged shop_stale
+PASS OS stale shop release does not spend
+PASS OS driver acknowledged heal_down
+PASS OS heal down waits for release
+PASS OS driver acknowledged heal_up
+PASS OS healing purchase applies once
+PASS OS driver acknowledged heal_repeat
+PASS OS repeated sold heal is inert
+PASS OS driver acknowledged relic_buy
+PASS OS remaining relic purchase applies once
+PASS OS driver acknowledged relic_repeat
+PASS OS sold relic cannot duplicate
+PASS OS driver acknowledged exit_stale
+PASS OS stale exit release stays shop
+PASS OS driver acknowledged exit_down
+PASS OS exit down waits
+PASS OS driver acknowledged exit_up
+PASS OS exit starts third fight with purchased resources
+PASS OS driver acknowledged exit_duplicate
+PASS OS exit does not pass through
+PASS OS driver acknowledged poor_heal
+PASS OS driver acknowledged poor_relic
+PASS OS unaffordable purchases leave resources unchanged
+PASS OS driver acknowledged full_heal
+PASS OS full health disables healing payment
+PASS OS driver acknowledged shop_reset
+PASS OS shop reset clears route gold and relics
+PASS OS driver acknowledged armed_route
+PASS OS driver acknowledged old_route_release
+PASS OS held route across reset cannot choose new offer
+PASS OS driver acknowledged route_reset
+PASS OS route reset starts clean
+ROUTE_WINDOW checks=44 failures=0 size=(390, 844)

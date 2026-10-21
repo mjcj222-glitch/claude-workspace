@@ -107,6 +107,25 @@ func simulate(seed_value: int, pair_index: int) -> Dictionary:
 				errors.append("intended unowned relic not offered: "+id)
 				break
 			continue
+		# Legacy mini-run policy: preserve prior combat/relic heuristics while
+		# traversing the new mandatory route/shop phases without spending gold.
+		if s.phase == "route":
+			var before := carry(s)
+			var accepted: bool = s.choose_route("safe")
+			events.append({"type":"route","choice":"safe","accepted":accepted,"before":before,"after":carry(s),"phase":s.phase})
+			if not accepted or s.phase != "between":
+				errors.append("safe route selection rejected")
+				break
+			continue
+		if s.phase == "shop":
+			var before := carry(s)
+			var gold_before: int = s.gold
+			var accepted: bool = s.leave_shop()
+			events.append({"type":"shop_leave","policy":"no purchase","accepted":accepted,"gold_before":gold_before,"gold_after":s.gold,"before":before,"after":carry(s),"phase":s.phase})
+			if not accepted or s.phase != "between" or before != carry(s) or gold_before != s.gold:
+				errors.append("shop leave changed resources or failed")
+				break
+			continue
 		if s.phase == "between":
 			var before := carry(s)
 			var next: Dictionary = Motion.initial_board(BOUNDS,48,s.next_id,rng)
@@ -178,7 +197,7 @@ func simulate(seed_value: int, pair_index: int) -> Dictionary:
 		events.append(record)
 	if reason.is_empty():
 		reason = s.phase if s.phase in ["victory","defeat"] else ("assertion_failure" if not errors.is_empty() else "action_or_iteration_limit")
-	return {"seed":seed_value,"pair":PAIRS[pair_index],"pair_index":pair_index,"method":"pure headless normal-play simulation; fixed-step physics; not real-time GPU/input evidence","policy":"lethal first; active four-normal mitigation next; damage/removed plus effective healing; largest legal skill connection","restrictions":"no recolor, favorable fixture, forced charge, HP injection, board rescue or intermediate reset","rng_parity":"same game RNG; fourteen burst draws per unique actually removed ID before refill; visual effect RNG unused","terminal":reason,"session_phase":s.phase,"errors":errors,"carry":carry(s),"combat":combat_state(s),"effects_observed":effects,"events":events}
+	return {"seed":seed_value,"pair":PAIRS[pair_index],"pair_index":pair_index,"method":"pure headless normal-play simulation; fixed-step physics; not real-time GPU/input evidence","policy":"safe route; leave shop without purchases; lethal first; active four-normal mitigation next; damage/removed plus effective healing; largest legal skill connection","restrictions":"no recolor, favorable fixture, forced charge, HP injection, board rescue or intermediate reset","rng_parity":"same game RNG; fourteen burst draws per unique actually removed ID before refill; visual effect RNG unused","terminal":reason,"session_phase":s.phase,"errors":errors,"carry":carry(s),"combat":combat_state(s),"effects_observed":effects,"events":events}
 
 func run() -> void:
 	RunSession = load("res://scripts/board_run_session.gd")
@@ -195,7 +214,7 @@ func run() -> void:
 		elif arg == "--seed" and index+1 < args.size(): seeds = [int(args[index+1])]
 		elif arg.begins_with("--pair="): pairs = [int(arg.substr(7))]
 		elif arg == "--pair" and index+1 < args.size(): pairs = [int(args[index+1])]
-	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://evidence/combat"))
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://evidence/route-shop/legacy-mini-run"))
 	for seed_value in seeds:
 		for pair_index in pairs:
 			if pair_index not in [0,1,2]:
@@ -204,7 +223,7 @@ func run() -> void:
 				return
 			var result := simulate(seed_value,pair_index)
 			results.append(result)
-			var path := "res://evidence/combat/combat-normal-seed%d-pair%d.json" % [seed_value,pair_index]
+			var path := "res://evidence/route-shop/legacy-mini-run/combat-normal-seed%d-pair%d.json" % [seed_value,pair_index]
 			var file := FileAccess.open(path,FileAccess.WRITE)
 			file.store_string(JSON.stringify(result,"  "))
 			file.close()
