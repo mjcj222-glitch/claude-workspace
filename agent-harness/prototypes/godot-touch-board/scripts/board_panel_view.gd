@@ -1,11 +1,7 @@
 extends RefCounted
 ## Shared presentation envelope and visible-owner hit order.
-const NORMAL_BOMB_SCALE := 30.0 / 37.0
 static func visual_radius(panel: Dictionary) -> float:
- var radius: float = panel.get("radius", 37.0)
- if panel.kind == "big_bomb": return radius
- if panel.kind == "bomb": return radius * NORMAL_BOMB_SCALE
- return radius
+ return float(panel.get("radius",37.0))
 static func draw_order(panels: Array) -> Array:
  var ordered: Array = panels.duplicate()
  ordered.sort_custom(func(a,b):
@@ -13,8 +9,8 @@ static func draw_order(panels: Array) -> Array:
   return int(a.id) < int(b.id))
  return ordered
 static func hit_test(panels: Array, point: Vector2) -> int:
- # Front ordinary bodies keep their original nearest-body ownership. Smaller
- # bombs use their actual casing, so invisible collider padding steals no rim.
+ # Front ordinary bodies retain nearest-body ownership; both bomb casings
+ # match their physical envelopes so colored contacts have no hidden padding.
  var nearest := INF
  var front := -1
  var large := -1

@@ -81,9 +81,16 @@ static func draw(view) -> void:
 		else:
 			lines=["직접 %d · 연쇄 %d"%[preview.direct.size(),preview.removed.size()-preview.direct.size()],preview_effect_line(preview)]
 			if not preview.get("blasts",[]).is_empty():
-				var largest:float=0
-				for blast in preview.blasts:largest=maxf(largest,float(blast.radius))
-				lines[0]="무속성 폭탄 · 폭풍 반경 %d · 총 %d개"%[largest,preview.removed.size()]
+				var blasts:Array=preview.blasts
+				if blasts.size()==1:
+					var bomb:Dictionary=blasts[0]
+					lines[0]="%s %s · 반경%d · 총%d개"%[weakness_name(bomb.color),"대형 폭탄" if bomb.kind=="big_bomb" else "폭탄",bomb.radius,preview.removed.size()]
+				else:
+					var radii:Array=[]
+					for bomb in blasts:
+						if not radii.has(int(bomb.radius)):radii.append(int(bomb.radius))
+					radii.sort()
+					lines[0]="폭탄%d회 · 반경%s · 총%d개"%[blasts.size(),"98/164" if radii.size()>1 else str(radii[0]),preview.removed.size()]
 			var effects := "회복 %d → %d · 초과 %d"%[preview.heal_raw,preview.heal_effective,preview.heal_overflow]
 			if not preview.spawn.is_empty(): effects += " · "+("강화핵 생성" if preview.spawn.kind=="strong" else "물감핵 생성")
 			if preview.get("bomb_spawn_kind","")!="":effects+=" · "+("대형 폭탄 준비" if preview.bomb_spawn_kind=="big_bomb" else "폭탄 준비")

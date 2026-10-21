@@ -21,7 +21,7 @@ func run()->void:
   if scene.BOARD.has_point(candidate) and scene.PanelView.hit_test(state.panels,candidate)==big.id:rim=candidate;break
  check(rim!=Vector2.ZERO and big.radius==48,"exposed physical48 rim exists")
  await gesture("rim-down",scene.board_to_screen(rim),"down")
- check(scene.session.selection.valid and scene.session.selection.direct==[big.id],"OS rim selects actual large body")
+ check(scene.session.selection.valid and scene.session.selection.direct[0]==big.id,"OS rim selects actual large body")
  await shot("02-rim-preview")
  await gesture("cancel-move",Vector2.ZERO,"move");await gesture("cancel-up",Vector2.ZERO,"up")
  check(scene.session.actions==0 and scene.session.selection.is_empty(),"OS cancel has no action")
@@ -32,7 +32,7 @@ func run()->void:
  check(absf(edge.pos.x-edge.radius-scene.BOARD.position.x)<.2,"large physical body rests against wall without clipping")
  var edge_point:Vector2=scene.board_to_screen(Vector2(31,edge.pos.y))
  await gesture("edge-down",edge_point,"down")
- check(scene.session.selection.get("valid",false) and scene.session.selection.direct==[edge.id],"OS inside-wall physical rim selectable")
+ check(scene.session.selection.get("valid",false) and scene.session.selection.direct[0]==edge.id,"OS inside-wall physical rim selectable")
  await shot("04-edge-preview")
  scene.cancel_input();await gesture("edge-up",edge_point,"up")
  await gesture("wall-outside",scene.board_to_screen(Vector2(29,edge.pos.y)))

@@ -1,0 +1,19 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL same color bomb bridges direct ordinary component
+FAIL bomb tap selects its same color component bidirectionally
+FAIL large48 body contacts37 neighbor with same color and independent164 blast
+FAIL blast snapshot preserves attribute separate from size
+FAIL deliberate same-color tap reaches beyond blast through its direct chain
+FAIL five normals plus bomb do not reach six-normal core or Ash trigger
+FAIL six actual normals retain core and Ash trigger with bomb bridge
+FAIL colored bomb contributes neither weakness nor intrinsic damage
+FAIL first activated strong core by distance then ID supplies its color
+FAIL starting strong core color wins before later competing cores
+FAIL one existing pending ID gets color and physical48 independently
+FAIL Rio cannot target/traverse bomb but resulting-color connection preview can use it
+FAIL colored direct/blast preview exactly equals committed frozen plan
+SCRIPT ERROR: Invalid access to property or key 'spawn' on a base object of type 'Dictionary'.
+          at: _init (res://tests/test_colored_bombs.gd:68)
+          GDScript backtrace (most recent call first):
+              [0] _init (res://tests/test_colored_bombs.gd:68)

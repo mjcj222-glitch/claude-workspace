@@ -387,7 +387,7 @@ func _burst(id: int, index: int) -> void:
 	for p in visual:
 		if p.id != id: continue
 		var color_index: int=active_plan.get("effective_colors",{}).get(id,p.color) if p.kind=="normal" else p.color
-		var effect_color: Color=Color("ffad51") if Bombs.is_bomb(p.kind) else COLORS[color_index]
+		var effect_color: Color=COLORS[color_index]
 		if not feedback.consume(id,p.pos,effect_color): return
 		quality_fx.panel_removed(id,p.pos,effect_color,p.kind)
 		sound.panel(index,p.kind)
@@ -409,7 +409,7 @@ func _start_fall() -> void:
 	quality_fx.action_finished()
 	fall_started_us=Time.get_ticks_usec()
 	motion_state = Motion.start(session.panels, BOARD, 48, session.next_id, rng)
-	Bombs.prepare_supply(motion_state.pending,String(active_plan.get("bomb_spawn_kind","")))
+	Bombs.prepare_supply(motion_state.pending,String(active_plan.get("bomb_spawn_kind","")),int(active_plan.get("bomb_spawn_color",0)))
 	session.next_id = motion_state.next_id
 	visual = motion_state.panels
 	falling = true

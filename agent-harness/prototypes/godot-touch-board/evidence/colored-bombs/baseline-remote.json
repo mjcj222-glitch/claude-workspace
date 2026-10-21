@@ -1,0 +1,7 @@
+{
+  "connector_read": "github.fetch Git ref and fetch_commit_workflow_runs",
+  "branch": "feat/resonance-godot",
+  "head": "4a500eca35c195f73edd74761e11411787ad65dd",
+  "PR_workflow_run": 140,
+  "workflow_conclusion": "success"
+}

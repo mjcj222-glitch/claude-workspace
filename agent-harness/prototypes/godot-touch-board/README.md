@@ -31,6 +31,8 @@
 
 새로 만든 Godot 손맛 검증용 보드입니다. 기존 게임 코드·UI·자산은 재사용하지 않았습니다. 완성 게임이나 재미 검증 완료본이 아닙니다.
 
+일반·대형 폭탄이 색을 유지하며 같은 색 접촉 체인에 포함됩니다. 생성 색·스킬·카운트 원칙과 실제 증거는 [색 폭탄 기록](docs/COLORED_BOMBS.md), [소리 포함 정상 플레이 발췌](evidence/colored-bombs/colored-bombs-preview.mp4)에 있습니다. 표시/물리 반경은 일반37·대형48이며 폭풍98/164와는 별개입니다.
+
 최신 대형 폭탄은 표시뿐 아니라 **물리 반경도 48**로 공간을 차지합니다. 일반 패널/폭탄의 물리 반경 37과 별도 폭발 반경 98/164는 유지합니다. [부피 검증 기록](docs/BOMB_VOLUME.md), [전후 비교](evidence/bomb-volume/before-after-detail.png), [소리 포함 실제 플레이](evidence/bomb-volume/bomb-volume-preview.mp4)를 확인할 수 있습니다. 이전 외형 전용 변경은 [과거 본체 기록](docs/BOMB_BODY.md)에 있습니다.
 
 ## 플레이

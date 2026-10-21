@@ -74,7 +74,7 @@ static func draw_panel(canvas: CanvasItem, panel: Dictionary, time: float, empha
 	elif kind == "core": index = 5
 	elif kind == "strong": index = 6
 	if kind in ["bomb","big_bomb"]:
-		draw_bomb(canvas,center,radius,kind=="big_bomb",emphasis)
+		draw_bomb(canvas,center,radius,kind=="big_bomb",emphasis,color_index)
 		return
 	var region: Rect2 = REGIONS[index]
 	var body: Rect2 = BODY_BOUNDS[index]
@@ -103,9 +103,19 @@ static func draw_panel(canvas: CanvasItem, panel: Dictionary, time: float, empha
 				canvas.draw_arc(center, radius*0.95, a, a+PI/3, 12, Color("bfffe6"), maxf(2.2,radius*0.065), true)
 			_star(canvas, center+Vector2(radius*0.54,radius*0.52), radius*0.20, Color("e4fff1"))
 
-static func draw_bomb(canvas:CanvasItem,center:Vector2,radius:float,large:bool,emphasis:String="")->void:
+static func draw_bomb(canvas:CanvasItem,center:Vector2,radius:float,large:bool,emphasis:String="",color_index:int=0)->void:
 	var visible:float=PanelView.visual_radius({"radius":radius,"kind":"big_bomb" if large else "bomb"})
 	canvas.draw_texture_rect(BOMB_LARGE if large else BOMB_NORMAL,Rect2(center-Vector2.ONE*visible,Vector2.ONE*visible*2),false)
+	# Casing/fuse communicate bomb and size; persistent collar plus element
+	# jewel communicate its independent attribute, even with reduced effects.
+	var base:Color=PALETTE[clampi(color_index,0,3)]
+	_ring(canvas,center,visible*.91,INK,maxf(4,visible*.10))
+	_ring(canvas,center,visible*.91,base,maxf(2,visible*.05))
+	canvas.draw_circle(center,visible*.36,INK)
+	canvas.draw_circle(center,visible*.32,base.darkened(.48))
+	_ring(canvas,center,visible*.33,base,1.4)
+	_glyph(canvas,center,visible*.24,color_index,base.lightened(.55))
+	_ellipse(canvas,center+visible*Vector2(-.13,-.21),visible*Vector2(.12,.055),Color(1,1,1,.65))
 	if emphasis in ["direct","chain"]:
 		_ring(canvas,center,visible*.98,Color("fff8d9") if emphasis=="direct" else Color("ffd28c"),2.8)
 

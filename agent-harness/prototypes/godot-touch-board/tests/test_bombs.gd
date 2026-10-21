@@ -14,7 +14,7 @@ func _init()->void:
  check("대형" in preload("res://scripts/board_ui.gd").RELIC_COPY.lens.change,"shop and event purchase copy disclose large bombs")
  var original:Array=source.duplicate(true)
  var a:Dictionary=Rules.plan(source,1,29,30,[],{"weakness_color":1})
- check(a.valid and a.removed==[1,2,4],"normal bomb is a single selectable neutral radial clear including heart")
+ check(a.valid and a.removed==[1,2,4],"different-color neighbors still permit solo radial clear including heart")
  if not a.valid:print("BOMBS checks=",checks," failures=",failures);quit(1);return
  check(a.damage==1 and a.weak_count==1 and a.heal_raw==2 and a.heal_effective==1 and a.heal_overflow==1,"bomb object no damage; ordinary weakness and capped heart count once")
  check(a.direct_normals==0 and a.spawn.is_empty(),"bomb/secondary removals never farm direct core threshold")
@@ -63,5 +63,5 @@ func _init()->void:
   edge[1].pos.x+=.01
   check(not Rules.plan(edge,1,30,30).removed.has(2),kind+" outside geometric boundary excluded")
  var bridge:Array=[panel(1,100,400),panel(2,174,400,"bomb"),panel(3,248,400)]
- check(not Rules.plan(bridge,1,30,30).valid,"neutral bomb cannot bridge a same-color group")
+ check(Rules.plan(bridge,1,30,30).direct==[1,2,3],"colored bomb bridges its same-color group")
  print("BOMBS checks=",checks," failures=",failures);quit(1 if failures else 0)

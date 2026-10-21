@@ -18,17 +18,18 @@ func run()->void:
  check(plan.bomb_spawn_kind=="big_bomb" and plan==scene.active_plan,"preview prepares large supply and same committed plan")
  var samples:Array=[];var steps:=0;var entered:=false
  while not scene.falling and steps<150:scene._process(1.0/120);steps+=1
- check(scene.falling and scene.motion_state.pending[0].kind=="big_bomb" and scene.motion_state.pending[0].id==old_next,"actual refill queues exactly first existing new ID as bomb")
+ check(scene.falling and scene.motion_state.pending[0].kind=="big_bomb" and scene.motion_state.pending[0].id==old_next and scene.motion_state.pending[0].color==plan.bomb_spawn_color,"actual refill queues first existing ID with originating strong-core color")
  while scene.session.phase=="busy" and steps<800:
   scene._process(1.0/120);steps+=1
   for body in scene.visual:
    if body.id==old_next:
-    samples.append({"pos":body.pos,"radius":body.radius})
+    samples.append({"pos":body.pos,"radius":body.radius,"color":body.color})
     if not entered:
      entered=true;check(body.pos.y<scene.BOARD.position.y,"bomb actually enters from top outside board")
  check(scene.session.phase=="ready","natural refill completes without effect gate")
  var bombs:Array=scene.session.panels.filter(func(p):return p.kind in ["bomb","big_bomb"])
  check(bombs.size()==1 and bombs[0].id==old_next and bombs[0].radius==48,"settled bomb has same queued ID/body, one supply only")
+ check(bombs[0].color==plan.bomb_spawn_color and samples.all(func(sample):return sample.color==plan.bomb_spawn_color),"pending falling and settled color remain identical to frozen supply plan")
  check(not plan.removed.has(old_next) and not plan.activated.has(old_next),"fresh bomb was not auto-exploded")
  pos=scene.board_to_screen(bombs[0].pos);var actions:int=scene.session.actions
  scene.press(pos,-1);var preview:Dictionary=scene.session.selection.duplicate(true)
