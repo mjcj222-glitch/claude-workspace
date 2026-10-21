@@ -1,4 +1,6 @@
 extends RefCounted
+const SLAM_WEAK_REQUIRED := 2
+const SLAM_NORMAL_REQUIRED := 8
 ## Pure, deterministic plans over a frozen contact snapshot. No animation or state mutation.
 
 static func contact_graph(panels: Array, tolerance: float = 1.5) -> Dictionary:
@@ -149,7 +151,7 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Arr
 	result.damage = int(result.base_damage) + int(result.weak_bonus)
 	var intent := String(result.combat_context.get("intent", "plain"))
 	if intent == "slam":
-		result.mitigates_intent = int(result.weak_count) >= 2 or int(result.normal_count) >= 8
+		result.mitigates_intent = slam_mitigated(int(result.weak_count), int(result.normal_count), result.combat_context)
 	elif intent == "direct4":
 		# direct was constructed by a visited-set traversal; its IDs are unique.
 		result.mitigates_intent = result.direct.size() >= 4
@@ -162,6 +164,12 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Arr
 	if direct_normals >= core_threshold:
 		result.spawn = {"pos": indexed[start_id].pos, "color": int(indexed[start_id].color), "kind": "strong" if direct_normals >= strong_threshold else "core"}
 	return result
+
+static func slam_mitigated(weak_count: int, normal_count: int, combat_context: Dictionary) -> bool:
+	# The same frozen threshold decision serves preview, fairness, and commit.
+	var weak_required := int(combat_context.get("slam_weak_required", SLAM_WEAK_REQUIRED))
+	var normal_required := int(combat_context.get("slam_normal_required", SLAM_NORMAL_REQUIRED))
+	return weak_count >= weak_required or normal_count >= normal_required
 
 static func skill_plan(panels: Array, start_id: int, target_color: int, relics: Array = []) -> Dictionary:
 	var target_limit := 5 if relics.has("pigment") else 4

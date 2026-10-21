@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL nine nonweak normals cannot enable slam
+FAIL later board growth cannot activate fallback turn condition
+FAIL fallback turn remains plain six
+FAIL nine actual removed normals do not satisfy ten threshold
+FAIL normal counts from separate actions never accumulate
+FAIL commit uses held threshold four instead of default three
+BOSS_COMBAT checks=40 failures=6

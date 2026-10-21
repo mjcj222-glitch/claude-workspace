@@ -1,0 +1,198 @@
+{
+  "incomplete_events": [],
+  "method": "Pure fixed-step normal simulation, no injections, GPU or realtime evidence. All three policies share exact first-two-fight selector, max-connection skill, and route/shop flow. Avoid-intent is adversarial diagnostic, not human ability.",
+  "source_changes": [],
+  "runs": 18,
+  "expected_runs": 18,
+  "supplemental_completed": 0,
+  "scope_note": "One candidate, same18 matched core cases; no parameter sweep.",
+  "early_fight_groups_checked": 6,
+  "early_fight_errors": [],
+  "audit_available_runs": 18,
+  "audit_checks": 2094,
+  "run_errors": [],
+  "policies": {
+    "immediate-damage": {
+      "runs": 6,
+      "terminal": {
+        "victory": 6
+      },
+      "boss_clears": 45,
+      "total_run_actions": 92,
+      "final_hp": [
+        20,
+        18,
+        18,
+        18,
+        16,
+        20
+      ],
+      "turns": 18,
+      "slam_turns": 4,
+      "fallback_turns": 8,
+      "attacks": 12,
+      "attack_damage_histogram": {
+        "4": 2,
+        "6": 10
+      },
+      "hp_lost_to_attacks": 68,
+      "mitigation_latches": 4,
+      "incidental_latches": 4,
+      "active_unlatched_clear_count": 4,
+      "active_unlatched_qualifying_choices": 4,
+      "turn_start_legal_unique_sets": 185,
+      "turn_start_eligible_unique_sets": 5,
+      "turns_with_raw_threshold_opportunity": 6,
+      "turns_with_nonqualifying_alternatives": 18,
+      "active_slam_turns_with_nonmitigating_alternatives": 4,
+      "opportunity_fraction": 0.3333333333333333,
+      "weak_bonus_total": 19,
+      "chosen_weak_histogram": {
+        "4": 2,
+        "0": 33,
+        "8": 1,
+        "2": 3,
+        "3": 4,
+        "5": 2
+      },
+      "chosen_normal_histogram": {
+        "4": 9,
+        "11": 4,
+        "12": 1,
+        "3": 11,
+        "9": 4,
+        "8": 2,
+        "6": 1,
+        "2": 3,
+        "10": 8,
+        "5": 2
+      },
+      "active_qualifying_by_weak_only": 3,
+      "active_qualifying_by_normal_only": 1,
+      "active_qualifying_by_both": 0
+    },
+    "intent-aware": {
+      "runs": 6,
+      "terminal": {
+        "victory": 6
+      },
+      "boss_clears": 45,
+      "total_run_actions": 92,
+      "final_hp": [
+        20,
+        18,
+        18,
+        18,
+        16,
+        20
+      ],
+      "turns": 18,
+      "slam_turns": 4,
+      "fallback_turns": 8,
+      "attacks": 12,
+      "attack_damage_histogram": {
+        "4": 2,
+        "6": 10
+      },
+      "hp_lost_to_attacks": 68,
+      "mitigation_latches": 4,
+      "incidental_latches": null,
+      "active_unlatched_clear_count": 4,
+      "active_unlatched_qualifying_choices": 4,
+      "turn_start_legal_unique_sets": 185,
+      "turn_start_eligible_unique_sets": 5,
+      "turns_with_raw_threshold_opportunity": 6,
+      "turns_with_nonqualifying_alternatives": 18,
+      "active_slam_turns_with_nonmitigating_alternatives": 4,
+      "opportunity_fraction": 0.3333333333333333,
+      "weak_bonus_total": 19,
+      "chosen_weak_histogram": {
+        "4": 2,
+        "0": 33,
+        "8": 1,
+        "2": 3,
+        "3": 4,
+        "5": 2
+      },
+      "chosen_normal_histogram": {
+        "4": 9,
+        "11": 4,
+        "12": 1,
+        "3": 11,
+        "9": 4,
+        "8": 2,
+        "6": 1,
+        "2": 3,
+        "10": 8,
+        "5": 2
+      },
+      "active_qualifying_by_weak_only": 3,
+      "active_qualifying_by_normal_only": 1,
+      "active_qualifying_by_both": 0
+    },
+    "avoid-intent": {
+      "runs": 6,
+      "terminal": {
+        "victory": 6
+      },
+      "boss_clears": 48,
+      "total_run_actions": 95,
+      "final_hp": [
+        14,
+        18,
+        18,
+        18,
+        16,
+        14
+      ],
+      "turns": 18,
+      "slam_turns": 3,
+      "fallback_turns": 9,
+      "attacks": 12,
+      "attack_damage_histogram": {
+        "10": 2,
+        "6": 10
+      },
+      "hp_lost_to_attacks": 80,
+      "mitigation_latches": 0,
+      "incidental_latches": null,
+      "active_unlatched_clear_count": 8,
+      "active_unlatched_qualifying_choices": 0,
+      "turn_start_legal_unique_sets": 174,
+      "turn_start_eligible_unique_sets": 4,
+      "turns_with_raw_threshold_opportunity": 6,
+      "turns_with_nonqualifying_alternatives": 18,
+      "active_slam_turns_with_nonmitigating_alternatives": 3,
+      "opportunity_fraction": 0.3333333333333333,
+      "weak_bonus_total": 24,
+      "chosen_weak_histogram": {
+        "0": 35,
+        "11": 1,
+        "7": 1,
+        "8": 1,
+        "4": 1,
+        "2": 5,
+        "3": 3,
+        "5": 1
+      },
+      "chosen_normal_histogram": {
+        "5": 3,
+        "3": 14,
+        "11": 4,
+        "10": 7,
+        "7": 1,
+        "8": 2,
+        "6": 1,
+        "4": 8,
+        "2": 5,
+        "9": 2,
+        "17": 1
+      },
+      "active_qualifying_by_weak_only": 0,
+      "active_qualifying_by_normal_only": 0,
+      "active_qualifying_by_both": 0
+    }
+  },
+  "comparison_limit": "Same initial seeds AND identical first-two-fight events checked. Boss choices cause later RNG/board divergence; not an identical-board causal skill comparison. No balance/win-rate generalization from 3 deterministic seeds.",
+  "supplemental_index": []
+}

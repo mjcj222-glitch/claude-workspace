@@ -1,0 +1,1710 @@
+{
+"action": 20,
+"burst_rng_draws": 210,
+"carry": {
+"actions": 20,
+"ash_reserved": true,
+"charge": 2,
+"charge_required": 3,
+"gold": 0,
+"gold_spent": 12,
+"hp": 2,
+"relics": ["pigment", "lens", "ash"],
+"route": "elite",
+"shop_closed": true,
+"shop_heal_sold": true,
+"shop_relic_sold": true
+},
+"combat": {
+"actions_in_turn": 1,
+"attacks_total": 5,
+"damage_context": {
+"incoming_damage": 6,
+"intent": "plain",
+"intent_serial": 8,
+"mitigation_success": false,
+"slam_normal_required": 8,
+"slam_weak_required": 2,
+"weakness_color": 3
+},
+"encounter": 2,
+"enemies_defeated": 2,
+"enemy_hp": 0,
+"enemy_max_hp": 48,
+"fallback_plain": false,
+"incoming_damage": 6,
+"last_attack_damage": 10,
+"mitigation_active": false,
+"mitigation_success": false,
+"turn": 3,
+"weak_color": 3
+},
+"committed_plan": {
+"activated": [],
+"ash_reserve": true,
+"base_damage": 15,
+"combat_context": {
+"incoming_damage": 6,
+"intent": "plain",
+"intent_serial": 8,
+"mitigation_success": false,
+"slam_normal_required": 8,
+"slam_weak_required": 2,
+"weakness_color": 3
+},
+"converted": {},
+"damage": 15,
+"direct": [159, 180, 173, 187, 196, 199, 203, 215, 218, 207, 221, 224, 225, 236, 241],
+"direct_normals": 15,
+"effective_colors": {
+159: 2,
+173: 2,
+180: 2,
+187: 2,
+196: 2,
+199: 2,
+203: 2,
+207: 2,
+215: 2,
+218: 2,
+221: 2,
+224: 2,
+225: 2,
+236: 2,
+241: 2
+},
+"heal_effective": 0,
+"heal_overflow": 0,
+"heal_raw": 0,
+"mitigates_intent": false,
+"mode": "clear",
+"normal_count": 15,
+"removed": [159, 180, 173, 187, 196, 199, 203, 215, 218, 207, 221, 224, 225, 236, 241],
+"sequence": [159, 180, 173, 187, 196, 199, 203, 215, 218, 207, 221, 224, 225, 236, 241],
+"spawn": {
+"color": 2,
+"kind": "strong",
+"pos": Vector2(303.86673, 783)
+},
+"valid": true,
+"weak_bonus": 0,
+"weak_count": 0
+},
+"motion": {
+"accumulator": 0.0,
+"elapsed": 4.008333333333322,
+"lane": 0,
+"next_id": 258,
+"panels": [{
+&"anchored": true,
+"color": 4,
+&"contact_count": 736,
+"from": Vector2(229.86673, 139),
+"id": 162,
+"kind": "heart",
+"pos": Vector2(229.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 0,
+"from": Vector2(155.86673, 215),
+"id": 164,
+"kind": "heart",
+"pos": Vector2(155.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 3,
+&"contact_count": 0,
+"from": Vector2(81.86673, 177),
+"id": 165,
+"kind": "normal",
+"pos": Vector2(81.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 586,
+"from": Vector2(348.51175, 215),
+"id": 168,
+"kind": "heart",
+"pos": Vector2(348.51175, 723.98456),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 1068,
+"from": Vector2(118.86673, 139),
+"id": 170,
+"kind": "heart",
+"pos": Vector2(118.86673, 718.9141),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 7056,
+"from": Vector2(476.32953, 215),
+"id": 176,
+"kind": "heart",
+"pos": Vector2(494.74673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 5538,
+"from": Vector2(155.86673, 177),
+"id": 181,
+"kind": "heart",
+"pos": Vector2(192.76166, 718.24194),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 5199,
+"from": Vector2(192.86673, 215),
+"id": 188,
+"kind": "heart",
+"pos": Vector2(266.7601, 718.8564),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 14911,
+"from": Vector2(569.8272, 139),
+"id": 190,
+"kind": "heart",
+"pos": Vector2(581.11053, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 0,
+&"contact_count": 9342,
+"from": Vector2(141, 253),
+"id": 191,
+"kind": "normal",
+"pos": Vector2(230.24965, 654.43915),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 15539,
+"from": Vector2(394.6845, 177),
+"id": 193,
+"kind": "heart",
+"pos": Vector2(443.9241, 729.1604),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 27903,
+"from": Vector2(311.51175, 253),
+"id": 195,
+"kind": "heart",
+"pos": Vector2(311.43564, 659.86633),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 11870,
+"from": Vector2(616, 177),
+"id": 197,
+"kind": "normal",
+"pos": Vector2(653.039, 765.61395),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 0,
+&"contact_count": 23452,
+"from": Vector2(357.6845, 177),
+"id": 201,
+"kind": "normal",
+"pos": Vector2(399.22958, 670.0972),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 3,
+&"contact_count": 6287,
+"from": Vector2(653, 177),
+"id": 205,
+"kind": "normal",
+"pos": Vector2(652.99896, 691.6129),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 77415,
+"id": 210,
+"kind": "heart",
+&"pos": Vector2(424.6273, 600.61127),
+"radius": 37.0,
+"vel": Vector2(-0.35468015, 0.3869793)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 6477,
+"id": 211,
+"kind": "heart",
+&"pos": Vector2(67, 666.13245),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 1,
+&"contact_count": 87,
+&"id": 213,
+"kind": "strong",
+"pos": Vector2(393.15677, 783),
+&"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 4422,
+"id": 216,
+"kind": "heart",
+&"pos": Vector2(652.72644, 617.6124),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 1827,
+"id": 219,
+"kind": "heart",
+&"pos": Vector2(67.00234, 592.1323),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 6294,
+"id": 222,
+"kind": "heart",
+&"pos": Vector2(581.0705, 708.9999),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 23486,
+"id": 226,
+"kind": "heart",
+&"pos": Vector2(508.71927, 693.47766),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 5706,
+"id": 227,
+"kind": "normal",
+&"pos": Vector2(653, 543.61194),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 40011,
+"id": 229,
+"kind": "normal",
+&"pos": Vector2(495.93344, 620.5908),
+"radius": 37.0,
+"vel": Vector2(1.23863, -0.14591312)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 27439,
+"id": 230,
+"kind": "heart",
+&"pos": Vector2(580.80396, 635.0089),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 901,
+"id": 232,
+"kind": "heart",
+&"pos": Vector2(67, 518.1323),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 21596,
+"id": 233,
+"kind": "normal",
+&"pos": Vector2(653, 469.55627),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 3,
+&"contact_count": 538,
+"id": 234,
+"kind": "normal",
+&"pos": Vector2(155.3346, 654.4034),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 55131,
+"id": 237,
+"kind": "normal",
+&"pos": Vector2(548.45746, 568.4636),
+"radius": 37.0,
+"vel": Vector2(1.0722076, -0.2184945)
+}, {
+"anchored": false,
+"color": 1,
+&"contact_count": 55279,
+"id": 238,
+"kind": "normal",
+&"pos": Vector2(477.18848, 548.54614),
+"radius": 37.0,
+"vel": Vector2(0.51233923, 1.9453714)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 47435,
+"id": 239,
+"kind": "normal",
+&"pos": Vector2(588.8802, 506.477),
+"radius": 37.0,
+"vel": Vector2(-0.35375583, -1.1736996)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 41086,
+"id": 240,
+"kind": "normal",
+&"pos": Vector2(350.70642, 597.14844),
+"radius": 37.0,
+"vel": Vector2(-0.34728453, -0.11967171)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 41173,
+"id": 242,
+"kind": "normal",
+&"pos": Vector2(517.60724, 486.56738),
+"radius": 37.0,
+"vel": Vector2(-1.012637, 1.149325)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 0,
+&"id": 243,
+"kind": "strong",
+"pos": Vector2(303.86673, 783),
+&"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 1972,
+"id": 244,
+"kind": "heart",
+&"pos": Vector2(275.01663, 595.44794),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 1,
+&"contact_count": 33712,
+"id": 245,
+"kind": "normal",
+&"pos": Vector2(390.68008, 534.8586),
+"radius": 37.0,
+"vel": Vector2(0.20036978, 0.15705453)
+}, {
+"anchored": true,
+"color": 0,
+&"contact_count": 218,
+"id": 246,
+"kind": "normal",
+&"pos": Vector2(140.2983, 581.9461),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 34082,
+"id": 247,
+"kind": "normal",
+&"pos": Vector2(570.42053, 434.73514),
+"radius": 37.0,
+"vel": Vector2(-5.2532725, -3.0567927)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 30959,
+"id": 248,
+"kind": "heart",
+&"pos": Vector2(634.5915, 397.8825),
+"radius": 37.0,
+"vel": Vector2(-2.9845622, 0.876573)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 3691,
+"id": 249,
+"kind": "heart",
+&"pos": Vector2(210.6374, 558.9587),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 30661,
+"id": 250,
+"kind": "normal",
+&"pos": Vector2(314.40167, 532.666),
+"radius": 37.0,
+"vel": Vector2(2.8950968, -1.9009385)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 19290,
+"id": 251,
+"kind": "normal",
+&"pos": Vector2(443.2613, 482.7807),
+"radius": 37.0,
+"vel": Vector2(1.6825795, 1.3416665)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 2,
+"id": 252,
+"kind": "normal",
+&"pos": Vector2(67, 444.13132),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 1,
+&"contact_count": 13739,
+"id": 253,
+"kind": "normal",
+&"pos": Vector2(483.69406, 420.79468),
+"radius": 37.0,
+"vel": Vector2(0.19078016, 0.5288288)
+}, {
+"anchored": false,
+"color": 3,
+&"contact_count": 14126,
+"id": 254,
+"kind": "normal",
+&"pos": Vector2(249.96683, 496.27505),
+"radius": 37.0,
+"vel": Vector2(1.3271037, 0.8753953)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 11106,
+"id": 255,
+"kind": "normal",
+&"pos": Vector2(653.0003, 326.2078),
+"radius": 37.0,
+"vel": Vector2(0.013196416, 1.6465124)
+}, {
+"anchored": false,
+"color": 3,
+&"contact_count": 18471,
+"id": 256,
+"kind": "normal",
+&"pos": Vector2(354.36188, 470.38272),
+"radius": 37.0,
+"vel": Vector2(3.5218155, -1.7138611)
+}, {
+"anchored": true,
+"color": 0,
+&"contact_count": 11,
+"id": 257,
+"kind": "normal",
+&"pos": Vector2(155.5778, 509.5159),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}],
+"pending": [],
+"profile": {
+"anchor_us": 665608,
+"inside_sim_s": 0.7333333333333332,
+"iterations": 12297,
+"last_spawn_sim_s": 0.5750000000000004,
+"pending_sim_s": 0.5750000000000004,
+"solve_us": 1009553,
+"spawn_us": 8881,
+"ticks": 481
+},
+"quiet": 0.0,
+"ready": false,
+"spawn_clock": 3.4249999999999905,
+"stalled": true
+},
+"note": "Motion is full stalled local refill state; session remains busy because stalled refill was never committed. No forced board/resources/reset/physics edits. .var is lossless Variant data with Vector2 and int64 RNG; .txt is human-readable Godot Variant text.",
+"policy": "avoid-intent",
+"pre_action": {
+"carry": {
+"actions": 19,
+"ash_reserved": false,
+"charge": 1,
+"charge_required": 3,
+"gold": 0,
+"gold_spent": 12,
+"hp": 2,
+"relics": ["pigment", "lens", "ash"],
+"route": "elite",
+"shop_closed": true,
+"shop_heal_sold": true,
+"shop_relic_sold": true
+},
+"combat": {
+"actions_in_turn": 0,
+"attacks_total": 5,
+"damage_context": {
+"incoming_damage": 6,
+"intent": "plain",
+"intent_serial": 8,
+"mitigation_success": false,
+"slam_normal_required": 8,
+"slam_weak_required": 2,
+"weakness_color": 3
+},
+"encounter": 2,
+"enemies_defeated": 2,
+"enemy_hp": 11,
+"enemy_max_hp": 48,
+"fallback_plain": false,
+"incoming_damage": 6,
+"last_attack_damage": 10,
+"mitigation_active": false,
+"mitigation_success": false,
+"turn": 3,
+"weak_color": 3
+},
+"next_id": 243,
+"panels": [{
+&"anchored": true,
+"color": 2,
+&"contact_count": 4,
+"from": Vector2(303.86673, 253),
+"id": 159,
+"kind": "normal",
+"pos": Vector2(303.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 1,
+"from": Vector2(229.86673, 139),
+"id": 162,
+"kind": "heart",
+"pos": Vector2(229.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 0,
+"from": Vector2(155.86673, 215),
+"id": 164,
+"kind": "heart",
+"pos": Vector2(155.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 3,
+&"contact_count": 0,
+"from": Vector2(81.86673, 177),
+"id": 165,
+"kind": "normal",
+"pos": Vector2(81.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 127,
+"from": Vector2(348.51175, 215),
+"id": 168,
+"kind": "heart",
+"pos": Vector2(348.51175, 723.98456),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 48,
+"from": Vector2(118.86673, 139),
+"id": 170,
+"kind": "heart",
+"pos": Vector2(118.86673, 718.9141),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 22,
+"from": Vector2(192.86673, 177),
+"id": 173,
+"kind": "normal",
+"pos": Vector2(192.86673, 718.9141),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 7056,
+"from": Vector2(476.32953, 215),
+"id": 176,
+"kind": "heart",
+"pos": Vector2(494.74673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 51,
+"from": Vector2(229.86673, 215),
+"id": 180,
+"kind": "normal",
+"pos": Vector2(266.86774, 718.8807),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 2572,
+"from": Vector2(155.86673, 177),
+"id": 181,
+"kind": "heart",
+"pos": Vector2(155.86673, 654.82825),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 5585,
+"from": Vector2(348.51175, 253),
+"id": 187,
+"kind": "normal",
+"pos": Vector2(311.53143, 659.89856),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 2876,
+"from": Vector2(192.86673, 215),
+"id": 188,
+"kind": "heart",
+"pos": Vector2(229.87576, 654.789),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 14911,
+"from": Vector2(569.8272, 139),
+"id": 190,
+"kind": "heart",
+"pos": Vector2(581.11053, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 0,
+&"contact_count": 7573,
+"from": Vector2(141, 253),
+"id": 191,
+"kind": "normal",
+"pos": Vector2(192.8237, 590.7445),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 15396,
+"from": Vector2(394.6845, 177),
+"id": 193,
+"kind": "heart",
+"pos": Vector2(443.9241, 729.1604),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 14642,
+"from": Vector2(311.51175, 253),
+"id": 195,
+"kind": "heart",
+"pos": Vector2(362.24088, 606.0055),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 10976,
+"from": Vector2(237.51175, 215),
+"id": 196,
+"kind": "normal",
+"pos": Vector2(274.55225, 595.8004),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 11870,
+"from": Vector2(616, 177),
+"id": 197,
+"kind": "normal",
+"pos": Vector2(653.039, 765.61395),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 9255,
+"from": Vector2(185.645, 253),
+"id": 199,
+"kind": "normal",
+"pos": Vector2(237.33994, 531.65485),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 0,
+&"contact_count": 11224,
+"from": Vector2(357.6845, 177),
+"id": 201,
+"kind": "normal",
+"pos": Vector2(399.22958, 670.0972),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 19403,
+"from": Vector2(274.51175, 253),
+"id": 203,
+"kind": "normal",
+"pos": Vector2(325.248, 541.9175),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 3,
+&"contact_count": 6287,
+"from": Vector2(653, 177),
+"id": 205,
+"kind": "normal",
+"pos": Vector2(652.99896, 691.6129),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 2,
+&"contact_count": 12872,
+"id": 207,
+"kind": "normal",
+&"pos": Vector2(288.16174, 477.86313),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 24181,
+"id": 210,
+"kind": "heart",
+&"pos": Vector2(436.22244, 606.019),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 6335,
+"id": 211,
+"kind": "heart",
+&"pos": Vector2(67, 666.13245),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 1,
+&"contact_count": 87,
+&"id": 213,
+"kind": "strong",
+"pos": Vector2(393.15677, 783),
+&"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 2,
+&"contact_count": 6562,
+"id": 215,
+"kind": "normal",
+&"pos": Vector2(129.48337, 552.48175),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 4221,
+"id": 216,
+"kind": "heart",
+&"pos": Vector2(652.72644, 617.6124),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 24596,
+"id": 218,
+"kind": "normal",
+&"pos": Vector2(399.2431, 541.9203),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 1780,
+"id": 219,
+"kind": "heart",
+&"pos": Vector2(67.00234, 592.1323),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 2,
+&"contact_count": 3695,
+"id": 221,
+"kind": "normal",
+&"pos": Vector2(174.00969, 493.37512),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 6210,
+"id": 222,
+"kind": "heart",
+&"pos": Vector2(581.0705, 708.9999),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 10488,
+"id": 224,
+"kind": "normal",
+&"pos": Vector2(362.3246, 477.79004),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 2,
+&"contact_count": 3695,
+"id": 225,
+"kind": "normal",
+&"pos": Vector2(67, 512.8353),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 14514,
+"id": 226,
+"kind": "heart",
+&"pos": Vector2(495.74313, 676.33325),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 1954,
+"id": 227,
+"kind": "normal",
+&"pos": Vector2(653, 543.61194),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 14524,
+"id": 229,
+"kind": "normal",
+&"pos": Vector2(510.17078, 603.759),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 14908,
+"id": 230,
+"kind": "heart",
+&"pos": Vector2(583.2612, 592.1679),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 816,
+"id": 232,
+"kind": "heart",
+&"pos": Vector2(67.00097, 438.83508),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 3860,
+"id": 233,
+"kind": "normal",
+&"pos": Vector2(653, 469.55627),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 3,
+&"contact_count": 40,
+"id": 234,
+"kind": "normal",
+&"pos": Vector2(140.14113, 427.5805),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 2,
+&"contact_count": 14,
+"id": 236,
+"kind": "normal",
+&"pos": Vector2(224.83057, 439.5849),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 8771,
+"id": 237,
+"kind": "normal",
+&"pos": Vector2(546.2927, 528.0677),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 1,
+&"contact_count": 7028,
+"id": 238,
+"kind": "normal",
+&"pos": Vector2(473.2031, 539.6303),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 6370,
+"id": 239,
+"kind": "normal",
+&"pos": Vector2(579.4002, 461.8857),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 299,
+"id": 240,
+"kind": "normal",
+&"pos": Vector2(325.31165, 413.71155),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 820,
+"id": 241,
+"kind": "normal",
+&"pos": Vector2(436.31894, 475.457),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 1069,
+"id": 242,
+"kind": "normal",
+&"pos": Vector2(510.92877, 433.81766),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}],
+"phase": "ready",
+"rng_state": -1457341921578989245
+},
+"rng_state": 8290954505560004541,
+"rng_state_before_motion": -332673587489404793,
+"route": "elite",
+"seed": 20261023.0,
+"session_next_id": 244,
+"session_panels": [{
+&"anchored": true,
+"color": 4,
+&"contact_count": 1,
+"from": Vector2(229.86673, 139),
+"id": 162,
+"kind": "heart",
+"pos": Vector2(229.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 0,
+"from": Vector2(155.86673, 215),
+"id": 164,
+"kind": "heart",
+"pos": Vector2(155.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 3,
+&"contact_count": 0,
+"from": Vector2(81.86673, 177),
+"id": 165,
+"kind": "normal",
+"pos": Vector2(81.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 127,
+"from": Vector2(348.51175, 215),
+"id": 168,
+"kind": "heart",
+"pos": Vector2(348.51175, 723.98456),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 48,
+"from": Vector2(118.86673, 139),
+"id": 170,
+"kind": "heart",
+"pos": Vector2(118.86673, 718.9141),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 7056,
+"from": Vector2(476.32953, 215),
+"id": 176,
+"kind": "heart",
+"pos": Vector2(494.74673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 2572,
+"from": Vector2(155.86673, 177),
+"id": 181,
+"kind": "heart",
+"pos": Vector2(155.86673, 654.82825),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 2876,
+"from": Vector2(192.86673, 215),
+"id": 188,
+"kind": "heart",
+"pos": Vector2(229.87576, 654.789),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 14911,
+"from": Vector2(569.8272, 139),
+"id": 190,
+"kind": "heart",
+"pos": Vector2(581.11053, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 0,
+&"contact_count": 7573,
+"from": Vector2(141, 253),
+"id": 191,
+"kind": "normal",
+"pos": Vector2(192.8237, 590.7445),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 15396,
+"from": Vector2(394.6845, 177),
+"id": 193,
+"kind": "heart",
+"pos": Vector2(443.9241, 729.1604),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 14642,
+"from": Vector2(311.51175, 253),
+"id": 195,
+"kind": "heart",
+"pos": Vector2(362.24088, 606.0055),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 11870,
+"from": Vector2(616, 177),
+"id": 197,
+"kind": "normal",
+"pos": Vector2(653.039, 765.61395),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 0,
+&"contact_count": 11224,
+"from": Vector2(357.6845, 177),
+"id": 201,
+"kind": "normal",
+"pos": Vector2(399.22958, 670.0972),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 3,
+&"contact_count": 6287,
+"from": Vector2(653, 177),
+"id": 205,
+"kind": "normal",
+"pos": Vector2(652.99896, 691.6129),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 24181,
+"id": 210,
+"kind": "heart",
+&"pos": Vector2(436.22244, 606.019),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 6335,
+"id": 211,
+"kind": "heart",
+&"pos": Vector2(67, 666.13245),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 1,
+&"contact_count": 87,
+&"id": 213,
+"kind": "strong",
+"pos": Vector2(393.15677, 783),
+&"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 4221,
+"id": 216,
+"kind": "heart",
+&"pos": Vector2(652.72644, 617.6124),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 1780,
+"id": 219,
+"kind": "heart",
+&"pos": Vector2(67.00234, 592.1323),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 6210,
+"id": 222,
+"kind": "heart",
+&"pos": Vector2(581.0705, 708.9999),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 14514,
+"id": 226,
+"kind": "heart",
+&"pos": Vector2(495.74313, 676.33325),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 1954,
+"id": 227,
+"kind": "normal",
+&"pos": Vector2(653, 543.61194),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 14524,
+"id": 229,
+"kind": "normal",
+&"pos": Vector2(510.17078, 603.759),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 14908,
+"id": 230,
+"kind": "heart",
+&"pos": Vector2(583.2612, 592.1679),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 816,
+"id": 232,
+"kind": "heart",
+&"pos": Vector2(67.00097, 438.83508),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 3860,
+"id": 233,
+"kind": "normal",
+&"pos": Vector2(653, 469.55627),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 3,
+&"contact_count": 40,
+"id": 234,
+"kind": "normal",
+&"pos": Vector2(140.14113, 427.5805),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 8771,
+"id": 237,
+"kind": "normal",
+&"pos": Vector2(546.2927, 528.0677),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 1,
+&"contact_count": 7028,
+"id": 238,
+"kind": "normal",
+&"pos": Vector2(473.2031, 539.6303),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 6370,
+"id": 239,
+"kind": "normal",
+&"pos": Vector2(579.4002, 461.8857),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 299,
+"id": 240,
+"kind": "normal",
+&"pos": Vector2(325.31165, 413.71155),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 1069,
+"id": 242,
+"kind": "normal",
+&"pos": Vector2(510.92877, 433.81766),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"color": 2,
+&"id": 243,
+"kind": "strong",
+"pos": Vector2(303.86673, 783),
+&"radius": 37.0
+}],
+"session_phase": "busy",
+"source": "res://evidence/balance/baseline/seed20261023-elite-pair0-avoid-intent.json",
+"source_sha256": "af215bbb302ec00b3e62418ca381196e27bf219c79298c5d1a3404e978bc4fed",
+"start_id": 159.0,
+"status": "UNRESOLVED reproduced",
+"survivors_before_refill": [{
+&"anchored": true,
+"color": 4,
+&"contact_count": 1,
+"from": Vector2(229.86673, 139),
+"id": 162,
+"kind": "heart",
+"pos": Vector2(229.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 0,
+"from": Vector2(155.86673, 215),
+"id": 164,
+"kind": "heart",
+"pos": Vector2(155.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 3,
+&"contact_count": 0,
+"from": Vector2(81.86673, 177),
+"id": 165,
+"kind": "normal",
+"pos": Vector2(81.86673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 127,
+"from": Vector2(348.51175, 215),
+"id": 168,
+"kind": "heart",
+"pos": Vector2(348.51175, 723.98456),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 48,
+"from": Vector2(118.86673, 139),
+"id": 170,
+"kind": "heart",
+"pos": Vector2(118.86673, 718.9141),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 7056,
+"from": Vector2(476.32953, 215),
+"id": 176,
+"kind": "heart",
+"pos": Vector2(494.74673, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 2572,
+"from": Vector2(155.86673, 177),
+"id": 181,
+"kind": "heart",
+"pos": Vector2(155.86673, 654.82825),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 2876,
+"from": Vector2(192.86673, 215),
+"id": 188,
+"kind": "heart",
+"pos": Vector2(229.87576, 654.789),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 14911,
+"from": Vector2(569.8272, 139),
+"id": 190,
+"kind": "heart",
+"pos": Vector2(581.11053, 783),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 0,
+&"contact_count": 7573,
+"from": Vector2(141, 253),
+"id": 191,
+"kind": "normal",
+"pos": Vector2(192.8237, 590.7445),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 15396,
+"from": Vector2(394.6845, 177),
+"id": 193,
+"kind": "heart",
+"pos": Vector2(443.9241, 729.1604),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 4,
+&"contact_count": 14642,
+"from": Vector2(311.51175, 253),
+"id": 195,
+"kind": "heart",
+"pos": Vector2(362.24088, 606.0055),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 2,
+&"contact_count": 11870,
+"from": Vector2(616, 177),
+"id": 197,
+"kind": "normal",
+"pos": Vector2(653.039, 765.61395),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 0,
+&"contact_count": 11224,
+"from": Vector2(357.6845, 177),
+"id": 201,
+"kind": "normal",
+"pos": Vector2(399.22958, 670.0972),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 3,
+&"contact_count": 6287,
+"from": Vector2(653, 177),
+"id": 205,
+"kind": "normal",
+"pos": Vector2(652.99896, 691.6129),
+"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 24181,
+"id": 210,
+"kind": "heart",
+&"pos": Vector2(436.22244, 606.019),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 6335,
+"id": 211,
+"kind": "heart",
+&"pos": Vector2(67, 666.13245),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+&"anchored": true,
+"color": 1,
+&"contact_count": 87,
+&"id": 213,
+"kind": "strong",
+"pos": Vector2(393.15677, 783),
+&"radius": 37.0,
+&"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 4221,
+"id": 216,
+"kind": "heart",
+&"pos": Vector2(652.72644, 617.6124),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 1780,
+"id": 219,
+"kind": "heart",
+&"pos": Vector2(67.00234, 592.1323),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 6210,
+"id": 222,
+"kind": "heart",
+&"pos": Vector2(581.0705, 708.9999),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 14514,
+"id": 226,
+"kind": "heart",
+&"pos": Vector2(495.74313, 676.33325),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 1954,
+"id": 227,
+"kind": "normal",
+&"pos": Vector2(653, 543.61194),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 14524,
+"id": 229,
+"kind": "normal",
+&"pos": Vector2(510.17078, 603.759),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 4,
+&"contact_count": 14908,
+"id": 230,
+"kind": "heart",
+&"pos": Vector2(583.2612, 592.1679),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 4,
+&"contact_count": 816,
+"id": 232,
+"kind": "heart",
+&"pos": Vector2(67.00097, 438.83508),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 1,
+&"contact_count": 3860,
+"id": 233,
+"kind": "normal",
+&"pos": Vector2(653, 469.55627),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": true,
+"color": 3,
+&"contact_count": 40,
+"id": 234,
+"kind": "normal",
+&"pos": Vector2(140.14113, 427.5805),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 8771,
+"id": 237,
+"kind": "normal",
+&"pos": Vector2(546.2927, 528.0677),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 1,
+&"contact_count": 7028,
+"id": 238,
+"kind": "normal",
+&"pos": Vector2(473.2031, 539.6303),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 6370,
+"id": 239,
+"kind": "normal",
+&"pos": Vector2(579.4002, 461.8857),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 0,
+&"contact_count": 299,
+"id": 240,
+"kind": "normal",
+&"pos": Vector2(325.31165, 413.71155),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"anchored": false,
+"color": 2,
+&"contact_count": 1069,
+"id": 242,
+"kind": "normal",
+&"pos": Vector2(510.92877, 433.81766),
+"radius": 37.0,
+"vel": Vector2(0, 0)
+}, {
+"color": 2,
+&"id": 243,
+"kind": "strong",
+"pos": Vector2(303.86673, 783),
+&"radius": 37.0
+}]
+}

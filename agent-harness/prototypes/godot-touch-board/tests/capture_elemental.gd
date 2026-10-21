@@ -3,6 +3,7 @@ extends SceneTree
 ## Uses legal greedy choices, never modifies board, RNG, HP, charge or phases.
 ## --capture labels MovieWriter output; absent it runs the same live flow.
 const PAIRS := [["pigment","lens"],["pigment","ash"],["lens","ash"]]
+const BalancePolicy = preload("res://tests/balance_policy.gd")
 var rewards: Array = PAIRS[0]
 var pair_index := 0
 var scene
@@ -17,6 +18,7 @@ var saw_mitigation := false
 var clear_count := 0
 var route_choice := "elite"
 var selected_policy := "intent-aware"
+var balance_mode := false
 var boss_turns_seen: Dictionary = {}
 
 func _initialize() -> void:
@@ -57,6 +59,9 @@ func snapshot(name: String) -> void:
 func gesture(point: Vector2, hold: float = 0.35) -> Dictionary:
 	scene.press(point,-1)
 	var preview: Dictionary = scene.session.selection.duplicate(true)
+	if balance_mode and scene.session.combat.encounter == 2 and preview.get("mode","") == "clear" and preview.get("valid",false):
+		await snapshot("preview-%02d"%(clear_count+1))
+		hold = maxf(hold,0.8)
 	await create_timer(hold).timeout
 	scene.release(point,-1)
 	return preview
@@ -68,6 +73,8 @@ func direct_count(plan: Dictionary) -> int:
 
 func best_clear() -> Dictionary:
 	var s = scene.session
+	if balance_mode:
+		return BalancePolicy.best_clear(s,selected_policy)
 	var best: Dictionary = {}
 	var best_value := -INF
 	for panel in s.panels:
@@ -137,19 +144,21 @@ func wait_resolution() -> void:
 
 func run() -> void:
 	movie = "--capture" in OS.get_cmdline_user_args()
+	balance_mode = "--balance" in OS.get_cmdline_user_args()
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--route="): route_choice = arg.substr(8)
 		if arg.begins_with("--policy="): selected_policy = arg.substr(9)
 		if arg.begins_with("--pair="): pair_index = int(arg.substr(7))
-	if route_choice not in ["safe","elite"] or selected_policy not in ["intent-aware","damage-first"] or pair_index not in [0,1,2]:
-		printerr("route must be safe/elite; policy intent-aware/damage-first")
+	var policies := ["intent-aware","immediate-damage","avoid-intent"] if balance_mode else ["intent-aware","damage-first"]
+	if route_choice not in ["safe","elite"] or selected_policy not in policies or pair_index not in [0,1,2]:
+		printerr("invalid route, policy or relic pair for capture mode")
 		quit(2)
 		return
 	rewards = PAIRS[pair_index]
 	var capture_seed := "20261021"
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--seed="): capture_seed = arg.substr(7)
-	output_dir = "res://evidence/elemental/capture-%s-%s-pair%d-%s-%s" % [capture_seed,route_choice,pair_index,selected_policy,"movie" if movie else "live"]
+	output_dir = "res://evidence/%s/capture-%s-%s-pair%d-%s-%s" % ["balance" if balance_mode else "elemental",capture_seed,route_choice,pair_index,selected_policy,"movie" if movie else "live"]
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_dir))
 	began_us = Time.get_ticks_usec()
 	scene = load("res://main.tscn").instantiate()
@@ -260,7 +269,7 @@ func run() -> void:
 		await snapshot("defeat" if scene.session.phase == "defeat" else "stopped")
 		await create_timer(2.0).timeout
 		if errors.is_empty() and scene.session.phase != "defeat": errors.append("did not reach terminal state: "+scene.session.phase)
-	var trace := {"method":"actual main.tscn, real press/release routing, natural _process/refill/attack; automated legal decisions, not hardware touch","movie":movie,"timing_note":"MovieWriter is fixed-frame evidence, not wall-clock performance; live timings include concurrent screenshot I/O" if movie else "live rendered wall-clock; screenshots/driver decisions add overhead, not a dedicated performance benchmark","seed":scene.run_seed,"rewards":rewards,"route":route_choice,"policy":selected_policy,"selection_note":"Ordinary seed/route/policy, no fixture. Compare selected capture to full 24-run records; movie and live are not performance benchmarks.","pair_index":pair_index,"shop_policy":"same as pure: safe pair0 heal, safe pair1/2 relic; elite pair0 heal then relic, pair1/2 relic then heal; skip unavailable/full HP","no_fixtures":true,"terminal":scene.session.phase,"errors":errors,"observed_counterattack":saw_attack,"observed_mitigation":saw_mitigation,"events":events,"timings":scene.timings.duplicate(true),"screenshots":snapshots,"final":state()}
+	var trace := {"method":"actual main.tscn, real press/release routing, natural _process/refill/attack; automated legal decisions, not hardware touch","movie":movie,"timing_note":"MovieWriter is fixed-frame evidence, not wall-clock performance; live timings include concurrent screenshot I/O" if movie else "live rendered wall-clock; screenshots/driver decisions add overhead, not a dedicated performance benchmark","seed":scene.run_seed,"rewards":rewards,"route":route_choice,"policy":selected_policy,"balance_comparison":balance_mode,"selection_note":"Normal seed/route/policy, no fixture; compare balance or elemental normal records. avoid-intent is adversarial diagnostic, not human skill. Movie and live are not performance benchmarks.","pair_index":pair_index,"shop_policy":"same as pure: safe pair0 heal, safe pair1/2 relic; elite pair0 heal then relic, pair1/2 relic then heal; skip unavailable/full HP","no_fixtures":true,"terminal":scene.session.phase,"errors":errors,"observed_counterattack":saw_attack,"observed_mitigation":saw_mitigation,"events":events,"timings":scene.timings.duplicate(true),"screenshots":snapshots,"final":state()}
 	var file := FileAccess.open(output_dir.path_join("trace.json"),FileAccess.WRITE)
 	file.store_string(JSON.stringify(trace,"  "))
 	print("CAPTURE_ELEMENTAL terminal=",scene.session.phase," clears=",clear_count," errors=",errors)
@@ -283,7 +292,8 @@ func observe_boss_turn() -> void:
 	for panel in s.panels:
 		var plan: Dictionary = s.plan_for(panel.id)
 		if not plan.get("valid",false): continue
-		var qualifies: bool = plan.weak_count >= 2 or plan.normal_count >= 8
+		var context: Dictionary = plan.combat_context
+		var qualifies: bool = plan.weak_count >= int(context.get("slam_weak_required",2)) or plan.normal_count >= int(context.get("slam_normal_required",8))
 		if qualifies: eligible += 1
 		candidates.append({"start_id":panel.id,"weak_count":plan.weak_count,"normal_count":plan.normal_count,"base_damage":plan.base_damage,"weak_bonus":plan.weak_bonus,"mitigates_intent":plan.mitigates_intent,"qualifies_raw_threshold":qualifies})
 	record("boss_turn_start",{"eligible_legal_starts":eligible,"candidates":candidates,"note":"Before skill/clear; multiple starts can identify same group, frozen intent may be plain."})

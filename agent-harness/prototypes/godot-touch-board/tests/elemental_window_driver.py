@@ -8,7 +8,7 @@ from pathlib import Path
 
 base = Path(__file__).resolve().parents[1]
 width, height = map(int, sys.argv[1:3])
-evidence = base / 'evidence' / 'elemental'
+evidence = base / 'evidence' / 'balance'
 evidence.mkdir(parents=True, exist_ok=True)
 request = Path('/tmp/chroma-elemental-window-request.json')
 ack = Path('/tmp/chroma-elemental-window-ack.json')

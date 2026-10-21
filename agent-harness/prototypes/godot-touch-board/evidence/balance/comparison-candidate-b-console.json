@@ -1,0 +1,344 @@
+{
+  "candidate_vs_baseline_changed_choices": [],
+  "policy_pair_comparison": [
+    {
+      "seed": 20261023,
+      "route": "elite",
+      "choices_identical": true,
+      "immediate_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      },
+      "intent_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      },
+      "immediate_hp": 18,
+      "intent_hp": 18
+    },
+    {
+      "seed": 20261022,
+      "route": "elite",
+      "choices_identical": false,
+      "immediate_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      },
+      "intent_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      },
+      "immediate_hp": 20,
+      "intent_hp": 20
+    },
+    {
+      "seed": 20261023,
+      "route": "safe",
+      "choices_identical": true,
+      "immediate_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      },
+      "intent_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      },
+      "immediate_hp": 20,
+      "intent_hp": 20
+    },
+    {
+      "seed": 20261021,
+      "route": "elite",
+      "choices_identical": true,
+      "immediate_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 1,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      },
+      "intent_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 1,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      },
+      "immediate_hp": 20,
+      "intent_hp": 20
+    },
+    {
+      "seed": 20261021,
+      "route": "safe",
+      "choices_identical": true,
+      "immediate_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 7
+      },
+      "intent_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 7
+      },
+      "immediate_hp": 20,
+      "intent_hp": 20
+    },
+    {
+      "seed": 20261022,
+      "route": "safe",
+      "choices_identical": false,
+      "immediate_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      },
+      "intent_summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      },
+      "immediate_hp": 20,
+      "intent_hp": 20
+    }
+  ],
+  "baseline_core": 18,
+  "candidate_core": 18,
+  "changed_early_selection_or_boss_entry": [],
+  "candidate_immediate_examples": [
+    {
+      "seed": 20261023,
+      "route": "elite",
+      "terminal": "victory",
+      "hp": 18,
+      "boss_attacks": [
+        4,
+        6
+      ],
+      "natural_failed_slam": false,
+      "actual_mitigated_slam": true,
+      "summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      }
+    },
+    {
+      "seed": 20261022,
+      "route": "elite",
+      "terminal": "victory",
+      "hp": 20,
+      "boss_attacks": [
+        4,
+        6
+      ],
+      "natural_failed_slam": false,
+      "actual_mitigated_slam": true,
+      "summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "seed": 20261023,
+      "route": "safe",
+      "terminal": "victory",
+      "hp": 20,
+      "boss_attacks": [
+        4,
+        6
+      ],
+      "natural_failed_slam": false,
+      "actual_mitigated_slam": true,
+      "summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      }
+    },
+    {
+      "seed": 20261021,
+      "route": "elite",
+      "terminal": "victory",
+      "hp": 20,
+      "boss_attacks": [
+        4,
+        6
+      ],
+      "natural_failed_slam": false,
+      "actual_mitigated_slam": true,
+      "summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 1,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "seed": 20261021,
+      "route": "safe",
+      "terminal": "victory",
+      "hp": 20,
+      "boss_attacks": [
+        4,
+        6
+      ],
+      "natural_failed_slam": false,
+      "actual_mitigated_slam": true,
+      "summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 7
+      }
+    },
+    {
+      "seed": 20261022,
+      "route": "safe",
+      "terminal": "victory",
+      "hp": 20,
+      "boss_attacks": [
+        4,
+        6
+      ],
+      "natural_failed_slam": false,
+      "actual_mitigated_slam": true,
+      "summary": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    }
+  ],
+  "candidate_has_immediate_natural_failed_slam": false,
+  "candidate_has_same_run_failure_and_mitigation": false,
+  "scope": "Bounded candidate comparison; HP48 and 10→4/plain6 unchanged. Baseline stall remains incomplete, not defeat. No forced example; bounded candidate batch only.",
+  "limitation": "Same initial seeds and first-two-fight choices/resources/RNG confirmed above; later boss choices/boards can diverge. No human-skill or balance claim."
+}

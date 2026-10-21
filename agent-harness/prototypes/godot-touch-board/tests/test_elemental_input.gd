@@ -12,6 +12,10 @@ func panel(id: int, pos: Vector2, color: int, kind: String = "normal") -> Dictio
 	return {"id":id, "pos":pos, "color":color, "kind":kind, "radius":37.0}
 func pair(color: int, kind: String = "normal") -> Array:
 	return [panel(1,Vector2(160,450),color,kind),panel(2,Vector2(234,450),color,kind)]
+func triple(color: int) -> Array:
+	var result: Array=pair(color)
+	result.append(panel(3,Vector2(308,450),color))
+	return result
 func fixture(scene, panels: Array, fight: int = 0, route: String = "safe") -> void:
 	scene.reset_board()
 	scene.set_process(false)
@@ -67,11 +71,39 @@ func run() -> void:
 	check(scene.session.combat.enemy_hp == 21 and scene.session.actions == 1, "duplicate release cannot apply weakness twice")
 	check(scene.UI.BOARD_SCREEN == Rect2(30,268,660,530) and scene.board_to_screen(scene.BOARD.end) == Vector2(690,798), "two status lines preserve full physical board visibility")
 
+	# Final restored contract: weak pairs or eight ordinary panels qualify;
+	# seven ordinary panels do not. floor(W/2) damage remains unchanged.
+	fixture(scene,pair(3),2)
+	scene.press(point(scene,1),-1)
+	preview=scene.session.selection.duplicate(true)
+	check(scene.session.combat.damage_context().intent=="slam" and scene.session.combat.incoming_damage==10 and preview.mitigates_intent, "weak pair alone restores approachable slam mitigation")
+	check(preview.weak_count==2 and preview.weak_bonus==1 and preview.damage==3, "restored weak pair keeps unchanged damage bonus")
+	scene.release(point(scene,1),-1)
+	check(scene.session.combat.enemy_hp==45 and scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4, "restored weak pair commits damage and mitigation")
+	var eight: Array=[]
+	for i in range(8): eight.append(panel(i+1,Vector2(110+i*74,450),0))
+	fixture(scene,eight,2)
+	scene.press(point(scene,1),-1)
+	check(scene.session.selection.normal_count==8 and scene.session.selection.mitigates_intent and scene.session.combat.damage_context().intent=="slam", "restored eight ordinary panels enable slam mitigation")
+	var seven: Array=eight.slice(0,7)
+	fixture(scene,seven,2)
+	scene.press(point(scene,1),-1)
+	check(scene.session.selection.normal_count==7 and not scene.session.selection.mitigates_intent and scene.session.combat.damage_context().intent=="plain", "seven ordinary panels remain below restored threshold")
+	var ten: Array=[]
+	for i in range(10): ten.append(panel(i+1,Vector2(110+(i%5)*74,450+(i/5)*74),0))
+	fixture(scene,ten,2)
+	scene.press(point(scene,1),-1)
+	preview=scene.session.selection.duplicate(true)
+	check(preview.normal_count==10 and preview.weak_count==0 and preview.mitigates_intent and scene.session.combat.damage_context().intent=="slam", "ten ordinary panels still qualify without weakness")
+	check(preview.combat_context.get("slam_weak_required",-1)==2 and preview.combat_context.get("slam_normal_required",-1)==8, "held snapshot records canonical restored two-weak eight-normal requirements")
+	scene.release(point(scene,1),-1)
+	check(scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4 and scene.session.combat.enemy_hp==38, "ten ordinary committed clear reduces slam without changing base damage")
+
 	for cancel_kind in ["outside", "focus", "system"]:
-		fixture(scene, pair(3), 2)
+		fixture(scene, triple(3), 2)
 		p = point(scene, 1)
 		var before: Dictionary = scene.session.combat.damage_context().duplicate(true)
-		check(before.intent == "slam" and before.incoming_damage == 10, "boss feasible weak pair advertises slam")
+		check(before.intent == "slam" and before.incoming_damage == 10, "boss feasible weak triple advertises slam")
 		if cancel_kind == "system":
 			touch(scene,p,0,true)
 			touch(scene,p,0,false,true)
@@ -85,7 +117,7 @@ func run() -> void:
 		check(scene.session.actions == 0 and scene.session.damage_total == 0 and scene.session.combat.enemy_hp == 48, cancel_kind + " cancellation causes no damage/action")
 		check(scene.session.combat.damage_context() == before and not scene.session.combat.mitigation_success, cancel_kind + " cancellation cannot latch mitigation")
 
-	fixture(scene,pair(3),2)
+	fixture(scene,triple(3),2)
 	p=point(scene,1)
 	scene.session.skill_mode=true
 	scene.session.skill_color=0
@@ -94,13 +126,13 @@ func run() -> void:
 	check(not scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==10, "skill cannot satisfy boss mitigation")
 	check(scene.session.charge==0 and scene.session.panels[0].color==0, "skill still consumes charge and converts")
 
-	fixture(scene,pair(3),2)
+	fixture(scene,triple(3),2)
 	p=point(scene,1)
 	scene.press(p,-1)
 	preview=scene.session.selection.duplicate(true)
-	check(preview.weak_count==2 and preview.weak_bonus==1 and preview.mitigates_intent, "single weak pair qualifies boss mitigation")
+	check(preview.weak_count==3 and preview.weak_bonus==1 and preview.mitigates_intent, "single weak triple qualifies boss mitigation")
 	scene.release(p,-1)
-	check(scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4 and scene.session.combat.enemy_hp==45, "committed weak pair latches reduced attack and damage")
+	check(scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4 and scene.session.combat.enemy_hp==44, "committed weak triple latches reduced attack and damage")
 
 	# Weakness is evaluated after core conversion; the core itself adds no W.
 	var core_board: Array=[panel(1,Vector2(160,450),3,"core"),panel(2,Vector2(234,450),0),panel(3,Vector2(308,450),3),panel(4,Vector2(160,600),4,"heart")]
@@ -122,8 +154,8 @@ func run() -> void:
 	check(scene.session.hp==24 and scene.session.damage_total==0 and scene.session.combat.enemy_hp==48 and scene.session.actions==1, "heart action heals without weakness damage")
 
 	# No accumulation: each chosen solo core removes one weak normal. A separate
-	# untouched pair makes slam feasible at turn start, without being selected.
-	var split: Array=[panel(1,Vector2(110,400),3),panel(2,Vector2(184,400),3),panel(3,Vector2(110,550),3,"core"),panel(4,Vector2(184,550),3),panel(5,Vector2(380,550),3,"core"),panel(6,Vector2(454,550),3),panel(7,Vector2(110,710),0),panel(8,Vector2(184,710),0)]
+	# untouched triple makes slam feasible at turn start, without being selected.
+	var split: Array=[panel(1,Vector2(110,400),3),panel(2,Vector2(184,400),3),panel(9,Vector2(258,400),3),panel(3,Vector2(110,550),3,"core"),panel(4,Vector2(184,550),3),panel(5,Vector2(380,550),3,"core"),panel(6,Vector2(454,550),3),panel(7,Vector2(110,710),3,"core"),panel(8,Vector2(184,710),3)]
 	fixture(scene,split,2)
 	for id in [3,5]:
 		p=point(scene,id)
@@ -132,7 +164,9 @@ func run() -> void:
 		scene.release(p,-1)
 		scene.session.finish_refill()
 		check(not scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==10, "weak normals across separate actions never accumulate")
-	click(scene,point(scene,7))
+	scene.press(point(scene,7),-1)
+	check(scene.session.selection.weak_count==1 and not scene.session.selection.mitigates_intent, "third separate weak normal still cannot accumulate mitigation")
+	scene.release(point(scene,7),-1)
 	scene.session.finish_refill()
 	check(scene.session.phase=="enemy_attack" and scene.session.hp==20 and scene.session.combat.last_attack_damage==10, "unmet slam resolves ten damage after third action")
 	scene.session.finish_attack()
@@ -148,8 +182,8 @@ func run() -> void:
 		scene.release(point(scene,1),-1)
 		check(scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==(3 if route=="safe" else 4), route+" direct-four commit preserves reduction")
 
-	fixture(scene,pair(3),2)
-	scene.session.combat.enemy_hp=3
+	fixture(scene,triple(3),2)
+	scene.session.combat.enemy_hp=4
 	scene.session.combat.actions_in_turn=2
 	scene.session.actions=2
 	click(scene,point(scene,1))
@@ -157,7 +191,7 @@ func run() -> void:
 	check(scene.session.phase=="victory" and scene.session.hp==30 and scene.session.combat.attacks_total==0, "third-action elemental kill wins without retaliation")
 
 	for phase in ["route","shop"]:
-		fixture(scene,pair(3),2)
+		fixture(scene,triple(3),2)
 		scene.press(point(scene,1),-1)
 		scene.cancel_input()
 		scene.session.phase=phase

@@ -62,10 +62,10 @@ func _init() -> void:
 	check(hearts.heal_raw==8 and hearts.heal_effective==2 and hearts.heal_overflow==6 and hearts.mitigates_intent, "heart healing unchanged and direct-four intent still qualifies")
 	var cores: Dictionary=Rules.plan(line(4,0,"core"),0,10,20,[],context(0,"direct4"))
 	check(cores.weak_count==0 and cores.normal_count==0 and cores.damage==0 and cores.mitigates_intent, "existing cores have no intrinsic damage but direct-four qualifies")
-	for count in [7,8]:
+	for count in [7,8,9,10]:
 		var r: Dictionary=Rules.plan(line(count,1),0,10,20,[],context(0,"slam"))
 		check(r.weak_count==0 and r.mitigates_intent==(count>=8), "slam normal threshold %d uses actual normal removals" % count)
-	for w in [1,2]:
+	for w in [1,2,3]:
 		var panels: Array=[p(0,0,0,"core")]
 		for id in range(1,w+1): panels.append(p(id,id*20))
 		var r: Dictionary=Rules.plan(panels,0,10,20,[],context(0,"slam"))
@@ -85,6 +85,15 @@ func _init() -> void:
 	frozen_context.nested.ids.append(3)
 	check(frozen.combat_context.weakness_color==0 and frozen.combat_context.intent=="slam" and frozen.combat_context.nested.ids==[1,2], "combat context is deeply frozen")
 	check(frozen.damage==3 and frozen.mitigates_intent and conversion==before, "later context mutation cannot change computed outcome or input panels")
+	var custom_context:=context(0,"slam")
+	custom_context.slam_weak_required=4
+	custom_context.slam_normal_required=11
+	var custom: Dictionary=Rules.plan(line(3),0,10,20,[],custom_context)
+	custom_context.slam_weak_required=2
+	check(not custom.mitigates_intent and custom.combat_context.slam_weak_required==4, "explicit frozen weakness threshold overrides canonical default")
+	custom_context.slam_weak_required=4
+	var custom_normals: Dictionary=Rules.plan(line(10,1),0,10,20,[],custom_context)
+	check(not custom_normals.mitigates_intent, "explicit frozen normal threshold overrides canonical default")
 	var skill: Dictionary=Rules.skill_plan(line(4),0,1)
 	check(not skill.has("damage") and not skill.has("weak_bonus"), "free skill does not gain elemental damage fields")
 	print("ELEMENTAL RULES checks=",checks," failures=",failures)

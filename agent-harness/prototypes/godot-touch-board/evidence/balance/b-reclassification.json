@@ -1,0 +1,64 @@
+{
+  "method": "Offline reclassification of saved baseline current-board legal candidate fields and actual executed plans only; no game rerun/new search. Existence is exact for saved plans, outcome is NOT predicted. Full candidate removed sets were not saved, so unique eligible-set count for B cannot be recovered exactly; no fake deduplication. Actual executed plans retain unique removed IDs.",
+  "policies": {
+    "immediate-damage": {
+      "baseline_scheduled_slam_boards": 12,
+      "A_no_eligible_current_start": 8,
+      "B_no_eligible_current_start": 0,
+      "actual_executed_latches": 12,
+      "A_existing_latches_still_qualify": 8,
+      "B_existing_latches_still_qualify": 11,
+      "B_disqualified_executed_plans": [
+        {
+          "W": 0,
+          "N": 9,
+          "removed_ids": [
+            161,
+            164,
+            168,
+            204,
+            215,
+            199,
+            219,
+            224,
+            235
+          ]
+        }
+      ]
+    },
+    "intent-aware": {
+      "baseline_scheduled_slam_boards": 12,
+      "A_no_eligible_current_start": 6,
+      "B_no_eligible_current_start": 0,
+      "actual_executed_latches": 12,
+      "A_existing_latches_still_qualify": 8,
+      "B_existing_latches_still_qualify": 11,
+      "B_disqualified_executed_plans": [
+        {
+          "W": 0,
+          "N": 9,
+          "removed_ids": [
+            161,
+            164,
+            168,
+            204,
+            215,
+            199,
+            219,
+            224,
+            235
+          ]
+        }
+      ]
+    },
+    "avoid-intent": {
+      "baseline_scheduled_slam_boards": 11,
+      "A_no_eligible_current_start": 9,
+      "B_no_eligible_current_start": 0,
+      "actual_executed_latches": 0,
+      "A_existing_latches_still_qualify": 0,
+      "B_existing_latches_still_qualify": 0,
+      "B_disqualified_executed_plans": []
+    }
+  }
+}

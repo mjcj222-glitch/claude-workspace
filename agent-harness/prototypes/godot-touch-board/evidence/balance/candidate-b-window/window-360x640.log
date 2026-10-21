@@ -1,0 +1,36 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS default actual mode
+PASS two status lines preserve full translated board extent
+PASS real initial board contains a legal weak-color group
+PASS OS driver acknowledged first_down
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.591}
+PASS OS press previews base plus weakness
+PASS OS driver acknowledged first_up
+PASS OS release applies exact weakness snapshot
+PASS OS driver acknowledged first_reset
+PASS OS reset clears elemental damage
+ELEMENTAL_INTENT_FIXTURES: subsequent fights selected explicitly; generated boards remain unchanged
+PASS safe weakness color mapped
+PASS OS driver acknowledged safe_read
+PASS elite weakness color mapped
+PASS OS driver acknowledged elite_read
+PASS boss feasible opening advertises slam ten and water weakness
+PASS generated boss fixture has legal weak pair
+PASS OS driver acknowledged boss_down_cancel
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":20.447}
+PASS OS held boss preview reports mitigation eligibility
+PASS OS driver acknowledged boss_outside_up
+PASS OS outside release cancels boss damage and mitigation
+PASS OS driver acknowledged boss_down
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.029}
+PASS OS driver acknowledged boss_up
+PASS OS boss qualifying commit applies exact damage and reduces slam
+PASS OS driver acknowledged boss_success_read
+PASS mitigation presentation does not spend another action
+PASS OS driver acknowledged boss_reset
+PASS OS reset after boss restores first-fight context
+ELEMENTAL_WINDOW checks=26 failures=0 size=(360, 640)

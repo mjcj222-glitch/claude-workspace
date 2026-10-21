@@ -102,7 +102,7 @@ func record_clear(plan: Dictionary) -> void:
 	enemy_hp = maxi(0, enemy_hp - maxi(0, int(plan.get("damage", 0))))
 	actions_in_turn += 1
 	if mitigation_active:
-		if intent == "slam" and (int(plan.get("weak_count",0)) >= 2 or int(plan.get("normal_count",0)) >= 8):
+		if intent == "slam" and Rules.slam_mitigated(int(plan.get("weak_count",0)), int(plan.get("normal_count",0)), plan.get("combat_context", damage_context())):
 			mitigation_success = true
 			incoming_damage = 4
 		elif intent == "direct4" and _direct_count(plan) >= 4:
@@ -141,7 +141,8 @@ func telegraph_text() -> String:
 		if mitigation_success:
 			return "조건 성공 · 다음 공격 %d" % incoming_damage
 		if intent == "slam":
-			return "약점 2개 또는 일반 패널 8개를 한 번에 지우면 강타 10 → 4"
+			var context := damage_context()
+			return "약점 %d개 또는 일반 패널 %d개를 한 번에 지우면 강타 10 → 4" % [context.slam_weak_required, context.slam_normal_required]
 		return "4개 이상 연결을 한 번 지우면 공격 %d → %d" % [7 + _route_attack_bonus(), 3 + _route_attack_bonus()]
 	return "3회 소거 후 공격 %d" % incoming_damage
 
@@ -150,4 +151,5 @@ var intent: String = "plain"
 var intent_serial: int = 0
 func damage_context() -> Dictionary:
 	return {"weakness_color":weak_color,"intent":intent,"intent_serial":intent_serial,
-		"incoming_damage":incoming_damage,"mitigation_success":mitigation_success}
+		"incoming_damage":incoming_damage,"mitigation_success":mitigation_success,
+		"slam_weak_required":Rules.SLAM_WEAK_REQUIRED,"slam_normal_required":Rules.SLAM_NORMAL_REQUIRED}

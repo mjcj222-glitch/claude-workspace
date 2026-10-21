@@ -355,7 +355,7 @@ static func intent_lines(context:Dictionary)->Array[String]:
 	var intent: String = context.get("intent","plain")
 	if intent == "slam":
 		if context.get("mitigation_success",false): return ["강타 약화 · 피해%d" % incoming, "이번 턴 동안 약화를 유지해요"]
-		return ["강타 10 → 4: 한 번에 약점 2개", "또는 공격 패널 8개 소거"]
+		return ["강타 10 → 4: 한 번에 약점 %d개" % int(context.get("slam_weak_required",2)), "또는 공격 패널 %d개 소거" % int(context.get("slam_normal_required",8))]
 	if intent == "direct4":
 		if context.get("mitigation_success",false): return ["조건 성공 · 다음 공격 %d" % incoming, ""]
 		return ["4개 이상 연결을 한 번 지우면 공격 %d → %d" % [incoming,incoming-4], ""]

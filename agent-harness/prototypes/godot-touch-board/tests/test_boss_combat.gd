@@ -51,8 +51,8 @@ func _init() -> void:
 	c.next_turn(board(7,0))
 	check(c.turn == 2 and c.fallback_plain and c.intent == "plain" and c.incoming_damage == 6,"seven nonweak normals cannot enable slam")
 	serial = c.intent_serial
-	c.prepare_turn(board(8,0))
-	c.record_clear(plan(c,8,0))
+	c.prepare_turn(board(10,0))
+	c.record_clear(plan(c,10,0))
 	check(c.fallback_plain and not c.mitigation_success and c.incoming_damage == 6 and c.intent_serial == serial,"later board growth cannot activate fallback turn condition")
 	check(attack(c) == 6,"fallback turn remains plain six")
 	c.start_fight(2,board(8,0))
@@ -61,11 +61,11 @@ func _init() -> void:
 	check(not c.mitigation_success,"seven actual removed normals do not satisfy eight threshold")
 	c.record_clear(plan(c,2,0))
 	check(not c.mitigation_success,"normal counts from separate actions never accumulate")
-	c.record_clear(plan(c,8,0))
+	c.record_clear(plan(c,10,0))
 	check(c.mitigation_success and c.incoming_damage == 4 and c.resolve() == "attack","third action may satisfy slam before retaliation")
 	check(c.take_attack() == 4,"third-action mitigation uses reduced damage")
 	for kind in ["heart","core"]:
-		c.start_fight(2,board(8,3,kind))
+		c.start_fight(2,board(10,3,kind))
 		check(c.fallback_plain and c.incoming_damage == 6,"heart/core bodies never count as ordinary boss opportunities")
 	var single: Array = board(2,3)
 	single[0].kind = "core"
@@ -82,7 +82,7 @@ func _init() -> void:
 	var skill: Dictionary = plan(c,2,3)
 	skill["mode"] = "skill"
 	c.record_clear(skill)
-	c.record_clear({"valid":false,"damage":99,"weak_count":2,"normal_count":8})
+	c.record_clear({"valid":false,"damage":99,"weak_count":3,"normal_count":10})
 	check(not c.mitigation_success and c.actions_in_turn == 0 and c.enemy_hp == 48,"skill and invalid plans never damage or mitigate")
 	c.record_clear(empty_clear());c.record_clear(empty_clear())
 	c.enemy_hp = 3
@@ -93,26 +93,42 @@ func _init() -> void:
 	check(c.enemies_defeated == wins,"boss win counts once")
 	# The eligibility query and committed calculation both include ordinary
 	# panels reached through an existing core, beyond its direct group.
-	var normal_chain: Array = board(9,0)
+	var normal_chain: Array = board(11,0)
 	normal_chain[0].kind = "core"
 	normal_chain[1].color = 1
 	c.start_fight(2,normal_chain)
 	var chain_plan: Dictionary = Rules.plan(normal_chain,0,0,30,[],c.damage_context())
-	check(chain_plan.direct.size() == 1 and chain_plan.normal_count == 8 and c.intent == "slam", "solo core reaching eight ordinary panels enables slam fairly")
+	check(chain_plan.direct.size() == 1 and chain_plan.normal_count == 10 and c.intent == "slam", "solo core reaching ten ordinary panels enables slam fairly")
 	c.record_clear(chain_plan)
 	check(c.mitigation_success and c.incoming_damage == 4, "full chain ordinary count satisfies slam on one action")
-	var weak_chain: Array = board(3,0)
+	var weak_chain: Array = board(4,0)
 	weak_chain[0].kind = "strong"
 	weak_chain[0].color = 3
+	weak_chain[3].color = 3
 	c.start_fight(2,weak_chain)
 	chain_plan = Rules.plan(weak_chain,0,0,30,[],c.damage_context())
-	check(chain_plan.weak_count == 2 and chain_plan.normal_count == 2 and c.intent == "slam", "final converted weak colors make canonical chain eligible")
+	check(chain_plan.weak_count == 3 and chain_plan.normal_count == 3 and c.intent == "slam", "final converted weak colors make canonical chain eligible")
 	c.record_clear(chain_plan)
 	check(c.mitigation_success, "converted weak chain commits same advertised opportunity")
 	var skill_only: Array = board(2,0)
 	skill_only[1].color = 3
 	c.start_fight(2,skill_only)
 	check(c.fallback_plain and c.intent == "plain", "future skill conversion is not a current legal slam opportunity")
+	# A held plan owns its exact thresholds, not a later/default recomputation.
+	c.start_fight(2,board(3,3))
+	var held_context: Dictionary = c.damage_context()
+	held_context.slam_weak_required=4
+	held_context.slam_normal_required=11
+	var held: Dictionary = Rules.plan(board(3,3),0,0,30,[],held_context)
+	held_context.slam_weak_required=2
+	c.record_clear(held)
+	check(not held.mitigates_intent and not c.mitigation_success and c.incoming_damage==10, "commit uses held threshold four instead of default two")
+	c.start_fight(2,board(3,3))
+	held_context=c.damage_context()
+	held_context.slam_weak_required=2
+	held=Rules.plan(board(2,3),0,0,30,[],held_context)
+	c.record_clear(held)
+	check(held.mitigates_intent and c.mitigation_success and c.incoming_damage==4, "commit honors frozen qualifying threshold instead of live default")
 	var reset = Combat.new()
 	check(reset.intent_serial == 0 and reset.attacks_total == 0,"new combat resets serial and cumulative attacks")
 	print("BOSS_COMBAT checks=",checks," failures=",failures)

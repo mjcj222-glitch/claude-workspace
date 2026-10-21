@@ -1,0 +1,6 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL combat snapshot publishes current exact thresholds
+FAIL eight nonweak normals retain fair alternate path
+FAIL qualifying killing action still wins before retaliation
+BALANCE_BOUNDARIES checks=23 failures=3

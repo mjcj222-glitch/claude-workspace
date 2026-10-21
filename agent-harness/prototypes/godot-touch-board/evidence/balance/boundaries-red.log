@@ -1,0 +1,12 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL snapshot W2 boundary uses ordinary final colors and excludes core
+FAIL snapshot normal8 boundary
+FAIL snapshot normal9 boundary
+FAIL weak pair alone no longer offers slam
+FAIL combat snapshot publishes current exact thresholds
+FAIL separate weak pairs do not accumulate mitigation
+FAIL nine nonweak normals have ordinary-six fallback
+FAIL telegraph exposes both current boundaries
+FAIL telegraph reads immutable context rather than unrelated live constants
+BALANCE_BOUNDARIES checks=23 failures=9
