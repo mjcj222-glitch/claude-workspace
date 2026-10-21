@@ -13,9 +13,9 @@ func run() -> void:
 				best = p
 				best_size = plan.removed.size()
 		if best.is_empty(): break
-		scene.press(best.pos,-1)
+		scene.press(scene.board_to_screen(best.pos),-1)
 		await create_timer(0.15).timeout
-		scene.release(best.pos,-1)
+		scene.release(scene.board_to_screen(best.pos),-1)
 		while scene.session.phase == "busy": await process_frame
 		if scene.session.phase != "ready":
 			printerr("BENCHMARK stalled")
@@ -34,16 +34,16 @@ func run() -> void:
 			break
 	scene.visual = scene.session.panels.duplicate(true)
 	await process_frame
-	scene.press(normals[0].pos,-1)
+	scene.press(scene.board_to_screen(normals[0].pos),-1)
 	await create_timer(0.15).timeout
-	scene.release(normals[0].pos,-1)
+	scene.release(scene.board_to_screen(normals[0].pos),-1)
 	while scene.session.phase == "busy": await process_frame
 	if scene.session.phase != "ready":
 		printerr("BENCHMARK stalled")
 		quit(1)
 		return
-	var output := "res://evidence/performance/before.json" if "--profile-before" in OS.get_cmdline_user_args() else "res://evidence/performance/after.json"
-	var file := FileAccess.open(output if "--profile-before" in OS.get_cmdline_user_args() or "--profile-after" in OS.get_cmdline_user_args() else "res://evidence/motion-fix/live-timings.json" if "--motion-fix" in OS.get_cmdline_user_args() else "res://evidence/live-timings.json", FileAccess.WRITE)
+	var output := "res://evidence/polish/live-timings.json" if "--polish" in OS.get_cmdline_user_args() else "res://evidence/performance/before.json" if "--profile-before" in OS.get_cmdline_user_args() else "res://evidence/performance/after.json"
+	var file := FileAccess.open(output if "--profile-before" in OS.get_cmdline_user_args() or "--profile-after" in OS.get_cmdline_user_args() or "--polish" in OS.get_cmdline_user_args() else "res://evidence/motion-fix/live-timings.json" if "--motion-fix" in OS.get_cmdline_user_args() else "res://evidence/live-timings.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify({"renderer":"llvmpipe software OpenGL", "method":"live rendered process frames; engine-dispatched input, no movie mode", "timings":scene.timings},"  "))
 	await create_timer(0.3).timeout
 	quit()

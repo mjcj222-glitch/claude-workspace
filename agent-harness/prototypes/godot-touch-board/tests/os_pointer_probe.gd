@@ -7,7 +7,7 @@ func run() -> void:
 	for p in scene.session.panels:
 		if scene.Rules.plan(scene.session.panels,p.id,scene.session.hp,scene.session.max_hp).valid:
 			var f := FileAccess.open("/tmp/chroma-os-point.json",FileAccess.WRITE)
-			f.store_string(JSON.stringify({"x":p.pos.x,"y":p.pos.y}))
+			f.store_string(JSON.stringify({"x":scene.board_to_screen(p.pos).x,"y":scene.board_to_screen(p.pos).y}))
 			f.close()
 			break
 	await create_timer(8.0).timeout

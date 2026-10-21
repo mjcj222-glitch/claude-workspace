@@ -28,7 +28,7 @@ func run() -> void:
 	var second := InputEventScreenTouch.new()
 	second.index = 1
 	second.pressed = true
-	second.position = chosen.pos
+	second.position = scene.board_to_screen(chosen.pos)
 	scene._input(second)
 	check(scene.session.selection.is_empty(), "UI/background first finger blocks extra finger")
 	second.pressed = false
@@ -38,13 +38,13 @@ func run() -> void:
 	var down := InputEventScreenTouch.new()
 	down.index = 0
 	down.pressed = true
-	down.position = chosen.pos
+	down.position = scene.board_to_screen(chosen.pos)
 	scene._input(down)
 	check(not scene.session.selection.is_empty(), "real touch handler selects")
 	var other := InputEventScreenTouch.new()
 	other.index = 1
 	other.pressed = true
-	other.position = chosen.pos
+	other.position = scene.board_to_screen(chosen.pos)
 	scene._input(other)
 	check(scene.session.owner == 0, "real second touch ignored")
 	down.pressed = false

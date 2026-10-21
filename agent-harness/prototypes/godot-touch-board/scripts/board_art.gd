@@ -1,4 +1,6 @@
 extends RefCounted
+const HERO_TEXTURE = preload("res://assets/alchemist-portrait-v1.png")
+const TARGET_TEXTURE = preload("res://assets/training-jelly-golem-v1.png")
 ## Original approved atlas panels with immediate-mode selection/character art.
 ## Opaque panel bodies match the circular contact envelope.
 
@@ -94,46 +96,22 @@ static func draw_panel(canvas: CanvasItem, panel: Dictionary, time: float, empha
 			_star(canvas, center+Vector2(radius*0.54,radius*0.52), radius*0.20, Color("e4fff1"))
 
 static func draw_hero(canvas: CanvasItem, center: Vector2, time: float, active: bool) -> void:
-	# Original little pigment alchemist, limited to about 90 x 96 pixels.
-	var glow := 0.12 + 0.05*sin(time*2)
+	# Face-led portrait crops within the supplied original, not a new character.
+	var portrait := Rect2(center-Vector2(65,56),Vector2(130,112))
+	canvas.draw_rect(portrait,Color("1e343b"))
+	canvas.draw_texture_rect_region(HERO_TEXTURE,portrait,Rect2(130,0,780,672))
+	canvas.draw_rect(portrait,Color("c4b68a") if not active else Color("bffff0"),false,2.0)
 	if active:
-		for i in range(4):
-			_ring(canvas, center, 44+i*4, Color(0.40,1.0,0.86,glow*(1-i/4.0)), 2)
-	_ellipse(canvas, center+Vector2(0,35), Vector2(34,9), Color(0,0,0,0.4))
-	_poly(canvas, [Vector2(-25,30),Vector2(-18,2),Vector2(0,-9),Vector2(20,3),Vector2(28,31),Vector2(0,39)], Color("243b54"), center)
-	_poly(canvas, [Vector2(-16,7),Vector2(0,14),Vector2(16,5),Vector2(13,32),Vector2(-13,32)], Color("67e0c0"), center)
-	_poly(canvas, [Vector2(-15,9),Vector2(-3,16),Vector2(-10,25),Vector2(-21,4)], Color("d3fff0"), center)
-	_poly(canvas, [Vector2(14,8),Vector2(3,16),Vector2(10,25),Vector2(21,5)], Color("a9f5e1"), center)
-	canvas.draw_circle(center+Vector2(0,-13),22,Color("493659"))
-	_ellipse(canvas,center+Vector2(1,-9),Vector2(16,19),Color("f5c6a1"))
-	_poly(canvas,[Vector2(-20,-15),Vector2(-14,-35),Vector2(4,-39),Vector2(21,-24),Vector2(17,-8),Vector2(5,-24),Vector2(-3,-15),Vector2(-6,-26)],Color("edebfa"),center)
-	_poly(canvas,[Vector2(-17,-26),Vector2(-9,-42),Vector2(11,-41),Vector2(23,-26),Vector2(15,-18),Vector2(-6,-23)],Color("33475c"),center)
-	canvas.draw_arc(center+Vector2(0,-26),19,PI*1.0,PI*1.9,16,Color("94f2d3"),3,true)
-	canvas.draw_circle(center+Vector2(-5,-9),1.9,Color("26344e"))
-	canvas.draw_circle(center+Vector2(8,-9),1.9,Color("26344e"))
-	canvas.draw_arc(center+Vector2(2,-3),5,0.3,2.5,12,Color("b37771"),1.3,true)
-	canvas.draw_line(center+Vector2(23,20),center+Vector2(37,-13),Color("dab572"),5,true)
-	_poly(canvas,[Vector2(32,-12),Vector2(36,-25),Vector2(43,-25),Vector2(42,-11),Vector2(36,-8)],Color("69ebd0"),center)
-	canvas.draw_circle(center+Vector2(27,13),6,Color("f5c6a1"))
-	for i in range(3):
-		canvas.draw_circle(center+Vector2(-10+i*10,27),2.7,PALETTE[i])
+		for i in range(3):
+			canvas.draw_rect(portrait.grow(3+i*3),Color(0.45,1.0,0.85,0.18/(i+1)),false,2.0)
 
 static func draw_target(canvas: CanvasItem, center: Vector2, time: float, hit: float) -> void:
-	# Passive lacquered training construct, no attack animation.
-	var p := center + Vector2(sin(time*1.7)*2, sin(time*2.2)*3)
-	var metal := Color("586a83").lerp(Color("fff1d6"),clampf(hit,0,1))
-	_ellipse(canvas,center+Vector2(0,42),Vector2(34,7),Color(0,0,0,0.3))
-	_poly(canvas,[Vector2(-29,3),Vector2(-23,-23),Vector2(0,-34),Vector2(23,-23),Vector2(29,3),Vector2(20,27),Vector2(0,36),Vector2(-20,27)],Color("273244"),p)
-	_poly(canvas,[Vector2(-23,-2),Vector2(-18,-20),Vector2(0,-28),Vector2(18,-20),Vector2(23,-2),Vector2(17,21),Vector2(0,29),Vector2(-17,21)],metal,p)
-	_poly(canvas,[Vector2(-18,-20),Vector2(0,-28),Vector2(18,-20),Vector2(0,-13)],Color("8b9db3").lerp(Color.WHITE,hit),p)
-	_poly(canvas,[Vector2(0,-13),Vector2(18,-20),Vector2(23,-2),Vector2(17,21),Vector2(0,29)],Color("38485f").lerp(Color("ffe9b5"),hit),p)
-	canvas.draw_circle(p+Vector2(0,2),14,Color("121c2e"))
-	_ring(canvas,p+Vector2(0,2),12,Color("9be8dc"),2)
-	_star(canvas,p+Vector2(0,2),8,Color("d0fff0"))
-	for side in [-1,1]:
-		_poly(canvas,[Vector2(side*29,-5),Vector2(side*40,0),Vector2(side*38,17),Vector2(side*30,23)],metal.darkened(0.18),p)
-		canvas.draw_line(p+Vector2(side*18,23),p+Vector2(side*12,32),Color("a2b9ce"),2,true)
+	# Crop transparent margins only; preserve the original silhouette/aspect.
+	var offset := Vector2(sin(time*39)*hit*4, -hit*3)
+	var size := Vector2(1131.0/974.0*166.0,166.0)
+	var rect := Rect2(center-size*0.5+offset,size)
+	canvas.draw_texture_rect_region(TARGET_TEXTURE,rect,Rect2(68,136,1131,974),Color.WHITE.lerp(Color("fff2d0"),hit*0.35))
 	if hit>0.05:
-		for i in range(6):
-			var a := i*TAU/6+time
-			_star(canvas,p+Vector2(cos(a),sin(a))*(38+16*(1-hit)),4*hit,Color("fff0bb"))
+		for i in range(5):
+			var a := i*TAU/5+time
+			_star(canvas,center+Vector2(cos(a)*97,sin(a)*69),4*hit,Color("fff0bb"))
