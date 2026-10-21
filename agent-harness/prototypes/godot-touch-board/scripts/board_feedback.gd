@@ -1,4 +1,5 @@
 extends RefCounted
+const MaterialArt = preload("res://scripts/board_skin.gd")
 ## Presentation only: canonical counters never mutate the plan or gameplay RNG.
 ## Call start only after commit, consume for each clear event, finish once all
 ## clears resolve. reset cancels presentation without crediting pending IDs.
@@ -190,18 +191,15 @@ func draw_hud(view, canvas: CanvasItem) -> void:
 	gold.a = alpha
 	var mint := Color("b6f9ee")
 	mint.a = alpha
-	var shell := StyleBoxFlat.new()
-	shell.bg_color = Color(0.025, 0.04, 0.065, 0.89*alpha)
-	shell.border_color = Color(0.96, 0.82, 0.45, 0.64*alpha)
-	shell.set_border_width_all(1)
-	shell.set_corner_radius_all(18)
-	shell.shadow_color = Color(0.0, 0.0, 0.0, 0.30*alpha)
-	shell.shadow_size = 8
-	canvas.draw_style_box(shell, Rect2(200, 253, 320, 94))
+	var rect := Rect2(200,253,320,94)
+	MaterialArt._surface(canvas,rect,Color(0.70,0.60,0.38,0.82*alpha),Color(0.10,0.22,0.24,0.85*alpha))
+	MaterialArt._surface(canvas,rect.grow(-2),Color(0.08,0.20,0.23,0.94*alpha),Color(0.02,0.06,0.09,0.94*alpha))
+	canvas.draw_line(Vector2(220,258),Vector2(500,258),Color(0.65,0.96,0.86,0.66*alpha),1.2,true)
 	var font: Font = view.font
+	var display: Font = view.get("font_display") if view.get("font_display") is Font else font
 	_centered(canvas, font, Vector2(262, 284), "합계" if finished else "파괴", 22, gold)
 	var number_size := int((66.0 if count < 100 else 56.0) + _pulse*5.0)
-	_centered(canvas, font, Vector2(350, 289), str(count), number_size, Color(1.0,1.0,1.0,alpha), 3)
+	_centered(canvas, display, Vector2(350, 289), str(count), number_size, Color(1.0,1.0,1.0,alpha), 3)
 	_centered(canvas, font, Vector2(459, 284), "패널", 20, Color(0.72,0.79,0.88,alpha))
 	if total_cores > 0:
 		_centered(canvas, font, Vector2(360, 329), "핵 연쇄 · %d회 발동" % core_count, 21, mint)

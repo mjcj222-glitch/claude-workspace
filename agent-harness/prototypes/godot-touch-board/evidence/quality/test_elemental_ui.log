@@ -1,0 +1,24 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS UI exposes canonical damage and wrapped intent text
+PASS damage copy distinguishes exact base and aggregate bonus
+PASS active slam exact copy wraps into two readable lines
+PASS latched slam copy shows actual four damage
+PASS fallback announces only ordinary six
+PASS qualifying preview explicitly mitigates
+PASS nonqualifying preview does not promise mitigation
+PASS already latched turn remains mitigated without another quota
+PASS critical line fits at22px: 강타 10 → 4: 한 번에 약점 2개
+PASS critical line fits at22px: 또는 공격 패널 8개 소거
+PASS critical line fits at22px: 강타 약화 · 피해4
+PASS critical line fits at22px: 이번 턴 동안 약화를 유지해요
+PASS critical line fits at22px: 3회 소거 후 공격 6
+PASS critical line fits at22px:
+PASS critical line fits at22px: 피해 7 = 기본 5 + 약점 2 · 강타 약화 유지
+PASS two-line status reserves space without cropping full board or footer
+PASS weakness label avoids reset target: 약점 · 불꽃
+PASS weakness label avoids reset target: 약점 · 새잎
+PASS weakness label avoids reset target: 약점 · 번개
+PASS weakness label avoids reset target: 약점 · 물결
+PASS weakness names match existing palette
+ELEMENTAL_UI checks=21 failures=0

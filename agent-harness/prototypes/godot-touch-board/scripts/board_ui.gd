@@ -2,6 +2,7 @@ extends RefCounted
 ## Presentation only. BOARD_SCREEN translates the unchanged logical board;
 ## controller must translate pointer positions back before calling session.
 const RelicArt = preload("res://scripts/board_relic_art.gd")
+const MaterialArt = preload("res://scripts/board_skin.gd")
 const Art = preload("res://scripts/board_art.gd")
 const COLORS = [Color("ff705d"), Color("6edb6b"), Color("ffcf5b"), Color("61b7ff"), Color("ff86b5")]
 const BOARD_SCREEN = Rect2(30, 268, 660, 530)
@@ -34,14 +35,14 @@ static func draw(view) -> void:
 	var context: Dictionary = {}
 	if not view.sandbox:
 		context = preview.get("combat_context",session.combat.damage_context())
-	view.draw_rect(Rect2(0, 0, 720, 1080), Color("0e121b"))
+	view.draw_rect(Rect2(0, 0, 720, 1080), Color("071319"))
 	# Quiet warm top band, thin accent and restrained typography.
-	view.draw_rect(Rect2(0, 0, 720, 208), Color("131925"))
+	view.draw_rect(Rect2(0, 0, 720, 208), Color("10232b"))
 	view.draw_rect(Rect2(28, 28, 3, 38), MINT)
-	view._text(Vector2(44, 48), "C H R O M A", 25)
+	_modal_text(view,view,Vector2(44,48),"CHROMA",30,MaterialArt.GOLD,false,true)
 	view._text(Vector2(45, 74), "물감 연쇄 실험실" if view.sandbox else "짧은 연금술 탐험 · 시제품", 20, MUTED)
-	view._box(RESET, Color("222c3b"), 18, Color("354358"))
-	view._center(RESET.get_center() + Vector2(0,-5), "↻", 29, Color("e2e8f1"))
+	MaterialArt.button(view,RESET,Color("617e7c"))
+	MaterialArt.glyph(view,RESET.get_center()+Vector2(0,-13),"reset",Color("c1d2cd"),29)
 	view._center(RESET.get_center() + Vector2(0,23), "리셋", 22, MUTED)
 
 	if not view.sandbox:
@@ -52,11 +53,11 @@ static func draw(view) -> void:
 	# Target has a reserved central portrait band, with counters to either side.
 	if view.sandbox:
 		view._text(Vector2(31, 113), "피해", 22, MUTED)
-		view._text(Vector2(29, 158), str(session.damage_total).pad_zeros(3), 41, COLORS[0])
+		_modal_text(view,view,Vector2(29,158),str(session.damage_total).pad_zeros(3),41,COLORS[0])
 		view._text(Vector2(31, 183), "반격 없는 표적", 20, MUTED)
 	else:
 		view._text(Vector2(31,113), "%s %d/3" % ["강타 수호자" if session.combat.encounter == 2 else ("정예 표적" if session.combat.encounter == 1 and session.route == "elite" else session.combat.enemy_name),session.combat.encounter+1],22,MUTED)
-		view._text(Vector2(29,158), "%d / %d" % [session.combat.enemy_hp,session.combat.enemy_max_hp],41,COLORS[0])
+		_modal_text(view,view,Vector2(29,158),"%d / %d" % [session.combat.enemy_hp,session.combat.enemy_max_hp],41,COLORS[0])
 		view._text(Vector2(31,183), "예고 %d 피해" % int(context.get("incoming_damage",session.combat.incoming_damage)),22,COLORS[2])
 	Art.draw_target(view, TARGET_RECT.get_center(), view.time, view.target_hit)
 	if view.sandbox:
@@ -73,8 +74,8 @@ static func draw(view) -> void:
 	view._text(Vector2(536, 207), "충전 %d / %d" % [session.charge, session.charge_required], 22, MINT if skill_ready else MUTED)
 
 	# Full 660x530 body field is retained; no high/low rows are cropped.
-	view._box(Rect2(24, 214, 672, 596), Color("05080d"), 22, Color("3a465c"))
-	view._box(Rect2(32, 216, 656, 48), Color("161e2a"), 10)
+	MaterialArt.frame(view,Rect2(24,214,672,596),MINT,true)
+	view.draw_rect(Rect2(35,220,650,44),Color("10272e"))
 	var headline: String = view.status
 	var secondary := ""
 	if not view.sandbox:
@@ -106,30 +107,39 @@ static func draw(view) -> void:
 	_line(view, Vector2(360,236), headline, 22, 628, Color("eef2f9"))
 	_line(view, Vector2(360,260), secondary, 22, 628, MINT if preview.get("mitigates_intent",false) else Color("c5d4e5"))
 	view.draw_line(Vector2(32,813),Vector2(688,813),Color("273245"),1)
-	view._box(Rect2(72,799,576,29),Color("0e121b"),0)
+	view._box(Rect2(72,799,576,29),Color("071319"),0)
 	_line(view, Vector2(360,820), result, 22, 626, result_color)
 
 	# A single character and one actionable ability; palette is contextual.
+	MaterialArt.frame(view,HERO_RECT.grow(3),MaterialArt.GOLD,true)
 	Art.draw_hero(view, HERO_RECT.get_center(), view.time, view.hero_active > 0.0)
 	if not view.sandbox and session.phase == "enemy_attack":
 		view.draw_rect(HERO_RECT,Color(1.0,0.2,0.2,0.22 * sin(PI * minf(1.0,view.attack_clock/view.ATTACK_SECONDS))))
-	view._center(Vector2(HERO_RECT.get_center().x,971), "리오 · 변환사", 20, MUTED)
-	var skill_bg := Color("203c3e") if skill_ready else Color("222938")
-	view._box(SKILL, skill_bg, 20, MINT if session.skill_mode else Color("3b555e"))
-	view._text(SKILL.position+Vector2(22,35), "색을 잇는 붓", 26, Color("ecfff8"))
-	view._text(SKILL.position+Vector2(22,65), "색 선택 중 · 다시 눌러 취소" if session.skill_mode else "최대 %d개 변환 · 소거 무료" % (5 if "pigment" in session.relics else 4), 22, Color("adccc9"))
-	var charge_label := "색 선택" if session.skill_mode else ("준비" if skill_ready else "%d / %d" % [session.charge, session.charge_required])
-	view._text(SKILL.position+Vector2(22,88), "색을 고르고 패널을 누르세요" if session.skill_mode else ("눌러서 사용" if skill_ready else "수동 소거로 충전"), 22, MINT if skill_ready else MUTED)
-	view._box(Rect2(SKILL.end.x-96,SKILL.position.y+12,80,30),Color("12282c") if skill_ready else Color("171e2a"),10)
-	view._center(Vector2(SKILL.end.x-56,SKILL.position.y+35),charge_label,20,MINT if skill_ready else MUTED)
-	view._box(MUTE, Color("222c3b"), 18, Color("354358"))
-	view._center(MUTE.get_center()+Vector2(0,-6), "소리", 22, Color("d8e1ef"))
-	view._center(MUTE.get_center()+Vector2(0,22), "OFF" if view.sound.muted else "ON", 22, MUTED if view.sound.muted else MINT)
+	view._center(Vector2(HERO_RECT.get_center().x,971), "리오", 22, MUTED)
+	var usable: bool = session.phase == "ready" and skill_ready
+	var skill_state := "selected" if session.skill_mode else ("ready" if usable else "disabled")
+	MaterialArt.button(view,SKILL,MINT,skill_state)
+	if usable and view.get("ready_age") != null:
+		MaterialArt.ready_sheen(view,SKILL,float(view.ready_age))
+	MaterialArt.glyph(view,SKILL.position+Vector2(29,28),"brush",MaterialArt.GOLD,25)
+	_modal_text(view,view,SKILL.position+Vector2(52,37),"색을 잇는 붓",28,Color("ecfff8"),false,true)
+	view._text(SKILL.position+Vector2(20,66),"색 선택 중 · 다시 누르면 취소" if session.skill_mode else "최대 %d개 변환 · 소거 무료" % (5 if "pigment" in session.relics else 4),22,Color("c0d8d0"))
+	var charge_label := "%d / %d" % [session.charge,session.charge_required]
+	_modal_text(view,view,SKILL.position+Vector2(355,35),charge_label,24,MINT if skill_ready else Color("c2cbd0"),true)
+	view._text(SKILL.position+Vector2(20,91),"색을 골라 패널에 적용" if session.skill_mode else ("준비 · 눌러서 사용" if usable else "소거로 충전"),22,MINT if usable else MUTED)
+	var count: int = maxi(1,session.charge_required)
+	var segment_width := 76.0/count
+	for i in range(count):
+		var segment := Rect2(SKILL.end.x-96+i*segment_width,SKILL.position.y+79,segment_width-4,8)
+		view.draw_rect(segment, MINT if i < session.charge else Color("425457"))
+	MaterialArt.button(view,MUTE,Color("617e7c"))
+	MaterialArt.glyph(view,MUTE.get_center()+Vector2(0,-14),"muted" if view.sound.muted else "sound",Color("a7beba"),28)
+	view._center(MUTE.get_center()+Vector2(0,25),"OFF" if view.sound.muted else "ON",22,MUTED if view.sound.muted else MINT)
 	if session.skill_mode:
 		for i in range(4):
 			var rect := color_rect(i)
 			var selected: bool = session.skill_color == i
-			view._box(rect, COLORS[i].darkened(0.74 if not selected else 0.59),18,COLORS[i] if selected else Color("364152"))
+			MaterialArt.button(view,rect,COLORS[i],"selected" if selected else "normal")
 			# Atlas glyphs make color choice identifiable without reading labels.
 			Art.draw_panel(view,{"pos":rect.position+Vector2(34,34),"radius":19.0,"color":i,"kind":"normal"},view.time)
 			view._text(rect.position+Vector2(61,42),"✓" if selected else "",22,Color.WHITE)
@@ -142,15 +152,19 @@ static func draw(view) -> void:
 		else:
 			# Owned strip replaces helper copy; palette owns the same area only
 			# while skill mode is open. Each hit target remains44px at360wide.
-			view.draw_rect(Rect2(176,966,520,104),Color("0e121b"))
+			view.draw_rect(Rect2(176,966,520,104),Color("071319"))
 			for i in range(session.relics.size()):
 				var rect:=owned_rect(i)
-				view._box(rect,Color("1c2837"),16,Color("41566d"))
+				MaterialArt.frame(view,rect,MaterialArt.GOLD)
 				RelicArt.draw_icon(view,session.relics[i],rect.grow(-5))
 			if session.relics.size()<=2:
 				view._text(Vector2(399,989), "보유 유물 %d"%session.relics.size(),22,MINT)
 				view._text(Vector2(399,1018), "아이콘을 눌러 설명",22,Color("d8e3ef"))
 				view._text(Vector2(399,1047), "다음 스킬 후 충전 2회" if session.ash_reserved else ("3/6회 선택 · 9회 요약" if view.sandbox else "전투 %d/3 · 처치 %d" % [session.combat.encounter+1,session.combat.enemies_defeated]),20,MUTED)
+
+			elif session.ash_reserved:
+				view._text(Vector2(497,1002),"잿빛 예약",22,MINT)
+				view._text(Vector2(497,1034),"다음 충전 2회",22,Color("d8e3ef"))
 
 const SUMMARY_CONTINUE = Rect2(84, 670, 552, 88)
 const NEXT_BATTLE = SUMMARY_CONTINUE
@@ -167,18 +181,17 @@ static func reward_rect(index: int, count: int) -> Rect2:
 	return Rect2(64, top + index * 138, 592, 126)
 
 static func _modal_box(canvas: CanvasItem, rect: Rect2, color: Color, border: Color, radius: int = 18) -> void:
-	var style := StyleBoxFlat.new()
-	style.bg_color = color
-	style.border_color = border
-	style.set_border_width_all(1)
-	style.set_corner_radius_all(radius)
-	canvas.draw_style_box(style,rect)
+	# All modal layers share the same cut-metal / dark-glass material.
+	MaterialArt.frame(canvas,rect,border,rect.size.y>300)
 
-static func _modal_text(view, canvas: CanvasItem, at: Vector2, text: String, size: int, color: Color, centered: bool = false) -> void:
+static func _modal_text(view, canvas: CanvasItem, at: Vector2, text: String, size: int, color: Color, centered: bool = false, display: bool = false) -> void:
 	var origin := at
+	var selected_font: Font = view.font
+	if display and view.get("font_display") != null: selected_font = view.font_display
+	elif size >= 24 and view.get("font_bold") != null: selected_font = view.font_bold
 	if centered:
-		origin.x -= view.font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x/2.0
-	canvas.draw_string(view.font,origin,text,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
+		origin.x -= selected_font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x/2.0
+	canvas.draw_string(selected_font,origin,text,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
 
 static func draw_modal(view, canvas: CanvasItem) -> void:
 	var session = view.session
@@ -194,7 +207,7 @@ static func draw_modal(view, canvas: CanvasItem) -> void:
 	canvas.draw_rect(Rect2(0,208,720,872),Color(0.025,0.035,0.055,0.92))
 	_modal_box(canvas,Rect2(32,216,656,576),Color("151e2c"),Color("526579"),24)
 	if session.phase == "reward":
-		_modal_text(view,canvas,Vector2(64,257),"유물을 골라주세요" if view.sandbox else "승리 보상 · 유물을 골라주세요",30,Color("f1fff8"))
+		_modal_text(view,canvas,Vector2(64,257),"유물을 골라주세요" if view.sandbox else "승리 보상 · 유물을 골라주세요",30,Color("f1fff8"),false,true)
 		_modal_text(view,canvas,Vector2(64,287),"%d / 2 선택 · 새로운 유물 하나를 골라요" % session.reward_round if view.sandbox else "승리 골드 지급 · %d G 보유 · 유물 %d / 2" % [session.gold,session.reward_round],22,MUTED)
 		var count: int = session.reward_options.size()
 		for i in range(count):
@@ -202,7 +215,7 @@ static func draw_modal(view, canvas: CanvasItem) -> void:
 			var copy: Dictionary = RELIC_COPY[id]
 			var rect := reward_rect(i,count)
 			var tint: Color = [MINT,COLORS[2],COLORS[3]][["pigment","lens","ash"].find(id)]
-			_modal_box(canvas,rect,Color("213041"),tint.darkened(0.35))
+			MaterialArt.button(canvas,rect,tint,"pressed" if view.modal_phase == "reward" and view.modal_index == i else "normal")
 			canvas.draw_rect(Rect2(rect.position+Vector2(0,20),Vector2(3,86)),tint)
 			RelicArt.draw_icon(canvas,id,Rect2(rect.position+Vector2(10,15),Vector2(100,100)))
 			_modal_text(view,canvas,rect.position+Vector2(119,31),copy.name,27,tint)
@@ -229,7 +242,7 @@ static func draw_modal(view, canvas: CanvasItem) -> void:
 			names.append(RELIC_COPY[id].name)
 		_modal_text(view,canvas,Vector2(360,583),"선택 유물 · " + " + ".join(names),22,Color("c5d7e8"),true)
 		_modal_text(view,canvas,Vector2(360,623),"이후에는 추가 보상 없이 자유롭게 플레이해요.",22,MUTED,true)
-		_modal_box(canvas,SUMMARY_CONTINUE,Color("28564e"),MINT,18)
+		MaterialArt.button(canvas,SUMMARY_CONTINUE,MINT,"pressed" if view.modal_index >= 0 and view.modal_phase == session.phase and (session.phase != "shop" or view.modal_index == 2) else "ready")
 		_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"계속 플레이",28,Color("e9fff7"),true)
 
 
@@ -253,7 +266,7 @@ static func draw_details(view,canvas:CanvasItem)->void:
 	for row in range(copy.lines.size()):
 		_modal_text(view,canvas,Vector2(84,540+32*row),copy.lines[row],24,Color("d5dfec"))
 	_modal_text(view,canvas,Vector2(360,620),"설명을 닫아도 보드와 충전은 유지돼요",22,MUTED,true)
-	_modal_box(canvas,DETAIL_CLOSE,Color("28564e"),MINT,18)
+	MaterialArt.button(canvas,DETAIL_CLOSE,MINT,"ready")
 	_modal_text(view,canvas,DETAIL_CLOSE.get_center()+Vector2(0,9),"닫기",28,Color("e9fff7"),true)
 
 
@@ -263,7 +276,7 @@ static func draw_run_modal(view,canvas:CanvasItem)->void:
 	canvas.draw_rect(Rect2(0,208,720,872),Color(0.025,0.035,0.055,0.94))
 	_modal_box(canvas,Rect2(32,216,656,576),Color("151e2c"),Color("526579"),24)
 	var heading: String = "다음 전투 준비" if session.phase == "between" else ("탐험 성공!" if session.phase == "victory" else "탐험 종료")
-	_modal_text(view,canvas,Vector2(360,278),heading,36,MINT,true)
+	_modal_text(view,canvas,Vector2(360,278),heading,36,MINT,true,true)
 	var lines: Array[String] = []
 	if session.phase == "between":
 		lines = ["전투 %d 승리 · 유물 획득 완료" % (combat.encounter+1), "생명 %d / 30 · 충전 %d / %d" % [session.hp,session.charge,session.charge_required], "생명·충전·유물·예약을 이어갑니다", "새 보드에서 전투 %d / 3 시작" % (combat.encounter+2)]
@@ -275,7 +288,7 @@ static func draw_run_modal(view,canvas:CanvasItem)->void:
 		_modal_text(view,canvas,Vector2(360,352+i*56),lines[i],26,Color("eff4fc") if i<2 else MUTED,true)
 	for i in range(session.relics.size()):
 		RelicArt.draw_icon(canvas,session.relics[i],Rect2(360-(session.relics.size()*88-16)/2.0+i*88,554,72,72))
-	_modal_box(canvas,SUMMARY_CONTINUE,Color("28564e"),MINT,18)
+	MaterialArt.button(canvas,SUMMARY_CONTINUE,MINT,"pressed" if view.modal_index >= 0 and view.modal_phase == session.phase and (session.phase != "shop" or view.modal_index == 2) else "ready")
 	_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"다음 전투" if session.phase == "between" else "새 탐험 시작",28,Color("e9fff7"),true)
 
 
@@ -298,7 +311,7 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 	var session = view.session
 	canvas.draw_rect(Rect2(0,208,720,872),Color(0.025,0.035,0.055,0.94))
 	_modal_box(canvas,Rect2(32,216,656,576),Color("151e2c"),Color("526579"),24)
-	_modal_text(view,canvas,Vector2(64,257),"두 번째 전투 · 경로 선택" if session.phase == "route" else "작은 상점 · 선택 구매",30,MINT)
+	_modal_text(view,canvas,Vector2(64,257),"두 번째 전투 · 경로 선택" if session.phase == "route" else "작은 상점 · 선택 구매",30,MINT,false,true)
 	_modal_text(view,canvas,Vector2(64,292),"생명 %d / 30 · 보유 %d G" % [session.hp,session.gold],26,Color("fff0c7"))
 	if session.phase == "route":
 		_modal_text(view,canvas,Vector2(64,324),"매 3회 소거 반격 · 경감/일반 공격 교대",22,MUTED)
@@ -308,7 +321,7 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 			var rect := route_rect(i)
 			var tint: Color = MINT if i == 0 else COLORS[0]
 			var pressed: bool = view.modal_phase == "route" and view.modal_index == i
-			_modal_box(canvas,rect,Color("2c4152") if pressed else Color("213041"),tint)
+			MaterialArt.button(canvas,rect,tint,"pressed" if pressed else "normal")
 			_modal_text(view,canvas,rect.position+Vector2(24,33),info.name,29,tint)
 			_modal_text(view,canvas,rect.position+Vector2(24,64),"적 HP %d · 승리 %d G" % [info.hp,info.gold],26,Color("f2f5fa"))
 			_modal_text(view,canvas,rect.position+Vector2(24,95),info.pattern,25,Color("d3e0ed"))
@@ -326,7 +339,7 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 		var enabled: bool = not sold and session.gold >= price and (gain > 0 if i == 0 else relic != "")
 		var tint: Color = MINT if enabled else MUTED
 		var pressed: bool = view.modal_phase == "shop" and view.modal_index == i and enabled
-		_modal_box(canvas,rect,Color("2c4152") if pressed else Color("213041"),tint.darkened(0.3))
+		MaterialArt.button(canvas,rect,tint,"disabled" if not enabled else ("pressed" if pressed else "normal"))
 		if i == 0:
 			Art.draw_panel(canvas,{"pos":rect.position+Vector2(58,69),"radius":33.0,"color":4,"kind":"heart"},view.time)
 		else:
@@ -340,7 +353,7 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 		_modal_text(view,canvas,rect.position+Vector2(119,94),effect,22,MUTED)
 		var state: String = "구매 완료" if sold else ("생명 가득 · 구매 불가" if i == 0 and gain == 0 else ("골드 부족" if session.gold < price else "눌렀다 놓으면 구매"))
 		_modal_text(view,canvas,rect.position+Vector2(119,124),state,22,tint)
-	_modal_box(canvas,SUMMARY_CONTINUE,Color("28564e"),MINT,18)
+	MaterialArt.button(canvas,SUMMARY_CONTINUE,MINT,"pressed" if view.modal_index >= 0 and view.modal_phase == session.phase and (session.phase != "shop" or view.modal_index == 2) else "ready")
 	_modal_text(view,canvas,SUMMARY_CONTINUE.get_center()+Vector2(0,9),"최종 전투로",28,Color("e9fff7"),true)
 
 

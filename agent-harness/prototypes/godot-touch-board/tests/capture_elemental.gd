@@ -19,6 +19,7 @@ var clear_count := 0
 var route_choice := "elite"
 var selected_policy := "intent-aware"
 var balance_mode := false
+var quality_mode := false
 var boss_turns_seen: Dictionary = {}
 
 func _initialize() -> void:
@@ -123,6 +124,7 @@ func use_skill(skill: Dictionary) -> void:
 	if scene.session.actions != actions_before or scene.session.skill_mode:
 		errors.append("skill did not execute for free through UI")
 	record("skill",{"start_id":skill.id,"color":skill.color,"targets":preview.get("targets",[]),"connected":preview.get("connected",[])})
+	if quality_mode: await snapshot("activation-%02d"%clear_count)
 	await create_timer(0.20).timeout
 
 func wait_resolution() -> void:
@@ -145,6 +147,7 @@ func wait_resolution() -> void:
 func run() -> void:
 	movie = "--capture" in OS.get_cmdline_user_args()
 	balance_mode = "--balance" in OS.get_cmdline_user_args()
+	quality_mode = "--quality" in OS.get_cmdline_user_args()
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--route="): route_choice = arg.substr(8)
 		if arg.begins_with("--policy="): selected_policy = arg.substr(9)
@@ -158,7 +161,8 @@ func run() -> void:
 	var capture_seed := "20261021"
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--seed="): capture_seed = arg.substr(7)
-	output_dir = "res://evidence/%s/capture-%s-%s-pair%d-%s-%s" % ["balance" if balance_mode else "elemental",capture_seed,route_choice,pair_index,selected_policy,"movie" if movie else "live"]
+	var category: String = "quality" if quality_mode else ("balance" if balance_mode else "elemental")
+	output_dir = "res://evidence/%s/capture-%s-%s-pair%d-%s-%s" % [category,capture_seed,route_choice,pair_index,selected_policy,"movie" if movie else "live"]
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_dir))
 	began_us = Time.get_ticks_usec()
 	scene = load("res://main.tscn").instantiate()

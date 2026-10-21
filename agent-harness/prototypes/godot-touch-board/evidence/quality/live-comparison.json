@@ -1,0 +1,59 @@
+{
+  "method": "Same cloud Godot4.6.3/llvmpipe/Dummy and seed/input/policy; screenshot/choice CPU overhead mixed in. After adds activation screenshots; no statistical benchmark or mobile claim. MovieWriter excluded.",
+  "before": {
+    "press": {
+      "n": 21,
+      "min_ms": 14.675,
+      "median_ms": 16.25,
+      "max_ms": 58.253
+    },
+    "ordinary": {
+      "n": 13,
+      "min_ms": 773.111,
+      "median_ms": 1192.842,
+      "max_ms": 1553.755
+    },
+    "core": {
+      "n": 2,
+      "min_ms": 1123.234,
+      "median_ms": 1320.2095,
+      "max_ms": 1517.185
+    }
+  },
+  "after": {
+    "press": {
+      "n": 21,
+      "min_ms": 22.474,
+      "median_ms": 26.812,
+      "max_ms": 298.097
+    },
+    "ordinary": {
+      "n": 13,
+      "min_ms": 705.108,
+      "median_ms": 1435.227,
+      "max_ms": 2168.515
+    },
+    "core": {
+      "n": 2,
+      "min_ms": 1307.285,
+      "median_ms": 1489.382,
+      "max_ms": 1671.479
+    }
+  },
+  "source_sha256": {
+    "scripts/board_combat.gd": "51cf93360914673e0adbcd414233c88369bf2119c7b303c9539aee7d8c7844c3",
+    "scripts/board_run_session.gd": "0dac425c2456d622de4167e8dab525925385ea394b9caff02085069fceda056f",
+    "scripts/main.gd": "f52a62b10a01f38117544123cfa0a2822c9f8e69c1d504ad3f4b80a9f4420ee5",
+    "scripts/board_feedback.gd": "f9e5903c8297522dcd608b8eb4574b2671543b13514e618defb65152be03586b",
+    "scripts/board_relic_art.gd": "5683b755a07eb23f056c3e2b115ed6f2de6169e9ed6f601fbcebba50de44a28e",
+    "scripts/board_relics.gd": "174f52a0612bca3b55ce80185eb65e6de086fa4c923db4c6c09448cc43d21de4",
+    "scripts/board_audio.gd": "955b131837efea243ba539a68fad74ed4d2135d0889bbf6bf585f238715933d1",
+    "scripts/board_rules.gd": "862ce96df3708668bec22fac9629ebd92d3aaf0c842b556b6945d8dd14d3871c",
+    "scripts/board_quality_fx.gd": "165722eff1d335768b0748feeef44f4641603744eccc3f44891b2af703c40240",
+    "scripts/board_art.gd": "0ad0f5cd360db34e4bd060bba3b2c230fd17f4b46717eac9185bf2cc900da196",
+    "scripts/board_session.gd": "5d5a2e2cc7067359270d5e8fb8e503a3e9bb48b3b763593f2dc9e3523cf231dc",
+    "scripts/board_skin.gd": "5f87cd3c23bf20c52a6a29462c3dc088dfd3e7244bb8f1a8707c8a1a7063a861",
+    "scripts/board_ui.gd": "03f50ee9d6c0a281d5f437be401222167ad40e2f38cfbabb62a4e5b9fdd10ea3",
+    "scripts/board_motion.gd": "54af4d7b9be29b00b107f8ad938bd053c9193542e9927fcb9604fdbdc1748006"
+  }
+}

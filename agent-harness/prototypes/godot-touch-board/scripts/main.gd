@@ -9,6 +9,7 @@ const Rules = preload("res://scripts/board_rules.gd")
 const Art = preload("res://scripts/board_art.gd")
 const UI = preload("res://scripts/board_ui.gd")
 const Feedback = preload("res://scripts/board_feedback.gd")
+const QualityFX = preload("res://scripts/board_quality_fx.gd")
 const Sound = preload("res://scripts/board_audio.gd")
 const COLORS := [Color("ff705d"), Color("6edb6b"), Color("ffcf5b"), Color("61b7ff"), Color("ff86b5")]
 const BOARD := Rect2(30, 290, 660, 530)
@@ -22,13 +23,20 @@ var attack_clock := 0.0
 var transition_repeat_until_ms := 0
 var transition_repeat_at := Vector2.INF
 var rng := RandomNumberGenerator.new()
+var particle_rng := RandomNumberGenerator.new()
 var sound: Node
 var font: Font
 var font_bold: Font
+var font_display: Font
+var font_body: Font
+var ready_age := 0.0
+var _skill_was_ready := true
 var time := 0.0
 var visual: Array = []
 var particles: Array = []
 var feedback = Feedback.new()
+var quality_fx = QualityFX.new()
+var selection_trace: Array = []
 var detail_relic := ""
 var detail_pointer := -99
 var detail_index := -1
@@ -78,6 +86,7 @@ class ModalSurface extends Node2D:
 	var presenter: Node2D
 	func _draw() -> void:
 		if presenter:
+			if presenter.session.selection.is_empty(): presenter.quality_fx.draw_overlay(presenter,self)
 			if presenter.session.phase in ["ready","busy"] and presenter.detail_relic=="" and presenter.session.selection.is_empty():
 				presenter.feedback.draw_hud(presenter,self)
 			presenter.UI.draw_modal(presenter,self)
@@ -85,8 +94,11 @@ class ModalSurface extends Node2D:
 
 func _ready() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	font = load("res://assets/ChromaSans.otf") if ResourceLoader.exists("res://assets/ChromaSans.otf") else ThemeDB.fallback_font
-	font_bold = font
+	font = load("res://assets/fonts/Pretendard-Medium.otf")
+	font_body = font
+	font_bold = load("res://assets/fonts/Pretendard-SemiBold.otf")
+	font_display = load("res://assets/fonts/BlackHanSans-Regular.ttf")
+	font_display.fallbacks = [font]
 	sound = Sound.new()
 	add_child(sound)
 	RenderingServer.frame_post_draw.connect(_after_draw)
@@ -114,7 +126,12 @@ func reset_board() -> void:
 	detail_relic=""
 	shop_notice=""
 	feedback.reset()
+	quality_fx.reset()
+	selection_trace.clear()
+	ready_age = 0.0
+	_skill_was_ready = true
 	rng.seed = run_seed
+	particle_rng.seed = run_seed ^ 0x514C495459
 	session = Session.new() if sandbox else RunSession.new()
 	session.bounds = BOARD
 	var packed := Motion.initial_board(BOARD, 48, 1, rng)
@@ -176,6 +193,8 @@ func _advance_fight(departure_point: Vector2 = Vector2.INF) -> void:
 	detail_relic = ""
 	shop_notice = ""
 	feedback.reset()
+	quality_fx.reset()
+	selection_trace.clear()
 	particles.clear()
 	active_plan = {}
 	motion_state = {}
@@ -228,6 +247,7 @@ func draw_panels(canvas: CanvasItem) -> void:
 				elif p.id in preview.removed: emphasis = "chain"
 				if preview.converted.has(p.id): p.color = preview.converted[p.id]
 		if not active_plan.is_empty() and not falling and active_plan.mode == "clear" and p.id in active_plan.removed:
+			if active_plan.converted.has(p.id): p.color = active_plan.converted[p.id]
 			var idx: int = active_plan.sequence.find(p.id)
 			var onset := _clear_onset(idx)
 			if action_clock > onset:
@@ -242,6 +262,20 @@ func draw_panels(canvas: CanvasItem) -> void:
 		p.pos = Vector2.ZERO
 		Art.draw_panel(canvas, p, time, emphasis, scale_factor)
 		canvas.draw_set_transform(-BOARD.position)
+	if not preview.is_empty() and preview.get("valid",false):
+		# Short curved stitches only cross actual contact boundaries. They never
+		# imply a drag path or a connection to a future falling position.
+		for edge in selection_trace:
+			var a: Vector2=edge[0]
+			var b: Vector2=edge[1]
+			var direction := a.direction_to(b)
+			var middle := a.lerp(b,0.5)
+			var points := PackedVector2Array()
+			for i in range(9):
+				var t := float(i)/8.0
+				points.append(middle+direction*lerpf(-10,10,t)+direction.orthogonal()*sin(PI*t)*2.5)
+			canvas.draw_polyline(points,Color(0.15,0.95,0.83,0.30),7,true)
+			canvas.draw_polyline(points,Color("e8fff4"),2.1,true)
 	for particle in particles:
 		var alpha: float = maxf(0.0, 1.0 - particle.age / particle.life)
 		canvas.draw_circle(particle.pos, particle.size * alpha, Color(particle.color, alpha))
@@ -259,6 +293,12 @@ func _clear_onset(index: int) -> float:
 func _process(delta: float) -> void:
 	time += delta
 	feedback.update(delta)
+	quality_fx.update(delta)
+	var now_ready: bool = session.charge >= session.charge_required
+	if now_ready and not _skill_was_ready: ready_age = 0.0
+	if now_ready and session.phase == "ready": ready_age += delta
+	elif not now_ready: ready_age = -1.0
+	_skill_was_ready = now_ready
 	target_hit = maxf(0, target_hit - delta * 4)
 	hero_active = maxf(0, hero_active - delta * 2)
 	landing += delta
@@ -314,16 +354,28 @@ func _process(delta: float) -> void:
 func _burst(id: int, index: int) -> void:
 	for p in visual:
 		if p.id != id: continue
-		if not feedback.consume(id,p.pos,COLORS[p.color]): return
+		var color_index: int=active_plan.get("effective_colors",{}).get(id,p.color) if p.kind=="normal" else p.color
+		var effect_color: Color=COLORS[color_index]
+		if not feedback.consume(id,p.pos,effect_color): return
+		quality_fx.panel_removed(id,p.pos,effect_color,p.kind)
 		sound.tone(index)
+		_advance_clear_rng_budget()
 		for i in range(7):
 			var angle := TAU * i / 7.0
-			particles.append({"pos":p.pos,"vel":Vector2.from_angle(angle)*rng.randf_range(65,180),"size":rng.randf_range(2,6),"color":COLORS[p.color],"age":0.0,"life":0.25})
+			particles.append({"pos":p.pos,"vel":Vector2.from_angle(angle)*particle_rng.randf_range(65,180),"size":particle_rng.randf_range(2,6),"color":effect_color,"age":0.0,"life":0.25})
 		if p.kind != "heart": target_hit = 1
 		break
 
+func _advance_clear_rng_budget() -> void:
+	# Fixed compatibility budget, independent of the visual particle loop.
+	# Removing it would change every later refill for an existing seed/input.
+	for i in range(7):
+		rng.randf_range(65,180)
+		rng.randf_range(2,6)
+
 func _start_fall() -> void:
 	feedback.finish()
+	quality_fx.action_finished()
 	fall_started_us=Time.get_ticks_usec()
 	motion_state = Motion.start(session.panels, BOARD, 48, session.next_id, rng)
 	session.next_id = motion_state.next_id
@@ -357,7 +409,22 @@ func _detail_close_hit(pos:Vector2) -> bool:
 
 func cancel_input() -> void:
 	session.cancel()
+	selection_trace.clear()
 	_cancel_modal()
+
+func _cache_selection_trace() -> void:
+	selection_trace.clear()
+	var plan: Dictionary=session.selection
+	if plan.is_empty() or not plan.get("valid",false): return
+	var ids: Array=plan.targets if plan.get("mode","")=="skill" else plan.direct
+	var indexed: Dictionary={}
+	for p in session.panels:
+		if p.id in ids: indexed[p.id]=p
+	var graph := Rules.contact_graph(session.panels)
+	for id in indexed:
+		for neighbor in graph[id]:
+			if neighbor>id and indexed.has(neighbor):
+				selection_trace.append([indexed[id].pos,indexed[neighbor].pos])
 
 func move_pointer(pos: Vector2, pointer: int) -> void:
 	session.move(screen_to_board(pos),pointer)
@@ -429,6 +496,7 @@ func press(pos: Vector2, pointer: int) -> void:
 			return
 	pressed_us = Time.get_ticks_usec()
 	if session.begin(screen_to_board(pos), pointer):
+		_cache_selection_trace()
 		landing = 1
 		feedback_pending = true
 		queue_redraw()
@@ -480,15 +548,18 @@ func release(pos: Vector2, pointer: int) -> void:
 			status="보상 2회 완료 · 자유롭게 계속 시험하세요"
 		return
 	var result: Dictionary = session.release(screen_to_board(pos), pointer)
+	selection_trace.clear()
 	if result.is_empty(): return
 	if result.mode == "skill":
 		hero_active = 1
+		quality_fx.skill_activated()
 		visual = session.panels.duplicate(true)
 		sound.tone(6, true)
 		last_summary = "%d개 변환 완료 · 다음 소거로 연결하세요" % result.targets.size()
 		status = "변환 완료 · 소거 횟수는 그대로"
 		return
 	feedback.start(result,visual)
+	quality_fx.action_started(result,visual)
 	active_plan = result
 	action_clock = 0
 	played = 0
