@@ -1,0 +1,17 @@
+{
+  "center": {
+    "bodies": 48,
+    "downward_contact_path_to_floor": 48,
+    "unsupported_ids": []
+  },
+  "left_column": {
+    "bodies": 48,
+    "downward_contact_path_to_floor": 48,
+    "unsupported_ids": []
+  },
+  "two": {
+    "bodies": 48,
+    "downward_contact_path_to_floor": 48,
+    "unsupported_ids": []
+  }
+}

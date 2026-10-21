@@ -23,6 +23,7 @@ var fall_clock := 0.0
 var clear_duration := 0.0
 var falling := false
 var motion_state: Dictionary = {}
+var fall_started_us := 0
 var played := 0
 var target_hit := 0.0
 var hero_active := 0.0
@@ -239,6 +240,11 @@ func _process(delta: float) -> void:
 				sound.tone(0, false, true)
 				status = "다음 연결을 찾아보세요"
 				var metric := {"event":"commit_to_ready", "wall_ms":(Time.get_ticks_usec()-committed_us)/1000.0,"frames":Engine.get_process_frames()-committed_frame,"specials":active_plan.activated.size(),"removed":active_plan.removed.size(),"movie":capture_mode}
+				metric.profile=motion_state.profile.duplicate(true)
+				metric.profile.clear_wall_ms=(fall_started_us-committed_us)/1000.0
+				metric.profile.fall_wall_ms=(Time.get_ticks_usec()-fall_started_us)/1000.0
+				metric.profile.fall_sim_s=motion_state.elapsed
+				metric.profile.quiet_sim_s=motion_state.quiet
 				if record_timings:
 					timings.append(metric)
 					print("TIMING ", JSON.stringify(metric))
@@ -258,6 +264,7 @@ func _burst(id: int, index: int) -> void:
 		break
 
 func _start_fall() -> void:
+	fall_started_us=Time.get_ticks_usec()
 	motion_state = Motion.start(session.panels, BOARD, 48, session.next_id, rng)
 	session.next_id = motion_state.next_id
 	visual = motion_state.panels

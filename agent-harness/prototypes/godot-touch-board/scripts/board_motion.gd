@@ -68,7 +68,7 @@ static func start(panels: Array, _bounds: Rect2, count: int, next_id: int, rng: 
 		var color := rng.randi_range(0,4)
 		pending.append({"id":next_id,"radius":RADIUS,"color":color,"kind":"heart" if color==4 else "normal","vel":Vector2.ZERO,"anchored":false})
 		next_id += 1
-	return {"panels":bodies,"pending":pending,"next_id":next_id,"elapsed":0.0,"accumulator":0.0,"spawn_clock":0.0,"lane":0,"ready":false,"quiet":0.0,"stalled":false}
+	return {"panels":bodies,"pending":pending,"next_id":next_id,"elapsed":0.0,"accumulator":0.0,"spawn_clock":0.0,"lane":0,"ready":false,"quiet":0.0,"stalled":false,"profile":{"anchor_us":0,"spawn_us":0,"solve_us":0,"iterations":0,"ticks":0,"pending_sim_s":0.0,"last_spawn_sim_s":0.0,"inside_sim_s":-1.0}}
 
 static func _anchor(bodies: Array, bounds: Rect2) -> void:
 	for p in bodies:
@@ -122,65 +122,102 @@ static func _spawn(state: Dictionary,bounds: Rect2) -> void:
 
 static func _tick(state: Dictionary,bounds: Rect2) -> void:
 	var bodies: Array=state.panels
+	var started_us := Time.get_ticks_usec()
 	_anchor(bodies,bounds)
+	state.profile.anchor_us += Time.get_ticks_usec()-started_us
+	started_us=Time.get_ticks_usec()
+	var count_before := bodies.size()
 	state.spawn_clock+=STEP
 	_spawn(state,bounds)
+	state.profile.spawn_us += Time.get_ticks_usec()-started_us
+	if bodies.size()>count_before:state.profile.last_spawn_sim_s=state.elapsed
+	if not state.pending.is_empty():state.profile.pending_sim_s+=STEP
+	started_us=Time.get_ticks_usec()
 	for p in bodies:
 		if p.anchored:
 			p.vel=Vector2.ZERO
 			continue
 		p.vel.y=minf(MAX_SPEED,p.vel.y+GRAVITY*STEP)
 		p.pos+=p.vel*STEP
-	# Small substeps plus contact projection prevent pass-through. Static support
-	# bodies never move; lateral motion is exclusively a collision response.
+	# Constraint iterations use typed scratch arrays, avoiding repeated Variant
+	# dictionary lookups. Order and arithmetic match the reference solver.
+	var positions := PackedVector2Array()
+	var velocities := PackedVector2Array()
+	var radii := PackedFloat64Array()
+	var weights := PackedFloat64Array()
+	var contacts := PackedInt32Array()
+	var dynamic_indices := PackedInt32Array()
+	var pairs: Array[Vector2i] = []
+	for i in range(bodies.size()):
+		var p: Dictionary=bodies[i]
+		positions.append(p.pos)
+		velocities.append(p.vel)
+		radii.append(p.radius)
+		weights.append(0.0 if p.anchored else 1.0)
+		contacts.append(0)
+		if not p.anchored:dynamic_indices.append(i)
+	for i in range(bodies.size()):
+		for j in range(i+1,bodies.size()):
+			if weights[i]+weights[j]>0:pairs.append(Vector2i(i,j))
+	# No distance culling: projection cannot create a missed candidate. Anchors
+	# stay constant until the next tick, so anchored/anchored pairs can be skipped.
 	for iteration in range(128):
+		state.profile.iterations+=1
 		var penetration_max := 0.0
-		for p in bodies:
-			if p.anchored:continue
-			if p.pos.x-p.radius<bounds.position.x:
-				p.pos.x=bounds.position.x+p.radius
-				p.vel.x=maxf(0,p.vel.x)
-			if p.pos.x+p.radius>bounds.end.x:
-				p.pos.x=bounds.end.x-p.radius
-				p.vel.x=minf(0,p.vel.x)
-			if p.pos.y+p.radius>bounds.end.y:
-				p.pos.y=bounds.end.y-p.radius
-				p.vel.y=0
-				p.vel.x*=0.5
-		for i in range(bodies.size()):
-			var a: Dictionary=bodies[i]
-			for j in range(i+1,bodies.size()):
-				var b: Dictionary=bodies[j]
-				if a.anchored and b.anchored:continue
-				var offset: Vector2=a.pos-b.pos
-				var reach: float=a.radius+b.radius
-				var distance_sq := offset.length_squared()
-				if distance_sq >= reach*reach:continue
-				var distance := sqrt(distance_sq)
-				penetration_max=maxf(penetration_max,reach-distance)
-				a.contact_count=int(a.get("contact_count",0))+1
-				b.contact_count=int(b.get("contact_count",0))+1
-				var normal := offset/distance if distance>0.0001 else Vector2.UP
-				var wa := 0.0 if a.anchored else 1.0
-				var wb := 0.0 if b.anchored else 1.0
-				var correction: Vector2=normal*(reach-distance+0.001)/(wa+wb)
-				a.pos+=correction*wa
-				b.pos-=correction*wb
-				var relative: float=(a.vel-b.vel).dot(normal)
-				if relative<0:
-					var impulse: Vector2=-normal*relative/(wa+wb)
-					a.vel+=impulse*wa
-					b.vel-=impulse*wb
-				# Damp only after actual contact; free-fall has no sideways force.
-				if wa>0:a.vel*=0.985
-				if wb>0:b.vel*=0.985
+		for i in dynamic_indices:
+			var position := positions[i]
+			var velocity := velocities[i]
+			var radius := radii[i]
+			if position.x-radius<bounds.position.x:
+				position.x=bounds.position.x+radius
+				velocity.x=maxf(0,velocity.x)
+			if position.x+radius>bounds.end.x:
+				position.x=bounds.end.x-radius
+				velocity.x=minf(0,velocity.x)
+			if position.y+radius>bounds.end.y:
+				position.y=bounds.end.y-radius
+				velocity.y=0
+				velocity.x*=0.5
+			positions[i]=position
+			velocities[i]=velocity
+		for pair in pairs:
+			var i := pair.x
+			var j := pair.y
+			var offset := positions[i]-positions[j]
+			var reach := radii[i]+radii[j]
+			var distance_sq := offset.length_squared()
+			if distance_sq >= reach*reach:continue
+			var distance := sqrt(distance_sq)
+			penetration_max=maxf(penetration_max,reach-distance)
+			contacts[i]+=1
+			contacts[j]+=1
+			var normal := offset/distance if distance>0.0001 else Vector2.UP
+			var wa := weights[i]
+			var wb := weights[j]
+			var correction := normal*(reach-distance+0.001)/(wa+wb)
+			positions[i]+=correction*wa
+			positions[j]-=correction*wb
+			var relative := (velocities[i]-velocities[j]).dot(normal)
+			if relative<0:
+				var impulse := -normal*relative/(wa+wb)
+				velocities[i]+=impulse*wa
+				velocities[j]-=impulse*wb
+			if wa>0:velocities[i]*=0.985
+			if wb>0:velocities[j]*=0.985
 		if penetration_max<0.04:break
+	for i in range(bodies.size()):
+		bodies[i].pos=positions[i]
+		bodies[i].vel=velocities[i]
+		bodies[i].contact_count=int(bodies[i].get("contact_count",0))+contacts[i]
+	state.profile.solve_us += Time.get_ticks_usec()-started_us
+	state.profile.ticks+=1
 	state.elapsed+=STEP
 	var max_speed := 0.0
 	var inside: bool = state.pending.is_empty()
 	for p in bodies:
 		max_speed=maxf(max_speed,p.vel.length())
 		if p.pos.y-p.radius<bounds.position.y-0.1:inside=false
+	if inside and state.profile.inside_sim_s<0:state.profile.inside_sim_s=state.elapsed
 	if inside and max_speed<80:
 		state.quiet+=STEP
 	else:state.quiet=0.0
