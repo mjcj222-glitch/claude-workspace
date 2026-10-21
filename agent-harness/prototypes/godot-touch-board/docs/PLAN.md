@@ -33,7 +33,7 @@ Spec: User execution contract summarized below; no map/shop/save/party/boss/feve
 - Rules complete: test stub RED 27 failures → 44 checks GREEN. Pure rules/input snapshots.
 - Motion/input complete: initial motion stub RED4 → GREEN. Review/stress caught vertical pile overflow; support intersection compaction fix → 100 refills GREEN. Review input RED9 → UI-first ownership/busy gating GREEN. Exactly-three recharge test added.
 - Presentation complete for first checkpoint: approved original atlas materialized and inspected in this environment; colored core badge, original vector hero/target, generated PCM, clipped fall area, brief squash. User reference download failed twice and stopped; no reference pixels claimed.
-- Independent review: three material findings (pile overflow, busy reset, UI-first second finger), all fixed with reproduced failing tests. Headless audio cleanup warning fixed by stopping voices and clearing streams on exit.
+- Independent review: three material findings (pile overflow, busy reset, UI-first second finger), all fixed with reproduced failing tests. Headless audio cleanup stops voices/streams and the scene harness gives AudioServer 0.25s to finish its asynchronous mixing-thread teardown; initial warning is retained.
 - Evidence in progress: 720x1080 rendered screenshots, 10.2s sound movie, live wall-clock+frame measures separated. Web export succeeded but Chromium sandbox abort blocks browser validation; no sandbox changes or retries via weaker security.
 
 - Checkpoint complete: native Linux smoke + OS mouse interaction passed; current media and raw measurements packaged. Browser sandbox blocker retained. No user-reference publication or Library upload.

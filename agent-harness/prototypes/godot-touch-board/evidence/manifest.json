@@ -31,7 +31,7 @@
     "tests/test_motion.gd.uid": "6de31138b482850287b8051ef9cf0cb2ec29171f723a71d0db7fcb951306774e",
     "tests/test_rules.gd": "bdedac9ac68b000f1aba782aa909058fe1ae15c1ac3b8834b057742a6ec333f9",
     "tests/test_rules.gd.uid": "617e4286150f56ae8930a8d13610569fb972c3c6fbd2297bd75e73d05dae57fc",
-    "tests/test_scene.gd": "c512ef0fb6d218769651e43f34db4a7523b45c0245283900d2e89fa5d52df000",
+    "tests/test_scene.gd": "7553d01f925ae08ebbca927e8045f6d1a365d8ccba1e63c828fa2d2660e003fa",
     "tests/test_scene.gd.uid": "446b832bff81689d2530de6f7e9dc5216272b4a071e21f202146b63614ed045c",
     "deliverables/chroma-linux-x86_64.zip": "db391c59fcc9c4aa088d960ea3a7f8206c4a371f969898fbff8b2883f0f884e4",
     "deliverables/chroma-web.zip": "b91372537f1be50fadbc5cea66838e97f5fb37955181b0cc58ead118f75236bb",
@@ -43,5 +43,6 @@
     "evidence/board-preview.png": "0e039b1ba57ddff2d5498c15049b28d21d5255539e4ef06f9efffd9849129c32",
     "evidence/board-ready-small.png": "edc6c0444d20f9c13491714cb9c446c33331aff7b1ed35695803a9ec74cf951b",
     "evidence/live-timings.json": "cd04c24de6c986595748f9df4576ccc68f12c3fc40cc75c2323ed0b17769cc76"
-  }
+  },
+  "note": "Production source/builds from b0924b0; scene test adds AudioServer teardown wait in follow-up evidence commit."
 }

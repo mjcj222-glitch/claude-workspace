@@ -78,5 +78,7 @@ func run() -> void:
 	scene.queue_free()
 	await process_frame
 	await process_frame
+	# AudioServer releases playback on its mixing thread, not process-frame count.
+	await create_timer(0.25).timeout
 	print("SCENE failures=", failures)
 	quit(1 if failures else 0)
