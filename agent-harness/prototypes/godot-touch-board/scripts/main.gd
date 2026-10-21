@@ -22,6 +22,7 @@ var action_clock := 0.0
 var fall_clock := 0.0
 var clear_duration := 0.0
 var falling := false
+var motion_state: Dictionary = {}
 var played := 0
 var target_hit := 0.0
 var hero_active := 0.0
@@ -73,7 +74,7 @@ func reset_board() -> void:
 	rng.seed = 20261021
 	session = Session.new()
 	session.bounds = BOARD
-	var packed := Motion.pack([], BOARD, 48, 1, rng)
+	var packed := Motion.initial_board(BOARD, 48, 1, rng)
 	session.panels = packed.panels
 	session.next_id = packed.next_id
 	# First board guarantees a readable six-link and one two-heart opportunity.
@@ -190,9 +191,6 @@ func draw_panels(canvas: CanvasItem) -> void:
 			if action_clock > onset:
 				scale_factor = maxf(0.0, 1.0 - (action_clock - onset) / 0.10)
 		if scale_factor <= 0.01: continue
-		if falling:
-			var t := clampf(fall_clock / 0.44, 0, 1)
-			p.pos = p.from.lerp(p.pos, 1.0 - pow(1.0 - t, 2.0))
 		# Landing squash is only visual; frozen selection suppresses residual motion.
 		var squash := 1.0
 		if session.selection.is_empty() and landing < 0.18:
@@ -227,8 +225,13 @@ func _process(delta: float) -> void:
 			if action_clock >= clear_duration:
 				_start_fall()
 		else:
-			fall_clock += delta
-			if fall_clock >= 0.44:
+			Motion.step(motion_state, BOARD, delta)
+			visual = motion_state.panels
+			if motion_state.stalled:
+				session.phase = "stalled"
+				status = "낙하 중단 · 리셋으로 다시 시험해 주세요"
+			if motion_state.ready:
+				session.panels = motion_state.panels.duplicate(true)
 				falling = false
 				session.phase = "ready"
 				visual = session.panels.duplicate(true)
@@ -255,10 +258,9 @@ func _burst(id: int, index: int) -> void:
 		break
 
 func _start_fall() -> void:
-	var packed := Motion.pack(session.panels, BOARD, 48, session.next_id, rng)
-	session.panels = packed.panels
-	session.next_id = packed.next_id
-	visual = session.panels.duplicate(true)
+	motion_state = Motion.start(session.panels, BOARD, 48, session.next_id, rng)
+	session.next_id = motion_state.next_id
+	visual = motion_state.panels
 	falling = true
 	fall_clock = 0
 	sound.tone(mini(active_plan.removed.size(), 14), true)
@@ -272,6 +274,9 @@ func _after_draw() -> void:
 		feedback_pending = false
 
 func press(pos: Vector2, pointer: int) -> void:
+	if session.phase == "stalled" and RESET.has_point(pos):
+		reset_board()
+		return
 	if session.owner != -99 or session.phase != "ready": return
 	if RESET.has_point(pos):
 		reset_board()

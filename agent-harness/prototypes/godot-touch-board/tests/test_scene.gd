@@ -64,8 +64,10 @@ func run() -> void:
 	down.pressed = true
 	scene._input(down)
 	check(scene.session.selection.is_empty(), "busy touch discarded")
-	for i in range(150): scene._process(1.0/120)
-	check(scene.session.phase == "ready", "controlled fall unlocks without full physics sleep")
+	for i in range(600):
+		scene._process(1.0/120)
+		if scene.session.phase != "busy": break
+	check(scene.session.phase == "ready", "bounded contact simulation unlocks without full physics sleep")
 	check(scene.session.actions == 1, "refill never auto clears or consumes action")
 	check(scene.session.panels.size() == 48, "one refill restores 48")
 	var cores := 0

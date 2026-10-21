@@ -1,0 +1,24 @@
+extends SceneTree
+const Motion = preload("res://scripts/board_motion.gd")
+func _init() -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 20261021
+	var b := Rect2(30,290,660,530)
+	var initial: Dictionary = Motion.pack([],b,48,1,rng)
+	var before: Array = initial.panels
+	var removed: Array = [before[22].id,before[23].id]
+	var survivors: Array = before.filter(func(p): return p.id not in removed)
+	var after: Dictionary = Motion.pack(survivors,b,48,49,rng)
+	var moved: Array = []
+	var max_dx := 0.0
+	for p in after.panels:
+		if p.id >= 49: continue
+		var dx: float = p.pos.x - p.from.x
+		max_dx = maxf(max_dx,absf(dx))
+		if absf(dx)>1:
+			moved.append({"id":p.id,"start":[p.from.x,p.from.y],"target":[p.pos.x,p.pos.y],"dx":dx,"was_on_floor":absf(p.from.y+p.radius-b.end.y)<0.1})
+	var output := {"source":"5819dd8","removed":removed,"sideways_survivors":moved,"max_dx":max_dx}
+	var f := FileAccess.open("res://evidence/motion-fix/repacking-reproduction.json",FileAccess.WRITE)
+	f.store_string(JSON.stringify(output,"  "))
+	print("REPRO survivors moved sideways=",moved.size()," max_dx=",max_dx)
+	quit()
