@@ -1,0 +1,163 @@
+extends RefCounted
+## Pure, deterministic plans over a frozen contact snapshot. No animation or state mutation.
+
+static func contact_graph(panels: Array, tolerance: float = 1.5) -> Dictionary:
+	var graph: Dictionary = {}
+	for panel in panels:
+		graph[int(panel.id)] = []
+	for i in range(panels.size()):
+		for j in range(i + 1, panels.size()):
+			var a: Dictionary = panels[i]
+			var b: Dictionary = panels[j]
+			var reach: float = float(a.radius) + float(b.radius) + maxf(0.0, tolerance)
+			if a.pos.distance_squared_to(b.pos) <= reach * reach:
+				graph[int(a.id)].append(int(b.id))
+				graph[int(b.id)].append(int(a.id))
+	for id in graph:
+		graph[id].sort()
+	return graph
+
+static func _index(panels: Array) -> Dictionary:
+	var out: Dictionary = {}
+	for panel in panels:
+		out[int(panel.id)] = panel
+	return out
+
+static func _distances(graph: Dictionary, start: int) -> Dictionary:
+	if not graph.has(start):
+		return {}
+	var distance: Dictionary = {start: 0}
+	var queue: Array = [start]
+	var cursor := 0
+	while cursor < queue.size():
+		var id: int = queue[cursor]
+		cursor += 1
+		for neighbor in graph[id]:
+			if not distance.has(neighbor):
+				distance[neighbor] = int(distance[id]) + 1
+				queue.append(neighbor)
+	return distance
+
+static func _ordered(ids: Array, distance: Dictionary) -> Array:
+	var out := ids.duplicate()
+	out.sort_custom(func(a: int, b: int) -> bool:
+		var da: int = distance.get(a, 2147483647)
+		var db: int = distance.get(b, 2147483647)
+		return a < b if da == db else da < db)
+	return out
+
+static func _special(panel: Dictionary) -> bool:
+	return panel.kind == "core" or panel.kind == "strong"
+
+static func _component(graph: Dictionary, indexed: Dictionary, colors: Dictionary, start: int) -> Array:
+	var is_heart: bool = indexed[start].kind == "heart"
+	var color: int = colors[start]
+	var found: Dictionary = {start: true}
+	var queue: Array = [start]
+	var cursor := 0
+	while cursor < queue.size():
+		var id: int = queue[cursor]
+		cursor += 1
+		for neighbor in graph[id]:
+			if found.has(neighbor):
+				continue
+			if (indexed[neighbor].kind == "heart") != is_heart:
+				continue
+			if int(colors[neighbor]) != color:
+				continue
+			found[neighbor] = true
+			queue.append(neighbor)
+	return queue
+
+static func _empty_plan() -> Dictionary:
+	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": []}
+
+static func plan(panels: Array, start_id: int, hp: int, max_hp: int) -> Dictionary:
+	var result := _empty_plan()
+	var indexed := _index(panels)
+	if not indexed.has(start_id) or indexed.size() != panels.size():
+		return result
+	var graph := contact_graph(panels)
+	var distance := _distances(graph, start_id)
+	var colors: Dictionary = {}
+	for id in indexed:
+		colors[id] = int(indexed[id].color)
+	var direct := _ordered(_component(graph, indexed, colors, start_id), distance)
+	if direct.size() < 2 and not _special(indexed[start_id]):
+		return result
+	result.valid = true
+	result.direct = direct.duplicate()
+	var removed: Dictionary = {}
+	var pending: Dictionary = {}
+	var activated: Dictionary = {}
+	# Claim prevents later competing cores from recoloring the same snapshot panel.
+	var claimed: Dictionary = {}
+	var direct_normals := 0
+	for id in direct:
+		removed[id] = true
+		if indexed[id].kind == "normal":
+			direct_normals += 1
+		if _special(indexed[id]):
+			pending[id] = true
+	while not pending.is_empty():
+		var core_id: int = _ordered(pending.keys(), distance)[0]
+		pending.erase(core_id)
+		if activated.has(core_id):
+			continue
+		activated[core_id] = true
+		removed[core_id] = true
+		result.activated.append(core_id)
+		var radius := 2 if indexed[core_id].kind == "strong" else 1
+		var core_distance := _distances(graph, core_id)
+		var core_color: int = colors[core_id]
+		for id in _ordered(core_distance.keys(), distance):
+			if int(core_distance[id]) > radius:
+				continue
+			if _special(indexed[id]) and not activated.has(id):
+				pending[id] = true
+			elif indexed[id].kind == "normal" and not removed.has(id) and not claimed.has(id):
+				claimed[id] = true
+				if int(colors[id]) != core_color:
+					colors[id] = core_color
+					result.converted[id] = core_color
+		# The graph remains the action-start graph: cleared positions remain anchors,
+		# but removed panels can never be recolored or counted for damage a second time.
+		for id in _component(graph, indexed, colors, core_id):
+			removed[id] = true
+			if _special(indexed[id]) and not activated.has(id):
+				pending[id] = true
+	result.removed = _ordered(removed.keys(), distance)
+	result.sequence = result.removed.duplicate()
+	for id in result.removed:
+		if indexed[id].kind == "normal":
+			result.damage += 1
+		elif indexed[id].kind == "heart":
+			result.heal_raw += 2
+	result.heal_effective = mini(int(result.heal_raw), maxi(0, max_hp - hp))
+	result.heal_overflow = int(result.heal_raw) - int(result.heal_effective)
+	if direct_normals >= 6:
+		result.spawn = {"pos": indexed[start_id].pos, "color": int(indexed[start_id].color), "kind": "strong" if direct_normals >= 12 else "core"}
+	return result
+
+static func skill_plan(panels: Array, start_id: int, target_color: int) -> Dictionary:
+	var result := {"valid": false, "targets": [], "converted": {}, "connected": []}
+	var indexed := _index(panels)
+	if not indexed.has(start_id) or indexed.size() != panels.size() or indexed[start_id].kind != "normal" or target_color < 0 or target_color > 3:
+		return result
+	var normals: Array = []
+	var colors: Dictionary = {}
+	for panel in panels:
+		colors[int(panel.id)] = int(panel.color)
+		if panel.kind == "normal":
+			normals.append(panel)
+	var normal_graph := contact_graph(normals)
+	var distances := _distances(normal_graph, start_id)
+	var targets := _ordered(distances.keys(), distances).slice(0, 4)
+	result.valid = true
+	result.targets = targets
+	for id in targets:
+		result.converted[id] = target_color
+		colors[id] = target_color
+	var graph := contact_graph(panels)
+	result.connected = _ordered(_component(graph, indexed, colors, start_id), _distances(graph, start_id))
+	return result
