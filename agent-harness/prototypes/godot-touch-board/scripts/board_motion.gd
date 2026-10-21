@@ -95,22 +95,23 @@ static func _anchor(bodies: Array, bounds: Rect2) -> void:
 
 static func _spawn(state: Dictionary,bounds: Rect2) -> void:
 	if state.pending.is_empty() or state.spawn_clock<0.035:return
+	var radius: float = state.pending[0].radius
 	var best_x := 0.0
 	var best_clearance := -INF
 	# Choose a top inlet from the CURRENT surface, not a destination. Survivors
 	# are untouched. Round-robin inlets biased short refills toward the left wall.
 	for trial in range(33):
-		var x := bounds.position.x+RADIUS+trial*(bounds.size.x-2.0*RADIUS)/32.0
-		var position := Vector2(x,bounds.position.y-RADIUS-1.0)
+		var x := bounds.position.x+radius+trial*(bounds.size.x-2.0*radius)/32.0
+		var position := Vector2(x,bounds.position.y-radius-1.0)
 		var free := true
-		var clearance := bounds.end.y-RADIUS
+		var clearance := bounds.end.y-radius
 		var rising_surface := false
 		for p in state.panels:
-			if p.pos.distance_to(position)<p.radius+RADIUS+1.0:
+			if p.pos.distance_to(position)<p.radius+radius+1.0:
 				free=false
 				break
 			var dx: float=absf(p.pos.x-x)
-			var reach: float=p.radius+RADIUS
+			var reach: float=p.radius+radius
 			if dx<reach:
 				var landing:float=p.pos.y-sqrt(reach*reach-dx*dx)
 				if landing<clearance:
@@ -122,12 +123,12 @@ static func _spawn(state: Dictionary,bounds: Rect2) -> void:
 		# A first-hit surface already rising can lift the new body back out,
 		# especially against a wall. Keep searching other CURRENT inlets;
 		# stationary and descending surfaces need no global settle wait.
-		if free and not rising_surface and clearance >= bounds.position.y+RADIUS and clearance>best_clearance:
+		if free and not rising_surface and clearance >= bounds.position.y+radius and clearance>best_clearance:
 			best_x=x
 			best_clearance=clearance
 	if best_clearance>-INF:
 		var body: Dictionary=state.pending.pop_front()
-		body.pos=Vector2(best_x,bounds.position.y-RADIUS-1.0)
+		body.pos=Vector2(best_x,bounds.position.y-radius-1.0)
 		state.panels.append(body)
 		state.spawn_clock=0.0
 

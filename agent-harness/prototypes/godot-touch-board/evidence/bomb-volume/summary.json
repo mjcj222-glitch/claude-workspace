@@ -1,0 +1,181 @@
+{
+  "baseline": "2b32d639788611f511fb32d0c3584ee6307289f5",
+  "physical_radius": {
+    "ordinary": 37,
+    "bomb": 37,
+    "big_bomb": 48
+  },
+  "visual_radius": {
+    "ordinary": 37,
+    "bomb": 30,
+    "big_bomb": 48
+  },
+  "blast_radius": {
+    "bomb": 98,
+    "big_bomb": 164
+  },
+  "regression_scripts": 49,
+  "failures": 0,
+  "support_checks": 59,
+  "OS_checks_each": 23,
+  "normal_runs": [
+    {
+      "path": "normal/noa-risk-attrition-live/trace.json",
+      "hero": "noa",
+      "policy": "attrition",
+      "event_free": false,
+      "phase": "defeat",
+      "actions": 20,
+      "hp": 0,
+      "gold": 1,
+      "errors": [],
+      "returned": true,
+      "movie": false,
+      "falling": []
+    },
+    {
+      "path": "normal/noa-risk-intent-aware-movie/trace.json",
+      "hero": "noa",
+      "policy": "intent-aware",
+      "event_free": false,
+      "phase": "victory",
+      "actions": 21,
+      "hp": 30,
+      "gold": 17,
+      "errors": [],
+      "returned": true,
+      "movie": true,
+      "falling": [
+        {
+          "id": 130,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(236.625, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 214,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(201.375, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 249,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(219.0, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 317,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(360.0, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 341,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(483.375, 364.75)",
+          "visual_radius": 48.0
+        }
+      ]
+    },
+    {
+      "path": "normal/rio-risk-attrition-live/trace.json",
+      "hero": "rio",
+      "policy": "attrition",
+      "event_free": false,
+      "phase": "defeat",
+      "actions": 20,
+      "hp": 0,
+      "gold": 1,
+      "errors": [],
+      "returned": true,
+      "movie": false,
+      "falling": []
+    },
+    {
+      "path": "normal/rio-risk-intent-aware-live/trace.json",
+      "hero": "rio",
+      "policy": "intent-aware",
+      "event_free": false,
+      "phase": "victory",
+      "actions": 19,
+      "hp": 30,
+      "gold": 17,
+      "errors": [],
+      "returned": true,
+      "movie": false,
+      "falling": [
+        {
+          "id": 131,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(571.5, 346.4167)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 160,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(289.5, 346.4167)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 231,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(236.625, 346.4167)",
+          "visual_radius": 48.0
+        },
+        {
+          "id": 321,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(78.0, 346.4167)",
+          "visual_radius": 48.0
+        }
+      ]
+    },
+    {
+      "path": "normal/rio-risk-intent-aware-live-free/trace.json",
+      "hero": "rio",
+      "policy": "intent-aware",
+      "event_free": true,
+      "phase": "victory",
+      "actions": 23,
+      "hp": 20,
+      "gold": 18,
+      "errors": [],
+      "returned": true,
+      "movie": false,
+      "falling": [
+        {
+          "id": 131,
+          "kind": "bomb",
+          "physical_radius": 37.0,
+          "position": "(561.4375, 348.25)",
+          "visual_radius": 30.0
+        },
+        {
+          "id": 156,
+          "kind": "bomb",
+          "physical_radius": 37.0,
+          "position": "(195.1875, 348.25)",
+          "visual_radius": 30.0
+        }
+      ]
+    }
+  ],
+  "performance": "performance-summary.json",
+  "limits": [
+    "Current normal bombs remain neutral, not an unverified copy of original colored-bomb chain rules.",
+    "Physical large48 differs from previous37; subsequent boards/actions intentionally diverge.",
+    "Automated fixedfps movie is not real-time or human/device evidence.",
+    "Native timing sample is small; ordinary >1s tail remains; no parity or speedup claim.",
+    "No latest Windows/Web ZIP, save/resume or portrait transfer change."
+  ]
+}

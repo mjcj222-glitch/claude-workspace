@@ -7,7 +7,7 @@ func check(ok:bool,label:String)->void:
  checks+=1
  if not ok:failures+=1;printerr("FAIL "+label)
 func panel(id:int,x:float,y:float,kind:String="normal",color:int=0)->Dictionary:
- return {"id":id,"pos":Vector2(x,y),"radius":37.0,"kind":kind,"color":color}
+ return {"id":id,"pos":Vector2(x,y),"radius":48.0 if kind=="big_bomb" else 37.0,"kind":kind,"color":color}
 func _init()->void:
  var source:Array=[panel(1,200,400,"bomb"),panel(2,275,400,"normal",1),panel(3,350,400,"normal",2),panel(4,200,475,"heart",4)]
  check("대형" in preload("res://scripts/board_ui.gd").RELIC_COPY.lens.lines[1],"actual reward/details/shop copy discloses large bombs")
@@ -19,9 +19,10 @@ func _init()->void:
  check(a.damage==1 and a.weak_count==1 and a.heal_raw==2 and a.heal_effective==1 and a.heal_overflow==1,"bomb object no damage; ordinary weakness and capped heart count once")
  check(a.direct_normals==0 and a.spawn.is_empty(),"bomb/secondary removals never farm direct core threshold")
  source[0].kind="big_bomb"
+ source[0].radius=48.0
  var b:Dictionary=Rules.plan(source,1,29,30)
  check(b.removed.has(3) and b.removed.size()>a.removed.size(),"large bomb has strictly larger actual radial reach")
- check(a.blasts[0].radius<b.blasts[0].radius and source[0].radius==37,"blast range differs while collision body stays37")
+ check(a.blasts[0].radius==98 and b.blasts[0].radius==164 and source[0].radius==48,"blast98/164 remains separate from physical body48")
  source=[panel(1,200,400,"bomb"),panel(2,280,400,"bomb"),panel(3,360,400,"strong",2),panel(4,400,400,"normal",0),panel(5,280,475,"heart",4),panel(6,220,470,"normal",3)]
  var chain:Dictionary=Rules.plan(source,1,20,30,["lens"],{"weakness_color":2})
  check(chain.activated.size()==3 and chain.blasts.size()==2,"radial bomb reaches other bomb then core activation")
@@ -47,7 +48,7 @@ func _init()->void:
  check(bombs!=null,"separate bomb metadata helper")
  if bombs!=null:
   bombs.prepare_supply(pending,actual.bomb_spawn_kind)
-  check(pending[0].kind=="big_bomb" and pending[1].kind=="normal" and pending[0].radius==37,"exactly one new pending panel becomes bomb with unchanged ID/body")
+  check(pending[0].kind=="big_bomb" and pending[1].kind=="normal" and pending[0].radius==48,"exactly one new pending panel becomes bomb with unchanged ID/count, actual large body48")
   check(not actual.removed.has(50) and not actual.activated.has(50),"newly supplied bomb cannot detonate in creating action")
  check(original[0].kind=="bomb","planning did not mutate input")
  var conversion:Array=[panel(1,200,400,"bomb"),panel(2,274,400,"core",1),panel(3,348,400,"normal",0)]

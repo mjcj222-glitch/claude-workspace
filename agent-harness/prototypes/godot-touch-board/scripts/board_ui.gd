@@ -80,6 +80,10 @@ static func draw(view) -> void:
 			lines=["%d개 변환 → 연결 %d개"%[preview.targets.size(),preview.connected.size()],"놓으면 변환 · 소거 행동 없음"] if session.character_id!="noa" else ["강화핵 심기" if "pigment" in session.relics else "물감핵 심기","놓으면 설치 · 다음 입력에서 핵을 눌러 기동"]
 		else:
 			lines=["직접 %d · 연쇄 %d"%[preview.direct.size(),preview.removed.size()-preview.direct.size()],preview_effect_line(preview)]
+			if not preview.get("blasts",[]).is_empty():
+				var largest:float=0
+				for blast in preview.blasts:largest=maxf(largest,float(blast.radius))
+				lines[0]="무속성 폭탄 · 폭풍 반경 %d · 총 %d개"%[largest,preview.removed.size()]
 			var effects := "회복 %d → %d · 초과 %d"%[preview.heal_raw,preview.heal_effective,preview.heal_overflow]
 			if not preview.spawn.is_empty(): effects += " · "+("강화핵 생성" if preview.spawn.kind=="strong" else "물감핵 생성")
 			if preview.get("bomb_spawn_kind","")!="":effects+=" · "+("대형 폭탄 준비" if preview.bomb_spawn_kind=="big_bomb" else "폭탄 준비")

@@ -28,7 +28,7 @@ func run()->void:
      entered=true;check(body.pos.y<scene.BOARD.position.y,"bomb actually enters from top outside board")
  check(scene.session.phase=="ready","natural refill completes without effect gate")
  var bombs:Array=scene.session.panels.filter(func(p):return p.kind in ["bomb","big_bomb"])
- check(bombs.size()==1 and bombs[0].id==old_next and bombs[0].radius==37,"settled bomb has same queued ID/body, one supply only")
+ check(bombs.size()==1 and bombs[0].id==old_next and bombs[0].radius==48,"settled bomb has same queued ID/body, one supply only")
  check(not plan.removed.has(old_next) and not plan.activated.has(old_next),"fresh bomb was not auto-exploded")
  pos=scene.board_to_screen(bombs[0].pos);var actions:int=scene.session.actions
  scene.press(pos,-1);var preview:Dictionary=scene.session.selection.duplicate(true)

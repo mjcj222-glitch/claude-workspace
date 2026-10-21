@@ -31,7 +31,7 @@
 
 새로 만든 Godot 손맛 검증용 보드입니다. 기존 게임 코드·UI·자산은 재사용하지 않았습니다. 완성 게임이나 재미 검증 완료본이 아닙니다.
 
-최신 대형 폭탄 외형과 선택 판정 변경은 [본체 검증 기록](docs/BOMB_BODY.md)에 있습니다. [전후 비교](evidence/bomb-body/before-after-detail.png)와 [소리 포함 실제 플레이 발췌](evidence/bomb-body/bomb-body-preview.mp4)를 확인할 수 있습니다. 물리 반경 37과 폭발 반경 98/164는 유지합니다.
+최신 대형 폭탄은 표시뿐 아니라 **물리 반경도 48**로 공간을 차지합니다. 일반 패널/폭탄의 물리 반경 37과 별도 폭발 반경 98/164는 유지합니다. [부피 검증 기록](docs/BOMB_VOLUME.md), [전후 비교](evidence/bomb-volume/before-after-detail.png), [소리 포함 실제 플레이](evidence/bomb-volume/bomb-volume-preview.mp4)를 확인할 수 있습니다. 이전 외형 전용 변경은 [과거 본체 기록](docs/BOMB_BODY.md)에 있습니다.
 
 ## 플레이
 - 출발 화면에서 한 명을 선택하고 출발을 확정합니다. 한 판 도중 변경할 수 없고 승패·리셋 후 선택으로 돌아옵니다.

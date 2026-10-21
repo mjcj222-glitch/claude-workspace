@@ -6,7 +6,7 @@ var failures:=0
 func check(ok:bool,label:String)->void:
  checks+=1
  if not ok:failures+=1;printerr("FAIL "+label)
-func p(id:int,pos:Vector2,kind:String)->Dictionary:return {"id":id,"pos":pos,"kind":kind,"radius":37.0,"color":0}
+func p(id:int,pos:Vector2,kind:String)->Dictionary:return {"id":id,"pos":pos,"kind":kind,"radius":48.0 if kind=="big_bomb" else 37.0,"color":0}
 func _init()->void:
  var s=Session.new();s.panels=[p(1,Vector2(200,500),"big_bomb")]
  check(s.begin(Vector2(244,500),-1) and s.selection.get("valid",false),"exposed enlarged body rim can be pressed")

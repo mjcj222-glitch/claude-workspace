@@ -1,10 +1,9 @@
 extends RefCounted
-## Shared presentation envelope and visible-owner hit order, never physics.
+## Shared presentation envelope and visible-owner hit order.
 const NORMAL_BOMB_SCALE := 30.0 / 37.0
-const LARGE_BOMB_SCALE := 48.0 / 37.0
 static func visual_radius(panel: Dictionary) -> float:
  var radius: float = panel.get("radius", 37.0)
- if panel.kind == "big_bomb": return radius * LARGE_BOMB_SCALE
+ if panel.kind == "big_bomb": return radius
  if panel.kind == "bomb": return radius * NORMAL_BOMB_SCALE
  return radius
 static func draw_order(panels: Array) -> Array:
