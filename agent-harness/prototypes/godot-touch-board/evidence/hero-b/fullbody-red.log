@@ -1,0 +1,41 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS detailed art frame exposes source region and transform
+PASS full original transparent atlas available
+PASS atlas enforces nearest sampling without changing canvas
+PASS rio frame deterministic
+PASS rio breathing animation
+PASS rio distinct ready presentation
+PASS rio distinct skill presentation
+PASS rio distinct cheer presentation
+PASS rio distinct hit presentation
+PASS rio reduced idle stable
+FAIL rio idle full body including hat and boots inside original atlas
+PASS rio idle motion bounded
+FAIL rio ready full body including hat and boots inside original atlas
+PASS rio ready motion bounded
+FAIL rio skill full body including hat and boots inside original atlas
+PASS rio skill motion bounded
+FAIL rio cheer full body including hat and boots inside original atlas
+PASS rio cheer motion bounded
+FAIL rio hit full body including hat and boots inside original atlas
+PASS rio hit motion bounded
+PASS noa frame deterministic
+PASS noa breathing animation
+PASS noa distinct ready presentation
+PASS noa distinct skill presentation
+PASS noa distinct cheer presentation
+PASS noa distinct hit presentation
+PASS noa reduced idle stable
+FAIL noa idle full body including hat and boots inside original atlas
+PASS noa idle motion bounded
+FAIL noa ready full body including hat and boots inside original atlas
+PASS noa ready motion bounded
+FAIL noa skill full body including hat and boots inside original atlas
+PASS noa skill motion bounded
+FAIL noa cheer full body including hat and boots inside original atlas
+PASS noa cheer motion bounded
+FAIL noa hit full body including hat and boots inside original atlas
+PASS noa hit motion bounded
+PASS hero source regions never bleed into other character
+PIXEL_HEROES checks=38 failures=10

@@ -1,0 +1,10 @@
+{
+  "file": "CHROMA-climax-low-high-candidate.mp4",
+  "bytes": 874890,
+  "sha256": "84f74917e46cee9c9df6f3488a706ac45b2caf7c8f11c49fd0acc95780eb0ee3",
+  "decoded_aac_peak_dbfs": -10.152267700671011,
+  "clipped_samples": 0,
+  "nonfinite_samples": 0,
+  "channel_samples": 1294336,
+  "device_listening": false
+}

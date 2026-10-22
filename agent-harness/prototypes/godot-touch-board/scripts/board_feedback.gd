@@ -240,6 +240,7 @@ func draw_hud(view, canvas: CanvasItem) -> void:
 			for shard in range(8):
 				var angle:float=TAU*shard/8
 				var center:=Vector2(176,177)+Vector2(cos(angle)*58,sin(angle)*24)*(1+progress*.15)
+				if 4*(1-progress)<.5:continue
 				var along:=Vector2.from_angle(angle)*4*(1-progress)
 				var side:=along.orthogonal()*.4
 				canvas.draw_colored_polygon(PackedVector2Array([center+along,center+side,center-along,center-side]),Color(pose.color,(1-progress)*.7))

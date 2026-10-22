@@ -1,0 +1,10 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS bank ledger uses explicit schema version3
+PASS first two clears capture accumulated attack without early enemy damage
+PASS ledger retains damage and effect categories
+FAIL two-clear ready checkpoint validates
+FAIL bank checkpoint atomically saves
+ROUNDTRIP missing
+FAIL bank checkpoint read roundtrip exact
+AUDIO_TEARDOWN remaining=0 wall_ms=0

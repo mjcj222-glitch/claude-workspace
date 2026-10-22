@@ -1,8 +1,8 @@
 extends RefCounted
-## Original generated pixel-style illustration, not hand-drawn 32px sprites.
+## Approved B: enlarged generated coarse-pixel illustration, not native 32×48 sprites.
 ## Presentation-only atlas crop/motion; never touches session state or game RNG.
-const PATH="res://assets/characters/rio-noa-sheet.png"
-const REGIONS={"rio":Rect2(220,100,420,373),"noa":Rect2(970,125,420,373)}
+const PATH="res://assets/characters/rio-noa-full-body-b.png"
+const REGIONS={"rio":Rect2(20,95,724,992),"noa":Rect2(744,125,703,962)}
 static var _texture:CanvasTexture
 static func texture()->Texture2D:
  if _texture!=null:return _texture
@@ -22,7 +22,7 @@ static func frame(hero:String,time:float,state:String="idle",reduced:bool=false)
  var clock:=0.0 if reduced else time
  var breathing:=sin(clock*2.3)
  var offset:=Vector2(0,round(breathing*1.5))
- var zoom:=1.0+.007*breathing
+ var zoom:=1.0 # Idle breathing moves whole pixels; no nearest-scale edge pumping.
  var accent:=0.0
  var tint:=Color.WHITE
  match state:
@@ -39,17 +39,21 @@ static func frame(hero:String,time:float,state:String="idle",reduced:bool=false)
  return {"region":REGIONS.get(hero,REGIONS.rio),"offset":offset,"zoom":zoom,"accent":accent,"tint":tint,"state":state}
 static func sparkle(canvas:CanvasItem,at:Vector2,size:float,color:Color)->void:
  canvas.draw_colored_polygon(PackedVector2Array([at+Vector2(0,-size),at+Vector2(size*.3,-size*.3),at+Vector2(size,0),at+Vector2(size*.3,size*.3),at+Vector2(0,size),at+Vector2(-size*.3,size*.3),at+Vector2(-size,0),at+Vector2(-size*.3,-size*.3)]),color)
+static func destination_rect(rect:Rect2,hero:String,time:float,state:String="idle",reduced:bool=false)->Rect2:
+ var f=frame(hero,time,state,reduced)
+ var available=rect.size-Vector2(12,12)
+ var scale=minf(available.x/f.region.size.x,available.y/f.region.size.y)*f.zoom
+ var size=(f.region.size*scale).floor()
+ return Rect2((rect.get_center()-size*.5+f.offset).round(),size)
 static func draw(canvas:CanvasItem,rect:Rect2,hero:String,time:float,state:String="idle",reduced:bool=false)->void:
  var sheet=texture()
  if sheet==null:return
  var f=frame(hero,time,state,reduced)
- # Integer logical-pixel placement and nearest filtering retain crisp detail.
- # The input rect is a bust viewport; no tiny full-body scaling in the footer.
- var size=(rect.size*f.zoom).round()
- var destination=Rect2((rect.get_center()-size*.5+f.offset).round(),size)
+ # Preserve full-body aspect ratio, leave room for bounded animation and name.
+ var destination=destination_rect(rect,hero,time,state,reduced)
  canvas.draw_texture_rect_region(sheet,destination,f.region,f.tint,false,true)
  if f.accent>0:
-  var color=Color("85ffe0") if hero=="rio" else Color("dcc4ff")
+  var color=Color("ffd182") if hero=="rio" else Color("dcc4ff")
   color.a=f.accent
   var phase:=0.0 if reduced else time
   for i in range(3):

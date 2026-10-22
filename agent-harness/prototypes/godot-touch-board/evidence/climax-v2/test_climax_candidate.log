@@ -1,0 +1,26 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS no early hit
+PASS one hit at .28
+PASS impact is consumed once
+PASS bounded enemy recoil; reduced zero
+PASS impact lifetime remains .24
+PASS no early hit
+PASS one hit at .28
+PASS impact is consumed once
+PASS bounded enemy recoil; reduced zero
+PASS impact lifetime remains .24
+PASS no early hit
+PASS one hit at .28
+PASS impact is consumed once
+PASS bounded enemy recoil; reduced zero
+PASS impact lifetime remains .24
+PASS no early hit
+PASS one hit at .28
+PASS impact is consumed once
+PASS bounded enemy recoil; reduced zero
+PASS impact lifetime remains .24
+PASS visual update does not consume global RNG
+PASS cached impact PCM normalized below clipping
+PASS six cached tier/weak variants
+CLIMAX_CANDIDATE checks=23 failures=0

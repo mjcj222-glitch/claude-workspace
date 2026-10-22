@@ -49,6 +49,12 @@ func run():
  check(view.quality_fx.bank_energy==saved.data.combat.pending_removed and view.quality_fx.cutin_remaining==0,"resume restores charged orb without replaying skill")
  commit(third);finish_fall()
  check(view.session.phase=="player_attack" and view.session.combat.pending_damage==pending,"replayed third legal input creates identical attack")
+ var windup_actions=view.session.actions
+ var windup_target=next_clear()
+ if windup_target>=0:
+  commit(windup_target);commit(windup_target)
+ view.cancel_input()
+ check(view.session.phase=="player_attack" and view.session.actions==windup_actions and view.session.combat.enemy_hp==hp and view.session.combat.pending_damage==pending,"repeated board press/release and cancel cannot change windup bank or HP")
  for i in range(120):
   if view.session.phase!="player_attack":break
   view._process(1.0/60.0)

@@ -16,10 +16,12 @@ class Canvas extends RefCounted:
  var lines:Array=[]
  var polygons:=0
  var arcs:=0
+ var polylines:=0
  var textures:=0
  var text:Array=[]
  func draw_colored_polygon(_points,_tint):polygons+=1
  func draw_line(a,b,c,w=1.0,_aa=false):lines.append({"a":a,"b":b,"color":c,"width":w})
+ func draw_polyline(_points,_color,_width=1.0,_aa=false):polylines+=1
  func draw_circle(_p,_r,_c):pass
  func draw_arc(_p,_r,_a,_b,_n,_c,_w=1.0,_aa=false):arcs+=1
  func draw_string(_f,_p,value,_a,_w,_size,_c):text.append(value)
@@ -54,7 +56,7 @@ func run():
  var v=View.new();var canvas=Canvas.new()
  f.draw_overlay(v,canvas)
  check(canvas.polygons>=12 and '보호막 파괴' in canvas.text,'actual draw emits shield pieces and readable break result')
- check(canvas.arcs>=5,'large bomb adds two distinct concentric impact waves')
+ check(canvas.arcs==2 and canvas.polygons>=12,'large bomb adds two distinct concentric waves beside clipped burst geometry')
  f.reduced_effects=true
  canvas=Canvas.new();f.draw_overlay(v,canvas)
  check(canvas.polygons==0 and canvas.arcs==2,'reduced effect uses two quiet arcs without fragments')

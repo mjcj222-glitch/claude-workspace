@@ -1,0 +1,32 @@
+{
+  "base_commit": "a4d67d4904083a0cbff2f706b5486d489ef6e62b",
+  "stage": "fullbody B and first strengthened finisher, before second visual revision",
+  "source_sha256": {
+    "scripts/board_area_session.gd": "beeac423200312f49fddd89c3c54223eb25bc027c4afa6665860d47593b4e945",
+    "scripts/board_area_ui.gd": "fb0b8f93389f88bb0febe1e0708de03e28a746022a47066cd261d915d8d7226c",
+    "scripts/board_art.gd": "37e13670ea2b7e4dff24f9802166a5c0b5d94a20f480ff2a42f8c7b394f0ad4d",
+    "scripts/board_audio.gd": "26c43a3313478d8167ca20a9f4bb0ae5930205975d9aa8c11b1af6086a8351e9",
+    "scripts/board_bombs.gd": "bd628cf5477ed4318756b8b309b6c9dadad5761d40eb37b489327316caf3b469",
+    "scripts/board_character_ui.gd": "f399c894a36e7274f64cd7bd18eb09759bf773493bb090dd94c543de00559dab",
+    "scripts/board_characters.gd": "f509a11ae73eb507fcbe1670e2fd02f24a4b3cd1f31c4614f9ff90e6b7749459",
+    "scripts/board_checkpoint.gd": "4120050423fe4ea351cb511eccc543cb380dee5b3e5046c83bdf4baa3472e185",
+    "scripts/board_combat.gd": "b72da82551213c912f41b31573da6f74de2196fda62af96bbd6ad7cfc2b83c40",
+    "scripts/board_feedback.gd": "7fe645d294babcfc73b9c8ae022d6e1ff83c2feba594e7559655a141131caf1a",
+    "scripts/board_layout.gd": "8d45c37af3e60ea89197f469ba664fc98fd19e32db01f6ee7af240d1f681fcc7",
+    "scripts/board_lifecycle.gd": "9d8642eae3acc900eb1ec9d837da3b0ad94011ac48458d65c12a68066868af43",
+    "scripts/board_motion.gd": "633f6f23f70aae4ddae53e63794cd57d479cc6081d26f90bc2d94d1f86d45af3",
+    "scripts/board_panel_view.gd": "16d52677ba62fa48888dd30ca82855b7a9f422b079f723af1865671c2f30022a",
+    "scripts/board_pixel_heroes.gd": "806bacfe7b06fa5ccfda9f29832a347c045e3ccf5b3f33c34cc509e02af2aee1",
+    "scripts/board_premium_skin.gd": "2a4723c2a649865ebb1886a831dabe9b7750f4e426a57fbe98bc4d135fba03c2",
+    "scripts/board_quality_fx.gd": "c5c49776549cf4dda37b226a3eca68a6e8df7088c5f6499a51d51dd24984f16a",
+    "scripts/board_relic_art.gd": "c1848994cbcf56a7397685b80015ef047be498a943e33ecc5e6efdb06f9b3381",
+    "scripts/board_relics.gd": "62a9d5f696ed5b51f9a8e440d07cd170a2d536fb36ca4ae8b9e67ddea4952d8e",
+    "scripts/board_rules.gd": "1a46f8a30709c6c7ba20b346490137b0a55f5645c0b6c789c1c8af2c6f48ebbd",
+    "scripts/board_run_session.gd": "62b8653a386e6d8735c8ddd52fd269b3a93d44d96a2beae93bdd8fc1389d7215",
+    "scripts/board_session.gd": "0b58cdfe100b92c534f2132dc1df1e0bca7dcd24789bd7e1236cb919deead50f",
+    "scripts/board_skill_presentation.gd": "08d2ab0cfcc82dcda50e482d07ea36b913070c0e6d846d348bdbd60bc042adbc",
+    "scripts/board_skin.gd": "49f68a25ba9855416f56462ca92f3878b1941f0c098b93fe801f2d546fa1eece",
+    "scripts/board_ui.gd": "7d90a9afdb7f123096b080348735dd75cca03ea5ac082c29ceb86e8574953bb4",
+    "scripts/main.gd": "6d8cc8e7f2a3bf61c0fc1335eb8489bf6cb7fb85b28a9348917b7ed36f2e0e6f"
+  }
+}

@@ -203,7 +203,7 @@ func stage_offset() -> Vector2:
 	if reduced_effects or impact_remaining<=0:return Vector2.ZERO
 	var t:float=1.0-impact_remaining/IMPACT_SECONDS
 	var recoil:float=sin(t*PI*3.0)*pow(1.0-t,2)
-	return Vector2(9+impact_tier*4,-4)*recoil
+	return Vector2(16+impact_tier*7,-5)*recoil
 
 func hit_flash() -> float:
 	if reduced_effects or impact_remaining<=0:return 0.0
@@ -240,26 +240,44 @@ func _text(canvas,font: Font,point: Vector2,text: String,size: int,color: Color,
 	canvas.draw_string_outline(font,origin,text,HORIZONTAL_ALIGNMENT_LEFT,-1,size,outline,Color(0.02,0.04,0.06,color.a))
 	canvas.draw_string(font,origin,text,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
 
+# Upper stage only: no polygon may cover intent/shield text or board.
+func _stage_polygon(canvas,points:PackedVector2Array,color:Color)->void:
+	if color.a<.01 or Geometry2D.triangulate_polygon(points).is_empty():return
+	for rect in [Rect2(8,70,704,146),Rect2(8,216,328,86),Rect2(692,216,20,86),Rect2(336,276,356,26)]:
+		var bounds:=PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y)])
+		for part in Geometry2D.intersect_polygons(points,bounds):
+			if part.size()>=3 and not Geometry2D.triangulate_polygon(part).is_empty():canvas.draw_colored_polygon(part,color)
+
+func _stage_stroke(canvas,a:Vector2,b:Vector2,width:float,color:Color)->void:
+	if width<.5 or a.distance_squared_to(b)<.25:return
+	var n:Vector2=(b-a).normalized().orthogonal()*width*.5
+	_stage_polygon(canvas,PackedVector2Array([a-n,b-n,b+n,a+n]),color)
+
 func draw_overlay(view,canvas) -> void:
 	var target: Vector2 = Art.impact_point(-1 if view.get("sandbox")==true else (view.session.combat.encounter if view.get("session")!=null else 0))
 	var hero: Vector2 = view.UI.HERO_RECT.get_center()
 	if bank_energy>0 and not _impacted:
 		var charge:float=clampf(float(bank_energy)/48.0,0,1)
 		var progress:float=clampf(_elapsed/BANK_WINDUP,0,1) if _bank_releasing else 0.0
-		var radius:float=14+charge*12+progress*13
-		canvas.draw_circle(COLLECTION_POINT,radius+8,Color(.035,.025,.09,.80))
-		var tint:=Color(.9,.8,1,.85)
-		canvas.draw_arc(COLLECTION_POINT,radius,0,TAU,32,tint,2.0,true)
-		if not reduced_effects:
-			canvas.draw_circle(COLLECTION_POINT,radius*.45,Color(.75,.6,1,.10+progress*.15))
-			canvas.draw_arc(COLLECTION_POINT,radius+5,_elapsed*3,_elapsed*3+PI*1.4,24,Color(1,.88,.6,.45),2,true)
-			if _bank_releasing and progress>.6:
-				var beam_alpha:float=sin((progress-.6)/.4*PI)*.65
-				canvas.draw_line(COLLECTION_POINT,target,Color(.8,.55,1,beam_alpha),10,true)
-				canvas.draw_line(COLLECTION_POINT,target,Color(1,.96,.8,beam_alpha),3,true)
+		var origin:Vector2=Vector2(hero.x,view.UI.HERO_RECT.position.y+18)
+		var grow:float=sin(minf(progress/.70,1.0)*PI*.5)
+		var radius:float=(12+charge*14+grow*12)*(1-clampf((progress-.7)/.3,0,1)*.5)
+		canvas.draw_circle(origin,radius+5,Color(.02,.05,.09,.85))
+		canvas.draw_circle(origin,radius,Color(.15,.65,.95,.85))
+		canvas.draw_circle(origin,radius*.65,Color(1,.83,.43,.95))
+		if _bank_releasing and not reduced_effects:
+			# Ascending pulse follows the gutter, avoiding a board-covering beam.
+			var rise:float=clampf(progress/.78,0,1)
+			var head:=Vector2(18,lerpf(origin.y,165,rise))
+			canvas.draw_line(Vector2(18,minf(origin.y,head.y+100)),head,Color(.3,.75,1,.75),7+charge*7,true)
+			canvas.draw_circle(head,5+charge*4,Color(1,.87,.48,.9))
+			if progress>.78:
+				_stage_stroke(canvas,Vector2(18,165),target,18+charge*32,Color(.12,.65,1,.75))
+				_stage_stroke(canvas,Vector2(18,165),target,6+charge*11,Color(1,.9,.6,.95))
+
 	for trail in trails:
 		var start: Vector2 = view.board_to_screen(trail.pos)
-		var destination: Vector2 = hero if trail.kind=="heal" else COLLECTION_POINT
+		var destination: Vector2 = hero if trail.kind=="heal" else Vector2(hero.x,view.UI.HERO_RECT.position.y+18)
 		var t: float = clampf(trail.age/trail.life,0.0,1.0)
 		if reduced_effects:
 			canvas.draw_line(start,destination,Color(trail.color,0.18*(1.0-t)),1.5,true)
@@ -291,21 +309,35 @@ func draw_overlay(view,canvas) -> void:
 		if reduced_effects:
 			canvas.draw_arc(target,24,0,TAU,24,Color(tint,0.3*(1.0-t)),2,true)
 		else:
-			canvas.draw_arc(target,lerpf(10,65*strength,t),0,TAU,40,Color(.16,.025,.24,(1-t)*.78),9*(1-t)+1,true)
-			canvas.draw_arc(target,lerpf(10,65*strength,t),0,TAU,40,tint,5*(1.0-t)+1,true)
-			canvas.draw_arc(target,lerpf(7,46*strength,t),0,TAU,32,Color(1,.95,.8,tint.a*.65),2.5*(1-t)+.6,true)
-			if t<.30:
-				var shape:=PackedVector2Array()
-				for i in range(8):
-					shape.append(target+Vector2.from_angle(i*TAU/8+.18)*32*strength*(1-t/.30)*(1.0 if i%2==0 else .26))
-				var shadow:=PackedVector2Array()
-				for point in shape:shadow.append(target+(point-target)*1.18)
-				canvas.draw_colored_polygon(shadow,Color(.28,.035,.38,(1-t/.30)*.9))
-				canvas.draw_colored_polygon(shape,Color(1,.92,.72,(1-t/.30)*.85))
-			for i in range(6+impact_tier*3):
-				var angle:float=TAU*i/(6+impact_tier*3)
+			var high:float=impact_tier/2.0
+			var reach:float=90+high*170
+			# Torn radial silhouette precedes the wave; bright spokes are not a badge.
+			if t<.65:
+				var fade:float=1-t/.65
+				for i in range(14):
+					var angle:float=TAU*i/14.0+.15
+					var direction:=Vector2(cos(angle),sin(angle))
+					var length:float=reach*(1.0 if i%3==0 else .72)*(1+t*.3)
+					var tip:Vector2=target+direction*Vector2(length,length*.8)
+					var tangent:=direction.orthogonal()*(13+high*15)*fade
+					_stage_polygon(canvas,PackedVector2Array([target-tangent,tip,target+tangent]),Color(.12,.62,1,fade*.9))
+					_stage_polygon(canvas,PackedVector2Array([target-tangent*.38,tip,target+tangent*.38]),Color(1,.88,.53,fade*.96))
+			if t>.12:
+				var wave:float=(t-.12)/.88
+				var radius:float=reach*(.35+wave*.85)
+				for i in range(48):
+					var a:float=TAU*i/48.0
+					var b:float=TAU*(i+1)/48.0
+					_stage_stroke(canvas,target+Vector2(cos(a),sin(a)*.75)*radius,target+Vector2(cos(b),sin(b)*.75)*radius,(10+high*8)*(1-wave),Color(.4,.8,1,(1-wave)*.75))
+			for i in range(8+impact_tier*5):
+				var size:float=(4+impact_tier*2)*(1-t)
+				if size<.5:continue
+				var angle:float=TAU*i/(8+impact_tier*5)
 				var direction:=Vector2.from_angle(angle)
-				canvas.draw_line(target+direction*(9+t*18),target+direction*(18+t*58*strength),tint,4.0*(1.0-t)+0.5,true)
+				var center:Vector2=target+direction*(30+t*reach)
+				var tangent:=direction.orthogonal()*size
+				_stage_polygon(canvas,PackedVector2Array([center+direction*size*3,center+tangent,center-direction*size,center-tangent]),Color(1,.79,.46,(1-t)*.9))
+
 	if impact_remaining>0 and big_bombs>0 and not reduced_effects:
 		var age:float=1.0-impact_remaining/IMPACT_SECONDS
 		for wave in range(2):
@@ -330,7 +362,7 @@ func draw_overlay(view,canvas) -> void:
 		var alpha := minf(1.0,total_remaining/0.23)
 		var rise := (1.0-total_remaining/TOTAL_SECONDS)*14.0
 		if damage_amount > 0 and _impacted:
-			_text(canvas,display,target+Vector2(-55,-38-(0 if reduced_effects else rise)),str(damage_amount),54,Color(1.0,0.89,0.60,alpha),4)
+			_text(canvas,display,Vector2(target.x,126-(0 if reduced_effects else rise)),str(damage_amount),64,Color(1.0,0.89,0.60,alpha),4)
 			if weak_bonus>0:_text(canvas,body,target+Vector2(-55,-12),"약점 +%d"%weak_bonus,22,Color(0.9,0.75,1,alpha))
 			elif core_activations>0:_text(canvas,body,target+Vector2(-55,-12),"핵 연쇄",22,Color(1,0.85,0.5,alpha))
 			elif skill_link and impact_tier>0:_text(canvas,body,target+Vector2(-55,-12),"변환 연계",22,Color(0.9,0.75,1,alpha))

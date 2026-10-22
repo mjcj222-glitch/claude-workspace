@@ -42,7 +42,7 @@ func _pcm(samples:PackedFloat32Array)->AudioStreamWAV:
  for i in range(samples.size()):bytes.encode_s16(i*2,int(samples[i]*normalization*32767))
  stream.data=bytes;return stream
 func _impact_stream(tier:int,weak:bool)->AudioStreamWAV:
- var duration:float=.15+tier*.045
+ var duration:float=.20+tier*.035
  var samples:=PackedFloat32Array();samples.resize(int(duration*22050))
  var noise:=RandomNumberGenerator.new();noise.seed=1773+tier*19+int(weak)
  var filtered:=0.0
@@ -50,8 +50,8 @@ func _impact_stream(tier:int,weak:bool)->AudioStreamWAV:
   var t:float=n/22050.0;var progress:float=t/duration
   var envelope:float=minf(t*2400,1)*pow(1-progress,1.6)
   var raw:float=noise.randf_range(-1,1);filtered=lerpf(filtered,raw,.24)
-  var body:float=sin(TAU*((112-tier*15)*t-65*t*t))*.58
-  var snap:float=(raw-filtered)*exp(-t*95)*.46
+  var body:float=sin(TAU*((90-tier*14)*t-45*t*t))*.68
+  var snap:float=((raw-filtered)*.45+sin(TAU*2100*t)*.22)*exp(-t*75)
   var grit:float=filtered*exp(-t*24)*.22
   var accent:float=(sin(TAU*1174*t)+sin(TAU*1760*t))*.10*exp(-t*27) if weak else 0.0
   samples[n]=(body+snap+grit+accent)*envelope

@@ -1,0 +1,10 @@
+{
+  "file": "CHROMA-fullbody-B-normal-opening.mp4",
+  "bytes": 6955362,
+  "sha256": "492e9027cdd72c0305f642a98d7478db208e1e4e53506543edbf393bf716d693",
+  "decoded_aac_peak_dbfs": -10.211933695596578,
+  "clipped_samples": 0,
+  "nonfinite_samples": 0,
+  "channel_samples": 2408448,
+  "device_listening": false
+}

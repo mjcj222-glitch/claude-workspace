@@ -9,6 +9,7 @@ class DrawProbe extends RefCounted:
 	var textures: Array = []
 	func draw_colored_polygon(_points, _color): calls += 1
 	func draw_line(_a,_b,_color,_width=1.0,_aa=false): calls += 1
+	func draw_polyline(_points,_color,_width=1.0,_aa=false): calls += 1
 	func draw_circle(_center,_radius,_color): calls += 1
 	func draw_arc(_center,_radius,_from,_to,_points,_color,_width=1.0,_aa=false):calls+=1
 	func draw_texture_rect_region(texture,dest,source,_modulate=Color.WHITE,_transpose=false,_clip=true):
