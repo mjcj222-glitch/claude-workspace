@@ -6,23 +6,24 @@ func check(ok:bool,label:String)->void:
  if not ok:failures+=1;printerr("FAIL ",label)
  else:print("PASS ",label)
 func _initialize()->void:
- var source="res://scripts/board_pixel_heroes.gd"
- check(FileAccess.file_exists(source),"original pixel hero renderer exists")
- if not FileAccess.file_exists(source):quit(1);return
- var art=load(source)
+ var art=load("res://scripts/board_pixel_heroes.gd")
+ var probe=art.frame("rio",0.0,"idle")
+ check(probe is Dictionary,"detailed art frame exposes source region and transform")
+ if not probe is Dictionary:quit(1);return
+ var texture=art.texture()
+ check(texture!=null and texture.get_size()==Vector2(1447,1087),"full original transparent atlas available")
+ check(texture is CanvasTexture and texture.texture_filter==CanvasItem.TEXTURE_FILTER_NEAREST,"atlas enforces nearest sampling without changing canvas")
  for hero in ["rio","noa"]:
   var idle=art.frame(hero,0.0,"idle")
   check(idle==art.frame(hero,0.0,"idle"),hero+" frame deterministic")
-  check(idle!=art.frame(hero, .5,"idle"),hero+" idle animation")
-  check(idle!=art.frame(hero,0.0,"skill"),hero+" skill flourish")
-  check(idle!=art.frame(hero,0.0,"hit"),hero+" hit reaction")
-  check(art.frame(hero,0.0,"idle",true)==art.frame(hero, .5,"idle",true),hero+" reduced effects stable")
-  for state in ["idle","skill","hit"]:
-   var cells=art.frame(hero, .5,state)
-   var inside=true
-   for cell in cells:
-    if not Rect2(0,0,32,32).encloses(cell.rect):inside=false
-   check(inside,hero+" "+state+" bounded to portrait")
- check(art.frame("rio",0.0,"idle")!=art.frame("noa",0.0,"idle"),"distinct character silhouettes/palettes")
+  check(idle!=art.frame(hero,.5,"idle"),hero+" breathing animation")
+  for state in ["ready","skill","cheer","hit"]:
+   check(idle!=art.frame(hero,.5,state),hero+" distinct "+state+" presentation")
+  check(art.frame(hero,0.0,"idle",true)==art.frame(hero,.5,"idle",true),hero+" reduced idle stable")
+  for state in ["idle","ready","skill","cheer","hit"]:
+   var f=art.frame(hero,.5,state)
+   check(Rect2(0,0,1447,1087).encloses(f.region) and f.region.size.x<=540,hero+" "+state+" enlarged face crop inside original atlas")
+   check(f.offset.length()<8 and f.zoom<=1.04,hero+" "+state+" motion bounded")
+ check(art.frame("rio",0.0).region.end.x<=art.frame("noa",0.0).region.position.x,"hero source regions never bleed into other character")
  print("PIXEL_HEROES checks=",checks," failures=",failures)
  quit(1 if failures else 0)

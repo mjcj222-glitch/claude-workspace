@@ -13,8 +13,8 @@ func _init()->void:
 			var onset:float=scene._clear_onset(i)
 			check(onset>previous,"strict effect order")
 			previous=onset
-		if count>=35:check(previous+0.10<=0.40,"long clear sequence bounded before natural fall")
-		if count==2:check(absf(previous-0.031)<0.00001,"ordinary two retains existing spacing")
+		if count>=35:check(previous<=2.10001,"long clear sequence bounded before natural fall")
+		if count==2:check(absf(previous-0.075)<0.00001,"ordinary two uses deliberate chime spacing")
 	scene.free()
 	print("TIMELINE failures=",failures)
 	quit(1 if failures else 0)

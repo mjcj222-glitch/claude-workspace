@@ -7,6 +7,18 @@ func check(ok:bool,label:String)->void:
  if not ok:failures+=1;printerr("FAIL "+label)
 func board()->Array:
  return [{"id":1,"kind":"normal","color":0,"radius":37.0,"pos":Vector2(150,450)},{"id":2,"kind":"normal","color":0,"radius":37.0,"pos":Vector2(224,450)}]
+func settled_win(s)->void:
+ # Explicit low-HP unit fixture; three real clear commits own payout timing.
+ s.combat.enemy_hp=1;s.combat.shield_hp=0
+ for action in range(3):
+  s.panels=board();s.begin(s.panels[0].pos,0);s.release(s.panels[0].pos,0)
+  s.finish_refill()
+  if action<2:check(s.phase=="ready" and s.combat.enemy_hp==1,"area reward waits for third-clear attack")
+  else:
+   check(s.phase=="player_attack","area third clear begins player attack")
+   s.finish_player_attack()
+   check(s.phase=="player_impact","area reward waits for impact hold")
+   s.finish_player_impact()
 func _initialize()->void:
  check(ResourceLoader.exists(AreaPath),"area orchestration exists")
  if not ResourceLoader.exists(AreaPath):print("AREA checks=",checks," failures=",failures);quit(1);return
@@ -18,7 +30,7 @@ func _initialize()->void:
  check(s.enter_node(serial,board(),3) and s.phase=="ready" and s.character_id=="noa","explicit entry starts normal battle")
  check(not s.enter_node(serial,board(),3),"entry only once")
  # Explicit lethal fixture tests accounting, not normal earned-run evidence.
- s.combat.enemy_hp=0;s.phase="busy";s.finish_refill()
+ settled_win(s)
  check(s.phase=="reward" and s.gold==4,"first victory pays and offers relic")
  var gold:int=s.gold;s.finish_refill();check(s.gold==gold,"duplicate completion cannot repay")
  check(s.choose_relic("pigment",s.offer_serial) and s.phase=="map","earned reward returns map")
@@ -32,10 +44,10 @@ func _initialize()->void:
  if s.has_method("reachable_nodes"):check("rest" not in s.reachable_nodes() and "boss" in s.reachable_nodes(),"unchosen earlier branch is closed")
  s.select_node("elite",s.offer_serial);s.enter_node(s.offer_serial,board(),3)
  check(s.combat.enemy_hp==44 and s.route=="elite" and s.character_id=="noa","elite uses unchanged pattern and carried hero")
- s.combat.enemy_hp=0;s.phase="busy";s.finish_refill();s.choose_relic("ash",s.offer_serial)
+ settled_win(s);s.choose_relic("ash",s.offer_serial)
  check(s.gold==9 and s.relics.size()==3,"second victory carry")
  s.select_node("extra",s.offer_serial);s.enter_node(s.offer_serial,board(),3)
- s.combat.enemy_hp=0;s.phase="busy";s.finish_refill()
+ settled_win(s)
  check(s.phase=="spoils" and s.gold==21 and s.relic_fallbacks==1,"exhausted relic pays8+4 once")
  s.finish_refill();check(s.gold==21,"fallback cannot duplicate")
  s.confirm_spoils(s.offer_serial);check(s.phase=="map" and s.allowed_nodes()==["shop","boss"],"extra remains optional and forward")
@@ -47,7 +59,7 @@ func _initialize()->void:
  s.leave_shop();check(s.phase=="map" and s.allowed_nodes()==["boss"],"shop leave cannot reopen")
  s.select_node("boss",s.offer_serial);s.enter_node(s.offer_serial,board(),3)
  check(s.combat.enemy_hp==48 and s.hp==30 and s.charge==charge,"boss exact existing values and carry")
- s.combat.enemy_hp=0;s.phase="busy";s.finish_refill();check(s.phase=="victory" and s.gold==17,"terminal boss no gold")
+ settled_win(s);check(s.phase=="victory" and s.gold==17,"terminal boss no gold")
  # Independent rest/event boundary fixtures keep their names explicit.
  for hp in [20,28,30]:
   var a=load(AreaPath).new();a.current_node="entry";a.phase="map";a.character_id="rio";a.gold=4;a.hp=hp

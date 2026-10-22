@@ -37,6 +37,10 @@ func run()->void:
  var original:Dictionary=plan.duplicate(true)
  var fx=FX.new();fx.action_started(plan,source,.2,24)
  fx.panel_removed(1,Vector2.ZERO,Color.RED,"strong");fx.action_finished();fx.update(.2)
+ check(fx.strong_cores==1 and fx.core_activations==2,"collection deduplicates actual strong and ordinary cores")
+ check(fx.take_impact().is_empty(),"collection never schedules enemy impact")
+ var bank={"damage":1,"core_activations":fx.core_activations,"strong_cores":fx.strong_cores}
+ fx.release_bank(bank,3,24);fx.update(.28)
  var impact:Dictionary=fx.take_impact()
  check(impact.get("strong_cores",0)==1 and impact.cores==2,"impact metadata counts actual removed strong cores uniquely")
  check(plan==original and fx.take_impact().is_empty(),"one-shot impact cannot mutate plan or repeat")

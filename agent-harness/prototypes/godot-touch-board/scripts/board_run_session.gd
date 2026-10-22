@@ -56,6 +56,7 @@ func start_departure(serial:int)->bool:
 func release(point: Vector2, pointer: int) -> Dictionary:
 	var result: Dictionary = super.release(point, pointer)
 	if result.get("valid", false) and result.get("mode", "") == "clear":
+		damage_total-=int(result.damage)
 		combat.record_clear(result)
 	return result
 
@@ -88,6 +89,8 @@ func finish_refill() -> void:
 		else:
 			reward_options = []
 			phase = "victory"
+	elif outcome == "strike":
+		phase="player_attack"
 	elif outcome == "attack":
 		hp = maxi(0, hp - combat.take_attack())
 		phase = "enemy_attack"
@@ -192,3 +195,16 @@ func skill_plan_for(id: int, color: int) -> Dictionary:
 	var result: Dictionary = super.skill_plan_for(id, color)
 	result["combat_context"] = combat.damage_context().duplicate(true)
 	return result
+
+func finish_player_attack()->bool:
+	if phase!="player_attack":return false
+	var amount:int=combat.pending_damage
+	if not combat.settle_attack():return false
+	damage_total+=amount
+	phase="player_impact"
+	return true
+
+func finish_player_impact()->void:
+	if phase!="player_impact":return
+	phase="busy"
+	finish_refill()

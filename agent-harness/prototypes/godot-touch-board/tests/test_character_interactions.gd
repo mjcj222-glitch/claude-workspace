@@ -28,7 +28,7 @@ func _initialize()->void:
  var before:Dictionary=s.plan_for(1)
  check(before.direct==[1] and before.activated==[1] and before.normal_count==2 and before.weak_count==2 and before.base_damage==2 and before.weak_bonus==1 and before.damage==3,"planted core excludes itself from weak W and normal damage; converted effective color counts")
  var result:Dictionary=clear(s,1)
- check(result.removed==before.removed and result.damage==before.damage and s.combat.enemy_hp==h-before.damage and s.actions==1,"subsequent blast is exactly the frozen clear plan")
+ check(result.removed==before.removed and result.damage==before.damage and s.combat.enemy_hp==h and s.combat.pending_damage==before.damage and s.actions==1,"subsequent blast is exactly the frozen clear plan")
  check(result.removed.size()==3 and result.removed.count(1)==1 and result.activated.size()==1,"planted ID counts once in destruction and activation")
  check(result.direct_normals==0 and result.spawn.is_empty() and not result.ash_reserve,"plant cannot manufacture direct normals or ash")
  s=hero(row([0,1,2,3]),["pigment"]);plant(s,1)

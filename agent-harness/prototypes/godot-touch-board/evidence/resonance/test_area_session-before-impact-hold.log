@@ -1,0 +1,28 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL first victory pays and offers relic
+FAIL earned reward returns map
+FAIL no backtracking
+FAIL paid event names and gives unowned relic
+FAIL event preserves other resources
+FAIL unchosen earlier branch is closed
+FAIL elite uses unchanged pattern and carried hero
+FAIL area reward waits for third-clear attack
+FAIL area reward waits for third-clear attack
+FAIL area third clear begins player attack
+FAIL second victory carry
+FAIL area reward waits for third-clear attack
+FAIL area reward waits for third-clear attack
+FAIL area third clear begins player attack
+FAIL exhausted relic pays8+4 once
+FAIL fallback cannot duplicate
+FAIL extra remains optional and forward
+FAIL no phantom fourth relic
+FAIL shop capped heal exact cost
+FAIL shop leave cannot reopen
+FAIL boss exact existing values and carry
+FAIL area reward waits for third-clear attack
+FAIL area reward waits for third-clear attack
+FAIL area third clear begins player attack
+FAIL terminal boss no gold
+AREA checks=45 failures=25

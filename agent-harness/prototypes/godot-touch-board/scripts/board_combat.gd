@@ -9,6 +9,15 @@ const ROUTES := {
 	"safe": {"name":"안전한 길", "hp":36, "gold":4, "pattern":"경감 7→3 · 일반 5"},
 	"elite": {"name":"정예의 길", "hp":44, "gold":8, "pattern":"경감 8→4 · 일반 6"},
 }
+var pending_damage:int=0
+var pending_shield:int=0
+var pending_removed:int=0
+var pending_base:int=0
+var pending_weak:int=0
+var pending_specials:int=0
+var pending_big_bombs:int=0
+var pending_bombs:int=0
+var strike_settled:bool=false
 var shield_hp:int=0
 var shield_color:int=0
 var route: String = "safe"
@@ -44,6 +53,7 @@ func start_fight(index: int, panels: Array, selected_route: String = "safe") -> 
 	_victory_counted = false
 	_attack_taken = false
 	_turn_prepared = false
+	_reset_bank()
 	shield_hp=12 if encounter==2 else 0
 	var counts=[0,0,0,0]
 	for panel in panels:
@@ -106,8 +116,15 @@ func record_clear(plan: Dictionary) -> void:
 		return
 	if enemy_hp <= 0 or _attack_taken or actions_in_turn >= 3:
 		return
-	shield_hp=maxi(0,shield_hp-int(plan.get("shield_damage",0)))
-	enemy_hp = maxi(0, enemy_hp - maxi(0, int(plan.get("damage", 0))))
+	pending_damage+=maxi(0,int(plan.get("damage",0)))
+	pending_shield+=maxi(0,int(plan.get("shield_damage",0)))
+	pending_removed+=plan.get("removed",[]).size()
+	pending_base+=int(plan.get("base_damage",plan.get("damage",0)))
+	pending_weak+=int(plan.get("weak_bonus",0))
+	pending_specials+=plan.get("activated",[]).size()
+	pending_bombs+=plan.get("blasts",[]).size()
+	for blast in plan.get("blasts",[]):
+		if blast.get("kind","")=="big_bomb":pending_big_bombs+=1
 	actions_in_turn += 1
 	if mitigation_active:
 		if intent == "slam" and (plan.get("petal_guard",false) or Rules.slam_mitigated(int(plan.get("weak_count",0)), int(plan.get("normal_count",0)), plan.get("combat_context", damage_context()))):
@@ -117,8 +134,23 @@ func record_clear(plan: Dictionary) -> void:
 			mitigation_success = true
 			incoming_damage = 3 + _route_attack_bonus()
 
+func _reset_bank()->void:
+	pending_damage=0;pending_shield=0;pending_removed=0;pending_base=0;pending_weak=0;pending_specials=0;pending_bombs=0;pending_big_bombs=0;strike_settled=false
+
+func bank_plan()->Dictionary:
+	return {"damage":pending_damage,"base_damage":pending_base,"weak_bonus":pending_weak,"shield_damage":pending_shield,"shield_broken":shield_hp>0 and pending_shield>=shield_hp,"combat_context":{"shield_color":shield_color},"core_activations":maxi(0,pending_specials-pending_bombs),"bomb_activations":pending_bombs,"big_bombs":pending_big_bombs}
+
+func settle_attack()->bool:
+	if actions_in_turn<3 or strike_settled or enemy_hp<=0:return false
+	strike_settled=true
+	enemy_hp=maxi(0,enemy_hp-pending_damage)
+	shield_hp=maxi(0,shield_hp-pending_shield)
+	pending_damage=0;pending_shield=0;pending_removed=0;pending_base=0;pending_weak=0;pending_specials=0;pending_bombs=0;pending_big_bombs=0
+	return true
+
 func resolve() -> String:
-	# Victory precedes the third-clear retaliation check.
+	if actions_in_turn>=3 and not strike_settled:return "strike"
+	# Victory precedes retaliation only after the single banked attack.
 	if enemy_hp <= 0:
 		if not _victory_counted:
 			enemies_defeated += 1
@@ -127,7 +159,7 @@ func resolve() -> String:
 	return "attack" if actions_in_turn >= 3 else "ready"
 
 func take_attack() -> int:
-	if _attack_taken or enemy_hp <= 0 or actions_in_turn < 3:
+	if _attack_taken or enemy_hp <= 0 or actions_in_turn < 3 or not strike_settled:
 		return 0
 	_attack_taken = true
 	last_attack_damage = incoming_damage
@@ -138,6 +170,7 @@ func next_turn(panels: Array) -> void:
 	# Called after attack animation; duplicate calls cannot skip turns.
 	if not _attack_taken or enemy_hp <= 0:
 		return
+	_reset_bank()
 	actions_in_turn = 0
 	turn += 1
 	_attack_taken = false
@@ -158,6 +191,6 @@ var weak_color: int = 0
 var intent: String = "plain"
 var intent_serial: int = 0
 func damage_context() -> Dictionary:
-	return {"shield_hp":shield_hp,"shield_color":shield_color,"weakness_color":weak_color,"intent":intent,"intent_serial":intent_serial,
+	return {"shield_hp":maxi(0,shield_hp-pending_shield),"shield_color":shield_color,"weakness_color":weak_color,"intent":intent,"intent_serial":intent_serial,
 		"incoming_damage":incoming_damage,"mitigation_success":mitigation_success,
 		"slam_weak_required":Rules.SLAM_WEAK_REQUIRED,"slam_normal_required":Rules.SLAM_NORMAL_REQUIRED}

@@ -13,7 +13,7 @@ func run()->void:
 	for method in ui.get_script_method_list():names.append(method.name)
 	check("damage_line" in names and "intent_lines" in names and "preview_effect_line" in names,"UI exposes canonical damage and wrapped intent text")
 	if failures:quit(1);return
-	check(ui.damage_line({"damage":7,"base_damage":5,"weak_bonus":2})=="피해 7 = 기본 5 + 약점 2","damage copy distinguishes exact base and aggregate bonus")
+	check(ui.damage_line({"damage":7,"base_damage":5,"weak_bonus":2})=="축적 +7 = 기본 5 + 약점 2","damage copy distinguishes exact base and aggregate bonus")
 	var slam:Dictionary={"intent":"slam","incoming_damage":10,"mitigation_success":false}
 	var lines:Array=ui.intent_lines(slam)
 	check(lines==["강타 10 → 4: 한 번에 약점 2개","또는 공격 패널 8개 소거"],"active slam exact copy wraps into two readable lines")

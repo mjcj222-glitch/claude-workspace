@@ -60,7 +60,7 @@ func run():
  s.begin(s.panels[0].pos,-1);Store.restore(view,boss)
  view.release(view.board_to_screen(view.session.panels[0].pos),-1)
  check(Store.capture(view)==boss and view.session.owner==-99,"boss intent preserved; held input discarded")
- for phase in ["busy","enemy_attack","stalled"]:
+ for phase in ["busy","player_attack","player_impact","enemy_attack","stalled"]:
   view.session.phase=phase;view.lifecycle.dirty=true;view.lifecycle.checkpoint(view)
   check(view.lifecycle.store.load_run().data!=Store.capture(view),phase+" never persisted")
  for phase in ["victory","defeat"]:

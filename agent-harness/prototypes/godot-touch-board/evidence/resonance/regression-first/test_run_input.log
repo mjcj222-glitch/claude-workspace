@@ -1,0 +1,105 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+WARNING: Loaded resource as image file, this will not work on export: 'res://assets/characters/rio-noa-sheet.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+     at: load_from_file (core/io/image.cpp:2766)
+     GDScript backtrace (most recent call first):
+         [0] texture (res://scripts/board_pixel_heroes.gd:12)
+         [1] draw (res://scripts/board_pixel_heroes.gd:41)
+         [2] draw (res://scripts/board_ui.gd:123)
+         [3] _draw (res://scripts/main.gd:261)
+PASS default entry is actual run
+PASS default session owns combat
+PASS actual run begins full and skill ready
+PASS next/restart shared hitbox remains explicit
+PASS stale release cannot choose reward
+PASS outside then reentry cancels reward choice
+PASS focus cancellation retains reward
+PASS extra finger cannot choose reward
+PASS system cancel and stale touch-up retain reward
+PASS changed offer serial invalidates armed choice
+PASS first reward choice enters explicit route selection
+PASS choice is atomic and does not advance encounter
+PASS held old release and elapsed frames cannot auto-advance
+PASS route down waits for matching release
+PASS wrong pointer cannot choose route
+PASS fresh route gesture advances exactly one encounter
+PASS next encounter receives a fresh full board
+PASS next fight retains hp charge and growth state
+PASS duplicate next release cannot clear underlying board or advance again
+PASS between outside cancellation keeps modal
+PASS between focus cancellation keeps modal
+PASS between ignores extra finger
+PASS between system cancel preserves modal
+PASS victory outside cancellation keeps modal
+PASS victory focus cancellation keeps modal
+PASS victory ignores extra finger
+PASS victory system cancel preserves modal
+PASS defeat outside cancellation keeps modal
+PASS defeat focus cancellation keeps modal
+PASS defeat ignores extra finger
+PASS defeat system cancel preserves modal
+PASS busy blocks skill toggle
+PASS busy blocks owned detail
+PASS busy blocks board preview and clear
+PASS enemy_attack blocks skill toggle
+PASS enemy_attack blocks owned detail
+PASS enemy_attack blocks board preview and clear
+PASS reward blocks skill toggle
+PASS reward blocks owned detail
+PASS reward blocks board preview and clear
+PASS route blocks skill toggle
+PASS route blocks owned detail
+PASS route blocks board preview and clear
+PASS shop blocks skill toggle
+PASS shop blocks owned detail
+PASS shop blocks board preview and clear
+PASS between blocks skill toggle
+PASS between blocks owned detail
+PASS between blocks board preview and clear
+PASS victory blocks skill toggle
+PASS victory blocks owned detail
+PASS victory blocks board preview and clear
+PASS defeat blocks skill toggle
+PASS defeat blocks owned detail
+PASS defeat blocks board preview and clear
+PASS victory stale release cannot restart
+PASS victory fresh restart restores health and charge
+PASS victory restart clears run growth and counters
+PASS victory restart release cannot select board
+PASS defeat stale release cannot restart
+PASS defeat fresh restart restores health and charge
+PASS defeat restart clears run growth and counters
+PASS defeat restart release cannot select board
+PASS busy reset works immediately
+PASS busy reset clears delayed presentation state
+PASS busy reset cancels all candidates
+PASS busy late process and release cannot damage fresh run
+PASS enemy_attack reset works immediately
+PASS enemy_attack reset clears delayed presentation state
+PASS enemy_attack reset cancels all candidates
+PASS enemy_attack late process and release cannot damage fresh run
+PASS reward reset works immediately
+PASS reward reset clears delayed presentation state
+PASS reward reset cancels all candidates
+PASS reward late process and release cannot damage fresh run
+PASS route reset works immediately
+PASS route reset clears delayed presentation state
+PASS route reset cancels all candidates
+PASS route late process and release cannot damage fresh run
+PASS shop reset works immediately
+PASS shop reset clears delayed presentation state
+PASS shop reset cancels all candidates
+PASS shop late process and release cannot damage fresh run
+PASS between reset works immediately
+PASS between reset clears delayed presentation state
+PASS between reset cancels all candidates
+PASS between late process and release cannot damage fresh run
+PASS victory reset works immediately
+PASS victory reset clears delayed presentation state
+PASS victory reset cancels all candidates
+PASS victory late process and release cannot damage fresh run
+PASS defeat reset works immediately
+PASS defeat reset clears delayed presentation state
+PASS defeat reset cancels all candidates
+PASS defeat late process and release cannot damage fresh run
+RUN_INPUT checks=95 failures=0

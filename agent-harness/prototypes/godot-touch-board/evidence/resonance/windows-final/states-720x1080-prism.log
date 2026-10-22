@@ -1,0 +1,81 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PRISM FIXTURES: injected boards and frozen ages; OS controller input, not earned-run evidence
+PASS OS driver acknowledged prism-01-rio-idle-fixture
+PASS OS driver acknowledged rio-skill
+PASS OS driver acknowledged rio-color
+PASS OS driver acknowledged rio-preview
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":18.005}
+PASS Rio global source-color preview spans whole board
+PASS Rio preview preserves heart and disc bomb
+PASS OS driver acknowledged prism-02-rio-preview-fixture
+PASS OS driver acknowledged rio-cancel
+PASS cancelled global preview preserves board and charge
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":12.677}
+PASS OS driver acknowledged rio-commit
+PASS global skill does not resolve damage
+PASS Rio commit matches frozen conversion and preserved specials
+PASS OS driver acknowledged prism-03-rio-skill-fixture
+PASS OS driver acknowledged rio-stale-release
+PASS repeated skill release remains inert
+PASS OS driver acknowledged rio-clear-preview
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.746}
+PASS large matched chain previews complete shield break reward
+PASS OS driver acknowledged prism-04-shield-break-preview-fixture
+PASS OS driver acknowledged rio-clear-commit
+PASS first clear banks exact preview while enemy and shield wait
+PASS OS driver acknowledged rio-clear-repeat
+PASS repeated clear release cannot duplicate shield reward
+PASS first complete refill collects without hit
+PASS settled board offers legal followup 0
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.353}
+PASS OS driver acknowledged rio-bank-clear-0
+PASS second complete refill still holds bank
+PASS settled board offers legal followup 1
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.084}
+PASS OS driver acknowledged rio-bank-clear-1
+PASS third refill enters one combined player attack
+PASS OS driver acknowledged prism-05a-bank-windup-fixture
+PASS OS driver acknowledged bank-held-board
+PASS held board press cannot arm during bank attack
+PASS OS driver acknowledged bank-cancel-outside
+PASS OS driver acknowledged bank-repeated-release
+PASS focus cancel and repeat release cannot duplicate or cancel bank
+PASS OS driver acknowledged bank-reduced
+PASS reduced toggle preserves pending bank
+PASS OS driver acknowledged prism-05b-reduced-bank-fixture
+PASS OS driver acknowledged bank-full
+PASS single final impact applies exact summed bank and shield break
+PASS OS driver acknowledged prism-05-shield-fragments-fixture
+PASS OS driver acknowledged bank-post-impact-repeat
+PASS post impact stale release cannot repeat damage or reward during visible hold
+PASS duplicate finish cannot replay or skip impact hold
+PASS impact hold completes without extra damage or action
+PASS OS driver acknowledged noa-skill
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":12.01}
+PASS OS driver acknowledged noa-cast
+PASS Noa actual skill starts two refill rain without damage or charge
+PASS OS driver acknowledged prism-06-noa-rain-two-fixture
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":10.795}
+PASS OS driver acknowledged noa-first-clear
+PASS first rain clear consumes one and suppresses charge
+PASS core clear banks matching ordinary shield progress without early impact
+PASS actual pending refill uses rain color while preserving heart color
+PASS OS driver acknowledged prism-07-noa-rain-one-fixture
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.029}
+PASS OS driver acknowledged noa-last-clear
+PASS last rain clear remains uncharged and supplies fixed color
+PASS OS driver acknowledged prism-08-noa-rain-zero-fixture
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":17.519}
+PASS OS driver acknowledged noa-new-clear
+PASS only a later normal clear starts recharge
+PASS OS driver acknowledged prism-09-noa-hit-fixture
+PASS OS driver acknowledged prism-reduced
+PASS reduced effects toggle does not mutate action during reaction
+PASS OS driver acknowledged prism-10-reduced-hit-fixture
+AUDIO_TEARDOWN remaining=0 wall_ms=0
+PASS bounded audio cleanup
+PRISM_WINDOW checks=64 failures=0 size=(720, 1080)

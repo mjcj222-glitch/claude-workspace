@@ -1,0 +1,78 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: Required object "rp_texture" is null.
+   at: draw_texture_rect_region (scene/main/canvas_item.cpp:907)
+   GDScript backtrace (most recent call first):
+       [0] draw (res://scripts/board_pixel_heroes.gd:48)
+       [1] draw (res://scripts/board_ui.gd:120)
+       [2] _draw (res://scripts/main.gd:261)
+SCRIPT ERROR: Invalid type in function 'draw_texture_rect_region' in base 'Node2D (main.gd)'. Cannot convert argument 1 from Rect2 to Object.
+          at: draw (res://scripts/board_pixel_heroes.gd:48)
+          GDScript backtrace (most recent call first):
+              [0] draw (res://scripts/board_pixel_heroes.gd:48)
+              [1] draw (res://scripts/board_ui.gd:120)
+              [2] _draw (res://scripts/main.gd:261)
+ERROR: Required object "rp_texture" is null.
+   at: draw_texture_rect_region (scene/main/canvas_item.cpp:907)
+   GDScript backtrace (most recent call first):
+       [0] draw (res://scripts/board_pixel_heroes.gd:48)
+       [1] draw (res://scripts/board_ui.gd:120)
+       [2] _draw (res://scripts/main.gd:261)
+SCRIPT ERROR: Invalid type in function 'draw_texture_rect_region' in base 'Node2D (main.gd)'. Cannot convert argument 1 from Rect2 to Object.
+          at: draw (res://scripts/board_pixel_heroes.gd:48)
+          GDScript backtrace (most recent call first):
+              [0] draw (res://scripts/board_pixel_heroes.gd:48)
+              [1] draw (res://scripts/board_ui.gd:120)
+              [2] _draw (res://scripts/main.gd:261)
+ERROR: Required object "rp_texture" is null.
+   at: draw_texture_rect_region (scene/main/canvas_item.cpp:907)
+   GDScript backtrace (most recent call first):
+       [0] draw (res://scripts/board_pixel_heroes.gd:48)
+       [1] draw (res://scripts/board_ui.gd:120)
+       [2] _draw (res://scripts/main.gd:261)
+SCRIPT ERROR: Invalid type in function 'draw_texture_rect_region' in base 'Node2D (main.gd)'. Cannot convert argument 1 from Rect2 to Object.
+          at: draw (res://scripts/board_pixel_heroes.gd:48)
+          GDScript backtrace (most recent call first):
+              [0] draw (res://scripts/board_pixel_heroes.gd:48)
+              [1] draw (res://scripts/board_ui.gd:120)
+              [2] _draw (res://scripts/main.gd:261)
+ERROR: Required object "rp_texture" is null.
+   at: draw_texture_rect_region (scene/main/canvas_item.cpp:907)
+   GDScript backtrace (most recent call first):
+       [0] draw (res://scripts/board_pixel_heroes.gd:48)
+       [1] draw (res://scripts/board_ui.gd:120)
+       [2] _draw (res://scripts/main.gd:261)
+SCRIPT ERROR: Invalid type in function 'draw_texture_rect_region' in base 'Node2D (main.gd)'. Cannot convert argument 1 from Rect2 to Object.
+          at: draw (res://scripts/board_pixel_heroes.gd:48)
+          GDScript backtrace (most recent call first):
+              [0] draw (res://scripts/board_pixel_heroes.gd:48)
+              [1] draw (res://scripts/board_ui.gd:120)
+              [2] _draw (res://scripts/main.gd:261)
+ERROR: Required object "rp_texture" is null.
+   at: draw_texture_rect_region (scene/main/canvas_item.cpp:907)
+   GDScript backtrace (most recent call first):
+       [0] draw (res://scripts/board_pixel_heroes.gd:48)
+       [1] draw (res://scripts/board_ui.gd:120)
+       [2] _draw (res://scripts/main.gd:261)
+SCRIPT ERROR: Invalid type in function 'draw_texture_rect_region' in base 'Node2D (main.gd)'. Cannot convert argument 1 from Rect2 to Object.
+          at: draw (res://scripts/board_pixel_heroes.gd:48)
+          GDScript backtrace (most recent call first):
+              [0] draw (res://scripts/board_pixel_heroes.gd:48)
+              [1] draw (res://scripts/board_ui.gd:120)
+              [2] _draw (res://scripts/main.gd:261)
+ERROR: Required object "rp_texture" is null.
+   at: draw_texture_rect_region (scene/main/canvas_item.cpp:907)
+   GDScript backtrace (most recent call first):
+       [0] draw (res://scripts/board_pixel_heroes.gd:48)
+       [1] draw (res://scripts/board_ui.gd:120)
+       [2] _draw (res://scripts/main.gd:261)
+SCRIPT ERROR: Invalid type in function 'draw_texture_rect_region' in base 'Node2D (main.gd)'. Cannot convert argument 1 from Rect2 to Object.
+          at: draw (res://scripts/board_pixel_heroes.gd:48)
+          GDScript backtrace (most recent call first):
+              [0] draw (res://scripts/board_pixel_heroes.gd:48)
+              [1] draw (res://scripts/board_ui.gd:120)
+              [2] _draw (res://scripts/main.gd:261)
+AUDIO_TEARDOWN remaining=0 wall_ms=0

@@ -1,72 +1,57 @@
 extends RefCounted
-## Original hand-authored 32×32 pixel figures, CC0-1.0. No traced/reference art.
-## Pure presentation. Coordinates are integer pixels; no session/RNG mutations.
-const INK=Color("251b3b")
-const SKIN=Color("ffe1bd")
-const LIGHT=Color("fff4dd")
-static func tile(cells:Array,x:int,y:int,w:int,h:int,color:Color)->void:
- cells.append({"rect":Rect2(x,y,w,h),"color":color})
-static func frame(hero:String,time:float,state:String="idle",reduced:bool=false)->Array:
- var cells:Array=[]
- var noa:=hero=="noa"
- var bob:=0 if reduced or state=="hit" else int(floor(time*2.5))%2
- var shift:=1 if state=="hit" and not reduced else 0
- var cloth:=Color("8272d7") if noa else Color("36a992")
- var bright:=Color("c8b9ff") if noa else Color("8ce8bd")
- var hair:=Color("405881") if noa else Color("b95e45")
- var hair_light:=Color("82b5cf") if noa else Color("edaa72")
- var y:=bob
- # Stepped shadow, boots and cape behind a broad-headed chibi silhouette.
- tile(cells,8,29,17,1,Color("282235"))
- tile(cells,10+shift,22+y,12,4,INK)
- tile(cells,11+shift,22+y,10,3,cloth)
- tile(cells,10+shift,27,5,2,INK);tile(cells,18+shift,27,5,2,INK)
- tile(cells,11+shift,26+y,3,2,LIGHT);tile(cells,19+shift,26+y,3,2,LIGHT)
- # Hair silhouette differs: Noa pointed hood, Rio asymmetric beret.
- if noa:
-  tile(cells,14+shift,2+y,5,2,INK);tile(cells,11+shift,4+y,11,2,INK)
-  tile(cells,9+shift,6+y,15,12,INK);tile(cells,10+shift,6+y,13,11,cloth)
-  tile(cells,12+shift,5+y,9,2,bright)
- else:
-  tile(cells,10+shift,4+y,14,3,INK);tile(cells,8+shift,7+y,17,3,INK)
-  tile(cells,11+shift,5+y,12,3,cloth);tile(cells,9+shift,8+y,15,2,bright)
-  tile(cells,21+shift,3+y,2,2,Color("edc765"))
- tile(cells,9+shift,10+y,15,9,INK)
- tile(cells,10+shift,10+y,13,8,hair)
- tile(cells,11+shift,12+y,11,7,SKIN)
- tile(cells,10+shift,10+y,13,3,hair)
- tile(cells,11+shift,10+y,4,2,hair_light)
- tile(cells,10+shift,12+y,2,5,hair);tile(cells,22+shift,12+y,1,6,hair)
- tile(cells,15+shift,12+y,3,2,hair)
- # Face: timed blink; hit expression is readable without a white flash.
- var blink:=not reduced and fmod(time,3.5)>3.2
- var eye_h:=1 if blink or state=="hit" else 2
- tile(cells,13+shift,15+y,2,eye_h,INK);tile(cells,19+shift,15+y,2,eye_h,INK)
- if not blink and state!="hit":
-  tile(cells,13+shift,15+y,1,1,LIGHT);tile(cells,19+shift,15+y,1,1,LIGHT)
- tile(cells,12+shift,17+y,2,1,Color("ed9fa6"));tile(cells,20+shift,17+y,2,1,Color("ed9fa6"))
- tile(cells,16+shift,18+y,2,1,Color("b76c75"))
- tile(cells,12+shift,20+y,10,5,INK);tile(cells,13+shift,20+y,8,4,cloth)
- tile(cells,15+shift,20+y,4,2,LIGHT);tile(cells,16+shift,22+y,2,2,Color("e9c56e"))
- # Left arm and held tool: paintbrush versus star staff.
- tile(cells,9+shift,20+y,3,4,INK);tile(cells,10+shift,21+y,2,2,SKIN)
- var hand_y:=17 if state=="skill" else 21+y
- tile(cells,22+shift,hand_y,3,3,INK);tile(cells,22+shift,hand_y,2,2,SKIN)
- tile(cells,25,13 if state=="skill" else 17,1,10,Color("a97755"))
- if noa:
-  star(cells,25,12 if state=="skill" else 16,Color("a6eafa"))
- else:
-  tile(cells,24,11 if state=="skill" else 15,3,4,INK)
-  tile(cells,24,11 if state=="skill" else 15,3,2,Color("ffb9d6"))
-  tile(cells,25,10 if state=="skill" else 14,1,2,LIGHT)
- if state=="skill":
-  star(cells,5,10,bright);star(cells,28,5,LIGHT)
-  if not reduced:star(cells,4,21-int(floor(time*5))%3,Color("edc765"))
- return cells
-static func star(cells:Array,x:int,y:int,color:Color)->void:
- tile(cells,x-1,y,3,1,color);tile(cells,x,y-1,1,3,color)
+## Original generated pixel-style illustration, not hand-drawn 32px sprites.
+## Presentation-only atlas crop/motion; never touches session state or game RNG.
+const PATH="res://assets/characters/rio-noa-sheet.png"
+const REGIONS={"rio":Rect2(220,100,420,373),"noa":Rect2(970,125,420,373)}
+static var _texture:CanvasTexture
+static func texture()->Texture2D:
+ if _texture!=null:return _texture
+ # Fresh source checkout and imported exported package both supported.
+ var source:Texture2D
+ if FileAccess.file_exists(PATH+".import") or not FileAccess.file_exists(PATH):
+  source=load(PATH) as Texture2D
+ elif FileAccess.file_exists(PATH):
+  var image=Image.load_from_file(PATH)
+  if image!=null:source=ImageTexture.create_from_image(image)
+ if source==null:source=load(PATH) as Texture2D
+ if source!=null:
+  _texture=CanvasTexture.new();_texture.diffuse_texture=source
+  _texture.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+ return _texture
+static func frame(hero:String,time:float,state:String="idle",reduced:bool=false)->Dictionary:
+ var clock:=0.0 if reduced else time
+ var breathing:=sin(clock*2.3)
+ var offset:=Vector2(0,round(breathing*1.5))
+ var zoom:=1.0+.007*breathing
+ var accent:=0.0
+ var tint:=Color.WHITE
+ match state:
+  "ready":
+   offset.y-=1;accent=.45+.15*sin(clock*3.0)
+  "skill":
+   offset=Vector2(round(sin(clock*5.0)*2),-3);zoom=1.025;accent=1.0
+  "cheer":
+   offset.y=-2-round(abs(sin(clock*5.0))*3);accent=.8;zoom=1.015
+  "hit":
+   offset=Vector2(2 if reduced else round(sin(clock*16.0)*3),1)
+   tint=Color(1,.86,.88);zoom=.99
+ if reduced:offset=Vector2.ZERO;zoom=1.0
+ return {"region":REGIONS.get(hero,REGIONS.rio),"offset":offset,"zoom":zoom,"accent":accent,"tint":tint,"state":state}
+static func sparkle(canvas:CanvasItem,at:Vector2,size:float,color:Color)->void:
+ canvas.draw_colored_polygon(PackedVector2Array([at+Vector2(0,-size),at+Vector2(size*.3,-size*.3),at+Vector2(size,0),at+Vector2(size*.3,size*.3),at+Vector2(0,size),at+Vector2(-size*.3,size*.3),at+Vector2(-size,0),at+Vector2(-size*.3,-size*.3)]),color)
 static func draw(canvas:CanvasItem,rect:Rect2,hero:String,time:float,state:String="idle",reduced:bool=false)->void:
- var scale_px:=maxf(1.0,floor(minf(rect.size.x,rect.size.y)/32.0))
- var origin:Vector2=(rect.position+(rect.size-Vector2(32,32)*scale_px)*.5).floor()
- for cell in frame(hero,time,state,reduced):
-  canvas.draw_rect(Rect2(origin+cell.rect.position*scale_px,cell.rect.size*scale_px),cell.color)
+ var sheet=texture()
+ if sheet==null:return
+ var f=frame(hero,time,state,reduced)
+ # Integer logical-pixel placement and nearest filtering retain crisp detail.
+ # The input rect is a bust viewport; no tiny full-body scaling in the footer.
+ var size=(rect.size*f.zoom).round()
+ var destination=Rect2((rect.get_center()-size*.5+f.offset).round(),size)
+ canvas.draw_texture_rect_region(sheet,destination,f.region,f.tint,false,true)
+ if f.accent>0:
+  var color=Color("85ffe0") if hero=="rio" else Color("dcc4ff")
+  color.a=f.accent
+  var phase:=0.0 if reduced else time
+  for i in range(3):
+   var at=rect.position+Vector2(rect.size.x*(.1+.4*i),rect.size.y*(.2+.12*sin(phase*2+i*2)))
+   sparkle(canvas,at.round(),3.0+float(i%2),color)

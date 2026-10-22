@@ -1,0 +1,7 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Noa arms two refills without attack
+PASS first locked refill cannot recharge
+PASS repeat release cannot consume another refill
+PASS chain descendants consume one action
+PRISM_STATE checks=4 failures=0

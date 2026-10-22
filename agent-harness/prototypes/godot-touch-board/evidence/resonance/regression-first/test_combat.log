@@ -1,0 +1,46 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS first fight starts at 24 HP and zero-based turn
+PASS first fight announces plain four damage
+PASS no attack before third clear
+FAIL first clear damages enemy and keeps board ready
+PASS second clear never attacks
+FAIL third surviving clear requests attack
+FAIL announced attack resolves exactly once
+FAIL duplicate attack grants no second hit
+FAIL next turn resets actions while preserving enemy damage
+FAIL next turn allows exactly one new attack
+FAIL lethal first clear wins without waiting for third
+FAIL repeated win resolution increments victory count once
+PASS dead enemy cannot retaliate
+FAIL lethal third clear prioritizes victory over attack
+PASS second fight resets local enemy and turn state
+PASS second fight even turn with available four-link announces mitigation
+PASS mitigation telegraph uses exact approved copy
+PASS actual four-direct clear latches mitigation success
+PASS successful condition visibly announces three incoming damage
+FAIL successful mitigation deals three
+FAIL second fight odd turn always plain five
+FAIL second fight odd attack remains five despite available link
+FAIL next even turn independently prepares condition
+FAIL failed mitigation deals announced seven
+PASS no qualifying initial group locks fallback plain five
+PASS fallback shows plain attack without unavailable condition
+PASS repeated preparation cannot add condition after initial snapshot
+PASS later big clear cannot introduce condition on fallback turn
+FAIL fallback whole turn remains five
+PASS four connected hearts qualify for available mitigation
+PASS actual heart four-link satisfies condition without attack damage
+PASS same-color direct group including core qualifies
+PASS solo special fixture has chain extras but only one direct
+PASS solo special chain extras never satisfy direct four condition
+PASS duplicate direct IDs do not fabricate four-link
+PASS third fight starts six and clears previous mitigation state
+FAIL third fight first attack six
+FAIL boss odd turn remains plain six
+FAIL boss unavailable even turn falls back six
+PASS invalid and skill plans cannot consume combat actions
+PASS invalid and skill plans are ignored on an input-ready turn
+PASS next_turn before attack cannot skip a turn
+FAIL duplicate next_turn after one attack cannot skip prepared intent
+COMBAT checks=43 failures=19

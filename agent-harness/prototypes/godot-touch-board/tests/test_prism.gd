@@ -32,7 +32,7 @@ func _initialize():
  boss.shield_hp=4;boss.shield_color=0
  var hit=R.plan(ps,1,30,30,[],boss.damage_context());var old_hp=boss.enemy_hp
  boss.record_clear(hit)
- check(boss.shield_hp==0 and boss.enemy_hp==old_hp-hit.damage,"shield preview commits exact damage and bonus")
+ check(boss.shield_hp==4 and boss.pending_shield==4 and boss.enemy_hp==old_hp and boss.pending_damage==hit.damage,"shield preview banks exact damage and bonus")
  check(boss.actions_in_turn==1,"shield break does not cancel or reset enemy action")
  var hearts=[{"id":21,"kind":"heart","color":4,"pos":Vector2(80,500),"radius":37.0},{"id":22,"kind":"heart","color":4,"pos":Vector2(150,500),"radius":37.0}]
  var heart=R.plan(hearts,21,20,30,["petal"],{"shield_hp":1,"shield_color":0,"intent":"slam"})
@@ -41,6 +41,7 @@ func _initialize():
  for turn in range(4):
   for action in range(3):
    var safe=R.plan(hearts,21,30,30,[],loop.damage_context());loop.record_clear(safe)
+  loop.settle_attack()
   check(loop.resolve()=="attack" and loop.take_attack()>0,"shield cannot stunlock attack cycle "+str(turn))
   loop.next_turn(ps)
   check(loop.shield_hp==0,"shield does not regenerate "+str(turn))

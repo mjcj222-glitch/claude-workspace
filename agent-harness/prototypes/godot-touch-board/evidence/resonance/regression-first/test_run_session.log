@@ -1,0 +1,34 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL damage is recorded on commit before refill
+FAIL first-action kill grants reward without retaliation
+FAIL chosen first reward moves to route phase
+FAIL route choice unlocks next fight
+FAIL between advances to a newly supplied board
+FAIL next fight uses new board and index
+FAIL hp charge requirement ash and relics carry unchanged
+FAIL third-action kill wins before enemy attack
+FAIL third surviving clear applies enemy damage once
+FAIL repeated refill cannot repeat attack
+FAIL attack completion starts next turn without old three-action reward
+FAIL attack completion is exact-once
+FAIL third ordinary clear recharges before retaliation
+FAIL living target has attack rather than fixed-count growth reward
+FAIL living target has attack rather than fixed-count growth reward
+FAIL living target has attack rather than fixed-count growth reward
+FAIL old nine-action summary remains unused
+FAIL lethal attack clamps hp and retains attack presentation phase
+FAIL lethal attack completion is terminal defeat
+FAIL terminal defeat rejects continuation and delayed callbacks
+FAIL only first two kills offer remaining relics
+FAIL progression accepts each earned choice
+FAIL progression explicitly selects route
+FAIL progression begins next encounter
+FAIL only first two kills offer remaining relics
+FAIL progression accepts each earned choice
+FAIL progression may leave shop without purchasing
+FAIL progression begins next encounter
+FAIL third win is victory with no extra reward
+FAIL run totals span encounters
+FAIL victory is terminal
+RUN_SESSION checks=51 failures=31

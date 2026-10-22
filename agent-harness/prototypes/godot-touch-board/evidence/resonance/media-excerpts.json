@@ -1,0 +1,36 @@
+{
+  "sources": [
+    {
+      "baseline": "0b363ffd1f7ee6aba61e79426fde9c7a4f8199ff",
+      "start_seconds": 4.0,
+      "duration_seconds": 3.5,
+      "label": "BEFORE 0b363ff - per-clear hit",
+      "normal_legal_input": true
+    },
+    {
+      "baseline": "current runtime verified against deliverable commit",
+      "start_seconds": 3.8,
+      "duration_seconds": 7.2,
+      "label": "RIO - 3 clears then ONE strike",
+      "normal_legal_input": true
+    },
+    {
+      "baseline": "current runtime verified against deliverable commit",
+      "start_seconds": 46.15,
+      "duration_seconds": 4.7,
+      "label": "SMALL LINKS - smaller finish",
+      "normal_legal_input": true
+    },
+    {
+      "baseline": "current runtime verified against deliverable commit",
+      "start_seconds": 3.65,
+      "duration_seconds": 8.2,
+      "label": "NOA - core and banked finish",
+      "normal_legal_input": true
+    }
+  ],
+  "not_same_input_comparison": true,
+  "original_game_video_not_played": true,
+  "windows_runtime_tested": false,
+  "audio_is_game_generated": true
+}

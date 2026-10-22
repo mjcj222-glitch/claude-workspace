@@ -1,0 +1,22 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS generated board supplies legal clear
+PASS legal clear settles to resumable bank
+PASS generated board supplies legal clear
+PASS legal clear settles to resumable bank
+PASS two-clear bank saved with real refill and RNG
+PASS third real clear enters attack presentation
+PASS partial attack snapshot rejected
+PASS interrupted attack cannot replace two-clear checkpoint
+PASS resume restores pre-strike board/RNG/HP and bank
+PASS resume restores charged orb without replaying skill
+PASS replayed third legal input creates identical attack
+PASS actual impact settles exactly once after replay
+PASS actual impact holds before reward or retaliation
+PASS impact hold preserves pre-strike checkpoint
+PASS board input is inert during impact hold
+PASS impact hold completes through actual controller timing
+PASS duplicate impact callback cannot apply damage again
+AUDIO_TEARDOWN remaining=0 wall_ms=0
+PASS bounded audio teardown
+BANK_INTERRUPTION checks=18 failures=0

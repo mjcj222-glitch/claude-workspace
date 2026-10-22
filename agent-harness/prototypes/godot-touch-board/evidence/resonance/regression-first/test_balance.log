@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL third action can qualify and receive exactly four
+FAIL qualifying killing action still wins before retaliation
+BALANCE_BOUNDARIES checks=23 failures=2

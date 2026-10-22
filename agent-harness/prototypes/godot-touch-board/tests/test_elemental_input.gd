@@ -69,9 +69,9 @@ func run() -> void:
 	check(scene.session.selection == preview, "held preview remains unchanged across presentation frame")
 	scene.release(p, -1)
 	check(scene.active_plan == preview and scene.active_plan.combat_context == preview.combat_context, "release executes the same enriched snapshot")
-	check(scene.session.combat.enemy_hp == 21 and scene.session.damage_total == 3 and scene.session.actions == 1, "base plus weakness commits once to enemy hp and total")
+	check(scene.session.combat.enemy_hp == 24 and scene.session.combat.pending_damage == 3 and scene.session.damage_total == 0 and scene.session.actions == 1, "base plus weakness banks once without changing enemy hp or applied total")
 	scene.release(p, -1)
-	check(scene.session.combat.enemy_hp == 21 and scene.session.actions == 1, "duplicate release cannot apply weakness twice")
+	check(scene.session.combat.enemy_hp == 24 and scene.session.combat.pending_damage == 3 and scene.session.actions == 1, "duplicate release cannot apply weakness twice")
 	check(scene.UI.BOARD_SCREEN == Rect2(30,390,660,530) and scene.board_to_screen(scene.BOARD.end) == Vector2(690,920), "premium composition preserves full physical board visibility")
 
 	# Final restored contract: weak pairs or eight ordinary panels qualify;
@@ -82,7 +82,7 @@ func run() -> void:
 	check(scene.session.combat.damage_context().intent=="slam" and scene.session.combat.incoming_damage==10 and preview.mitigates_intent, "weak pair alone restores approachable slam mitigation")
 	check(preview.weak_count==2 and preview.weak_bonus==1 and preview.damage==3, "restored weak pair keeps unchanged damage bonus")
 	scene.release(point(scene,1),-1)
-	check(scene.session.combat.enemy_hp==45 and scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4, "restored weak pair commits damage and mitigation")
+	check(scene.session.combat.enemy_hp==48 and scene.session.combat.pending_damage==3 and scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4, "restored weak pair commits damage and mitigation")
 	var eight: Array=[]
 	for i in range(8): eight.append(panel(i+1,Vector2(110+i*74,450),0))
 	fixture(scene,eight,2)
@@ -100,7 +100,7 @@ func run() -> void:
 	check(preview.normal_count==10 and preview.weak_count==0 and preview.mitigates_intent and scene.session.combat.damage_context().intent=="slam", "ten ordinary panels still qualify without weakness")
 	check(preview.combat_context.get("slam_weak_required",-1)==2 and preview.combat_context.get("slam_normal_required",-1)==8, "held snapshot records canonical restored two-weak eight-normal requirements")
 	scene.release(point(scene,1),-1)
-	check(scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4 and scene.session.combat.enemy_hp==38, "ten ordinary committed clear reduces slam without changing base damage")
+	check(scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4 and scene.session.combat.enemy_hp==48 and scene.session.combat.pending_damage==10, "ten ordinary committed clear reduces slam without changing base damage")
 
 	for cancel_kind in ["outside", "focus", "system"]:
 		fixture(scene, triple(3), 2)
@@ -135,7 +135,7 @@ func run() -> void:
 	preview=scene.session.selection.duplicate(true)
 	check(preview.weak_count==3 and preview.weak_bonus==1 and preview.mitigates_intent, "single weak triple qualifies boss mitigation")
 	scene.release(p,-1)
-	check(scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4 and scene.session.combat.enemy_hp==44, "committed weak triple latches reduced attack and damage")
+	check(scene.session.combat.mitigation_success and scene.session.combat.incoming_damage==4 and scene.session.combat.enemy_hp==48 and scene.session.combat.pending_damage==4, "committed weak triple latches reduced attack and damage")
 
 	# Weakness is evaluated after core conversion; the core itself adds no W.
 	var core_board: Array=[panel(1,Vector2(160,450),3,"core"),panel(2,Vector2(234,450),0),panel(3,Vector2(308,450),3),panel(4,Vector2(160,600),4,"heart")]
@@ -145,7 +145,7 @@ func run() -> void:
 	preview=scene.session.selection.duplicate(true)
 	check(preview.base_damage==2 and preview.normal_count==2 and preview.weak_count==2 and preview.weak_bonus==1 and preview.damage==3, "converted normal and connected weak normal count while core does not")
 	scene.release(p,-1)
-	check(scene.session.combat.enemy_hp==45 and scene.session.damage_total==3 and scene.session.panels.size()==1 and scene.session.panels[0].kind=="heart", "core weakness math commits once and leaves heart")
+	check(scene.session.combat.enemy_hp==48 and scene.session.combat.pending_damage==3 and scene.session.damage_total==0 and scene.session.panels.size()==1 and scene.session.panels[0].kind=="heart", "core weakness math commits once and leaves heart")
 
 	fixture(scene,pair(4,"heart"),2)
 	scene.session.hp=20
@@ -171,6 +171,7 @@ func run() -> void:
 	check(scene.session.selection.weak_count==1 and not scene.session.selection.mitigates_intent, "third separate weak normal still cannot accumulate mitigation")
 	scene.release(point(scene,7),-1)
 	scene.session.finish_refill()
+	if scene.session.phase=="player_attack":scene.session.finish_player_attack();scene.session.finish_player_impact()
 	check(scene.session.phase=="enemy_attack" and scene.session.hp==20 and scene.session.combat.last_attack_damage==10, "unmet slam resolves ten damage after third action")
 	scene.session.finish_attack()
 	check(scene.session.phase=="ready" and scene.session.combat.damage_context().intent=="plain" and scene.session.combat.incoming_damage==6, "odd boss turn resets to plain six")
@@ -191,6 +192,7 @@ func run() -> void:
 	scene.session.actions=2
 	click(scene,point(scene,1))
 	scene.session.finish_refill()
+	if scene.session.phase=="player_attack":scene.session.finish_player_attack();scene.session.finish_player_impact()
 	check(scene.session.phase=="victory" and scene.session.hp==30 and scene.session.combat.attacks_total==0, "third-action elemental kill wins without retaliation")
 
 	for phase in ["route","shop"]:

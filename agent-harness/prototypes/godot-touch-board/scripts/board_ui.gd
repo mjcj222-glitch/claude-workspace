@@ -48,9 +48,9 @@ static func draw(view) -> void:
 	view.draw_line(Vector2(0,58),Vector2(720,58),MaterialArt.GOLD.darkened(0.5),1)
 	_modal_text(view,view,Vector2(23,40),"CHROMA",30,MaterialArt.GOLD,false,true)
 	_modal_text(view,view,Vector2(322,39),"실험" if view.sandbox else ("구역1" if session.get("area_mode")==true else "%d / 3"%(session.combat.encounter+1)),26,Color("fff0d3"),true)
-	if session.get("area_mode")!=true or session.phase in ["ready","busy","enemy_attack","stalled"]:
+	if session.get("area_mode")!=true or session.phase in ["ready","busy","player_attack","player_impact","enemy_attack","stalled"]:
 		view.draw_rect(Rect2(280,62,160,30),Color(0.035,0.015,0.065,0.85))
-		view._center(Vector2(360,85),"행동 %d / 3"%(session.actions%3 if view.sandbox else session.combat.actions_in_turn),22,MUTED)
+		view._center(Vector2(360,85),"축적 %d / 3"%(session.actions%3 if view.sandbox else session.combat.actions_in_turn),22,MUTED)
 	view._text(Vector2(187,39),"%d G"%(0 if view.sandbox else session.gold),24,MaterialArt.GOLD)
 	Art._star(view,EFFECTS.get_center()+Vector2(0,-13),12,Color("ad8dc8") if view.reduced_effects else Color("e3c2ff"))
 	view._center(EFFECTS.get_center()+Vector2(0,18),"절제" if view.reduced_effects else "효과",20,MUTED)
@@ -64,6 +64,11 @@ static func draw(view) -> void:
 	if not view.sandbox and session.combat.encounter==1 and session.route=="elite":enemy_name="정예 "+enemy_name
 	view._text(Vector2(38,329),enemy_name,22,Color("fff0da"))
 	var shown_hp:int=0 if view.sandbox else view.quality_fx.display_enemy_hp(session.combat.enemy_hp)
+	if not view.sandbox and session.combat.pending_damage>0:
+		var bank_text="축적 %d · 3회 후 공격"%session.combat.pending_damage
+		var bank_at=Vector2(176,218)-Vector2(view.font.get_string_size(bank_text,HORIZONTAL_ALIGNMENT_LEFT,-1,18).x/2,0)
+		view.draw_string_outline(view.font,bank_at,bank_text,HORIZONTAL_ALIGNMENT_LEFT,-1,18,6,Color("0b0718"))
+		view.draw_string(view.font,bank_at,bank_text,HORIZONTAL_ALIGNMENT_LEFT,-1,18,MINT)
 	var hp_text: String = "피해 %d"%session.damage_total if view.sandbox else "%d / %d"%[shown_hp,session.combat.enemy_max_hp]
 	_modal_text(view,view,Vector2(385,329),hp_text,24,Color("ffe8ee"),true)
 	if not view.sandbox:
@@ -97,6 +102,7 @@ static func draw(view) -> void:
 			if preview.get("ash_reserve",false): effects += " · 충전 예약"
 			view.draw_rect(Rect2(32,278,656,30),Color(0.035,0.015,0.065,0.90))
 			_line(view,Vector2(360,300),effects,22,640,Color("fff0d3"))
+	elif session.phase in ["player_attack","player_impact"]: lines=["축적한 힘을 한 번에 방출", ""]
 	elif session.phase=="enemy_attack": lines=["적의 반격 · %d 피해"%session.combat.last_attack_damage,""]
 	if not view.sandbox and session.phase=="ready" and session.combat.encounter==0 and session.actions<3 and preview.is_empty():
 		var hint:String="스킬 → 색 → 일반 패널 · 변환 후 직접 소거" if session.character_id=="rio" else "스킬 → 일반 패널에 핵 심기 → 핵을 눌러 기동"
@@ -112,12 +118,12 @@ static func draw(view) -> void:
 		view.draw_rect(Rect2(340,220,352,54),Color("171b35"))
 		Art.draw_panel(view,{"pos":Vector2(356,239),"radius":13.0,"kind":"normal","color":c.shield_color},view.time)
 		_line(view,Vector2(534,240),shield_text,21,308,COLORS[c.shield_color])
-		_line(view,Vector2(516,263),"다른 색 소거도 -1" if c.shield_hp>0 else "보호막 재생 없음",18,336,Color.WHITE)
+		_line(view,Vector2(516,263),("방출 시 내구 -%d"%c.pending_shield if c.pending_shield>0 else "다른 색 소거도 -1") if c.shield_hp>0 else "보호막 재생 없음",18,336,Color.WHITE)
 	# One cached mesh shades the board once. Logical coordinates are unchanged.
 	MaterialArt.frame(view,Rect2(24,388,672,534),MaterialArt.GOLD,true)
 	# The dock never overlaps a live panel or ingress area.
 	MaterialArt.frame(view,Rect2(4,922,712,154),MaterialArt.GOLD,true)
-	preload("res://scripts/board_pixel_heroes.gd").draw(view,HERO_RECT,session.character_id,view.time,"skill" if view.hero_active>0 else ("hit" if session.phase=="enemy_attack" else "idle"),view.reduced_effects)
+	preload("res://scripts/board_pixel_heroes.gd").draw(view,HERO_RECT,session.character_id,view.time,"skill" if view.hero_active>0 else ("hit" if session.phase=="enemy_attack" else ("cheer" if session.phase in ["player_attack","player_impact"] else ("ready" if session.charge>=session.charge_required else "idle"))),view.reduced_effects)
 	view._text(Vector2(22,1067),Characters.definition(session.character_id).name,22,Color("fff0dc"))
 	view.draw_rect(Rect2(199,928,491,17),Color("321f45"))
 	view.draw_rect(Rect2(201,930,487*float(session.hp)/session.max_hp,13),Color("a650df"))
@@ -355,8 +361,8 @@ static func relic_copy(id:String,session)->Dictionary:
 	return Characters.pigment_copy(session.character_id) if id=="pigment" else RELIC_COPY[id]
 
 static func damage_line(plan:Dictionary)->String:
-	if int(plan.get("combat_context",{}).get("shield_hp",0))>0:return "피해 %d · 보호막 -%d%s"%[plan.damage,plan.get("shield_damage",0)," 파괴 +6" if plan.get("shield_bonus",0)>0 else ""]
-	return "피해 %d = 기본 %d + 약점 %d" % [plan.get("damage",0),plan.get("base_damage",plan.get("damage",0)),plan.get("weak_bonus",0)]
+	if int(plan.get("combat_context",{}).get("shield_hp",0))>0:return "축적 +%d · 보호막 예약 -%d%s"%[plan.damage,plan.get("shield_damage",0)," 파괴 +6" if plan.get("shield_bonus",0)>0 else ""]
+	return "축적 +%d = 기본 %d + 약점 %d" % [plan.get("damage",0),plan.get("base_damage",plan.get("damage",0)),plan.get("weak_bonus",0)]
 
 static func intent_lines(context:Dictionary,petal:bool=false)->Array[String]:
 	var incoming: int = context.get("incoming_damage",0)

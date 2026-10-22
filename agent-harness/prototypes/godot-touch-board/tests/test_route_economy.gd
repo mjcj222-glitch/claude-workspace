@@ -17,9 +17,16 @@ func fresh():
 	s.initialize_board(board(),3)
 	return s
 func win(s) -> void:
-	s.combat.enemy_hp = 0
-	s.phase = "busy"
-	s.finish_refill()
+	s.combat.enemy_hp = 1;s.combat.shield_hp=0
+	for action in range(3):
+		s.panels=board();s.begin(s.panels[0].pos,0);s.release(s.panels[0].pos,0)
+		s.finish_refill()
+		if action<2:check(s.phase=="ready" and s.combat.enemy_hp==1,"economy cannot pay banked damage early")
+		else:
+			check(s.phase=="player_attack","third clear reaches attack before payout")
+			s.finish_player_attack()
+			check(s.phase=="player_impact","payout waits for impact hold")
+			s.finish_player_impact()
 func first_reward(s) -> void:
 	win(s)
 	s.choose_relic("pigment",s.offer_serial)
@@ -76,7 +83,7 @@ func _init() -> void:
 	check(not s.buy_shop("heal") and snapshot(s) == before,"sold healing cannot be purchased again")
 	s.charge = 1;s.charge_required = 2;s.ash_reserved = true
 	check(s.buy_shop("relic") and s.gold == 0 and s.gold_spent == 12 and s.relics == ["pigment","lens","ash"] and s.shop_relic_sold,"exact remaining eight gold buys third relic")
-	check(s.rewards_taken == 2 and s.charge == 1 and s.charge_required == 2 and s.ash_reserved and s.actions == 0,"shop acquisition is not reward or retroactive resource change")
+	check(s.rewards_taken == 2 and s.charge == 1 and s.charge_required == 2 and s.ash_reserved and s.actions == 6,"shop acquisition is not reward or retroactive resource change")
 	check(s.shop_remaining_relic() == "","sold third relic leaves no remaining offer")
 	before = snapshot(s)
 	check(not s.buy_shop("relic") and snapshot(s) == before,"duplicate relic purchase is no-op")
@@ -117,7 +124,7 @@ func _init() -> void:
 	s.phase = "shop"
 	check(not s.leave_shop() and not s.buy_shop("relic"),"closed latch rejects forced stale shop state")
 	# Armed/stale transactions in every non-shop phase preserve resources.
-	for blocked_phase in ["ready","busy","enemy_attack","reward","route","between","victory","defeat"]:
+	for blocked_phase in ["ready","busy","player_attack","player_impact","enemy_attack","reward","route","between","victory","defeat"]:
 		s = at_shop("elite")
 		s.hp = 10
 		s.phase = blocked_phase

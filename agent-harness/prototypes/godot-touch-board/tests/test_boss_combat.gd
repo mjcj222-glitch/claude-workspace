@@ -18,6 +18,7 @@ func empty_clear() -> Dictionary:
 	return {"valid":true,"mode":"clear","damage":0,"direct":[1,2],"weak_count":0,"normal_count":0}
 func attack(c) -> int:
 	while c.actions_in_turn < 3: c.record_clear(empty_clear())
+	c.settle_attack()
 	return c.take_attack()
 func _init() -> void:
 	var c = Combat.new()
@@ -43,7 +44,7 @@ func _init() -> void:
 	check(visible.get("mitigates_intent",false),"same canonical rule plan previews available mitigation")
 	check(not c.mitigation_success and c.actions_in_turn == 0,"preview alone never latches mitigation")
 	c.record_clear(visible)
-	check(c.mitigation_success and c.incoming_damage == 4 and c.enemy_hp == 45,"two weak normals latch once and apply three total damage")
+	check(c.mitigation_success and c.incoming_damage == 4 and c.enemy_hp == 48 and c.pending_damage == 3,"two weak normals latch once and bank three total damage")
 	check(attack(c) == 4 and c.take_attack() == 0,"successful boss mitigation attacks exactly once")
 	serial = c.intent_serial
 	c.next_turn(board(8,3))
@@ -64,6 +65,7 @@ func _init() -> void:
 	c.record_clear(plan(c,2,0))
 	check(not c.mitigation_success,"normal counts from separate actions never accumulate")
 	c.record_clear(plan(c,10,0))
+	c.settle_attack()
 	check(c.mitigation_success and c.incoming_damage == 4 and c.resolve() == "attack","third action may satisfy slam before retaliation")
 	check(c.take_attack() == 4,"third-action mitigation uses reduced damage")
 	for kind in ["heart","core"]:
@@ -93,6 +95,7 @@ func _init() -> void:
 	c.record_clear(empty_clear());c.record_clear(empty_clear())
 	c.enemy_hp = 3
 	c.record_clear(plan(c,2,3))
+	c.settle_attack()
 	check(c.resolve() == "win" and c.take_attack() == 0 and c.mitigation_success,"third clear can kill and mitigate without retaliation")
 	var wins: int = c.enemies_defeated
 	c.resolve()

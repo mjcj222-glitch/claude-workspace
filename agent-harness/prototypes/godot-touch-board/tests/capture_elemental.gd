@@ -122,7 +122,7 @@ func wait_resolution() -> void:
 	var deadline := Time.get_ticks_msec()+120000
 	var attack_recorded := false
 	var hit_recorded := false
-	while scene.session.phase in ["busy","enemy_attack"]:
+	while scene.session.phase in ["busy","player_attack","player_impact","enemy_attack"]:
 		if Time.get_ticks_msec() > deadline:
 			errors.append("natural animation/refill exceeded safety deadline")
 			return

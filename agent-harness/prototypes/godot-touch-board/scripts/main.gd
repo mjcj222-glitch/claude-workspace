@@ -325,11 +325,8 @@ func draw_panels(canvas: CanvasItem) -> void:
 
 func _clear_onset(index: int) -> float:
 	var count: int = active_plan.get("removed", []).size()
-	var spacing := maxf(0.011, 0.032 - count * 0.0005)
-	if count > 12:
-		# Keep effect order, but cap the serial onset span before physical refill.
-		spacing = minf(spacing, 0.28 / maxf(1.0, count - 1))
-	return float(index) * spacing
+	var spacing := minf(0.075,2.1/maxf(1.0,count-1))
+	return float(index)*spacing
 
 func _process(delta: float) -> void:
 	if lifecycle.modal!="":
@@ -368,6 +365,8 @@ func _process(delta: float) -> void:
 				session.panels = motion_state.panels.duplicate(true)
 				falling = false
 				session.finish_refill()
+				if not sandbox and session.phase=="player_attack":
+					quality_fx.release_bank(session.combat.bank_plan(),session.combat.pending_removed,session.combat.enemy_hp)
 				attack_clock = 0
 				_cancel_modal()
 				visual = session.panels.duplicate(true)
@@ -384,6 +383,11 @@ func _process(delta: float) -> void:
 					timings.append(metric)
 					print("TIMING ", JSON.stringify(metric))
 				active_plan = {}
+	elif not sandbox and session.phase == "player_impact":
+		attack_clock += delta
+		if attack_clock >= 0.24:
+			session.finish_player_impact()
+			attack_clock=0
 	elif not sandbox and session.phase == "enemy_attack":
 		attack_clock += delta
 		if attack_clock >= ATTACK_SECONDS:
@@ -393,6 +397,9 @@ func _process(delta: float) -> void:
 	quality_fx.update(delta)
 	var impact:Dictionary=quality_fx.take_impact()
 	if not impact.is_empty():
+		if not sandbox and session.phase=="player_attack":
+			session.finish_player_attack()
+			attack_clock=0
 		target_hit=1.0
 		sound.impact(int(impact.tier),int(impact.weak_bonus)>0)
 		if record_timings:timings.append({"event":"attack_impact","damage":impact.damage,"base_damage":impact.base_damage,"weak_bonus":impact.weak_bonus,"action_clock":action_clock,"encounter":-1 if sandbox else session.combat.encounter})

@@ -42,6 +42,10 @@ func run():
  f.action_finished();f.update(.199)
  check(f.take_impact().is_empty(),'shield does not shatter before scheduled hit')
  f.update(.0011)
+ check(f.take_impact().is_empty(),'completed clear still cannot shatter shield')
+ check(f.big_bombs==1,'collection counts real unique large bombs')
+ var bank=plan.duplicate(true);bank.big_bombs=f.big_bombs;bank.bomb_activations=f.bomb_activations
+ f.release_bank(bank,2,48);f.update(.28)
  var event=f.take_impact()
  check(event.get('shield_broken',false) and event.get('shield_damage',0)==12,'shield result reaches one shot impact')
  check(f.get('shield_remaining')!=null and f.get('shield_remaining')>0,'shield fracture persists long enough to read')

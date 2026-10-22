@@ -1,0 +1,32 @@
+{
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 766,
+        "r_frame_rate": "60/1"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0"
+      }
+    ],
+    "format": {
+      "duration": "23.621333",
+      "size": "3734402"
+    }
+  },
+  "decoded_audio_samples": 2279424,
+  "peak_dbfs": -9.555817942265008,
+  "rms_dbfs": -31.496301775578416,
+  "clipped_samples": 0,
+  "nonfinite_samples": 0,
+  "physical_device_listening": false
+}

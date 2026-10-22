@@ -20,6 +20,7 @@ func clear_plan(damage: int = 0, direct: Array = [0,1]) -> Dictionary:
 
 func complete_turn(combat, plan: Dictionary = {}) -> int:
 	for i in range(3): combat.record_clear(clear_plan() if plan.is_empty() else plan)
+	combat.settle_attack()
 	return combat.take_attack()
 
 func _init() -> void:
@@ -29,10 +30,12 @@ func _init() -> void:
 	check(c.incoming_damage==4 and not c.mitigation_active and not c.fallback_plain, "first fight announces plain four damage")
 	check(c.take_attack()==0 and c.attacks_total==0, "no attack before third clear")
 	c.record_clear(clear_plan(3))
-	check(c.enemy_hp==21 and c.actions_in_turn==1 and c.resolve()=="ready", "first clear damages enemy and keeps board ready")
+	check(c.enemy_hp==24 and c.pending_damage==3 and c.actions_in_turn==1 and c.resolve()=="ready", "first clear banks damage and keeps board ready")
 	c.record_clear(clear_plan(2))
 	check(c.resolve()=="ready" and c.take_attack()==0, "second clear never attacks")
 	c.record_clear(clear_plan(1))
+	check(c.resolve()=="strike" and c.enemy_hp==24,"third clear waits for player impact")
+	c.settle_attack()
 	check(c.enemy_hp==18 and c.actions_in_turn==3 and c.resolve()=="attack", "third surviving clear requests attack")
 	check(c.take_attack()==4 and c.last_attack_damage==4 and c.attacks_total==1, "announced attack resolves exactly once")
 	check(c.take_attack()==0 and c.attacks_total==1, "duplicate attack grants no second hit")
@@ -41,7 +44,9 @@ func _init() -> void:
 	check(complete_turn(c)==4 and c.attacks_total==2, "next turn allows exactly one new attack")
 	c.start_fight(0,board(2))
 	c.record_clear(clear_plan(40))
-	check(c.enemy_hp==0 and c.actions_in_turn==1 and c.resolve()=="win", "lethal first clear wins without waiting for third")
+	check(c.enemy_hp==24 and c.pending_damage==40 and c.resolve()=="ready", "lethal first contribution still waits for third")
+	c.record_clear(clear_plan());c.record_clear(clear_plan());c.settle_attack()
+	check(c.resolve()=="win","banked lethal wins on final impact")
 	var wins: int = c.enemies_defeated
 	check(c.resolve()=="win" and c.enemies_defeated==wins and wins==1, "repeated win resolution increments victory count once")
 	check(c.take_attack()==0, "dead enemy cannot retaliate")
@@ -49,6 +54,7 @@ func _init() -> void:
 	c.record_clear(clear_plan(8))
 	c.record_clear(clear_plan(8))
 	c.record_clear(clear_plan(8))
+	c.settle_attack()
 	check(c.resolve()=="win" and c.take_attack()==0 and c.enemies_defeated==2, "lethal third clear prioritizes victory over attack")
 
 	c.start_fight(1,board(4))
@@ -60,6 +66,7 @@ func _init() -> void:
 	check("3" in c.telegraph_text() and "성공" in c.telegraph_text(), "successful condition visibly announces three incoming damage")
 	c.record_clear(clear_plan())
 	c.record_clear(clear_plan())
+	c.settle_attack()
 	check(c.take_attack()==3, "successful mitigation deals three")
 	c.next_turn(board(4))
 	check(c.turn==1 and c.incoming_damage==5 and not c.mitigation_active and not c.mitigation_success, "second fight odd turn always plain five")
@@ -77,6 +84,7 @@ func _init() -> void:
 	check(not c.mitigation_success and c.incoming_damage==5, "later big clear cannot introduce condition on fallback turn")
 	c.record_clear(clear_plan())
 	c.record_clear(clear_plan())
+	c.settle_attack()
 	check(c.take_attack()==5, "fallback whole turn remains five")
 
 	var hearts := board(4,"heart")

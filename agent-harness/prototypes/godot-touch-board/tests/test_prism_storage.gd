@@ -15,6 +15,7 @@ func run():
  check(store.save(data),"rain snapshot valid")
  var loaded=store.load_run();check(loaded.ok and loaded.data==data,"rain RNG and board roundtrip exact")
  var old=data.duplicate(true)
+ for key in Store.BANK+["strike_settled"]:old.combat.erase(key)
  old.session.erase("rain_remaining");old.session.erase("rain_color");old.combat.erase("shield_hp");old.combat.erase("shield_color")
  var bytes=var_to_bytes(old);var text=JSON.stringify({"version":1,"sha256":Store.checksum(bytes),"payload":Marshalls.raw_to_base64(bytes)})
  var path=folder+"/legacy.json";FileAccess.open(path,FileAccess.WRITE).store_string(text)

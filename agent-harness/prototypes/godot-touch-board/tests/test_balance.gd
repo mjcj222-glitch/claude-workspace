@@ -41,6 +41,7 @@ func _init() -> void:
 	for i in range(2): c.record_clear(Rules.plan(one_weak,0,30,30,[],c.damage_context()))
 	check(not c.mitigation_success and c.incoming_damage == 10,"separate one-weak core clears do not accumulate mitigation")
 	c.record_clear(Rules.plan(board(2,3),0,30,30,[],c.damage_context()))
+	c.settle_attack()
 	check(c.mitigation_success and c.incoming_damage == 4 and c.take_attack() == 4,"third action can qualify and receive exactly four")
 	c.start_fight(2,board(7))
 	check(c.fallback_plain and c.incoming_damage == 6,"seven nonweak normals have ordinary-six fallback")
@@ -49,6 +50,7 @@ func _init() -> void:
 	var last: Dictionary = Rules.plan(board(8),0,30,30,[],c.damage_context())
 	c.enemy_hp = last.damage
 	c.record_clear(last)
+	c.record_clear(last);c.record_clear(last);c.settle_attack()
 	check(c.mitigation_success and c.resolve() == "win" and c.take_attack() == 0,"qualifying killing action still wins before retaliation")
 	check(UI.intent_lines(context()) == ["강타 10 → 4: 한 번에 약점 2개","또는 공격 패널 10개 소거"],"telegraph exposes both current boundaries")
 	var altered := context()

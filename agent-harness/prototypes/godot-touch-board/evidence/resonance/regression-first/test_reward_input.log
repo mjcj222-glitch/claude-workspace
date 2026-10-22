@@ -1,0 +1,10 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+WARNING: Loaded resource as image file, this will not work on export: 'res://assets/characters/rio-noa-sheet.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+     at: load_from_file (core/io/image.cpp:2766)
+     GDScript backtrace (most recent call first):
+         [0] texture (res://scripts/board_pixel_heroes.gd:12)
+         [1] draw (res://scripts/board_pixel_heroes.gd:41)
+         [2] draw (res://scripts/board_ui.gd:123)
+         [3] _draw (res://scripts/main.gd:261)
+REWARD_INPUT failures=0

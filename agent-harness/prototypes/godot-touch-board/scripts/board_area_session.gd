@@ -72,6 +72,7 @@ func finish_refill()->void:
    gold+=4;relic_fallbacks+=1;reward_notice="유물 칸 가득 · 대체 보상 +4 G";phase="spoils"
   else:
    reward_round+=1;phase="reward"
+ elif outcome=="strike":phase="player_attack"
  elif outcome=="attack":
   hp=maxi(0,hp-combat.take_attack());phase="enemy_attack"
  else:phase="ready"

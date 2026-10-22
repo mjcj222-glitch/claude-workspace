@@ -1,11 +1,12 @@
 extends RefCounted
 ## Local-only, explicit schema. Objects are never deserialized.
 const Area=preload("res://scripts/board_area_session.gd")
-const VERSION=2
+const VERSION=3
 const LIMIT=2097152
 const STABLE=["ready","map","reward","rest","event","shop","spoils"]
 const FIELDS=["rain_remaining","rain_color","character_id","skill_uses","panels","hp","max_hp","damage_total","actions","charge","charge_required","ash_reserved","relics","reward_options","reward_round","rewards_taken","offer_serial","summary_shown","stats","phase","skill_color","next_id","route","gold","gold_spent","shop_heal_sold","shop_relic_sold","shop_closed","_paid_encounters","departure_choice","departure_started","current_node","selected_node","visited","history","paid_nodes","relic_fallbacks","reward_notice","battles_entered"]
-const COMBAT=["shield_hp","shield_color","route","encounter","enemy_hp","enemy_max_hp","enemy_name","turn","actions_in_turn","incoming_damage","mitigation_active","mitigation_success","fallback_plain","enemies_defeated","last_attack_damage","attacks_total","_turn_prepared","_attack_taken","_victory_counted","weak_color","intent","intent_serial"]
+const BANK=["pending_damage", "pending_shield", "pending_removed", "pending_base", "pending_weak", "pending_specials", "pending_bombs", "pending_big_bombs"]
+const COMBAT=["pending_damage","pending_shield","pending_removed","pending_base","pending_weak","pending_specials","pending_bombs","pending_big_bombs","strike_settled","shield_hp","shield_color","route","encounter","enemy_hp","enemy_max_hp","enemy_name","turn","actions_in_turn","incoming_damage","mitigation_active","mitigation_success","fallback_plain","enemies_defeated","last_attack_damage","attacks_total","_turn_prepared","_attack_taken","_victory_counted","weak_color","intent","intent_serial"]
 var directory:String
 var error:=""
 func _init(path:String="user://chroma-checkpoint"):
@@ -51,6 +52,21 @@ static func valid(data)->bool:
  if s.rain_remaining not in range(4) or s.rain_color not in range(4):return false
  if s.rain_remaining>0 and s.charge!=0:return false
  if c.shield_hp not in range(13) or c.shield_color not in range(4) or (c.encounter!=2 and c.shield_hp!=0):return false
+ # The first two clears may retain a bank; legacy saves legitimately have
+ # actions 1/2 with an empty bank because their damage was already applied.
+ for key in BANK:
+  if c[key]<0 or c[key]>(222 if key=="pending_damage" else 144):return false
+ if c.pending_removed>48*c.actions_in_turn:return false
+ if c.pending_base+c.pending_specials>c.pending_removed:return false
+ if c.pending_weak>int(c.pending_base/2):return false
+ if c.pending_big_bombs>c.pending_bombs or c.pending_bombs>c.pending_specials:return false
+ if c.pending_shield>c.shield_hp:return false
+ var break_bonus=6 if c.shield_hp>0 and c.pending_shield==c.shield_hp else 0
+ if c.pending_damage>c.pending_base+c.pending_weak+break_bonus:return false
+ var banked=false
+ for key in BANK:banked=banked or c[key]!=0
+ if banked and (s.phase!="ready" or c.actions_in_turn not in [1,2] or c.strike_settled):return false
+ if c.strike_settled and (c.actions_in_turn!=3 or s.phase=="ready"):return false
  if s.max_hp!=30 or s.hp<1 or s.hp>30 or s.charge_required not in [2,3] or s.charge<0 or s.charge>s.charge_required or s.skill_color not in range(4):return false
  for k in ["skill_uses","damage_total","actions","reward_round","rewards_taken","offer_serial","gold","gold_spent","relic_fallbacks","battles_entered"]:
   if s[k]<0 or s[k]>1000000:return false
@@ -121,7 +137,9 @@ static func restore(view,data:Dictionary)->void:
  view.rng.seed=data.seed;view.rng.state=data.rng
  view.particle_rng.seed=data.seed ^ 0x514C495459;view.particle_rng.state=data.particle_rng
  view.sound.muted=data.muted;view.reduced_effects=data.reduced
+ view.quality_fx.reset();view.feedback.reset()
  view.quality_fx.reduced_effects=data.reduced;view.feedback.reduced_effects=data.reduced
+ view.quality_fx.bank_energy=restored.combat.pending_removed
  view.visual=restored.panels.duplicate(true)
  view.cancel_input();view.primary_touch=-99
 static func checksum(bytes:PackedByteArray)->String:
@@ -137,11 +155,19 @@ func read_file(path:String)->Dictionary:
  var parser=JSON.new();var parse_error=parser.parse(f.get_as_text());f.close()
  if parse_error!=OK:return {"ok":false,"reason":"format"}
  var envelope=parser.data
- if not envelope is Dictionary or envelope.get("version")!=1 and envelope.get("version")!=VERSION:return {"ok":false,"reason":"version/format"}
+ if not envelope is Dictionary or not (envelope.get("version")==1 or envelope.get("version")==2 or envelope.get("version")==VERSION):return {"ok":false,"reason":"version/format"}
  if not envelope.get("payload") is String or not envelope.get("sha256") is String:return {"ok":false,"reason":"envelope"}
  var bytes=Marshalls.base64_to_raw(envelope.payload)
  if checksum(bytes)!=envelope.sha256:return {"ok":false,"reason":"checksum"}
  var data=bytes_to_var(bytes)
+ if envelope.version==1 or envelope.version==2:
+  if not data is Dictionary or not data.get("session") is Dictionary or not data.get("combat") is Dictionary:return {"ok":false,"reason":"schema"}
+  # Old formats never contained bank fields. Reject mixed shapes instead of
+  # silently overwriting possible malformed/unknown transaction state.
+  for key in BANK+["strike_settled"]:
+   if data.combat.has(key):return {"ok":false,"reason":"schema"}
+  for key in BANK:data.combat[key]=0
+  data.combat["strike_settled"]=false
  if envelope.version==1:
   if not data is Dictionary or not data.get("session") is Dictionary or not data.get("combat") is Dictionary:return {"ok":false,"reason":"schema"}
   # Only precisely old-shaped records migrate; never overwrite unexpected fields.

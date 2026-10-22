@@ -1,0 +1,8 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL clear 0 cannot attack enemy
+FAIL clear 1 cannot attack enemy
+FAIL explicit bank release API
+FAIL elastic combo pose available
+FAIL clear chime has resonant tail
+BANKED_FX checks=5 failures=5

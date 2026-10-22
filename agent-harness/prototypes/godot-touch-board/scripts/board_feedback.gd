@@ -27,6 +27,8 @@ var _active: bool = false
 var _finish_age: float = 0.0
 var _pulse: float = 0.0
 var _clock: float = 0.0
+var _step_age:float=0.0
+var _last_color:=Color.WHITE
 # Dedicated generator. Effects can change without advancing session randomness.
 var _effects_rng := RandomNumberGenerator.new()
 
@@ -60,6 +62,8 @@ func consume(id: int, pos: Vector2, color: Color) -> bool:
 		return false
 	_consumed[id] = true
 	count += 1
+	_step_age=0.0
+	_last_color=color
 	var is_core := _cores.has(id)
 	if is_core:
 		core_count += 1
@@ -95,6 +99,7 @@ func reset() -> void:
 	_finish_age = 0.0
 	_pulse = 0.0
 	_clock = 0.0
+	_step_age=0.0
 	_eligible.clear()
 	_cores.clear()
 	_consumed.clear()
@@ -118,7 +123,7 @@ func _burst(pos: Vector2, color: Color, kind:String) -> void:
 		particles.append({"pos":pos, "velocity":Vector2.from_angle(angle)*speed,
 			"age":0.0, "life":_effects_rng.randf_range(0.18, 0.36) if bomb else _effects_rng.randf_range(0.28, 0.62),
 			"size":_effects_rng.randf_range(3.2, 7.2), "angle":angle,
-			"spin":_effects_rng.randf_range(-7.0, 7.0), "color":tint, "shard":i % 3 != 0})
+			"spin":_effects_rng.randf_range(-7.0, 7.0), "color":tint, "shard":false})
 	_add_ring(pos, color.lightened(0.24), 0.0, 0.32, 48.0 + strength*15.0, false)
 	_add_ring(pos, Color.WHITE, 0.0, 0.11, 29.0, true)
 	if bomb:
@@ -150,6 +155,7 @@ func _add_ring(pos: Vector2, color: Color, delay: float, life: float, radius: fl
 func update(delta: float) -> void:
 	var dt := maxf(0.0, delta)
 	_clock += dt
+	_step_age+=dt
 	_pulse = maxf(0.0, _pulse - dt*5.0)
 	for i in range(particles.size()-1, -1, -1):
 		var p: Dictionary = particles[i]
@@ -205,27 +211,35 @@ func _centered(canvas: CanvasItem, font: Font, center: Vector2, text: String, si
 		canvas.draw_string_outline(font, baseline, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, outline, Color(0.02,0.03,0.05,color.a))
 	canvas.draw_string(font, baseline, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, color)
 
+func combo_pose()->Dictionary:
+	var bounce:float=0.0 if reduced_effects else sin(minf(_step_age/.24,1.0)*PI)*exp(-_step_age*4)
+	var angle:float=0.0 if reduced_effects else sin(_step_age*23)*exp(-_step_age*12)*.075*(1 if count%2==0 else -1)
+	var tint:Color=Color("fff2cb") if reduced_effects else _last_color.lightened(.5).lerp(Color("fff2cb"),minf(count/30.0,.7))
+	return {"center":Vector2(176,177-bounce*7),"scale":Vector2.ONE if reduced_effects else Vector2(1+bounce*.12,1+bounce*.22),"angle":angle,"color":tint}
+
 func draw_hud(view, canvas: CanvasItem) -> void:
-	if not visible:
-		return
-	var alpha := 1.0
+	if not visible:return
+	var alpha:float=clampf(1.0-(_finish_age-HOLD_SECONDS)/FADE_SECONDS,0,1) if finished else 1.0
+	var font:Font=view.font
+	var display:Font=view.get("font_display") if view.get("font_display") is Font else font
+	var pose:=combo_pose()
+	var size:int=48 if count<100 else 40
+	# No plaque/surface. Only the actual incrementing numeral gets elastic motion.
+	if not reduced_effects:
+		for echo in range(2,0,-1):
+			_centered(canvas,display,pose.center+Vector2(-echo*4,echo*2),str(count),size,Color(pose.color,alpha*.09/echo),0)
+	canvas.draw_set_transform(pose.center,pose.angle,pose.scale)
+	_centered(canvas,display,Vector2.ZERO,str(count),size,Color(pose.color,alpha),3)
+	canvas.draw_set_transform(Vector2.ZERO)
+	_centered(canvas,font,Vector2(258,181),"CHAIN",16,Color(1,.93,.8,alpha),1)
 	if finished:
-		alpha = clampf(1.0-(_finish_age-HOLD_SECONDS)/FADE_SECONDS, 0.0, 1.0)
-	var gold := Color("fff2cb")
-	gold.a = alpha
-	var mint := Color("e7bcff")
-	mint.a = alpha
-	var rect := Rect2(24,174,304,94)
-	MaterialArt._surface(canvas,rect,Color(0.70,0.60,0.38,0.82*alpha),Color(0.17,0.08,0.24,0.85*alpha))
-	MaterialArt._surface(canvas,rect.grow(-2),Color(0.16,0.075,0.23,0.94*alpha),Color(0.04,0.02,0.08,0.94*alpha))
-	canvas.draw_line(Vector2(44,179),Vector2(308,179),Color(0.90,0.68,1.0,0.66*alpha),1.2,true)
-	var font: Font = view.font
-	var display: Font = view.get("font_display") if view.get("font_display") is Font else font
-	_centered(canvas, font, Vector2(72,205), "합계" if finished else "파괴", 22, gold)
-	var number_size := int((66.0 if count < 100 else 56.0) + (0.0 if reduced_effects else _pulse*7.0))
-	_centered(canvas, display, Vector2(169,210), str(count), number_size, Color(1.0,1.0,1.0,alpha), 3)
-	_centered(canvas, font, Vector2(280,205), "패널", 20, Color(0.80,0.73,0.87,alpha))
-	if total_cores > 0 or total_bombs>0:
-		_centered(canvas, font, Vector2(176,250), "핵 %d · 폭탄 %d회" % [core_count,bomb_count] if total_bombs>0 else "핵 연쇄 · %d회 발동" % core_count, 21, mint)
-	else:
-		_centered(canvas, font, Vector2(176,250), "연결 소거", 19, Color(0.80,0.73,0.87,alpha))
+		_centered(canvas,font,Vector2(176,208),"에너지 수집",16,Color(.9,.8,1,alpha),1)
+		# Large-chain finish accents only: confined to the combo area, not board.
+		if count>=12 and _finish_age<.32 and not reduced_effects:
+			var progress:float=_finish_age/.32
+			for shard in range(8):
+				var angle:float=TAU*shard/8
+				var center:=Vector2(176,177)+Vector2(cos(angle)*58,sin(angle)*24)*(1+progress*.15)
+				var along:=Vector2.from_angle(angle)*4*(1-progress)
+				var side:=along.orthogonal()*.4
+				canvas.draw_colored_polygon(PackedVector2Array([center+along,center+side,center-along,center-side]),Color(pose.color,(1-progress)*.7))

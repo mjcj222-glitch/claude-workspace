@@ -11,7 +11,7 @@ func _init()->void:
 	var plan:Dictionary={"valid":true,"mode":"clear","removed":[1,2,2,3,4],"activated":[4],"damage":9,"base_damage":8,"weak_bonus":1,"heal_raw":2,"heal_effective":1,"heal_overflow":1}
 	var snapshot:=plan.duplicate(true)
 	fx.action_started(plan,panels,0.25,24)
-	check(fx.display_enemy_hp(15)==24,"canonical commit does not prematurely move displayed HP")
+	check(fx.display_enemy_hp(24)==24,"collection preserves live HP before bank release")
 	fx.panel_removed(1,Vector2.ZERO,Color.RED,"normal")
 	check(not fx.panel_removed(1,Vector2.ZERO,Color.RED,"normal"),"duplicate reachability is ignored")
 	fx.update(0.1)
@@ -20,6 +20,11 @@ func _init()->void:
 	fx.panel_removed(3,Vector2.ZERO,Color.PINK,"heart")
 	fx.panel_removed(4,Vector2.ZERO,Color.YELLOW,"core")
 	fx.action_finished();fx.update(0.16)
+	check(fx.take_impact().is_empty(),"finished clear still only collects")
+	var bank=plan.duplicate(true);bank.core_activations=fx.core_activations
+	fx.release_bank(bank,4,24)
+	check(fx.display_enemy_hp(15)==24,"bank holds displayed HP until shared impact")
+	fx.update(FX.BANK_WINDUP)
 	var impact:Dictionary=fx.take_impact()
 	check(impact.get("damage")==9 and impact.get("base_damage")==8 and impact.get("weak_bonus")==1 and impact.get("cores")==1,"one hit has exact committed arithmetic and core metadata")
 	check(fx.take_impact().is_empty(),"impact audio/recoil cannot be duplicated")

@@ -1,6 +1,7 @@
 extends "res://tests/capture_elemental.gd"
 ## Actual default main scene and legal automated input; never injects resources,
 ## boards, charge or phases. Captures include decision/screenshot overhead.
+var opening_excerpt:=false
 var path_choice:="risk"
 var no_shots:=false
 var event_free:=false
@@ -65,6 +66,7 @@ func run()->void:
  await gesture(scene.UI.DEPART.get_center(),.12)
  await snapshot("initial-map");await create_timer(1.0).timeout
  while errors.is_empty() and scene.session.phase not in ["victory","defeat"] and clear_count<140:
+  if opening_excerpt and scene.session.actions>=3 and scene.session.phase=="reward":break
   audit_save()
   var s=scene.session
   match s.phase:
@@ -139,18 +141,18 @@ func run()->void:
   await choose_node("entry")
   if scene.session.phase!="ready" or scene.session.actions!=0 or scene.session.hp!=30:errors.append("fresh normal battle failed after terminal return")
   record("fresh_battle_after_terminal",{"terminal":terminal.phase})
- var result:Dictionary={"seed":initial_seed,"method":"Actual default area main, automated legal press/release, normal initializer, natural refill. No HP/gold/charge/board injection; not human feel/device/performance evidence.","hero":hero,"path":path_choice,"policy":selected_policy,"event_free":event_free,"movie":movie,"no_fixtures":true,"errors":errors,"terminal":terminal,"returned":errors.is_empty(),"fresh_battle":scene.session.phase=="ready","events":events,"timings":scene.timings,"screenshots":snapshots}
+ var result:Dictionary={"seed":initial_seed,"method":"Actual default area main, automated legal press/release, normal initializer, natural refill. No HP/gold/charge/board injection; not human feel/device/performance evidence.","hero":hero,"path":path_choice,"policy":selected_policy,"event_free":event_free,"movie":movie,"no_fixtures":true,"opening_excerpt":opening_excerpt,"errors":errors,"terminal":terminal,"returned":errors.is_empty(),"fresh_battle":scene.session.phase=="ready","events":events,"timings":scene.timings,"screenshots":snapshots}
  FileAccess.open(output_dir.path_join("trace.json"),FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
  print("AREA_NORMAL ",hero," ",path_choice," ",selected_policy," terminal=",terminal.phase," clears=",terminal.actions," HP=",terminal.hp," history=",terminal.history," errors=",errors)
  if not await preload("res://tests/audio_teardown.gd").release(scene,self):errors.append("audio teardown deadline")
- quit(0 if errors.is_empty() and terminal.phase in ["victory","defeat"] else 1)
+ quit(0 if errors.is_empty() and (terminal.phase in ["victory","defeat"] or (opening_excerpt and terminal.phase=="reward")) else 1)
 
 func wait_resolution() -> void:
  var deadline := Time.get_ticks_msec()+120000
  var attack_recorded := false
  var hit_recorded := false
  var falling_saved := false
- while scene.session.phase in ["busy","enemy_attack"]:
+ while scene.session.phase in ["busy","player_attack","player_impact","enemy_attack"]:
   if Time.get_ticks_msec() > deadline:
    errors.append("natural animation/refill exceeded safety deadline")
    return

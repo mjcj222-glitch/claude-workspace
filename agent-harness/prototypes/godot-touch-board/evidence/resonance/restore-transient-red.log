@@ -1,0 +1,38 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS bank ledger uses explicit schema version3
+PASS first two clears capture accumulated attack without early enemy damage
+PASS ledger retains damage and effect categories
+PASS two-clear ready checkpoint validates
+PASS bank checkpoint atomically saves
+ROUNDTRIP ok
+PASS bank checkpoint read roundtrip exact
+PASS restore preserves bank RNG board and hero exactly
+FAIL restore charged orb energy without replaying attack trails
+PASS version1 legacy first/two-clear save accepted
+PASS legacy applied damage does not become a second pending attack
+PASS migration retains RNG board and completed clear count
+PASS legacy original bytes unchanged by read
+PASS old version cannot smuggle a partial new bank
+PASS version2 legacy first/two-clear save accepted
+PASS legacy applied damage does not become a second pending attack
+PASS migration retains RNG board and completed clear count
+PASS legacy original bytes unchanged by read
+PASS old version cannot smuggle a partial new bank
+PASS reject negative pending_damage
+PASS reject negative pending_shield
+PASS reject negative pending_removed
+PASS reject negative pending_base
+PASS reject negative pending_weak
+PASS reject negative pending_specials
+PASS reject negative pending_bombs
+PASS reject negative pending_big_bombs
+PASS two clears cannot bank more than96 removed panels
+PASS big bomb count cannot exceed total bombs
+PASS bombs cannot exceed activated specials
+PASS no shield damage can be banked against zero shield
+PASS banked damage bounded by actual base/weak/break bonus
+PASS ready first/two-clear state cannot already be settled
+PASS partial player attack is not a stable checkpoint
+AUDIO_TEARDOWN remaining=0 wall_ms=0
+BANKED_CHECKPOINT checks=33 failures=1

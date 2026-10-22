@@ -21,6 +21,7 @@ func clear_plan(damage: int = 0, ids: Array = [0,1]) -> Dictionary:
 func finish_turn(combat) -> int:
 	while combat.actions_in_turn < 3:
 		combat.record_clear(clear_plan())
+	combat.settle_attack()
 	return combat.take_attack()
 
 func _init() -> void:
@@ -69,13 +70,16 @@ func _init() -> void:
 	check(not c.mitigation_success and c.incoming_damage==8, "solo-core extra chain excluded from elite condition")
 	c.start_fight(1,board(4),"elite")
 	c.record_clear(clear_plan(44))
-	check(c.enemy_hp==0 and c.resolve()=="win" and c.take_attack()==0, "elite lethal first clear beats retaliation")
+	check(c.enemy_hp==44 and c.resolve()=="ready","lethal contribution remains banked")
+	c.record_clear(clear_plan());c.record_clear(clear_plan());c.settle_attack()
+	check(c.enemy_hp==0 and c.resolve()=="win" and c.take_attack()==0, "elite lethal bank beats retaliation after third clear")
 	var wins: int=c.enemies_defeated
 	check(c.resolve()=="win" and c.enemies_defeated==wins, "elite repeated victory counts once")
 	c.start_fight(1,board(4),"elite")
 	c.record_clear(clear_plan(20))
 	c.record_clear(clear_plan(20))
 	c.record_clear(clear_plan(4))
+	c.settle_attack()
 	check(c.resolve()=="win" and c.take_attack()==0, "elite lethal third clear beats retaliation")
 	c.start_fight(0,board(4),"elite")
 	check(c.enemy_hp==24 and c.incoming_damage==4 and finish_turn(c)==4, "first fight unaffected by elite route")

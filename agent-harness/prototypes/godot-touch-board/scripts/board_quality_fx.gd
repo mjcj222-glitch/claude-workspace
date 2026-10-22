@@ -6,7 +6,7 @@ const TRAIL_LIMIT := 48
 const TOTAL_SECONDS := 0.9
 const CUTIN_RECT := Rect2(8,920,688,160)
 const FACE_REGION := Rect2(250,180,590,590.0*160.0/230.0)
-const HEAL_STRIP := Rect2(32,272,656,32)
+const HEAL_STRIP := Rect2(32,278,656,26)
 var cutin_remaining := 0.0
 var _sweep_color := Color("b6dbff")
 var total_remaining := 0.0
@@ -18,6 +18,10 @@ var trails: Array = []
 var _eligible: Dictionary = {}
 var _seen: Dictionary = {}
 var _active := false
+var _bank_releasing := false
+var bank_energy := 0
+const COLLECTION_POINT := Vector2(176,180)
+const BANK_WINDUP := 0.28
 var _finished := false
 var reduced_effects := false
 var impact_remaining := 0.0
@@ -74,10 +78,12 @@ func _clear_action() -> void:
 	_eligible.clear()
 	_seen.clear()
 	_active = false
+	_bank_releasing = false
 	_finished = false
 
 func reset() -> void:
 	_clear_action()
+	bank_energy=0
 	cutin_remaining = 0.0
 	_skill_converted.clear()
 
@@ -128,8 +134,9 @@ func action_started(plan: Dictionary, panels: Array, impact_due: float=0.0, enem
 		if _eligible[id]=="normal" and _skill_converted.has(id) and not plan.get("converted",{}).has(id) and plan.get("effective_colors",{}).get(id,_skill_converted[id])==_skill_converted[id]:skill_link=true
 	_skill_converted.clear()
 	_impact_due=maxf(0.0,impact_due)
-	_hp_before=enemy_hp_before
-	_hp_after=maxi(0,_hp_before-damage_amount)
+	# Clears collect only; canonical HP stays live until explicit bank release.
+	_hp_before=-1
+	_hp_after=-1
 	heal_raw = int(plan.get("heal_raw", 0))
 	heal_effective = int(plan.get("heal_effective", 0))
 	heal_overflow = int(plan.get("heal_overflow", 0))
@@ -138,22 +145,48 @@ func panel_removed(id: int, pos: Vector2, color: Color, _kind: String) -> bool:
 	if not _active or _finished or not _eligible.has(id) or _seen.has(id):
 		return false
 	_seen[id] = true
+	bank_energy=mini(144,bank_energy+1)
 	var actual_kind: String = _eligible[id]
 	# Existing feedback owns core rings/shards. Delivery cues distinguish
 	# damage (including core objects) from heart healing and overflow.
 	if actual_kind in ["normal","heart","core","strong","bomb","big_bomb"]:
 		if trails.size() >= TRAIL_LIMIT: trails.pop_front()
 		trails.append({"pos":pos,"color":color,"age":0.0,
-			"life":maxf(0.05,_impact_due-_elapsed) if actual_kind!="heart" and _impact_due>0 else _effects_rng.randf_range(0.22,0.32),
+			"life":_effects_rng.randf_range(0.30,0.42),
 			"core":actual_kind in ["core","strong","bomb","big_bomb"],
 			"bend":_effects_rng.randf_range(-40.0,40.0),
-			"kind":"heal" if actual_kind=="heart" else "damage"})
+			"kind":"heal" if actual_kind=="heart" else "collect"})
 	return true
 
 func action_finished() -> void:
 	if not _active or _finished: return
 	_finished = true
 	total_remaining = TOTAL_SECONDS
+
+func release_bank(plan:Dictionary,removed_count:int,enemy_hp_before:int)->void:
+	# A bank is released once by the controller after the third settled refill.
+	# Repeated callbacks cannot restart its windup or duplicate its impact.
+	if _bank_releasing:return
+	_clear_action()
+	_bank_releasing=true
+	_active=true
+	_finished=true
+	bank_energy=clampi(removed_count,0,144)
+	damage_amount=maxi(0,int(plan.get("damage",0)))
+	base_damage=int(plan.get("base_damage",damage_amount))
+	weak_bonus=int(plan.get("weak_bonus",0))
+	shield_damage=maxi(0,int(plan.get("shield_damage",0)))
+	shield_broken=bool(plan.get("shield_broken",false))
+	shield_color=clampi(int(plan.get("combat_context",{}).get("shield_color",0)),0,3)
+	core_activations=maxi(0,int(plan.get("core_activations",0)))
+	strong_cores=maxi(0,int(plan.get("strong_cores",0)))
+	bomb_activations=maxi(0,int(plan.get("bomb_activations",0)))
+	big_bombs=maxi(0,int(plan.get("big_bombs",0)))
+	impact_tier=2 if removed_count>=12 else (1 if removed_count>=6 else 0)
+	_hp_before=enemy_hp_before
+	_hp_after=maxi(0,_hp_before-damage_amount)
+	_impact_due=BANK_WINDUP
+	total_remaining=TOTAL_SECONDS+BANK_WINDUP
 
 func take_impact() -> Dictionary:
 	var event:=_pending_impact
@@ -181,8 +214,10 @@ func update(delta: float) -> void:
 	_elapsed+=dt
 	impact_remaining=maxf(0,impact_remaining-dt)
 	shield_remaining=maxf(0,shield_remaining-dt)
-	if _finished and not _impacted and _elapsed>=_impact_due and (damage_amount>0 or shield_damage>0):
+	if _bank_releasing and not _impacted and _elapsed>=_impact_due:
 		_impacted=true
+		bank_energy=0
+		total_remaining=TOTAL_SECONDS
 		impact_remaining=IMPACT_SECONDS
 		if shield_broken:shield_remaining=SHIELD_SECONDS
 		_pending_impact={"damage":damage_amount,"base_damage":base_damage,"weak_bonus":weak_bonus,"cores":core_activations,"strong_cores":strong_cores,"bombs":bomb_activations,"tier":impact_tier,"skill_link":skill_link,"shield_damage":shield_damage,"shield_broken":shield_broken,"big_bombs":big_bombs}
@@ -208,9 +243,23 @@ func _text(canvas,font: Font,point: Vector2,text: String,size: int,color: Color,
 func draw_overlay(view,canvas) -> void:
 	var target: Vector2 = Art.impact_point(-1 if view.get("sandbox")==true else (view.session.combat.encounter if view.get("session")!=null else 0))
 	var hero: Vector2 = view.UI.HERO_RECT.get_center()
+	if bank_energy>0 and not _impacted:
+		var charge:float=clampf(float(bank_energy)/48.0,0,1)
+		var progress:float=clampf(_elapsed/BANK_WINDUP,0,1) if _bank_releasing else 0.0
+		var radius:float=14+charge*12+progress*13
+		canvas.draw_circle(COLLECTION_POINT,radius+8,Color(.035,.025,.09,.80))
+		var tint:=Color(.9,.8,1,.85)
+		canvas.draw_arc(COLLECTION_POINT,radius,0,TAU,32,tint,2.0,true)
+		if not reduced_effects:
+			canvas.draw_circle(COLLECTION_POINT,radius*.45,Color(.75,.6,1,.10+progress*.15))
+			canvas.draw_arc(COLLECTION_POINT,radius+5,_elapsed*3,_elapsed*3+PI*1.4,24,Color(1,.88,.6,.45),2,true)
+			if _bank_releasing and progress>.6:
+				var beam_alpha:float=sin((progress-.6)/.4*PI)*.65
+				canvas.draw_line(COLLECTION_POINT,target,Color(.8,.55,1,beam_alpha),10,true)
+				canvas.draw_line(COLLECTION_POINT,target,Color(1,.96,.8,beam_alpha),3,true)
 	for trail in trails:
 		var start: Vector2 = view.board_to_screen(trail.pos)
-		var destination: Vector2 = hero if trail.kind=="heal" else target
+		var destination: Vector2 = hero if trail.kind=="heal" else COLLECTION_POINT
 		var t: float = clampf(trail.age/trail.life,0.0,1.0)
 		if reduced_effects:
 			canvas.draw_line(start,destination,Color(trail.color,0.18*(1.0-t)),1.5,true)
@@ -228,8 +277,8 @@ func draw_overlay(view,canvas) -> void:
 			previous = current
 		canvas.draw_line(previous,head,Color(1,0.96,0.82,tint.a),4.0 if trail.get("core",false) else 2.0,true)
 		canvas.draw_circle(head,8.0 if trail.get("core",false) else 4.8,Color(1.0,1.0,0.95,tint.a))
-		if trail.kind=="damage":
-			var size:float=10.0 if trail.get("core",false) else 6.5
+		if trail.kind=="collect":
+			var size:float=4.0 if trail.get("core",false) else 2.5
 			canvas.draw_colored_polygon(PackedVector2Array([head+Vector2(0,-size),head+Vector2(size,0),head+Vector2(0,size),head-Vector2(size,0)]),Color(trail.color,tint.a))
 			canvas.draw_line(head-Vector2(0,size*.6),head+Vector2(size*.6,0),Color(1,1,1,tint.a),2,true)
 		if trail.kind=="heal":

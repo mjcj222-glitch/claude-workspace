@@ -57,20 +57,19 @@ func _impact_stream(tier:int,weak:bool)->AudioStreamWAV:
   samples[n]=(body+snap+grit+accent)*envelope
  return _pcm(samples)
 func _pop_stream(index:int,heart:bool,finish:bool=false,landing:bool=false)->AudioStreamWAV:
- var duration:float=.20 if finish else (.085 if not heart else .13)
+ var duration:float=.20 if finish else (.19 if not heart else .21)
  var base:float=105 if landing else clear_pitch(index)
  var samples:=PackedFloat32Array();samples.resize(int(duration*22050))
- var noise:=RandomNumberGenerator.new();noise.seed=533+index
  for n in range(samples.size()):
   var t:float=n/22050.0;var env:float=minf(t*1800,1)*pow(1-t/duration,2)
-  var wave:float=sin(TAU*base*t)*.48+sin(TAU*base*2*t)*.13
+  var wave:float=sin(TAU*base*t)*.43+sin(TAU*base*2.76*t)*exp(-t*17)*.13
   # More overtones articulate a growing chain without added voices or gain.
   if not heart and not finish and not landing:
    var layers:int=chain_layers(index)
    if layers>=2:wave=wave*.84+sin(TAU*base*3*t)*.08
    if layers>=3:wave=wave*.86+sin(TAU*base*4*t)*.065*(.6+.4*cos(TAU*18*t))
   if heart:wave=(sin(TAU*base*t)*.46+sin(TAU*base*1.5*t)*.17)*(.8+.2*cos(TAU*7*t))
-  elif not finish and not landing:wave+=noise.randf_range(-1,1)*exp(-t*180)*.19+sin(TAU*150*t)*exp(-t*58)*.18
+  elif not finish and not landing:wave+=sin(TAU*base*5.4*t)*exp(-t*38)*.045
   if finish:wave=(sin(TAU*base*t)+sin(TAU*base*1.25*t)+sin(TAU*base*1.5*t))*.20
   samples[n]=wave*env
  return _pcm(samples)

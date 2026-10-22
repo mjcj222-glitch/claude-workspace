@@ -43,7 +43,7 @@ func run():
     await gesture(at)
     if interrupted=="busy":break
     if interrupted=="attack":
-     while s.phase=="busy":await process_frame
+     while s.phase in ["busy","player_attack","player_impact"]:await process_frame
      if s.phase=="enemy_attack":break
     await wait_resolution()
    "reward":await gesture(scene.UI.reward_rect(0,s.reward_options.size()).get_center())
