@@ -25,6 +25,9 @@ var session = RunSession.new()
 var sandbox := false
 var short_run := false
 var run_seed := 20261021
+var fixed_seed := false
+var configured_seed := 20261021
+var lifecycle=preload("res://scripts/board_lifecycle.gd").new()
 var attack_clock := 0.0
 var transition_repeat_until_ms := 0
 var transition_repeat_at := Vector2.INF
@@ -98,6 +101,7 @@ class ModalSurface extends Node2D:
 				presenter.feedback.draw_hud(presenter,self)
 			presenter.UI.draw_modal(presenter,self)
 			presenter.UI.draw_details(presenter,self)
+			presenter.lifecycle.draw(presenter,self)
 
 func _ready() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
@@ -114,7 +118,10 @@ func _ready() -> void:
 	sandbox = "--sandbox" in args
 	short_run = "--short-run" in args
 	for arg in args:
-		if arg.begins_with("--seed="): run_seed = int(arg.trim_prefix("--seed="))
+		if arg.begins_with("--seed="):
+			run_seed = int(arg.trim_prefix("--seed="))
+			fixed_seed = true
+			configured_seed = run_seed
 	demo = "--demo" in args and sandbox
 	capture_mode = "--capture" in args
 	board_surface = BoardSurface.new()
@@ -129,6 +136,7 @@ func _ready() -> void:
 	overlay_surface.presenter = self
 	add_child(overlay_surface)
 	reset_board()
+	lifecycle.setup(self,args)
 
 func reset_board() -> void:
 	_cancel_modal()
@@ -139,6 +147,13 @@ func reset_board() -> void:
 	selection_trace.clear()
 	ready_age = 0.0
 	_skill_was_ready = true
+	if fixed_seed:
+		run_seed=configured_seed
+	else:
+		var entropy=RandomNumberGenerator.new()
+		entropy.randomize()
+		var fresh=int(entropy.randi())
+		run_seed=fresh if fresh!=run_seed else (fresh+1) % 4294967296
 	rng.seed = run_seed
 	particle_rng.seed = run_seed ^ 0x514C495459
 	session = Session.new() if sandbox else (LegacyRunSession.new() if short_run else RunSession.new())
@@ -317,6 +332,10 @@ func _clear_onset(index: int) -> float:
 	return float(index) * spacing
 
 func _process(delta: float) -> void:
+	if lifecycle.modal!="":
+		queue_redraw()
+		if overlay_surface:overlay_surface.queue_redraw()
+		return
 	time += delta
 	feedback.update(delta)
 	var now_ready: bool = session.charge >= session.charge_required
@@ -377,6 +396,7 @@ func _process(delta: float) -> void:
 		target_hit=1.0
 		sound.impact(int(impact.tier),int(impact.weak_bonus)>0)
 		if record_timings:timings.append({"event":"attack_impact","damage":impact.damage,"base_damage":impact.base_damage,"weak_bonus":impact.weak_bonus,"action_clock":action_clock,"encounter":-1 if sandbox else session.combat.encounter})
+	lifecycle.checkpoint(self)
 	if demo: _demo(delta)
 	queue_redraw()
 	if board_surface: board_surface.queue_redraw()
@@ -439,6 +459,7 @@ func _detail_close_hit(pos:Vector2) -> bool:
 	return UI.DETAIL_CLOSE.has_point(pos) or (Rect2(0,0,720,1080).has_point(pos) and not UI.DETAIL_PANEL.has_point(pos))
 
 func cancel_input() -> void:
+	lifecycle.cancel()
 	session.cancel()
 	selection_trace.clear()
 	_cancel_modal()
@@ -458,6 +479,7 @@ func _cache_selection_trace() -> void:
 				selection_trace.append([indexed[id].pos,indexed[neighbor].pos])
 
 func move_pointer(pos: Vector2, pointer: int) -> void:
+	if lifecycle.modal!="":lifecycle.move(pos,pointer);return
 	session.move(screen_to_board(pos),pointer)
 	if pointer==detail_pointer:
 		if (detail_action=="open" and not UI.owned_rect(detail_index).has_point(pos)) or (detail_action=="close" and not _detail_close_hit(pos)):
@@ -467,9 +489,10 @@ func move_pointer(pos: Vector2, pointer: int) -> void:
 		if not rect.has_point(pos): _cancel_modal()
 
 func press(pos: Vector2, pointer: int) -> void:
+	if lifecycle.modal!="":lifecycle.press(pos,pointer);return
 	# Reset is the only transition input; all clocks and pending effects are owned here.
 	if not sandbox and RESET.has_point(pos):
-		reset_board()
+		lifecycle.request_new(self)
 		return
 	if MUTE.has_point(pos) and session.owner==-99 and modal_pointer==-99 and detail_pointer==-99:
 		sound.muted=not sound.muted
@@ -479,10 +502,10 @@ func press(pos: Vector2, pointer: int) -> void:
 		quality_fx.reduced_effects=reduced_effects
 		feedback.reduced_effects=reduced_effects
 		return
-	if session.phase == "ready" and Time.get_ticks_msec() < transition_repeat_until_ms and pos.distance_to(transition_repeat_at) <= TRANSITION_REPEAT_RADIUS:
+	if session.phase in ["ready","departure"] and Time.get_ticks_msec() < transition_repeat_until_ms and pos.distance_to(transition_repeat_at) <= TRANSITION_REPEAT_RADIUS:
 		return
 	if detail_relic!="":
-		if RESET.has_point(pos):reset_board();return
+		if RESET.has_point(pos):lifecycle.request_new(self);return
 		if detail_pointer==-99 and _detail_close_hit(pos):
 			detail_pointer=pointer
 			detail_action="close"
@@ -490,7 +513,7 @@ func press(pos: Vector2, pointer: int) -> void:
 	if detail_pointer!=-99:return
 	if session.phase in ["map","rest","event","spoils","departure","reward","summary","route","shop","between","victory","defeat"]:
 		if RESET.has_point(pos):
-			reset_board()
+			lifecycle.request_new(self)
 			return
 		if modal_pointer != -99: return
 		if AreaUI.active(session.phase):
@@ -513,11 +536,11 @@ func press(pos: Vector2, pointer: int) -> void:
 			modal_phase=session.phase
 		return
 	if session.phase == "stalled" and RESET.has_point(pos):
-		reset_board()
+		lifecycle.request_new(self)
 		return
 	if session.owner != -99 or session.phase != "ready": return
 	if RESET.has_point(pos):
-		reset_board()
+		lifecycle.request_new(self)
 		return
 	if session.phase != "ready": return
 	if not session.skill_mode:
@@ -544,6 +567,12 @@ func press(pos: Vector2, pointer: int) -> void:
 		queue_redraw()
 
 func release(pos: Vector2, pointer: int) -> void:
+	if lifecycle.modal!="":lifecycle.release(self,pos,pointer);return
+	_release_action(pos,pointer)
+	lifecycle.dirty=true
+	lifecycle.checkpoint(self)
+
+func _release_action(pos: Vector2, pointer: int) -> void:
 	if detail_relic!="" or detail_pointer!=-99:
 		if pointer!=detail_pointer:return
 		var index:=detail_index
@@ -597,7 +626,7 @@ func release(pos: Vector2, pointer: int) -> void:
 		elif session.phase == "between" and UI.SUMMARY_CONTINUE.has_point(pos):
 			_advance_fight()
 		elif session.phase in ["victory","defeat"] and UI.SUMMARY_CONTINUE.has_point(pos):
-			reset_board()
+			lifecycle.request_new(self)
 		elif session.phase == "summary" and UI.SUMMARY_CONTINUE.has_point(pos):
 			session.continue_summary()
 			status="보상 2회 완료 · 자유롭게 계속 시험하세요"
@@ -647,7 +676,7 @@ func _input(event: InputEvent) -> void:
 		move_pointer(event.position, event.index)
 	elif event is InputEventMouseButton and not event.device == InputEvent.DEVICE_ID_EMULATION:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed and event.double_click and session.phase == "ready" and transition_repeat_until_ms > 0 and event.position.distance_to(transition_repeat_at) <= TRANSITION_REPEAT_RADIUS:
+			if event.pressed and event.double_click and session.phase in ["ready","departure"] and transition_repeat_until_ms > 0 and event.position.distance_to(transition_repeat_at) <= TRANSITION_REPEAT_RADIUS:
 				return
 			if event.pressed: press(event.position, -1)
 			else: release(event.position, -1)

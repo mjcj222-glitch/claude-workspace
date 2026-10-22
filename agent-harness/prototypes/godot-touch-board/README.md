@@ -1,3 +1,5 @@
+> **새 탐험·로컬 이어하기:** 정상 실행은 새 시드를 사용하고 완료 행동마다 체크포인트를 저장합니다. 이어하기는 같은 보드·RNG·진행을 복원합니다. [저장 경계·복구·검증·한계](docs/RUN_LIFECYCLE.md). 기존 `767f87a` Library 패키지에는 이 후속 변경이 없습니다.
+
 > **검증 보완:** 기존 창 검사 다섯 실패를 각각 진단하고 전체 검사를 복구·확장했습니다. [원인·기존/신규 범위·정상 승패 검증](docs/VALIDATION_REPAIR.md). 게임 구현은 변경하지 않았습니다.
 
 > **타격 타이밍 정리:** 폭탄·명중 순간의 소리 대비와 짧은 폭탄 파동, 합계 강조를 개선했습니다. [전후 소리 영상·검증·한계](docs/IMPACT_FOCUS.md). 규칙과 원판 외형은 유지합니다.
@@ -73,31 +75,31 @@ godot --path agent-harness/prototypes/godot-touch-board
 
 ## 검증
 ```sh
-godot --headless --path . --script tests/test_rules.gd
-godot --headless --path . --script tests/test_relic_rules.gd
-godot --headless --path . --script tests/test_growth_session.gd
-godot --headless --path . --script tests/test_combat.gd
-godot --headless --path . --script tests/test_run_session.gd
-godot --headless --path . --script tests/test_run_input.gd
-godot --headless --path . --script tests/test_route_combat.gd
-godot --headless --path . --script tests/test_route_economy.gd
-godot --headless --path . --script tests/test_route_input.gd
-godot --headless --path . --script tests/test_transition_reentry.gd
-godot --headless --path . --script tests/test_elemental_rules.gd
-godot --headless --path . --script tests/test_boss_combat.gd
-godot --headless --path . --script tests/test_elemental_session.gd
-godot --headless --path . --script tests/test_elemental_input.gd
-godot --headless --path . --script tests/test_elemental_ui.gd
-godot --headless --path . --script tests/test_reward_input.gd -- --sandbox
-godot --headless --path . --script tests/test_refill_inlet.gd
-godot --headless --path . --script tests/test_motion_paths.gd
-godot --headless --path . --script tests/test_motion_cycles.gd
-godot --headless --path . --script tests/test_interaction.gd
-godot --headless --path . --script tests/test_scene.gd -- --sandbox
+godot --headless --path . --script tests/test_rules.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_relic_rules.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_growth_session.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_combat.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_run_session.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_run_input.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_route_combat.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_route_economy.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_route_input.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_transition_reentry.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_elemental_rules.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_boss_combat.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_elemental_session.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_elemental_input.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_elemental_ui.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_reward_input.gd -- --sandbox --seed=20261021 --no-save
+godot --headless --path . --script tests/test_refill_inlet.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_motion_paths.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_motion_cycles.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_interaction.gd -- --seed=20261021 --no-save
+godot --headless --path . --script tests/test_scene.gd -- --sandbox --seed=20261021 --no-save
 ```
 실제 렌더러에서 `tests/capture_board.gd`는 캡처, `tests/live_benchmark.gd`는 실시간 벽시계/프레임 기록을 만듭니다. 후자는 테스트 전용 자동 입력입니다. `-- --sandbox --demo --capture`는 고정 영상 제작용이며 `--write-movie`와 함께 사용합니다. 테스트·증거 파일은 배포 빌드에서 제외합니다.
 
-화면·영상·측정은 `evidence/`, 실행 계약과 판단은 `docs/`에 있습니다. 영상은 고정 프레임 녹화로 입력 성능 근거가 아닙니다. Android 실물, 모바일 음향·지연, 사용자 재미는 미검증입니다. 넓은 지도·영구 저장·파티·추가 적/보스 콘텐츠·피버는 없습니다. 골드는 게임 안에서만 쓰며 실제 결제는 없습니다.
+화면·영상·측정은 `evidence/`, 실행 계약과 판단은 `docs/`에 있습니다. 영상은 고정 프레임 녹화로 입력 성능 근거가 아닙니다. Android 실물, 모바일 음향·지연, 사용자 재미는 미검증입니다. 넓은 지도·메타 성장 저장·파티·추가 적/보스 콘텐츠·피버는 없습니다. 현재 로컬 단일 탐험 저장은 위 수명주기 문서를 따릅니다. 골드는 게임 안에서만 쓰며 실제 결제는 없습니다.
 
 ## 자산
 패널: 이번 승인된 새 원본 PNG atlas. `assets/ART.md` 참조. 캐릭터/표적: 승인된 원본 RGBA PNG 초상/젤리 골렘. 이번 성장 단계는 새 그림·효과음·VFX를 추가하지 않았습니다. 효과음: 새 합성 PCM(6 voices 제한). 글꼴: 시스템 Noto Sans CJK의 한국어 부분집합, SIL OFL(`assets/FONT-LICENSE.txt`). 사용자 참조 원본 이미지는 포함하지 않습니다.

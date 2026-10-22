@@ -16,13 +16,19 @@ evidence = base / 'evidence' / ('impact/windows' if impact else ('premium' if pr
 if "--validation-repair" in sys.argv:
     evidence = base / 'evidence/validation-repair/windows'
     if "--short-run" in sys.argv: log_suffix += "-short"
+if '--lifecycle' in sys.argv:
+    evidence = base / 'evidence/run-lifecycle/windows'
+if '--lifecycle-ui' in sys.argv:
+    evidence = base / 'evidence/run-lifecycle/windows'
+    log_suffix += '-lifecycle'
+script = 'tests/capture_lifecycle_states.gd' if '--lifecycle-ui' in sys.argv else 'tests/capture_quality_states.gd'
 evidence.mkdir(parents=True, exist_ok=True)
 request = Path('/tmp/chroma-quality-window-request.json')
 ack = Path('/tmp/chroma-quality-window-ack.json')
 request.unlink(missing_ok=True)
 ack.unlink(missing_ok=True)
 log = (evidence / f'states-{width}x{height}{log_suffix}.log').open('w')
-process = subprocess.Popen(['godot', '--path', str(base), '--audio-driver', 'Dummy', '--position', '0,0', '--script', 'tests/capture_quality_states.gd', '--', str(width), str(height)] + (["--effects-only"] if effects_only else []) + (["--hit-controls"] if impact else []) + (["--short-run"] if "--short-run" in sys.argv else []), stdout=log, stderr=subprocess.STDOUT)
+process = subprocess.Popen(['godot', '--path', str(base), '--audio-driver', 'Dummy', '--position', '0,0', '--script', script, '--', str(width), str(height), '--seed=20261021', '--no-save'] + (["--effects-only"] if effects_only else []) + (["--hit-controls"] if impact else []) + (["--short-run"] if "--short-run" in sys.argv else []), stdout=log, stderr=subprocess.STDOUT)
 pointer = [sys.executable, str(base / 'tests/x11_pointer.py')]
 seen = set()
 deadline = time.monotonic() + 220

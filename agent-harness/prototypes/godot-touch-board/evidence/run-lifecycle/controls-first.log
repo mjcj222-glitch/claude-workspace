@@ -1,0 +1,31 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS fixture checkpoint saved
+PASS reset requires explicit confirmation
+PASS unowned release cannot abandon
+PASS cancel preserves current run
+PASS unclaimed reward checkpoint
+PASS reward commit saves complete ledger
+PASS repeated reward release cannot repay
+PASS rest boundary validates
+PASS rest transaction saved once
+PASS rest stale release inert
+PASS event boundary validates
+PASS event transaction saved once
+PASS event stale release inert
+PASS shop checkpoint 0
+PASS sold stock cannot buy twice 0
+PASS shop checkpoint 1
+PASS sold stock cannot buy twice 1
+PASS boss checkpoint valid
+PASS boss intent preserved; held input discarded
+PASS busy never persisted
+PASS enemy_attack never persisted
+PASS stalled never persisted
+PASS victory preterminal fixture
+PASS victory blocks backup resurrection
+PASS victory fresh selection
+PASS defeat preterminal fixture
+PASS defeat blocks backup resurrection
+PASS defeat fresh selection
+LIFECYCLE_CONTROLS checks=28 failures=0

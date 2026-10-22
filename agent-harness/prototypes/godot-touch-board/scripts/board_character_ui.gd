@@ -38,4 +38,4 @@ static func draw(view,canvas:CanvasItem)->void:
 	var label:String=Characters.definition(session.departure_choice).name+"로 출발" if enabled else "캐릭터를 선택하세요"
 	ui._modal_text(view,canvas,DEPART.get_center()+Vector2(0,11),label,32,Color("fff0ff") if enabled else ui.MUTED,true,true)
 	ui._modal_text(view,canvas,Vector2(360,941),"출발 후 변경 불가 · 승패와 리셋 후 다시 선택",23,ui.MUTED,true)
-	ui._modal_text(view,canvas,Vector2(360,980),"저장되지 않는 짧은 탐험 프로토타입",22,ui.MUTED,true)
+	ui._modal_text(view,canvas,Vector2(360,980),"완료 행동마다 자동 저장 · 진행 중 종료는 직전으로" if view.lifecycle.enabled else "저장하지 않는 테스트 탐험",22,ui.MUTED,true)
