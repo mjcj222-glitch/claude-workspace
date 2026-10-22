@@ -5,6 +5,8 @@ var path_choice:="risk"
 var no_shots:=false
 var event_free:=false
 var evidence_case:="fixed"
+func evidence_root()->String:
+ return "res://evidence/save-recovery/normal/" if "--save-recovery" in OS.get_cmdline_user_args() else "res://evidence/run-lifecycle/normal/"
 func snapshot(name:String)->void:
  if not no_shots:await super.snapshot(name)
 func state()->Dictionary:
@@ -52,7 +54,7 @@ func run()->void:
   if arg=="--event-free":event_free=true
   if arg.begins_with("--case="):evidence_case=arg.trim_prefix("--case=").validate_filename()
  route_choice="elite" if path_choice=="risk" else "safe"
- output_dir=("res://evidence/save-recovery/normal/" if "--save-recovery" in OS.get_cmdline_user_args() else "res://evidence/run-lifecycle/normal/")+evidence_case+"/%s-%s-%s-%s"%[hero,path_choice,selected_policy,"movie" if movie else "live"]+("-free" if event_free else "")
+ output_dir=evidence_root()+evidence_case+"/%s-%s-%s-%s"%[hero,path_choice,selected_policy,"movie" if movie else "live"]+("-free" if event_free else "")
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_dir))
  began_us=Time.get_ticks_usec();scene=load("res://main.tscn").instantiate();root.add_child(scene)
  var initial_seed:int=scene.run_seed
