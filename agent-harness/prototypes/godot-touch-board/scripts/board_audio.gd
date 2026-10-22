@@ -4,11 +4,17 @@ extends Node
 var voices: Array[AudioStreamPlayer] = []
 var cursor := 0
 var pop_cursor := 0
+# Presentation-only focus: no queued sounds, bus changes or gameplay timers.
+const FOCUS_SECONDS := 0.16
+const RELEASE_SECONDS := 0.08
+const FOCUS_DB := 6.0
+var _focus_remaining := 0.0
+var _special_rank := 0
+var _pop_levels:Array[float]=[-16.0,-16.0,-16.0,-16.0]
 var muted := false:
  set(value):
   muted=value
-  if value:
-   for player in voices:player.stop()
+  if value:reset_feedback()
 var impact_streams:Dictionary={}
 var panel_streams:Dictionary={"normal":[],"heart":[],"core":[],"strong":[],"bomb":[],"big_bomb":[]}
 var finish_streams:Array=[]
@@ -78,15 +84,46 @@ func _wave_stream(kind:String)->AudioStreamWAV:
   var tail:float=filtered*.26 if blast else sin(TAU*660*t)*exp(-t*25)*.11
   samples[n]=(body+crack+tail)*env
  return _pcm(samples)
+func reset_feedback()->void:
+ for player in voices:player.stop()
+ _focus_remaining=0.0
+ _special_rank=0
+ cursor=0
+ pop_cursor=0
+ _apply_focus()
+func _apply_focus()->void:
+ var duck:float=FOCUS_DB*clampf(_focus_remaining/RELEASE_SECONDS,0.0,1.0)
+ for i in range(mini(4,voices.size())):voices[i].volume_db=_pop_levels[i]-duck
+func _focus()->void:
+ _focus_remaining=FOCUS_SECONDS
+ _apply_focus()
+func _process(delta:float)->void:
+ if _focus_remaining<=0:return
+ _focus_remaining=maxf(0.0,_focus_remaining-maxf(0.0,delta))
+ _apply_focus()
 func _play(stream:AudioStream,index:int,volume:float)->void:
  if muted or voices.is_empty():return
- var player:=voices[index];player.stop();player.volume_db=volume;player.stream=stream;player.play();cursor=(cursor+1)%6
+ var player:=voices[index];player.stop();player.volume_db=volume
+ if index<4:
+  _pop_levels[index]=volume
+  _apply_focus()
+ player.stream=stream;player.play();cursor=(cursor+1)%6
 func panel(index:int,kind:String)->void:
  if muted or voices.is_empty():return
- if kind in ["core","strong","bomb","big_bomb"]:_play(panel_streams[kind][0],4,-13.0);return
+ if kind in ["core","strong","bomb","big_bomb"]:
+  var rank:int=["core","strong","bomb","big_bomb"].find(kind)+1
+  # Keep an audible explosion onset instead of restarting it for each core.
+  if voices[4].playing and rank<=_special_rank:return
+  _special_rank=rank
+  _focus()
+  _play(panel_streams[kind][0],4,-13.0)
+  return
  var key:String="heart" if kind=="heart" else "normal"
  _play(panel_streams[key][clampi(index,0,23)],pop_cursor,-16.0);pop_cursor=(pop_cursor+1)%4
-func impact(tier:int,weak:bool=false)->void:_play(impact_streams[_impact_key(tier,weak)],5,-8.0)
+func impact(tier:int,weak:bool=false)->void:
+ if muted or voices.is_empty():return
+ _focus()
+ _play(impact_streams[_impact_key(tier,weak)],5,-8.0)
 func tone(index:int,finish:bool=false,landing:bool=false)->void:
  if not finish and not landing:panel(index,"normal");return
  _play(landing_stream if landing else finish_streams[clampi(index,0,23)],pop_cursor,-19.0 if landing else -18.0);pop_cursor=(pop_cursor+1)%4

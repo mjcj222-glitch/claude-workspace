@@ -183,8 +183,7 @@ func reset_board() -> void:
 	transition_repeat_until_ms = 0
 	transition_repeat_at = Vector2.INF
 	if sound:
-		for voice in sound.voices: voice.stop()
-		sound.cursor = 0
+		sound.reset_feedback()
 	landing = 1
 	status = "누르고 확인 · 놓으면 소거"
 	last_summary = "같은 색 2개부터"

@@ -1,0 +1,32 @@
+[
+  {
+    "hero": "rio",
+    "before_events": 92,
+    "after_events": 92,
+    "mismatches": [],
+    "terminal_equal": true,
+    "terminal": "victory",
+    "actions": 22,
+    "hp": 20,
+    "errors": [],
+    "baseline": "fresh b4186b4 recording",
+    "impact_events_equal": true,
+    "refill_frame_counts_equal": true,
+    "pass": true
+  },
+  {
+    "hero": "noa",
+    "before_events": 92,
+    "after_events": 92,
+    "mismatches": [],
+    "terminal_equal": true,
+    "terminal": "victory",
+    "actions": 21,
+    "hp": 30,
+    "errors": [],
+    "baseline": "unchanged b4186b4 archived disc-bombs recording",
+    "impact_events_equal": true,
+    "refill_frame_counts_equal": true,
+    "pass": true
+  }
+]

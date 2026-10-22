@@ -1,0 +1,46 @@
+{
+  "method": "Serial A-B-B-A, 8 identical pre-recorded normal Noa inputs per run. No policy search/screenshots/writes inside measured playback. Cloud llvmpipe, not physical-device latency.",
+  "all_states_plans_rng_equal": true,
+  "results": {
+    "before": {
+      "press_to_draw_ms": {
+        "median": 16.8125,
+        "minimum": 12.015,
+        "maximum": 21.637,
+        "samples": 40
+      },
+      "resolution_ms_including_counterattack": {
+        "median": 1259.851,
+        "minimum": 818.886,
+        "maximum": 2558.865,
+        "samples": 16
+      },
+      "refill_complete_ms": {
+        "median": 1068.854,
+        "minimum": 807.118,
+        "maximum": 2545.355,
+        "samples": 16
+      }
+    },
+    "after": {
+      "press_to_draw_ms": {
+        "median": 16.125500000000002,
+        "minimum": 11.918,
+        "maximum": 20.848,
+        "samples": 40
+      },
+      "resolution_ms_including_counterattack": {
+        "median": 1270.8525,
+        "minimum": 817.922,
+        "maximum": 2554.638,
+        "samples": 16
+      },
+      "refill_complete_ms": {
+        "median": 1086.815,
+        "minimum": 804.37,
+        "maximum": 2541.546,
+        "samples": 16
+      }
+    }
+  }
+}
