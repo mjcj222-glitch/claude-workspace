@@ -1,0 +1,4 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TIMING {"event":"commit_to_ready","frames":0,"movie":false,"next_phase":"ready","profile":{"anchor_us":88545,"clear_wall_ms":5.011,"fall_sim_s":0.791666666666666,"fall_wall_ms":437.197,"inside_sim_s":0.566666666666667,"iterations":1924,"last_spawn_sim_s":0.408333333333334,"pending_sim_s":0.408333333333334,"quiet_sim_s":0.0583333333333333,"solve_us":331484,"spawn_us":6969,"ticks":95},"removed":10,"specials":1,"wall_ms":442.195}
+BOMB_SCENE checks=11 failures=0

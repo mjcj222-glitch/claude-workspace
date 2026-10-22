@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL Rio transforms all source normal color
+PASS heart and bomb preserved
+FAIL same color no-op invalid
+FAIL Rio pigment one refill
+FAIL Noa selected color two refills
+FAIL Noa pigment three refills
+PASS planning pure
+FAIL boss dominant-color shield12
+FAIL matching chain breaks with bonus
+FAIL offcolor progress and half damage
+PRISM checks=10 failures=8

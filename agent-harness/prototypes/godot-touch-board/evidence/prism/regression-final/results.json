@@ -1,0 +1,923 @@
+[
+  {
+    "test": "test_balance",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.45,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_balance.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_balance_refill",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.83,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_balance_refill.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_boss_combat",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.295,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_boss_combat.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_clear_timeline",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.551,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_clear_timeline.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_combat",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.163,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_combat.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_elemental_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 12.956,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_input.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_elemental_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.153,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_rules.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_elemental_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.255,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_session.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_elemental_ui",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.442,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_ui.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_feedback",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.256,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_feedback.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_growth_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.256,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_growth_session.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_hit_audio",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.434,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_audio.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_hit_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 4.458,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_scene.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_hit_sync",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.352,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_sync.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_interaction",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.172,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_interaction.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_motion",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.248,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_motion_cycles",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 5.864,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion_cycles.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_motion_paths",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.373,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion_paths.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_premium_art",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.348,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_art.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_premium_layout",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.476,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_layout.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_premium_skill",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.253,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_skill.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_presentation_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.652,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_presentation_scene.gd",
+      "--",
+      "--sandbox",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_quality_fonts",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.352,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_fonts.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_quality_fx",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.449,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_fx.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_quality_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 2.586,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_scene.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_refill_inlet",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.906,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_refill_inlet.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_relic_details",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 8.112,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_relic_details.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_relic_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.265,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_relic_rules.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_reward_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.197,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_reward_input.gd",
+      "--",
+      "--sandbox",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_route_combat",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.258,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_combat.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_route_economy",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.271,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_economy.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_route_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 9.043,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_input.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.165,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_rules.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_run_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 16.204,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_run_input.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_run_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.251,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_run_session.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.27,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_scene.gd",
+      "--",
+      "--sandbox",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_skin",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.432,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_skin.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_transition_reentry",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 5.955,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_transition_reentry.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_characters",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.269,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_characters.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_character_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 2.796,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_character_input.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_character_interactions",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.45,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_character_interactions.gd",
+      "--",
+      "--short-run",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_area_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.269,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_area_session.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save"
+    ]
+  },
+  {
+    "test": "test_area_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.651,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_area_input.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save"
+    ]
+  },
+  {
+    "test": "test_area_transactions",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.267,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_area_transactions.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save"
+    ]
+  },
+  {
+    "test": "test_bombs",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.438,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_bombs.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save"
+    ]
+  },
+  {
+    "test": "test_bomb_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.76,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_bomb_scene.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save"
+    ]
+  },
+  {
+    "test": "test_impact_strength",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.627,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_impact_strength.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save"
+    ]
+  },
+  {
+    "test": "test_bomb_body",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.44,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_bomb_body.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save"
+    ]
+  },
+  {
+    "test": "test_bomb_volume",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.393,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_bomb_volume.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_bomb_support",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.818,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_bomb_support.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_colored_bombs",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.259,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_colored_bombs.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_impact_focus",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.461,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_impact_focus.gd",
+      "--",
+      "--seed=20261021",
+      "--no-save",
+      "--short-run"
+    ]
+  }
+]

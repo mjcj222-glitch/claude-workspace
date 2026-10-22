@@ -5,6 +5,8 @@ const Rules = preload("res://scripts/board_rules.gd")
 const Characters = preload("res://scripts/board_characters.gd")
 var character_id := "rio"
 var skill_uses := 0
+var rain_remaining:int=0
+var rain_color:int=0
 var panels: Array = []
 var bounds := Rect2(30, 290, 660, 530)
 var hp := 14
@@ -67,6 +69,8 @@ func release(point: Vector2, pointer: int) -> Dictionary:
 				p.color = result.converted[p.id]
 			if result.get("planted",{}).has(p.id):
 				p.kind = result.planted[p.id]
+		rain_remaining=int(result.get("rain_refills",0))
+		rain_color=int(result.get("rain_color",0))
 		skill_uses += 1
 		charge = 0
 		charge_required = result.recharge_required
@@ -75,7 +79,9 @@ func release(point: Vector2, pointer: int) -> Dictionary:
 		return result
 	phase = "busy"
 	actions += 1
-	charge = mini(charge + 1, charge_required)
+	if rain_remaining>0:
+		rain_remaining-=1
+	else:charge = mini(charge + 1, charge_required)
 	if result.ash_reserve: ash_reserved = true
 	if actions <= 9:
 		var stage: Dictionary = stats[(actions-1)/3]
@@ -101,7 +107,9 @@ func release(point: Vector2, pointer: int) -> Dictionary:
 	return result
 
 func plan_for(id: int) -> Dictionary:
-	return Rules.plan(panels, id, hp, max_hp, relics.duplicate())
+	var result=Rules.plan(panels, id, hp, max_hp, relics.duplicate())
+	result["supply_color"]=rain_color if rain_remaining>0 else -1
+	return result
 
 func skill_plan_for(id: int, color: int) -> Dictionary:
 	return Characters.skill_plan(panels, id, color, relics.duplicate(), character_id)

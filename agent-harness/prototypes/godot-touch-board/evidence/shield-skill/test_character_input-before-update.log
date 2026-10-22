@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL explicit departure fixes character
+FAIL cannot reopen choice during run
+FAIL noa enters direct panel targeting
+SCRIPT ERROR: Invalid access to property or key 'valid' on a base object of type 'Dictionary'.
+          at: run (res://tests/test_character_input.gd:37)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/test_character_input.gd:37)

@@ -36,6 +36,7 @@ func _init() -> void:
 	c.start_fight(1,board(4),"elite")
 	check(c.weak_color == 2 and c.incoming_damage == 8,"elite second fight yellow weakness preserves attack bonus")
 	c.start_fight(2,board(2,3),"elite")
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	check(c.enemy_hp == 48 and c.weak_color == 3 and c.intent == "slam" and c.incoming_damage == 10 and c.mitigation_active,"boss available blue pair announces ten-to-four slam")
 	check("10" in c.telegraph_text() and "4" in c.telegraph_text(),"slam telegraph exposes actual damage alternatives")
 	var visible: Dictionary = plan(c,2,3)
@@ -56,6 +57,7 @@ func _init() -> void:
 	check(c.fallback_plain and not c.mitigation_success and c.incoming_damage == 6 and c.intent_serial == serial,"later board growth cannot activate fallback turn condition")
 	check(attack(c) == 6,"fallback turn remains plain six")
 	c.start_fight(2,board(8,0))
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	check(c.intent == "slam" and c.incoming_damage == 10,"eight nonweak ordinary normals are an independent slam opportunity")
 	c.record_clear(plan(c,7,0))
 	check(not c.mitigation_success,"seven actual removed normals do not satisfy eight threshold")
@@ -66,17 +68,21 @@ func _init() -> void:
 	check(c.take_attack() == 4,"third-action mitigation uses reduced damage")
 	for kind in ["heart","core"]:
 		c.start_fight(2,board(10,3,kind))
+		c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 		check(c.fallback_plain and c.incoming_damage == 6,"heart/core bodies never count as ordinary boss opportunities")
 	var single: Array = board(2,3)
 	single[0].kind = "core"
 	c.start_fight(2,single)
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	check(c.fallback_plain,"one weak normal plus a core is still below weak threshold")
 	c.start_fight(2,board(2,3))
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	var one: Dictionary = Rules.plan(single,0,0,30,[],c.damage_context())
 	c.record_clear(one);c.record_clear(one)
 	check(not c.mitigation_success,"two separate one-weak clears do not accumulate")
 	check(attack(c) == 10,"unmet scheduled slam remains ten")
 	c.start_fight(2,board(2,3))
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	c.prepare_turn(board(1,0))
 	check(c.mitigation_active and c.incoming_damage == 10,"initial legal opportunity remains frozen if later board loses it")
 	var skill: Dictionary = plan(c,2,3)
@@ -97,6 +103,7 @@ func _init() -> void:
 	normal_chain[0].kind = "core"
 	normal_chain[1].color = 1
 	c.start_fight(2,normal_chain)
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	var chain_plan: Dictionary = Rules.plan(normal_chain,0,0,30,[],c.damage_context())
 	check(chain_plan.direct.size() == 1 and chain_plan.normal_count == 10 and c.intent == "slam", "solo core reaching ten ordinary panels enables slam fairly")
 	c.record_clear(chain_plan)
@@ -106,6 +113,7 @@ func _init() -> void:
 	weak_chain[0].color = 3
 	weak_chain[3].color = 3
 	c.start_fight(2,weak_chain)
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	chain_plan = Rules.plan(weak_chain,0,0,30,[],c.damage_context())
 	check(chain_plan.weak_count == 3 and chain_plan.normal_count == 3 and c.intent == "slam", "final converted weak colors make canonical chain eligible")
 	c.record_clear(chain_plan)
@@ -113,9 +121,11 @@ func _init() -> void:
 	var skill_only: Array = board(2,0)
 	skill_only[1].color = 3
 	c.start_fight(2,skill_only)
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	check(c.fallback_plain and c.intent == "plain", "future skill conversion is not a current legal slam opportunity")
 	# A held plan owns its exact thresholds, not a later/default recomputation.
 	c.start_fight(2,board(3,3))
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	var held_context: Dictionary = c.damage_context()
 	held_context.slam_weak_required=4
 	held_context.slam_normal_required=11
@@ -124,6 +134,7 @@ func _init() -> void:
 	c.record_clear(held)
 	check(not held.mitigates_intent and not c.mitigation_success and c.incoming_damage==10, "commit uses held threshold four instead of default two")
 	c.start_fight(2,board(3,3))
+	c.shield_hp=0 # Isolate legacy intent contract; separate prism suite covers shield.
 	held_context=c.damage_context()
 	held_context.slam_weak_required=2
 	held=Rules.plan(board(2,3),0,0,30,[],held_context)

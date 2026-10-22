@@ -181,6 +181,18 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Arr
 	var strong_threshold := 11 if has_lens else 12
 	if direct_normals >= core_threshold:
 		result.spawn = {"pos": indexed[start_id].pos, "color": int(indexed[start_id].color), "kind": "strong" if direct_normals >= strong_threshold else "core"}
+	var shield_hp:int=int(combat_context.get("shield_hp",0))
+	result["shield_damage"]=0;result["shield_broken"]=false;result["shield_bonus"]=0
+	if shield_hp>0:
+		var matching:=0
+		for id in result.effective_colors:
+			if result.effective_colors[id]==int(combat_context.get("shield_color",-1)):matching+=1
+		result.shield_damage=mini(shield_hp,maxi(1,matching))
+		result.shield_broken=result.shield_damage>=shield_hp
+		if result.shield_broken:
+			result.shield_bonus=6 if result.damage>0 else 0
+			result.damage+=result.shield_bonus
+		else:result.damage=int(result.damage/2)
 	return result
 
 static func slam_mitigated(weak_count: int, normal_count: int, combat_context: Dictionary) -> bool:

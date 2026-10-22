@@ -1,0 +1,21 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS original pixel hero renderer exists
+PASS rio frame deterministic
+FAIL rio idle animation
+PASS rio skill flourish
+PASS rio hit reaction
+PASS rio reduced effects stable
+PASS rio idle bounded to portrait
+PASS rio skill bounded to portrait
+PASS rio hit bounded to portrait
+PASS noa frame deterministic
+FAIL noa idle animation
+PASS noa skill flourish
+PASS noa hit reaction
+PASS noa reduced effects stable
+PASS noa idle bounded to portrait
+PASS noa skill bounded to portrait
+PASS noa hit bounded to portrait
+PASS distinct character silhouettes/palettes
+PIXEL_HEROES checks=18 failures=2

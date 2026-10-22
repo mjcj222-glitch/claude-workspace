@@ -1,11 +1,11 @@
 extends RefCounted
 ## Local-only, explicit schema. Objects are never deserialized.
 const Area=preload("res://scripts/board_area_session.gd")
-const VERSION=1
+const VERSION=2
 const LIMIT=2097152
 const STABLE=["ready","map","reward","rest","event","shop","spoils"]
-const FIELDS=["character_id","skill_uses","panels","hp","max_hp","damage_total","actions","charge","charge_required","ash_reserved","relics","reward_options","reward_round","rewards_taken","offer_serial","summary_shown","stats","phase","skill_color","next_id","route","gold","gold_spent","shop_heal_sold","shop_relic_sold","shop_closed","_paid_encounters","departure_choice","departure_started","current_node","selected_node","visited","history","paid_nodes","relic_fallbacks","reward_notice","battles_entered"]
-const COMBAT=["route","encounter","enemy_hp","enemy_max_hp","enemy_name","turn","actions_in_turn","incoming_damage","mitigation_active","mitigation_success","fallback_plain","enemies_defeated","last_attack_damage","attacks_total","_turn_prepared","_attack_taken","_victory_counted","weak_color","intent","intent_serial"]
+const FIELDS=["rain_remaining","rain_color","character_id","skill_uses","panels","hp","max_hp","damage_total","actions","charge","charge_required","ash_reserved","relics","reward_options","reward_round","rewards_taken","offer_serial","summary_shown","stats","phase","skill_color","next_id","route","gold","gold_spent","shop_heal_sold","shop_relic_sold","shop_closed","_paid_encounters","departure_choice","departure_started","current_node","selected_node","visited","history","paid_nodes","relic_fallbacks","reward_notice","battles_entered"]
+const COMBAT=["shield_hp","shield_color","route","encounter","enemy_hp","enemy_max_hp","enemy_name","turn","actions_in_turn","incoming_damage","mitigation_active","mitigation_success","fallback_plain","enemies_defeated","last_attack_damage","attacks_total","_turn_prepared","_attack_taken","_victory_counted","weak_color","intent","intent_serial"]
 var directory:String
 var error:=""
 func _init(path:String="user://chroma-checkpoint"):
@@ -48,6 +48,9 @@ static func valid(data)->bool:
  var s:Dictionary=data.session;var c:Dictionary=data.combat;var defaults=Area.new()
  if not fields_valid(s,FIELDS,defaults) or not fields_valid(c,COMBAT,defaults.combat):return false
  if s.phase not in STABLE or s.character_id not in ["rio","noa"] or s.departure_choice!=s.character_id or not s.departure_started:return false
+ if s.rain_remaining not in range(4) or s.rain_color not in range(4):return false
+ if s.rain_remaining>0 and s.charge!=0:return false
+ if c.shield_hp not in range(13) or c.shield_color not in range(4) or (c.encounter!=2 and c.shield_hp!=0):return false
  if s.max_hp!=30 or s.hp<1 or s.hp>30 or s.charge_required not in [2,3] or s.charge<0 or s.charge>s.charge_required or s.skill_color not in range(4):return false
  for k in ["skill_uses","damage_total","actions","reward_round","rewards_taken","offer_serial","gold","gold_spent","relic_fallbacks","battles_entered"]:
   if s[k]<0 or s[k]>1000000:return false
@@ -134,11 +137,17 @@ func read_file(path:String)->Dictionary:
  var parser=JSON.new();var parse_error=parser.parse(f.get_as_text());f.close()
  if parse_error!=OK:return {"ok":false,"reason":"format"}
  var envelope=parser.data
- if not envelope is Dictionary or envelope.get("version")!=VERSION:return {"ok":false,"reason":"version/format"}
+ if not envelope is Dictionary or envelope.get("version")!=1 and envelope.get("version")!=VERSION:return {"ok":false,"reason":"version/format"}
  if not envelope.get("payload") is String or not envelope.get("sha256") is String:return {"ok":false,"reason":"envelope"}
  var bytes=Marshalls.base64_to_raw(envelope.payload)
  if checksum(bytes)!=envelope.sha256:return {"ok":false,"reason":"checksum"}
  var data=bytes_to_var(bytes)
+ if envelope.version==1:
+  if not data is Dictionary or not data.get("session") is Dictionary or not data.get("combat") is Dictionary:return {"ok":false,"reason":"schema"}
+  # Only precisely old-shaped records migrate; never overwrite unexpected fields.
+  if data.session.has("rain_remaining") or data.session.has("rain_color") or data.combat.has("shield_hp") or data.combat.has("shield_color"):return {"ok":false,"reason":"schema"}
+  data.session["rain_remaining"]=0;data.session["rain_color"]=0
+  data.combat["shield_hp"]=0;data.combat["shield_color"]=0
  if not valid(data):return {"ok":false,"reason":"schema"}
  return {"ok":true,"data":data}
 func load_run()->Dictionary:

@@ -75,9 +75,9 @@ static func draw(view) -> void:
 	var lines: Array = [view.status,""] if view.sandbox else intent_lines(context,"petal" in session.relics)
 	if not preview.is_empty():
 		if not preview.get("valid",false):
-			lines=["일반 공격 패널을 골라주세요","하트·기존 핵에는 심을 수 없어요" if session.character_id=="noa" else "하트·핵은 변환하지 않아요"] if preview.get("mode","")=="skill" else ["같은 색 2개부터 골라주세요","놓아도 행동을 쓰지 않아요"]
+			lines=["일반 공격 패널을 골라주세요","하트·기존 특수는 보존해요" if session.character_id=="noa" else "다른 색 일반 패널을 골라주세요"] if preview.get("mode","")=="skill" else ["같은 색 2개부터 골라주세요","놓아도 행동을 쓰지 않아요"]
 		elif preview.mode == "skill":
-			lines=["%d개 변환 → 연결 %d개"%[preview.targets.size(),preview.connected.size()],"놓으면 변환 · 소거 행동 없음"] if session.character_id!="noa" else ["강화핵 심기" if "pigment" in session.relics else "물감핵 심기","놓으면 설치 · 다음 입력에서 핵을 눌러 기동"]
+			lines=["%d개 변환 → 연결 %d개"%[preview.targets.size(),preview.connected.size()],"놓으면 변환 · 소거 행동 없음"] if session.character_id!="noa" else ["강화핵 심기" if "pigment" in session.relics else "물감핵 심기","핵 + 일반 낙하 %d회 고정"%(3 if "pigment" in session.relics else 2)]
 		else:
 			lines=["직접 %d · 연쇄 %d"%[preview.direct.size(),preview.removed.size()-preview.direct.size()],preview_effect_line(preview)]
 			if not preview.get("blasts",[]).is_empty():
@@ -106,19 +106,26 @@ static func draw(view) -> void:
 		_line(view,Vector2(360,286),hint,23,672,MINT)
 	_line(view,Vector2(360,361),lines[0],22,640,Color("fff0e6"))
 	_line(view,Vector2(360,384),lines[1],22,640,MINT)
+	if not view.sandbox and session.combat.encounter==2:
+		var c=session.combat
+		var shield_text="보호막 파괴 완료" if c.shield_hp==0 else "보호막 %s %d/12"%[ELEMENT_NAMES[c.shield_color],c.shield_hp]
+		view.draw_rect(Rect2(340,220,352,54),Color("171b35"))
+		Art.draw_panel(view,{"pos":Vector2(356,239),"radius":13.0,"kind":"normal","color":c.shield_color},view.time)
+		_line(view,Vector2(534,240),shield_text,21,308,COLORS[c.shield_color])
+		_line(view,Vector2(516,263),"다른 색 소거도 -1" if c.shield_hp>0 else "보호막 재생 없음",18,336,Color.WHITE)
 	# One cached mesh shades the board once. Logical coordinates are unchanged.
 	MaterialArt.frame(view,Rect2(24,388,672,534),MaterialArt.GOLD,true)
 	# The dock never overlaps a live panel or ingress area.
 	MaterialArt.frame(view,Rect2(4,922,712,154),MaterialArt.GOLD,true)
-	Art.draw_premium_hero(view,HERO_RECT,view.time,view.hero_active>0.0)
-	view._text(Vector2(22,1067),Characters.definition(session.character_id).name+(" · 임시 초상" if session.character_id=="noa" else ""),22,Color("fff0dc"))
+	preload("res://scripts/board_pixel_heroes.gd").draw(view,HERO_RECT,session.character_id,view.time,"skill" if view.hero_active>0 else ("hit" if session.phase=="enemy_attack" else "idle"),view.reduced_effects)
+	view._text(Vector2(22,1067),Characters.definition(session.character_id).name,22,Color("fff0dc"))
 	view.draw_rect(Rect2(199,928,491,17),Color("321f45"))
 	view.draw_rect(Rect2(201,930,487*float(session.hp)/session.max_hp,13),Color("a650df"))
 	_modal_text(view,view,Vector2(446,946),"생명 %d / %d"%[session.hp,session.max_hp],22,Color.WHITE,true)
 	Art.draw_skill_button(view,SKILL,skill.illuminated,0.0 if view.reduced_effects else float(view.ready_age))
 	_modal_text(view,view,Vector2(310,1006),Characters.definition(session.character_id).button,30,Color("fff0ff") if skill.illuminated else MUTED,true,true)
 	_modal_text(view,view,Vector2(310,1032),(("패널 선택" if skill.plants_core else "색 선택") if session.skill_mode else skill.status_text)+" · "+skill.charge_text,22,Color("f3d6ff") if skill.illuminated else MUTED,true)
-	view._center(Vector2(310,1070),("강화핵1개 · 행동 없음" if "pigment" in session.relics else "물감핵1개 · 행동 없음") if skill.plants_core else "최대 %d개 · 행동 없음"%skill.conversion_max,22,MUTED)
+	view._center(Vector2(310,1070),("%s 낙하 %d · 충전X"%[ELEMENT_NAMES[session.rain_color],session.rain_remaining]) if session.rain_remaining>0 else ("핵 + 낙하 고정" if skill.plants_core else "한 색 전체 → 목표 색"),22,MUTED)
 	if skill.reservation_text!="":view._text(Vector2(446,970),skill.reservation_text,22,MINT)
 	for i in range(3):
 		var rect := owned_rect(i)
@@ -348,6 +355,7 @@ static func relic_copy(id:String,session)->Dictionary:
 	return Characters.pigment_copy(session.character_id) if id=="pigment" else RELIC_COPY[id]
 
 static func damage_line(plan:Dictionary)->String:
+	if int(plan.get("combat_context",{}).get("shield_hp",0))>0:return "피해 %d · 보호막 -%d%s"%[plan.damage,plan.get("shield_damage",0)," 파괴 +6" if plan.get("shield_bonus",0)>0 else ""]
 	return "피해 %d = 기본 %d + 약점 %d" % [plan.get("damage",0),plan.get("base_damage",plan.get("damage",0)),plan.get("weak_bonus",0)]
 
 static func intent_lines(context:Dictionary,petal:bool=false)->Array[String]:

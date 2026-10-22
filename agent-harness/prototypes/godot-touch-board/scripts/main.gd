@@ -429,6 +429,9 @@ func _start_fall() -> void:
 	fall_started_us=Time.get_ticks_usec()
 	motion_state = Motion.start(session.panels, BOARD, 48, session.next_id, rng)
 	Bombs.prepare_supply(motion_state.pending,String(active_plan.get("bomb_spawn_kind","")),int(active_plan.get("bomb_spawn_color",0)))
+	if int(active_plan.get("supply_color",-1))>=0:
+		for panel in motion_state.pending:
+			if panel.kind=="normal":panel.color=int(active_plan.supply_color)
 	session.next_id = motion_state.next_id
 	visual = motion_state.panels
 	falling = true
@@ -644,6 +647,7 @@ func _release_action(pos: Vector2, pointer: int) -> void:
 		var changed:Dictionary={}
 		for p in visual:
 			if result.converted.has(p.id) and p.color!=result.converted[p.id]:changed[p.id]=result.converted[p.id]
+			if result.get("planted",{}).has(p.id):changed[p.id]=p.color
 		quality_fx.skill_activated(changed)
 		visual = session.panels.duplicate(true)
 		sound.tone(6, true)

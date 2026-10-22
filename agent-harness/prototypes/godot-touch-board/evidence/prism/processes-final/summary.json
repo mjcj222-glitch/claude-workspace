@@ -1,0 +1,1057 @@
+[
+  {
+    "tag": "rio-continuous",
+    "actions": 19,
+    "errors": [],
+    "phase": "victory",
+    "saved_hash": "4d159113222bfeb85fbe717cc2393ee8a6a85b7ce5ac1791c4eade5e3dd6de41",
+    "seed": 20261021,
+    "state_hash": "8c92cdb6b4d16cc4cf95b6c35599eb3e741dea5698e017f05aa5bed2e77b7f56",
+    "visited": [
+      "ready:entry",
+      "ready:entry",
+      "ready:entry",
+      "ready:entry",
+      "ready:entry",
+      "reward:entry",
+      "map:entry",
+      "event:event",
+      "map:event",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "reward:elite",
+      "map:elite",
+      "ready:extra",
+      "ready:extra",
+      "ready:extra",
+      "reward:extra",
+      "map:extra",
+      "shop:shop",
+      "shop:shop",
+      "map:shop",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "victory:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-0",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "4d11ebe21f32cd55bd9d1ad4ca08a4b29a0f82a999ee29cc5f4a169c88c84328",
+    "seed": 20261021,
+    "state_hash": "4d11ebe21f32cd55bd9d1ad4ca08a4b29a0f82a999ee29cc5f4a169c88c84328",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "rio-part-1",
+    "actions": 1,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "9c8e08027f13de1b79707126cbf507c24a29d6bd589541e1b5d1c59519bf0f4d",
+    "seed": 20261021,
+    "state_hash": "9c8e08027f13de1b79707126cbf507c24a29d6bd589541e1b5d1c59519bf0f4d",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "rio-part-2",
+    "actions": 2,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "d961c442acadccad18c68bd4d41d7723d741378340e1bca2a776808ed46d7018",
+    "seed": 20261021,
+    "state_hash": "d961c442acadccad18c68bd4d41d7723d741378340e1bca2a776808ed46d7018",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "rio-part-3",
+    "actions": 3,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "1faee5f67a683ad274bf5f2b757f97addb7e2705b265e6f81727202cc8012369",
+    "seed": 20261021,
+    "state_hash": "1faee5f67a683ad274bf5f2b757f97addb7e2705b265e6f81727202cc8012369",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "rio-part-4",
+    "actions": 4,
+    "errors": [],
+    "phase": "reward",
+    "saved_hash": "bc61328ceaf68b6fcfbe1667ca1a216f143c583af62930df4a81444df4a78172",
+    "seed": 20261021,
+    "state_hash": "bc61328ceaf68b6fcfbe1667ca1a216f143c583af62930df4a81444df4a78172",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "rio-part-5",
+    "actions": 4,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "97557ab2bc953d4125cc93db3bddbe73949c14d2995e70340cf2e3fbe66f980e",
+    "seed": 20261021,
+    "state_hash": "97557ab2bc953d4125cc93db3bddbe73949c14d2995e70340cf2e3fbe66f980e",
+    "visited": [
+      "reward:entry"
+    ]
+  },
+  {
+    "tag": "rio-part-6",
+    "actions": 4,
+    "errors": [],
+    "phase": "event",
+    "saved_hash": "5a11230a2014a3cb64e471b5f3177250fd891c3c4601ae70d8acc117e502e507",
+    "seed": 20261021,
+    "state_hash": "5a11230a2014a3cb64e471b5f3177250fd891c3c4601ae70d8acc117e502e507",
+    "visited": [
+      "map:entry"
+    ]
+  },
+  {
+    "tag": "rio-part-7",
+    "actions": 4,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "fb9886449bb35dc3beef26e62d46d51a7f6613c581c61fafce1b28785cf60ab3",
+    "seed": 20261021,
+    "state_hash": "fb9886449bb35dc3beef26e62d46d51a7f6613c581c61fafce1b28785cf60ab3",
+    "visited": [
+      "event:event"
+    ]
+  },
+  {
+    "tag": "rio-part-8",
+    "actions": 4,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "1c15d5e310c073152472b0552e623bda14a50f82ff4dfc285a6dd0bbd56830bc",
+    "seed": 20261021,
+    "state_hash": "1c15d5e310c073152472b0552e623bda14a50f82ff4dfc285a6dd0bbd56830bc",
+    "visited": [
+      "map:event"
+    ]
+  },
+  {
+    "tag": "rio-part-9",
+    "actions": 4,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "1f703e83a38ba8dc4100b6892f8717712fdae356b496ddd6da16157936bd1665",
+    "seed": 20261021,
+    "state_hash": "1f703e83a38ba8dc4100b6892f8717712fdae356b496ddd6da16157936bd1665",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "rio-part-10",
+    "actions": 5,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "f8c59bccaebfb26ddaca232e026a41d3279c90a58da3df5ae4029e9e4d341545",
+    "seed": 20261021,
+    "state_hash": "f8c59bccaebfb26ddaca232e026a41d3279c90a58da3df5ae4029e9e4d341545",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "rio-part-11",
+    "actions": 6,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "468d6f00623a5875a6e172612215222c8d39d1dbec7908674b0766af1cef9e59",
+    "seed": 20261021,
+    "state_hash": "468d6f00623a5875a6e172612215222c8d39d1dbec7908674b0766af1cef9e59",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "rio-part-12",
+    "actions": 7,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "2b5b73417d6d56a74c74cb41783445fee382ccb75184f75195ab15e251a34f91",
+    "seed": 20261021,
+    "state_hash": "2b5b73417d6d56a74c74cb41783445fee382ccb75184f75195ab15e251a34f91",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "rio-part-13",
+    "actions": 8,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "fc6d303024844922d49acff431dffa5459faa1fe5812c5f03668e16215b85f7e",
+    "seed": 20261021,
+    "state_hash": "fc6d303024844922d49acff431dffa5459faa1fe5812c5f03668e16215b85f7e",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "rio-part-14",
+    "actions": 9,
+    "errors": [],
+    "phase": "reward",
+    "saved_hash": "03e9a8cfe1a8abb7d93f38467f88d7617a74851d9d8269251b2eb61a0438ea82",
+    "seed": 20261021,
+    "state_hash": "03e9a8cfe1a8abb7d93f38467f88d7617a74851d9d8269251b2eb61a0438ea82",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "rio-part-15",
+    "actions": 9,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "4d9002d622f906ced9f379da0dd67440c1733ff5d8d90965d55d8323bbc8ba91",
+    "seed": 20261021,
+    "state_hash": "4d9002d622f906ced9f379da0dd67440c1733ff5d8d90965d55d8323bbc8ba91",
+    "visited": [
+      "reward:elite"
+    ]
+  },
+  {
+    "tag": "rio-part-16",
+    "actions": 9,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "c620df27caf917882cc6584a289dcc74ec1224a2b4abb01b462991c8b8f0f529",
+    "seed": 20261021,
+    "state_hash": "c620df27caf917882cc6584a289dcc74ec1224a2b4abb01b462991c8b8f0f529",
+    "visited": [
+      "map:elite"
+    ]
+  },
+  {
+    "tag": "rio-part-17",
+    "actions": 9,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "ee853ed1c3ba023596793dd5638b71b72aa1ffc799b5b3980b2a7892604dd956",
+    "seed": 20261021,
+    "state_hash": "ee853ed1c3ba023596793dd5638b71b72aa1ffc799b5b3980b2a7892604dd956",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "rio-part-18",
+    "actions": 10,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "2a88bf45852b840474d036903d53d8177564727d14fd4d2d6a33feaad4e15b2a",
+    "seed": 20261021,
+    "state_hash": "2a88bf45852b840474d036903d53d8177564727d14fd4d2d6a33feaad4e15b2a",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "rio-part-19",
+    "actions": 11,
+    "errors": [],
+    "phase": "reward",
+    "saved_hash": "81144ae5de7539ce8d9d5050addb44cbc6494e479d49e1728a3b743ee5b5fb02",
+    "seed": 20261021,
+    "state_hash": "81144ae5de7539ce8d9d5050addb44cbc6494e479d49e1728a3b743ee5b5fb02",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "rio-part-20",
+    "actions": 11,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "024f78a95ff1137e47cc1b8a2f459f6e07343a996c2cd477cce8f232c36b7812",
+    "seed": 20261021,
+    "state_hash": "024f78a95ff1137e47cc1b8a2f459f6e07343a996c2cd477cce8f232c36b7812",
+    "visited": [
+      "reward:extra"
+    ]
+  },
+  {
+    "tag": "rio-part-21",
+    "actions": 11,
+    "errors": [],
+    "phase": "shop",
+    "saved_hash": "14e9fb5bf178a55f117d12cf899e814981468b41a9a890511607e20dc8210ec9",
+    "seed": 20261021,
+    "state_hash": "14e9fb5bf178a55f117d12cf899e814981468b41a9a890511607e20dc8210ec9",
+    "visited": [
+      "map:extra"
+    ]
+  },
+  {
+    "tag": "rio-part-22",
+    "actions": 11,
+    "errors": [],
+    "phase": "shop",
+    "saved_hash": "8255bc24aae1639fd0ad6080e0f1014a5bc0fb6e4c840add5ce7eb9a5b613ce0",
+    "seed": 20261021,
+    "state_hash": "8255bc24aae1639fd0ad6080e0f1014a5bc0fb6e4c840add5ce7eb9a5b613ce0",
+    "visited": [
+      "shop:shop"
+    ]
+  },
+  {
+    "tag": "rio-part-23",
+    "actions": 11,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "8da011987ee6650720723cc866f00ab75e894125b54e7c7eabe5dbee46c3412e",
+    "seed": 20261021,
+    "state_hash": "8da011987ee6650720723cc866f00ab75e894125b54e7c7eabe5dbee46c3412e",
+    "visited": [
+      "shop:shop"
+    ]
+  },
+  {
+    "tag": "rio-part-24",
+    "actions": 11,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "889c1b909a90bdc2a19d73257c4c186080ec056130892d7f511daace884813ae",
+    "seed": 20261021,
+    "state_hash": "889c1b909a90bdc2a19d73257c4c186080ec056130892d7f511daace884813ae",
+    "visited": [
+      "map:shop"
+    ]
+  },
+  {
+    "tag": "rio-part-25",
+    "actions": 12,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "85f14d907e467104fcc7caa38b02abdc04ae4e447c3559530f7f991c6d99af75",
+    "seed": 20261021,
+    "state_hash": "85f14d907e467104fcc7caa38b02abdc04ae4e447c3559530f7f991c6d99af75",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-26",
+    "actions": 13,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "825762ddc4bb8b77fd11840e9bcc75c01647334d813ae6ecdcc106b8dc689ba5",
+    "seed": 20261021,
+    "state_hash": "825762ddc4bb8b77fd11840e9bcc75c01647334d813ae6ecdcc106b8dc689ba5",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-27",
+    "actions": 13,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "935dcb4e418be9864fe901883a00a9964216fb7553b8a91a2c862d2d8370a9c4",
+    "seed": 20261021,
+    "state_hash": "935dcb4e418be9864fe901883a00a9964216fb7553b8a91a2c862d2d8370a9c4",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-28",
+    "actions": 14,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "49e612daacd75303b304f2624201053ba4e07685f49182c87c984d08c8bebaf5",
+    "seed": 20261021,
+    "state_hash": "49e612daacd75303b304f2624201053ba4e07685f49182c87c984d08c8bebaf5",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-29",
+    "actions": 15,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "8470889f5feb75763957c25e501536c2851b92cf5f1091eef192ca8f8f0fcb52",
+    "seed": 20261021,
+    "state_hash": "8470889f5feb75763957c25e501536c2851b92cf5f1091eef192ca8f8f0fcb52",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-30",
+    "actions": 16,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "56aebf0d4eaf8d094e1811e16828c26319d4fa04613533961234e5ab0e62edc2",
+    "seed": 20261021,
+    "state_hash": "56aebf0d4eaf8d094e1811e16828c26319d4fa04613533961234e5ab0e62edc2",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-31",
+    "actions": 17,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "59f43a0a3dfd79f8481e6a0d58279d8ef26086f724076c2c69c6ac86a9844177",
+    "seed": 20261021,
+    "state_hash": "59f43a0a3dfd79f8481e6a0d58279d8ef26086f724076c2c69c6ac86a9844177",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-32",
+    "actions": 17,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "5353d77d480653c2fbfe6f33255a1db8da6c1d4c33f82b6f041644aba098fa26",
+    "seed": 20261021,
+    "state_hash": "5353d77d480653c2fbfe6f33255a1db8da6c1d4c33f82b6f041644aba098fa26",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-33",
+    "actions": 18,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "b64e10dd113deac015a7575250ff85c9492b6aaab47c4cbdcabdcec94c7e8e45",
+    "seed": 20261021,
+    "state_hash": "b64e10dd113deac015a7575250ff85c9492b6aaab47c4cbdcabdcec94c7e8e45",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "rio-part-34",
+    "actions": 19,
+    "errors": [],
+    "phase": "victory",
+    "saved_hash": "4d159113222bfeb85fbe717cc2393ee8a6a85b7ce5ac1791c4eade5e3dd6de41",
+    "seed": 20261021,
+    "state_hash": "8c92cdb6b4d16cc4cf95b6c35599eb3e741dea5698e017f05aa5bed2e77b7f56",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-continuous",
+    "actions": 22,
+    "errors": [],
+    "phase": "victory",
+    "saved_hash": "4d159113222bfeb85fbe717cc2393ee8a6a85b7ce5ac1791c4eade5e3dd6de41",
+    "seed": 20261021,
+    "state_hash": "8d43d12584b4d8e36aef4fc0f32a625f3e124f78b042e8d016c4d3b9407ee861",
+    "visited": [
+      "ready:entry",
+      "ready:entry",
+      "ready:entry",
+      "ready:entry",
+      "reward:entry",
+      "map:entry",
+      "event:event",
+      "map:event",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "reward:elite",
+      "map:elite",
+      "ready:extra",
+      "ready:extra",
+      "ready:extra",
+      "ready:extra",
+      "ready:extra",
+      "ready:extra",
+      "ready:extra",
+      "reward:extra",
+      "map:extra",
+      "shop:shop",
+      "map:shop",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "ready:boss",
+      "victory:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-0",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "3c6108a422a1f881a94fb2048f5cf5d1af3f2b44abded74beed421dedb50f6d0",
+    "seed": 20261021,
+    "state_hash": "3c6108a422a1f881a94fb2048f5cf5d1af3f2b44abded74beed421dedb50f6d0",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "noa-part-1",
+    "actions": 1,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "4ff89f41a10e0980fd5bb2368d900930dcd75946aec6eac27568009f90d74200",
+    "seed": 20261021,
+    "state_hash": "4ff89f41a10e0980fd5bb2368d900930dcd75946aec6eac27568009f90d74200",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "noa-part-2",
+    "actions": 2,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "f3556a48bff98a854a15cedc667c10876069a3daecba9617729f3c7ec89ead58",
+    "seed": 20261021,
+    "state_hash": "f3556a48bff98a854a15cedc667c10876069a3daecba9617729f3c7ec89ead58",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "noa-part-3",
+    "actions": 3,
+    "errors": [],
+    "phase": "reward",
+    "saved_hash": "ba56b22bfdae94a244dd1ab80b329966c4f8a856d15d94b13b13c59d036696d1",
+    "seed": 20261021,
+    "state_hash": "ba56b22bfdae94a244dd1ab80b329966c4f8a856d15d94b13b13c59d036696d1",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "noa-part-4",
+    "actions": 3,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "75a41398b14035245752cf0af17ed26f152535fb65ad924c4e75fae1e9e2ddd6",
+    "seed": 20261021,
+    "state_hash": "75a41398b14035245752cf0af17ed26f152535fb65ad924c4e75fae1e9e2ddd6",
+    "visited": [
+      "reward:entry"
+    ]
+  },
+  {
+    "tag": "noa-part-5",
+    "actions": 3,
+    "errors": [],
+    "phase": "event",
+    "saved_hash": "3eed67b719b6ee81f0fbbf3b78aa1488ad5fe68a6302b1a6f1bc423aee03b540",
+    "seed": 20261021,
+    "state_hash": "3eed67b719b6ee81f0fbbf3b78aa1488ad5fe68a6302b1a6f1bc423aee03b540",
+    "visited": [
+      "map:entry"
+    ]
+  },
+  {
+    "tag": "noa-part-6",
+    "actions": 3,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "31fbbd3d423d61acb2060dad3af4e5747a0c862e72ac63b2f56aef9c02d7edc0",
+    "seed": 20261021,
+    "state_hash": "31fbbd3d423d61acb2060dad3af4e5747a0c862e72ac63b2f56aef9c02d7edc0",
+    "visited": [
+      "event:event"
+    ]
+  },
+  {
+    "tag": "noa-part-7",
+    "actions": 3,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "f14c37ff4615500e653b9455c9acaa76b7b6d5552dd8af2191207fccce5a953a",
+    "seed": 20261021,
+    "state_hash": "f14c37ff4615500e653b9455c9acaa76b7b6d5552dd8af2191207fccce5a953a",
+    "visited": [
+      "map:event"
+    ]
+  },
+  {
+    "tag": "noa-part-8",
+    "actions": 4,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "3f350cfae4bc8f7e71dc79c605204e20f06e2b4a772f097ef415902eef13b907",
+    "seed": 20261021,
+    "state_hash": "3f350cfae4bc8f7e71dc79c605204e20f06e2b4a772f097ef415902eef13b907",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "noa-part-9",
+    "actions": 5,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "b6203ffcf2b8e8e06c4df5c2984198479ec12dd7439e9fb0607c60aced4724b2",
+    "seed": 20261021,
+    "state_hash": "b6203ffcf2b8e8e06c4df5c2984198479ec12dd7439e9fb0607c60aced4724b2",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "noa-part-10",
+    "actions": 5,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "e6f2d7588a31897f83bf9a33ac7f8136509b5799dd7e2d5dbf52b1a66a71ba49",
+    "seed": 20261021,
+    "state_hash": "e6f2d7588a31897f83bf9a33ac7f8136509b5799dd7e2d5dbf52b1a66a71ba49",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "noa-part-11",
+    "actions": 6,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "ceaacf5b011f5aea20b750a1e8ea8f30028ccb6bc56e30f9effb42258482dd93",
+    "seed": 20261021,
+    "state_hash": "ceaacf5b011f5aea20b750a1e8ea8f30028ccb6bc56e30f9effb42258482dd93",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "noa-part-12",
+    "actions": 7,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "a3f52bb9f803a0301e3712d76a79fb15c577f03210f0fdbe4f683ed9c7632f19",
+    "seed": 20261021,
+    "state_hash": "a3f52bb9f803a0301e3712d76a79fb15c577f03210f0fdbe4f683ed9c7632f19",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "noa-part-13",
+    "actions": 8,
+    "errors": [],
+    "phase": "reward",
+    "saved_hash": "df7a4e7dd9ec630108247ca1aa379e906b777a12b35fbdba4d2b6f60e4c62385",
+    "seed": 20261021,
+    "state_hash": "df7a4e7dd9ec630108247ca1aa379e906b777a12b35fbdba4d2b6f60e4c62385",
+    "visited": [
+      "ready:elite"
+    ]
+  },
+  {
+    "tag": "noa-part-14",
+    "actions": 8,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "e631197e144fe43cefdc296d5c0d8ea06d55b19da73fc57f29df1d98f73f1e71",
+    "seed": 20261021,
+    "state_hash": "e631197e144fe43cefdc296d5c0d8ea06d55b19da73fc57f29df1d98f73f1e71",
+    "visited": [
+      "reward:elite"
+    ]
+  },
+  {
+    "tag": "noa-part-15",
+    "actions": 8,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "3c28b45048538f3dfe2747a403e093a1b43891dc67e595d020c435be95bb137c",
+    "seed": 20261021,
+    "state_hash": "3c28b45048538f3dfe2747a403e093a1b43891dc67e595d020c435be95bb137c",
+    "visited": [
+      "map:elite"
+    ]
+  },
+  {
+    "tag": "noa-part-16",
+    "actions": 9,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "dc4050288bd43468e4f8d9a7f7114aeb63518aafbbc9dfd9be59a7d4d1d03013",
+    "seed": 20261021,
+    "state_hash": "dc4050288bd43468e4f8d9a7f7114aeb63518aafbbc9dfd9be59a7d4d1d03013",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-17",
+    "actions": 10,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "28f1056f1a3303da6db0dc00e7ba6958fc26b9fac6b3f404ad3bf18170d49023",
+    "seed": 20261021,
+    "state_hash": "28f1056f1a3303da6db0dc00e7ba6958fc26b9fac6b3f404ad3bf18170d49023",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-18",
+    "actions": 11,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "ad9486d59228170374a5306db101a56d3dd5d3349adb3f17aa1487776593ee5a",
+    "seed": 20261021,
+    "state_hash": "ad9486d59228170374a5306db101a56d3dd5d3349adb3f17aa1487776593ee5a",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-19",
+    "actions": 11,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "868676e4be8abc597b234caf91e824fcbcdfb54a4d1148007aea762f31b6ef65",
+    "seed": 20261021,
+    "state_hash": "868676e4be8abc597b234caf91e824fcbcdfb54a4d1148007aea762f31b6ef65",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-20",
+    "actions": 12,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "873f9740f4af1e7244bd740dab083e95a9144a014a3fc8c14f0f2d40e635fe09",
+    "seed": 20261021,
+    "state_hash": "873f9740f4af1e7244bd740dab083e95a9144a014a3fc8c14f0f2d40e635fe09",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-21",
+    "actions": 13,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "7d715e186f888da2995cf82cedbd1692be29b3ac8c84cb9eeeab4b1e15251e0c",
+    "seed": 20261021,
+    "state_hash": "7d715e186f888da2995cf82cedbd1692be29b3ac8c84cb9eeeab4b1e15251e0c",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-22",
+    "actions": 14,
+    "errors": [],
+    "phase": "reward",
+    "saved_hash": "77e328af95f9b859410747ce2b39b831596d6cd918ad0ad7b3b564cd94ab9940",
+    "seed": 20261021,
+    "state_hash": "77e328af95f9b859410747ce2b39b831596d6cd918ad0ad7b3b564cd94ab9940",
+    "visited": [
+      "ready:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-23",
+    "actions": 14,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "88443f7fdbee4ef135e14442c54eb0d22ba4fc96a0976d589a295af0cf668b93",
+    "seed": 20261021,
+    "state_hash": "88443f7fdbee4ef135e14442c54eb0d22ba4fc96a0976d589a295af0cf668b93",
+    "visited": [
+      "reward:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-24",
+    "actions": 14,
+    "errors": [],
+    "phase": "shop",
+    "saved_hash": "57a850ae7833655c295bc72a0bba1f352db7ea4f9e9fcf04a01dd0464f7c99a2",
+    "seed": 20261021,
+    "state_hash": "57a850ae7833655c295bc72a0bba1f352db7ea4f9e9fcf04a01dd0464f7c99a2",
+    "visited": [
+      "map:extra"
+    ]
+  },
+  {
+    "tag": "noa-part-25",
+    "actions": 14,
+    "errors": [],
+    "phase": "map",
+    "saved_hash": "469633b385469302b0cf97aadef57966aae9409c68ee228e5caa18b04007c8c2",
+    "seed": 20261021,
+    "state_hash": "469633b385469302b0cf97aadef57966aae9409c68ee228e5caa18b04007c8c2",
+    "visited": [
+      "shop:shop"
+    ]
+  },
+  {
+    "tag": "noa-part-26",
+    "actions": 14,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "27d7b887d0a865e510e15d567a137e0a2be90ac7a0b93b1b62ab2b9f615fa02f",
+    "seed": 20261021,
+    "state_hash": "27d7b887d0a865e510e15d567a137e0a2be90ac7a0b93b1b62ab2b9f615fa02f",
+    "visited": [
+      "map:shop"
+    ]
+  },
+  {
+    "tag": "noa-part-27",
+    "actions": 15,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "87964bad5d14cc304af71e7b1f4459b1eaf0ee9f75afddf51a8549b2c8abcd84",
+    "seed": 20261021,
+    "state_hash": "87964bad5d14cc304af71e7b1f4459b1eaf0ee9f75afddf51a8549b2c8abcd84",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-28",
+    "actions": 16,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "f7826d36eddcad26a13e9aa145904b52e5c3801a48ccb4193ed8978acf56182b",
+    "seed": 20261021,
+    "state_hash": "f7826d36eddcad26a13e9aa145904b52e5c3801a48ccb4193ed8978acf56182b",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-29",
+    "actions": 17,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "d32ff8bab969eaa6c6ef84c9b2c3dbd0a72575cbd6c1006cf45f85ded61e3585",
+    "seed": 20261021,
+    "state_hash": "d32ff8bab969eaa6c6ef84c9b2c3dbd0a72575cbd6c1006cf45f85ded61e3585",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-30",
+    "actions": 17,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "e59f4ff26cf60dd222be4ae83dfdecf5384924f75343b0f96b6389fb2bb48147",
+    "seed": 20261021,
+    "state_hash": "e59f4ff26cf60dd222be4ae83dfdecf5384924f75343b0f96b6389fb2bb48147",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-31",
+    "actions": 18,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "129d6016a616703f0b1daa1f42b0598e7513cac8e57a5e7df64b3a5bb5ca2e84",
+    "seed": 20261021,
+    "state_hash": "129d6016a616703f0b1daa1f42b0598e7513cac8e57a5e7df64b3a5bb5ca2e84",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-32",
+    "actions": 19,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "4686630af494d96ec5fb6c5d272e634a82b2c58aac8a95347b6429e76cf48a97",
+    "seed": 20261021,
+    "state_hash": "4686630af494d96ec5fb6c5d272e634a82b2c58aac8a95347b6429e76cf48a97",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-33",
+    "actions": 20,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "7eea53fb817175ab090b4305ccfe82f0a470be9865b49f1f5951187f25e35917",
+    "seed": 20261021,
+    "state_hash": "7eea53fb817175ab090b4305ccfe82f0a470be9865b49f1f5951187f25e35917",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-34",
+    "actions": 21,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "a5c35ac7339142e90213f16a52470f74a00c63a92529b16756c7779290c9cf39",
+    "seed": 20261021,
+    "state_hash": "a5c35ac7339142e90213f16a52470f74a00c63a92529b16756c7779290c9cf39",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "noa-part-35",
+    "actions": 22,
+    "errors": [],
+    "phase": "victory",
+    "saved_hash": "4d159113222bfeb85fbe717cc2393ee8a6a85b7ce5ac1791c4eade5e3dd6de41",
+    "seed": 20261021,
+    "state_hash": "8d43d12584b4d8e36aef4fc0f32a625f3e124f78b042e8d016c4d3b9407ee861",
+    "visited": [
+      "ready:boss"
+    ]
+  },
+  {
+    "tag": "held-interrupted",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "seed": 20261021,
+    "state_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "held-resumed",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "seed": 20261021,
+    "state_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "visited": []
+  },
+  {
+    "tag": "busy-interrupted",
+    "actions": 1,
+    "errors": [],
+    "phase": "busy",
+    "saved_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "seed": 20261021,
+    "state_hash": "0d0976b619f45d253b6d09023613e738393625b8f911eca7588511f57b05fa0e",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "busy-resumed",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "seed": 20261021,
+    "state_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "visited": []
+  },
+  {
+    "tag": "attack-interrupted",
+    "actions": 3,
+    "errors": [],
+    "phase": "enemy_attack",
+    "saved_hash": "984a1db128ef042249d21d614436e1988cec4634abc7dacea99ee82653bd7d36",
+    "seed": 20261021,
+    "state_hash": "a773ef221b5c67735f7a100a798a9ad300d6a9dd373ac30974a017a6f4434187",
+    "visited": [
+      "ready:entry",
+      "ready:entry",
+      "ready:entry"
+    ]
+  },
+  {
+    "tag": "attack-resumed",
+    "actions": 2,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "984a1db128ef042249d21d614436e1988cec4634abc7dacea99ee82653bd7d36",
+    "seed": 20261021,
+    "state_hash": "984a1db128ef042249d21d614436e1988cec4634abc7dacea99ee82653bd7d36",
+    "visited": []
+  },
+  {
+    "tag": "new-seed-a",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "5386b061d492ebd523442cb2d077163be72cdf47b5d21c27a6092a41a733334f",
+    "seed": 2073201340,
+    "state_hash": "5386b061d492ebd523442cb2d077163be72cdf47b5d21c27a6092a41a733334f",
+    "visited": []
+  },
+  {
+    "tag": "new-seed-b",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "9deca3ab3ce24e09a83269bd0fe803ab876eebb66c6a62be9643082de6eeb34a",
+    "seed": 3271978455,
+    "state_hash": "9deca3ab3ce24e09a83269bd0fe803ab876eebb66c6a62be9643082de6eeb34a",
+    "visited": []
+  },
+  {
+    "tag": "fixed-a",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "seed": 20261021,
+    "state_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "visited": []
+  },
+  {
+    "tag": "fixed-b",
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "seed": 20261021,
+    "state_hash": "47d051aa3d89e1232ad71122669382256f26ec7b81ef22dbf5be0839ed72e9ac",
+    "visited": []
+  }
+]

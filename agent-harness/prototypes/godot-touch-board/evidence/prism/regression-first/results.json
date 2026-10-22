@@ -1,0 +1,758 @@
+[
+  {
+    "test": "test_balance",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.448,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_balance.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_balance_refill",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.717,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_balance_refill.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_boss_combat",
+    "exit": 1,
+    "errors": [
+      "FAIL two weak normals latch once and apply three total damage",
+      "FAIL third clear can kill and mitigate without retaliation"
+    ],
+    "wall_seconds": 0.263,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_boss_combat.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_clear_timeline",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.547,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_clear_timeline.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_combat",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.264,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_combat.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_elemental_input",
+    "exit": 1,
+    "errors": [
+      "FAIL release executes the same enriched snapshot",
+      "FAIL restored weak pair keeps unchanged damage bonus",
+      "FAIL restored weak pair commits damage and mitigation",
+      "FAIL ten ordinary committed clear reduces slam without changing base damage",
+      "FAIL committed weak triple latches reduced attack and damage",
+      "FAIL converted normal and connected weak normal count while core does not",
+      "FAIL core weakness math commits once and leaves heart",
+      "FAIL third-action elemental kill wins without retaliation"
+    ],
+    "wall_seconds": 12.918,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_input.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_elemental_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.254,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_rules.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_elemental_session",
+    "exit": 1,
+    "errors": [
+      "FAIL release executes exact snapshot despite live weakness mutation"
+    ],
+    "wall_seconds": 0.246,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_session.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_elemental_ui",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.439,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_ui.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_feedback",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.25,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_feedback.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_growth_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.151,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_growth_session.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_hit_audio",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.441,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_audio.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_hit_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 3.78,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_scene.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_hit_sync",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.344,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_sync.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_interaction",
+    "exit": 1,
+    "errors": [
+      "FAIL release executes exact preview plan"
+    ],
+    "wall_seconds": 0.156,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_interaction.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_motion",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.347,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_motion_cycles",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 5.178,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion_cycles.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_motion_paths",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.286,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion_paths.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_premium_art",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.349,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_art.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_premium_layout",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.456,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_layout.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_premium_skill",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.252,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_skill.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_presentation_scene",
+    "exit": 1,
+    "errors": [
+      "FAIL heart release preserves exact preview as active plan",
+      "FAIL feedback leaves plan and canonical action/heal results unchanged",
+      "FAIL multi-core active plan and feedback eligibility match frozen preview",
+      "FAIL multi-core feedback never changes damage/action/plan"
+    ],
+    "wall_seconds": 1.65,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_presentation_scene.gd",
+      "--",
+      "--sandbox",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_quality_fonts",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.351,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_fonts.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_quality_fx",
+    "exit": 1,
+    "errors": [
+      "FAIL cutin draws skill identity synchronously",
+      "FAIL cutin uses original face closeup in the new footer"
+    ],
+    "wall_seconds": 0.441,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_fx.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_quality_scene",
+    "exit": 1,
+    "errors": [
+      "FAIL reset restores identical normal board and clears effects",
+      "FAIL feedback receives exact committed damage and effective healing"
+    ],
+    "wall_seconds": 2.572,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_scene.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_refill_inlet",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.712,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_refill_inlet.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_relic_details",
+    "exit": 1,
+    "errors": [
+      "FAIL existing board release executes its unchanged preview"
+    ],
+    "wall_seconds": 7.784,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_relic_details.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_relic_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.177,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_relic_rules.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_reward_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.091,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_reward_input.gd",
+      "--",
+      "--sandbox",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_route_combat",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.259,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_combat.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_route_economy",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.249,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_economy.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_route_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 8.717,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_input.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_rules",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.159,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_rules.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_run_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 15.88,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_run_input.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_run_session",
+    "exit": 1,
+    "errors": [
+      "FAIL third win is victory with no extra reward",
+      "FAIL run totals span encounters",
+      "FAIL victory is terminal"
+    ],
+    "wall_seconds": 0.246,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_run_session.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.177,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_scene.gd",
+      "--",
+      "--sandbox",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_skin",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.452,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_skin.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_transition_reentry",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 5.753,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_transition_reentry.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_characters",
+    "exit": 1,
+    "errors": [
+      "FAIL manual clear charges once and reserves ash",
+      "FAIL two-charge cycle reaches ready without overfill",
+      "FAIL rio conversion stays canonical 4",
+      "FAIL heart blocks rio path even with pigment"
+    ],
+    "wall_seconds": 0.27,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_characters.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_character_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.18,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_character_input.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_character_interactions",
+    "exit": 1,
+    "errors": [
+      "FAIL noa reward/detail/shop copy has meaningful effect",
+      "FAIL normal charge cap tick 1",
+      "FAIL normal charge cap tick 2",
+      "FAIL normal charge cap tick 3",
+      "FAIL normal charge cap tick 4",
+      "FAIL ash charge cap tick 1",
+      "FAIL ash charge cap tick 2",
+      "FAIL ash charge cap tick 3"
+    ],
+    "wall_seconds": 0.436,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_character_interactions.gd",
+      "--",
+      "--short-run"
+    ]
+  },
+  {
+    "test": "test_area_session",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.248,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_area_session.gd"
+    ]
+  },
+  {
+    "test": "test_area_input",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.551,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_area_input.gd"
+    ]
+  },
+  {
+    "test": "test_area_transactions",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.25,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_area_transactions.gd"
+    ]
+  },
+  {
+    "test": "test_bombs",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.437,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_bombs.gd"
+    ]
+  },
+  {
+    "test": "test_bomb_scene",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 1.918,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_bomb_scene.gd"
+    ]
+  },
+  {
+    "test": "test_impact_strength",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.618,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_impact_strength.gd"
+    ]
+  },
+  {
+    "test": "test_bomb_body",
+    "exit": 0,
+    "errors": [],
+    "wall_seconds": 0.437,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/chroma-lifecycle/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_bomb_body.gd"
+    ]
+  }
+]

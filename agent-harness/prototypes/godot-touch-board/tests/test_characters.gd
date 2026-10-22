@@ -23,7 +23,7 @@ func _initialize()->void:
  check(not s.select_departure("rio",s.offer_serial) and not s.start_departure(s.offer_serial),"hero cannot change after start")
  var before:Array=s.panels.duplicate(true);var context:Dictionary=s.combat.damage_context()
  s.skill_mode=true;s.begin(before[0].pos,-1);var preview:Dictionary=s.selection.duplicate(true)
- check(preview.valid and preview.planted=={1:"core"} and preview.converted.is_empty() and preview.targets==[1],"noa plans one same-color core")
+ check(preview.valid and preview.planted=={1:"core"} and preview.converted.is_empty() and preview.targets==[1] and preview.rain_refills==2 and preview.rain_color==0,"noa plans same-color core plus two refill rain")
  s.cancel();check(s.release(before[0].pos,-1).is_empty() and s.panels==before and s.charge==3,"cancel has no installation or charge cost")
  s.begin(before[0].pos,-1);preview=s.selection.duplicate(true);var used:Dictionary=s.release(before[0].pos,-1)
  check(used==preview and s.panels[0].kind=="core","frozen skill plan commits exactly")
@@ -46,14 +46,23 @@ func _initialize()->void:
  s.panels=normals;s.relics=["lens","ash"]
  check(s.plan_for(1).spawn.kind=="core" and s.plan_for(1).ash_reserve,"lens and ash direct rules still apply to noa")
  s.skill_mode=false;s.begin(normals[0].pos,-1);s.release(normals[0].pos,-1)
- check(s.charge==1 and s.ash_reserved,"manual clear charges once and reserves ash")
+ check(s.charge==0 and s.ash_reserved and s.rain_remaining==2,"first rain clear reserves ash without charging")
  s.phase="ready";s.panels=normals;s.begin(normals[0].pos,-1);s.release(normals[0].pos,-1)
- check(s.charge==2 and s.charge_required==2,"two-charge cycle reaches ready without overfill")
- # Default standalone API and original transform remain intentionally compatible.
+ check(s.charge==0 and s.rain_remaining==1,"second rain clear still cannot self-charge")
+ s.phase="ready";s.panels=normals;s.begin(normals[0].pos,-1);var last_rain=s.release(normals[0].pos,-1)
+ check(s.charge==0 and s.rain_remaining==0 and last_rain.supply_color==1,"last rain clear supplies color but still cannot charge")
+ for expected_charge in [1,2,2]:
+  s.phase="ready";s.panels=normals;s.begin(normals[0].pos,-1);var normal_clear=s.release(normals[0].pos,-1)
+  check(s.charge==expected_charge and normal_clear.supply_color==-1,"new clears recharge with cap after rain: "+str(expected_charge))
+ # Default standalone API remains Rio; skill contract is now whole source color.
  s=Run.new();s.initialize_board(board(),6)
  check(s.phase=="ready" and s.character_id=="rio","standalone existing test API retains rio")
- var old:Dictionary=Rules.skill_plan(s.panels,1,3,[])
  var now:Dictionary=s.skill_plan_for(1,3)
- check(now.targets==old.targets and now.converted==old.converted and now.connected==old.connected,"rio conversion stays canonical 4")
- s.relics=["pigment"];check(s.skill_plan_for(1,3).targets.size()==4,"heart blocks rio path even with pigment")
+ check(now.targets==[1] and now.converted=={1:3},"rio transforms every source-color normal, no unrelated neighbors")
+ s.panels.append(panel(6,0));s.panels.append(panel(7,0,"core"));s.panels.append(panel(8,0,"bomb"));s.next_id=9
+ now=s.skill_plan_for(1,3)
+ check(now.targets==[1,6] and now.converted=={1:3,6:3},"rio reaches distant source color and preserves specials")
+ check(not s.skill_plan_for(1,0).valid and not s.skill_plan_for(5,3).valid,"same-color cast and hearts are invalid")
+ s.relics=["pigment"];now=s.skill_plan_for(1,3)
+ check(now.targets==[1,6] and now.rain_refills==1 and now.rain_color==3,"pigment adds one target-color refill without altering target set")
  print("CHARACTERS checks=",checks," failures=",failures);quit(1 if failures else 0)

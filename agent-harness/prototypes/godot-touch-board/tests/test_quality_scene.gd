@@ -19,6 +19,7 @@ func run() -> void:
 	if not names.has("quality_fx"):
 		scene.queue_free(); await process_frame
 		print("QUALITY_SCENE checks=",checks," failures=",failures); quit(1); return
+	scene.fixed_seed=true
 	scene.record_timings=false
 	scene.sound.muted=true
 	check(scene.font.resource_path.ends_with("Pretendard-Medium.otf") and scene.font_bold.resource_path.ends_with("Pretendard-SemiBold.otf") and scene.font_display.resource_path.ends_with("BlackHanSans-Regular.ttf"),"official imported display and body fonts are active")
@@ -32,6 +33,7 @@ func run() -> void:
 	var first: Dictionary={}
 	for candidate in scene.session.panels:
 		if candidate.kind=="normal": first=candidate;break
+	scene.session.skill_color=(int(first.color)+1)%4
 	var point: Vector2=scene.board_to_screen(first.pos)
 	scene.press(point,-1);scene.cancel_input();scene.release(point,-1)
 	check(scene.quality_fx.cutin_remaining==0 and scene.session.actions==0,"cancelled skill preview never activates")

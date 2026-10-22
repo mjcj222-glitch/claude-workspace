@@ -9,6 +9,8 @@ const ROUTES := {
 	"safe": {"name":"안전한 길", "hp":36, "gold":4, "pattern":"경감 7→3 · 일반 5"},
 	"elite": {"name":"정예의 길", "hp":44, "gold":8, "pattern":"경감 8→4 · 일반 6"},
 }
+var shield_hp:int=0
+var shield_color:int=0
 var route: String = "safe"
 var encounter: int = 0
 var enemy_hp: int = 24
@@ -42,6 +44,11 @@ func start_fight(index: int, panels: Array, selected_route: String = "safe") -> 
 	_victory_counted = false
 	_attack_taken = false
 	_turn_prepared = false
+	shield_hp=12 if encounter==2 else 0
+	var counts=[0,0,0,0]
+	for panel in panels:
+		if panel.kind=="normal":counts[panel.color]+=1
+	shield_color=counts.find(counts.max())
 	prepare_turn(panels)
 
 func prepare_turn(panels: Array) -> void:
@@ -99,6 +106,7 @@ func record_clear(plan: Dictionary) -> void:
 		return
 	if enemy_hp <= 0 or _attack_taken or actions_in_turn >= 3:
 		return
+	shield_hp=maxi(0,shield_hp-int(plan.get("shield_damage",0)))
 	enemy_hp = maxi(0, enemy_hp - maxi(0, int(plan.get("damage", 0))))
 	actions_in_turn += 1
 	if mitigation_active:
@@ -150,6 +158,6 @@ var weak_color: int = 0
 var intent: String = "plain"
 var intent_serial: int = 0
 func damage_context() -> Dictionary:
-	return {"weakness_color":weak_color,"intent":intent,"intent_serial":intent_serial,
+	return {"shield_hp":shield_hp,"shield_color":shield_color,"weakness_color":weak_color,"intent":intent,"intent_serial":intent_serial,
 		"incoming_damage":incoming_damage,"mitigation_success":mitigation_success,
 		"slam_weak_required":Rules.SLAM_WEAK_REQUIRED,"slam_normal_required":Rules.SLAM_NORMAL_REQUIRED}

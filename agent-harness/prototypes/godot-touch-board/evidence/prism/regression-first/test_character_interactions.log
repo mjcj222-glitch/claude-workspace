@@ -1,0 +1,11 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL noa reward/detail/shop copy has meaningful effect
+FAIL normal charge cap tick 1
+FAIL normal charge cap tick 2
+FAIL normal charge cap tick 3
+FAIL normal charge cap tick 4
+FAIL ash charge cap tick 1
+FAIL ash charge cap tick 2
+FAIL ash charge cap tick 3
+CHARACTER_INTERACTIONS checks=26 failures=8

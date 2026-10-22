@@ -25,6 +25,8 @@ func fixture(scene, panels: Array, fight: int = 0, route: String = "safe") -> vo
 	scene.session.next_id = 100
 	scene.session.route = route
 	scene.session.combat.start_fight(fight, scene.session.panels, route)
+	# Isolate established weakness/intent contract; shield covered by test_prism.
+	scene.session.combat.shield_hp=0
 	scene.visual = scene.session.panels.duplicate(true)
 func click(scene, p: Vector2) -> void:
 	scene.press(p, -1)

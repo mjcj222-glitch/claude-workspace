@@ -19,6 +19,8 @@ func make_run():
 	result.initialize_board(board(),100)
 	return result
 func clear_fixture(s, panels: Array) -> Dictionary:
+	# Reward/terminal fixture isolates HP accounting; prism tests cover shield.
+	s.combat.shield_hp=0
 	s.panels = panels.duplicate(true)
 	var p: Vector2 = panels[0].pos
 	if not s.begin(p,0): return {}

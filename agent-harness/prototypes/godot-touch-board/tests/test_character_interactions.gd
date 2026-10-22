@@ -38,23 +38,24 @@ func _initialize()->void:
  var snapshot:Dictionary=s.selection.duplicate(true);s.relics.append("pigment")
  var cast:Dictionary=s.release(s.panels[0].pos,0)
  check(cast==snapshot and s.panels[0].kind=="core","acquisition cannot retroactively change held skill plan")
- check(UI.relic_copy("pigment",s).change=="심는 핵: 일반핵 → 강화핵","noa reward/detail/shop copy has meaningful effect")
+ check(UI.relic_copy("pigment",s).change=="강화핵 + 고정 낙하 2 → 3회","noa reward/detail/shop copy has meaningful effect")
  s=hero(row([0,0,0,0,0]),["lens","ash"])
  check(s.plan_for(1).spawn.kind=="core" and not s.plan_for(1).ash_reserve,"noa lens5 threshold does not lower ash6")
  s.panels=row([0,0,0,0,0,0]);check(s.plan_for(1).ash_reserve,"noa direct6 still arms ash")
  plant(s,1)
  check(s.charge_required==3 and s.charge==0,"without reserved ash plant requires3")
  s.panels=row([0,0]);s.skill_mode=false
- for i in range(4):
+ for i in range(6):
   s.phase="ready";s.panels=row([2,2]);clear(s,1)
-  check(s.charge==mini(i+1,3),"normal charge cap tick "+str(i+1))
+  check(s.charge==clampi(i-1,0,3),"two rain clears then normal charge cap tick "+str(i+1))
  s=hero(row([0,1]));s.ash_reserved=true;plant(s,1)
  check(s.charge_required==2 and s.charge==0 and not s.ash_reserved,"ash is consumed by actual noa skill")
+ check(s.rain_remaining==2,"ash shortens recharge but cannot shorten or recharge rain")
  check(State.snapshot(s).charge_text=="0 / 2" and not State.snapshot(s).illuminated,"noa dock shows actual2 requirement unlit")
  s.panels=row([0,0]);s.skill_mode=false
- for i in range(3):
+ for i in range(5):
   s.phase="ready";s.panels=row([2,2]);clear(s,1)
-  check(s.charge==mini(i+1,2),"ash charge cap tick "+str(i+1))
+  check(s.charge==clampi(i-1,0,2),"two rain clears then ash charge cap tick "+str(i+1))
  # Existing second enemy condition is direct4; core secondary reach is distinct.
  s=hero(row([0,1,0,0,0]));s.combat.start_fight(1,s.panels,"safe")
  var intent:Dictionary=s.combat.damage_context();plant(s,1)

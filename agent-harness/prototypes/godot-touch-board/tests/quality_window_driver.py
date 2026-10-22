@@ -24,6 +24,9 @@ if '--lifecycle-ui' in sys.argv:
 if '--save-failure' in sys.argv:log_suffix += '-failure'
 script = 'tests/capture_petal.gd' if '--petal' in sys.argv else ('tests/capture_lifecycle_states.gd' if '--lifecycle-ui' in sys.argv else 'tests/capture_quality_states.gd')
 if '--petal' in sys.argv:log_suffix += '-petal'
+if '--prism' in sys.argv:
+    script='tests/capture_prism.gd'
+    log_suffix += '-prism'
 if "--short-run" in sys.argv and "-short" not in log_suffix:log_suffix += "-short"
 if os.environ.get('CHROMA_WINDOW_OUT'):evidence=base/os.environ['CHROMA_WINDOW_OUT']
 evidence.mkdir(parents=True, exist_ok=True)

@@ -8,6 +8,7 @@ const CUTIN_RECT := Rect2(8,920,688,160)
 const FACE_REGION := Rect2(250,180,590,590.0*160.0/230.0)
 const HEAL_STRIP := Rect2(32,272,656,32)
 var cutin_remaining := 0.0
+var _sweep_color := Color("b6dbff")
 var total_remaining := 0.0
 var damage_amount := 0
 var heal_raw := 0
@@ -26,6 +27,12 @@ var base_damage := 0
 var core_activations := 0
 var strong_cores:=0
 var bomb_activations:=0
+var big_bombs:=0
+var shield_damage:=0
+var shield_broken:=false
+var shield_color:=0
+var shield_remaining:=0.0
+const SHIELD_SECONDS:=0.45
 var skill_link := false
 var _skill_converted:Dictionary={}
 var _elapsed := 0.0
@@ -54,6 +61,10 @@ func _clear_action() -> void:
 	core_activations=0
 	strong_cores=0
 	bomb_activations=0
+	big_bombs=0
+	shield_damage=0
+	shield_broken=false
+	shield_remaining=0.0
 	skill_link=false
 	damage_amount = 0
 	heal_raw = 0
@@ -73,6 +84,11 @@ func reset() -> void:
 func skill_activated(changed:Dictionary={}) -> void:
 	cutin_remaining = CUTIN_SECONDS
 	_skill_converted=changed.duplicate()
+	_sweep_color=Color("b6dbff")
+	for value in changed.values():
+		if typeof(value)==TYPE_INT and value in range(4):
+			_sweep_color=[Color("ff705d"),Color("6edb6b"),Color("ffcf5b"),Color("61b7ff")][value]
+			break
 
 func action_started(plan: Dictionary, panels: Array, impact_due: float=0.0, enemy_hp_before: int=-1) -> void:
 	_clear_action()
@@ -91,6 +107,9 @@ func action_started(plan: Dictionary, panels: Array, impact_due: float=0.0, enem
 	damage_amount = int(plan.get("damage", 0))
 	base_damage=int(plan.get("base_damage",damage_amount))
 	weak_bonus=int(plan.get("weak_bonus",0))
+	shield_damage=maxi(0,int(plan.get("shield_damage",0)))
+	shield_broken=bool(plan.get("shield_broken",false))
+	shield_color=clampi(int(plan.get("combat_context",{}).get("shield_color",0)),0,3)
 	var unique_cores:Dictionary={}
 	for id in plan.get("activated",[]):
 		if _eligible.has(int(id)) and actual.get(int(id),"") in ["core","strong"]:unique_cores[int(id)]=true
@@ -101,6 +120,8 @@ func action_started(plan: Dictionary, panels: Array, impact_due: float=0.0, enem
 	for id in plan.get("activated",[]):
 		if _eligible.has(int(id)) and actual.get(int(id),"") in ["bomb","big_bomb"]:bombs[int(id)]=true
 	bomb_activations=bombs.size()
+	for id in bombs:
+		if actual[id]=="big_bomb":big_bombs+=1
 	impact_tier=2 if _eligible.size()>=12 or core_activations>0 or bomb_activations>0 else (1 if _eligible.size()>=6 else 0)
 	skill_link=false
 	for id in _eligible:
@@ -159,10 +180,12 @@ func update(delta: float) -> void:
 	var dt := maxf(0.0,delta)
 	_elapsed+=dt
 	impact_remaining=maxf(0,impact_remaining-dt)
-	if _finished and not _impacted and _elapsed>=_impact_due and damage_amount>0:
+	shield_remaining=maxf(0,shield_remaining-dt)
+	if _finished and not _impacted and _elapsed>=_impact_due and (damage_amount>0 or shield_damage>0):
 		_impacted=true
 		impact_remaining=IMPACT_SECONDS
-		_pending_impact={"damage":damage_amount,"base_damage":base_damage,"weak_bonus":weak_bonus,"cores":core_activations,"strong_cores":strong_cores,"bombs":bomb_activations,"tier":impact_tier,"skill_link":skill_link}
+		if shield_broken:shield_remaining=SHIELD_SECONDS
+		_pending_impact={"damage":damage_amount,"base_damage":base_damage,"weak_bonus":weak_bonus,"cores":core_activations,"strong_cores":strong_cores,"bombs":bomb_activations,"tier":impact_tier,"skill_link":skill_link,"shield_damage":shield_damage,"shield_broken":shield_broken,"big_bombs":big_bombs}
 	cutin_remaining = maxf(0.0,cutin_remaining-dt)
 	total_remaining = maxf(0.0,total_remaining-dt)
 	for i in range(trails.size()-1,-1,-1):
@@ -205,6 +228,10 @@ func draw_overlay(view,canvas) -> void:
 			previous = current
 		canvas.draw_line(previous,head,Color(1,0.96,0.82,tint.a),4.0 if trail.get("core",false) else 2.0,true)
 		canvas.draw_circle(head,8.0 if trail.get("core",false) else 4.8,Color(1.0,1.0,0.95,tint.a))
+		if trail.kind=="damage":
+			var size:float=10.0 if trail.get("core",false) else 6.5
+			canvas.draw_colored_polygon(PackedVector2Array([head+Vector2(0,-size),head+Vector2(size,0),head+Vector2(0,size),head-Vector2(size,0)]),Color(trail.color,tint.a))
+			canvas.draw_line(head-Vector2(0,size*.6),head+Vector2(size*.6,0),Color(1,1,1,tint.a),2,true)
 		if trail.kind=="heal":
 			canvas.draw_colored_polygon(Art._heart_points(head+Vector2(0,-5),5.0),tint)
 	if impact_remaining>0:
@@ -230,8 +257,26 @@ func draw_overlay(view,canvas) -> void:
 				var angle:float=TAU*i/(6+impact_tier*3)
 				var direction:=Vector2.from_angle(angle)
 				canvas.draw_line(target+direction*(9+t*18),target+direction*(18+t*58*strength),tint,4.0*(1.0-t)+0.5,true)
+	if impact_remaining>0 and big_bombs>0 and not reduced_effects:
+		var age:float=1.0-impact_remaining/IMPACT_SECONDS
+		for wave in range(2):
+			var radius:float=18+age*(100+wave*22)
+			canvas.draw_arc(target,radius,0,TAU,48,Color(.45,.85,1,(1-age)*.45),3-wave,true)
+	if shield_remaining>0:
+		var age:float=1.0-shield_remaining/SHIELD_SECONDS
+		var tint:Color=[Color("ff705d"),Color("6edb6b"),Color("ffcf5b"),Color("61b7ff")][shield_color]
+		if reduced_effects:
+			canvas.draw_arc(target,42,0,TAU,6,Color(tint,(1-age)*.45),3,true)
+		else:
+			for piece in range(12):
+				var angle:float=piece*TAU/12.0
+				var direction:=Vector2.from_angle(angle)
+				var center:=target+direction*(32+age*60)+Vector2(0,age*age*30)
+				var tangent:=direction.orthogonal()
+				canvas.draw_colored_polygon(PackedVector2Array([center+direction*12,center+tangent*7,center-direction*7,center-tangent*4]),Color(tint,(1-age)*.8))
 	var body := _font(view,"font_body")
 	var display := _font(view,"font_display")
+	if shield_remaining>0:_text(canvas,body,target+Vector2(70,40),"보호막 파괴",24,Color(.7,.95,1,minf(1,shield_remaining/.15)),3)
 	if total_remaining > 0.0:
 		var alpha := minf(1.0,total_remaining/0.23)
 		var rise := (1.0-total_remaining/TOTAL_SECONDS)*14.0
@@ -249,12 +294,22 @@ func draw_overlay(view,canvas) -> void:
 	# Footer-only strip: board, targeting palette and reset/cancel remain exposed.
 	var age := CUTIN_SECONDS-cutin_remaining
 	var alpha := minf(1.0,age/0.055)*minf(1.0,cutin_remaining/0.12)
+	# Transparent scan only: this shares the existing cutin clock and never owns
+	# input/phase. No full-board flash, opaque fill, or extra wait is introduced.
+	if not reduced_effects and age<0.3:
+		var board:Rect2=view.UI.BOARD_SCREEN
+		var y:float=lerpf(board.end.y,board.position.y,clampf(age/.3,0,1))
+		var opacity:float=.5*minf(1.0,(.3-age)/.08)
+		for line in range(3):
+			var at:float=clampf(y+line*8,board.position.y,board.end.y)
+			canvas.draw_line(Vector2(board.position.x,at),Vector2(board.end.x,at),Color(_sweep_color,opacity/(line+1)),3-line,true)
 	var slide := (0.0 if reduced_effects else 14.0)*(1.0-minf(1.0,age/0.10))
 	canvas.draw_colored_polygon(PackedVector2Array([Vector2(210,920),Vector2(696,920),Vector2(669,1080),Vector2(210,1080)]),Color(0.14,0.055,0.23,0.96*alpha))
-	canvas.draw_texture_rect_region(Art.HERO_TEXTURE,Rect2(8,920,230,160),FACE_REGION,Color(1,1,1,alpha))
-	# Clip the face's right edge with the same strip color, preserving eyes/mouth.
-	canvas.draw_colored_polygon(PackedVector2Array([Vector2(238,920),Vector2(238,1080),Vector2(210,1080)]),Color(0.14,0.055,0.23,alpha))
-	canvas.draw_line(Vector2(238,920),Vector2(210,1080),Color(0.85,0.74,0.43,alpha),3.0,true)
+	# Original geometric sweep, leaving the separate pixel hero visible beneath.
+	for ray in range(4):
+		var y:float=940+ray*30
+		var x:float=220+fmod(age*600+ray*45,440)
+		canvas.draw_line(Vector2(x,y),Vector2(minf(x+65,690),y),Color(.7,.8,1,alpha*.35),3,true)
 	var identity:Dictionary=preload("res://scripts/board_characters.gd").definition(view.session.character_id if view.get("session")!=null else "rio")
 	_text(canvas,body,Vector2(435+slide,972),identity.name+" · "+identity.role,22,Color(0.88,0.74,0.96,alpha))
 	_text(canvas,display,Vector2(435+slide,1030),identity.skill,34,Color(0.96,0.92,0.73,alpha),3)

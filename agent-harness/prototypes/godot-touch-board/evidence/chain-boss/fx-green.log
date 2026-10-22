@@ -1,0 +1,24 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS shield does not shatter before scheduled hit
+PASS shield result reaches one shot impact
+PASS shield fracture persists long enough to read
+PASS large bomb presentation counted from actual unique activated panels
+PASS presentation never edits canonical result or repeats damage
+PASS actual draw emits shield pieces and readable break result
+PASS large bomb adds two distinct concentric impact waves
+PASS reduced effect uses two quiet arcs without fragments
+PASS reduced mode disables flash and shake
+PASS reset cancels shield debris
+PASS skill sweep never reintroduces old nonpixel portrait
+PASS skill casts visible sweep across board during existing cutin
+PASS sweep remains thin translucent and inside board bounds
+PASS sweep uses selected target color
+PASS sweep does not mutate skill conversion map
+PASS reduced mode omits board sweep
+PASS sweep expires with existing half second cutin
+PASS chain timbre has bounded density progression
+PASS harmonic density rises at8 and16 then caps
+PASS cached waveform peaks retain headroom
+PASS no extra playback voices
+CHAIN_BOSS_FX checks=21 failures=0
