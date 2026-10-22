@@ -1,0 +1,100 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+QUALITY FIXTURES: injected states and frozen presentation ages; NOT normal progression or performance evidence
+PASS OS driver acknowledged 01-ready
+PASS OS driver acknowledged effects-reduced
+PASS OS reduced-effects control toggles without board passthrough
+PASS OS driver acknowledged 01b-reduced
+PASS OS driver acknowledged effects-full
+PASS OS full effects restored without action
+PASS OS driver acknowledged audio-toggle
+PASS OS mute control preserved
+PASS OS driver acknowledged 02-charging-three
+PASS OS driver acknowledged 03-ash-charging-two
+PASS OS driver acknowledged targeting
+PASS OS driver acknowledged color
+PASS OS skill and palette choose water
+PASS OS driver acknowledged 04-targeting
+PASS OS driver acknowledged cancel-targeting
+PASS targeting cancel has no activation
+PASS OS driver acknowledged target-again
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":12.691}
+PASS OS driver acknowledged activate
+PASS actual skill activates without action or input lock
+PASS OS driver acknowledged 05-activation-120ms
+PASS OS driver acknowledged reset-fx
+PASS OS reset clears activation and returns to selection
+PASS after-reset begins at character selection
+PASS OS driver acknowledged after-reset-character
+PASS OS driver acknowledged after-reset-depart
+PASS after-reset opens fresh map
+PASS OS driver acknowledged after-reset-entry
+PASS OS driver acknowledged after-reset-enter
+PASS after-reset enters fresh battle through controller
+PASS core fixture runs only after actual departure
+PASS core fixture planner activates both real cores
+PASS OS driver acknowledged chain-down
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":12.2}
+PASS constructed edge board uses exact canonical core chain
+PASS OS driver acknowledged 06-chain-preview
+PASS OS driver acknowledged chain-up
+PASS core chain preview commits once through controller
+PASS OS driver acknowledged 07-chain-damage-fx
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":10.973}
+PASS OS driver acknowledged heal
+PASS heart commit distinguishes raw and effective healing
+PASS OS driver acknowledged 08-heal-overheal-fx
+PASS OS driver acknowledged 09-reward
+PASS OS driver acknowledged reward-down
+PASS OS driver acknowledged 10-reward-pressed
+PASS OS driver acknowledged reward-up
+PASS OS reward release chooses once and opens current route UI
+PASS OS driver acknowledged 11-route
+PASS OS driver acknowledged route-stale-up
+PASS OS driver acknowledged reward-stale-up
+PASS stale modal releases cannot select, advance, clear or duplicate rewards
+PASS OS driver acknowledged route-fresh-click
+PASS fresh map click selects without auto-enter
+PASS OS driver acknowledged route-fresh-enter
+PASS fresh confirmation enters selected route node
+PASS OS driver acknowledged 12-shop
+PASS OS driver acknowledged buy-heal
+PASS OS driver acknowledged buy-relic
+PASS OS shop transactions apply once
+PASS OS driver acknowledged 13-shop-sold
+PASS OS driver acknowledged 14-shop-disabled
+PASS OS driver acknowledged disabled-heal
+PASS disabled shop click consumes nothing
+PASS OS driver acknowledged details
+PASS OS owned relic opens explanation
+PASS OS driver acknowledged 15-details
+PASS OS driver acknowledged detail-close
+PASS detail close never passes through to board
+PASS OS driver acknowledged 16-victory
+PASS OS driver acknowledged restart-victory
+PASS OS terminal restart restores clean selection: victory
+PASS OS driver acknowledged restart-stale-victory
+PASS stale restart release cannot choose a character: victory
+PASS restart-victory begins at character selection
+PASS OS driver acknowledged restart-victory-character
+PASS OS driver acknowledged restart-victory-depart
+PASS restart-victory opens fresh map
+PASS OS driver acknowledged restart-victory-entry
+PASS OS driver acknowledged restart-victory-enter
+PASS restart-victory enters fresh battle through controller
+PASS OS driver acknowledged 16-defeat
+PASS OS driver acknowledged restart-defeat
+PASS OS terminal restart restores clean selection: defeat
+PASS OS driver acknowledged restart-stale-defeat
+PASS stale restart release cannot choose a character: defeat
+PASS restart-defeat begins at character selection
+PASS OS driver acknowledged restart-defeat-character
+PASS OS driver acknowledged restart-defeat-depart
+PASS restart-defeat opens fresh map
+PASS OS driver acknowledged restart-defeat-entry
+PASS OS driver acknowledged restart-defeat-enter
+PASS restart-defeat enters fresh battle through controller
+QUALITY_WINDOW checks=90 failures=0 size=(360, 640)

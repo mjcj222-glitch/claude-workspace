@@ -24,6 +24,9 @@ func run()->void:
  a.panel(0,"core");var core:AudioStream=a.voices[4].stream
  a.panel(0,"strong");check(a.voices[4].stream!=core,"strong core has independent deeper explosion cue")
  a.impact(2,true);check(a.voices[5].stream!=null,"final hit has reserved voice not stolen by pops")
+ # Allow queued AudioServer playback to register before immediate stop/free.
+ # Same assertions and sound overlap; do not tear down before the first mix.
+ await create_timer(.05).timeout
  a.muted=true
  check(a.voices.all(func(v):return not v.playing),"mute immediately stops existing tails")
  var cursor:int=a.cursor;a.panel(0,"normal");a.impact(2,true)

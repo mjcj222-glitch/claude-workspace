@@ -36,6 +36,18 @@ func reset() -> void:
 	scene.set_process(false)
 	scene.record_timings=false
 	scene.sound.muted=true
+func depart_with_os(tag:String) -> void:
+	check(scene.session.phase=="departure",tag+" begins at character selection")
+	await gesture(tag+"-character",scene.UI.character_rect(0).get_center())
+	await gesture(tag+"-depart",scene.UI.DEPART.get_center())
+	if scene.session.get("area_mode")==true:
+		check(scene.session.phase=="map" and scene.session.current_node=="start",tag+" opens fresh map")
+		await gesture(tag+"-entry",scene.AreaUI.node_rect(0).get_center())
+		await gesture(tag+"-enter",scene.AreaUI.ENTER.get_center())
+	check(scene.session.phase=="ready" and scene.session.character_id=="rio" and scene.session.actions==0,tag+" enters fresh battle through controller")
+	# Let the real departure double-click guard expire before fixture input.
+	await create_timer(.52).timeout
+
 func shot(name:String) -> void:
 	if effects_only and name not in ["05-activation-120ms","07-chain-damage-fx","08-heal-overheal-fx"]: return
 	await gesture(name,Vector2.ZERO,"capture",name)
@@ -80,7 +92,8 @@ func run() -> void:
 	scene.quality_fx.update(0.12)
 	await shot("05-activation-120ms")
 	await gesture("reset-fx",scene.RESET.get_center())
-	check(scene.quality_fx.cutin_remaining==0 and scene.session.charge==3,"OS reset clears activation")
+	check(scene.quality_fx.cutin_remaining==0 and scene.session.charge==3 and scene.session.phase=="departure","OS reset clears activation and returns to selection")
+	await depart_with_os("after-reset")
 	# Deliberately constructed edge board; canonical plan and controller commit.
 	var board:Array=[]
 	for i in range(24):
@@ -88,12 +101,17 @@ func run() -> void:
 	scene.session.panels=board.duplicate(true)
 	scene.visual=board.duplicate(true)
 	scene.session.next_id=100
+	check(scene.session.phase=="ready","core fixture runs only after actual departure")
+	var expected:Dictionary=scene.session.plan_for(board[0].id)
+	expected["mode"]="clear" # Controller adds routing metadata to the canonical plan.
+	check(expected.get("valid",false) and expected.get("activated",[]).size()==2,"core fixture planner activates both real cores")
 	var at:Vector2=scene.board_to_screen(board[0].pos)
 	await gesture("chain-down",at,"down")
 	var plan:Dictionary=scene.session.selection.duplicate(true)
-	check(plan.get("valid",false) and plan.get("activated",[]).size()>=2,"constructed edge board uses canonical core chain")
+	check(plan==expected and plan.get("valid",false) and plan.get("activated",[]).size()==2,"constructed edge board uses exact canonical core chain")
 	await shot("06-chain-preview")
 	await gesture("chain-up",at,"up")
+	check(scene.active_plan==plan and scene.session.actions==1,"core chain preview commits once through controller")
 	for id in plan.get("sequence",[]): scene._burst(id,0)
 	scene.quality_fx.action_finished()
 	scene.quality_fx.update(scene.clear_duration+0.04)
@@ -128,10 +146,22 @@ func run() -> void:
 	await gesture("reward-down",reward,"down")
 	await shot("10-reward-pressed")
 	await gesture("reward-up",reward,"up")
-	check(scene.session.phase=="route" and scene.session.relics.has("pigment"),"OS reward release chooses once and opens route")
+	var area:bool=scene.session.get("area_mode")==true
+	var destination:String="map" if area else "route"
+	check(scene.session.phase==destination and scene.session.relics==["pigment"] and scene.session.rewards_taken==1 and scene.session.gold==4,"OS reward release chooses once and opens current route UI")
 	await shot("11-route")
-	await gesture("route-stale-up",scene.UI.route_rect(0).get_center(),"up")
-	check(scene.session.phase=="route" and scene.session.actions==0,"stale modal release cannot advance or clear")
+	var serial:int=scene.session.offer_serial
+	var next:Vector2=scene.AreaUI.node_rect(scene.AreaUI.ORDER.find("rest")).get_center() if area else scene.UI.route_rect(0).get_center()
+	await gesture("route-stale-up",next,"up")
+	await gesture("reward-stale-up",reward,"up")
+	check(scene.session.phase==destination and scene.session.actions==0 and scene.session.offer_serial==serial and scene.session.rewards_taken==1 and scene.session.gold==4 and (not area or scene.session.selected_node==""),"stale modal releases cannot select, advance, clear or duplicate rewards")
+	await gesture("route-fresh-click",next)
+	if area:
+		check(scene.session.phase=="map" and scene.session.selected_node=="rest" and scene.session.current_node=="entry","fresh map click selects without auto-enter")
+		await gesture("route-fresh-enter",scene.AreaUI.ENTER.get_center())
+		check(scene.session.phase=="rest" and scene.session.history.back()=="rest","fresh confirmation enters selected route node")
+	else:
+		check(scene.session.phase=="ready" and scene.session.route=="safe" and scene.session.combat.encounter==1,"fresh route click enters short-run next battle")
 	reset()
 	scene.session.phase="shop"
 	scene.session.combat.encounter=1
@@ -167,6 +197,9 @@ func run() -> void:
 		scene.session.combat.enemy_hp=0 if phase=="victory" else 20
 		await shot("16-"+phase)
 		await gesture("restart-"+phase,scene.UI.RESTART.get_center())
-		check(scene.session.phase=="ready" and scene.session.hp==30 and scene.session.relics.is_empty(),"OS terminal restart restores clean run: "+phase)
+		check(scene.session.phase=="departure" and scene.session.character_id=="" and scene.session.hp==30 and scene.session.relics.is_empty() and scene.session.actions==0 and scene.session.gold==0,"OS terminal restart restores clean selection: "+phase)
+		await gesture("restart-stale-"+phase,scene.UI.RESTART.get_center(),"up")
+		check(scene.session.phase=="departure" and scene.session.departure_choice=="","stale restart release cannot choose a character: "+phase)
+		await depart_with_os("restart-"+phase)
 	print("QUALITY_WINDOW checks=",checks," failures=",failures," size=",root.size)
 	quit(1 if failures else 0)

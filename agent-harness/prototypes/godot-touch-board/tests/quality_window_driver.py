@@ -13,13 +13,16 @@ premium = "--premium" in sys.argv
 impact = "--impact" in sys.argv
 log_suffix = "-effects" if effects_only else ""
 evidence = base / 'evidence' / ('impact/windows' if impact else ('premium' if premium else 'quality'))
+if "--validation-repair" in sys.argv:
+    evidence = base / 'evidence/validation-repair/windows'
+    if "--short-run" in sys.argv: log_suffix += "-short"
 evidence.mkdir(parents=True, exist_ok=True)
 request = Path('/tmp/chroma-quality-window-request.json')
 ack = Path('/tmp/chroma-quality-window-ack.json')
 request.unlink(missing_ok=True)
 ack.unlink(missing_ok=True)
 log = (evidence / f'states-{width}x{height}{log_suffix}.log').open('w')
-process = subprocess.Popen(['godot', '--path', str(base), '--audio-driver', 'Dummy', '--position', '0,0', '--script', 'tests/capture_quality_states.gd', '--', str(width), str(height)] + (["--effects-only"] if effects_only else []) + (["--hit-controls"] if impact else []), stdout=log, stderr=subprocess.STDOUT)
+process = subprocess.Popen(['godot', '--path', str(base), '--audio-driver', 'Dummy', '--position', '0,0', '--script', 'tests/capture_quality_states.gd', '--', str(width), str(height)] + (["--effects-only"] if effects_only else []) + (["--hit-controls"] if impact else []) + (["--short-run"] if "--short-run" in sys.argv else []), stdout=log, stderr=subprocess.STDOUT)
 pointer = [sys.executable, str(base / 'tests/x11_pointer.py')]
 seen = set()
 deadline = time.monotonic() + 220
@@ -36,7 +39,7 @@ try:
                 seen.add(stage)
                 if data['capture']:
                     pos, size = data['window_position'], data['window_size']
-                    subprocess.run(['ffmpeg', '-y', '-f', 'x11grab', '-video_size', f'{size[0]}x{size[1]}', '-i', f'{os.environ["DISPLAY"]}+{pos[0]},{pos[1]}', '-frames:v', '1', str(evidence / f'states-{width}x{height}-{data["capture"]}.png')], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+                    subprocess.run(['ffmpeg', '-y', '-f', 'x11grab', '-video_size', f'{size[0]}x{size[1]}', '-i', f'{os.environ["DISPLAY"]}+{pos[0]},{pos[1]}', '-frames:v', '1', str(evidence / f'states-{width}x{height}{log_suffix}-{data["capture"]}.png')], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
                 xy = [str(round(data['x'])), str(round(data['y']))]
                 if data['action'] == 'click':
                     subprocess.run(pointer + ['click'] + xy, check=True)
