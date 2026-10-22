@@ -1,0 +1,6 @@
+{
+  "method": "normal project executable; authenticated X11 pointer; process terminated while board held; restart with different requested new seed; resume then clear",
+  "checkpoint_unchanged_until_fresh_input": true,
+  "new_clear_checkpoint_changed": true,
+  "save_dir": "/tmp/chroma-native-lifecycle-d2mdhi4d/save"
+}

@@ -479,7 +479,7 @@ func _cache_selection_trace() -> void:
 				selection_trace.append([indexed[id].pos,indexed[neighbor].pos])
 
 func move_pointer(pos: Vector2, pointer: int) -> void:
-	if lifecycle.modal!="":lifecycle.move(pos,pointer);return
+	if lifecycle.modal!="" or lifecycle.choice==2:lifecycle.move(pos,pointer);return
 	session.move(screen_to_board(pos),pointer)
 	if pointer==detail_pointer:
 		if (detail_action=="open" and not UI.owned_rect(detail_index).has_point(pos)) or (detail_action=="close" and not _detail_close_hit(pos)):
@@ -490,6 +490,10 @@ func move_pointer(pos: Vector2, pointer: int) -> void:
 
 func press(pos: Vector2, pointer: int) -> void:
 	if lifecycle.modal!="":lifecycle.press(pos,pointer);return
+	if lifecycle.choice==2:return
+	if lifecycle.retry_hit(pos):
+		if session.owner==-99 and modal_pointer==-99 and detail_pointer==-99:lifecycle.press_retry(pos,pointer)
+		return
 	# Reset is the only transition input; all clocks and pending effects are owned here.
 	if not sandbox and RESET.has_point(pos):
 		lifecycle.request_new(self)
@@ -567,7 +571,7 @@ func press(pos: Vector2, pointer: int) -> void:
 		queue_redraw()
 
 func release(pos: Vector2, pointer: int) -> void:
-	if lifecycle.modal!="":lifecycle.release(self,pos,pointer);return
+	if lifecycle.modal!="" or lifecycle.choice==2:lifecycle.release(self,pos,pointer);return
 	_release_action(pos,pointer)
 	lifecycle.dirty=true
 	lifecycle.checkpoint(self)
@@ -688,6 +692,8 @@ func _input(event: InputEvent) -> void:
 		session.skill_mode = false
 
 func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		if lifecycle.request_quit(self):get_tree().quit()
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_MOUSE_EXIT:
 		if session != null: cancel_input()
 		primary_touch = -99

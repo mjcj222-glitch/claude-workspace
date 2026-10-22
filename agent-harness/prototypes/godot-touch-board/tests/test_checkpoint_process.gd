@@ -75,8 +75,5 @@ func run():
  # A plain summary accompanies the exact binary-preserving state for orchestration.
  FileAccess.open(output+".summary.json",FileAccess.WRITE).store_string(JSON.stringify({"errors":errors,"phase":scene.session.phase,"seed":scene.run_seed,"actions":scene.session.actions,"visited":visited_phases,"state_hash":Store.checksum(var_to_bytes(result.data)),"saved_hash":Store.checksum(var_to_bytes(loaded.get("data",{})))}))
  print("PROCESS ",scene.session.phase," actions=",scene.session.actions," errors=",errors)
- scene.set_process(false)
- scene.sound.reset_feedback()
- await process_frame # Fixed-fps Dummy playback teardown warning is documented.
- scene.queue_free();await process_frame
+ if not await preload("res://tests/audio_teardown.gd").release(scene,self):errors.append("audio teardown did not finish within bound")
  quit(1 if not errors.is_empty() else 0)

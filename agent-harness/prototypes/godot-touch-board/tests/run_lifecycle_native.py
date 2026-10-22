@@ -1,7 +1,7 @@
 import subprocess,os,time,json,tempfile
 from PIL import Image
 from pathlib import Path
-b=Path(__file__).resolve().parents[1];out=b/'evidence/run-lifecycle/native';out.mkdir(exist_ok=True)
+b=Path(__file__).resolve().parents[1];out=b/os.environ.get('CHROMA_NATIVE_OUT','evidence/run-lifecycle/native');out.mkdir(exist_ok=True)
 root=Path(tempfile.mkdtemp(prefix='chroma-native-lifecycle-'));slot=root/'save'
 env=dict(os.environ,DISPLAY=':81',XAUTHORITY='/tmp/chroma-disc/Xauthority',XDG_DATA_HOME=str(root/'data'),XDG_CONFIG_HOME=str(root/'config'),XDG_CACHE_HOME=str(root/'cache'))
 pointer=['python3',str(b/'tests/x11_pointer.py')]

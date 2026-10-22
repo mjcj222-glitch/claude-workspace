@@ -148,13 +148,17 @@ func load_run()->Dictionary:
 func atomic_text(name:String,text:String)->bool:
  if DirAccess.make_dir_recursive_absolute(directory)!=OK:error="저장 폴더를 만들 수 없습니다";return false
  var path=directory.path_join(name);var tmp=path+".tmp"
- var f=FileAccess.open(tmp,FileAccess.WRITE)
- if f==null:error="저장 파일을 쓸 수 없습니다";return false
- f.store_string(text);f.flush();var code=f.get_error();f.close()
- if code!=OK:error="저장 쓰기 실패";return false
+ if _write_temp(tmp,text)!=OK:error="저장 파일 쓰기 실패";return false
  if FileAccess.get_file_as_string(tmp)!=text:error="저장 확인 실패";return false
- if DirAccess.rename_absolute(tmp,path)!=OK:error="저장 교체 실패";return false
+ if _replace_file(tmp,path)!=OK:error="저장 교체 실패";return false
  return true
+func _write_temp(path:String,text:String)->int:
+ var f=FileAccess.open(path,FileAccess.WRITE)
+ if f==null:return FileAccess.get_open_error()
+ f.store_string(text);f.flush();var code=f.get_error();f.close()
+ return code
+func _replace_file(from:String,to:String)->int:
+ return DirAccess.rename_absolute(from,to)
 func save(data:Dictionary)->bool:
  error=""
  if not valid(data):error="저장 상태 검증 실패";return false
@@ -162,6 +166,8 @@ func save(data:Dictionary)->bool:
  var old=read_file(directory.path_join("current.json"))
  if old.ok:
   if not atomic_text("backup.json",encode(old.data)):return false
+ elif old.reason=="read":
+  error="이전 저장을 읽을 수 없어 보존합니다";return false
  elif FileAccess.file_exists(directory.path_join("current.json")):
   # Preserve invalid bytes before replacing only after explicit recovery.
   if DirAccess.rename_absolute(directory.path_join("current.json"),directory.path_join("invalid-"+str(Time.get_ticks_usec())+".json"))!=OK:error="손상 파일 보관 실패";return false

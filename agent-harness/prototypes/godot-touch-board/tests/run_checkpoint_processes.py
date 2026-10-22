@@ -2,7 +2,7 @@
 import json, os, subprocess, tempfile
 from pathlib import Path
 base=Path(__file__).resolve().parents[1]
-out=base/'evidence/run-lifecycle/processes';out.mkdir(parents=True,exist_ok=True)
+out=base/os.environ.get('CHROMA_PROCESS_OUT','evidence/run-lifecycle/processes');out.mkdir(parents=True,exist_ok=True)
 root=Path(tempfile.mkdtemp(prefix='chroma-lifecycle-'))
 env=dict(os.environ,XDG_DATA_HOME=str(root/'data'),XDG_CONFIG_HOME=str(root/'config'),XDG_CACHE_HOME=str(root/'cache'))
 results=[]

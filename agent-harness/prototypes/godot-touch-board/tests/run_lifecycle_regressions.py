@@ -10,7 +10,7 @@ import subprocess
 import time
 
 base = Path(__file__).resolve().parents[1]
-out = base / 'evidence/run-lifecycle/regression'
+out = base / os.environ.get('CHROMA_REGRESSION_OUT','evidence/run-lifecycle/regression')
 out.mkdir(parents=True, exist_ok=True)
 env = dict(os.environ)
 for key, value in {'XDG_DATA_HOME':'/tmp/chroma-tools/data', 'XDG_CONFIG_HOME':'/tmp/chroma-tools/config', 'XDG_CACHE_HOME':'/tmp/chroma-tools/cache'}.items():
@@ -40,7 +40,7 @@ for row in commands:
     (out/'results.json').write_text(json.dumps(results, indent=2))
     print(name, code, errors[:2], flush=True)
 # These test-owned files existed at task start; retain fresh copies separately.
-preserved = base/'evidence/run-lifecycle/new-motion-regressions'
+preserved = base/os.environ.get('CHROMA_MOTION_OUT','evidence/run-lifecycle/new-motion-regressions')
 preserved.mkdir(exist_ok=True)
 for relative in ['evidence/growth/inlet-green.json', 'evidence/motion-fix/path-traces.json', 'evidence/refill-stall/exact-green.json', 'evidence/refill-stall/exact-green.var', 'evidence/impact-strength/bomb-supply-path.json','evidence/bomb-volume/dense-trace.json','evidence/bomb-volume/support-traces.json']:
     target = base/relative

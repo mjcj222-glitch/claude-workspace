@@ -52,7 +52,7 @@ func run()->void:
   if arg=="--event-free":event_free=true
   if arg.begins_with("--case="):evidence_case=arg.trim_prefix("--case=").validate_filename()
  route_choice="elite" if path_choice=="risk" else "safe"
- output_dir="res://evidence/run-lifecycle/normal/"+evidence_case+"/%s-%s-%s-%s"%[hero,path_choice,selected_policy,"movie" if movie else "live"]+("-free" if event_free else "")
+ output_dir=("res://evidence/save-recovery/normal/" if "--save-recovery" in OS.get_cmdline_user_args() else "res://evidence/run-lifecycle/normal/")+evidence_case+"/%s-%s-%s-%s"%[hero,path_choice,selected_policy,"movie" if movie else "live"]+("-free" if event_free else "")
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_dir))
  began_us=Time.get_ticks_usec();scene=load("res://main.tscn").instantiate();root.add_child(scene)
  var initial_seed:int=scene.run_seed
@@ -138,6 +138,7 @@ func run()->void:
  var result:Dictionary={"seed":initial_seed,"method":"Actual default area main, automated legal press/release, normal initializer, natural refill. No HP/gold/charge/board injection; not human feel/device/performance evidence.","hero":hero,"path":path_choice,"policy":selected_policy,"event_free":event_free,"movie":movie,"no_fixtures":true,"errors":errors,"terminal":terminal,"returned":errors.is_empty(),"fresh_battle":scene.session.phase=="ready","events":events,"timings":scene.timings,"screenshots":snapshots}
  FileAccess.open(output_dir.path_join("trace.json"),FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
  print("AREA_NORMAL ",hero," ",path_choice," ",selected_policy," terminal=",terminal.phase," clears=",terminal.actions," HP=",terminal.hp," history=",terminal.history," errors=",errors)
+ if not await preload("res://tests/audio_teardown.gd").release(scene,self):errors.append("audio teardown deadline")
  quit(0 if errors.is_empty() and terminal.phase in ["victory","defeat"] else 1)
 
 func wait_resolution() -> void:

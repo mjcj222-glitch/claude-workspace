@@ -1,3 +1,5 @@
+> 후속 저장 실패 재시도·종료 확인 및 오디오 진단은 [SAVE_RECOVERY.md](SAVE_RECOVERY.md)를 참고하세요. 아래는 최초 수명주기 구현의 검증 기록입니다.
+
 # 새 탐험과 로컬 이어하기
 
 2026-10-22. 기준 후보 `767f87a`에서 이어진 소스 변경입니다. 기존 Windows/Linux Library 후보는 그대로이며 이 기능을 포함하지 않습니다. 설계는 [RUN_LIFECYCLE_DESIGN.md](RUN_LIFECYCLE_DESIGN.md)에 먼저 기록했습니다.

@@ -43,5 +43,30 @@ func run():
  await shot("life-05-recovery")
  await gesture("life-recover",scene.lifecycle.PRIMARY.get_center())
  check(Store.capture(scene)==data,"recovery restores previous complete snapshot")
+ if "--save-failure" in OS.get_cmdline_user_args():await failure_checks(data)
  print("LIFECYCLE_WINDOW checks=",checks," failures=",failures," size=",root.size)
  quit(1 if failures else 0)
+
+func failure_checks(data):
+ var life=scene.lifecycle
+ life.store=preload("res://tests/fault_checkpoint.gd").new("/tmp/chroma-failure-window-"+str(OS.get_process_id()))
+ life.store.save(data);life.store.fault="readonly"
+ scene.session.gold+=1;life.dirty=true;life.checkpoint(scene)
+ check(life.error!="" and life.dirty,"write failure shown and pending")
+ await shot("failure-01-retrying")
+ await gesture("retry-down",life.RETRY.get_center(),"down")
+ await gesture("retry-out",Vector2(710,400),"up")
+ check(life.error!="" and life.pointer==-99,"interrupted retry cancels")
+ life.store.fault=""
+ await gesture("retry-success",life.RETRY.get_center())
+ check(life.error=="" and life.store.load_run().data==Store.capture(scene),"OS retry saves stable state")
+ life.store.fault="readonly";scene.session.phase="victory";life.dirty=true;life.checkpoint(scene)
+ scene.notification(Node.NOTIFICATION_WM_CLOSE_REQUEST)
+ check(life.modal=="quit","actual window-close handler shows explicit failure choice")
+ await shot("failure-02-quit")
+ # Real OS release outside the button must not exit or retry.
+ await gesture("quit-retry-down",life.PRIMARY.get_center(),"down")
+ await gesture("quit-retry-out",Vector2(710,400),"up")
+ check(life.modal=="quit" and not life.terminal_done,"interrupted quit choice inert")
+ life.store.fault=""
+ check(life.request_quit(scene) and life.store.load_run().get("closed",false),"recovered completion barrier before exit")
