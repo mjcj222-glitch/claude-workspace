@@ -1,7 +1,5 @@
 extends RefCounted
 const PanelView = preload("res://scripts/board_panel_view.gd")
-const BOMB_NORMAL = preload("res://assets/bombs/bomb-normal.svg")
-const BOMB_LARGE = preload("res://assets/bombs/bomb-large.svg")
 const HERO_TEXTURE = preload("res://assets/alchemist-portrait-v1.png")
 const TARGET_TEXTURE = preload("res://assets/training-jelly-golem-v1.png")
 const DRAGON_TEXTURE = preload("res://assets/premium/amethyst-dragon-arena-v1.png")
@@ -105,19 +103,36 @@ static func draw_panel(canvas: CanvasItem, panel: Dictionary, time: float, empha
 
 static func draw_bomb(canvas:CanvasItem,center:Vector2,radius:float,large:bool,emphasis:String="",color_index:int=0)->void:
 	var visible:float=PanelView.visual_radius({"radius":radius,"kind":"big_bomb" if large else "bomb"})
-	canvas.draw_texture_rect(BOMB_LARGE if large else BOMB_NORMAL,Rect2(center-Vector2.ONE*visible,Vector2.ONE*visible*2),false)
-	# Casing/fuse communicate bomb and size; persistent collar plus element
-	# jewel communicate its independent attribute, even with reduced effects.
+	# Flat, original technical disc. All ink stays in the existing physical
+	# envelope; rendering consumes no RNG and never edits panel/game state.
 	var base:Color=PALETTE[clampi(color_index,0,3)]
-	_ring(canvas,center,visible*.91,INK,maxf(4,visible*.10))
-	_ring(canvas,center,visible*.91,base,maxf(2,visible*.05))
-	canvas.draw_circle(center,visible*.36,INK)
-	canvas.draw_circle(center,visible*.32,base.darkened(.48))
-	_ring(canvas,center,visible*.33,base,1.4)
-	_glyph(canvas,center,visible*.24,color_index,base.lightened(.55))
-	_ellipse(canvas,center+visible*Vector2(-.13,-.21),visible*Vector2(.12,.055),Color(1,1,1,.65))
-	if emphasis in ["direct","chain"]:
-		_ring(canvas,center,visible*.98,Color("fff8d9") if emphasis=="direct" else Color("ffd28c"),2.8)
+	var rim:Color=base.lightened(.38)
+	canvas.draw_circle(center,visible*.91,base.darkened(.12))
+	_ring(canvas,center,visible*.89,rim,visible*.04)
+	# Short rectangular connector, within the unchanged circular hit hull.
+	var tab:=PackedVector2Array()
+	for v in [Vector2(.79,-.27),Vector2(.96,-.27),Vector2(.96,.27),Vector2(.79,.27)]:
+		tab.append(center+v*visible)
+	canvas.draw_colored_polygon(tab,rim)
+	# Fine translucent circuit lines, no spherical shading or specular gloss.
+	for i in range(5):
+		var x:float=(-.64+i*.11)*visible
+		canvas.draw_line(center+Vector2(x,-visible*.57),center+Vector2(x,visible*.53),Color(1,1,1,.12),.65,true)
+	canvas.draw_arc(center,visible*.84,.15,2.8,40,Color(1,1,1,.18),.75,true)
+	_star(canvas,center+Vector2(-.43,-.13)*visible,visible*.23,Color.WHITE,10)
+	var font:Font=ThemeDB.fallback_font
+	var label_size:int=maxi(8,roundi(visible*.29))
+	canvas.draw_string(font,center+Vector2(-.15,-.015)*visible,"BOMB",HORIZONTAL_ALIGNMENT_LEFT,-1,label_size,Color.WHITE)
+	# Technical label rules deliberately avoid unreadable imitation microtext.
+	for i in range(3):
+		var y:float=(.16+i*.10)*visible
+		canvas.draw_line(center+Vector2(-visible*.61,y),center+Vector2(visible*(.56-i*.08),y),Color(1,1,1,.82),maxf(.7,visible*.022),true)
+	_glyph(canvas,center+Vector2(.10,.66)*visible,visible*.13,color_index,Color(1,1,1,.9))
+	if emphasis=="direct":
+		_ring(canvas,center,visible*.94,Color("fffef7"),2.8)
+	elif emphasis=="chain":
+		for i in range(8):
+			canvas.draw_arc(center,visible*.94,i*TAU/8+.05,(i+1)*TAU/8-.20,8,Color("ffe99d"),2.8,true)
 
 static func draw_hero(canvas: CanvasItem, center: Vector2, time: float, active: bool) -> void:
 	# Face-led portrait crops within the supplied original, not a new character.

@@ -1,0 +1,9 @@
+360 640 stages 18 exit 0
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/prototypes/godot-touch-board/tests/disc_bomb_window_driver.py", line 39, in <module>
+    subprocess.run(['ffmpeg', '-y', '-f', 'x11grab', '-video_size', f'{size[0]}x{size[1]}', '-i', f'{os.environ["DISPLAY"]}+{pos[0]},{pos[1]}', '-frames:v', '1', str(evidence / f'states-{width}x{height}-{data["capture"]}.png')], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ffmpeg', '-y', '-f', 'x11grab', '-video_size', '720x1080', '-i', ':81+0,0', '-frames:v', '1', '/workspace/claude-workspace/agent-harness/prototypes/godot-touch-board/evidence/disc-bombs/windows/states-720x1080-01-colored-contact-fixture.png']' returned non-zero exit status 234.
+720 1080 stages 18 exit 0
+390 844 stages 18 exit 0
