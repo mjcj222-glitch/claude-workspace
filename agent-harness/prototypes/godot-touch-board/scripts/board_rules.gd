@@ -73,7 +73,7 @@ static func _component(graph: Dictionary, indexed: Dictionary, colors: Dictionar
 	return queue
 
 static func _empty_plan() -> Dictionary:
-	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": [], "direct_normals": 0, "ash_reserve": false, "base_damage": 0, "weak_count": 0, "weak_bonus": 0, "normal_count": 0, "effective_colors": {}, "combat_context": {}, "mitigates_intent": false, "blasts":[], "bomb_spawn_kind":"", "bomb_spawn_color":-1}
+	return {"valid": false, "direct": [], "removed": [], "activated": [], "converted": {}, "damage": 0, "heal_raw": 0, "heal_effective": 0, "heal_overflow": 0, "spawn": {}, "sequence": [], "direct_normals": 0, "ash_reserve": false, "base_damage": 0, "weak_count": 0, "weak_bonus": 0, "normal_count": 0, "effective_colors": {}, "combat_context": {}, "mitigates_intent": false, "petal_guard": false, "blasts":[], "bomb_spawn_kind":"", "bomb_spawn_color":-1}
 
 static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Array = [], combat_context: Dictionary = {}) -> Dictionary:
 	# Evaluate relic ownership once; the returned plan contains values, not live state.
@@ -100,10 +100,12 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Arr
 	# Claim prevents later competing cores from recoloring the same snapshot panel.
 	var claimed: Dictionary = {}
 	var direct_normals := 0
+	var direct_hearts := 0
 	for id in direct:
 		removed[id] = true
 		if indexed[id].kind == "normal":
 			direct_normals += 1
+		if indexed[id].kind == "heart":direct_hearts += 1
 		if _special(indexed[id]):
 			pending[id] = true
 	while not pending.is_empty():
@@ -159,7 +161,7 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Arr
 			if weakness_color >= 0 and weakness_color < 4 and int(colors[id]) == weakness_color:
 				result.weak_count += 1
 		elif indexed[id].kind == "heart":
-			result.heal_raw += 2
+			result.heal_raw += 1 if "petal" in relics else 2
 	result.base_damage = result.damage
 	result.weak_bonus = int(int(result.weak_count) / 2)
 	result.damage = int(result.base_damage) + int(result.weak_bonus)
@@ -169,6 +171,8 @@ static func plan(panels: Array, start_id: int, hp: int, max_hp: int, relics: Arr
 	elif intent == "direct4":
 		# direct was constructed by a visited-set traversal; its IDs are unique.
 		result.mitigates_intent = result.direct.size() >= 4
+	result.petal_guard = "petal" in relics and direct_hearts >= 3 and intent in ["direct4","slam"]
+	result.mitigates_intent = result.mitigates_intent or result.petal_guard
 	result.heal_effective = mini(int(result.heal_raw), maxi(0, max_hp - hp))
 	result.heal_overflow = int(result.heal_raw) - int(result.heal_effective)
 	result.direct_normals = direct_normals

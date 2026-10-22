@@ -81,8 +81,8 @@ func _init() -> void:
 	check(exists, "relic definitions file exists")
 	if exists:
 		var definitions = load("res://scripts/board_relics.gd")
-		check(definitions.IDS == ["pigment", "lens", "ash"], "known relic IDs are stable")
-		check(definitions.available(["lens"]) == ["pigment", "ash"], "available excludes owned relics")
+		check(definitions.IDS == ["pigment", "lens", "ash", "petal"], "known relic IDs are stable")
+		check(definitions.available(["lens"]) == ["pigment", "ash", "petal"], "available excludes owned relics")
 		check(definitions.available(definitions.IDS).is_empty(), "all owned means none available")
 		for id in definitions.IDS:
 			check(definitions.DEFS[id].id == id and not definitions.DEFS[id].name.is_empty() and not definitions.DEFS[id].change.is_empty() and not definitions.DEFS[id].description.is_empty(), "complete UI definition %s" % id)

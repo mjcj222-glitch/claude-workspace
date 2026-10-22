@@ -64,7 +64,7 @@ static func draw(view,canvas:CanvasItem)->void:
  ui._modal_text(view,canvas,Vector2(360,285),"휴식 · 한 번만 선택" if rest else "촉매 거래 · 한 가지만 선택",32,Color("fff0d3"),true,true)
  var relic:String=s.event_relic() if not rest else ""
  var enabled:bool=s.gold>=3 and (s.rest_gain()>0 if rest else relic!="")
- var names:Array=["3G · 생명 +%d (%d → %d)"%[s.rest_gain(),s.hp,s.hp+s.rest_gain()],"무료로 지나가기"] if rest else ["3G · "+(ui.RELIC_COPY[relic].name if relic!="" else "유물 모두 보유"),"보급품 받기 · +2G"]
+ var names:Array=["3G · 생명 +%d (%d → %d)"%[s.rest_gain(),s.hp,s.hp+s.rest_gain()],"무료로 지나가기"] if rest else ["3G · "+(ui.RELIC_COPY[relic].name if relic!="" else "유물 칸 가득"),"보급품 받기 · +2G"]
  for i in range(2):
   var r:=option_rect(i);var can:bool=i==1 or enabled
   MaterialArt.button(canvas,r,ui.MINT,"disabled" if not can else ("pressed" if view.modal_index==i else "normal"))

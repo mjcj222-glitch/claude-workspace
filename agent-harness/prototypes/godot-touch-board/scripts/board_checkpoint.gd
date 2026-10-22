@@ -55,10 +55,13 @@ static func valid(data)->bool:
  for list in [s.relics,s.reward_options]:
   var unique={}
   for id in list:
-   if id not in ["pigment","lens","ash"] or unique.has(id):return false
+   if id not in defaults.Relics.IDS or unique.has(id):return false
    unique[id]=true
  if s.phase=="reward":
-  if s.reward_options!=defaults.Relics.available(s.relics) or s.reward_options.is_empty():return false
+  if s.reward_options.is_empty() or s.relics.size()>=3:return false
+  # Version-1 offers are persisted transactions, not rerolled new catalogues.
+  for id in s.reward_options:
+   if id in s.relics:return false
  elif not s.reward_options.is_empty():return false
  if s.stats.size()!=3:return false
  for stat in s.stats:

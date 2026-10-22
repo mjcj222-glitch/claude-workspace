@@ -72,7 +72,7 @@ static func draw(view) -> void:
 		view._text(WEAKNESS_BASELINE,"약점 "+weakness_name(weak),22,COLORS[weak])
 		view.draw_rect(Rect2(40,335,640,3),Color("321329"))
 		view.draw_rect(Rect2(40,335,640*float(shown_hp)/session.combat.enemy_max_hp,3),Color("ed3465"))
-	var lines: Array = [view.status,""] if view.sandbox else intent_lines(context)
+	var lines: Array = [view.status,""] if view.sandbox else intent_lines(context,"petal" in session.relics)
 	if not preview.is_empty():
 		if not preview.get("valid",false):
 			lines=["일반 공격 패널을 골라주세요","하트·기존 핵에는 심을 수 없어요" if session.character_id=="noa" else "하트·핵은 변환하지 않아요"] if preview.get("mode","")=="skill" else ["같은 색 2개부터 골라주세요","놓아도 행동을 쓰지 않아요"]
@@ -138,6 +138,7 @@ const SUMMARY_CONTINUE = Rect2(84, 670, 552, 88)
 const NEXT_BATTLE = SUMMARY_CONTINUE
 const RESTART = SUMMARY_CONTINUE
 const RELIC_COPY = {
+ "petal":{"name":"수호 꽃잎","change":"직접 하트 3개 → 예고 약화","lines":["대신 하트 회복은 개당 2 → 1.","조건부 공격만 · 중첩 없음."]},
 	"pigment": {"name":"번짐 안료", "change":"스킬 변환 4개 → 5개", "lines":["선택한 패널을 포함해", "일반 패널을 최대 5개 변환해요."]},
 	"lens": {"name":"응축 렌즈", "change":"핵 6/12 → 5/11 · 폭탄 대형화", "lines":["직접 연결 핵 기준 감소.", "강화핵 발동 뒤 대형 폭탄 준비."]},
 	"ash": {"name":"잿빛 보석", "change":"일반 공격 6개 직접 연결 → 예약", "lines":["다음 스킬 사용 후 충전이 3회 → 2회.", "한 번만 적용되며 예약은 쌓이지 않아요."]}
@@ -187,7 +188,7 @@ static func draw_modal(view, canvas: CanvasItem) -> void:
 			var id: String = session.reward_options[i]
 			var copy: Dictionary = relic_copy(id,session)
 			var rect := reward_rect(i,count)
-			var tint: Color = [MINT,COLORS[2],COLORS[3]][["pigment","lens","ash"].find(id)]
+			var tint: Color = COLORS[4] if id=="petal" else [MINT,COLORS[2],COLORS[3]][["pigment","lens","ash"].find(id)]
 			MaterialArt.button(canvas,rect,tint,"pressed" if view.modal_phase == "reward" and view.modal_index == i else "normal")
 			canvas.draw_rect(Rect2(rect.position+Vector2(0,20),Vector2(3,86)),tint)
 			RelicArt.draw_icon(canvas,id,Rect2(rect.position+Vector2(10,15),Vector2(100,100)))
@@ -325,11 +326,11 @@ static func draw_route_shop_modal(view,canvas:CanvasItem)->void:
 		else:
 			if relic == "" and sold and not session.relics.is_empty(): relic = session.relics.back()
 			if relic != "": RelicArt.draw_icon(canvas,relic,Rect2(rect.position+Vector2(10,20),Vector2(100,100)))
-		var name: String = "생명 회복" if i == 0 else (RELIC_COPY[relic].name if relic != "" else "미보유 유물 없음")
+		var name: String = "생명 회복" if i == 0 else (RELIC_COPY[relic].name if relic != "" else "구매 가능한 유물 없음")
 		_modal_text(view,canvas,rect.position+Vector2(119,32),name,27,tint)
 		var change: String = "4 G · 생명 %d → %d (+%d)" % [session.hp,session.hp+gain,gain] if i == 0 else "8 G · 남은 유물 1개 획득"
 		_modal_text(view,canvas,rect.position+Vector2(119,63),change,24,Color("f2f5fa") if enabled else MUTED)
-		var effect: String = "최대 8 회복 · 한 번만 구매" if i == 0 else (relic_copy(relic,session).change if relic != "" else "새로운 유물은 추가하지 않아요")
+		var effect: String = "최대 8 회복 · 한 번만 구매" if i == 0 else (relic_copy(relic,session).change if relic != "" else "유물은 최대 3개까지 보유해요")
 		_modal_text(view,canvas,rect.position+Vector2(119,94),effect,22,MUTED)
 		var state: String = "구매 완료" if sold else ("생명 가득 · 구매 불가" if i == 0 and gain == 0 else ("골드 부족" if session.gold < price else "눌렀다 놓으면 구매"))
 		_modal_text(view,canvas,rect.position+Vector2(119,124),state,22,tint)
@@ -349,18 +350,20 @@ static func relic_copy(id:String,session)->Dictionary:
 static func damage_line(plan:Dictionary)->String:
 	return "피해 %d = 기본 %d + 약점 %d" % [plan.get("damage",0),plan.get("base_damage",plan.get("damage",0)),plan.get("weak_bonus",0)]
 
-static func intent_lines(context:Dictionary)->Array[String]:
+static func intent_lines(context:Dictionary,petal:bool=false)->Array[String]:
 	var incoming: int = context.get("incoming_damage",0)
 	var intent: String = context.get("intent","plain")
 	if intent == "slam":
 		if context.get("mitigation_success",false): return ["강타 약화 · 피해%d" % incoming, "이번 턴 동안 약화를 유지해요"]
-		return ["강타 10 → 4: 한 번에 약점 %d개" % int(context.get("slam_weak_required",2)), "또는 공격 패널 %d개 소거" % int(context.get("slam_normal_required",8))]
+		return ["강타 10 → 4: 한 번에 약점 %d개" % int(context.get("slam_weak_required",2)), ("또는 일반%d / 직접 하트3 · 회복1" % int(context.get("slam_normal_required",8))) if petal else "또는 공격 패널 %d개 소거" % int(context.get("slam_normal_required",8))]
 	if intent == "direct4":
 		if context.get("mitigation_success",false): return ["조건 성공 · 다음 공격 %d" % incoming, ""]
-		return ["4개 이상 연결을 한 번 지우면 공격 %d → %d" % [incoming,incoming-4], ""]
+		return ["4개 이상 연결을 한 번 지우면 공격 %d → %d" % [incoming,incoming-4], "또는 직접 하트3 · 하트 회복1" if petal else ""]
 	return ["3회 소거 후 공격 %d" % incoming, ""]
 
 static func preview_effect_line(plan:Dictionary)->String:
+	if plan.get("petal_guard",false):
+		return "피해 %d · 꽃잎 방어%s · 회복 %d" % [plan.damage," 유지" if plan.get("combat_context",{}).get("mitigation_success",false) else "",plan.heal_effective]
 	var text := damage_line(plan)
 	var context: Dictionary = plan.get("combat_context",{})
 	if context.get("intent","") == "slam":

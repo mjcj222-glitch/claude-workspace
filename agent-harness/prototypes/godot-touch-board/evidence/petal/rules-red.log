@@ -1,0 +1,24 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS initial legacy offers stay fixed
+FAIL new alternative after first relic
+PASS three-slot cap preserves exhausted reward
+FAIL healing tradeoff plain
+PASS three direct hearts qualify only conditional intent plain
+PASS hearts remain damage-free/pure plain
+PASS two hearts insufficient plain
+FAIL healing tradeoff direct4
+FAIL three direct hearts qualify only conditional intent direct4
+PASS hearts remain damage-free/pure direct4
+FAIL snapshot executes petal mitigation direct4
+FAIL petal does not stack direct4
+PASS two hearts insufficient direct4
+FAIL healing tradeoff slam
+FAIL three direct hearts qualify only conditional intent slam
+PASS hearts remain damage-free/pure slam
+FAIL snapshot executes petal mitigation slam
+FAIL petal does not stack slam
+PASS two hearts insufficient slam
+FAIL full HP permits defense; duplicate IDs cannot stack relic
+PASS legacy healing unchanged without petal
+PETAL checks=21 failures=11

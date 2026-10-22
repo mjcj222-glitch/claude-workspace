@@ -131,7 +131,7 @@ func _init() -> void:
 		s.combat.enemy_hp = 2
 		clear_fixture(s,board(2));s.finish_refill()
 		if fight < 2:
-			check(s.phase == "reward" and s.reward_options.size() == 3-fight and s.reward_round == fight+1, "only first two kills offer remaining relics")
+			check(s.phase == "reward" and s.reward_options.size() == 3 and s.reward_round == fight+1, "only first two kills offer remaining relics")
 			var choice: String = s.reward_options[0] if not s.reward_options.is_empty() else ""
 			check(s.choose_relic(choice,s.offer_serial), "progression accepts each earned choice")
 			if fight == 0:

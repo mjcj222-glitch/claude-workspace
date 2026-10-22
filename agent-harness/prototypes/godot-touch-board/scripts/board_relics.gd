@@ -1,8 +1,9 @@
 extends RefCounted
 ## Stable identifiers and concise player-facing copy; no mutable session state.
 
-const IDS := ["pigment", "lens", "ash"]
+const IDS := ["pigment", "lens", "ash", "petal"]
 const DEFS := {
+ "petal":{"id":"petal","name":"수호 꽃잎","change":"직접 하트 3개 → 예고 약화 · 회복 절반","description":"직접 연결한 하트 3개 이상으로 현재 조건부 공격을 약화합니다. 하트 회복은 개당 1입니다. 일반 공격은 약화하지 않고 중첩되지 않습니다."},
 	"pigment": {
 		"id": "pigment",
 		"name": "번짐 안료",
@@ -25,7 +26,8 @@ const DEFS := {
 
 static func available(owned: Array) -> Array:
 	var result: Array = []
+	if owned.size()>=3:return result.slice(0,3)
 	for id in IDS:
 		if not owned.has(id):
 			result.append(id)
-	return result
+	return result.slice(0,3)

@@ -8,7 +8,7 @@ env=dict(os.environ,XDG_DATA_HOME=str(root/'data'),XDG_CONFIG_HOME=str(root/'con
 results=[]
 def run(tag,slot,steps=0,seed=20261021,interrupt='',hero='rio'):
     output=root/(tag+'.json')
-    args=['godot','--headless','--path',str(base),'--fixed-fps','30','--script','tests/test_checkpoint_process.gd','--','--save-dir='+str(root/slot),'--steps='+str(steps),'--output='+str(output),'--hero='+hero]
+    args=['godot','--headless','--path',str(base),'--fixed-fps','30','--script',os.environ.get('CHROMA_PROCESS_SCRIPT','tests/test_checkpoint_process.gd'),'--','--save-dir='+str(root/slot),'--steps='+str(steps),'--output='+str(output),'--hero='+hero]
     if seed is not None:args+=['--seed='+str(seed)]
     if interrupt:args+=['--interrupt='+interrupt]
     p=subprocess.run(args,env=env,cwd=base,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=120)

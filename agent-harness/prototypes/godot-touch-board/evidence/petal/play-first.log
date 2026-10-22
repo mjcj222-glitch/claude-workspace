@@ -1,0 +1,1 @@
+{'seed': 1, 'hero': 'rio', 'route': 'safe', 'exit': 1, 'errors': ['earned reward failed map/single-grant contract'], 'terminal': {'phase': 'map', 'hp': 25, 'actions': 10, 'relics': ['pigment', 'petal']}, 'guards': 0}

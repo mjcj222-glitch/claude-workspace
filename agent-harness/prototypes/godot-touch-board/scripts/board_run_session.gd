@@ -129,8 +129,9 @@ func shop_heal_gain() -> int:
 	return mini(SHOP_HEAL_AMOUNT, maxi(0, max_hp - hp))
 
 func shop_remaining_relic() -> String:
-	var remaining: Array = Relics.available(relics)
-	return String(remaining[0]) if remaining.size() == 1 else ""
+	var remaining: Array = Relics.available(relics).filter(func(id):return id!="petal")
+	# Keep legacy shop stock stable on old saves; petal is a reward alternative.
+	return String(remaining[0]) if not remaining.is_empty() and (remaining.size()==1 or "petal" in relics) else ""
 
 func buy_shop(item: String) -> bool:
 	if phase != "shop" or shop_closed:

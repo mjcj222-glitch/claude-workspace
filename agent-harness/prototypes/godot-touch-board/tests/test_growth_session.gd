@@ -35,7 +35,7 @@ func _init()->void:
 	check(s.choose_relic("lens",serial),"first choice commits")
 	check(not s.choose_relic("lens",serial),"duplicate choice rejected")
 	for i in range(3):clear(s,2,"heart" if i==0 else "normal")
-	check(s.phase=="reward" and s.reward_options.size()==2 and "lens" not in s.reward_options,"second options exclude owned")
+	check(s.phase=="reward" and s.reward_options.size()==3 and "lens" not in s.reward_options,"second options exclude owned")
 	check(not s.choose_relic("ash",serial),"stale first offer rejected")
 	check(s.choose_relic("ash",s.offer_serial),"second distinct choice")
 	for i in range(3):clear(s)

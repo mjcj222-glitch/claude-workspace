@@ -58,7 +58,7 @@ func _init() -> void:
 	check(not s.choose_route("safe") and snapshot(s) == before,"route cannot be chosen twice")
 	check(s.begin_next_fight(board(10),12) and s.combat.encounter == 1 and s.combat.enemy_max_hp == 44,"selected elite route reaches combat configuration")
 	win(s)
-	check(s.gold == 12 and s.reward_options.size() == 2 and s.reward_round == 2,"elite second win pays eight in addition to first four")
+	check(s.gold == 12 and s.reward_options.size() == 3 and s.reward_round == 2,"elite second win pays eight in addition to first four")
 	serial = s.offer_serial
 	s.phase = "busy";s.finish_refill()
 	check(s.gold == 12 and s.offer_serial == serial,"second encounter payout and offer are exact-once")

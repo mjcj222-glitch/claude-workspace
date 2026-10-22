@@ -69,7 +69,7 @@ func finish_refill()->void:
   reward_options=Relics.available(relics)
   offer_serial+=1
   if reward_options.is_empty():
-   gold+=4;relic_fallbacks+=1;reward_notice="모든 유물 보유 · 대체 보상 +4 G";phase="spoils"
+   gold+=4;relic_fallbacks+=1;reward_notice="유물 칸 가득 · 대체 보상 +4 G";phase="spoils"
   else:
    reward_round+=1;phase="reward"
  elif outcome=="attack":

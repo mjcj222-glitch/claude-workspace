@@ -40,6 +40,7 @@ func record(type:String,details:Dictionary={}) -> void:
   details["bomb_supply"]=scene.active_plan.get("bomb_spawn_kind","")
   details["bomb_supply_color"]=scene.active_plan.get("bomb_spawn_color",-1)
  super.record(type,details)
+func reward_choice()->int:return 0
 func audit_save()->void:
  if scene.lifecycle.error!="":errors.append(scene.lifecycle.error)
 func run()->void:
@@ -86,8 +87,9 @@ func run()->void:
     record("node_choice",{"option":index,"before":before})
    "reward":
     await snapshot("reward-%d"%s.reward_round);await create_timer(1.2).timeout
-    var id:String=s.reward_options[0]
-    await gesture(scene.UI.reward_rect(0,s.reward_options.size()).get_center())
+    var choice:int=reward_choice()
+    var id:String=s.reward_options[choice]
+    await gesture(scene.UI.reward_rect(choice,s.reward_options.size()).get_center())
     if s.phase!="map" or s.relics.count(id)!=1:errors.append("earned reward failed map/single-grant contract")
     var serial:int=s.offer_serial
     scene.release(scene.AreaUI.ENTER.get_center(),-1)

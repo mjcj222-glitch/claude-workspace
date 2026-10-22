@@ -2,6 +2,7 @@ extends RefCounted
 ## Original relic SVGs. Raw-source loading permits a fresh checkout without an
 ## editor import; exported projects fall back to Godot's imported resources.
 const PATHS = {
+ "petal":"res://assets/relics/petal.svg",
 	"pigment": "res://assets/relics/pigment.svg",
 	"lens": "res://assets/relics/lens.svg",
 	"ash": "res://assets/relics/ash.svg",

@@ -1,14 +1,15 @@
 # Original relic icons
 
-Three original hand-authored SVG illustrations, created directly in this workspace
+Four original hand-authored SVG illustrations, created directly in this workspace
 for the approved Chroma presentation pass. No external image, user reference,
 old game asset, or generated image was traced or incorporated.
 
 - `pigment.svg`: green pigment bottle with brass cap and droplet seal.
 - `lens.svg`: gold-framed blue lens with dark diagonal handle and focused ray.
+- `petal.svg`: original pink heart shield with green protective leaves (2026-10-22).
 - `ash.svg`: faceted gray crystal, warm ember and gold mounting claws.
 
-All source canvases are 320×320 with transparent backgrounds. The consistent
+The original three source canvases are 320×320; `petal.svg` is 128×128. All are with transparent backgrounds. The consistent
 brass highlights, dark outlines and broad silhouettes are intended for96 logical
 pixel reward icons and72 logical pixel owned icons (48/36 physical pixels at
 360-wide rendering). Scale down with linear filtering; do not add a circular

@@ -102,10 +102,10 @@ func record_clear(plan: Dictionary) -> void:
 	enemy_hp = maxi(0, enemy_hp - maxi(0, int(plan.get("damage", 0))))
 	actions_in_turn += 1
 	if mitigation_active:
-		if intent == "slam" and Rules.slam_mitigated(int(plan.get("weak_count",0)), int(plan.get("normal_count",0)), plan.get("combat_context", damage_context())):
+		if intent == "slam" and (plan.get("petal_guard",false) or Rules.slam_mitigated(int(plan.get("weak_count",0)), int(plan.get("normal_count",0)), plan.get("combat_context", damage_context()))):
 			mitigation_success = true
 			incoming_damage = 4
-		elif intent == "direct4" and _direct_count(plan) >= 4:
+		elif intent == "direct4" and (_direct_count(plan) >= 4 or plan.get("petal_guard",false)):
 			mitigation_success = true
 			incoming_damage = 3 + _route_attack_bonus()
 

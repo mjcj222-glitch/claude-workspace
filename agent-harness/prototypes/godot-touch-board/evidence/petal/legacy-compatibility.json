@@ -1,0 +1,39 @@
+{
+  "source_candidate": "cd1944f",
+  "old": {
+    "actions": 8,
+    "errors": [],
+    "phase": "reward",
+    "saved_hash": "65a02c49f045e682fade03940cac56648683d162942ab878762da395f4facb1b",
+    "seed": 20261021,
+    "state_hash": "65a02c49f045e682fade03940cac56648683d162942ab878762da395f4facb1b",
+    "visited": [
+      "ready:entry",
+      "ready:entry",
+      "ready:entry",
+      "ready:entry",
+      "reward:entry",
+      "map:entry",
+      "event:event",
+      "map:event",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite",
+      "ready:elite"
+    ]
+  },
+  "resumed": {
+    "actions": 8,
+    "errors": [],
+    "phase": "reward",
+    "saved_hash": "65a02c49f045e682fade03940cac56648683d162942ab878762da395f4facb1b",
+    "seed": 20261021,
+    "state_hash": "65a02c49f045e682fade03940cac56648683d162942ab878762da395f4facb1b",
+    "visited": []
+  },
+  "checkpoint_bytes_unchanged": true,
+  "sha256": "a57a50fc4a64dec4d014543f20ed3aad26fd66e8d0f03506e9e9eea8993b7e39"
+}

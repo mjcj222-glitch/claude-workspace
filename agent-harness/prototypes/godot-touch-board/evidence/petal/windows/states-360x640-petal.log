@@ -1,0 +1,25 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS OS driver acknowledged petal-01-offer-fixture
+PASS reward effect copy fits card
+PASS reward cost copy fits card
+PASS reward cost copy fits card
+PASS OS driver acknowledged petal-choose
+PASS OS reward acquires new choice once
+PASS stale reward release inert
+PASS OS driver acknowledged petal-02-telegraph-fixture
+PASS OS driver acknowledged petal-preview
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":13.926}
+PASS OS preview shows defense and reduced heal
+PASS preview copy fits smallest supported size
+PASS OS driver acknowledged petal-03-preview-fixture
+PASS OS driver acknowledged petal-cancel
+PASS canceled heart preview grants no defense
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":13.851}
+PASS OS driver acknowledged petal-commit
+PASS OS committed snapshot heals three and mitigates to four
+PASS OS driver acknowledged petal-04-success-fixture
+PETAL_WINDOW checks=17 failures=0 size=(360, 640)
