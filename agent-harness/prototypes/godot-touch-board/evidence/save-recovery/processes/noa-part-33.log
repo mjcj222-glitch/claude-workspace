@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+CAPTURE_ELEMENTAL {"actions":17,"actions_in_turn":0,"ash_reserved":false,"attacks_total":4,"character_id":"noa","charge":0,"charge_required":3,"combat_context":{"incoming_damage":6,"intent":"plain","intent_serial":9,"mitigation_success":false,"slam_normal_required":8,"slam_weak_required":2,"weakness_color":3},"details":{"color":1,"connected":[326,316,331,332,266,324,325,327,330,333,335,294,329,337,281,334,277],"planted":{"326":"strong"},"start_id":326,"targets":[326]},"encounter":2,"enemies_defeated":3,"enemy_hp":16,"enemy_max_hp":48,"fallback_plain":false,"gold":22,"gold_spent":0,"hp":26,"incoming_damage":6,"last_attack_damage":4,"mitigation_active":false,"mitigation_success":false,"phase":"ready","process_frame":0,"relics":["pigment","lens","ash"],"route":"elite","scene_seconds":0.0,"shop_closed":true,"shop_heal_sold":false,"shop_relic_sold":false,"skill_uses":7,"turn":1,"type":"skill","wall_ms":1338.501,"weak_color":3}
+PROCESS ready actions=17 errors=[]
+AUDIO_TEARDOWN remaining=0 wall_ms=86

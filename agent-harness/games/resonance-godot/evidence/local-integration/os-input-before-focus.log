@@ -1,0 +1,12 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: OS mouse activates the skill button
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/os_input_probe.gd:14)
+       [1] run (res://tools/os_input_probe.gd:57)
+       [2] wait_ready (res://tools/os_input_probe.gd:18)
+{"checks":32,"failures":1,"suite":"actual X11 mouse and live resize","windows":[{"checks":8,"preview_removed_ids":[1,2,7,13],"window":[360,640]},{"checks":8,"preview_removed_ids":[1,2,4,7,8,9,10,13,14,15,17,20,22,27,28,33,34,39,40,41],"window":[390,844]},{"checks":8,"preview_removed_ids":[1,2,4,7,8,9,10,13,14,15,17,22,27,28,33,34,39,40,41],"window":[720,1280]},{"checks":8,"preview_removed_ids":[1,2,4,7,8,9,10,13,14,15,17,20,22,27,28,33,34,39,40,41],"window":[1280,900]}]}

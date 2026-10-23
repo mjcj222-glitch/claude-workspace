@@ -1,0 +1,65 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS real write-open failure reported
+PASS failed write retains pending save
+PASS write-open failure preserves checkpoint
+PASS recovery without further input
+PASS terminal write failure stays pending
+PASS terminal recovery blocks old checkpoint
+PASS readonly initial
+PASS readonly backup exists
+PASS readonly fails safely
+PASS readonly current preserved
+PASS readonly backup preserved
+PASS readonly partial temp never promoted
+PASS readonly recovery
+PASS full initial
+PASS full backup exists
+PASS full fails safely
+PASS full current preserved
+PASS full backup preserved
+PASS full partial temp never promoted
+PASS full recovery
+PASS rename initial
+PASS rename backup exists
+PASS rename fails safely
+PASS rename current preserved
+PASS rename backup preserved
+PASS rename partial temp never promoted
+PASS rename recovery
+PASS read initial
+PASS read backup exists
+PASS read fails safely
+PASS read current preserved
+PASS read backup preserved
+PASS read partial temp never promoted
+PASS read recovery
+PASS 1000 frames/releases cannot bypass retry delay
+PASS first retry once at one second
+PASS three automatic retries then stop
+PASS exhausted budget never busy loops
+PASS explicit retry recovers latest stable state
+PASS animation retry saves cached stable state; future boundary still dirty
+PASS next completed action is not lost after retry
+PASS held input never captured
+PASS released stable checkpoint captured
+PASS failed terminal close requires explicit unsaved-exit decision
+PASS unavailable storage honestly still contains old checkpoint
+PASS new run after failed terminal barrier requires confirmation
+PASS quit retry commits terminal barrier before exit
+PASS real rename initial
+PASS real terminal rename failure preserves original
+PASS real terminal rename recovery
+PASS retry cannot steal held board pointer
+PASS board cannot arm underneath held retry
+PASS terminal attempts barrier despite prior exhausted snapshot budget
+PASS failed confirmed archive preserves run and save
+PASS reward valid initial checkpoint
+PASS reward transaction succeeds but write failure explicit
+PASS reward repeated release cannot repay
+PASS reward retry stores ledger without replay
+PASS shop valid initial checkpoint
+PASS shop transaction succeeds but write failure explicit
+PASS shop repeated release cannot repay
+PASS shop retry stores ledger without replay
+SAVE_RECOVERY checks=62 failures=0

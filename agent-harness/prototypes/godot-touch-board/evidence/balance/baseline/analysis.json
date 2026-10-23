@@ -1,0 +1,665 @@
+{
+  "incomplete_events": [
+    {
+      "path": "evidence/balance/baseline/seed20261023-elite-pair0-avoid-intent.json",
+      "terminal": "motion_stalled_at_4s",
+      "event_type": "clear",
+      "phase": "stalled",
+      "start_id": 159,
+      "reason": "No after-state exists for incomplete refill; not a defeat or completed audit"
+    }
+  ],
+  "method": "Pure fixed-step normal simulation, no injections, GPU or realtime evidence. All three policies share exact first-two-fight selector, max-connection skill, and route/shop flow. Avoid-intent is adversarial diagnostic, not human ability.",
+  "source_changes": [],
+  "runs": 18,
+  "expected_runs": 18,
+  "supplemental_completed": 12,
+  "scope_note": "Parent bounded core to 3 seeds x2 routes x pair0 x3 policies. Initial broad batch was interrupted only after seed21 full18 files completed (exit130); completed non-pair0 files retained as supplemental. Missing core seeds then run via CLI.",
+  "early_fight_groups_checked": 6,
+  "early_fight_errors": [],
+  "audit_available_runs": 17,
+  "audit_checks": 1944,
+  "run_errors": [
+    "evidence/balance/baseline/seed20261023-elite-pair0-avoid-intent.json"
+  ],
+  "policies": {
+    "immediate-damage": {
+      "runs": 6,
+      "terminal": {
+        "victory": 6
+      },
+      "boss_clears": 45,
+      "total_run_actions": 92,
+      "final_hp": [
+        20,
+        20,
+        20,
+        20,
+        18,
+        20
+      ],
+      "turns": 18,
+      "slam_turns": 12,
+      "fallback_turns": 0,
+      "attacks": 12,
+      "attack_damage_histogram": {
+        "4": 6,
+        "6": 6
+      },
+      "hp_lost_to_attacks": 60,
+      "mitigation_latches": 12,
+      "incidental_latches": 12,
+      "active_unlatched_clear_count": 16,
+      "active_unlatched_qualifying_choices": 12,
+      "turn_start_legal_unique_sets": 185,
+      "turn_start_eligible_unique_sets": 40,
+      "turns_with_raw_threshold_opportunity": 18,
+      "turns_with_nonqualifying_alternatives": 18,
+      "active_slam_turns_with_nonmitigating_alternatives": 12,
+      "opportunity_fraction": 1.0,
+      "weak_bonus_total": 19,
+      "chosen_weak_histogram": {
+        "4": 2,
+        "0": 33,
+        "8": 1,
+        "2": 3,
+        "3": 4,
+        "5": 2
+      },
+      "chosen_normal_histogram": {
+        "4": 9,
+        "11": 4,
+        "12": 1,
+        "3": 11,
+        "9": 4,
+        "8": 2,
+        "6": 1,
+        "2": 3,
+        "10": 8,
+        "5": 2
+      },
+      "active_qualifying_by_weak_only": 6,
+      "active_qualifying_by_normal_only": 6,
+      "active_qualifying_by_both": 0
+    },
+    "intent-aware": {
+      "runs": 6,
+      "terminal": {
+        "victory": 6
+      },
+      "boss_clears": 42,
+      "total_run_actions": 89,
+      "final_hp": [
+        20,
+        20,
+        20,
+        20,
+        18,
+        20
+      ],
+      "turns": 18,
+      "slam_turns": 12,
+      "fallback_turns": 0,
+      "attacks": 12,
+      "attack_damage_histogram": {
+        "4": 6,
+        "6": 6
+      },
+      "hp_lost_to_attacks": 60,
+      "mitigation_latches": 12,
+      "incidental_latches": null,
+      "active_unlatched_clear_count": 12,
+      "active_unlatched_qualifying_choices": 12,
+      "turn_start_legal_unique_sets": 169,
+      "turn_start_eligible_unique_sets": 34,
+      "turns_with_raw_threshold_opportunity": 16,
+      "turns_with_nonqualifying_alternatives": 18,
+      "active_slam_turns_with_nonmitigating_alternatives": 12,
+      "opportunity_fraction": 0.8888888888888888,
+      "weak_bonus_total": 17,
+      "chosen_weak_histogram": {
+        "4": 2,
+        "0": 32,
+        "8": 1,
+        "2": 3,
+        "5": 2,
+        "3": 2
+      },
+      "chosen_normal_histogram": {
+        "4": 9,
+        "11": 4,
+        "12": 1,
+        "3": 8,
+        "9": 3,
+        "8": 2,
+        "6": 1,
+        "2": 3,
+        "13": 2,
+        "10": 7,
+        "5": 2
+      },
+      "active_qualifying_by_weak_only": 6,
+      "active_qualifying_by_normal_only": 6,
+      "active_qualifying_by_both": 0
+    },
+    "avoid-intent": {
+      "runs": 6,
+      "terminal": {
+        "victory": 5,
+        "motion_stalled_at_4s": 1
+      },
+      "boss_clears": 51,
+      "total_run_actions": 98,
+      "final_hp": [
+        14,
+        4,
+        14,
+        14,
+        2,
+        20
+      ],
+      "turns": 19,
+      "slam_turns": 11,
+      "fallback_turns": 0,
+      "attacks": 13,
+      "attack_damage_histogram": {
+        "10": 8,
+        "6": 5
+      },
+      "hp_lost_to_attacks": 110,
+      "mitigation_latches": 0,
+      "incidental_latches": null,
+      "active_unlatched_clear_count": 29,
+      "active_unlatched_qualifying_choices": 0,
+      "turn_start_legal_unique_sets": 145,
+      "turn_start_eligible_unique_sets": 31,
+      "turns_with_raw_threshold_opportunity": 19,
+      "turns_with_nonqualifying_alternatives": 19,
+      "active_slam_turns_with_nonmitigating_alternatives": 11,
+      "opportunity_fraction": 1.0,
+      "weak_bonus_total": 20,
+      "chosen_weak_histogram": {
+        "0": 43,
+        "11": 1,
+        "7": 1,
+        "2": 2,
+        "4": 2,
+        "3": 1,
+        "10": 1
+      },
+      "chosen_normal_histogram": {
+        "5": 3,
+        "3": 10,
+        "11": 3,
+        "10": 2,
+        "7": 1,
+        "2": 16,
+        "16": 2,
+        "6": 3,
+        "4": 6,
+        "12": 2,
+        "17": 1,
+        "15": 1,
+        "9": 1
+      },
+      "active_qualifying_by_weak_only": 0,
+      "active_qualifying_by_normal_only": 0,
+      "active_qualifying_by_both": 0
+    }
+  },
+  "comparison_limit": "Same initial seeds AND identical first-two-fight events checked. Boss choices cause later RNG/board divergence; not an identical-board causal skill comparison. No balance/win-rate generalization from 3 deterministic seeds.",
+  "supplemental_index": [
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair1-avoid-intent.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 115,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair1-immediate-damage.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 115,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair1-intent-aware.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 115,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair2-avoid-intent.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 136,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair2-immediate-damage.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 129,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair2-intent-aware.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 122,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair1-avoid-intent.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 118,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair1-immediate-damage.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 90,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair1-intent-aware.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 90,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair2-avoid-intent.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 90,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair2-immediate-damage.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 104,
+        "errors": []
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair2-intent-aware.json",
+      "terminal": "victory",
+      "errors": [],
+      "audit": {
+        "checks": 104,
+        "errors": []
+      }
+    }
+  ],
+  "runs_index": [
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair0-avoid-intent.json",
+      "policy": "avoid-intent",
+      "terminal": "victory",
+      "hp": 14,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 16,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 0,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 8
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair0-immediate-damage.json",
+      "policy": "immediate-damage",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-elite-pair0-intent-aware.json",
+      "policy": "intent-aware",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair0-avoid-intent.json",
+      "policy": "avoid-intent",
+      "terminal": "victory",
+      "hp": 4,
+      "actions": 18,
+      "boss": {
+        "actual_damage_taken": 26,
+        "attacks": 3,
+        "clears": 12,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 0,
+        "plain_turns": 2,
+        "slam_turns": 2,
+        "turns_observed": 4,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair0-immediate-damage.json",
+      "policy": "immediate-damage",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 13,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 7
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261021-safe-pair0-intent-aware.json",
+      "policy": "intent-aware",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 13,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 7
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261022-elite-pair0-avoid-intent.json",
+      "policy": "avoid-intent",
+      "terminal": "victory",
+      "hp": 14,
+      "actions": 16,
+      "boss": {
+        "actual_damage_taken": 16,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 0,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261022-elite-pair0-immediate-damage.json",
+      "policy": "immediate-damage",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 16,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261022-elite-pair0-intent-aware.json",
+      "policy": "intent-aware",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261022-safe-pair0-avoid-intent.json",
+      "policy": "avoid-intent",
+      "terminal": "victory",
+      "hp": 14,
+      "actions": 16,
+      "boss": {
+        "actual_damage_taken": 16,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 0,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261022-safe-pair0-immediate-damage.json",
+      "policy": "immediate-damage",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 17,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261022-safe-pair0-intent-aware.json",
+      "policy": "intent-aware",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261023-elite-pair0-avoid-intent.json",
+      "policy": "avoid-intent",
+      "terminal": "motion_stalled_at_4s",
+      "hp": 2,
+      "actions": 20,
+      "boss": {
+        "actual_damage_taken": 26,
+        "attacks": 3,
+        "clears": 10,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 0,
+        "plain_turns": 2,
+        "slam_turns": 2,
+        "turns_observed": 4,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261023-elite-pair0-immediate-damage.json",
+      "policy": "immediate-damage",
+      "terminal": "victory",
+      "hp": 18,
+      "actions": 17,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261023-elite-pair0-intent-aware.json",
+      "policy": "intent-aware",
+      "terminal": "victory",
+      "hp": 18,
+      "actions": 17,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261023-safe-pair0-avoid-intent.json",
+      "policy": "avoid-intent",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 13,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 1,
+        "clears": 6,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 0,
+        "plain_turns": 1,
+        "slam_turns": 1,
+        "turns_observed": 2,
+        "weak_bonus_total": 5
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261023-safe-pair0-immediate-damage.json",
+      "policy": "immediate-damage",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 14,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      }
+    },
+    {
+      "path": "evidence/balance/baseline/seed20261023-safe-pair0-intent-aware.json",
+      "policy": "intent-aware",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 14,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: contact graph uses physical distance and sorted IDs
+PASS: visible gap larger than tolerance is not contact
+PASS: contact tolerance boundary is inclusive
+PASS: single normal is invalid
+PASS: two connected normals clear for two damage
+PASS: two normals do not produce a core
+PASS: future position cannot connect separated panels
+PASS: missing touched ID is invalid
+PASS: 6 direct normals produce correct special
+PASS: 6 generated core retains initial touched position/color
+PASS: 6 new core is protected from current action
+PASS: 11 direct normals produce correct special
+PASS: 11 generated core retains initial touched position/color
+PASS: 11 new core is protected from current action
+PASS: 12 direct normals produce correct special
+PASS: 12 generated core retains initial touched position/color
+PASS: 12 new core is protected from current action
+PASS: 14 direct normals produce correct special
+PASS: 14 generated core retains initial touched position/color
+PASS: 14 new core is protected from current action
+PASS: hearts show raw effective and overflow capped healing
+PASS: full HP receives no effective healing
+PASS: single heart is invalid
+PASS: heart does not join attack color
+PASS: solo core consumes valid action without normal damage
+PASS: core converts radius one and follows same color beyond radius
+PASS: core neither converts nor clears hearts
+PASS: strong core converts graph radius two
+PASS: ordinary core cannot convert radius two
+PASS: different-color specials in radius activate and chain
+PASS: chain has no duplicates and cannot create another core
+PASS: existing core does not count toward six direct normals
+PASS: additional blast normal does not count toward generation
+PASS: planning does not mutate snapshot input
+PASS: plan independent of input array order
+PASS: earlier conversion wins conflict and damage counts once
+PASS: activation priority is start graph distance then ID
+PASS: skill selects at most four by graph distance then ID
+PASS: skill predicts resulting connected color
+PASS: skill paths exclude hearts and cannot cross them
+PASS: skill paths exclude specials
+PASS: skill must target existing normal
+PASS: skill must select an attack color
+PASS: skill preview does not mutate snapshot
+RULES: 44 checks, 0 failures

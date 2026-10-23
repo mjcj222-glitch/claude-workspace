@@ -1,0 +1,97 @@
+{
+  "method": "Actual final2/8 scene, software llvmpipe/Dummy audio, automated legal choices and screenshot I/O mixed in; not dedicated/mobile benchmark. No MovieWriter.",
+  "press_to_draw": {
+    "n": 21,
+    "min_ms": 14.675,
+    "median_ms": 16.25,
+    "max_ms": 58.253
+  },
+  "no_existing_core_resolution": {
+    "n": 13,
+    "min_ms": 773.111,
+    "median_ms": 1192.842,
+    "max_ms": 1553.755
+  },
+  "existing_core_resolution": {
+    "n": 2,
+    "min_ms": 1123.234,
+    "median_ms": 1320.2095,
+    "max_ms": 1517.185
+  },
+  "frames": [
+    62,
+    40,
+    37,
+    50,
+    50,
+    40,
+    52,
+    37,
+    29,
+    45,
+    49,
+    33,
+    47,
+    11,
+    40
+  ],
+  "final": {
+    "actions": 15,
+    "actions_in_turn": 1,
+    "ash_reserved": true,
+    "attacks_total": 3,
+    "charge": 1,
+    "charge_required": 2,
+    "combat_context": {
+      "incoming_damage": 4,
+      "intent": "slam",
+      "intent_serial": 6,
+      "mitigation_success": true,
+      "slam_normal_required": 8,
+      "slam_weak_required": 2,
+      "weakness_color": 3
+    },
+    "encounter": 2,
+    "enemies_defeated": 3,
+    "enemy_hp": 0,
+    "enemy_max_hp": 48,
+    "fallback_plain": false,
+    "gold": 0,
+    "gold_spent": 12,
+    "hp": 20,
+    "incoming_damage": 4,
+    "last_attack_damage": 6,
+    "mitigation_active": true,
+    "mitigation_success": true,
+    "phase": "victory",
+    "process_frame": 2753,
+    "relics": [
+      "pigment",
+      "lens",
+      "ash"
+    ],
+    "route": "elite",
+    "scene_seconds": 63.3904040404035,
+    "shop_closed": true,
+    "shop_heal_sold": true,
+    "shop_relic_sold": true,
+    "turn": 2,
+    "wall_ms": 65554.235,
+    "weak_color": 3
+  },
+  "errors": [],
+  "source_sha256": {
+    "scripts/board_combat.gd": "51cf93360914673e0adbcd414233c88369bf2119c7b303c9539aee7d8c7844c3",
+    "scripts/board_run_session.gd": "0dac425c2456d622de4167e8dab525925385ea394b9caff02085069fceda056f",
+    "scripts/main.gd": "36eef584574a9ba24d664c4a02674bd823c6ad0f1b3de0dcd387250fcaa93d0e",
+    "scripts/board_feedback.gd": "1942e6b0ea689ee434e0f0d4b6e224a88ebc0c5e2d7bf9c02d916c62ee844075",
+    "scripts/board_relic_art.gd": "5683b755a07eb23f056c3e2b115ed6f2de6169e9ed6f601fbcebba50de44a28e",
+    "scripts/board_relics.gd": "174f52a0612bca3b55ce80185eb65e6de086fa4c923db4c6c09448cc43d21de4",
+    "scripts/board_audio.gd": "955b131837efea243ba539a68fad74ed4d2135d0889bbf6bf585f238715933d1",
+    "scripts/board_rules.gd": "862ce96df3708668bec22fac9629ebd92d3aaf0c842b556b6945d8dd14d3871c",
+    "scripts/board_art.gd": "0ad0f5cd360db34e4bd060bba3b2c230fd17f4b46717eac9185bf2cc900da196",
+    "scripts/board_session.gd": "5d5a2e2cc7067359270d5e8fb8e503a3e9bb48b3b763593f2dc9e3523cf231dc",
+    "scripts/board_ui.gd": "a3c9a32d3ad1baa7d802d25cc28098b332256cfcaf324f3d37f4bb923a13ae28",
+    "scripts/board_motion.gd": "54af4d7b9be29b00b107f8ad938bd053c9193542e9927fcb9604fdbdc1748006"
+  }
+}

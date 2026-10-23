@@ -1,0 +1,6 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+CAPTURE_ELEMENTAL {"actions":15,"actions_in_turn":1,"ash_reserved":false,"attacks_total":3,"character_id":"noa","charge":0,"charge_required":2,"combat_context":{"incoming_damage":4,"intent":"slam","intent_serial":8,"mitigation_success":true,"slam_normal_required":8,"slam_weak_required":2,"weakness_color":3},"details":{"color":2,"connected":[295,288,303,297,300,301,306,308,309,267,269,276,291,259],"planted":{"295":"strong"},"start_id":295,"targets":[295]},"encounter":2,"enemies_defeated":3,"enemy_hp":39,"enemy_max_hp":48,"fallback_plain":false,"gold":22,"gold_spent":0,"hp":30,"incoming_damage":4,"last_attack_damage":0,"mitigation_active":true,"mitigation_success":true,"phase":"ready","process_frame":0,"relics":["pigment","lens","ash"],"route":"elite","scene_seconds":0.0,"shop_closed":true,"shop_heal_sold":false,"shop_relic_sold":false,"skill_uses":6,"turn":0,"type":"skill","wall_ms":1583.254,"weak_color":3}
+PROCESS ready actions=15 errors=[]
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

@@ -1,0 +1,308 @@
+{
+  "failures": 3,
+  "method": "same initial seed; original selected IDs at their current positions",
+  "results": [
+    {
+      "actions": 0,
+      "direct_ids": [],
+      "id": -1.0,
+      "original_point": [
+        386.0,
+        896.0
+      ],
+      "phase": "ready",
+      "point": [
+        386.0,
+        896.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 0,
+      "direct_ids": [],
+      "id": -1.0,
+      "original_point": [
+        210.0,
+        1010.0
+      ],
+      "phase": "ready",
+      "point": [
+        210.0,
+        1010.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 0,
+      "direct_ids": [],
+      "id": 34.0,
+      "original_point": [
+        367.771331787109,
+        516.170227050781
+      ],
+      "phase": "ready",
+      "point": [
+        367.771331787109,
+        516.170227050781
+      ],
+      "targets": [
+        34,
+        33,
+        41,
+        42
+      ]
+    },
+    {
+      "actions": 1,
+      "direct_ids": [
+        8,
+        16,
+        11,
+        23,
+        25,
+        18,
+        31,
+        32,
+        33,
+        34,
+        40,
+        41,
+        42,
+        35,
+        43
+      ],
+      "id": 8.0,
+      "original_point": [
+        256.771331787109,
+        708.427856445312
+      ],
+      "phase": "ready",
+      "point": [
+        256.771331787109,
+        708.427856445312
+      ],
+      "targets": []
+    },
+    {
+      "actions": 2,
+      "direct_ids": [
+        19,
+        28,
+        37,
+        44
+      ],
+      "id": 19.0,
+      "original_point": [
+        544.198913574219,
+        614.828247070312
+      ],
+      "phase": "ready",
+      "point": [
+        544.198913574219,
+        614.828247070312
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [
+        13,
+        21,
+        29
+      ],
+      "id": 13.0,
+      "original_point": [
+        507.198913574219,
+        678.914123535156
+      ],
+      "phase": "reward",
+      "point": [
+        507.198913574219,
+        678.914123535156
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "id": -1.0,
+      "original_point": [
+        360.0,
+        379.0
+      ],
+      "phase": "ready",
+      "point": [
+        360.0,
+        379.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "id": -1.0,
+      "original_point": [
+        386.0,
+        896.0
+      ],
+      "phase": "ready",
+      "point": [
+        386.0,
+        896.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "id": -1.0,
+      "original_point": [
+        618.0,
+        1010.0
+      ],
+      "phase": "ready",
+      "point": [
+        618.0,
+        1010.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "id": 53.0,
+      "original_point": [
+        470.19921875,
+        614.827697753906
+      ],
+      "phase": "ready",
+      "point": [
+        483.492431640625,
+        608.226989746094
+      ],
+      "targets": [
+        53,
+        45,
+        38,
+        59,
+        22
+      ]
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "id": 10.0,
+      "original_point": [
+        359.198913574219,
+        678.914123535156
+      ],
+      "phase": "ready",
+      "point": [
+        359.198913574219,
+        678.914123535156
+      ],
+      "targets": []
+    }
+  ],
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 18.762
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 17.224
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 89,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 118681,
+        "clear_wall_ms": 386.968,
+        "fall_sim_s": 1.025,
+        "fall_wall_ms": 1043.419,
+        "inside_sim_s": 0.741666666666666,
+        "iterations": 781,
+        "last_spawn_sim_s": 0.583333333333334,
+        "pending_sim_s": 0.583333333333334,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 52507,
+        "spawn_us": 9305,
+        "ticks": 123
+      },
+      "removed": 15,
+      "specials": 0,
+      "wall_ms": 1430.378
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 15.405
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 46,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 106222,
+        "clear_wall_ms": 251.896,
+        "fall_sim_s": 0.541666666666667,
+        "fall_wall_ms": 569.874,
+        "inside_sim_s": 0.316666666666667,
+        "iterations": 1017,
+        "last_spawn_sim_s": 0.158333333333333,
+        "pending_sim_s": 0.158333333333333,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 68925,
+        "spawn_us": 3448,
+        "ticks": 65
+      },
+      "removed": 4,
+      "specials": 0,
+      "wall_ms": 821.761
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 14.645
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 41,
+      "movie": false,
+      "next_phase": "reward",
+      "profile": {
+        "anchor_us": 174118,
+        "clear_wall_ms": 222.921,
+        "fall_sim_s": 0.816666666666666,
+        "fall_wall_ms": 953.186,
+        "inside_sim_s": 0.275,
+        "iterations": 1356,
+        "last_spawn_sim_s": 0.116666666666667,
+        "pending_sim_s": 0.116666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 101588,
+        "spawn_us": 2186,
+        "ticks": 98
+      },
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 1176.098
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 39.113
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 40.907
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+{"actions":[{"event":"skill","ids":[1,2,7,9,10,13,15,22,27,28,29,33,36,37,39],"skill":0,"taps_after":3,"taps_before":3,"turn":1}],"skill_counter":1,"skill_ready":[4,1,1],"window":"(360, 640)"}
+{"actions":[{"event":"skill","ids":[1,2,7,9,10,13,15,22,27,28,29,33,36,37,39],"skill":0,"taps_after":3,"taps_before":3,"turn":1}],"skill_counter":2,"skill_ready":[4,1,1],"window":"(390, 844)"}
+ERROR: Parse JSON failed. Error at line 0: Unknown error getting token
+   at: parse_string (core/io/json.cpp:624)
+   GDScript backtrace (most recent call first):
+       [0] request (res://tools/os_input_probe.gd:31)
+{"actions":[{"event":"skill","ids":[1,2,7,9,10,13,15,22,27,28,29,33,36,37,39],"skill":0,"taps_after":3,"taps_before":3,"turn":1}],"skill_counter":3,"skill_ready":[4,1,1],"window":"(720, 1280)"}
+{"actions":[{"event":"skill","ids":[1,2,7,9,10,13,15,22,27,28,29,33,36,37,39],"skill":0,"taps_after":3,"taps_before":3,"turn":1}],"skill_counter":4,"skill_ready":[4,1,1],"window":"(1280, 900)"}
+{"checks":32,"failures":0,"suite":"actual X11 mouse and live resize","windows":[{"checks":8,"preview_removed_ids":[1,2,4,7,8,9,10,13,14,15,17,20],"window":[360,640]},{"checks":8,"preview_removed_ids":[1,2,4,7,8,9,10,13,14,15,17,22,27,28,33,34,39,40,41],"window":[390,844]},{"checks":8,"preview_removed_ids":[1,2,4,7,8,9,10,13,14,15,17,20,22,27,28,33,34,39,40],"window":[720,1280]},{"checks":8,"preview_removed_ids":[1,2,4,7,8,9,10,13,14,15,17],"window":[1280,900]}]}

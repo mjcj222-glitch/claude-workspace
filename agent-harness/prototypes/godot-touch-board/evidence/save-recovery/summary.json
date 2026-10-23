@@ -1,0 +1,41 @@
+{
+  "baseline": "3397e37e2fa7868eec31ee6cf5e720b8dc6fb7b5",
+  "save_failure_checks": 62,
+  "checkpoint_checks": 24,
+  "controller_checks": 30,
+  "existing_regression_scripts": 52,
+  "child_process_executions": 87,
+  "full_continuous_vs_resumed_comparisons": 2,
+  "process_warning_logs": 0,
+  "legacy_windows": {
+    "360x640": 90,
+    "390x844": 90,
+    "720x1080": 90,
+    "short360x640": 79
+  },
+  "lifecycle_and_failure_windows": {
+    "360x640": 42,
+    "720x1080": 42
+  },
+  "audio_scene_reset_cycles": {
+    "fixed_fps": 8,
+    "realtime": 8
+  },
+  "normal_with_save": {
+    "win": {
+      "phase": "victory",
+      "actions": 19,
+      "hp": 30,
+      "fresh_battle": true
+    },
+    "loss": {
+      "phase": "defeat",
+      "actions": 20,
+      "hp": 0,
+      "fresh_battle": true
+    }
+  },
+  "native_project_kill_resume": true,
+  "audio_limitation": "Engine-only immediate-quit reproducer still warns; physical audio and Windows runtime untested.",
+  "storage_limitation": "Unavailable storage plus explicit unsaved/forced exit can leave old checkpoint resumable; no fsync/power-loss or concurrent-writer guarantees."
+}

@@ -1,0 +1,6 @@
+Command: godot --headless --path agent-harness/games/resonance-godot --fixed-fps 120 --script tests/rules_test.gd -- --no-save
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+{"checks":121,"failures":0,"suite":"geometry and snapshot combat"}
+
+Exit: 0

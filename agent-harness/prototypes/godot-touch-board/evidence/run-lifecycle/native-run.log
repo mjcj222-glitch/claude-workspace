@@ -1,0 +1,83 @@
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+/tmp/chroma-lifecycle-native.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  if sum(1 for r,g,blue in im.crop((15,15,160,45)).getdata() if r>130 and g>90 and blue<180)>100:return p,f
+PASS native project kill/restart/resume/new input /tmp/chroma-native-lifecycle-t7d3qpge/save

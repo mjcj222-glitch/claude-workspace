@@ -1,0 +1,14 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL UI/background first finger blocks extra finger
+FAIL real touch handler selects
+FAIL real second touch ignored
+FAIL real system cancellation no action
+FAIL actual scene consumes exact shown plan
+FAIL busy UI reset discarded
+FAIL busy touch discarded
+FAIL refill never auto clears or consumes action
+FAIL new generated core survives same action
+SCENE failures=9
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

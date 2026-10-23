@@ -1,0 +1,66 @@
+[
+  {
+    "test": "rules_test",
+    "exit": 0,
+    "results": [
+      {
+        "checks": 121,
+        "failures": 0,
+        "suite": "geometry and snapshot combat"
+      }
+    ]
+  },
+  {
+    "test": "battle_test",
+    "exit": 0,
+    "results": [
+      {
+        "checks": 2603,
+        "failures": 0,
+        "max_overlap_area": 8.794921875,
+        "max_settle_seconds": 4.00833333333332,
+        "physics_determinism_claimed": false,
+        "settled_boards": 20,
+        "suite": "native physics, controls and save"
+      }
+    ]
+  },
+  {
+    "test": "full_battle",
+    "exit": 0,
+    "results": [
+      {
+        "enemy_hp": 0,
+        "hp": 180,
+        "policy": "largest",
+        "status": "won",
+        "turns": 5
+      },
+      {
+        "enemy_hp": 0,
+        "hp": 180,
+        "policy": "forecast",
+        "status": "won",
+        "turns": 8
+      },
+      {
+        "defeat_fixture": true,
+        "physics_determinism_claimed": false,
+        "restart": true,
+        "same_initial_snapshot": true,
+        "same_skill_boost_policy": true
+      }
+    ]
+  },
+  {
+    "test": "presentation_test",
+    "exit": 0,
+    "results": [
+      {
+        "checks": 24,
+        "failures": 0,
+        "suite": "presentation"
+      }
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "source": "Actual main.tscn normal MovieWriter run, seed20261021/Noa/elite/pair0, automatic legal choices, no HP/gold/charge/board fixture. Fixed30fps is not wall-clock performance.",
+  "segments_seconds": [
+    [
+      0.4,
+      8.0
+    ],
+    [
+      14.0,
+      18.9
+    ],
+    [
+      23.1,
+      25.8
+    ],
+    [
+      34.2,
+      40.5
+    ],
+    [
+      46.65,
+      50.4
+    ],
+    [
+      55.5,
+      60.2
+    ]
+  ],
+  "order": [
+    "departure/skill/core trigger",
+    "relic/route",
+    "Pigment strong plant",
+    "shop/final entry",
+    "boss core/impact",
+    "victory/return to character selection"
+  ]
+}

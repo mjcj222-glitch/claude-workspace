@@ -1,0 +1,52 @@
+{
+  "baseline_commit": "8cb12dec629953491fa7ae0fcb45e8ccb23aed98",
+  "baseline_source": "previous validated petal-gameplay-excerpt.mp4",
+  "sections": [
+    {
+      "label": "BEFORE",
+      "seconds": 6,
+      "source_start": 0
+    },
+    {
+      "label": "AFTER Rio shield-targeted legal play",
+      "seconds": 8,
+      "source_start": 46.7
+    },
+    {
+      "label": "AFTER Noa shield-targeted legal play",
+      "seconds": 9,
+      "source_start": 50.5
+    }
+  ],
+  "same_input_comparison": false,
+  "fixed_fps": 30,
+  "audio": "actual MovieWriter PCM encoded AAC; no device listening",
+  "production_sha256": {
+    "scripts/board_session.gd": "0b58cdfe100b92c534f2132dc1df1e0bca7dcd24789bd7e1236cb919deead50f",
+    "scripts/board_panel_view.gd": "16d52677ba62fa48888dd30ca82855b7a9f422b079f723af1865671c2f30022a",
+    "scripts/board_characters.gd": "f509a11ae73eb507fcbe1670e2fd02f24a4b3cd1f31c4614f9ff90e6b7749459",
+    "scripts/board_character_ui.gd": "f399c894a36e7274f64cd7bd18eb09759bf773493bb090dd94c543de00559dab",
+    "scripts/main.gd": "76b85a3f10759e1237921f716993097432edcbd3ac1bab76dd567ee3930a33c0",
+    "scripts/board_lifecycle.gd": "9d8642eae3acc900eb1ec9d837da3b0ad94011ac48458d65c12a68066868af43",
+    "scripts/board_area_ui.gd": "fb0b8f93389f88bb0febe1e0708de03e28a746022a47066cd261d915d8d7226c",
+    "scripts/board_combat.gd": "a8f3dff32d90d91035ed46489b351ec535930a22b9e952835b7257aa1e20e5ee",
+    "scripts/board_skin.gd": "49f68a25ba9855416f56462ca92f3878b1941f0c098b93fe801f2d546fa1eece",
+    "scripts/board_feedback.gd": "8fa3719f0a5172222f73b455a785bf2d371cbddcfe67ead49be9919fb1ba3bac",
+    "scripts/board_premium_skin.gd": "2a4723c2a649865ebb1886a831dabe9b7750f4e426a57fbe98bc4d135fba03c2",
+    "scripts/board_area_session.gd": "1a5d42061602e4b51f1c1a08706673d83465592acb8a0237d8ff95883c44d3d8",
+    "scripts/board_audio.gd": "a7ec2e5718dc2d17bdb4520e0f5625150edd2153864dddd5043c7c088c656090",
+    "scripts/board_bombs.gd": "bd628cf5477ed4318756b8b309b6c9dadad5761d40eb37b489327316caf3b469",
+    "scripts/board_layout.gd": "8d45c37af3e60ea89197f469ba664fc98fd19e32db01f6ee7af240d1f681fcc7",
+    "scripts/board_pixel_heroes.gd": "7ba0e8439fb7f9828ab2a01301d8ba07400a4189946a5dccd929a29fb0ad49a3",
+    "scripts/board_skill_presentation.gd": "08d2ab0cfcc82dcda50e482d07ea36b913070c0e6d846d348bdbd60bc042adbc",
+    "scripts/board_ui.gd": "44317a704ca39fcd0cc67d013b089c03f28ef0397078c2a16d33bf1b83fb1fbe",
+    "scripts/board_rules.gd": "1a46f8a30709c6c7ba20b346490137b0a55f5645c0b6c789c1c8af2c6f48ebbd",
+    "scripts/board_motion.gd": "633f6f23f70aae4ddae53e63794cd57d479cc6081d26f90bc2d94d1f86d45af3",
+    "scripts/board_quality_fx.gd": "e2a10e83634a35eddd4665ba9f00a7662c749d5f80a6b7ea082fe1e8ff75d451",
+    "scripts/board_relic_art.gd": "c1848994cbcf56a7397685b80015ef047be498a943e33ecc5e6efdb06f9b3381",
+    "scripts/board_run_session.gd": "7f71c6f91736647271f5b56e802fe16e144f3f51fe9bbf82923e29f0550ea6bc",
+    "scripts/board_relics.gd": "62a9d5f696ed5b51f9a8e440d07cd170a2d536fb36ca4ae8b9e67ddea4952d8e",
+    "scripts/board_art.gd": "37e13670ea2b7e4dff24f9802166a5c0b5d94a20f480ff2a42f8c7b394f0ad4d",
+    "scripts/board_checkpoint.gd": "1f1ce3f05d2c84218c14d56f313aceb658dbca4ca6cef7d7c60c3ead81af40dd"
+  }
+}

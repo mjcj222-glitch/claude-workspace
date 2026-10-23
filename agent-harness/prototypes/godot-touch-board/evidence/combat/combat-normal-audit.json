@@ -1,0 +1,163 @@
+{
+  "method": "post-run invariant audit of six actual pure-normal simulation traces; no gameplay modifications",
+  "checks_passed": 739,
+  "effects_observed_total": {
+    "ash_consumptions": 10,
+    "ash_reservations": 13,
+    "lens_eleven_strong": 2,
+    "lens_five_core": 0,
+    "mitigation_latched": 6,
+    "pigment_five_targets": 20
+  },
+  "runs": [
+    {
+      "seed": 20261021,
+      "pair_index": 0,
+      "terminal": "victory",
+      "actions": 19,
+      "hp": 30,
+      "attacks": [
+        4,
+        3,
+        5,
+        6,
+        8
+      ],
+      "effective_healing": 26,
+      "max_refill_sim_seconds": 0.999999999999999,
+      "effects_observed": {
+        "ash_consumptions": 0,
+        "ash_reservations": 0,
+        "lens_eleven_strong": 0,
+        "lens_five_core": 0,
+        "mitigation_latched": 1,
+        "pigment_five_targets": 5
+      }
+    },
+    {
+      "seed": 20261021,
+      "pair_index": 1,
+      "terminal": "victory",
+      "actions": 18,
+      "hp": 21,
+      "attacks": [
+        4,
+        3,
+        5,
+        6,
+        8
+      ],
+      "effective_healing": 17,
+      "max_refill_sim_seconds": 1.08333333333333,
+      "effects_observed": {
+        "ash_consumptions": 2,
+        "ash_reservations": 2,
+        "lens_eleven_strong": 0,
+        "lens_five_core": 0,
+        "mitigation_latched": 1,
+        "pigment_five_targets": 5
+      }
+    },
+    {
+      "seed": 20261021,
+      "pair_index": 2,
+      "terminal": "victory",
+      "actions": 21,
+      "hp": 23,
+      "attacks": [
+        4,
+        3,
+        5,
+        6,
+        8
+      ],
+      "effective_healing": 19,
+      "max_refill_sim_seconds": 1.13333333333333,
+      "effects_observed": {
+        "ash_consumptions": 3,
+        "ash_reservations": 4,
+        "lens_eleven_strong": 0,
+        "lens_five_core": 0,
+        "mitigation_latched": 1,
+        "pigment_five_targets": 0
+      }
+    },
+    {
+      "seed": 20261022,
+      "pair_index": 0,
+      "terminal": "victory",
+      "actions": 17,
+      "hp": 23,
+      "attacks": [
+        4,
+        3,
+        6,
+        8
+      ],
+      "effective_healing": 14,
+      "max_refill_sim_seconds": 1.025,
+      "effects_observed": {
+        "ash_consumptions": 0,
+        "ash_reservations": 0,
+        "lens_eleven_strong": 2,
+        "lens_five_core": 0,
+        "mitigation_latched": 1,
+        "pigment_five_targets": 5
+      }
+    },
+    {
+      "seed": 20261022,
+      "pair_index": 1,
+      "terminal": "victory",
+      "actions": 17,
+      "hp": 15,
+      "attacks": [
+        4,
+        3,
+        6,
+        8
+      ],
+      "effective_healing": 6,
+      "max_refill_sim_seconds": 1.025,
+      "effects_observed": {
+        "ash_consumptions": 2,
+        "ash_reservations": 3,
+        "lens_eleven_strong": 0,
+        "lens_five_core": 0,
+        "mitigation_latched": 1,
+        "pigment_five_targets": 5
+      }
+    },
+    {
+      "seed": 20261022,
+      "pair_index": 2,
+      "terminal": "victory",
+      "actions": 18,
+      "hp": 19,
+      "attacks": [
+        4,
+        3,
+        6,
+        8
+      ],
+      "effective_healing": 10,
+      "max_refill_sim_seconds": 1.20833333333333,
+      "effects_observed": {
+        "ash_consumptions": 3,
+        "ash_reservations": 4,
+        "lens_eleven_strong": 0,
+        "lens_five_core": 0,
+        "mitigation_latched": 1,
+        "pigment_five_targets": 0
+      }
+    }
+  ],
+  "source_sha256": {
+    "tests/play_combat.gd": "b508cb3959d1618e8c90bab95a6a0fa875ffe46a83c3427944a65969a4d9aa8c",
+    "scripts/board_run_session.gd": "67f8daf8a55bcf8b8c19d5f81398f2a2c531356af637398679d90b6af9b79f87",
+    "scripts/board_combat.gd": "6696087f48b14b05e2376249c2362a227ca94bd1032425ad43e5a9f73a1fce2f",
+    "scripts/board_motion.gd": "54af4d7b9be29b00b107f8ad938bd053c9193542e9927fcb9604fdbdc1748006",
+    "scripts/board_rules.gd": "ddf884a77a3265b8c295f1ac533ce33b98d38f2620a5b22b7e90de5209534177",
+    "scripts/board_session.gd": "78cd45666afeaf64393d2649a36a6b20d724f7e3eea063097a65b1b2dd51ecf5"
+  }
+}

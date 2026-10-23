@@ -1,0 +1,34 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+QUALITY FIXTURES: injected states and frozen presentation ages; NOT normal progression or performance evidence
+PASS OS driver acknowledged effects-reduced
+PASS OS reduced-effects control toggles without board passthrough
+PASS OS driver acknowledged effects-full
+PASS OS full effects restored without action
+PASS OS driver acknowledged audio-toggle
+PASS OS mute control preserved
+PASS OS driver acknowledged targeting
+PASS OS driver acknowledged color
+PASS OS skill and palette choose water
+PASS OS driver acknowledged cancel-targeting
+PASS targeting cancel has no activation
+PASS OS driver acknowledged target-again
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.466}
+PASS OS driver acknowledged activate
+PASS actual skill activates without action or input lock
+PASS OS driver acknowledged 05-activation-120ms
+PASS OS driver acknowledged reset-fx
+PASS OS reset clears activation
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":22.566}
+PASS OS driver acknowledged chain-down
+PASS constructed edge board uses canonical core chain
+PASS OS driver acknowledged chain-up
+PASS OS driver acknowledged 07-chain-damage-fx
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":13.575}
+PASS OS driver acknowledged heal
+PASS heart commit distinguishes raw and effective healing
+PASS OS driver acknowledged 08-heal-overheal-fx
+QUALITY_EFFECTS checks=24 failures=0 size=(360, 640)

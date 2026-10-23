@@ -1,0 +1,35 @@
+# Independent character/departure review
+
+Reviewed the current character definitions, departure presenter, session/run-session changes, main controller, UI/skill snapshot and cut-in identity changes. Inspected character unit, interaction and controller test source. No production edits or test/render execution by this reviewer.
+
+## Source findings
+
+No blocking correctness issue identified in the inspected changes. Departure is a separate modal phase: cards select only a candidate, a separate release confirms departure, offer serials invalidate earlier candidates, and modal pointer/phase checks prevent stale releases from committing. The departure_started latch blocks re-entry even before the first action. Existing primary-touch routing rejects additional fingers; controller transition suppression prevents an immediate repeated departing-control tap from becoming a board action. Result continuation creates a new session through reset_board, clearing selection/modal/detail candidates, effects, pending impact, timers, particles and voices. Standalone initialize_board still starts ready with the original Rio default.
+
+Noa's valid target is exactly one existing normal. The frozen plan changes kind in place on successful skill release and preserves ID, position and color. It does not allocate an ID, remove a panel, begin refill, call record_clear, deal damage or advance actions. Charge/reserved-Ash accounting uses the existing shared skill branch. Pigment changes only the newly planted kind to strong; Lens and Ash clear thresholds remain in the unchanged canonical planner. Subsequent core actions therefore exclude the core object itself from normal/weakness counts and use existing activation, conversion and mitigation rules. Skill preview does not refresh or latch enemy intent. Rio delegates to the existing skill planner.
+
+Noa has no active color palette; reward, shop and detail Pigment copy is character-specific. Cut-in identity reads the committed hero, and installation passes no false color-conversion provenance into the prior impact-label system. The shared portrait is explicitly disclosed as temporary. Tests inspected include frozen-plan behavior, core versus normal/weakness counts, Lens/Ash boundaries, no immediate damage, invalid heart/core targets, cancellation, stale release, explicit departure, reset and result return. This is source coverage inspection, not an independent passing-test claim.
+
+## Actual normal-run pixel inspection
+
+Directly viewed the supplied Noa normal-run character-chosen, activation-00, reward-1, victory and returned-to-selection PNGs. Candidate selection and separate departure are visually clear; activation shows the installed core and Noa-specific cut-in, with no enemy HP loss at that instant. Pigment reward text describes planted strong cores. Victory identifies Noa and displays 15 clears, HP24/30, three relics, spent8/remain4; returning to selection visibly clears the candidate and disables departure. Text and primary controls are readable at native720x1080 without a blocking overlap in these samples. These stills do not establish full animation, audio quality or touch behavior.
+
+Small-window OS evidence, final regression logs and exported clip inspection remain separate pending acceptance evidence. No claim of commercial quality, balance equivalence between heroes or measured performance parity. No remaining blocker from this bounded source/native-pixel review.
+
+## Small-window and final input follow-up
+
+Directly viewed actual OS captures: 360x640 Noa candidate/preview and Rio targeting; 390x844 Ash-required2 charging, Noa Pigment details and result fixture. Candidate/departure, installed-core preview, exact1/2 charge, character-specific details, original Rio palette and return control remain visible without a blocking crop or overlap. Small secondary text is compact at these sizes; this is a pixel spot-check, not a physical-device usability claim. Charging2/details/result captures are explicit state fixtures and are not counted as normal-run progression.
+
+Inspected existing logs: regression/results.json contains40 entries, all exit0 with empty errors; interactions-green reports26 checks/0 failures; both window logs report40 checks/0 failures. The departure-audio RED log reproduces the formerly inert visible sound control, while input-green reports24 checks/0 failures. Source now handles MUTE before modal routing only when session, modal and detail candidates have no pointer owner, and returns immediately. This makes the exposed control functional without selecting a character or leaking a board action. Existing primary-touch filtering continues to reject additional fingers. No new blocking input issue found. No tests or CPU-heavy processes run by this reviewer.
+
+Coordinator additionally reports six legal normal policy runs per hero winning, and separate legal low-damage/no-heal attrition policies reaching defeat after20 clears for both heroes. Those scripted policy outcomes establish neither human balance nor equal difficulty; they remain separate from state-fixture captures. Native timing and final exported-video acceptance remain pending separate evidence. This follow-up closes small-window/source-input acceptance without requesting further design changes.
+
+## Final artifact checkpoint
+
+Viewed video-contact-sheet.png and video-last.png from the delivered export. The sampled sequence visibly includes selected Noa, ordinary/strong-core skill presentation, reward/shop, boss, victory and return to an unselected departure screen. The final frame is the readable departure screen, with no gray exit frame. This is a decoded-frame spot-check, not full real-time viewing or physical audio listening.
+
+Read summary.json, final-regression/results.json, native-performance.json and docs/CHARACTERS.md. Final regression evidence is now41 scripts, all exit0 and empty error arrays, superseding the earlier40-script checkpoint. Summary records75 new checks and40 OS checks per resolution. Four non-movie main runs record Rio13-clear/HP20 victory, Noa15-clear/HP24 victory and both20-clear/HP0 attrition defeats, each returning to selection without errors; the separate Noa movie records15-clear/HP24 victory and return. The document distinguishes these legal policy runs from fixtures, human balance evidence and performance measurements. No reporting inconsistency identified.
+
+The one-pair native replay preserves canonical results and physics profiles. First-draw median rises18.971→19.9055ms and ordinary-clear median823.162→852.618ms, approximately+0.935ms and+29.456ms respectively. Some clear durations exceed the stated target. The documented lack of stable parity, speedup, mobile-latency or causal-performance claims is appropriate. Export/audio metadata is evidence of an encoded artifact, not subjective audio quality.
+
+No remaining blocking finding for this bounded implementation checkpoint. Final acceptance remains limited to reviewed source, supplied execution records and actual pixel samples; no additional code changes, tests or CPU-heavy jobs were performed.

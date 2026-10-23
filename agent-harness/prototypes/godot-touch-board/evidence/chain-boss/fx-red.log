@@ -1,0 +1,14 @@
+Fontconfig error: No writable cache directories
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS shield does not shatter before scheduled hit
+FAIL shield result reaches one shot impact
+FAIL shield fracture persists long enough to read
+FAIL large bomb presentation counted from actual unique activated panels
+PASS presentation never edits canonical result or repeats damage
+PASS reduced mode disables flash and shake
+FAIL reset cancels shield debris
+FAIL chain timbre has bounded density progression
+PASS cached waveform peaks retain headroom
+PASS no extra playback voices
+CHAIN_BOSS_FX checks=10 failures=5

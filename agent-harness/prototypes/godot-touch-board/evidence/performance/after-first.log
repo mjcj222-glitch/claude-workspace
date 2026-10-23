@@ -1,0 +1,29 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:90)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+     at: initialize (servers/audio/audio_server.cpp:247)
+
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":34.914}
+TIMING {"event":"commit_to_ready","frames":10,"movie":false,"profile":{"anchor_us":46744,"clear_wall_ms":177.636,"fall_sim_s":0.35,"fall_wall_ms":674.122,"inside_sim_s":0.233333333333333,"iterations":3751,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":430475,"spawn_us":1497,"ticks":42},"removed":2,"specials":0,"wall_ms":851.731}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":34.734}
+TIMING {"event":"commit_to_ready","frames":7,"movie":false,"profile":{"anchor_us":49376,"clear_wall_ms":189.18,"fall_sim_s":0.366666666666667,"fall_wall_ms":503.803,"inside_sim_s":0.233333333333333,"iterations":1951,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":273651,"spawn_us":1375,"ticks":44},"removed":2,"specials":0,"wall_ms":692.945}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":31.549}
+TIMING {"event":"commit_to_ready","frames":12,"movie":false,"profile":{"anchor_us":56504,"clear_wall_ms":205.15,"fall_sim_s":0.391666666666667,"fall_wall_ms":611.004,"inside_sim_s":0.233333333333333,"iterations":2516,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":341665,"spawn_us":1402,"ticks":47},"removed":2,"specials":0,"wall_ms":816.139}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":39.011}
+TIMING {"event":"commit_to_ready","frames":13,"movie":false,"profile":{"anchor_us":85153,"clear_wall_ms":210.416,"fall_sim_s":0.491666666666667,"fall_wall_ms":617.497,"inside_sim_s":0.275,"iterations":2263,"last_spawn_sim_s":0.116666666666667,"pending_sim_s":0.116666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":253586,"spawn_us":2141,"ticks":59},"removed":3,"specials":0,"wall_ms":827.904}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":49.152}
+TIMING {"event":"commit_to_ready","frames":11,"movie":false,"profile":{"anchor_us":153264,"clear_wall_ms":195.977,"fall_sim_s":0.558333333333334,"fall_wall_ms":724.355,"inside_sim_s":0.233333333333333,"iterations":948,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":209039,"spawn_us":1509,"ticks":67},"removed":2,"specials":0,"wall_ms":920.324}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":44.586}
+TIMING {"event":"commit_to_ready","frames":56,"movie":false,"profile":{"anchor_us":96514,"clear_wall_ms":635.809,"fall_sim_s":1.76666666666666,"fall_wall_ms":2067.046,"inside_sim_s":1.56666666666666,"iterations":9176,"last_spawn_sim_s":1.40833333333333,"pending_sim_s":1.40833333333333,"quiet_sim_s":0.0583333333333333,"solve_us":695712,"spawn_us":15106,"ticks":212},"removed":35,"specials":2,"wall_ms":2702.821}

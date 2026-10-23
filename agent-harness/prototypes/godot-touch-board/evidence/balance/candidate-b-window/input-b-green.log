@@ -1,0 +1,57 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS actual scene preview carries base plus weakness and combat context
+PASS preview cannot damage or spend action
+PASS held preview captures exact current combat context
+PASS held preview remains unchanged across presentation frame
+PASS release executes the same enriched snapshot
+PASS base plus weakness commits once to enemy hp and total
+PASS duplicate release cannot apply weakness twice
+PASS two status lines preserve full physical board visibility
+PASS weak pair alone restores approachable slam mitigation
+PASS restored weak pair keeps unchanged damage bonus
+PASS restored weak pair commits damage and mitigation
+PASS eight ordinary panels alone no longer enable slam
+PASS nine ordinary panels remain below candidate B threshold
+PASS ten ordinary panels still qualify without weakness
+PASS held snapshot records canonical two-weak ten-normal requirements
+PASS ten ordinary committed clear reduces slam without changing base damage
+PASS boss feasible weak triple advertises slam
+PASS eligible boss preview signals mitigation
+PASS outside cancellation causes no damage/action
+PASS outside cancellation cannot latch mitigation
+PASS boss feasible weak triple advertises slam
+PASS eligible boss preview signals mitigation
+PASS focus cancellation causes no damage/action
+PASS focus cancellation cannot latch mitigation
+PASS boss feasible weak triple advertises slam
+PASS system cancellation causes no damage/action
+PASS system cancellation cannot latch mitigation
+PASS skill converts without combat damage or action
+PASS skill cannot satisfy boss mitigation
+PASS skill still consumes charge and converts
+PASS single weak triple qualifies boss mitigation
+PASS committed weak triple latches reduced attack and damage
+PASS converted normal and connected weak normal count while core does not
+PASS core weakness math commits once and leaves heart
+PASS hearts do not add base or weakness
+PASS heart action heals without weakness damage
+PASS one weak normal does not qualify per-action condition
+PASS weak normals across separate actions never accumulate
+PASS one weak normal does not qualify per-action condition
+PASS weak normals across separate actions never accumulate
+PASS third separate weak normal still cannot accumulate mitigation
+PASS unmet slam resolves ten damage after third action
+PASS odd boss turn resets to plain six
+PASS safe second fight retains direct-four condition
+PASS safe direct-four preview qualifies
+PASS safe direct-four commit preserves reduction
+PASS elite second fight retains direct-four condition
+PASS elite direct-four preview qualifies
+PASS elite direct-four commit preserves reduction
+PASS third-action elemental kill wins without retaliation
+PASS route modal cannot leak elemental damage or mitigation
+PASS route reset clears weakness context and stale input
+PASS shop modal cannot leak elemental damage or mitigation
+PASS shop reset clears weakness context and stale input
+ELEMENTAL_INPUT checks=54 failures=0

@@ -1,0 +1,746 @@
+{
+  "baseline": "8a017da1a9a580e92978eae19e118fef01c3f3a9",
+  "method": "One serial native before/after replay of identical16-action preloaded legal inputs. Same shared measurement wrappers; no fixedfps, screenshots, file writes or policy search in measured interaction windows.",
+  "canonical_rows_equal": true,
+  "physics_tick_profiles_equal": true,
+  "groups": {
+    "before": {
+      "board_press_cpu_ms": {
+        "n": 22,
+        "min": 1.313,
+        "median": 1.4095,
+        "p95": 1.7930499999999998,
+        "max": 1.916
+      },
+      "board_first_draw_ms": {
+        "n": 22,
+        "min": 16.684,
+        "median": 18.573500000000003,
+        "p95": 21.86415,
+        "max": 45.796
+      },
+      "board_press_over_100ms": 0,
+      "ordinary_clear_ms": {
+        "n": 15,
+        "min": 675.012,
+        "median": 812.664,
+        "p95": 1443.8319,
+        "max": 1657.082
+      },
+      "core_clear_ms": {
+        "n": 1,
+        "min": 1102.281,
+        "median": 1102.281,
+        "p95": 1102.281,
+        "max": 1102.281
+      },
+      "clear_animation_ms": {
+        "n": 16,
+        "min": 202.115,
+        "median": 256.481,
+        "p95": 405.668,
+        "max": 408.83
+      },
+      "fall_ms": {
+        "n": 16,
+        "min": 456.976,
+        "median": 622.5955,
+        "p95": 1051.499,
+        "max": 1266.089
+      },
+      "physics_cpu_ms": {
+        "n": 16,
+        "min": 98.326,
+        "median": 225.0515,
+        "p95": 465.162,
+        "max": 476.622
+      },
+      "stages": {
+        "idle": {
+          "wall_frame_ms": {
+            "n": 24,
+            "min": 14.573,
+            "median": 15.236,
+            "p95": 19.55115,
+            "max": 23.12
+          },
+          "render_cpu_ms": {
+            "n": 25,
+            "min": 0.60699999332428,
+            "median": 0.781000018119812,
+            "p95": 0.9146000027656556,
+            "max": 0.984000027179718
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 25,
+            "min": 11.1169996261597,
+            "median": 11.8719997406006,
+            "p95": 15.54680023193358,
+            "max": 19.2600002288818
+          },
+          "ui_command_cpu_ms": {
+            "n": 25,
+            "min": 0.326,
+            "median": 0.34,
+            "p95": 0.48840000000000006,
+            "max": 0.751
+          },
+          "panel_command_cpu_ms": {
+            "n": 25,
+            "min": 0.131,
+            "median": 0.144,
+            "p95": 0.175,
+            "max": 0.18
+          },
+          "overlay_command_cpu_ms": {
+            "n": 25,
+            "min": 0.014,
+            "median": 0.015,
+            "p95": 0.03219999999999999,
+            "max": 0.04
+          },
+          "process_cpu_ms": {
+            "n": 25,
+            "min": 0.015,
+            "median": 0.016,
+            "p95": 0.017,
+            "max": 0.017
+          },
+          "draw_calls": {
+            "n": 25,
+            "min": 68.0,
+            "median": 68.0,
+            "p95": 68.0,
+            "max": 68.0
+          }
+        },
+        "clear_held": {
+          "wall_frame_ms": {
+            "n": 112,
+            "min": 14.712,
+            "median": 16.391,
+            "p95": 29.795000000000005,
+            "max": 375.219
+          },
+          "render_cpu_ms": {
+            "n": 128,
+            "min": 0.679000020027161,
+            "median": 1.092999994754795,
+            "p95": 2.6945500195026417,
+            "max": 7.09000015258789
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 128,
+            "min": 10.7690000534058,
+            "median": 12.30699968338015,
+            "p95": 17.314049911499012,
+            "max": 60.2350006103516
+          },
+          "ui_command_cpu_ms": {
+            "n": 128,
+            "min": 0.271,
+            "median": 0.342,
+            "p95": 0.46980000000000005,
+            "max": 1.283
+          },
+          "panel_command_cpu_ms": {
+            "n": 128,
+            "min": 0.303,
+            "median": 0.453,
+            "p95": 0.70995,
+            "max": 0.925
+          },
+          "overlay_command_cpu_ms": {
+            "n": 128,
+            "min": 0.007,
+            "median": 0.008,
+            "p95": 0.01,
+            "max": 0.032
+          },
+          "process_cpu_ms": {
+            "n": 128,
+            "min": 0.014,
+            "median": 0.016,
+            "p95": 0.018,
+            "max": 0.082
+          },
+          "draw_calls": {
+            "n": 128,
+            "min": 103.0,
+            "median": 117.5,
+            "p95": 259.0,
+            "max": 259.0
+          }
+        },
+        "skill_held": {
+          "wall_frame_ms": {
+            "n": 42,
+            "min": 16.696,
+            "median": 18.003999999999998,
+            "p95": 22.10365,
+            "max": 24.987
+          },
+          "render_cpu_ms": {
+            "n": 48,
+            "min": 0.760999977588654,
+            "median": 1.178000032901765,
+            "p95": 5.761449980735781,
+            "max": 7.25400018692017
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 48,
+            "min": 10.798999786377,
+            "median": 12.2480001449585,
+            "p95": 17.85340013504026,
+            "max": 22.4860000610352
+          },
+          "ui_command_cpu_ms": {
+            "n": 48,
+            "min": 0.331,
+            "median": 0.3935,
+            "p95": 0.48200000000000004,
+            "max": 0.505
+          },
+          "panel_command_cpu_ms": {
+            "n": 48,
+            "min": 0.575,
+            "median": 0.7755000000000001,
+            "p95": 0.9592499999999999,
+            "max": 2.44
+          },
+          "overlay_command_cpu_ms": {
+            "n": 48,
+            "min": 0.007,
+            "median": 0.009,
+            "p95": 0.01,
+            "max": 0.011
+          },
+          "process_cpu_ms": {
+            "n": 48,
+            "min": 0.015,
+            "median": 0.017,
+            "p95": 0.01865,
+            "max": 0.047
+          },
+          "draw_calls": {
+            "n": 48,
+            "min": 277.0,
+            "median": 347.5,
+            "p95": 427.0,
+            "max": 427.0
+          }
+        },
+        "clear_fx": {
+          "wall_frame_ms": {
+            "n": 226,
+            "min": 16.539,
+            "median": 19.6475,
+            "p95": 29.163999999999998,
+            "max": 38.804
+          },
+          "render_cpu_ms": {
+            "n": 242,
+            "min": 0.888999998569489,
+            "median": 1.751499950885775,
+            "p95": 5.981550192832944,
+            "max": 22.7870006561279
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 242,
+            "min": 10.7469997406006,
+            "median": 12.9509997367859,
+            "p95": 18.73395004272465,
+            "max": 149.735992431641
+          },
+          "ui_command_cpu_ms": {
+            "n": 242,
+            "min": 0.247,
+            "median": 0.314,
+            "p95": 0.5144,
+            "max": 1.287
+          },
+          "panel_command_cpu_ms": {
+            "n": 242,
+            "min": 0.329,
+            "median": 0.6924999999999999,
+            "p95": 1.57115,
+            "max": 3.247
+          },
+          "overlay_command_cpu_ms": {
+            "n": 242,
+            "min": 0.091,
+            "median": 0.1535,
+            "p95": 2.38955,
+            "max": 11.131
+          },
+          "process_cpu_ms": {
+            "n": 242,
+            "min": 0.075,
+            "median": 0.634,
+            "p95": 2.3537500000000002,
+            "max": 5.154
+          },
+          "draw_calls": {
+            "n": 242,
+            "min": 109.0,
+            "median": 216.0,
+            "p95": 493.6,
+            "max": 594.0
+          }
+        },
+        "fall": {
+          "wall_frame_ms": {
+            "n": 374,
+            "min": 18.048,
+            "median": 24.441,
+            "p95": 56.69199999999999,
+            "max": 198.942
+          },
+          "render_cpu_ms": {
+            "n": 390,
+            "min": 0.762000024318695,
+            "median": 1.7635000348091099,
+            "p95": 7.164900088310242,
+            "max": 22.3560009002686
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 390,
+            "min": 10.4169998168945,
+            "median": 12.4724998474121,
+            "p95": 18.09849977493288,
+            "max": 30.8509998321533
+          },
+          "ui_command_cpu_ms": {
+            "n": 390,
+            "min": 0.249,
+            "median": 0.318,
+            "p95": 0.42555,
+            "max": 1.124
+          },
+          "panel_command_cpu_ms": {
+            "n": 390,
+            "min": 0.162,
+            "median": 0.3335,
+            "p95": 0.98995,
+            "max": 2.947
+          },
+          "overlay_command_cpu_ms": {
+            "n": 390,
+            "min": 0.023,
+            "median": 0.088,
+            "p95": 0.27230000000000004,
+            "max": 11.977
+          },
+          "process_cpu_ms": {
+            "n": 390,
+            "min": 1.814,
+            "median": 7.0024999999999995,
+            "p95": 35.024649999999994,
+            "max": 155.492
+          },
+          "draw_calls": {
+            "n": 390,
+            "min": 71.0,
+            "median": 115.5,
+            "p95": 313.0,
+            "max": 499.0
+          }
+        }
+      }
+    },
+    "after": {
+      "board_press_cpu_ms": {
+        "n": 22,
+        "min": 1.242,
+        "median": 1.5354999999999999,
+        "p95": 1.9819,
+        "max": 2.047
+      },
+      "board_first_draw_ms": {
+        "n": 22,
+        "min": 16.682,
+        "median": 19.5345,
+        "p95": 23.31135,
+        "max": 28.853
+      },
+      "board_press_over_100ms": 0,
+      "ordinary_clear_ms": {
+        "n": 15,
+        "min": 658.1,
+        "median": 864.041,
+        "p95": 1415.8213,
+        "max": 1515.334
+      },
+      "core_clear_ms": {
+        "n": 1,
+        "min": 1143.725,
+        "median": 1143.725,
+        "p95": 1143.725,
+        "max": 1143.725
+      },
+      "clear_animation_ms": {
+        "n": 16,
+        "min": 198.323,
+        "median": 258.59450000000004,
+        "p95": 401.22975,
+        "max": 401.907
+      },
+      "fall_ms": {
+        "n": 16,
+        "min": 445.407,
+        "median": 726.2135,
+        "p95": 1027.88525,
+        "max": 1114.358
+      },
+      "physics_cpu_ms": {
+        "n": 16,
+        "min": 89.969,
+        "median": 240.323,
+        "p95": 427.96274999999997,
+        "max": 488.505
+      },
+      "stages": {
+        "idle": {
+          "wall_frame_ms": {
+            "n": 24,
+            "min": 14.752,
+            "median": 15.4405,
+            "p95": 21.7865,
+            "max": 22.611
+          },
+          "render_cpu_ms": {
+            "n": 25,
+            "min": 0.697000026702881,
+            "median": 0.799000024795532,
+            "p95": 1.0503999590873696,
+            "max": 3.35700011253357
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 25,
+            "min": 11.0989999771118,
+            "median": 11.6409997940063,
+            "p95": 15.7890003204346,
+            "max": 16.5979995727539
+          },
+          "ui_command_cpu_ms": {
+            "n": 25,
+            "min": 0.348,
+            "median": 0.366,
+            "p95": 0.457,
+            "max": 0.483
+          },
+          "panel_command_cpu_ms": {
+            "n": 25,
+            "min": 0.146,
+            "median": 0.15,
+            "p95": 0.25460000000000005,
+            "max": 0.258
+          },
+          "overlay_command_cpu_ms": {
+            "n": 25,
+            "min": 0.017,
+            "median": 0.018,
+            "p95": 0.022,
+            "max": 0.063
+          },
+          "process_cpu_ms": {
+            "n": 25,
+            "min": 0.018,
+            "median": 0.021,
+            "p95": 0.022799999999999997,
+            "max": 0.041
+          },
+          "draw_calls": {
+            "n": 25,
+            "min": 70.0,
+            "median": 70.0,
+            "p95": 70.0,
+            "max": 70.0
+          }
+        },
+        "clear_held": {
+          "wall_frame_ms": {
+            "n": 112,
+            "min": 14.61,
+            "median": 16.4705,
+            "p95": 19.176849999999998,
+            "max": 41.221
+          },
+          "render_cpu_ms": {
+            "n": 128,
+            "min": 0.679000020027161,
+            "median": 1.031500041484835,
+            "p95": 2.4765500783920307,
+            "max": 6.02600002288818
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 128,
+            "min": 10.5310001373291,
+            "median": 12.2664999961853,
+            "p95": 18.073549842834485,
+            "max": 165.695999145508
+          },
+          "ui_command_cpu_ms": {
+            "n": 128,
+            "min": 0.284,
+            "median": 0.3535,
+            "p95": 0.44939999999999997,
+            "max": 1.304
+          },
+          "panel_command_cpu_ms": {
+            "n": 128,
+            "min": 0.299,
+            "median": 0.441,
+            "p95": 0.6942999999999999,
+            "max": 0.735
+          },
+          "overlay_command_cpu_ms": {
+            "n": 128,
+            "min": 0.007,
+            "median": 0.008,
+            "p95": 0.00965,
+            "max": 0.039
+          },
+          "process_cpu_ms": {
+            "n": 128,
+            "min": 0.016,
+            "median": 0.018,
+            "p95": 0.021,
+            "max": 0.063
+          },
+          "draw_calls": {
+            "n": 128,
+            "min": 105.0,
+            "median": 119.5,
+            "p95": 261.0,
+            "max": 261.0
+          }
+        },
+        "skill_held": {
+          "wall_frame_ms": {
+            "n": 42,
+            "min": 16.917,
+            "median": 17.72,
+            "p95": 20.7828,
+            "max": 22.327
+          },
+          "render_cpu_ms": {
+            "n": 48,
+            "min": 0.813000023365021,
+            "median": 1.1924999952316302,
+            "p95": 2.3967999935150113,
+            "max": 3.73499989509583
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 48,
+            "min": 10.9820003509521,
+            "median": 12.72149991989135,
+            "p95": 16.109950256347666,
+            "max": 24.2479991912842
+          },
+          "ui_command_cpu_ms": {
+            "n": 48,
+            "min": 0.342,
+            "median": 0.4125,
+            "p95": 0.47684999999999994,
+            "max": 0.556
+          },
+          "panel_command_cpu_ms": {
+            "n": 48,
+            "min": 0.517,
+            "median": 0.8115000000000001,
+            "p95": 1.04365,
+            "max": 2.087
+          },
+          "overlay_command_cpu_ms": {
+            "n": 48,
+            "min": 0.007,
+            "median": 0.008,
+            "p95": 0.0103,
+            "max": 0.043
+          },
+          "process_cpu_ms": {
+            "n": 48,
+            "min": 0.016,
+            "median": 0.019,
+            "p95": 0.021,
+            "max": 0.022
+          },
+          "draw_calls": {
+            "n": 48,
+            "min": 279.0,
+            "median": 349.5,
+            "p95": 429.0,
+            "max": 429.0
+          }
+        },
+        "clear_fx": {
+          "wall_frame_ms": {
+            "n": 230,
+            "min": 16.049,
+            "median": 19.232999999999997,
+            "p95": 29.5254,
+            "max": 62.507
+          },
+          "render_cpu_ms": {
+            "n": 246,
+            "min": 0.901000022888184,
+            "median": 1.78799998760223,
+            "p95": 6.716250061988832,
+            "max": 18.8689994812012
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 246,
+            "min": 10.6949996948242,
+            "median": 12.8664999008179,
+            "p95": 17.642500400543224,
+            "max": 28.5270004272461
+          },
+          "ui_command_cpu_ms": {
+            "n": 246,
+            "min": 0.255,
+            "median": 0.328,
+            "p95": 0.4485,
+            "max": 3.316
+          },
+          "panel_command_cpu_ms": {
+            "n": 246,
+            "min": 0.313,
+            "median": 0.713,
+            "p95": 1.6477499999999998,
+            "max": 5.339
+          },
+          "overlay_command_cpu_ms": {
+            "n": 246,
+            "min": 0.09,
+            "median": 0.152,
+            "p95": 1.12625,
+            "max": 9.421
+          },
+          "process_cpu_ms": {
+            "n": 246,
+            "min": 0.076,
+            "median": 0.6315,
+            "p95": 2.2984999999999998,
+            "max": 3.142
+          },
+          "draw_calls": {
+            "n": 246,
+            "min": 111.0,
+            "median": 218.5,
+            "p95": 495.5,
+            "max": 596.0
+          }
+        },
+        "fall": {
+          "wall_frame_ms": {
+            "n": 367,
+            "min": 18.328,
+            "median": 23.574,
+            "p95": 59.4908,
+            "max": 425.569
+          },
+          "render_cpu_ms": {
+            "n": 383,
+            "min": 0.702000021934509,
+            "median": 1.75399994850159,
+            "p95": 7.221499872207642,
+            "max": 19.3509998321533
+          },
+          "llvmpipe_gl_timer_ms": {
+            "n": 383,
+            "min": 10.4589996337891,
+            "median": 12.6529998779297,
+            "p95": 19.04700031280517,
+            "max": 47.7159996032715
+          },
+          "ui_command_cpu_ms": {
+            "n": 383,
+            "min": 0.264,
+            "median": 0.347,
+            "p95": 0.5992,
+            "max": 3.026
+          },
+          "panel_command_cpu_ms": {
+            "n": 383,
+            "min": 0.163,
+            "median": 0.349,
+            "p95": 0.8827,
+            "max": 1.651
+          },
+          "overlay_command_cpu_ms": {
+            "n": 383,
+            "min": 0.027,
+            "median": 0.078,
+            "p95": 0.1638,
+            "max": 8.03
+          },
+          "process_cpu_ms": {
+            "n": 383,
+            "min": 1.833,
+            "median": 6.386,
+            "p95": 37.9106,
+            "max": 86.273
+          },
+          "draw_calls": {
+            "n": 383,
+            "min": 73.0,
+            "median": 119.0,
+            "p95": 300.8,
+            "max": 458.0
+          }
+        }
+      }
+    }
+  },
+  "final": {
+    "before": {
+      "actions": 16,
+      "ash": true,
+      "charge": 1,
+      "encounter": 2,
+      "enemy_hp": 0,
+      "gold": 0,
+      "hp": 24,
+      "incoming": 6,
+      "mitigated": false,
+      "phase": "victory",
+      "relics": [
+        "pigment",
+        "lens",
+        "ash"
+      ],
+      "requirement": 2,
+      "spent": 12
+    },
+    "after": {
+      "actions": 16,
+      "ash": true,
+      "charge": 1,
+      "encounter": 2,
+      "enemy_hp": 0,
+      "gold": 0,
+      "hp": 24,
+      "incoming": 6,
+      "mitigated": false,
+      "phase": "victory",
+      "relics": [
+        "pigment",
+        "lens",
+        "ash"
+      ],
+      "requirement": 2,
+      "spent": 12
+    }
+  },
+  "errors": {
+    "before": [],
+    "after": []
+  },
+  "limits": [
+    "One run per version does not establish repeat-based parity or speedup.",
+    "Frame-aligned programmatic input is not OS/hardware touch latency. Software llvmpipe GL timers may lag a frame and are not mobile GPU data.",
+    "Rare long-tail stalls remain possible; no physics or readiness timeouts changed.",
+    "Movie capture is separate and not real-time evidence."
+  ]
+}

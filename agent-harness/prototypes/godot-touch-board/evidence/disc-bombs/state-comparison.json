@@ -1,0 +1,22 @@
+[
+  {
+    "hero": "noa",
+    "events_before": 92,
+    "events_after": 92,
+    "mismatches": [],
+    "terminal_equal": true,
+    "errors_before": [],
+    "errors_after": [],
+    "pass": true
+  },
+  {
+    "hero": "rio",
+    "events_before": 84,
+    "events_after": 84,
+    "mismatches": [],
+    "terminal_equal": true,
+    "errors_before": [],
+    "errors_after": [],
+    "pass": true
+  }
+]

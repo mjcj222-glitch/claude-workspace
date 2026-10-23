@@ -1,0 +1,36 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS safe route metadata exact
+PASS elite route metadata exact
+PASS old call defaults safe unchanged
+PASS elite second enemy starts at44 HP
+PASS elite condition available announces8
+PASS elite mitigation telegraph exact dynamic numbers
+PASS elite direct four succeeds at4 incoming
+PASS elite success telegraph shows actual4
+PASS elite success deals4 once
+PASS elite repeated attack causes no duplicate
+PASS elite odd turn plain6
+PASS elite odd turn deals6
+PASS elite next even turn restores8 condition
+PASS elite failed condition deals8
+PASS elite unavailable condition falls back6
+PASS elite fallback has no condition text
+PASS elite fallback locked despite later group
+PASS elite fallback actual attack6
+PASS heart direct group qualifies for initial condition
+PASS heart unique direct group satisfies elite mitigation
+PASS core direct group qualifies for initial condition
+PASS core unique direct group satisfies elite mitigation
+PASS duplicate direct IDs cannot satisfy elite condition
+PASS solo-core extra chain excluded from elite condition
+PASS lethal contribution remains banked
+PASS elite lethal bank beats retaliation after third clear
+PASS elite repeated victory counts once
+PASS elite lethal third clear beats retaliation
+PASS first fight unaffected by elite route
+PASS final fight first attack unaffected by elite
+PASS boss odd plain six unaffected by elite
+PASS explicit safe resets elite bonuses
+PASS explicit safe mitigation still3
+ROUTE COMBAT checks=33 failures=0

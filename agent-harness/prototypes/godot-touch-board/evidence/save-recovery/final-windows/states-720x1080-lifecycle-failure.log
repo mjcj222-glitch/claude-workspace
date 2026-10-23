@@ -1,0 +1,48 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS prepare isolated real initial checkpoint
+PASS OS driver acknowledged life-01-resume
+PASS OS driver acknowledged life-new
+PASS OS new requires confirmation
+PASS OS driver acknowledged life-02-confirm
+PASS OS driver acknowledged life-cancel
+PASS OS cancel preserves resumable save
+PASS OS driver acknowledged life-resume-down
+PASS OS driver acknowledged life-resume-out
+PASS interrupted resume press does not start
+PASS OS driver acknowledged life-resume
+PASS OS continue restores exact state
+PASS OS driver acknowledged life-stale-release
+PASS stale release after resume cannot clear
+PASS OS driver acknowledged life-03-restored
+PASS OS driver acknowledged life-reset
+PASS active reset confirmed
+PASS OS driver acknowledged life-keep
+PASS active cancellation retains state
+PASS OS driver acknowledged life-reset-again
+PASS OS driver acknowledged life-abandon
+PASS explicit abandon archives save and chooses fresh seed
+PASS OS driver acknowledged life-confirm-repeat
+PASS rapid confirmation repeat does not select hidden card
+PASS OS driver acknowledged life-04-new
+PASS recovery explicitly labeled
+PASS OS driver acknowledged life-05-recovery
+PASS OS driver acknowledged life-recover
+PASS recovery restores previous complete snapshot
+PASS write failure shown and pending
+PASS OS driver acknowledged failure-01-retrying
+PASS OS driver acknowledged retry-down
+PASS OS driver acknowledged retry-out
+PASS interrupted retry cancels
+PASS OS driver acknowledged retry-success
+PASS OS retry saves stable state
+PASS actual window-close handler shows explicit failure choice
+PASS OS driver acknowledged failure-02-quit
+PASS OS driver acknowledged quit-retry-down
+PASS OS driver acknowledged quit-retry-out
+PASS interrupted quit choice inert
+PASS recovered completion barrier before exit
+LIFECYCLE_WINDOW checks=42 failures=0 size=(720, 1080)

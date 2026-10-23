@@ -1,0 +1,688 @@
+[
+  {
+    "test": "test_balance",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.036,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_balance.gd"
+    ]
+  },
+  {
+    "test": "test_balance_refill",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_balance_refill.gd"
+    ]
+  },
+  {
+    "test": "test_boss_combat",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.027,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_boss_combat.gd"
+    ]
+  },
+  {
+    "test": "test_clear_timeline",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.032,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_clear_timeline.gd"
+    ]
+  },
+  {
+    "test": "test_combat",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.029,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_combat.gd"
+    ]
+  },
+  {
+    "test": "test_elemental_input",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.029,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_input.gd"
+    ]
+  },
+  {
+    "test": "test_elemental_rules",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.029,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_rules.gd"
+    ]
+  },
+  {
+    "test": "test_elemental_session",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_session.gd"
+    ]
+  },
+  {
+    "test": "test_elemental_ui",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.026,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_elemental_ui.gd"
+    ]
+  },
+  {
+    "test": "test_feedback",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_feedback.gd"
+    ]
+  },
+  {
+    "test": "test_growth_session",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.03,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_growth_session.gd"
+    ]
+  },
+  {
+    "test": "test_hit_audio",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.029,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_audio.gd"
+    ]
+  },
+  {
+    "test": "test_hit_scene",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.027,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_scene.gd"
+    ]
+  },
+  {
+    "test": "test_hit_sync",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.026,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_hit_sync.gd"
+    ]
+  },
+  {
+    "test": "test_interaction",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.03,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_interaction.gd"
+    ]
+  },
+  {
+    "test": "test_motion",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.027,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion.gd"
+    ]
+  },
+  {
+    "test": "test_motion_cycles",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.027,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion_cycles.gd"
+    ]
+  },
+  {
+    "test": "test_motion_paths",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.031,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_motion_paths.gd"
+    ]
+  },
+  {
+    "test": "test_premium_art",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.029,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_art.gd"
+    ]
+  },
+  {
+    "test": "test_premium_layout",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.026,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_layout.gd"
+    ]
+  },
+  {
+    "test": "test_premium_skill",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.026,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_premium_skill.gd"
+    ]
+  },
+  {
+    "test": "test_presentation_scene",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.033,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_presentation_scene.gd",
+      "--",
+      "--sandbox"
+    ]
+  },
+  {
+    "test": "test_quality_fonts",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.025,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_fonts.gd"
+    ]
+  },
+  {
+    "test": "test_quality_fx",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_fx.gd"
+    ]
+  },
+  {
+    "test": "test_quality_scene",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_quality_scene.gd"
+    ]
+  },
+  {
+    "test": "test_refill_inlet",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.029,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_refill_inlet.gd"
+    ]
+  },
+  {
+    "test": "test_relic_details",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_relic_details.gd"
+    ]
+  },
+  {
+    "test": "test_relic_rules",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_relic_rules.gd"
+    ]
+  },
+  {
+    "test": "test_reward_input",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.031,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_reward_input.gd",
+      "--",
+      "--sandbox"
+    ]
+  },
+  {
+    "test": "test_route_combat",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.029,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_combat.gd"
+    ]
+  },
+  {
+    "test": "test_route_economy",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_economy.gd"
+    ]
+  },
+  {
+    "test": "test_route_input",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_route_input.gd"
+    ]
+  },
+  {
+    "test": "test_rules",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.029,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_rules.gd"
+    ]
+  },
+  {
+    "test": "test_run_input",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.026,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_run_input.gd"
+    ]
+  },
+  {
+    "test": "test_run_session",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.026,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_run_session.gd"
+    ]
+  },
+  {
+    "test": "test_scene",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.031,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_scene.gd",
+      "--",
+      "--sandbox"
+    ]
+  },
+  {
+    "test": "test_skin",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.026,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_skin.gd"
+    ]
+  },
+  {
+    "test": "test_transition_reentry",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.026,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_transition_reentry.gd"
+    ]
+  },
+  {
+    "test": "test_characters",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.028,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_characters.gd"
+    ]
+  },
+  {
+    "test": "test_character_input",
+    "exit": -6,
+    "errors": [
+      "ERROR: Could not create directory: '/home/agent/.local/share/godot'.",
+      "ERROR: Error attempting to create data dir: /home/agent/.local/share/godot/app_userdata/CHROMA - Short Exploration.",
+      "ERROR: Could not create directory: 'user://logs'."
+    ],
+    "wall_seconds": 0.03,
+    "command": [
+      "--headless",
+      "--path",
+      "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board",
+      "--script",
+      "tests/test_character_input.gd"
+    ]
+  }
+]

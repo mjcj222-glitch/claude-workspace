@@ -1,0 +1,3 @@
+before 2b32d63 /tmp/chroma-volume-performance/before
+after 2b32d63 /tmp/chroma-volume-performance/after
+Prepared 2b32d63 and current isolated sources with identical measurement wrappers.

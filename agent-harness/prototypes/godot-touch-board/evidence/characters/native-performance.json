@@ -1,0 +1,113 @@
+{
+  "baseline": "0b4e0a7598578d0786d11473300747cc9b55010f",
+  "method": "one serial before/after native llvmpipe pair, same recorded16 clear inputs, departure outside recording, no policy/search/screenshot/file I/O inside measured replay. Shared wrappers and in-memory metrics. No other Godot/capture/encode job during timing.",
+  "limits": [
+    "One pair only, not a stable speedup/parity claim.",
+    "Frame-aligned programmatic input, not OS/mobile touch latency.",
+    "Some ordinary clears miss0.6-1.0s goal; no physics/readiness adjustment."
+  ],
+  "canonical_equal": true,
+  "physics_tick_profiles_equal": true,
+  "groups": {
+    "before": {
+      "board_first_draw_ms": {
+        "n": 22,
+        "min": 17.05,
+        "median": 18.971,
+        "p95": 21.51815,
+        "max": 22.148
+      },
+      "ordinary_clear_ms": {
+        "n": 15,
+        "min": 654.694,
+        "median": 823.162,
+        "p95": 1398.0077999999999,
+        "max": 1483.398
+      },
+      "core_clear_ms": {
+        "n": 1,
+        "min": 1125.425,
+        "median": 1125.425,
+        "p95": 1125.425,
+        "max": 1125.425
+      },
+      "physics_cpu_ms": {
+        "n": 16,
+        "min": 95.222,
+        "median": 231.72449999999998,
+        "p95": 422.9035,
+        "max": 445.537
+      },
+      "final": {
+        "actions": 16,
+        "ash": true,
+        "charge": 1,
+        "encounter": 2,
+        "enemy_hp": 0,
+        "gold": 0,
+        "hp": 24,
+        "incoming": 6,
+        "mitigated": false,
+        "phase": "victory",
+        "relics": [
+          "pigment",
+          "lens",
+          "ash"
+        ],
+        "requirement": 2,
+        "spent": 12
+      },
+      "errors": []
+    },
+    "after": {
+      "board_first_draw_ms": {
+        "n": 22,
+        "min": 17.368,
+        "median": 19.9055,
+        "p95": 24.16165,
+        "max": 25.855
+      },
+      "ordinary_clear_ms": {
+        "n": 15,
+        "min": 653.611,
+        "median": 852.618,
+        "p95": 1402.3926,
+        "max": 1484.259
+      },
+      "core_clear_ms": {
+        "n": 1,
+        "min": 1120.084,
+        "median": 1120.084,
+        "p95": 1120.084,
+        "max": 1120.084
+      },
+      "physics_cpu_ms": {
+        "n": 16,
+        "min": 97.136,
+        "median": 230.98649999999998,
+        "p95": 440.37075000000004,
+        "max": 472.659
+      },
+      "final": {
+        "actions": 16,
+        "ash": true,
+        "charge": 1,
+        "encounter": 2,
+        "enemy_hp": 0,
+        "gold": 0,
+        "hp": 24,
+        "incoming": 6,
+        "mitigated": false,
+        "phase": "victory",
+        "relics": [
+          "pigment",
+          "lens",
+          "ash"
+        ],
+        "requirement": 2,
+        "spent": 12
+      },
+      "errors": []
+    }
+  }
+}

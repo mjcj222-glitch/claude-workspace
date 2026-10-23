@@ -1,0 +1,396 @@
+extends RefCounted
+## Pure presentation: no timers, input handlers, game RNG, or phase ownership.
+const Art = preload("res://scripts/board_art.gd")
+const CUTIN_SECONDS := 0.5
+const TRAIL_LIMIT := 48
+const TOTAL_SECONDS := 0.9
+const CUTIN_RECT := Rect2(8,920,688,160)
+const FACE_REGION := Rect2(250,180,590,590.0*160.0/230.0)
+const HEAL_STRIP := Rect2(32,278,656,26)
+var cutin_remaining := 0.0
+var _sweep_color := Color("b6dbff")
+var total_remaining := 0.0
+var damage_amount := 0
+var heal_raw := 0
+var heal_effective := 0
+var heal_overflow := 0
+var trails: Array = []
+var _eligible: Dictionary = {}
+var _seen: Dictionary = {}
+var _active := false
+var _bank_releasing := false
+var bank_energy := 0
+const COLLECTION_POINT := Vector2(176,180)
+const BANK_WINDUP := 0.28
+var _finished := false
+var reduced_effects := false
+var impact_remaining := 0.0
+var impact_tier := 0
+var weak_bonus := 0
+var base_damage := 0
+var core_activations := 0
+var strong_cores:=0
+var bomb_activations:=0
+var big_bombs:=0
+var shield_damage:=0
+var shield_broken:=false
+var shield_color:=0
+var shield_remaining:=0.0
+const SHIELD_SECONDS:=0.45
+var skill_link := false
+var _skill_converted:Dictionary={}
+var _elapsed := 0.0
+var _impact_due := 0.0
+var _impacted := false
+var _pending_impact: Dictionary = {}
+var _hp_before := -1
+var _hp_after := -1
+const IMPACT_SECONDS := 0.24
+var _effects_rng := RandomNumberGenerator.new()
+
+func _init() -> void:
+	_effects_rng.seed = 0x5049474D454E54
+
+func _clear_action() -> void:
+	total_remaining = 0.0
+	impact_remaining = 0.0
+	_elapsed=0.0
+	_impact_due=0.0
+	_impacted=false
+	_pending_impact.clear()
+	_hp_before=-1
+	_hp_after=-1
+	weak_bonus=0
+	base_damage=0
+	core_activations=0
+	strong_cores=0
+	bomb_activations=0
+	big_bombs=0
+	shield_damage=0
+	shield_broken=false
+	shield_remaining=0.0
+	skill_link=false
+	damage_amount = 0
+	heal_raw = 0
+	heal_effective = 0
+	heal_overflow = 0
+	trails.clear()
+	_eligible.clear()
+	_seen.clear()
+	_active = false
+	_bank_releasing = false
+	_finished = false
+
+func reset() -> void:
+	_clear_action()
+	bank_energy=0
+	cutin_remaining = 0.0
+	_skill_converted.clear()
+
+func skill_activated(changed:Dictionary={}) -> void:
+	cutin_remaining = CUTIN_SECONDS
+	_skill_converted=changed.duplicate()
+	_sweep_color=Color("b6dbff")
+	for value in changed.values():
+		if typeof(value)==TYPE_INT and value in range(4):
+			_sweep_color=[Color("ff705d"),Color("6edb6b"),Color("ffcf5b"),Color("61b7ff")][value]
+			break
+
+func action_started(plan: Dictionary, panels: Array, impact_due: float=0.0, enemy_hp_before: int=-1) -> void:
+	_clear_action()
+	if not plan.get("valid", false) or plan.get("mode", "clear") != "clear":
+		return
+	var actual: Dictionary = {}
+	for panel in panels:
+		if panel.has("id"):
+			actual[int(panel.id)] = panel.get("kind", "normal")
+	for id in plan.get("removed", []):
+		if actual.has(int(id)):
+			_eligible[int(id)] = actual[int(id)]
+	_active = not _eligible.is_empty()
+	if not _active: return
+	# Use the committed final figures, never re-derive damage from effect counts.
+	damage_amount = int(plan.get("damage", 0))
+	base_damage=int(plan.get("base_damage",damage_amount))
+	weak_bonus=int(plan.get("weak_bonus",0))
+	shield_damage=maxi(0,int(plan.get("shield_damage",0)))
+	shield_broken=bool(plan.get("shield_broken",false))
+	shield_color=clampi(int(plan.get("combat_context",{}).get("shield_color",0)),0,3)
+	var unique_cores:Dictionary={}
+	for id in plan.get("activated",[]):
+		if _eligible.has(int(id)) and actual.get(int(id),"") in ["core","strong"]:unique_cores[int(id)]=true
+	core_activations=unique_cores.size()
+	for id in unique_cores:
+		if actual[id]=="strong":strong_cores+=1
+	var bombs:Dictionary={}
+	for id in plan.get("activated",[]):
+		if _eligible.has(int(id)) and actual.get(int(id),"") in ["bomb","big_bomb"]:bombs[int(id)]=true
+	bomb_activations=bombs.size()
+	for id in bombs:
+		if actual[id]=="big_bomb":big_bombs+=1
+	impact_tier=2 if _eligible.size()>=12 or core_activations>0 or bomb_activations>0 else (1 if _eligible.size()>=6 else 0)
+	skill_link=false
+	for id in _eligible:
+		if _eligible[id]=="normal" and _skill_converted.has(id) and not plan.get("converted",{}).has(id) and plan.get("effective_colors",{}).get(id,_skill_converted[id])==_skill_converted[id]:skill_link=true
+	_skill_converted.clear()
+	_impact_due=maxf(0.0,impact_due)
+	# Clears collect only; canonical HP stays live until explicit bank release.
+	_hp_before=-1
+	_hp_after=-1
+	heal_raw = int(plan.get("heal_raw", 0))
+	heal_effective = int(plan.get("heal_effective", 0))
+	heal_overflow = int(plan.get("heal_overflow", 0))
+
+func panel_removed(id: int, pos: Vector2, color: Color, _kind: String) -> bool:
+	if not _active or _finished or not _eligible.has(id) or _seen.has(id):
+		return false
+	_seen[id] = true
+	bank_energy=mini(144,bank_energy+1)
+	var actual_kind: String = _eligible[id]
+	# Existing feedback owns core rings/shards. Delivery cues distinguish
+	# damage (including core objects) from heart healing and overflow.
+	if actual_kind in ["normal","heart","core","strong","bomb","big_bomb"]:
+		if trails.size() >= TRAIL_LIMIT: trails.pop_front()
+		trails.append({"pos":pos,"color":color,"age":0.0,
+			"life":_effects_rng.randf_range(0.30,0.42),
+			"core":actual_kind in ["core","strong","bomb","big_bomb"],
+			"bend":_effects_rng.randf_range(-40.0,40.0),
+			"kind":"heal" if actual_kind=="heart" else "collect"})
+	return true
+
+func action_finished() -> void:
+	if not _active or _finished: return
+	_finished = true
+	total_remaining = TOTAL_SECONDS
+
+func release_bank(plan:Dictionary,removed_count:int,enemy_hp_before:int)->void:
+	# A bank is released once by the controller after the third settled refill.
+	# Repeated callbacks cannot restart its windup or duplicate its impact.
+	if _bank_releasing:return
+	_clear_action()
+	_bank_releasing=true
+	_active=true
+	_finished=true
+	bank_energy=clampi(removed_count,0,144)
+	damage_amount=maxi(0,int(plan.get("damage",0)))
+	base_damage=int(plan.get("base_damage",damage_amount))
+	weak_bonus=int(plan.get("weak_bonus",0))
+	shield_damage=maxi(0,int(plan.get("shield_damage",0)))
+	shield_broken=bool(plan.get("shield_broken",false))
+	shield_color=clampi(int(plan.get("combat_context",{}).get("shield_color",0)),0,3)
+	core_activations=maxi(0,int(plan.get("core_activations",0)))
+	strong_cores=maxi(0,int(plan.get("strong_cores",0)))
+	bomb_activations=maxi(0,int(plan.get("bomb_activations",0)))
+	big_bombs=maxi(0,int(plan.get("big_bombs",0)))
+	impact_tier=2 if removed_count>=12 else (1 if removed_count>=6 else 0)
+	_hp_before=enemy_hp_before
+	_hp_after=maxi(0,_hp_before-damage_amount)
+	_impact_due=BANK_WINDUP
+	total_remaining=TOTAL_SECONDS+BANK_WINDUP
+
+func take_impact() -> Dictionary:
+	var event:=_pending_impact
+	_pending_impact={}
+	return event
+
+func display_enemy_hp(actual: int) -> int:
+	if _hp_before<0 or damage_amount<=0:return actual
+	if not _impacted:return _hp_before
+	var t:=clampf((IMPACT_SECONDS-impact_remaining)/0.14,0,1)
+	return int(ceil(lerpf(_hp_before,_hp_after,1.0-pow(1.0-t,2))))
+
+func stage_offset() -> Vector2:
+	if reduced_effects or impact_remaining<=0:return Vector2.ZERO
+	var t:float=1.0-impact_remaining/IMPACT_SECONDS
+	var recoil:float=sin(t*PI*3.0)*pow(1.0-t,2)
+	return Vector2(16+impact_tier*7,-5)*recoil
+
+func hit_flash() -> float:
+	if reduced_effects or impact_remaining<=0:return 0.0
+	return maxf(0.0,1.0-(IMPACT_SECONDS-impact_remaining)/0.075)
+
+func update(delta: float) -> void:
+	var dt := maxf(0.0,delta)
+	_elapsed+=dt
+	impact_remaining=maxf(0,impact_remaining-dt)
+	shield_remaining=maxf(0,shield_remaining-dt)
+	if _bank_releasing and not _impacted and _elapsed>=_impact_due:
+		_impacted=true
+		bank_energy=0
+		total_remaining=TOTAL_SECONDS
+		impact_remaining=IMPACT_SECONDS
+		if shield_broken:shield_remaining=SHIELD_SECONDS
+		_pending_impact={"damage":damage_amount,"base_damage":base_damage,"weak_bonus":weak_bonus,"cores":core_activations,"strong_cores":strong_cores,"bombs":bomb_activations,"tier":impact_tier,"skill_link":skill_link,"shield_damage":shield_damage,"shield_broken":shield_broken,"big_bombs":big_bombs}
+	cutin_remaining = maxf(0.0,cutin_remaining-dt)
+	total_remaining = maxf(0.0,total_remaining-dt)
+	for i in range(trails.size()-1,-1,-1):
+		trails[i].age += dt
+		if trails[i].age >= trails[i].life: trails.remove_at(i)
+
+func _curve(a: Vector2,b: Vector2,bend: float,t: float) -> Vector2:
+	var control := a.lerp(b,0.5)+Vector2(bend,-45)
+	return a.lerp(control,t).lerp(control.lerp(b,t),t)
+
+func _font(view,key: String) -> Font:
+	var candidate = view.get(key)
+	return candidate if candidate is Font else view.font
+
+func _text(canvas,font: Font,point: Vector2,text: String,size: int,color: Color,outline: int=2) -> void:
+	var origin := point-Vector2(font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x*0.5,0)
+	canvas.draw_string_outline(font,origin,text,HORIZONTAL_ALIGNMENT_LEFT,-1,size,outline,Color(0.02,0.04,0.06,color.a))
+	canvas.draw_string(font,origin,text,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
+
+# Upper stage only: no polygon may cover intent/shield text or board.
+func _stage_polygon(canvas,points:PackedVector2Array,color:Color)->void:
+	if color.a<.01 or Geometry2D.triangulate_polygon(points).is_empty():return
+	for rect in [Rect2(8,70,704,146),Rect2(8,216,328,86),Rect2(692,216,20,86),Rect2(336,276,356,26)]:
+		var bounds:=PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y)])
+		for part in Geometry2D.intersect_polygons(points,bounds):
+			if part.size()>=3 and not Geometry2D.triangulate_polygon(part).is_empty():canvas.draw_colored_polygon(part,color)
+
+func _stage_stroke(canvas,a:Vector2,b:Vector2,width:float,color:Color)->void:
+	if width<.5 or a.distance_squared_to(b)<.25:return
+	var n:Vector2=(b-a).normalized().orthogonal()*width*.5
+	_stage_polygon(canvas,PackedVector2Array([a-n,b-n,b+n,a+n]),color)
+
+func draw_overlay(view,canvas) -> void:
+	var target: Vector2 = Art.impact_point(-1 if view.get("sandbox")==true else (view.session.combat.encounter if view.get("session")!=null else 0))
+	var hero: Vector2 = view.UI.HERO_RECT.get_center()
+	if bank_energy>0 and not _impacted:
+		var charge:float=clampf(float(bank_energy)/48.0,0,1)
+		var progress:float=clampf(_elapsed/BANK_WINDUP,0,1) if _bank_releasing else 0.0
+		var origin:Vector2=Vector2(hero.x,view.UI.HERO_RECT.position.y+18)
+		var grow:float=sin(minf(progress/.70,1.0)*PI*.5)
+		var radius:float=(12+charge*14+grow*12)*(1-clampf((progress-.7)/.3,0,1)*.5)
+		canvas.draw_circle(origin,radius+5,Color(.02,.05,.09,.85))
+		canvas.draw_circle(origin,radius,Color(.15,.65,.95,.85))
+		canvas.draw_circle(origin,radius*.65,Color(1,.83,.43,.95))
+		if _bank_releasing and not reduced_effects:
+			# Ascending pulse follows the gutter, avoiding a board-covering beam.
+			var rise:float=clampf(progress/.78,0,1)
+			var head:=Vector2(18,lerpf(origin.y,165,rise))
+			canvas.draw_line(Vector2(18,minf(origin.y,head.y+100)),head,Color(.3,.75,1,.75),7+charge*7,true)
+			canvas.draw_circle(head,5+charge*4,Color(1,.87,.48,.9))
+			if progress>.78:
+				_stage_stroke(canvas,Vector2(18,165),target,18+charge*32,Color(.12,.65,1,.75))
+				_stage_stroke(canvas,Vector2(18,165),target,6+charge*11,Color(1,.9,.6,.95))
+
+	for trail in trails:
+		var start: Vector2 = view.board_to_screen(trail.pos)
+		var destination: Vector2 = hero if trail.kind=="heal" else Vector2(hero.x,view.UI.HERO_RECT.position.y+18)
+		var t: float = clampf(trail.age/trail.life,0.0,1.0)
+		if reduced_effects:
+			canvas.draw_line(start,destination,Color(trail.color,0.18*(1.0-t)),1.5,true)
+			continue
+		var head := _curve(start,destination,trail.bend,t)
+		var tint: Color = Color("ffb6d8") if trail.kind=="heal" else trail.color.lightened(0.28)
+		tint.a = sin(PI*t)*0.78
+		var previous := _curve(start,destination,trail.bend,maxf(0.0,t-0.18))
+		for segment in range(1,7):
+			var at := lerpf(maxf(0.0,t-0.18),t,float(segment)/6.0)
+			var current := _curve(start,destination,trail.bend,at)
+			var tail_color := tint
+			tail_color.a *= float(segment)/6.0
+			canvas.draw_line(previous,current,tail_color,1.0+float(segment)*0.32,true)
+			previous = current
+		canvas.draw_line(previous,head,Color(1,0.96,0.82,tint.a),4.0 if trail.get("core",false) else 2.0,true)
+		canvas.draw_circle(head,8.0 if trail.get("core",false) else 4.8,Color(1.0,1.0,0.95,tint.a))
+		if trail.kind=="collect":
+			var size:float=4.0 if trail.get("core",false) else 2.5
+			canvas.draw_colored_polygon(PackedVector2Array([head+Vector2(0,-size),head+Vector2(size,0),head+Vector2(0,size),head-Vector2(size,0)]),Color(trail.color,tint.a))
+			canvas.draw_line(head-Vector2(0,size*.6),head+Vector2(size*.6,0),Color(1,1,1,tint.a),2,true)
+		if trail.kind=="heal":
+			canvas.draw_colored_polygon(Art._heart_points(head+Vector2(0,-5),5.0),tint)
+	if impact_remaining>0:
+		var t:float=1.0-impact_remaining/IMPACT_SECONDS
+		var strength:float=1.0+impact_tier*0.45+minf(strong_cores+bomb_activations,2)*0.15
+		var tint:=Color("e6c2ff") if weak_bonus>0 else Color("ffe2ab")
+		tint.a=(1.0-t)*0.8
+		if reduced_effects:
+			canvas.draw_arc(target,24,0,TAU,24,Color(tint,0.3*(1.0-t)),2,true)
+		else:
+			var high:float=impact_tier/2.0
+			var reach:float=90+high*170
+			# Torn radial silhouette precedes the wave; bright spokes are not a badge.
+			if t<.65:
+				var fade:float=1-t/.65
+				for i in range(14):
+					var angle:float=TAU*i/14.0+.15
+					var direction:=Vector2(cos(angle),sin(angle))
+					var length:float=reach*(1.0 if i%3==0 else .72)*(1+t*.3)
+					var tip:Vector2=target+direction*Vector2(length,length*.8)
+					var tangent:=direction.orthogonal()*(13+high*15)*fade
+					_stage_polygon(canvas,PackedVector2Array([target-tangent,tip,target+tangent]),Color(.12,.62,1,fade*.9))
+					_stage_polygon(canvas,PackedVector2Array([target-tangent*.38,tip,target+tangent*.38]),Color(1,.88,.53,fade*.96))
+			if t>.12:
+				var wave:float=(t-.12)/.88
+				var radius:float=reach*(.35+wave*.85)
+				for i in range(48):
+					var a:float=TAU*i/48.0
+					var b:float=TAU*(i+1)/48.0
+					_stage_stroke(canvas,target+Vector2(cos(a),sin(a)*.75)*radius,target+Vector2(cos(b),sin(b)*.75)*radius,(10+high*8)*(1-wave),Color(.4,.8,1,(1-wave)*.75))
+			for i in range(8+impact_tier*5):
+				var size:float=(4+impact_tier*2)*(1-t)
+				if size<.5:continue
+				var angle:float=TAU*i/(8+impact_tier*5)
+				var direction:=Vector2.from_angle(angle)
+				var center:Vector2=target+direction*(30+t*reach)
+				var tangent:=direction.orthogonal()*size
+				_stage_polygon(canvas,PackedVector2Array([center+direction*size*3,center+tangent,center-direction*size,center-tangent]),Color(1,.79,.46,(1-t)*.9))
+
+	if impact_remaining>0 and big_bombs>0 and not reduced_effects:
+		var age:float=1.0-impact_remaining/IMPACT_SECONDS
+		for wave in range(2):
+			var radius:float=18+age*(100+wave*22)
+			canvas.draw_arc(target,radius,0,TAU,48,Color(.45,.85,1,(1-age)*.45),3-wave,true)
+	if shield_remaining>0:
+		var age:float=1.0-shield_remaining/SHIELD_SECONDS
+		var tint:Color=[Color("ff705d"),Color("6edb6b"),Color("ffcf5b"),Color("61b7ff")][shield_color]
+		if reduced_effects:
+			canvas.draw_arc(target,42,0,TAU,6,Color(tint,(1-age)*.45),3,true)
+		else:
+			for piece in range(12):
+				var angle:float=piece*TAU/12.0
+				var direction:=Vector2.from_angle(angle)
+				var center:=target+direction*(32+age*60)+Vector2(0,age*age*30)
+				var tangent:=direction.orthogonal()
+				canvas.draw_colored_polygon(PackedVector2Array([center+direction*12,center+tangent*7,center-direction*7,center-tangent*4]),Color(tint,(1-age)*.8))
+	var body := _font(view,"font_body")
+	var display := _font(view,"font_display")
+	if shield_remaining>0:_text(canvas,body,target+Vector2(70,40),"보호막 파괴",24,Color(.7,.95,1,minf(1,shield_remaining/.15)),3)
+	if total_remaining > 0.0:
+		var alpha := minf(1.0,total_remaining/0.23)
+		var rise := (1.0-total_remaining/TOTAL_SECONDS)*14.0
+		if damage_amount > 0 and _impacted:
+			_text(canvas,display,Vector2(target.x,126-(0 if reduced_effects else rise)),str(damage_amount),64,Color(1.0,0.89,0.60,alpha),4)
+			if weak_bonus>0:_text(canvas,body,target+Vector2(-55,-12),"약점 +%d"%weak_bonus,22,Color(0.9,0.75,1,alpha))
+			elif core_activations>0:_text(canvas,body,target+Vector2(-55,-12),"핵 연쇄",22,Color(1,0.85,0.5,alpha))
+			elif skill_link and impact_tier>0:_text(canvas,body,target+Vector2(-55,-12),"변환 연계",22,Color(0.9,0.75,1,alpha))
+		if heal_raw > 0:
+			var a := HEAL_STRIP.position
+			var b := HEAL_STRIP.end
+			canvas.draw_colored_polygon(PackedVector2Array([a,Vector2(b.x,a.y),b,Vector2(a.x,b.y)]),Color(0.045,0.065,0.09,0.96*alpha))
+			_text(canvas,body,Vector2(360,296),"회복 +%d · 초과 %d (전체 %d)" % [heal_effective,heal_overflow,heal_raw],22,Color(1.0,0.75,0.87,alpha))
+	if cutin_remaining <= 0.0: return
+	# Footer-only strip: board, targeting palette and reset/cancel remain exposed.
+	var age := CUTIN_SECONDS-cutin_remaining
+	var alpha := minf(1.0,age/0.055)*minf(1.0,cutin_remaining/0.12)
+	# Transparent scan only: this shares the existing cutin clock and never owns
+	# input/phase. No full-board flash, opaque fill, or extra wait is introduced.
+	if not reduced_effects and age<0.3:
+		var board:Rect2=view.UI.BOARD_SCREEN
+		var y:float=lerpf(board.end.y,board.position.y,clampf(age/.3,0,1))
+		var opacity:float=.5*minf(1.0,(.3-age)/.08)
+		for line in range(3):
+			var at:float=clampf(y+line*8,board.position.y,board.end.y)
+			canvas.draw_line(Vector2(board.position.x,at),Vector2(board.end.x,at),Color(_sweep_color,opacity/(line+1)),3-line,true)
+	var slide := (0.0 if reduced_effects else 14.0)*(1.0-minf(1.0,age/0.10))
+	canvas.draw_colored_polygon(PackedVector2Array([Vector2(210,920),Vector2(696,920),Vector2(669,1080),Vector2(210,1080)]),Color(0.14,0.055,0.23,0.96*alpha))
+	# Original geometric sweep, leaving the separate pixel hero visible beneath.
+	for ray in range(4):
+		var y:float=940+ray*30
+		var x:float=220+fmod(age*600+ray*45,440)
+		canvas.draw_line(Vector2(x,y),Vector2(minf(x+65,690),y),Color(.7,.8,1,alpha*.35),3,true)
+	var identity:Dictionary=preload("res://scripts/board_characters.gd").definition(view.session.character_id if view.get("session")!=null else "rio")
+	_text(canvas,body,Vector2(435+slide,972),identity.name+" · "+identity.role,22,Color(0.88,0.74,0.96,alpha))
+	_text(canvas,display,Vector2(435+slide,1030),identity.skill,34,Color(0.96,0.92,0.73,alpha),3)

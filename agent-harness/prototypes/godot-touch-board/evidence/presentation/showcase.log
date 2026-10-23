@@ -1,0 +1,12 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.526}
+TIMING {"event":"commit_to_ready","frames":15,"movie":false,"next_phase":"ready","profile":{"anchor_us":52879,"clear_wall_ms":196.747,"fall_sim_s":0.35,"fall_wall_ms":736.899,"inside_sim_s":0.233333333333333,"iterations":3751,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":454157,"spawn_us":1526,"ticks":42},"removed":2,"specials":0,"wall_ms":933.635}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":28.715}
+TIMING {"event":"commit_to_ready","frames":120,"movie":false,"next_phase":"ready","profile":{"anchor_us":121211,"clear_wall_ms":375.627,"fall_sim_s":1.95,"fall_wall_ms":1990.683,"inside_sim_s":1.70833333333333,"iterations":1786,"last_spawn_sim_s":1.55,"pending_sim_s":1.55,"quiet_sim_s":0.0583333333333333,"solve_us":124036,"spawn_us":17136,"ticks":234},"removed":38,"specials":2,"wall_ms":2366.264}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":14.048}
+TIMING {"event":"commit_to_ready","frames":24,"movie":false,"next_phase":"reward","profile":{"anchor_us":107559,"clear_wall_ms":191.411,"fall_sim_s":0.625,"fall_wall_ms":706.341,"inside_sim_s":0.233333333333333,"iterations":2630,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":226031,"spawn_us":1510,"ticks":75},"removed":2,"specials":0,"wall_ms":897.701}
+SHOWCASE failures=0

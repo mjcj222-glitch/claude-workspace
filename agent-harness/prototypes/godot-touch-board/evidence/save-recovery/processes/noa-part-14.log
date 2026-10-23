@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+CAPTURE_ELEMENTAL {"actions":8,"actions_in_turn":1,"ash_reserved":false,"attacks_total":2,"character_id":"noa","charge":2,"charge_required":3,"combat_context":{"incoming_damage":6,"intent":"plain","intent_serial":5,"mitigation_success":false,"slam_normal_required":8,"slam_weak_required":2,"weakness_color":2},"details":{},"encounter":1,"enemies_defeated":1,"enemy_hp":14,"enemy_max_hp":44,"fallback_plain":false,"gold":6,"gold_spent":0,"hp":30,"incoming_damage":6,"last_attack_damage":4,"mitigation_active":false,"mitigation_success":false,"phase":"ready","process_frame":41,"relics":["pigment"],"route":"elite","scene_seconds":1.35833333333333,"shop_closed":false,"shop_heal_sold":false,"shop_relic_sold":false,"skill_uses":3,"turn":1,"type":"resolved","wall_ms":1696.963,"weak_color":2}
+PROCESS ready actions=8 errors=[]
+AUDIO_TEARDOWN remaining=0 wall_ms=7

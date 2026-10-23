@@ -1,0 +1,51 @@
+WorkerThreadPool: 5 threads, 1 max low-priority.
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+Unrecognized output string "misc2" in mapping:
+030000008a2e0000dd10000011010000,Hand Held Legend GC Ultimate,a:b0,b:b2,back:b17,dpdown:b5,dpleft:b6,dpright:b7,dpup:b4,guide:b18,leftshoulder:b10,leftstick:b8,lefttrigger:a3,leftx:a0,lefty:a1,misc1:b19,misc2:b24,paddle1:b13,paddle2:b12,rightshoulder:b11,rightstick:b9,righttrigger:a4,rightx:a2,righty:a5,start:b16,x:b1,y:b3,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+030000000d0f0000ab01000011010000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,misc2:b2,paddle1:b19,paddle2:b18,paddle3:b15,paddle4:b5,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+050000000d0f00009601000091000000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,misc2:b2,paddle1:b19,paddle2:b18,paddle3:b15,paddle4:b5,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+030000007e0500006920000011010000,Nintendo Switch 2 Pro Controller,a:b0,b:b1,back:b14,dpdown:b8,dpleft:b10,dpright:b9,dpup:b11,guide:b16,leftshoulder:b12,leftstick:b15,lefttrigger:b13,leftx:a0,lefty:a1~,misc1:b17,misc2:b20,paddle1:b18,paddle2:b19,rightshoulder:b4,rightstick:b7,righttrigger:b5,rightx:a2,righty:a3~,start:b6,x:b2,y:b3,platform:Linux,
+SDL: Init OK!
+Using "default" pen tablet driver...
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+CORE API HASH: 2475187701
+EDITOR API HASH: 3867286884
+Loading resource: res://tests/test_checkpoint_process.gd
+SceneTreeFTI: traversal method DEFAULT
+Loaded system CA certificates
+Loading resource: res://main.tscn
+Loading resource: res://scripts/main.gd
+Loading resource: res://assets/alchemist-portrait-v1.png
+Loading resource: res://.godot/imported/alchemist-portrait-v1.png-0fb13f3db476cf6aacdc75258cf06b6e.ctex
+Loading resource: res://assets/training-jelly-golem-v1.png
+Loading resource: res://.godot/imported/training-jelly-golem-v1.png-da692945e45eb176fadb04e93b7d242d.ctex
+Loading resource: res://assets/premium/amethyst-dragon-arena-v1.png
+Loading resource: res://.godot/imported/amethyst-dragon-arena-v1.png-6c76261b9934ee80f1861f3477ca5e1e.ctex
+Loading resource: res://assets/premium/skill-button-amethyst-base-v1.png
+Loading resource: res://.godot/imported/skill-button-amethyst-base-v1.png-17de86f79fbdb8262435ec4fe47c7658.ctex
+Loading resource: res://assets/pigment-atlas.png
+Loading resource: res://.godot/imported/pigment-atlas.png-4564dd499f1d195e03c4778ca22f6a67.ctex
+Loading resource: res://assets/fonts/Pretendard-Medium.otf
+Loading resource: res://.godot/imported/Pretendard-Medium.otf-38b7e8428b68ea05158620404bacd677.fontdata
+Loading resource: res://assets/fonts/Pretendard-SemiBold.otf
+Loading resource: res://.godot/imported/Pretendard-SemiBold.otf-b18e006bb23af1cf92c966e372cc15da.fontdata
+Loading resource: res://assets/fonts/BlackHanSans-Regular.ttf
+Loading resource: res://.godot/imported/BlackHanSans-Regular.ttf-1aadef84ee9c9c93ebae8596f7a99b67.fontdata
+CAPTURE_ELEMENTAL {"actions":0,"actions_in_turn":0,"ash_reserved":false,"attacks_total":0,"character_id":"rio","charge":0,"charge_required":3,"combat_context":{"incoming_damage":4,"intent":"plain","intent_serial":2,"mitigation_success":false,"slam_normal_required":8,"slam_weak_required":2,"weakness_color":0},"details":{"color":0,"connected":[34,33,41,42,25,35,16,31,40,43],"planted":{},"start_id":34,"targets":[34,33,41,42]},"encounter":0,"enemies_defeated":0,"enemy_hp":24,"enemy_max_hp":24,"fallback_plain":false,"gold":0,"gold_spent":0,"hp":30,"incoming_damage":4,"last_attack_damage":0,"mitigation_active":false,"mitigation_success":false,"phase":"ready","process_frame":0,"relics":[],"route":"","scene_seconds":0.0,"shop_closed":false,"shop_heal_sold":false,"shop_relic_sold":false,"skill_uses":1,"turn":0,"type":"skill","wall_ms":1379.218,"weak_color":0}
+PROCESS ready actions=0 errors=[]
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
+Leaked instance: AudioStreamPlaybackWAV:9223372082857903552 - Reference count: 1
+Leaked instance: AudioStreamWAV:9223372079988999695 - Reference count: 1
+Hint: Leaked instances typically happen when nodes are removed from the scene tree (with `remove_child()`) but not freed (with `free()` or `queue_free()`).
+Orphan StringName: Master (static: 0, total: 2)
+StringName: 1 unclaimed string names at exit.

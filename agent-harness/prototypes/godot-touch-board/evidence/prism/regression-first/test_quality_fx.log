@@ -1,0 +1,35 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS totals copy exact committed damage and healing breakdown
+PASS starting action does not prematurely show final total
+PASS eligible normal event accepted
+PASS normal emits distinct target-bound trail
+PASS duplicate ID cannot duplicate trail
+PASS surviving and missing panel IDs cannot emit
+PASS heart emits hero-bound healing trail
+PASS core delivers energy without duplicating existing core bursts
+PASS finished action shows one canonical total
+PASS duplicate finish cannot restart number lifetime
+PASS late event cannot restart finished action
+PASS visual module never mutates canonical plan or panels
+PASS drawn damage and heal numerals match committed result exactly
+PASS drawing leaves readiness and actions unchanged
+PASS all clear effects expire without finish callbacks or input locks
+PASS successful skill activation starts exactly half-second cutin
+FAIL cutin draws skill identity synchronously
+FAIL cutin uses original face closeup in the new footer
+PASS cutin crop preserves the original face aspect
+PASS cutin remains outside board and upper color targeting palette
+PASS heal result stays above the playable board
+PASS cutin remains active until half second
+PASS cutin ends independently at half second
+PASS negative delta cannot extend or rewind lifetime
+PASS another activation replaces one cutin without stacking durations
+PASS reset clears totals cutin and trails
+PASS reset prevents stale finish or old panel from resurrecting effects
+PASS skill is not treated as damaging clear
+PASS invalid plan cannot start effects
+PASS effect budget cannot distort canonical total
+PASS effects leave global gameplay randomness untouched
+PASS large effect batches remain bounded and expire
+QUALITY FX checks=32 failures=2

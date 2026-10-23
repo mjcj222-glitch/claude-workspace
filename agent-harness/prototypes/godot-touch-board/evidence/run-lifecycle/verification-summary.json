@@ -1,0 +1,67 @@
+{
+  "base_commit": "767f87afb150354df7d0c146a7ae3d892e36f50d",
+  "godot_regression_scripts": 52,
+  "checkpoint_checks": 24,
+  "controller_checks": 30,
+  "cross_process_cases": 87,
+  "cross_process_full_run_equivalence": true,
+  "window_results": {
+    "states-360x640-lifecycle.log": [
+      [
+        "29",
+        "0"
+      ]
+    ],
+    "states-720x1080.log": [
+      [
+        "90",
+        "0"
+      ]
+    ],
+    "states-390x844.log": [
+      [
+        "90",
+        "0"
+      ]
+    ],
+    "states-720x1080-lifecycle.log": [
+      [
+        "29",
+        "0"
+      ]
+    ],
+    "states-360x640-short.log": [
+      [
+        "79",
+        "0"
+      ]
+    ],
+    "states-360x640.log": [
+      [
+        "90",
+        "0"
+      ]
+    ]
+  },
+  "native_restart": "normal project, actual X11 input, terminated while held, seed20261021 restored despite new seed777 request; new input committed once",
+  "fixed_seed_normal_runs": [
+    "victory 22 clears HP20",
+    "defeat 20 clears HP0"
+  ],
+  "fresh_seed_normal_run": {
+    "seed": 3142526566,
+    "hero": "noa",
+    "result": "victory",
+    "clears": 17,
+    "hp": 28
+  },
+  "known_warning": "Some fixed-fps Dummy audio test processes retain AudioStreamPlaybackWAV at exit; not resolved; production audio unchanged",
+  "untested": [
+    "Windows/mobile persistence",
+    "power-loss durability/fsync",
+    "concurrent game writers",
+    "all seeds",
+    "physical audio"
+  ],
+  "original_candidate_packages_changed": false
+}

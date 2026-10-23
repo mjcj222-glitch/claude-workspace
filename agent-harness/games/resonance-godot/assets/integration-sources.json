@@ -1,0 +1,53 @@
+[
+  {
+    "path": "assets/heroine/heroine-attack-strike-v1.png",
+    "sha256": "66ce3a8d9ca05de2aff1701f653581f9260400156513c8b9132e227c39fcc8e5",
+    "source": "user-provided Library original"
+  },
+  {
+    "path": "assets/heroine/heroine-attack-windup-v1.png",
+    "sha256": "38f3215990831f8b0f8b3140c0e5cdc1e24b3b50d482872c12fe8beb6759e67f",
+    "source": "user-provided Library original"
+  },
+  {
+    "path": "assets/heroine/heroine-base-idle-v1.png",
+    "sha256": "0151a739c22bc5af8c1ad20b46bcb5ec165b6c79f29270f80b00c19424eea4f6",
+    "source": "user-provided Library original"
+  },
+  {
+    "path": "assets/kenney-particles/light_01.png",
+    "member": "PNG (Transparent)/light_01.png",
+    "sha256": "caedcc5df5bcac4470244d2520d6a64b45b20c1ccf4d918da516c55e3fa365a6",
+    "source": "Kenney Particle Pack 1.1"
+  },
+  {
+    "path": "assets/kenney-particles/star_01.png",
+    "member": "PNG (Transparent)/star_01.png",
+    "sha256": "3ba3999c944a0767677449412d306c1f230daa1743b31f929533cf77a22ecf5d",
+    "source": "Kenney Particle Pack 1.1"
+  },
+  {
+    "path": "assets/kenney-particles/circle_03.png",
+    "member": "PNG (Transparent)/circle_03.png",
+    "sha256": "ed6c6f082e666c16bcaca89f15aefb55df9bf69450090518bcae1d3d61f82936",
+    "source": "Kenney Particle Pack 1.1"
+  },
+  {
+    "path": "assets/kenney-particles/spark_01.png",
+    "member": "PNG (Transparent)/spark_01.png",
+    "sha256": "5902da3a324cad0a4b5a88ce1e3c9cc18fee50922c358ce93d8c9f1ad7708f0a",
+    "source": "Kenney Particle Pack 1.1"
+  },
+  {
+    "path": "assets/kenney-particles/slash_02.png",
+    "member": "PNG (Transparent)/slash_02.png",
+    "sha256": "a79a9e297790e6126b78d41015a3045cda3f1863b421c88321d2442ed6f9032e",
+    "source": "Kenney Particle Pack 1.1"
+  },
+  {
+    "path": "assets/kenney-particles/magic_01.png",
+    "member": "PNG (Transparent)/magic_01.png",
+    "sha256": "398479ea280c8161d0b6d509ca97eefb27e989c7832b404abcb65faae3e922ff",
+    "source": "Kenney Particle Pack 1.1"
+  }
+]

@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+CAPTURE_ELEMENTAL {"actions":21,"actions_in_turn":1,"ash_reserved":true,"attacks_total":4,"character_id":"rio","charge":1,"charge_required":2,"combat_context":{"incoming_damage":6,"intent":"plain","intent_serial":9,"mitigation_success":false,"slam_normal_required":8,"slam_weak_required":2,"weakness_color":3},"details":{},"encounter":2,"enemies_defeated":3,"enemy_hp":3,"enemy_max_hp":48,"fallback_plain":true,"gold":22,"gold_spent":0,"hp":20,"incoming_damage":6,"last_attack_damage":6,"mitigation_active":false,"mitigation_success":false,"phase":"ready","process_frame":47,"relics":["pigment","lens","ash"],"route":"elite","scene_seconds":1.55833333333333,"shop_closed":true,"shop_heal_sold":false,"shop_relic_sold":false,"skill_uses":8,"turn":2,"type":"resolved","wall_ms":1966.97,"weak_color":3}
+PROCESS ready actions=21 errors=[]
+AUDIO_TEARDOWN remaining=0 wall_ms=12

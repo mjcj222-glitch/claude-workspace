@@ -1,0 +1,63 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS detailed art frame exposes source region and transform
+PASS full original transparent atlas available
+PASS atlas enforces nearest sampling without changing canvas
+PASS rio frame deterministic
+PASS rio breathing animation
+FAIL rio idle keeps silhouette size stable under nearest sampling
+PASS rio distinct ready presentation
+PASS rio distinct skill presentation
+PASS rio distinct cheer presentation
+PASS rio distinct hit presentation
+PASS rio reduced idle stable
+PASS rio idle full body including hat and boots inside original atlas
+PASS rio idle motion bounded
+PASS rio idle full body stays pixel aligned inside footer
+PASS rio idle aspect ratio preserved
+PASS rio ready full body including hat and boots inside original atlas
+PASS rio ready motion bounded
+PASS rio ready full body stays pixel aligned inside footer
+PASS rio ready aspect ratio preserved
+PASS rio skill full body including hat and boots inside original atlas
+PASS rio skill motion bounded
+PASS rio skill full body stays pixel aligned inside footer
+PASS rio skill aspect ratio preserved
+PASS rio cheer full body including hat and boots inside original atlas
+PASS rio cheer motion bounded
+PASS rio cheer full body stays pixel aligned inside footer
+PASS rio cheer aspect ratio preserved
+PASS rio hit full body including hat and boots inside original atlas
+PASS rio hit motion bounded
+PASS rio hit full body stays pixel aligned inside footer
+PASS rio hit aspect ratio preserved
+PASS noa frame deterministic
+PASS noa breathing animation
+FAIL noa idle keeps silhouette size stable under nearest sampling
+PASS noa distinct ready presentation
+PASS noa distinct skill presentation
+PASS noa distinct cheer presentation
+PASS noa distinct hit presentation
+PASS noa reduced idle stable
+PASS noa idle full body including hat and boots inside original atlas
+PASS noa idle motion bounded
+PASS noa idle full body stays pixel aligned inside footer
+PASS noa idle aspect ratio preserved
+PASS noa ready full body including hat and boots inside original atlas
+PASS noa ready motion bounded
+PASS noa ready full body stays pixel aligned inside footer
+PASS noa ready aspect ratio preserved
+PASS noa skill full body including hat and boots inside original atlas
+PASS noa skill motion bounded
+PASS noa skill full body stays pixel aligned inside footer
+PASS noa skill aspect ratio preserved
+PASS noa cheer full body including hat and boots inside original atlas
+PASS noa cheer motion bounded
+PASS noa cheer full body stays pixel aligned inside footer
+PASS noa cheer aspect ratio preserved
+PASS noa hit full body including hat and boots inside original atlas
+PASS noa hit motion bounded
+PASS noa hit full body stays pixel aligned inside footer
+PASS noa hit aspect ratio preserved
+PASS hero source regions never bleed into other character
+PIXEL_HEROES checks=60 failures=2

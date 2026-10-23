@@ -1,0 +1,24 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS Rio transforms all source normal color
+PASS heart and bomb preserved
+PASS same color no-op invalid
+PASS Rio pigment one refill
+PASS Noa selected color two refills
+PASS Noa pigment three refills
+PASS planning pure
+PASS boss dominant-color shield12
+PASS matching chain breaks with bonus
+PASS offcolor progress and half damage
+PASS shield preview commits exact damage and bonus
+PASS shield break does not cancel or reset enemy action
+PASS heart breaks without inventing damage or changing petal
+PASS shield cannot stunlock attack cycle 0
+PASS shield does not regenerate 0
+PASS shield cannot stunlock attack cycle 1
+PASS shield does not regenerate 1
+PASS shield cannot stunlock attack cycle 2
+PASS shield does not regenerate 2
+PASS shield cannot stunlock attack cycle 3
+PASS shield does not regenerate 3
+PRISM checks=21 failures=0

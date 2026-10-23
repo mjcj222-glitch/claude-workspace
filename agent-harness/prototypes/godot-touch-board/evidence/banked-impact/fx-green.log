@@ -1,0 +1,19 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS clear trail goes to collection not enemy
+PASS clear 0 cannot attack enemy
+PASS clear trail goes to collection not enemy
+PASS clear 1 cannot attack enemy
+PASS explicit bank release API
+PASS duplicate release cannot replace or restart bank
+PASS bank holds HP until one impact
+PASS one final combined hit
+PASS combined hit cannot repeat
+PASS zero damage bank still completes phase
+PASS reset cancels pending bank
+PASS elastic combo pose available
+PASS actual consume drives elastic moving pose
+PASS combo center bounded outside telegraph
+PASS reduced combo stable readable
+PASS clear chime has resonant tail
+BANKED_FX checks=16 failures=0

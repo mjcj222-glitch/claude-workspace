@@ -1,0 +1,165 @@
+{
+  "baseline": "4a500eca35c195f73edd74761e11411787ad65dd",
+  "regression_scripts": 51,
+  "failures": 0,
+  "colored_checks_final": 33,
+  "body_checks": 15,
+  "pending_falling_settled_checks": 11,
+  "OS_checks_each": 28,
+  "OS_sizes": [
+    "720x1080",
+    "360x640",
+    "390x844"
+  ],
+  "physical_and_visual_radius": {
+    "bomb": 37,
+    "big_bomb": 48
+  },
+  "blast_radius": {
+    "bomb": 98,
+    "big_bomb": 164
+  },
+  "supply_color_rule": "First activated strong core in canonical distance/ID order, independent of lens size.",
+  "normal_runs": [
+    {
+      "hero": "noa",
+      "movie": true,
+      "victory": true,
+      "actions": 21,
+      "hp": 30,
+      "gold": 17,
+      "errors": [],
+      "returned_to_selection": true,
+      "falling_bombs": [
+        {
+          "color": 2,
+          "id": 130,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(236.625, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "color": 2,
+          "id": 214,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(201.375, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "color": 2,
+          "id": 249,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(219.0, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "color": 3,
+          "id": 317,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(360.0, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "color": 3,
+          "id": 341,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(483.375, 364.75)",
+          "visual_radius": 48.0
+        }
+      ],
+      "used_bombs": [
+        {
+          "color": 2,
+          "id": 130,
+          "kind": "big_bomb",
+          "pos": "(230.7434, 668.2629)",
+          "radius": 164.0
+        },
+        {
+          "color": 2,
+          "id": 214,
+          "kind": "big_bomb",
+          "pos": "(255.1518, 533.8049)",
+          "radius": 164.0
+        },
+        {
+          "color": 3,
+          "id": 317,
+          "kind": "big_bomb",
+          "pos": "(360.1539, 436.1652)",
+          "radius": 164.0
+        },
+        {
+          "color": 3,
+          "id": 341,
+          "kind": "big_bomb",
+          "pos": "(503.17, 525.5144)",
+          "radius": 164.0
+        }
+      ]
+    },
+    {
+      "hero": "rio",
+      "movie": true,
+      "victory": true,
+      "actions": 22,
+      "hp": 20,
+      "gold": 22,
+      "errors": [],
+      "returned_to_selection": true,
+      "falling_bombs": [
+        {
+          "color": 1,
+          "id": 131,
+          "kind": "bomb",
+          "physical_radius": 37.0,
+          "position": "(561.4375, 375.75)",
+          "visual_radius": 37.0
+        },
+        {
+          "color": 3,
+          "id": 223,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(642.0, 364.75)",
+          "visual_radius": 48.0
+        },
+        {
+          "color": 1,
+          "id": 254,
+          "kind": "big_bomb",
+          "physical_radius": 48.0,
+          "position": "(518.625, 364.75)",
+          "visual_radius": 48.0
+        }
+      ],
+      "used_bombs": [
+        {
+          "color": 1,
+          "id": 131,
+          "kind": "bomb",
+          "pos": "(587.3449, 526.8892)",
+          "radius": 98.0
+        },
+        {
+          "color": 3,
+          "id": 223,
+          "kind": "big_bomb",
+          "pos": "(642.0, 715.8228)",
+          "radius": 164.0
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Own approved design, not exact Crash Fever replication.",
+    "No new native performance A/B, hardware/mobile or human fun/balance evidence.",
+    "Fixedfps reels are recorded automated normal play; explicit OS fixtures are separate.",
+    "No current Windows/Web ZIP, save/resume or new portrait transfer."
+  ]
+}

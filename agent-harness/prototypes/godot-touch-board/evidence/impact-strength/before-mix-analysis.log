@@ -1,0 +1,125 @@
+ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 14 (Debian 14.2.0-19)
+  configuration: --prefix=/usr --extra-version=0+deb13u1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-libmfx --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libcaca --enable-libdvdnav --enable-libdvdread --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.103 / 61.  7.103
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  5.100 / 10.  5.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'evidence/impact-strength/before.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.103
+  Duration: 00:00:26.00, start: 0.000000, bitrate: 1275 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 720x1080 [SAR 1:1 DAR 2:3], 1233 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 32 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> wrapped_avframe (native))
+  Stream #0:1 -> #0:1 (aac (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.103
+  Stream #0:0(und): Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 720x1080 [SAR 1:1 DAR 2:3], q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 wrapped_avframe
+  Stream #0:1(und): Audio: pcm_s16le, 48000 Hz, stereo, s16, 1536 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 pcm_s16le
+frame=  559 fps=0.0 q=-0.0 size=N/A time=00:00:18.63 bitrate=N/A speed=37.3x
+[Parsed_astats_0 @ 0x7f65140025c0] Channel: 1
+[Parsed_astats_0 @ 0x7f65140025c0] DC offset: 0.000073
+[Parsed_astats_0 @ 0x7f65140025c0] Min level: -0.297470
+[Parsed_astats_0 @ 0x7f65140025c0] Max level: 0.306278
+[Parsed_astats_0 @ 0x7f65140025c0] Min difference: 0.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Max difference: 0.056963
+[Parsed_astats_0 @ 0x7f65140025c0] Mean difference: 0.000300
+[Parsed_astats_0 @ 0x7f65140025c0] RMS difference: 0.001422
+[Parsed_astats_0 @ 0x7f65140025c0] Peak level dB: -10.277688
+[Parsed_astats_0 @ 0x7f65140025c0] RMS level dB: -34.192320
+[Parsed_astats_0 @ 0x7f65140025c0] RMS peak dB: -21.161813
+[Parsed_astats_0 @ 0x7f65140025c0] RMS trough dB: -inf
+[Parsed_astats_0 @ 0x7f65140025c0] Crest factor: 15.693925
+[Parsed_astats_0 @ 0x7f65140025c0] Flat factor: 0.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Peak count: 2
+[Parsed_astats_0 @ 0x7f65140025c0] Abs Peak count: 1
+[Parsed_astats_0 @ 0x7f65140025c0] Noise floor dB: -inf
+[Parsed_astats_0 @ 0x7f65140025c0] Noise floor count: 946547
+[Parsed_astats_0 @ 0x7f65140025c0] Entropy: 0.162524
+[Parsed_astats_0 @ 0x7f65140025c0] Bit depth: 30/32/32/32
+[Parsed_astats_0 @ 0x7f65140025c0] Dynamic range: 237.468667
+[Parsed_astats_0 @ 0x7f65140025c0] Zero crossings: 9328
+[Parsed_astats_0 @ 0x7f65140025c0] Zero crossings rate: 0.007473
+[Parsed_astats_0 @ 0x7f65140025c0] Number of NaNs: 0
+[Parsed_astats_0 @ 0x7f65140025c0] Number of Infs: 0
+[Parsed_astats_0 @ 0x7f65140025c0] Number of denormals: 0
+[Parsed_astats_0 @ 0x7f65140025c0] Channel: 2
+[Parsed_astats_0 @ 0x7f65140025c0] DC offset: 0.000073
+[Parsed_astats_0 @ 0x7f65140025c0] Min level: -0.297470
+[Parsed_astats_0 @ 0x7f65140025c0] Max level: 0.306278
+[Parsed_astats_0 @ 0x7f65140025c0] Min difference: 0.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Max difference: 0.056963
+[Parsed_astats_0 @ 0x7f65140025c0] Mean difference: 0.000300
+[Parsed_astats_0 @ 0x7f65140025c0] RMS difference: 0.001422
+[Parsed_astats_0 @ 0x7f65140025c0] Peak level dB: -10.277688
+[Parsed_astats_0 @ 0x7f65140025c0] RMS level dB: -34.192320
+[Parsed_astats_0 @ 0x7f65140025c0] RMS peak dB: -21.161813
+[Parsed_astats_0 @ 0x7f65140025c0] RMS trough dB: -inf
+[Parsed_astats_0 @ 0x7f65140025c0] Crest factor: 15.693925
+[Parsed_astats_0 @ 0x7f65140025c0] Flat factor: 0.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Peak count: 2
+[Parsed_astats_0 @ 0x7f65140025c0] Abs Peak count: 1
+[Parsed_astats_0 @ 0x7f65140025c0] Noise floor dB: -inf
+[Parsed_astats_0 @ 0x7f65140025c0] Noise floor count: 946547
+[Parsed_astats_0 @ 0x7f65140025c0] Entropy: 0.162524
+[Parsed_astats_0 @ 0x7f65140025c0] Bit depth: 30/32/32/32
+[Parsed_astats_0 @ 0x7f65140025c0] Dynamic range: 237.468667
+[Parsed_astats_0 @ 0x7f65140025c0] Zero crossings: 9328
+[Parsed_astats_0 @ 0x7f65140025c0] Zero crossings rate: 0.007473
+[Parsed_astats_0 @ 0x7f65140025c0] Number of NaNs: 0
+[Parsed_astats_0 @ 0x7f65140025c0] Number of Infs: 0
+[Parsed_astats_0 @ 0x7f65140025c0] Number of denormals: 0
+[Parsed_astats_0 @ 0x7f65140025c0] Overall
+[Parsed_astats_0 @ 0x7f65140025c0] DC offset: 0.000073
+[Parsed_astats_0 @ 0x7f65140025c0] Min level: -0.297470
+[Parsed_astats_0 @ 0x7f65140025c0] Max level: 0.306278
+[Parsed_astats_0 @ 0x7f65140025c0] Min difference: 0.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Max difference: 0.056963
+[Parsed_astats_0 @ 0x7f65140025c0] Mean difference: 0.000300
+[Parsed_astats_0 @ 0x7f65140025c0] RMS difference: 0.001422
+[Parsed_astats_0 @ 0x7f65140025c0] Peak level dB: -10.277688
+[Parsed_astats_0 @ 0x7f65140025c0] RMS level dB: -34.192320
+[Parsed_astats_0 @ 0x7f65140025c0] RMS peak dB: -21.161813
+[Parsed_astats_0 @ 0x7f65140025c0] RMS trough dB: -inf
+[Parsed_astats_0 @ 0x7f65140025c0] Flat factor: 0.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Peak count: 2.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Abs Peak count: 1.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Noise floor dB: -inf
+[Parsed_astats_0 @ 0x7f65140025c0] Noise floor count: 946547.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Entropy: 0.162524
+[Parsed_astats_0 @ 0x7f65140025c0] Bit depth: 30/32/32/32
+[Parsed_astats_0 @ 0x7f65140025c0] Number of samples: 1248256
+[Parsed_astats_0 @ 0x7f65140025c0] Number of NaNs: 0.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Number of Infs: 0.000000
+[Parsed_astats_0 @ 0x7f65140025c0] Number of denormals: 0.000000
+[out#0/null @ 0x560a31877d00] video:335KiB audio:4876KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=  780 fps=0.0 q=-0.0 Lsize=N/A time=00:00:26.00 bitrate=N/A speed=37.7x

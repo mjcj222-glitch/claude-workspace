@@ -1,0 +1,459 @@
+{
+  "baseline_commit": "2f0a4df84c5126c3aa6d3c3f76b6234e82069783",
+  "reviewed_contact_commit": "fbfb5e9478346303e37f850eacead47657dee818",
+  "capture": "Actual Godot OpenGL content with engine-injected pointer on frozen recorded natural poses; no OS framebuffer or normal-win claim.",
+  "capture_map_identifier": "f150fc37a044077130ac23a650e474c26a1b9f5040d183699159d346cefc46f8",
+  "capture_map_file_sha256": "4d3b19ffd73fd9e9e811ccd8fac9da54d666debc456fd4154aeb678d5e6a5aca",
+  "contact_dependencies_match_reviewed_commit": {
+    "project.godot": "b5bc2fd942e820dc122edb4919d22ab9172c13e3383c7a049c3fbf0123e43f29",
+    "scripts/v2/config.gd": "47abced3203b86697d3b4aedd6ccb182e7125fd8cda60c9980bd470c8360a9ed",
+    "scripts/v2/geometry.gd": "982e50b91161e4c33bd83b2d0d47f305eadabbe7cbdd2554c77890ade2e8ac9c",
+    "scripts/v2/selection_rules.gd": "c1c93b0488f30c1ed06449d77d16d1818a5a7e8cd8a246b751396430d0381f6f",
+    "scripts/v2/skill_rules.gd": "2b35c3aea879da00e18c90396781d7d8203189ec8e93c007799dd5d42e0bae45",
+    "scripts/v2/board_effects.gd": "c576119925341fd08c32cb6432b12d090955546cf6e80b31ef3b28b0848b9649",
+    "scripts/v2/piece.gd": "a44f2758ac541326754b4687582c5cbf985ed8304c9f8e533c98046994cb4aa3",
+    "scripts/v2/board_viewport.gd": "0f561d5c6e564c4b7641a4141e97ee07a0373b5aac21a75d2263dfafafc1b299",
+    "scripts/v2/battle.gd": "49e18b52329bca158ec293976b2fb38d0bfc577a333de7fd34f2a629ad6b2502",
+    "tests/v2/visible_contact_snapshots.json": "fe569f2c3ff73c2fa3cbc613d8930e3ca3dd2ef6d1545009d98156937e2fd5e9"
+  },
+  "capture_board_sha256": "944fd8f1fdeec11e69588747bf4ded275656e907d580ded411aff88ca97b176f",
+  "capture_board_limit": "Uncommitted admission variant; admission unused in the frozen replay. Original baseline Board passes isolated committed contact tests.",
+  "artifacts": [
+    {
+      "file": "first34-35-360x640-before-clean.png",
+      "kind": "unaltered-native-frame",
+      "phase": "before",
+      "original_filename": "seed121-initial-360x640-clean.png",
+      "original_sha256": "6d97672fb4bf5cc737289bd88715967da88ca7e6a3ed98ae11775950edf37020",
+      "width": 360,
+      "height": 640,
+      "bytes": 223494,
+      "sha256": "6d97672fb4bf5cc737289bd88715967da88ca7e6a3ed98ae11775950edf37020"
+    },
+    {
+      "file": "first34-35-360x640-before-pressed.png",
+      "kind": "unaltered-native-frame",
+      "phase": "before",
+      "original_filename": "seed121-initial-360x640-pressed.png",
+      "original_sha256": "a63bd5a9a69ff8aba1e9aead04986f34a1e2b650095fe9f0cc0bc1ea250a3aa1",
+      "width": 360,
+      "height": 640,
+      "bytes": 229760,
+      "sha256": "a63bd5a9a69ff8aba1e9aead04986f34a1e2b650095fe9f0cc0bc1ea250a3aa1"
+    },
+    {
+      "file": "first34-35-360x640-after-clean.png",
+      "kind": "unaltered-native-frame",
+      "phase": "after",
+      "original_filename": "initial-360x640-clean.png",
+      "original_sha256": "6d97672fb4bf5cc737289bd88715967da88ca7e6a3ed98ae11775950edf37020",
+      "width": 360,
+      "height": 640,
+      "bytes": 223494,
+      "sha256": "6d97672fb4bf5cc737289bd88715967da88ca7e6a3ed98ae11775950edf37020"
+    },
+    {
+      "file": "first34-35-360x640-after-pressed.png",
+      "kind": "unaltered-native-frame",
+      "phase": "after",
+      "original_filename": "initial-360x640-pressed.png",
+      "original_sha256": "d635f5a868781b507f10df418e42d1d86b3742b5a6606b6fd7c7452ebaef49ff",
+      "width": 360,
+      "height": 640,
+      "bytes": 229381,
+      "sha256": "d635f5a868781b507f10df418e42d1d86b3742b5a6606b6fd7c7452ebaef49ff"
+    },
+    {
+      "file": "first34-35-360x640-native-before-after.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "first34-35-360x640-before-pressed.png",
+        "first34-35-360x640-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": null,
+      "nearest_integer_scale": 1,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 720,
+      "height": 664,
+      "bytes": 237580,
+      "sha256": "d7b46e76f5957041474e7547c878026af6c35bb1b86ec2cc92d2832e2b10ccb7"
+    },
+    {
+      "file": "first34-35-360x640-edge-before-after-nearest.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "first34-35-360x640-before-clean.png",
+        "first34-35-360x640-before-pressed.png",
+        "first34-35-360x640-after-clean.png",
+        "first34-35-360x640-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": [
+        232,
+        382,
+        248,
+        398
+      ],
+      "nearest_integer_scale": 16,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 512,
+      "height": 560,
+      "bytes": 7725,
+      "sha256": "f4b38407a46e2b2737b173304a9e65e14bf2d8bdd1c817a775bf0f3c3fa78ac9"
+    },
+    {
+      "file": "first34-35-360x640-context-before-after-nearest.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "first34-35-360x640-before-clean.png",
+        "first34-35-360x640-before-pressed.png",
+        "first34-35-360x640-after-clean.png",
+        "first34-35-360x640-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": [
+        190,
+        355,
+        290,
+        425
+      ],
+      "nearest_integer_scale": 4,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 800,
+      "height": 608,
+      "bytes": 41001,
+      "sha256": "d009694e6730bf8d3c6d422793edada4e8bb9856c8bcf12d5f93830d5a800676"
+    },
+    {
+      "file": "first34-35-720x1280-before-clean.png",
+      "kind": "unaltered-native-frame",
+      "phase": "before",
+      "original_filename": "seed121-initial-720x1280-clean.png",
+      "original_sha256": "5ca512515179bc13b28854a36ae7c63718f23cb0a7d2b8715b67e4f28845095f",
+      "width": 720,
+      "height": 1280,
+      "bytes": 710627,
+      "sha256": "5ca512515179bc13b28854a36ae7c63718f23cb0a7d2b8715b67e4f28845095f"
+    },
+    {
+      "file": "first34-35-720x1280-before-pressed.png",
+      "kind": "unaltered-native-frame",
+      "phase": "before",
+      "original_filename": "seed121-initial-720x1280-pressed.png",
+      "original_sha256": "1a8d1bbc0cf673646a90ae400d4340d0695ab13f30163b7dffc6dcf1325d66a6",
+      "width": 720,
+      "height": 1280,
+      "bytes": 734682,
+      "sha256": "1a8d1bbc0cf673646a90ae400d4340d0695ab13f30163b7dffc6dcf1325d66a6"
+    },
+    {
+      "file": "first34-35-720x1280-after-clean.png",
+      "kind": "unaltered-native-frame",
+      "phase": "after",
+      "original_filename": "initial-720x1280-clean.png",
+      "original_sha256": "5e6cf9e461646008e663cf3e17f687e0e751aa6d3c917203685cbec61265337c",
+      "width": 720,
+      "height": 1280,
+      "bytes": 711235,
+      "sha256": "5e6cf9e461646008e663cf3e17f687e0e751aa6d3c917203685cbec61265337c"
+    },
+    {
+      "file": "first34-35-720x1280-after-pressed.png",
+      "kind": "unaltered-native-frame",
+      "phase": "after",
+      "original_filename": "initial-720x1280-pressed.png",
+      "original_sha256": "01f6b57634ae2399085a33ac60986e1eff2bc74fd737950a7fe2e114c4c3de89",
+      "width": 720,
+      "height": 1280,
+      "bytes": 734378,
+      "sha256": "01f6b57634ae2399085a33ac60986e1eff2bc74fd737950a7fe2e114c4c3de89"
+    },
+    {
+      "file": "first34-35-720x1280-native-before-after.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "first34-35-720x1280-before-pressed.png",
+        "first34-35-720x1280-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": null,
+      "nearest_integer_scale": 1,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 1440,
+      "height": 1304,
+      "bytes": 761288,
+      "sha256": "a3fb43f8ca623114ac041d29f96353fe49b92b7bbccfbfda1b1417f4aeb35629"
+    },
+    {
+      "file": "first34-35-720x1280-edge-before-after-nearest.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "first34-35-720x1280-before-clean.png",
+        "first34-35-720x1280-before-pressed.png",
+        "first34-35-720x1280-after-clean.png",
+        "first34-35-720x1280-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": [
+        464,
+        764,
+        496,
+        796
+      ],
+      "nearest_integer_scale": 8,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 512,
+      "height": 560,
+      "bytes": 12972,
+      "sha256": "fc71b773cb74b923f455b2aec8db6cbd79733e186c41eedb27dfed28c8341f33"
+    },
+    {
+      "file": "first34-35-720x1280-context-before-after-nearest.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "first34-35-720x1280-before-clean.png",
+        "first34-35-720x1280-before-pressed.png",
+        "first34-35-720x1280-after-clean.png",
+        "first34-35-720x1280-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": [
+        380,
+        710,
+        580,
+        850
+      ],
+      "nearest_integer_scale": 2,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 800,
+      "height": 608,
+      "bytes": 95426,
+      "sha256": "c0212989a3ee16d1b5457f78f88690ae3a81eb4d4d8b86a527a8fd5c667a3f06"
+    },
+    {
+      "file": "additional8-14-9-360x640-before-clean.png",
+      "kind": "unaltered-native-frame",
+      "phase": "before",
+      "original_filename": "real-release-restored-proof175-360x640-clean.png",
+      "original_sha256": "cdf749582008ae9e9f2dca3cd27edf4a533ca01d0356111a5949d4fe91724ec6",
+      "width": 360,
+      "height": 640,
+      "bytes": 224132,
+      "sha256": "cdf749582008ae9e9f2dca3cd27edf4a533ca01d0356111a5949d4fe91724ec6"
+    },
+    {
+      "file": "additional8-14-9-360x640-before-pressed.png",
+      "kind": "unaltered-native-frame",
+      "phase": "before",
+      "original_filename": "real-release-restored-proof175-360x640-current-seed9-pressed.png",
+      "original_sha256": "cdf749582008ae9e9f2dca3cd27edf4a533ca01d0356111a5949d4fe91724ec6",
+      "width": 360,
+      "height": 640,
+      "bytes": 224132,
+      "sha256": "cdf749582008ae9e9f2dca3cd27edf4a533ca01d0356111a5949d4fe91724ec6"
+    },
+    {
+      "file": "additional8-14-9-360x640-after-clean.png",
+      "kind": "unaltered-native-frame",
+      "phase": "after",
+      "original_filename": "actual_release-360x640-clean.png",
+      "original_sha256": "cdf749582008ae9e9f2dca3cd27edf4a533ca01d0356111a5949d4fe91724ec6",
+      "width": 360,
+      "height": 640,
+      "bytes": 224132,
+      "sha256": "cdf749582008ae9e9f2dca3cd27edf4a533ca01d0356111a5949d4fe91724ec6"
+    },
+    {
+      "file": "additional8-14-9-360x640-after-pressed.png",
+      "kind": "unaltered-native-frame",
+      "phase": "after",
+      "original_filename": "actual_release-360x640-pressed.png",
+      "original_sha256": "a93fb8f23aaa8b66c173e4dcbf5cb6f1325ffbcb4cddefe0a80d3e4533f47e3c",
+      "width": 360,
+      "height": 640,
+      "bytes": 226883,
+      "sha256": "a93fb8f23aaa8b66c173e4dcbf5cb6f1325ffbcb4cddefe0a80d3e4533f47e3c"
+    },
+    {
+      "file": "additional8-14-9-360x640-native-before-after.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "additional8-14-9-360x640-before-pressed.png",
+        "additional8-14-9-360x640-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": null,
+      "nearest_integer_scale": 1,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 720,
+      "height": 664,
+      "bytes": 224607,
+      "sha256": "e5fea043bc205023dd4bcca99fe797288d9fe1379da701e13b53fc04869e8200"
+    },
+    {
+      "file": "additional8-14-9-360x640-edge-before-after-nearest.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "additional8-14-9-360x640-before-clean.png",
+        "additional8-14-9-360x640-before-pressed.png",
+        "additional8-14-9-360x640-after-clean.png",
+        "additional8-14-9-360x640-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": [
+        149,
+        510,
+        165,
+        526
+      ],
+      "nearest_integer_scale": 16,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 512,
+      "height": 560,
+      "bytes": 7560,
+      "sha256": "20f7067b86bcfced5e1c6987a897e357b7213305ce676cfa249f4fc3f010e8a3"
+    },
+    {
+      "file": "additional8-14-9-360x640-context-before-after-nearest.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "additional8-14-9-360x640-before-clean.png",
+        "additional8-14-9-360x640-before-pressed.png",
+        "additional8-14-9-360x640-after-clean.png",
+        "additional8-14-9-360x640-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": [
+        115,
+        475,
+        190,
+        555
+      ],
+      "nearest_integer_scale": 4,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 600,
+      "height": 688,
+      "bytes": 35988,
+      "sha256": "f3902e6054e5efca903311e7ce86699426b08d37e77478ee90c14853fe2adbd1"
+    },
+    {
+      "file": "additional8-14-9-720x1280-before-clean.png",
+      "kind": "unaltered-native-frame",
+      "phase": "before",
+      "original_filename": "real-release-restored-proof175-720x1280-clean.png",
+      "original_sha256": "e8f7ccaa59c167d3d1cd42ca7f339a3c22e28f9572f6b10b3e7a54bae3af29bf",
+      "width": 720,
+      "height": 1280,
+      "bytes": 713042,
+      "sha256": "e8f7ccaa59c167d3d1cd42ca7f339a3c22e28f9572f6b10b3e7a54bae3af29bf"
+    },
+    {
+      "file": "additional8-14-9-720x1280-before-pressed.png",
+      "kind": "unaltered-native-frame",
+      "phase": "before",
+      "original_filename": "real-release-restored-proof175-720x1280-current-seed9-pressed.png",
+      "original_sha256": "e8f7ccaa59c167d3d1cd42ca7f339a3c22e28f9572f6b10b3e7a54bae3af29bf",
+      "width": 720,
+      "height": 1280,
+      "bytes": 713042,
+      "sha256": "e8f7ccaa59c167d3d1cd42ca7f339a3c22e28f9572f6b10b3e7a54bae3af29bf"
+    },
+    {
+      "file": "additional8-14-9-720x1280-after-clean.png",
+      "kind": "unaltered-native-frame",
+      "phase": "after",
+      "original_filename": "actual_release-720x1280-clean.png",
+      "original_sha256": "e8f7ccaa59c167d3d1cd42ca7f339a3c22e28f9572f6b10b3e7a54bae3af29bf",
+      "width": 720,
+      "height": 1280,
+      "bytes": 713042,
+      "sha256": "e8f7ccaa59c167d3d1cd42ca7f339a3c22e28f9572f6b10b3e7a54bae3af29bf"
+    },
+    {
+      "file": "additional8-14-9-720x1280-after-pressed.png",
+      "kind": "unaltered-native-frame",
+      "phase": "after",
+      "original_filename": "actual_release-720x1280-pressed.png",
+      "original_sha256": "f5f29f380310356000dbb28227ebac68aeb4680c71bd1ca089214022ff880644",
+      "width": 720,
+      "height": 1280,
+      "bytes": 724027,
+      "sha256": "f5f29f380310356000dbb28227ebac68aeb4680c71bd1ca089214022ff880644"
+    },
+    {
+      "file": "additional8-14-9-720x1280-native-before-after.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "additional8-14-9-720x1280-before-pressed.png",
+        "additional8-14-9-720x1280-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": null,
+      "nearest_integer_scale": 1,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 1440,
+      "height": 1304,
+      "bytes": 712965,
+      "sha256": "631e423d06bd7c483f0a3dd223f666208e54bd19c989681f2bf43dea27dfc11d"
+    },
+    {
+      "file": "additional8-14-9-720x1280-edge-before-after-nearest.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "additional8-14-9-720x1280-before-clean.png",
+        "additional8-14-9-720x1280-before-pressed.png",
+        "additional8-14-9-720x1280-after-clean.png",
+        "additional8-14-9-720x1280-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": [
+        298,
+        1020,
+        330,
+        1052
+      ],
+      "nearest_integer_scale": 8,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 512,
+      "height": 560,
+      "bytes": 13138,
+      "sha256": "00218abbdebf1a5c5c8a8609623ccfc8d50d4b9ff2e3c3b0c09d3727c49b3234"
+    },
+    {
+      "file": "additional8-14-9-720x1280-context-before-after-nearest.png",
+      "kind": "comparison-panel",
+      "sources": [
+        "additional8-14-9-720x1280-before-clean.png",
+        "additional8-14-9-720x1280-before-pressed.png",
+        "additional8-14-9-720x1280-after-clean.png",
+        "additional8-14-9-720x1280-after-pressed.png"
+      ],
+      "crop_xyxy_exclusive": [
+        230,
+        950,
+        380,
+        1110
+      ],
+      "nearest_integer_scale": 2,
+      "source_pixels_exact": true,
+      "caption_height": 24,
+      "columns": 2,
+      "width": 600,
+      "height": 688,
+      "bytes": 82226,
+      "sha256": "1bd61f80509a18ae67fa2a2fb9bdb5ae460fdf63c87764aedb5b2299e1d6fbf6"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "method": "Derived only from stored 24 ordinary run logs; no new gameplay execution or tuning.",
+  "clear_ranges_by_encounter": {
+    "1": {
+      "min": 3,
+      "max": 4
+    },
+    "2": {
+      "min": 2,
+      "max": 5
+    },
+    "3": {
+      "min": 6,
+      "max": 9
+    }
+  },
+  "boss_actual_attack_histogram": {
+    "4": 24,
+    "6": 22
+  }
+}

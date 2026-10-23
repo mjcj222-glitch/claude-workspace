@@ -1,0 +1,4 @@
+probe 0b4e0a7 /tmp/chroma-character-harness-check/probe
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+AssertionError: preexisting benchmark now needs the explicit departure helper

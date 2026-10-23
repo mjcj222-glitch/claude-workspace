@@ -1,0 +1,14 @@
+SPDX-License-Identifier: CC0-1.0
+
+The original vector artwork in pigment.svg, lens.svg, ash.svg, and petal.svg was authored
+for this Chroma prototype in this workspace. To the extent copyright or related
+rights apply and can be waived, the author dedicates these files to the public
+domain under CC0 1.0 Universal. Anyone may copy, modify, distribute and use the
+artwork, including commercially, without asking permission or providing credit.
+The artwork is provided without warranties.
+
+CC0 1.0 Universal legal text:
+https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+This dedication applies only to these four original SVG files. It does not
+relicense other project assets, fonts, user references, or third-party work.

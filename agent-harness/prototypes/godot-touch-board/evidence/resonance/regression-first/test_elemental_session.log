@@ -1,0 +1,10 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL release executes exact snapshot despite live weakness mutation
+FAIL third clear applies reduced attack before intent advances
+FAIL only settled attack completion advances boss intent
+FAIL next elite fight replaces weakness and advances intent snapshot
+FAIL new elemental context leaves all carried resources intact
+FAIL final fight prepares fresh fair boss intent from supplied board
+FAIL boss transition preserves route payout and relic state
+ELEMENTAL_SESSION checks=18 failures=7

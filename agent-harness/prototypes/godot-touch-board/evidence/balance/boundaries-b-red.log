@@ -1,0 +1,7 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL weak pair retains approachable ten-to-four slam
+FAIL combat snapshot publishes current exact thresholds
+FAIL separate one-weak core clears do not accumulate mitigation
+FAIL third action can qualify and receive exactly four
+BALANCE_BOUNDARIES checks=23 failures=4

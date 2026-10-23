@@ -1,0 +1,377 @@
+{
+  "method": "Six serial native llvmpipe/Dummy audio runs, same recorded7 normal inputs, A-B-B-A-A-B; no policy/search/screenshots/output files inside playback. Warmup excluded. Fixedfps captures are separate. First6 actions preserve rules; action7 adds one intentional bomb supply body kind, without movement/RNG changes. No human/mobile claim.",
+  "groups": {
+    "before": {
+      "board_clear_press_to_draw_ms": {
+        "n": 21,
+        "median": 20.41,
+        "min": 17.251,
+        "max": 68.297,
+        "p95": 26.332
+      },
+      "ordinary_commit_ready_ms": {
+        "n": 12,
+        "median": 865.441,
+        "min": 797.777,
+        "max": 1008.393,
+        "p95": 1008.393
+      },
+      "core_commit_ready_ms": {
+        "n": 9,
+        "median": 1420.984,
+        "min": 1218.686,
+        "max": 1929.099,
+        "p95": 1929.099
+      },
+      "all_commit_ready_ms": {
+        "n": 21,
+        "median": 955.849,
+        "min": 797.777,
+        "max": 1929.099,
+        "p95": 1682.166
+      },
+      "press_to_draw_ms": {
+        "n": 57,
+        "median": 22.3,
+        "min": 15.632,
+        "max": 68.297,
+        "p95": 45.475
+      },
+      "process_cpu_ms_per_frame": {
+        "n": 2057,
+        "median": 0.022,
+        "min": 0.011,
+        "max": 288.464,
+        "p95": 14.522
+      },
+      "draw_cpu_ms_per_frame": {
+        "n": 2057,
+        "median": 0.809,
+        "min": 0.503,
+        "max": 12.379,
+        "p95": 3.143
+      },
+      "render_cpu_ms_per_frame": {
+        "n": 2057,
+        "median": 1.306,
+        "min": 0.612,
+        "max": 51.748,
+        "p95": 5.954
+      },
+      "motion_cpu_ms_per_action": {
+        "n": 21,
+        "median": 218.461,
+        "min": 79.502,
+        "max": 936.519,
+        "p95": 931.013
+      },
+      "repeats": [
+        {
+          "run": 1,
+          "commit_to_ready_ms": {
+            "n": 7,
+            "median": 955.01,
+            "min": 820.229,
+            "max": 1929.099,
+            "p95": 1929.099
+          }
+        },
+        {
+          "run": 2,
+          "commit_to_ready_ms": {
+            "n": 7,
+            "median": 1008.393,
+            "min": 812.575,
+            "max": 1491.189,
+            "p95": 1491.189
+          }
+        },
+        {
+          "run": 3,
+          "commit_to_ready_ms": {
+            "n": 7,
+            "median": 953.182,
+            "min": 797.777,
+            "max": 1682.166,
+            "p95": 1682.166
+          }
+        }
+      ]
+    },
+    "after": {
+      "board_clear_press_to_draw_ms": {
+        "n": 21,
+        "median": 20.468,
+        "min": 17.23,
+        "max": 77.091,
+        "p95": 35.849
+      },
+      "ordinary_commit_ready_ms": {
+        "n": 12,
+        "median": 849.414,
+        "min": 807.723,
+        "max": 1326.466,
+        "p95": 1326.466
+      },
+      "core_commit_ready_ms": {
+        "n": 9,
+        "median": 1413.115,
+        "min": 1231.303,
+        "max": 1500.401,
+        "p95": 1500.401
+      },
+      "all_commit_ready_ms": {
+        "n": 21,
+        "median": 1181.492,
+        "min": 807.723,
+        "max": 1500.401,
+        "p95": 1483.717
+      },
+      "press_to_draw_ms": {
+        "n": 57,
+        "median": 21.811,
+        "min": 14.957,
+        "max": 131.289,
+        "p95": 80.02
+      },
+      "process_cpu_ms_per_frame": {
+        "n": 2145,
+        "median": 0.02,
+        "min": 0.011,
+        "max": 181.302,
+        "p95": 11.794
+      },
+      "draw_cpu_ms_per_frame": {
+        "n": 2145,
+        "median": 0.8,
+        "min": 0.502,
+        "max": 49.941,
+        "p95": 2.752
+      },
+      "render_cpu_ms_per_frame": {
+        "n": 2145,
+        "median": 1.308,
+        "min": 0.631,
+        "max": 39.385,
+        "p95": 6.084
+      },
+      "motion_cpu_ms_per_action": {
+        "n": 21,
+        "median": 167.146,
+        "min": 80.901,
+        "max": 784.068,
+        "p95": 746.219
+      },
+      "repeats": [
+        {
+          "run": 1,
+          "commit_to_ready_ms": {
+            "n": 7,
+            "median": 956.489,
+            "min": 807.723,
+            "max": 1468.754,
+            "p95": 1468.754
+          }
+        },
+        {
+          "run": 2,
+          "commit_to_ready_ms": {
+            "n": 7,
+            "median": 1242.844,
+            "min": 837.222,
+            "max": 1483.717,
+            "p95": 1483.717
+          }
+        },
+        {
+          "run": 3,
+          "commit_to_ready_ms": {
+            "n": 7,
+            "median": 922.306,
+            "min": 827.089,
+            "max": 1500.401,
+            "p95": 1500.401
+          }
+        }
+      ]
+    }
+  },
+  "paired_states": [
+    {
+      "repeat": 1,
+      "clear": 1,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 1,
+      "clear": 2,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 1,
+      "clear": 3,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 1,
+      "clear": 4,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 1,
+      "clear": 5,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 1,
+      "clear": 6,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 1,
+      "clear": 7,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": [
+        130
+      ]
+    },
+    {
+      "repeat": 2,
+      "clear": 1,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 2,
+      "clear": 2,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 2,
+      "clear": 3,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 2,
+      "clear": 4,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 2,
+      "clear": 5,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 2,
+      "clear": 6,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 2,
+      "clear": 7,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": [
+        130
+      ]
+    },
+    {
+      "repeat": 3,
+      "clear": 1,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 3,
+      "clear": 2,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 3,
+      "clear": 3,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 3,
+      "clear": 4,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 3,
+      "clear": 5,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 3,
+      "clear": 6,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": []
+    },
+    {
+      "repeat": 3,
+      "clear": 7,
+      "max_position_difference_px": 0.0,
+      "intentional_new_bomb_ids": [
+        130
+      ]
+    }
+  ],
+  "new_bomb_native_run": {
+    "errors": [],
+    "clears": 19,
+    "phase": "victory",
+    "bomb_actions": [
+      {
+        "clear": 8,
+        "wall_ms_including_retaliation_if_any": 2225.025,
+        "blasts": [
+          {
+            "id": 130,
+            "kind": "big_bomb",
+            "pos": "(227.8431, 682.97)",
+            "radius": 164.0
+          }
+        ]
+      },
+      {
+        "clear": 11,
+        "wall_ms_including_retaliation_if_any": 1917.125,
+        "blasts": [
+          {
+            "id": 214,
+            "kind": "big_bomb",
+            "pos": "(269.5332, 569.7518)",
+            "radius": 164.0
+          }
+        ]
+      },
+      {
+        "clear": 17,
+        "wall_ms_including_retaliation_if_any": 1296.826,
+        "blasts": [
+          {
+            "id": 317,
+            "kind": "big_bomb",
+            "pos": "(307.5386, 457.7439)",
+            "radius": 164.0
+          }
+        ]
+      }
+    ],
+    "caveat": "After-only19-input replay, no equivalent pre-feature bomb action; not a paired speedup."
+  }
+}

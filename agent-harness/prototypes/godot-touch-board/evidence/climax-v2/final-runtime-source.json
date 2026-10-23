@@ -1,0 +1,11 @@
+{
+  "base_commit": "a4d67d4904083a0cbff2f706b5486d489ef6e62b",
+  "sha256": {
+    "scripts/board_quality_fx.gd": "d6e6e50bfe81cf20a469c378dbca0f52fcf3df0ef6dd3dc3d4c775006402777c",
+    "scripts/board_feedback.gd": "5fddadd6f32abf00753abda2ff7e80581e7d07cb8b040cb2007d87bd41f61f07",
+    "scripts/board_audio.gd": "26c43a3313478d8167ca20a9f4bb0ae5930205975d9aa8c11b1af6086a8351e9",
+    "scripts/board_pixel_heroes.gd": "806bacfe7b06fa5ccfda9f29832a347c045e3ccf5b3f33c34cc509e02af2aee1",
+    "scripts/board_ui.gd": "7d90a9afdb7f123096b080348735dd75cca03ea5ac082c29ceb86e8574953bb4",
+    "assets/characters/rio-noa-full-body-b.png": "b4a32e069ccd6e82ec2c1827b610b58203e3fd40e1d14c6122a70535031100d2"
+  }
+}

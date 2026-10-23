@@ -1,0 +1,900 @@
+{
+  "events": [
+    {
+      "action_before": 0,
+      "color": 1,
+      "consumed_ash": false,
+      "owned": [],
+      "recharge_required": 3,
+      "start_id": 4,
+      "target_ids": [
+        4,
+        3,
+        5,
+        13
+      ],
+      "targets": 4,
+      "type": "skill"
+    },
+    {
+      "action": 1,
+      "ash_trigger": false,
+      "charge": 1,
+      "charge_required": 3,
+      "core": "core",
+      "direct_ids": [
+        3,
+        4,
+        5,
+        13,
+        19,
+        28
+      ],
+      "direct_normals": 6,
+      "owned": [],
+      "phase": "ready",
+      "removed": 6,
+      "removed_ids": [
+        3,
+        4,
+        5,
+        13,
+        19,
+        28
+      ],
+      "reserved_now": false,
+      "start_id": 3,
+      "type": "clear"
+    },
+    {
+      "action": 2,
+      "ash_trigger": false,
+      "charge": 2,
+      "charge_required": 3,
+      "core": "core",
+      "direct_ids": [
+        8,
+        16,
+        11,
+        23,
+        25,
+        18,
+        31,
+        32,
+        40,
+        43
+      ],
+      "direct_normals": 10,
+      "owned": [],
+      "phase": "ready",
+      "removed": 10,
+      "removed_ids": [
+        8,
+        16,
+        11,
+        23,
+        25,
+        18,
+        31,
+        32,
+        40,
+        43
+      ],
+      "reserved_now": false,
+      "start_id": 8,
+      "type": "clear"
+    },
+    {
+      "action": 3,
+      "ash_trigger": false,
+      "charge": 3,
+      "charge_required": 3,
+      "core": "",
+      "direct_ids": [
+        7,
+        9,
+        36
+      ],
+      "direct_normals": 3,
+      "owned": [],
+      "phase": "reward",
+      "removed": 3,
+      "removed_ids": [
+        7,
+        9,
+        36
+      ],
+      "reserved_now": false,
+      "start_id": 7,
+      "type": "clear"
+    },
+    {
+      "action": 3,
+      "id": "pigment",
+      "type": "reward"
+    },
+    {
+      "action_before": 3,
+      "color": 1,
+      "consumed_ash": false,
+      "owned": [
+        "pigment"
+      ],
+      "recharge_required": 3,
+      "start_id": 14,
+      "target_ids": [
+        14,
+        22,
+        15,
+        21,
+        29
+      ],
+      "targets": 5,
+      "type": "skill"
+    },
+    {
+      "action": 4,
+      "ash_trigger": false,
+      "charge": 1,
+      "charge_required": 3,
+      "core": "core",
+      "direct_ids": [
+        14,
+        22,
+        15,
+        21,
+        29,
+        37
+      ],
+      "direct_normals": 6,
+      "owned": [
+        "pigment"
+      ],
+      "phase": "ready",
+      "removed": 6,
+      "removed_ids": [
+        14,
+        22,
+        15,
+        21,
+        29,
+        37
+      ],
+      "reserved_now": false,
+      "start_id": 14,
+      "type": "clear"
+    },
+    {
+      "action": 5,
+      "ash_trigger": false,
+      "charge": 2,
+      "charge_required": 3,
+      "core": "",
+      "direct_ids": [
+        52,
+        61,
+        56
+      ],
+      "direct_normals": 3,
+      "owned": [
+        "pigment"
+      ],
+      "phase": "ready",
+      "removed": 3,
+      "removed_ids": [
+        52,
+        61,
+        56
+      ],
+      "reserved_now": false,
+      "start_id": 52,
+      "type": "clear"
+    },
+    {
+      "action": 6,
+      "ash_trigger": false,
+      "charge": 3,
+      "charge_required": 3,
+      "core": "",
+      "direct_ids": [
+        30,
+        46
+      ],
+      "direct_normals": 2,
+      "owned": [
+        "pigment"
+      ],
+      "phase": "reward",
+      "removed": 2,
+      "removed_ids": [
+        30,
+        46
+      ],
+      "reserved_now": false,
+      "start_id": 30,
+      "type": "clear"
+    },
+    {
+      "action": 6,
+      "id": "lens",
+      "type": "reward"
+    },
+    {
+      "action_before": 6,
+      "color": 0,
+      "consumed_ash": false,
+      "owned": [
+        "pigment",
+        "lens"
+      ],
+      "recharge_required": 3,
+      "start_id": 51,
+      "target_ids": [
+        51,
+        54,
+        59,
+        62,
+        66
+      ],
+      "targets": 5,
+      "type": "skill"
+    },
+    {
+      "action": 7,
+      "ash_trigger": false,
+      "charge": 1,
+      "charge_required": 3,
+      "core": "core",
+      "direct_ids": [
+        51,
+        54,
+        59,
+        62,
+        66
+      ],
+      "direct_normals": 5,
+      "owned": [
+        "pigment",
+        "lens"
+      ],
+      "phase": "ready",
+      "removed": 5,
+      "removed_ids": [
+        51,
+        54,
+        59,
+        62,
+        66
+      ],
+      "reserved_now": false,
+      "start_id": 51,
+      "type": "clear"
+    },
+    {
+      "action": 8,
+      "ash_trigger": false,
+      "charge": 2,
+      "charge_required": 3,
+      "core": "",
+      "direct_ids": [
+        42,
+        48,
+        67,
+        78
+      ],
+      "direct_normals": 4,
+      "owned": [
+        "pigment",
+        "lens"
+      ],
+      "phase": "ready",
+      "removed": 4,
+      "removed_ids": [
+        42,
+        48,
+        67,
+        78
+      ],
+      "reserved_now": false,
+      "start_id": 42,
+      "type": "clear"
+    },
+    {
+      "action": 9,
+      "ash_trigger": false,
+      "charge": 3,
+      "charge_required": 3,
+      "core": "",
+      "direct_ids": [
+        73,
+        77,
+        80,
+        86
+      ],
+      "direct_normals": 4,
+      "owned": [
+        "pigment",
+        "lens"
+      ],
+      "phase": "summary",
+      "removed": 4,
+      "removed_ids": [
+        73,
+        77,
+        80,
+        86
+      ],
+      "reserved_now": false,
+      "start_id": 73,
+      "type": "clear"
+    }
+  ],
+  "failures": 0,
+  "inputs": [
+    {
+      "actions_after": 0,
+      "actions_before": 0,
+      "hold": 0.08,
+      "mode": "",
+      "phase_before": "ready",
+      "point": [
+        386.0,
+        896.0
+      ],
+      "start_id": -1,
+      "valid": false
+    },
+    {
+      "actions_after": 0,
+      "actions_before": 0,
+      "hold": 0.08,
+      "mode": "",
+      "phase_before": "ready",
+      "point": [
+        346.0,
+        1010.0
+      ],
+      "start_id": -1,
+      "valid": false
+    },
+    {
+      "actions_after": 0,
+      "actions_before": 0,
+      "hold": 0.08,
+      "mode": "skill",
+      "phase_before": "ready",
+      "point": [
+        470.198913574219,
+        743.0
+      ],
+      "start_id": 4,
+      "valid": true
+    },
+    {
+      "actions_after": 1,
+      "actions_before": 0,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        396.198913574219,
+        743.0
+      ],
+      "start_id": 3,
+      "valid": true
+    },
+    {
+      "actions_after": 2,
+      "actions_before": 1,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        256.771331787109,
+        708.427856445312
+      ],
+      "start_id": 8,
+      "valid": true
+    },
+    {
+      "actions_after": 3,
+      "actions_before": 2,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        117.34375,
+        743.0
+      ],
+      "start_id": 7,
+      "valid": true
+    },
+    {
+      "actions_after": 3,
+      "actions_before": 3,
+      "hold": 0.15,
+      "mode": "",
+      "phase_before": "reward",
+      "point": [
+        360.0,
+        379.0
+      ],
+      "start_id": -1,
+      "valid": false
+    },
+    {
+      "actions_after": 3,
+      "actions_before": 3,
+      "hold": 0.08,
+      "mode": "",
+      "phase_before": "ready",
+      "point": [
+        386.0,
+        896.0
+      ],
+      "start_id": -1,
+      "valid": false
+    },
+    {
+      "actions_after": 3,
+      "actions_before": 3,
+      "hold": 0.08,
+      "mode": "",
+      "phase_before": "ready",
+      "point": [
+        346.0,
+        1010.0
+      ],
+      "start_id": -1,
+      "valid": false
+    },
+    {
+      "actions_after": 3,
+      "actions_before": 3,
+      "hold": 0.08,
+      "mode": "skill",
+      "phase_before": "ready",
+      "point": [
+        537.365417480469,
+        743.0
+      ],
+      "start_id": 14,
+      "valid": true
+    },
+    {
+      "actions_after": 4,
+      "actions_before": 3,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        537.365417480469,
+        743.0
+      ],
+      "start_id": 14,
+      "valid": true
+    },
+    {
+      "actions_after": 5,
+      "actions_before": 4,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        454.874267578125,
+        439.209259033203
+      ],
+      "start_id": 52,
+      "valid": true
+    },
+    {
+      "actions_after": 6,
+      "actions_before": 5,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        653.02099609375,
+        677.713500976562
+      ],
+      "start_id": 30,
+      "valid": true
+    },
+    {
+      "actions_after": 6,
+      "actions_before": 6,
+      "hold": 0.15,
+      "mode": "",
+      "phase_before": "reward",
+      "point": [
+        360.0,
+        447.0
+      ],
+      "start_id": -1,
+      "valid": false
+    },
+    {
+      "actions_after": 6,
+      "actions_before": 6,
+      "hold": 0.08,
+      "mode": "",
+      "phase_before": "ready",
+      "point": [
+        386.0,
+        896.0
+      ],
+      "start_id": -1,
+      "valid": false
+    },
+    {
+      "actions_after": 6,
+      "actions_before": 6,
+      "hold": 0.08,
+      "mode": "",
+      "phase_before": "ready",
+      "point": [
+        210.0,
+        1010.0
+      ],
+      "start_id": -1,
+      "valid": false
+    },
+    {
+      "actions_after": 6,
+      "actions_before": 6,
+      "hold": 0.08,
+      "mode": "skill",
+      "phase_before": "ready",
+      "point": [
+        67.0,
+        668.999938964844
+      ],
+      "start_id": 51,
+      "valid": true
+    },
+    {
+      "actions_after": 7,
+      "actions_before": 6,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        67.0,
+        668.999938964844
+      ],
+      "start_id": 51,
+      "valid": true
+    },
+    {
+      "actions_after": 8,
+      "actions_before": 7,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        328.548065185547,
+        536.407287597656
+      ],
+      "start_id": 42,
+      "valid": true
+    },
+    {
+      "actions_after": 9,
+      "actions_before": 8,
+      "hold": 0.08,
+      "mode": "clear",
+      "phase_before": "ready",
+      "point": [
+        653.0,
+        529.691711425781
+      ],
+      "start_id": 73,
+      "valid": true
+    },
+    {
+      "actions_after": 9,
+      "actions_before": 9,
+      "hold": 0.08,
+      "mode": "",
+      "phase_before": "summary",
+      "point": [
+        360.0,
+        714.0
+      ],
+      "start_id": -1,
+      "valid": false
+    }
+  ],
+  "method": "normal UI gestures; no fixture injection, forced charge, or intermediate board reset",
+  "pair": [
+    "pigment",
+    "lens"
+  ],
+  "policy": "prefer lens five / ash six direct normals",
+  "stats": [
+    {
+      "actions": 3,
+      "cores": 2,
+      "removed": 19
+    },
+    {
+      "actions": 3,
+      "cores": 1,
+      "removed": 11
+    },
+    {
+      "actions": 3,
+      "cores": 1,
+      "removed": 13
+    }
+  ],
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 15.663
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 16.92
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 34,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 72782,
+        "clear_wall_ms": 302.167,
+        "fall_sim_s": 0.558333333333334,
+        "fall_wall_ms": 570.293,
+        "inside_sim_s": 0.358333333333334,
+        "iterations": 1092,
+        "last_spawn_sim_s": 0.2,
+        "pending_sim_s": 0.2,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 104702,
+        "spawn_us": 3445,
+        "ticks": 67
+      },
+      "removed": 6,
+      "specials": 0,
+      "wall_ms": 872.451
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 53.69
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 15,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 143233,
+        "clear_wall_ms": 580.847,
+        "fall_sim_s": 0.758333333333333,
+        "fall_wall_ms": 1044.573,
+        "inside_sim_s": 0.525000000000001,
+        "iterations": 2705,
+        "last_spawn_sim_s": 0.366666666666667,
+        "pending_sim_s": 0.366666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 329826,
+        "spawn_us": 7131,
+        "ticks": 91
+      },
+      "removed": 10,
+      "specials": 0,
+      "wall_ms": 1625.408
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 53.413
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 10,
+      "movie": false,
+      "next_phase": "reward",
+      "profile": {
+        "anchor_us": 120360,
+        "clear_wall_ms": 196.547,
+        "fall_sim_s": 0.575,
+        "fall_wall_ms": 642.349,
+        "inside_sim_s": 0.275,
+        "iterations": 2594,
+        "last_spawn_sim_s": 0.116666666666667,
+        "pending_sim_s": 0.116666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 323161,
+        "spawn_us": 2149,
+        "ticks": 69
+      },
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 838.886
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 16.027
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 16.235
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 31,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 108972,
+        "clear_wall_ms": 296.488,
+        "fall_sim_s": 0.575,
+        "fall_wall_ms": 697.259,
+        "inside_sim_s": 0.358333333333334,
+        "iterations": 2362,
+        "last_spawn_sim_s": 0.2,
+        "pending_sim_s": 0.2,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 290980,
+        "spawn_us": 3296,
+        "ticks": 69
+      },
+      "removed": 6,
+      "specials": 0,
+      "wall_ms": 993.737
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 16.96
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 21,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 124254,
+        "clear_wall_ms": 228.185,
+        "fall_sim_s": 0.558333333333334,
+        "fall_wall_ms": 1197.594,
+        "inside_sim_s": 0.275,
+        "iterations": 8576,
+        "last_spawn_sim_s": 0.116666666666667,
+        "pending_sim_s": 0.116666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 913043,
+        "spawn_us": 2309,
+        "ticks": 67
+      },
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 1425.767
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 18.544
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 19,
+      "movie": false,
+      "next_phase": "reward",
+      "profile": {
+        "anchor_us": 173754,
+        "clear_wall_ms": 192.249,
+        "fall_sim_s": 0.641666666666667,
+        "fall_wall_ms": 1153.043,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 7068,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 793379,
+        "spawn_us": 1604,
+        "ticks": 77
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 1345.28
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 17.506
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 18.262
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 28,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 115631,
+        "clear_wall_ms": 291.87,
+        "fall_sim_s": 0.450000000000001,
+        "fall_wall_ms": 490.135,
+        "inside_sim_s": 0.316666666666667,
+        "iterations": 1004,
+        "last_spawn_sim_s": 0.158333333333333,
+        "pending_sim_s": 0.158333333333333,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 100774,
+        "spawn_us": 2926,
+        "ticks": 54
+      },
+      "removed": 5,
+      "specials": 0,
+      "wall_ms": 781.994
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 18.282
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 29,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 124650,
+        "clear_wall_ms": 237.66,
+        "fall_sim_s": 0.525000000000001,
+        "fall_wall_ms": 582.656,
+        "inside_sim_s": 0.316666666666667,
+        "iterations": 1153,
+        "last_spawn_sim_s": 0.158333333333333,
+        "pending_sim_s": 0.158333333333333,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 106222,
+        "spawn_us": 2909,
+        "ticks": 63
+      },
+      "removed": 4,
+      "specials": 0,
+      "wall_ms": 820.293
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 18.922
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 30,
+      "movie": false,
+      "next_phase": "summary",
+      "profile": {
+        "anchor_us": 199041,
+        "clear_wall_ms": 241.21,
+        "fall_sim_s": 0.683333333333333,
+        "fall_wall_ms": 713.409,
+        "inside_sim_s": 0.316666666666667,
+        "iterations": 791,
+        "last_spawn_sim_s": 0.158333333333333,
+        "pending_sim_s": 0.158333333333333,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 63281,
+        "spawn_us": 2967,
+        "ticks": 82
+      },
+      "removed": 4,
+      "specials": 0,
+      "wall_ms": 954.609
+    }
+  ]
+}

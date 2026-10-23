@@ -1,0 +1,32 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS dense fixture settles naturally
+PASS OS driver acknowledged 01-dense-volume-fixture
+PASS exposed physical48 rim exists
+PASS OS driver acknowledged rim-down
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":24.01}
+PASS OS rim selects actual large body
+PASS OS driver acknowledged 02-rim-preview
+PASS OS driver acknowledged cancel-move
+PASS OS driver acknowledged cancel-up
+PASS OS cancel has no action
+PASS OS driver acknowledged reduced
+PASS OS reduced enabled
+PASS OS driver acknowledged 03-reduced-same-volume
+PASS large physical body rests against wall without clipping
+PASS OS driver acknowledged edge-down
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":19.197}
+PASS OS inside-wall physical rim selectable
+PASS OS driver acknowledged 04-edge-preview
+PASS OS driver acknowledged edge-up
+PASS OS driver acknowledged wall-outside
+PASS OS beyond wall cannot select
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":20.518}
+PASS OS driver acknowledged edge-commit
+PASS OS one commit uses canonical164 explosion
+PASS OS driver acknowledged reset
+PASS OS reset clears selection and effects
+BOMB_VOLUME_WINDOW checks=23 failures=0 size=(720, 1080)

@@ -1,0 +1,39 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS owned dock keeps44px small-window touch targets
+PASS detail panel and close bounds match contract
+PASS owned icon press alone does not open detail
+PASS matching release opens owned detail without changing ready phase
+PASS opening detail does not consume an action or select board
+PASS touch inside panel stays open and cannot select underlying board
+PASS inside modal touch preserves board and counters
+PASS outside skill-button gesture never toggles underlying skill
+PASS fresh outside-panel gesture closes detail
+PASS second owned icon opens corresponding relic
+PASS stray release cannot close modal or clear board
+PASS outside down waits for release while board remains blocked
+PASS outside closing release cannot pass through to board
+PASS duplicate closing release consumes no action
+PASS third owned icon opens corresponding relic
+PASS close-button fresh gesture closes only detail
+PASS Escape closes detail
+PASS down and release on different icons cannot open detail
+PASS leaving icon cancels candidate even after reentry
+PASS focus loss cancels pending icon opening
+PASS system canceled icon touch never opens detail
+PASS focus loss cancels close candidate but retains open detail
+PASS system canceled close gesture retains open detail
+PASS second finger cannot complete first icon press
+PASS first finger keeps its original icon ownership
+PASS second finger cannot close an open detail
+PASS existing board preview still starts when detail is closed
+PASS owned icon cannot interrupt active board preview
+PASS existing board release executes its unchanged preview
+PASS busy board does not open owned detail
+PASS skill palette hides owned icon hit targets
+PASS reward modal prevents owned detail routing
+PASS summary modal prevents owned detail routing
+PASS reset allowed while detail open and clears all detail/session state
+PASS stale detail release after reset has no effect
+PASS reset clears pending icon candidate before stale release
+RELIC DETAILS checks=36 failures=0

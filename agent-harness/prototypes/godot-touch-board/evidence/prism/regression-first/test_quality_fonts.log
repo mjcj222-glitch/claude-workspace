@@ -1,0 +1,57 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS display original font binary exists
+PASS body original font binary exists
+PASS bold original font binary exists
+PASS source/version/checksum manifest exists
+PASS display imports as real Godot FontFile
+PASS display exposes real glyph data
+PASS display binary has TrueType/OpenType magic
+PASS display exact downloaded font checksum retained
+PASS display has authoritative source and font version
+PASS display required Korean/UI glyphs present: missing=
+FONT_METRIC {"ascent":18.0,"descent":5.0,"family":"Black Han Sans","font_size":22,"height":27.0,"role":"display","style":"Regular","text":"강타 10 → 4: 한 번에 약점 2개","width":274.0}
+PASS display critical line fits 628px at 22px: 강타 10 → 4: 한 번에 약점 2개
+FONT_METRIC {"ascent":18.0,"descent":5.0,"family":"Black Han Sans","font_size":22,"height":23.0,"role":"display","style":"Regular","text":"또는 공격 패널 8개 소거","width":206.0}
+PASS display critical line fits 628px at 22px: 또는 공격 패널 8개 소거
+FONT_METRIC {"ascent":18.0,"descent":5.0,"family":"Black Han Sans","font_size":22,"height":27.0,"role":"display","style":"Regular","text":"피해 72 = 기본 48 + 약점 24 · 강타 조건 미충족","width":418.0}
+PASS display critical line fits 628px at 22px: 피해 72 = 기본 48 + 약점 24 · 강타 조건 미충족
+FONT_METRIC {"ascent":18.0,"descent":5.0,"family":"Black Han Sans","font_size":22,"height":27.0,"role":"display","style":"Regular","text":"공격 48개 · 약점 48개 · 회복 96 → 30 (초과 66)","width":440.0}
+PASS display critical line fits 628px at 22px: 공격 48개 · 약점 48개 · 회복 96 → 30 (초과 66)
+FONT_METRIC {"ascent":18.0,"descent":5.0,"family":"Black Han Sans","font_size":22,"height":27.0,"role":"display","style":"Regular","text":"생명 회복 · 최종 전투로 · 약점 물결","width":298.0}
+PASS display critical line fits 628px at 22px: 생명 회복 · 최종 전투로 · 약점 물결
+PASS body imports as real Godot FontFile
+PASS body exposes real glyph data
+PASS body binary has TrueType/OpenType magic
+PASS body exact downloaded font checksum retained
+PASS body has authoritative source and font version
+PASS body required Korean/UI glyphs present: missing=
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard Medium","font_size":22,"height":27.0,"role":"body","style":"Medium","text":"강타 10 → 4: 한 번에 약점 2개","width":265.0}
+PASS body critical line fits 628px at 22px: 강타 10 → 4: 한 번에 약점 2개
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard Medium","font_size":22,"height":27.0,"role":"body","style":"Medium","text":"또는 공격 패널 8개 소거","width":205.0}
+PASS body critical line fits 628px at 22px: 또는 공격 패널 8개 소거
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard Medium","font_size":22,"height":27.0,"role":"body","style":"Medium","text":"피해 72 = 기본 48 + 약점 24 · 강타 조건 미충족","width":417.0}
+PASS body critical line fits 628px at 22px: 피해 72 = 기본 48 + 약점 24 · 강타 조건 미충족
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard Medium","font_size":22,"height":27.0,"role":"body","style":"Medium","text":"공격 48개 · 약점 48개 · 회복 96 → 30 (초과 66)","width":434.0}
+PASS body critical line fits 628px at 22px: 공격 48개 · 약점 48개 · 회복 96 → 30 (초과 66)
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard Medium","font_size":22,"height":27.0,"role":"body","style":"Medium","text":"생명 회복 · 최종 전투로 · 약점 물결","width":294.0}
+PASS body critical line fits 628px at 22px: 생명 회복 · 최종 전투로 · 약점 물결
+PASS bold imports as real Godot FontFile
+PASS bold exposes real glyph data
+PASS bold binary has TrueType/OpenType magic
+PASS bold exact downloaded font checksum retained
+PASS bold has authoritative source and font version
+PASS bold required Korean/UI glyphs present: missing=
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard SemiBold","font_size":22,"height":27.0,"role":"bold","style":"SemiBold","text":"강타 10 → 4: 한 번에 약점 2개","width":264.0}
+PASS bold critical line fits 628px at 22px: 강타 10 → 4: 한 번에 약점 2개
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard SemiBold","font_size":22,"height":27.0,"role":"bold","style":"SemiBold","text":"또는 공격 패널 8개 소거","width":205.0}
+PASS bold critical line fits 628px at 22px: 또는 공격 패널 8개 소거
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard SemiBold","font_size":22,"height":27.0,"role":"bold","style":"SemiBold","text":"피해 72 = 기본 48 + 약점 24 · 강타 조건 미충족","width":417.0}
+PASS bold critical line fits 628px at 22px: 피해 72 = 기본 48 + 약점 24 · 강타 조건 미충족
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard SemiBold","font_size":22,"height":27.0,"role":"bold","style":"SemiBold","text":"공격 48개 · 약점 48개 · 회복 96 → 30 (초과 66)","width":433.0}
+PASS bold critical line fits 628px at 22px: 공격 48개 · 약점 48개 · 회복 96 → 30 (초과 66)
+FONT_METRIC {"ascent":21.0,"descent":6.0,"family":"Pretendard SemiBold","font_size":22,"height":27.0,"role":"bold","style":"SemiBold","text":"생명 회복 · 최종 전투로 · 약점 물결","width":294.0}
+PASS bold critical line fits 628px at 22px: 생명 회복 · 최종 전투로 · 약점 물결
+PASS BlackHanSans-OFL.txt full unabridged license included
+PASS Pretendard-LICENSE.txt full unabridged license included
+QUALITY_FONTS checks=39 failures=0

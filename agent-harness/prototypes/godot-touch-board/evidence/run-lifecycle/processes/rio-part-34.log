@@ -1,0 +1,6 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+CAPTURE_ELEMENTAL {"actions":18,"actions_in_turn":1,"ash_reserved":false,"attacks_total":3,"character_id":"rio","charge":0,"charge_required":2,"combat_context":{"incoming_damage":6,"intent":"plain","intent_serial":8,"mitigation_success":false,"slam_normal_required":8,"slam_weak_required":2,"weakness_color":3},"details":{"color":1,"connected":[311,303,304,322,293,296,305,313],"planted":{},"start_id":311,"targets":[311,303,304,322,293]},"encounter":2,"enemies_defeated":3,"enemy_hp":25,"enemy_max_hp":48,"fallback_plain":false,"gold":22,"gold_spent":0,"hp":26,"incoming_damage":6,"last_attack_damage":4,"mitigation_active":false,"mitigation_success":false,"phase":"ready","process_frame":0,"relics":["pigment","lens","ash"],"route":"elite","scene_seconds":0.0,"shop_closed":true,"shop_heal_sold":false,"shop_relic_sold":false,"skill_uses":7,"turn":1,"type":"skill","wall_ms":1219.555,"weak_color":3}
+PROCESS ready actions=18 errors=[]
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

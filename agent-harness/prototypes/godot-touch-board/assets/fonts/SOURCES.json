@@ -1,0 +1,76 @@
+{
+  "retrieved_utc": "2026-10-21T07:05:39.567284+00:00",
+  "method": "Original unmodified font binaries and full licenses from approved official sources; no subset, conversion or system installation.",
+  "files": {
+    "BlackHanSans-Regular.ttf": {
+      "sha256": "31960809284026681774a8e52dc19ebcad26cf69b0ad9d560f288296fbb52739",
+      "size_bytes": 998424,
+      "font_family": [
+        "Black Han Sans",
+        "검은고딕"
+      ],
+      "font_style": [
+        "Regular"
+      ],
+      "font_version": "Version 1.001",
+      "copyright": [
+        "Copyright 2015 The Black Han Sans Project Authors (https://github.com/zesstype/Black-Han-Sans)"
+      ],
+      "license_file": "BlackHanSans-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/blackhansans/BlackHanSans-Regular.ttf"
+    },
+    "Pretendard-Medium.otf": {
+      "sha256": "d39e50e4bb52b4993b6a4eeb821a171254745bd824446af01e1f616b89fface0",
+      "size_bytes": 1584068,
+      "font_family": [
+        "Pretendard Medium"
+      ],
+      "font_style": [
+        "Regular"
+      ],
+      "font_version": "Version 1.309;Glyphs 3.2 (3225)",
+      "copyright": [
+        "Copyright © 2023 Kil Hyung-jin",
+        "Copyright © 2023 길형진"
+      ],
+      "license_file": "Pretendard-LICENSE.txt",
+      "source_url": "https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip",
+      "archive_member": "public/static/Pretendard-Medium.otf"
+    },
+    "Pretendard-SemiBold.otf": {
+      "sha256": "c89bc43027dc7cde5726e96223376f8eec09302b2fc1f8147fd5b57cfc376118",
+      "size_bytes": 1583704,
+      "font_family": [
+        "Pretendard SemiBold"
+      ],
+      "font_style": [
+        "Regular"
+      ],
+      "font_version": "Version 1.309;Glyphs 3.2 (3225)",
+      "copyright": [
+        "Copyright © 2023 Kil Hyung-jin",
+        "Copyright © 2023 길형진"
+      ],
+      "license_file": "Pretendard-LICENSE.txt",
+      "source_url": "https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip",
+      "archive_member": "public/static/Pretendard-SemiBold.otf"
+    },
+    "BlackHanSans-OFL.txt": {
+      "sha256": "c324192c8b3a988bae45a9a7e4ac1258b684739003bda114e0523423440457c9",
+      "size_bytes": 4399,
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/blackhansans/OFL.txt",
+      "archive_member": null
+    },
+    "Pretendard-LICENSE.txt": {
+      "sha256": "b04538c9abec39a3db75108cf0af0fd9c77032fe8aa2cf38345b4d250e98e38e",
+      "size_bytes": 4419,
+      "source_url": "https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip",
+      "archive_member": "LICENSE.txt"
+    }
+  },
+  "pretendard_release": {
+    "version": "1.3.9",
+    "source_url": "https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip",
+    "sha256": "04be351a74d6bf7d60c480a3087e51d185485d35a52023142af1df19eb8c428a"
+  }
+}

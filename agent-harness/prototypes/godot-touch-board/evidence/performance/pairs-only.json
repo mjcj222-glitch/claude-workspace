@@ -1,0 +1,168 @@
+{
+  "method": "live rendered process frames; engine-dispatched input, no movie mode",
+  "renderer": "llvmpipe software OpenGL",
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 35.625
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 11,
+      "movie": false,
+      "profile": {
+        "anchor_us": 58338,
+        "clear_wall_ms": 214.833,
+        "fall_sim_s": 0.35,
+        "fall_wall_ms": 2495.553,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 3751,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 2209651,
+        "spawn_us": 1565,
+        "ticks": 42
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 2710.376
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 33.839
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 11,
+      "movie": false,
+      "profile": {
+        "anchor_us": 65339,
+        "clear_wall_ms": 210.386,
+        "fall_sim_s": 0.366666666666667,
+        "fall_wall_ms": 1741.435,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 1951,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 1404334,
+        "spawn_us": 1522,
+        "ticks": 44
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 1951.81
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 32.925
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 11,
+      "movie": false,
+      "profile": {
+        "anchor_us": 54785,
+        "clear_wall_ms": 210.085,
+        "fall_sim_s": 0.391666666666667,
+        "fall_wall_ms": 1705.894,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 2516,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 1454897,
+        "spawn_us": 1527,
+        "ticks": 47
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 1915.969
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 42.894
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 12,
+      "movie": false,
+      "profile": {
+        "anchor_us": 76039,
+        "clear_wall_ms": 220.56,
+        "fall_sim_s": 0.491666666666667,
+        "fall_wall_ms": 1377.932,
+        "inside_sim_s": 0.275,
+        "iterations": 2263,
+        "last_spawn_sim_s": 0.116666666666667,
+        "pending_sim_s": 0.116666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 1060538,
+        "spawn_us": 2129,
+        "ticks": 59
+      },
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 1598.468
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 32.579
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 13,
+      "movie": false,
+      "profile": {
+        "anchor_us": 74201,
+        "clear_wall_ms": 207.134,
+        "fall_sim_s": 0.558333333333334,
+        "fall_wall_ms": 741.521,
+        "inside_sim_s": 0.233333333333333,
+        "iterations": 948,
+        "last_spawn_sim_s": 0.075,
+        "pending_sim_s": 0.075,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 428848,
+        "spawn_us": 1434,
+        "ticks": 67
+      },
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 948.647
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 42.301
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 49,
+      "movie": false,
+      "profile": {
+        "anchor_us": 94927,
+        "clear_wall_ms": 655.021,
+        "fall_sim_s": 1.76666666666666,
+        "fall_wall_ms": 4339.029,
+        "inside_sim_s": 1.56666666666666,
+        "iterations": 9176,
+        "last_spawn_sim_s": 1.40833333333333,
+        "pending_sim_s": 1.40833333333333,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 3148900,
+        "spawn_us": 16005,
+        "ticks": 212
+      },
+      "removed": 35,
+      "specials": 2,
+      "wall_ms": 4994.04
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL first fight weakness is red
+FAIL first prepared intent advances serial once
+FAIL returned damage context cannot mutate combat
+FAIL safe second fight keeps direct-four intent and green weakness
+FAIL elite second fight yellow weakness preserves attack bonus
+FAIL boss available blue pair announces ten-to-four slam
+FAIL slam telegraph exposes actual damage alternatives
+FAIL same canonical rule plan previews available mitigation
+FAIL two weak normals latch once and apply three total damage
+FAIL successful boss mitigation attacks exactly once
+FAIL odd boss turn always plain six and advances context
+FAIL odd boss attack is six not old eight
+FAIL seven nonweak normals cannot enable slam
+FAIL later board growth cannot activate fallback turn condition
+FAIL eight nonweak ordinary normals are an independent slam opportunity
+FAIL third action may satisfy slam before retaliation
+FAIL third-action mitigation uses reduced damage
+FAIL heart/core bodies never count as ordinary boss opportunities
+FAIL heart/core bodies never count as ordinary boss opportunities
+FAIL one weak normal plus a core is still below weak threshold
+FAIL unmet scheduled slam remains ten
+FAIL initial legal opportunity remains frozen if later board loses it
+FAIL third clear can kill and mitigate without retaliation
+BOSS_COMBAT checks=33 failures=23

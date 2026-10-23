@@ -1,0 +1,114 @@
+[
+  {
+    "seed": 20261021,
+    "route": "elite",
+    "pair": [
+      "pigment",
+      "lens"
+    ],
+    "policy": "attrition",
+    "terminal": "defeat",
+    "hp": 0,
+    "actions": 20,
+    "skill_uses": 1,
+    "strong_plants": 0,
+    "errors": [],
+    "audit_errors": []
+  },
+  {
+    "seed": 20261021,
+    "route": "elite",
+    "pair": [
+      "pigment",
+      "lens"
+    ],
+    "policy": "intent-aware",
+    "terminal": "victory",
+    "hp": 24,
+    "actions": 17,
+    "skill_uses": 6,
+    "strong_plants": 0,
+    "errors": [],
+    "audit_errors": []
+  },
+  {
+    "seed": 20261021,
+    "route": "elite",
+    "pair": [
+      "pigment",
+      "ash"
+    ],
+    "policy": "intent-aware",
+    "terminal": "victory",
+    "hp": 24,
+    "actions": 17,
+    "skill_uses": 6,
+    "strong_plants": 0,
+    "errors": [],
+    "audit_errors": []
+  },
+  {
+    "seed": 20261021,
+    "route": "elite",
+    "pair": [
+      "lens",
+      "ash"
+    ],
+    "policy": "intent-aware",
+    "terminal": "victory",
+    "hp": 28,
+    "actions": 17,
+    "skill_uses": 7,
+    "strong_plants": 0,
+    "errors": [],
+    "audit_errors": []
+  },
+  {
+    "seed": 20261021,
+    "route": "safe",
+    "pair": [
+      "pigment",
+      "lens"
+    ],
+    "policy": "intent-aware",
+    "terminal": "victory",
+    "hp": 20,
+    "actions": 13,
+    "skill_uses": 5,
+    "strong_plants": 0,
+    "errors": [],
+    "audit_errors": []
+  },
+  {
+    "seed": 20261021,
+    "route": "safe",
+    "pair": [
+      "pigment",
+      "ash"
+    ],
+    "policy": "intent-aware",
+    "terminal": "victory",
+    "hp": 26,
+    "actions": 12,
+    "skill_uses": 5,
+    "strong_plants": 0,
+    "errors": [],
+    "audit_errors": []
+  },
+  {
+    "seed": 20261021,
+    "route": "safe",
+    "pair": [
+      "lens",
+      "ash"
+    ],
+    "policy": "intent-aware",
+    "terminal": "victory",
+    "hp": 20,
+    "actions": 13,
+    "skill_uses": 5,
+    "strong_plants": 0,
+    "errors": [],
+    "audit_errors": []
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "seed": 1,
+    "hero": "rio",
+    "route": "safe",
+    "exit": 0,
+    "errors": [],
+    "terminal": {
+      "phase": "victory",
+      "hp": 22,
+      "actions": 19,
+      "relics": [
+        "pigment",
+        "petal"
+      ]
+    },
+    "guards": 2
+  },
+  {
+    "seed": 1,
+    "hero": "rio",
+    "route": "risk",
+    "exit": 0,
+    "errors": [],
+    "terminal": {
+      "phase": "victory",
+      "hp": 26,
+      "actions": 20,
+      "relics": [
+        "pigment",
+        "lens",
+        "petal"
+      ]
+    },
+    "guards": 1
+  },
+  {
+    "seed": 1,
+    "hero": "noa",
+    "route": "safe",
+    "exit": 0,
+    "errors": [],
+    "terminal": {
+      "phase": "victory",
+      "hp": 27,
+      "actions": 16,
+      "relics": [
+        "pigment",
+        "petal"
+      ]
+    },
+    "guards": 1
+  },
+  {
+    "seed": 1,
+    "hero": "noa",
+    "route": "risk",
+    "exit": 0,
+    "errors": [],
+    "terminal": {
+      "phase": "victory",
+      "hp": 26,
+      "actions": 19,
+      "relics": [
+        "pigment",
+        "lens",
+        "petal"
+      ]
+    },
+    "guards": 1
+  },
+  {
+    "seed": 20261021,
+    "hero": "rio",
+    "route": "safe",
+    "exit": 0,
+    "errors": [],
+    "terminal": {
+      "phase": "victory",
+      "hp": 26,
+      "actions": 11,
+      "relics": [
+        "pigment",
+        "petal"
+      ]
+    },
+    "guards": 1
+  },
+  {
+    "seed": 20261021,
+    "hero": "rio",
+    "route": "risk",
+    "exit": 0,
+    "errors": [],
+    "terminal": {
+      "phase": "victory",
+      "hp": 27,
+      "actions": 19,
+      "relics": [
+        "pigment",
+        "lens",
+        "petal"
+      ]
+    },
+    "guards": 0
+  },
+  {
+    "seed": 20261021,
+    "hero": "noa",
+    "route": "safe",
+    "exit": 0,
+    "errors": [],
+    "terminal": {
+      "phase": "victory",
+      "hp": 29,
+      "actions": 16,
+      "relics": [
+        "pigment",
+        "petal"
+      ]
+    },
+    "guards": 0
+  },
+  {
+    "seed": 20261021,
+    "hero": "noa",
+    "route": "risk",
+    "exit": 0,
+    "errors": [],
+    "terminal": {
+      "phase": "victory",
+      "hp": 25,
+      "actions": 21,
+      "relics": [
+        "pigment",
+        "lens",
+        "petal"
+      ]
+    },
+    "guards": 1
+  }
+]

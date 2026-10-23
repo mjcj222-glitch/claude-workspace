@@ -1,0 +1,17 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS scene owns dedicated quality presentation and type resources
+PASS official imported display and body fonts are active
+PASS opening targeting does not trigger activation strip
+PASS cancel targeting causes no activation
+PASS cancelled skill preview never activates
+FAIL successful skill shows bounded cutin without gating input or spending action
+PASS skill visuals do not consume game randomness
+PASS cutin finishes without scheduled gameplay callback
+PASS reset restores identical normal board and clears effects
+PASS actual contact trace appears on preview without committed damage effects
+PASS feedback receives exact committed damage and effective healing
+PASS visual RNG is separate while fixed legacy clear budget preserves next-board RNG
+PASS duplicate FX reachability cannot change actual count or total damage
+PASS reset clears trails, numbers and contact trace
+QUALITY_SCENE checks=14 failures=1

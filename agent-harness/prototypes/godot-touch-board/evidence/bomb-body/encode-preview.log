@@ -1,0 +1,112 @@
+ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 14 (Debian 14.2.0-19)
+  configuration: --prefix=/usr --extra-version=0+deb13u1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-libmfx --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libcaca --enable-libdvdnav --enable-libdvdread --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.103 / 61.  7.103
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  5.100 / 10.  5.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'evidence/bomb-body/rio-full.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.103
+  Duration: 00:01:01.83, start: 0.000000, bitrate: 1664 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 720x1080 [SAR 1:1 DAR 2:3], 1611 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 44 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+Input #1, mov,mp4,m4a,3gp,3g2,mj2, from 'evidence/bomb-body/noa-full.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.103
+  Duration: 00:00:58.97, start: 0.000000, bitrate: 1599 kb/s
+  Stream #1:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 720x1080 [SAR 1:1 DAR 2:3], 1551 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+  Stream #1:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 39 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 (h264) -> trim:default
+  Stream #0:1 (aac) -> atrim:default
+  Stream #1:0 (h264) -> trim:default
+  Stream #1:0 (h264) -> trim:default
+  Stream #1:0 (h264) -> trim:default
+  Stream #1:1 (aac) -> atrim:default
+  Stream #1:1 (aac) -> atrim:default
+  Stream #1:1 (aac) -> atrim:default
+  concat -> Stream #0:0 (libx264)
+  concat -> Stream #0:1 (aac)
+Press [q] to stop, [?] for help
+[swscaler @ 0x7f748002f0c0] deprecated pixel format used, make sure you did set range correctly
+[libx264 @ 0x558ed0123d00] using SAR=1/1
+[libx264 @ 0x558ed0123d00] MB rate (3060000000) > level limit (16711680)
+[libx264 @ 0x558ed0123d00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x558ed0123d00] profile High, level 6.2, 4:2:0, 8-bit
+[libx264 @ 0x558ed0123d00] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=7 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=21.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'evidence/bomb-body/bomb-body-preview.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.103
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(pc, bt470bg/unknown/unknown, progressive), 720x1080 [SAR 1:1 DAR 2:3], q=2-31, 1000k tbn
+      Metadata:
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 160 kb/s
+      Metadata:
+        encoder         : Lavc61.19.101 aac
+frame=    3 fps=3.0 q=27.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x
+frame=   79 fps= 53 q=27.0 size=     512KiB time=00:00:02.53 bitrate=1655.8kbits/s speed=1.69x
+frame=   94 fps= 47 q=27.0 size=     512KiB time=00:00:03.03 bitrate=1382.9kbits/s speed=1.51x
+frame=  153 fps= 61 q=27.0 size=    1024KiB time=00:00:05.00 bitrate=1677.8kbits/s speed=   2x
+frame=  225 fps= 75 q=27.0 size=    1792KiB time=00:00:07.40 bitrate=1983.8kbits/s speed=2.46x
+frame=  263 fps= 75 q=27.0 size=    2048KiB time=00:00:08.66 bitrate=1935.9kbits/s speed=2.47x
+frame=  273 fps= 68 q=27.0 size=    2304KiB time=00:00:09.00 bitrate=2097.2kbits/s speed=2.25x
+frame=  286 fps= 63 q=27.0 size=    2304KiB time=00:00:09.43 bitrate=2000.9kbits/s speed=2.09x
+frame=  286 fps= 57 q=27.0 size=    2304KiB time=00:00:09.43 bitrate=2000.9kbits/s speed=1.88x
+frame=  286 fps= 52 q=27.0 size=    2304KiB time=00:00:09.43 bitrate=2000.9kbits/s speed=1.71x
+frame=  323 fps= 54 q=27.0 size=    2560KiB time=00:00:10.66 bitrate=1966.1kbits/s speed=1.78x
+frame=  375 fps= 58 q=27.0 size=    3328KiB time=00:00:12.40 bitrate=2198.7kbits/s speed=1.91x
+frame=  446 fps= 64 q=27.0 size=    3840KiB time=00:00:14.76 bitrate=2130.3kbits/s speed=2.11x
+frame=  487 fps= 65 q=27.0 size=    4352KiB time=00:00:16.13 bitrate=2209.8kbits/s speed=2.15x
+frame=  544 fps= 68 q=27.0 size=    4608KiB time=N/A bitrate=N/A speed=N/A
+[mp4 @ 0x558ed0201400] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x558ed0045a80] video:4655KiB audio:119KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.504227%
+frame=  555 fps= 69 q=-1.0 Lsize=    4797KiB time=00:00:18.40 bitrate=2135.9kbits/s speed=2.28x
+[libx264 @ 0x558ed0123d00] frame I:3     Avg QP:19.05  size:158915
+[libx264 @ 0x558ed0123d00] frame P:196   Avg QP:20.30  size: 16540
+[libx264 @ 0x558ed0123d00] frame B:356   Avg QP:22.47  size:  2941
+[libx264 @ 0x558ed0123d00] consecutive B-frames: 10.8%  8.3%  8.1% 72.8%
+[libx264 @ 0x558ed0123d00] mb I  I16..4: 25.8% 45.4% 28.7%
+[libx264 @ 0x558ed0123d00] mb P  I16..4:  1.1%  3.1%  1.3%  P16..4:  8.5%  4.0%  3.5%  0.0%  0.0%    skip:78.4%
+[libx264 @ 0x558ed0123d00] mb B  I16..4:  0.3%  0.2%  0.6%  B16..8:  4.6%  2.2%  0.4%  direct: 1.4%  skip:90.2%  L0:43.0% L1:41.5% BI:15.5%
+[libx264 @ 0x558ed0123d00] 8x8 transform intra:46.1% inter:58.7%
+[libx264 @ 0x558ed0123d00] coded y,uvDC,uvAC intra: 52.6% 65.8% 52.3% inter: 3.8% 7.3% 5.6%
+[libx264 @ 0x558ed0123d00] i16 v,h,dc,p: 28% 63%  5%  3%
+[libx264 @ 0x558ed0123d00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 15% 26% 24%  6%  6%  6%  6%  6%  7%
+[libx264 @ 0x558ed0123d00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 20% 22% 16%  7%  8%  8%  7%  7%  6%
+[libx264 @ 0x558ed0123d00] i8c dc,h,v,p: 41% 37% 16%  6%
+[libx264 @ 0x558ed0123d00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x558ed0123d00] ref P L0: 69.2% 30.8%
+[libx264 @ 0x558ed0123d00] ref B L0: 83.1% 16.9%
+[libx264 @ 0x558ed0123d00] ref B L1: 96.1%  3.9%
+[libx264 @ 0x558ed0123d00] kb/s:2060.88
+[aac @ 0x558ed006fd00] Qavg: 51418.996

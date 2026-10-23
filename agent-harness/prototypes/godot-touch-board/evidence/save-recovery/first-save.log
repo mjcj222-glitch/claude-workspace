@@ -1,0 +1,10 @@
+Fontconfig error: No writable cache directories
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS real write-open failure reported
+PASS failed write retains pending save
+PASS write-open failure preserves checkpoint
+PASS recovery without further input
+PASS terminal write failure stays pending
+PASS terminal recovery blocks old checkpoint
+SAVE_RECOVERY checks=6 failures=0

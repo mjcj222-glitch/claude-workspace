@@ -1,0 +1,254 @@
+{
+  "equivalent_source_commit": "ce146c9773a30b6aef21703e7979213b4bfba785",
+  "base_commit": "9c56c8f75ebde74530b86ed1f3655643f01d5c07",
+  "scope": "current raw/effective healing and actual capped refund presentation; no gameplay changes",
+  "prior_full_video": {
+    "file": "expedition-preview.mp4",
+    "source_commit": "9c56c8f75ebde74530b86ed1f3655643f01d5c07",
+    "sha256": "465fe83c16d746102f382229aa3ab0726c1a0cf21bf7ad0e954aaa20601afb81",
+    "bytes": 23823747,
+    "scope": "prior normal3win and controlled features; omits the two later UI fixes; never relabelled current"
+  },
+  "current_source": {
+    "current_ui_movie": {
+      "source_parent_at_capture": "9c56c8f75ebde74530b86ed1f3655643f01d5c07",
+      "source_unchanged_during_capture": true,
+      "matched_dependencies": 34,
+      "sha256": {
+        "project.godot": "b5bc2fd942e820dc122edb4919d22ab9172c13e3383c7a049c3fbf0123e43f29",
+        "tools/v2/record_expedition.gd": "326dea7fb88f0e61c7a49b8e4ca1d9cced7ce7360b735f38cc828e36e3b7284d",
+        "tests/v2/full_expedition_test.gd": "939ddd512b5e9ea2210adf73d1f719650edce27eceacaece245476b0a2ec77a4",
+        "scripts/v2/battle.gd": "61c5292232eb7c7444efca49716cc4dacf8546c85acb04efae30741afd27858d",
+        "scripts/v2/battle_view.gd": "de1393d20ef7b63b5eadca5d22e66c752dcba53459e0b702a965a6ba5fa6c230",
+        "scripts/v2/board.gd": "e76e1f233f46dbbb4061b7e32208589c074ba8f4ebd4b47a2f1e73f809ba55c3",
+        "scripts/v2/board_effects.gd": "c576119925341fd08c32cb6432b12d090955546cf6e80b31ef3b28b0848b9649",
+        "scripts/v2/board_viewport.gd": "0f561d5c6e564c4b7641a4141e97ee07a0373b5aac21a75d2263dfafafc1b299",
+        "scripts/v2/combat_rules.gd": "ae7a9476006de99807a52faf984b53aa13e2af03f8391336d662924582b916aa",
+        "scripts/v2/config.gd": "47abced3203b86697d3b4aedd6ccb182e7125fd8cda60c9980bd470c8360a9ed",
+        "scripts/v2/expedition.gd": "67905a2e4693f0f37f783a61fad5f5e0b25e8aa9d9b585cf360757ab1570337f",
+        "scripts/v2/geometry.gd": "982e50b91161e4c33bd83b2d0d47f305eadabbe7cbdd2554c77890ade2e8ac9c",
+        "scripts/v2/inlet_geometry.gd": "ce33ea81f7467b636d4351030d9841443e093ae02057ef5291ea70a4b10509dc",
+        "scripts/v2/piece.gd": "a44f2758ac541326754b4687582c5cbf985ed8304c9f8e533c98046994cb4aa3",
+        "scripts/v2/preview_session.gd": "534fc1d5c71c600ed6780ee79d510137f4a9679288aee07bd3a046bae8edab6f",
+        "scripts/v2/run_rules.gd": "201e9d601aa3c0088e98c3b909bb8e8859b4481a0ec53ca0a42a0c2fc18bada7",
+        "scripts/v2/save_store.gd": "2c3540d1beda63909368279ddcf0e94239d156f0abdde023e35ad0e31402f905",
+        "scripts/v2/selection_rules.gd": "c0cf1c054236187396903979cff6103048eec60bcabddefbf4a424f56038568c",
+        "scripts/v2/skill_cutin.gd": "de4fa50476f0fcc68bab6be1e65d62e75dd42988ef0c3c9aaaf901e23040e378",
+        "scripts/v2/skill_rules.gd": "2b35c3aea879da00e18c90396781d7d8203189ec8e93c007799dd5d42e0bae45",
+        "scenes/v2/battle.tscn": "0622cc55ce8e751e350c4ab5a5a84df5862adeb85d2addc8c6f57f44b2cfe99c",
+        "scenes/v2/battle_view.tscn": "1e880220e3cf5153dd7ce5183eb68b234ed2bf5e2687c779c5c98b4c90ccd78d",
+        "scenes/v2/expedition.tscn": "04aa4664ca66fc90eadcd4108bc1604d9f2472ae564aff5c5e97280f45958bf4",
+        "assets/Noto-COPYRIGHT.txt": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+        "assets/NotoSansCJK-Regular.ttc": "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
+        "assets/NotoSansCJK-Regular.ttc.import": "9766f1a4a5916337a086eef33ea729d10c56649c89de09f87986a6acc7af5df8",
+        "assets/SOURCES.md": "0bd1597c689a62d2d34ac34032f296ba0d3657df74613bf2281d1c1b74c1e092",
+        "assets/background.webp": "069241d0806ebd4cff3e4b0751ee3c7b12a1250e8d647c50c961ad54bc3e4843",
+        "assets/background.webp.import": "b3af863a373c16436113fccc2c1d18dc3f4c5a572ffbd152420e2b8ef2539e8e",
+        "assets/enemy-sheet.png": "f30890993fad04445bd381b10dc6f1d5ba07cda224a512683ac8c59eba6cf3b7",
+        "assets/enemy-sheet.png.import": "66bece9a9934f0b2a9417e8d20681c956363fb62e63d25820e8b3a6c5a0b8fc4",
+        "assets/integration-sources.json": "c1e11a2862c66acce9092b56ea27dd3639e27294272de364f4b68de9494d797e",
+        "assets/portraits.webp": "2b185439928ab1e53f268a74a21387ec765fbd01a67774e411f3092fdd2c88ac",
+        "assets/portraits.webp.import": "fd85edd88bb8883d6093c3571b6c50ad5a75b0858a78cd8025e5f5f6ef503177"
+      }
+    },
+    "current_os": {
+      "source_parent_at_capture": "9c56c8f75ebde74530b86ed1f3655643f01d5c07",
+      "source_unchanged_during_capture": true,
+      "matched_dependencies": 25,
+      "sha256": {
+        "scripts/v2/battle.gd": "61c5292232eb7c7444efca49716cc4dacf8546c85acb04efae30741afd27858d",
+        "scripts/v2/battle_view.gd": "de1393d20ef7b63b5eadca5d22e66c752dcba53459e0b702a965a6ba5fa6c230",
+        "scripts/v2/board.gd": "e76e1f233f46dbbb4061b7e32208589c074ba8f4ebd4b47a2f1e73f809ba55c3",
+        "scripts/v2/board_effects.gd": "c576119925341fd08c32cb6432b12d090955546cf6e80b31ef3b28b0848b9649",
+        "scripts/v2/board_viewport.gd": "0f561d5c6e564c4b7641a4141e97ee07a0373b5aac21a75d2263dfafafc1b299",
+        "scripts/v2/combat_rules.gd": "ae7a9476006de99807a52faf984b53aa13e2af03f8391336d662924582b916aa",
+        "scripts/v2/config.gd": "47abced3203b86697d3b4aedd6ccb182e7125fd8cda60c9980bd470c8360a9ed",
+        "scripts/v2/expedition.gd": "67905a2e4693f0f37f783a61fad5f5e0b25e8aa9d9b585cf360757ab1570337f",
+        "scripts/v2/geometry.gd": "982e50b91161e4c33bd83b2d0d47f305eadabbe7cbdd2554c77890ade2e8ac9c",
+        "scripts/v2/inlet_geometry.gd": "ce33ea81f7467b636d4351030d9841443e093ae02057ef5291ea70a4b10509dc",
+        "scripts/v2/piece.gd": "a44f2758ac541326754b4687582c5cbf985ed8304c9f8e533c98046994cb4aa3",
+        "scripts/v2/preview_session.gd": "534fc1d5c71c600ed6780ee79d510137f4a9679288aee07bd3a046bae8edab6f",
+        "scripts/v2/run_rules.gd": "201e9d601aa3c0088e98c3b909bb8e8859b4481a0ec53ca0a42a0c2fc18bada7",
+        "scripts/v2/save_store.gd": "2c3540d1beda63909368279ddcf0e94239d156f0abdde023e35ad0e31402f905",
+        "scripts/v2/selection_rules.gd": "c0cf1c054236187396903979cff6103048eec60bcabddefbf4a424f56038568c",
+        "scripts/v2/skill_cutin.gd": "de4fa50476f0fcc68bab6be1e65d62e75dd42988ef0c3c9aaaf901e23040e378",
+        "scripts/v2/skill_rules.gd": "2b35c3aea879da00e18c90396781d7d8203189ec8e93c007799dd5d42e0bae45",
+        "scenes/v2/battle.tscn": "0622cc55ce8e751e350c4ab5a5a84df5862adeb85d2addc8c6f57f44b2cfe99c",
+        "scenes/v2/battle_view.tscn": "1e880220e3cf5153dd7ce5183eb68b234ed2bf5e2687c779c5c98b4c90ccd78d",
+        "scenes/v2/expedition.tscn": "04aa4664ca66fc90eadcd4108bc1604d9f2472ae564aff5c5e97280f45958bf4",
+        "tests/v2/window_input_test.gd": "1fc1f653045cea3811f7e6c499819ba6121ace8e0726a1f0e9857aa017d05c30",
+        "tools/v2/os_input_probe.gd": "18642b8fcc7435597aec8abfdfb9d0d0d0cb194af39209fe82f45a7a3a483b43",
+        "tools/v2/run_os_input_probe.py": "f21131b0243b724abc81a0720201fdcb119b4b5d505d9be0363abc226996a6df",
+        "tools/native_input.gd": "d4bb4d24c8af14e89d83df986b4f29f898eefc54e1c75daa4cce0fd16e2fa154",
+        "project.godot": "b5bc2fd942e820dc122edb4919d22ab9172c13e3383c7a049c3fbf0123e43f29"
+      }
+    }
+  },
+  "checks": {
+    "visible_feedback": {
+      "checks": 55,
+      "failures": 0
+    },
+    "affected_presentation": {
+      "checks": 54,
+      "failures": 0
+    },
+    "affected_battle": {
+      "checks": 194,
+      "failures": 0
+    },
+    "affected_run": {
+      "checks": 289,
+      "failures": 0
+    },
+    "final_current_os": {
+      "checks": 288,
+      "failures": 0
+    }
+  },
+  "short_edit": {
+    "source": "actual current fixed60 movie/physics120 seed1 controlled fixtures, not normal expedition wins",
+    "segments": [
+      {
+        "raw_frames_inclusive": [
+          6565,
+          6771
+        ],
+        "editorial_corresponding_native_still_hold_seconds": 2,
+        "scope": "actual active refund after real zero-blue refill"
+      },
+      {
+        "raw_frames_inclusive": [
+          6987,
+          7193
+        ],
+        "editorial_corresponding_native_still_hold_seconds": 3,
+        "scope": "actual refund retained by completed progression owner"
+      }
+    ],
+    "notice": "editorial corresponding native PNG holds make text readable; nominal clip length is not gameplay latency; raw full capture remains private"
+  },
+  "healing_frames": {
+    "ui-healing-pending.png": {
+      "raw": 9,
+      "effective": 6,
+      "hp": 60,
+      "earlier_pending": 6
+    },
+    "ui-healing-full-hp.png": {
+      "raw": 9,
+      "effective": 0,
+      "hp": 72,
+      "earlier_pending": 0
+    }
+  },
+  "refund_frames": {
+    "paid_cost": 6,
+    "actual_capped_return": 5,
+    "final_energy": 10,
+    "active_and_completed_visible": true,
+    "zero_return_case": "focused controller test, not a separate native capture"
+  },
+  "controlled_successor_fixture": "production Expedition finished handler/current-owner guards; earlier Run choices configured; seed1 physical board differs from canonical Run board so only this capture subclass suppresses persistence; not save/resume evidence",
+  "limits": [
+    "prior full video and its manifest retain exact9c source scope",
+    "short UI file contains controlled fixtures, not normal victories",
+    "no new phone/60Hz/latency/packing claim; previously disclosed limits remain"
+  ],
+  "files": {
+    "ui-fix-preview.mp4": {
+      "sha256": "20d1d390402fae384f33a071ab2070acde6c5313b2a87816e35b280256020476",
+      "bytes": 1706330,
+      "codec": "h264",
+      "pixels": [
+        720,
+        1280
+      ],
+      "fps": "60/1",
+      "decoded_frames": 714,
+      "nominal_seconds": 11.9,
+      "full_decode_exit": 0
+    },
+    "ui-healing-full-hp.png": {
+      "sha256": "532c3ad9e95591daade82ebb7b051a6bd43d4a78f60a20916567f7ac591d790f",
+      "bytes": 770719,
+      "pixels": [
+        720,
+        1280
+      ],
+      "source": "actual current graphical viewport, controlled fixture"
+    },
+    "ui-healing-pending.png": {
+      "sha256": "81cb5a402514c3225066aaa21d882da60ee3c50454eb6a273bb8924fbdde4e4d",
+      "bytes": 771334,
+      "pixels": [
+        720,
+        1280
+      ],
+      "source": "actual current graphical viewport, controlled fixture"
+    },
+    "ui-input-1280x900.png": {
+      "sha256": "7b1247c66780b5b7df614a3d5b804100ba4553b5b8d3d71b2eb92732112982cd",
+      "bytes": 384020,
+      "pixels": [
+        1280,
+        900
+      ],
+      "source": "authenticated XTest native client capture"
+    },
+    "ui-input-360x640.png": {
+      "sha256": "b7697f53a8b2797d526b07b8d9d9a8d81fe530ce5679c87f2a9a44b999a58b8d",
+      "bytes": 206031,
+      "pixels": [
+        360,
+        640
+      ],
+      "source": "authenticated XTest native client capture"
+    },
+    "ui-input-390x844.png": {
+      "sha256": "9535128679ee915f9fe4971c5bc24707e884d1a1a1374046324cfc0b4b0ed585",
+      "bytes": 239890,
+      "pixels": [
+        390,
+        844
+      ],
+      "source": "authenticated XTest native client capture"
+    },
+    "ui-input-720x1280.png": {
+      "sha256": "a5f669197989f871a333387dcf2235ea543dddd176bb1cd56510b41f94fcbb72",
+      "bytes": 657643,
+      "pixels": [
+        720,
+        1280
+      ],
+      "source": "authenticated XTest native client capture"
+    },
+    "ui-refund-360x640.png": {
+      "sha256": "11fe9b27eb42b462ce2eae3a2bd43c171e9e57de4ea87438d9491ee6a732ac24",
+      "bytes": 203733,
+      "pixels": [
+        360,
+        640
+      ],
+      "source": "authenticated XTest native client capture"
+    },
+    "ui-refund-active.png": {
+      "sha256": "22aac81a4033605c3f1c864c44040cfb75316998f8bd0262027840dd3e5e00db",
+      "bytes": 751445,
+      "pixels": [
+        720,
+        1280
+      ],
+      "source": "actual current graphical viewport, controlled fixture"
+    },
+    "ui-refund-completed.png": {
+      "sha256": "efdbd82c922f363906d71fcae190a217d03ffea034e86386eb52d33fa8cc4f32",
+      "bytes": 39369,
+      "pixels": [
+        720,
+        1280
+      ],
+      "source": "actual current graphical viewport, controlled fixture"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "method": "live rendered process frames; engine-dispatched input, no movie mode",
+  "renderer": "llvmpipe software OpenGL",
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 32.97
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 11,
+      "movie": false,
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 2355.079
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 32.783
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 10,
+      "movie": false,
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 1533.693
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 31.735
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 11,
+      "movie": false,
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 1777.468
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 32.721
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 13,
+      "movie": false,
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 1642.074
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 33.554
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 13,
+      "movie": false,
+      "removed": 2,
+      "specials": 0,
+      "wall_ms": 1021.604
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 43.14
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 49,
+      "movie": false,
+      "removed": 35,
+      "specials": 2,
+      "wall_ms": 5713.155
+    }
+  ]
+}

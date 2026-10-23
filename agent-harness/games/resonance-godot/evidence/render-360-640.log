@@ -1,0 +1,10 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+capture native-first-board.png 0
+capture native-first-preview.png 0
+capture native-first-fall.png 0
+capture native-first-refill.png 0
+{"actions":[],"count":42,"phase":"READY","skill_buttons":["프리즘 링크\n사용 가능 · 탭 유지","연쇄 점화\n사용 가능 · 탭 유지","생명의 온실\n사용 가능 · 탭 유지"]}

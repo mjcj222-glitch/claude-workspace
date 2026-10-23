@@ -1,0 +1,52 @@
+{
+  "center": {
+    "floor_drift": 0.0,
+    "max_overlap": 0.032501220703125,
+    "max_step": 9.16665649414062,
+    "ready": true,
+    "removed": [
+      10,
+      17,
+      20,
+      24,
+      25,
+      27,
+      33,
+      34
+    ],
+    "seconds": 1.09166666666667,
+    "swept_overlap": 0.0391921997070312,
+    "uncaused_sideways": 0
+  },
+  "left_column": {
+    "floor_drift": 0.0,
+    "max_overlap": 0.0301589965820312,
+    "max_step": 9.16668701171875,
+    "ready": true,
+    "removed": [
+      7,
+      9,
+      18,
+      26,
+      32,
+      36,
+      43
+    ],
+    "seconds": 1.15833333333333,
+    "swept_overlap": 0.0493698120117188,
+    "uncaused_sideways": 0
+  },
+  "two": {
+    "floor_drift": 0.0,
+    "max_overlap": 0.0283050537109375,
+    "max_step": 9.16665649414062,
+    "ready": true,
+    "removed": [
+      23,
+      24
+    ],
+    "seconds": 0.366666666666667,
+    "swept_overlap": 0.0283050537109375,
+    "uncaused_sideways": 0
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "scripts/board_rules.gd": "27ec144597732ef89f7f5da9f5a192130f29b00f22e85509eea546441262cb11",
+  "scripts/board_combat.gd": "51cf93360914673e0adbcd414233c88369bf2119c7b303c9539aee7d8c7844c3",
+  "scripts/board_session.gd": "5d5a2e2cc7067359270d5e8fb8e503a3e9bb48b3b763593f2dc9e3523cf231dc",
+  "scripts/board_run_session.gd": "0dac425c2456d622de4167e8dab525925385ea394b9caff02085069fceda056f",
+  "scripts/board_motion.gd": "54af4d7b9be29b00b107f8ad938bd053c9193542e9927fcb9604fdbdc1748006",
+  "scripts/board_relics.gd": "174f52a0612bca3b55ce80185eb65e6de086fa4c923db4c6c09448cc43d21de4",
+  "tests/play_elemental.gd": "02b852cb134bd6485aa7ab4e1f8f977fa6621401ef1d7c7de22130c6c350af13",
+  "tests/play_balance.gd": "23378a73254bfd0ad5e77d4f7fe3b299dbdaf36dfbc49164c951772502de9a90",
+  "tests/balance_policy.gd": "9c484f67c72619d25a6c71c0a3a88d0389c8169f8a9a627daddbf079e3c351b1"
+}

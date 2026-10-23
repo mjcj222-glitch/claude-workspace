@@ -1,0 +1,32 @@
+{
+  "action": 20.0,
+  "hp": 2.0,
+  "not_defeat": true,
+  "not_fixed": true,
+  "pending": 0.0,
+  "rng_state": "8290954505560004541",
+  "roundtrip": {
+    "equal": true,
+    "method": "store_var/get_var(false) exact deep Variant equality; no simulation or Object decoding",
+    "object_count": 0,
+    "vector2_count": 394
+  },
+  "simulated_seconds": 4.00833333333332,
+  "source_hashes": {
+    "scripts/board_combat.gd": "51cf93360914673e0adbcd414233c88369bf2119c7b303c9539aee7d8c7844c3",
+    "scripts/board_motion.gd": "54af4d7b9be29b00b107f8ad938bd053c9193542e9927fcb9604fdbdc1748006",
+    "scripts/board_relics.gd": "174f52a0612bca3b55ce80185eb65e6de086fa4c923db4c6c09448cc43d21de4",
+    "scripts/board_rules.gd": "862ce96df3708668bec22fac9629ebd92d3aaf0c842b556b6945d8dd14d3871c",
+    "scripts/board_run_session.gd": "0dac425c2456d622de4167e8dab525925385ea394b9caff02085069fceda056f",
+    "scripts/board_session.gd": "5d5a2e2cc7067359270d5e8fb8e503a3e9bb48b3b763593f2dc9e3523cf231dc",
+    "tests/reproduce_balance_stall.gd": "987fb4fbe84b4ff216609cf89a08c10957bd258013771602dbf35cd5e8114502"
+  },
+  "source_sha256": "af215bbb302ec00b3e62418ca381196e27bf219c79298c5d1a3404e978bc4fed",
+  "start_id": 159.0,
+  "state_files": [
+    "state.var",
+    "state.txt"
+  ],
+  "status": "UNRESOLVED reproduced",
+  "verification_driver_sha256": "83bd94bdf76b28b193fb00550c183762385da1eb7daf2ff95ec25535d7ecb5ff"
+}

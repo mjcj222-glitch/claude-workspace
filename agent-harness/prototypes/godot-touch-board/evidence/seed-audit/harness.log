@@ -1,0 +1,12 @@
+OK: 1 research topic(s), 4 role(s), templates present.
+test_brief_includes_goal_and_rules (test_harness.HarnessTests.test_brief_includes_goal_and_rules) ... ok
+test_default_topic_is_active (test_harness.HarnessTests.test_default_topic_is_active) ... ok
+test_rejects_path_traversal_id (test_harness.HarnessTests.test_rejects_path_traversal_id) ... ok
+test_topic_ids_unique (test_harness.HarnessTests.test_topic_ids_unique) ... ok
+test_workspace_validates (test_harness.HarnessTests.test_workspace_validates) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
+OK: 1 research topic(s), 4 role(s), templates present.

@@ -1,0 +1,22 @@
+{
+  "old_sha256": "e8df397a4f51546fe4e558ea78d73c26fe60bce42758599e6688aca0e3289087",
+  "new_sha256": "3aa14d621285c5001d4d8c32821bbf18f4094e6098594a384a9e90c56b923e9a",
+  "cases": {
+    "center": {
+      "all48_supported": true,
+      "historical_frames_identical": true,
+      "seconds": 1.09166666666667
+    },
+    "left_column": {
+      "all48_supported": true,
+      "historical_frames_identical": true,
+      "seconds": 1.15833333333333
+    },
+    "two": {
+      "all48_supported": true,
+      "historical_frames_identical": false,
+      "seconds": 0.416666666666667
+    }
+  }
+}
+Revised trajectory invariants: PASS; old byte equivalence is NOT asserted.

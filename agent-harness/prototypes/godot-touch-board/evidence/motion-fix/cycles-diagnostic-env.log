@@ -1,0 +1,11 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL cycle 1 overlap ids 11/12 depth 0.3074 anchored false/false
+FAIL cycle 5 overlap ids 74/92 depth 0.2237 anchored true/false
+FAIL cycle 5 overlap ids 87/92 depth 0.4634 anchored false/false
+FAIL cycle 5 overlap ids 88/97 depth 0.3144 anchored true/false
+FAIL cycle 9 overlap ids 139/145 depth 0.2532 anchored false/true
+FAIL cycle 9 overlap ids 139/154 depth 0.2612 anchored false/false
+FAIL cycle 9 overlap ids 154/160 depth 0.2196 anchored false/false
+FAIL cycle 9 overlap ids 160/168 depth 0.2292 anchored false/false
+CYCLES failures=8 durations=[0.9, 1.20833333333333, 0.98333333333333, 1.00833333333333, 1.4, 1.1, 1.05, 0.96666666666667, 1.01666666666667, 1.1]

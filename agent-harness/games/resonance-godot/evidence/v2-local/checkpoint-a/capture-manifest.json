@@ -1,0 +1,427 @@
+{
+  "status": "independently reviewed combined Checkpoint A; SPEC/QUALITY/VISUAL PASS; physical module scope",
+  "physical_module_validation": "real View+Board+Selection flow; no Battle controller/input locks/combat reward or expedition claim",
+  "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+  "current_head": "1746ab9210646d7fa4f9417ee36fb370834774ea",
+  "current_head_change": "only tools/v2/preview_probe.gd pixel sampling correction; all scripts/v2 game bytes identical to runtime source",
+  "game_source_sha256": {
+    "scripts/v2/preview_session.gd": "534fc1d5c71c600ed6780ee79d510137f4a9679288aee07bd3a046bae8edab6f",
+    "scripts/v2/battle_view.gd": "678b8ef7ae2721b8fdf608d87634047934a6c6780793981b6666fbbe3522f871",
+    "scripts/v2/board.gd": "bb9b73c193082888e231d2dd7850fce5cc89b614af78692ad4f3b362226b10b7",
+    "scripts/v2/selection_rules.gd": "82d37dec777db17eb72da1cc385cf21e1536010478070eaa5ec9dd9e02421f91",
+    "scripts/v2/combat_rules.gd": "ae7a9476006de99807a52faf984b53aa13e2af03f8391336d662924582b916aa",
+    "scripts/v2/skill_cutin.gd": "de4fa50476f0fcc68bab6be1e65d62e75dd42988ef0c3c9aaaf901e23040e378",
+    "scripts/v2/skill_rules.gd": "6ab7b74c23d0000e32ae5385b3bc842451c443459736e63d3710c4574127b450",
+    "scripts/v2/board_viewport.gd": "0f561d5c6e564c4b7641a4141e97ee07a0373b5aac21a75d2263dfafafc1b299",
+    "scripts/v2/geometry.gd": "9cf6f06f9da063f76dbf2062b51e8eda19e1afa946b0a115467110c8220b21cc",
+    "scripts/v2/piece.gd": "a44f2758ac541326754b4687582c5cbf985ed8304c9f8e533c98046994cb4aa3",
+    "scripts/v2/config.gd": "2d0e0c6e9b28c6fbdd67489c3cbba7d99c53f5417ba195098efb994d054a7495",
+    "scripts/v2/board_effects.gd": "e0dff57a4c5921a117f9500987553d13428e32d867909cd1f3ab3b5bf5aa94ab"
+  },
+  "main_movie": "checkpoint-a.mp4",
+  "main_movie_seconds": 6.1,
+  "main_recording_wall_seconds": 35.84002313199926,
+  "actual_physical_refill_sim_seconds": 2.275,
+  "cutin_movie": "cutin-modes.mp4",
+  "cutin_movie_seconds": "7.300000",
+  "cutin_mode_seconds": 0.7,
+  "fixed_fixture_notice": "bombs-* is42 frozen rendering-test pieces and explicitly labeled; actual seeded dynamic board isflow-seed41(seed41) andbase-*(seed121)",
+  "legacy_public_documents": [
+    "capture-manifest-interim.json",
+    "capture-manifest-density-interim.json"
+  ],
+  "legacy_documents_notice": "historical delivery records; current full file inventory is this manifest",
+  "files": [
+    {
+      "name": "base-falling.png",
+      "path": "base-falling.png",
+      "bytes": 540903,
+      "sha256": "43c9d7d67ba13f426615e473708f76fb3bcfbaa961508742fd8a8d9434aa053b",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "base",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "base-selection.png",
+      "path": "base-selection.png",
+      "bytes": 730756,
+      "sha256": "19d44bec1d02f6182700dd1f771631b4dc27d3b4b159ada37223c128e7265f66",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "base",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "base-start-fall.png",
+      "path": "base-start-fall.png",
+      "bytes": 440927,
+      "sha256": "5a263b2141e64a91e57011e254b44e5c984eddb3939a61852a0b17301d8c851f",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "base",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "bombs-falling.png",
+      "path": "bombs-falling.png",
+      "bytes": 540903,
+      "sha256": "43c9d7d67ba13f426615e473708f76fb3bcfbaa961508742fd8a8d9434aa053b",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "bombs-calibrated-sampler",
+      "status": "current combined capture",
+      "tool_only_commit": "1746ab9210646d7fa4f9417ee36fb370834774ea"
+    },
+    {
+      "name": "bombs-selection.png",
+      "path": "bombs-selection.png",
+      "bytes": 790914,
+      "sha256": "5a43bc8f1122cb4df22e21e8f7daaca0b9ea0f800a6964352d10021209aa8c23",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "bombs-calibrated-sampler",
+      "status": "current combined capture",
+      "tool_only_commit": "1746ab9210646d7fa4f9417ee36fb370834774ea"
+    },
+    {
+      "name": "bombs-start-fall.png",
+      "path": "bombs-start-fall.png",
+      "bytes": 440927,
+      "sha256": "5a263b2141e64a91e57011e254b44e5c984eddb3939a61852a0b17301d8c851f",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "bombs-calibrated-sampler",
+      "status": "current combined capture",
+      "tool_only_commit": "1746ab9210646d7fa4f9417ee36fb370834774ea"
+    },
+    {
+      "name": "bombs-tiers.png",
+      "path": "bombs-tiers.png",
+      "bytes": 746207,
+      "sha256": "7a60a688efbad41f2406eec13138642bd61c3dd644e7a3613a526ffe325d79dd",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "bombs-calibrated-sampler",
+      "status": "current combined capture",
+      "tool_only_commit": "1746ab9210646d7fa4f9417ee36fb370834774ea"
+    },
+    {
+      "name": "checkpoint-a.mp4",
+      "path": "checkpoint-a.mp4",
+      "bytes": 1334876,
+      "sha256": "50c85d17d85506d3e1cda3f56c3ed298f386913f97e2c82e21c31c67a2bed3a3",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow encode (120fps AVI to30fps H264)",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-falling.png",
+      "path": "cutin-falling.png",
+      "bytes": 540903,
+      "sha256": "43c9d7d67ba13f426615e473708f76fb3bcfbaa961508742fd8a8d9434aa053b",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-hero-active-late.png",
+      "path": "cutin-hero-active-late.png",
+      "bytes": 535476,
+      "sha256": "4cccf5c169f1dd6b6b5d15853791111b633e7a40bc6edaf5bcdba1dbc2f2a078",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-hero-active.png",
+      "path": "cutin-hero-active.png",
+      "bytes": 535556,
+      "sha256": "1f3e3ffaecd88dfd1e70866422dfe8fbce81125c700c6717a9d64ac7f40b7698",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-hero-return.png",
+      "path": "cutin-hero-return.png",
+      "bytes": 730756,
+      "sha256": "19d44bec1d02f6182700dd1f771631b4dc27d3b4b159ada37223c128e7265f66",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-modes.mp4",
+      "path": "cutin-modes.mp4",
+      "bytes": 1131504,
+      "sha256": "18d6dbb106a3e3a4dd59f7d4d66f1090ecf717fedebfffe068e6e3f2c225228f",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "normal+reduced encode (60fps)",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-reduced-falling.png",
+      "path": "cutin-reduced-falling.png",
+      "bytes": 540903,
+      "sha256": "43c9d7d67ba13f426615e473708f76fb3bcfbaa961508742fd8a8d9434aa053b",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin-reduced",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-reduced-hero-active-late.png",
+      "path": "cutin-reduced-hero-active-late.png",
+      "bytes": 535499,
+      "sha256": "c9373647ea634c70708bf125faa4691a1ae009bb5834742b384e9e324ad1da2b",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin-reduced",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-reduced-hero-active.png",
+      "path": "cutin-reduced-hero-active.png",
+      "bytes": 535499,
+      "sha256": "c9373647ea634c70708bf125faa4691a1ae009bb5834742b384e9e324ad1da2b",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin-reduced",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-reduced-hero-return.png",
+      "path": "cutin-reduced-hero-return.png",
+      "bytes": 730756,
+      "sha256": "19d44bec1d02f6182700dd1f771631b4dc27d3b4b159ada37223c128e7265f66",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin-reduced",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-reduced-selection.png",
+      "path": "cutin-reduced-selection.png",
+      "bytes": 730756,
+      "sha256": "19d44bec1d02f6182700dd1f771631b4dc27d3b4b159ada37223c128e7265f66",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin-reduced",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-reduced-start-fall.png",
+      "path": "cutin-reduced-start-fall.png",
+      "bytes": 440927,
+      "sha256": "5a263b2141e64a91e57011e254b44e5c984eddb3939a61852a0b17301d8c851f",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin-reduced",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-selection.png",
+      "path": "cutin-selection.png",
+      "bytes": 730756,
+      "sha256": "19d44bec1d02f6182700dd1f771631b4dc27d3b4b159ada37223c128e7265f66",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "cutin-start-fall.png",
+      "path": "cutin-start-fall.png",
+      "bytes": 440927,
+      "sha256": "5a263b2141e64a91e57011e254b44e5c984eddb3939a61852a0b17301d8c851f",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "cutin",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/connection-preview-board.png",
+      "path": "flow-seed41/connection-preview-board.png",
+      "bytes": 207422,
+      "sha256": "486fdab336d8687a2ffee9a8932a58bf4d046d4966cedafa4ddfdb782c00cf12",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/connection-preview-snapshot.json",
+      "path": "flow-seed41/connection-preview-snapshot.json",
+      "bytes": 6229,
+      "sha256": "4b7b8282b955041a5aa13f3079db5467787782aa84fbc90e1c4d02034e1e8703",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/connection-preview.png",
+      "path": "flow-seed41/connection-preview.png",
+      "bytes": 750029,
+      "sha256": "bda91a330321c6686407350f11e096fce4711bb7bf4e73f5102af170ecc83308",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/initial-fall-board.png",
+      "path": "flow-seed41/initial-fall-board.png",
+      "bytes": 5354,
+      "sha256": "2a408938d6ae5e0fa1a4ae06120c94fd2ab3c8587ec8b1df2c7c3fda9bbb2e24",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/initial-fall-snapshot.json",
+      "path": "flow-seed41/initial-fall-snapshot.json",
+      "bytes": 6282,
+      "sha256": "6df2113112f339a92b9a45de534d00361eb18c1419961887df0e18207b2ade2b",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/initial-fall.png",
+      "path": "flow-seed41/initial-fall.png",
+      "bytes": 434719,
+      "sha256": "620cd21b0f7eb39fb03885672a8fffe287032149096880f14e162c7a66ea4643",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/initial-settled-board.png",
+      "path": "flow-seed41/initial-settled-board.png",
+      "bytes": 186372,
+      "sha256": "cdd26e957916b251a97751d83ba7b2c05d69eb16762a0657e5d385aba12e98fe",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/initial-settled-snapshot.json",
+      "path": "flow-seed41/initial-settled-snapshot.json",
+      "bytes": 6229,
+      "sha256": "4b7b8282b955041a5aa13f3079db5467787782aa84fbc90e1c4d02034e1e8703",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/initial-settled.png",
+      "path": "flow-seed41/initial-settled.png",
+      "bytes": 728938,
+      "sha256": "d9b1b48e2aebdef8a6ce0e5722a5ffcbc71529ee16bd0db50c69ebaf63c636f5",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/refill-falling-board.png",
+      "path": "flow-seed41/refill-falling-board.png",
+      "bytes": 150100,
+      "sha256": "e6f31c158ceadddd1ca54ac2f52031df4bcd406542a354838428dcccdf1d3984",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/refill-falling-snapshot.json",
+      "path": "flow-seed41/refill-falling-snapshot.json",
+      "bytes": 6230,
+      "sha256": "455613f5c4127306d1b9dceea5da5e779e94fdfe64cc59bcd218d3e6a437af71",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/refill-falling.png",
+      "path": "flow-seed41/refill-falling.png",
+      "bytes": 676660,
+      "sha256": "29fd68ab1cd6112be12d929918dd53468f33b1f995acf3794498ecc2facb3dee",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/refill-settled-board.png",
+      "path": "flow-seed41/refill-settled-board.png",
+      "bytes": 177589,
+      "sha256": "14d63a850930e7b1bd71e3f11c8240a644d4e2d793c8166005f7eac1f769579e",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/refill-settled-snapshot.json",
+      "path": "flow-seed41/refill-settled-snapshot.json",
+      "bytes": 6231,
+      "sha256": "ced4470409ee22595ee15b566c6f3b4db5013bd97d17f8dd8a06251f56464fe0",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/refill-settled.png",
+      "path": "flow-seed41/refill-settled.png",
+      "bytes": 716473,
+      "sha256": "1367e3ac7ff8b22bae5e8850323b309a03d11cfa007722ee34bfbf1a1c68c18e",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/removal-neighbor-roll-board.png",
+      "path": "flow-seed41/removal-neighbor-roll-board.png",
+      "bytes": 151620,
+      "sha256": "e8e1e1ca752559d4d389273fdafa9fe8e95a3ef33701f7128717a74d5c3fbaa6",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/removal-neighbor-roll-snapshot.json",
+      "path": "flow-seed41/removal-neighbor-roll-snapshot.json",
+      "bytes": 6248,
+      "sha256": "8750863707b0f898340a9e439103ac5bafd14fc08659931a78d069a9e19e653d",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    },
+    {
+      "name": "flow-seed41/removal-neighbor-roll.png",
+      "path": "flow-seed41/removal-neighbor-roll.png",
+      "bytes": 675836,
+      "sha256": "2162b71e479298de0f67a6d1a044d6f365fc1351d9b29de2018628e2a96145fe",
+      "runtime_source_head": "03728c7b9e8cfddad326e4cdb330670f8be4d0a0",
+      "capture_record": "flow",
+      "status": "current combined capture",
+      "tool_only_commit": null
+    }
+  ],
+  "reviewed_capture_scope": "actual seed41 physical flow plus refreshed seed121 base/gallery/cutins; no controller/input-lock/expedition claim"
+}

@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+Movie Maker mode enabled, recording movie in 720×1080 @ 30 FPS...
+WARNING: Current available space on disk is low (4.04 GiB). MovieWriter will fail during movie recording if the disk runs out of available space.
+     at: begin (servers/movie_writer/movie_writer.cpp:113)
+SCRIPT ERROR: Invalid access to property or key 'bench' on a base object of type 'Node2D (main.gd)'.
+          at: run (res://tests/replay_impact_strength.gd:73)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/replay_impact_strength.gd:73)
+              [1] hold (res://tests/replay_impact_strength.gd:29)

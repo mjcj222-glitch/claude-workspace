@@ -1,0 +1,10 @@
+{
+  "clipped_samples": 0,
+  "driver": "Dummy",
+  "frames": 131072,
+  "method": "Actual AudioServer master capture, 96 pops plus6 big bombs and6 impacts over3seconds; original stereo channels, no device listening",
+  "nonfinite_samples": 0,
+  "peak": 0.53486293554306,
+  "rms_dbfs": -24.1846636323148,
+  "sample_peak_dbfs": -5.43514992831558
+}

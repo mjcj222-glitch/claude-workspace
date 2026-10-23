@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS firsttwo accumulate without HP damage
+PASS firsttwo ready even accumulated damage near lethal
+PASS third waits for final strike
+PASS one-shot settlement API exists
+PASS one combined hit wins before retaliation
+PASS repeat settlement cannot repay or retaliate
+BANKED checks=6 failures=0

@@ -1,0 +1,29 @@
+{
+  "method": "Original decoded channels preserved; no -ac1 mono downmix gain. Digital sample peaks; EBU oversampled true peaks in separate logs. No human listening.",
+  "files": {
+    "before.mp4": {
+      "sample_peak_dbfs": -10.277688450182708,
+      "rms_dbfs": -34.19232177734375,
+      "full_scale_samples": 0,
+      "nan_inf": 0
+    },
+    "after.mp4": {
+      "sample_peak_dbfs": -9.292803156307581,
+      "rms_dbfs": -33.62189865112305,
+      "full_scale_samples": 0,
+      "nan_inf": 0
+    },
+    "normal-full.mp4": {
+      "sample_peak_dbfs": -9.213058977709025,
+      "rms_dbfs": -32.54126739501953,
+      "full_scale_samples": 0,
+      "nan_inf": 0
+    },
+    "impact-and-bombs.mp4": {
+      "sample_peak_dbfs": -9.21494782971152,
+      "rms_dbfs": -31.403512954711914,
+      "full_scale_samples": 0,
+      "nan_inf": 0
+    }
+  }
+}

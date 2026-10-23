@@ -1,0 +1,639 @@
+{
+  "method": "12 pure normal runs: 2 seeds x 2 routes x 3 original reward pairs; not rendered performance or balance proof",
+  "policy": "safe pair0 buys healing, pairs1/2 third relic; elite buys both if affordable and HP below maximum, pair0 heal-first and others relic-first; no resource injection",
+  "runs": [
+    {
+      "seed": 20261021,
+      "route": "elite",
+      "pair_index": 0,
+      "terminal": "victory",
+      "actions": 18,
+      "hp": 24,
+      "gold": 0,
+      "gold_spent": 12,
+      "relics": [
+        "pigment",
+        "lens",
+        "ash"
+      ],
+      "purchases": [
+        {
+          "item": "heal",
+          "cost": 4,
+          "heal_gain": 6,
+          "before_hp": 24,
+          "after_hp": 30,
+          "gold_left": 8
+        },
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 30,
+          "after_hp": 30,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        }
+      ],
+      "audit_checks": 100
+    },
+    {
+      "seed": 20261021,
+      "route": "elite",
+      "pair_index": 1,
+      "terminal": "victory",
+      "actions": 18,
+      "hp": 24,
+      "gold": 0,
+      "gold_spent": 12,
+      "relics": [
+        "pigment",
+        "ash",
+        "lens"
+      ],
+      "purchases": [
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 24,
+          "after_hp": 24,
+          "gold_left": 4
+        },
+        {
+          "item": "heal",
+          "cost": 4,
+          "heal_gain": 6,
+          "before_hp": 24,
+          "after_hp": 30,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        }
+      ],
+      "audit_checks": 100
+    },
+    {
+      "seed": 20261021,
+      "route": "elite",
+      "pair_index": 2,
+      "terminal": "victory",
+      "actions": 20,
+      "hp": 22,
+      "gold": 0,
+      "gold_spent": 12,
+      "relics": [
+        "lens",
+        "ash",
+        "pigment"
+      ],
+      "purchases": [
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 24,
+          "after_hp": 24,
+          "gold_left": 4
+        },
+        {
+          "item": "heal",
+          "cost": 4,
+          "heal_gain": 6,
+          "before_hp": 24,
+          "after_hp": 30,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 110
+    },
+    {
+      "seed": 20261021,
+      "route": "safe",
+      "pair_index": 0,
+      "terminal": "victory",
+      "actions": 19,
+      "hp": 22,
+      "gold": 4,
+      "gold_spent": 4,
+      "relics": [
+        "pigment",
+        "lens"
+      ],
+      "purchases": [
+        {
+          "item": "heal",
+          "cost": 4,
+          "heal_gain": 5,
+          "before_hp": 25,
+          "after_hp": 30,
+          "gold_left": 4
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 3
+        },
+        {
+          "fight": 2,
+          "damage": 5
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 102
+    },
+    {
+      "seed": 20261021,
+      "route": "safe",
+      "pair_index": 1,
+      "terminal": "victory",
+      "actions": 18,
+      "hp": 21,
+      "gold": 0,
+      "gold_spent": 8,
+      "relics": [
+        "pigment",
+        "ash",
+        "lens"
+      ],
+      "purchases": [
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 25,
+          "after_hp": 25,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 3
+        },
+        {
+          "fight": 2,
+          "damage": 5
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 96
+    },
+    {
+      "seed": 20261021,
+      "route": "safe",
+      "pair_index": 2,
+      "terminal": "victory",
+      "actions": 20,
+      "hp": 29,
+      "gold": 0,
+      "gold_spent": 8,
+      "relics": [
+        "lens",
+        "ash",
+        "pigment"
+      ],
+      "purchases": [
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 25,
+          "after_hp": 25,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 3
+        },
+        {
+          "fight": 2,
+          "damage": 5
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 106
+    },
+    {
+      "seed": 20261022,
+      "route": "elite",
+      "pair_index": 0,
+      "terminal": "victory",
+      "actions": 18,
+      "hp": 22,
+      "gold": 0,
+      "gold_spent": 12,
+      "relics": [
+        "pigment",
+        "lens",
+        "ash"
+      ],
+      "purchases": [
+        {
+          "item": "heal",
+          "cost": 4,
+          "heal_gain": 6,
+          "before_hp": 24,
+          "after_hp": 30,
+          "gold_left": 8
+        },
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 30,
+          "after_hp": 30,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 100
+    },
+    {
+      "seed": 20261022,
+      "route": "elite",
+      "pair_index": 1,
+      "terminal": "victory",
+      "actions": 18,
+      "hp": 22,
+      "gold": 0,
+      "gold_spent": 12,
+      "relics": [
+        "pigment",
+        "ash",
+        "lens"
+      ],
+      "purchases": [
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 24,
+          "after_hp": 24,
+          "gold_left": 4
+        },
+        {
+          "item": "heal",
+          "cost": 4,
+          "heal_gain": 6,
+          "before_hp": 24,
+          "after_hp": 30,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 100
+    },
+    {
+      "seed": 20261022,
+      "route": "elite",
+      "pair_index": 2,
+      "terminal": "victory",
+      "actions": 20,
+      "hp": 22,
+      "gold": 0,
+      "gold_spent": 12,
+      "relics": [
+        "lens",
+        "ash",
+        "pigment"
+      ],
+      "purchases": [
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 24,
+          "after_hp": 24,
+          "gold_left": 4
+        },
+        {
+          "item": "heal",
+          "cost": 4,
+          "heal_gain": 6,
+          "before_hp": 24,
+          "after_hp": 30,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 110
+    },
+    {
+      "seed": 20261022,
+      "route": "safe",
+      "pair_index": 0,
+      "terminal": "victory",
+      "actions": 17,
+      "hp": 30,
+      "gold": 4,
+      "gold_spent": 4,
+      "relics": [
+        "pigment",
+        "lens"
+      ],
+      "purchases": [
+        {
+          "item": "heal",
+          "cost": 4,
+          "heal_gain": 7,
+          "before_hp": 23,
+          "after_hp": 30,
+          "gold_left": 4
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 3
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 92
+    },
+    {
+      "seed": 20261022,
+      "route": "safe",
+      "pair_index": 1,
+      "terminal": "victory",
+      "actions": 16,
+      "hp": 15,
+      "gold": 0,
+      "gold_spent": 8,
+      "relics": [
+        "pigment",
+        "ash",
+        "lens"
+      ],
+      "purchases": [
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 23,
+          "after_hp": 23,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 3
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 86
+    },
+    {
+      "seed": 20261022,
+      "route": "safe",
+      "pair_index": 2,
+      "terminal": "victory",
+      "actions": 18,
+      "hp": 27,
+      "gold": 0,
+      "gold_spent": 8,
+      "relics": [
+        "lens",
+        "ash",
+        "pigment"
+      ],
+      "purchases": [
+        {
+          "item": "relic",
+          "cost": 8,
+          "heal_gain": 0,
+          "before_hp": 23,
+          "after_hp": 23,
+          "gold_left": 0
+        }
+      ],
+      "skips": [],
+      "attacks": [
+        {
+          "fight": 1,
+          "damage": 4
+        },
+        {
+          "fight": 2,
+          "damage": 3
+        },
+        {
+          "fight": 3,
+          "damage": 6
+        },
+        {
+          "fight": 3,
+          "damage": 8
+        }
+      ],
+      "audit_checks": 96
+    }
+  ],
+  "total_audit_checks": 1198,
+  "effects_observed_total": {
+    "ash_consumptions": 21,
+    "ash_reservations": 30,
+    "lens_eleven_strong": 8,
+    "lens_five_core": 5,
+    "mitigation_latched": 16,
+    "pigment_five_targets": 52
+  },
+  "limits": "All sampled runs won; defeat and full-HP shop skip were not observed in this normal sample; dedicated unit/input tests cover restrictions. Fixed-step refill is not wall-clock latency.",
+  "source_sha256": {
+    "tests/play_route_shop.gd": "fb732c0ed054127c219160362a862e8b00af7fe9aa9de3386f2c90fe36ae747e",
+    "tests/capture_route_shop.gd": "37a6aa7a5126ca060622a2b424a7ff9fcc3aa7431b678c74665de44047ef22fb",
+    "scripts/board_run_session.gd": "992664ae098712d33666063551b23179685050fc63a5ffece95704751387217f",
+    "scripts/board_combat.gd": "39650747d39f52278f5051cf54126dfdc1d6f3082f408f6b3842431ac432355a",
+    "scripts/board_motion.gd": "54af4d7b9be29b00b107f8ad938bd053c9193542e9927fcb9604fdbdc1748006",
+    "scripts/board_rules.gd": "ddf884a77a3265b8c295f1ac533ce33b98d38f2620a5b22b7e90de5209534177",
+    "scripts/board_session.gd": "78cd45666afeaf64393d2649a36a6b20d724f7e3eea063097a65b1b2dd51ecf5"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "baseline": "2b32d639788611f511fb32d0c3584ee6307289f5",
+  "method": "Same cloud native llvmpipe, preloaded first7 normal inputs, 3 repeats/version in A-B-B-A-A-B order. No search, capture or file writes in measured replay; no other test/render processes in clean block. First six exploratory files retained but excluded because artifact probing/unit work overlapped them. No selection by results. Not fixedfps capture or mobile evidence.",
+  "versions": {
+    "before": {
+      "ordinary_commit_to_ready": {
+        "n": 12,
+        "median_ms": 844.7815,
+        "min_ms": 813.092,
+        "max_ms": 954.295
+      },
+      "special_commit_to_ready": {
+        "n": 9,
+        "median_ms": 1403.729,
+        "min_ms": 1210.81,
+        "max_ms": 1480.995
+      },
+      "clear_press_to_draw": {
+        "n": 21,
+        "median_ms": 20.84,
+        "min_ms": 17.46,
+        "max_ms": 42.695
+      },
+      "process_frame": {
+        "n": 2154,
+        "median_ms": 39.524,
+        "min_ms": 21.479,
+        "max_ms": 218.805
+      },
+      "seventh_large_supply": {
+        "n": 3,
+        "median_ms": 1860.274,
+        "min_ms": 1857.038,
+        "max_ms": 1869.843
+      },
+      "per_run": [
+        {
+          "ordinary": [
+            851.465,
+            822.805,
+            823.743,
+            935.942
+          ],
+          "special": [
+            1210.81,
+            1480.995,
+            1420.973
+          ]
+        },
+        {
+          "ordinary": [
+            866.91,
+            838.098,
+            833.058,
+            954.295
+          ],
+          "special": [
+            1229.286,
+            1452.392,
+            1398.431
+          ]
+        },
+        {
+          "ordinary": [
+            896.911,
+            813.092,
+            823.275,
+            930.624
+          ],
+          "special": [
+            1222.708,
+            1460.786,
+            1403.729
+          ]
+        }
+      ],
+      "process_cpu_ms": {
+        "n": 2154,
+        "median_ms": 0.021,
+        "min_ms": 0.011,
+        "max_ms": 154.059
+      },
+      "ui_draw_cpu_ms": {
+        "n": 2154,
+        "median_ms": 0.374,
+        "min_ms": 0.297,
+        "max_ms": 9.026
+      },
+      "panels_draw_cpu_ms": {
+        "n": 2154,
+        "median_ms": 0.382,
+        "min_ms": 0.239,
+        "max_ms": 15.497
+      },
+      "overlay_draw_cpu_ms": {
+        "n": 2154,
+        "median_ms": 0.08,
+        "min_ms": 0.008,
+        "max_ms": 13.635
+      },
+      "seventh_motion_cpu": {
+        "n": 3,
+        "median_ms": 320.103,
+        "min_ms": 310.382,
+        "max_ms": 359.874
+      }
+    },
+    "after": {
+      "ordinary_commit_to_ready": {
+        "n": 12,
+        "median_ms": 879.494,
+        "min_ms": 816.746,
+        "max_ms": 1031.473
+      },
+      "special_commit_to_ready": {
+        "n": 9,
+        "median_ms": 1368.545,
+        "min_ms": 1216.874,
+        "max_ms": 1524.911
+      },
+      "clear_press_to_draw": {
+        "n": 21,
+        "median_ms": 21.305,
+        "min_ms": 18.031,
+        "max_ms": 36.782
+      },
+      "process_frame": {
+        "n": 2191,
+        "median_ms": 34.042,
+        "min_ms": 18.506,
+        "max_ms": 190.667
+      },
+      "seventh_large_supply": {
+        "n": 3,
+        "median_ms": 1824.081,
+        "min_ms": 1812.874,
+        "max_ms": 1828.066
+      },
+      "per_run": [
+        {
+          "ordinary": [
+            889.526,
+            1031.473,
+            824.405,
+            945.339
+          ],
+          "special": [
+            1225.175,
+            1466.844,
+            1368.545
+          ]
+        },
+        {
+          "ordinary": [
+            877.754,
+            845.689,
+            825.035,
+            929.781
+          ],
+          "special": [
+            1216.874,
+            1524.911,
+            1384.222
+          ]
+        },
+        {
+          "ordinary": [
+            881.234,
+            833.017,
+            816.746,
+            947.291
+          ],
+          "special": [
+            1230.984,
+            1438.916,
+            1368.381
+          ]
+        }
+      ],
+      "process_cpu_ms": {
+        "n": 2191,
+        "median_ms": 0.021,
+        "min_ms": 0.011,
+        "max_ms": 147.3
+      },
+      "ui_draw_cpu_ms": {
+        "n": 2191,
+        "median_ms": 0.378,
+        "min_ms": 0.31,
+        "max_ms": 5.073
+      },
+      "panels_draw_cpu_ms": {
+        "n": 2191,
+        "median_ms": 0.38,
+        "min_ms": 0.246,
+        "max_ms": 4.169
+      },
+      "overlay_draw_cpu_ms": {
+        "n": 2191,
+        "median_ms": 0.078,
+        "min_ms": 0.008,
+        "max_ms": 10.877
+      },
+      "seventh_motion_cpu": {
+        "n": 3,
+        "median_ms": 314.909,
+        "min_ms": 300.737,
+        "max_ms": 317.499
+      }
+    }
+  },
+  "same_all_7_plans": true,
+  "same_first_6_states": true,
+  "seventh_state_differs_by_large_body_physics": true,
+  "normal_only_intermediate_trace_equal": {
+    "center": true,
+    "left_column": true,
+    "two": true
+  },
+  "limitations": [
+    "Small sample, single cloud software renderer; no proof of performance parity or improvement.",
+    "Seventh action has a new physical body and intentionally different collision trajectories, not a pure rendering microbenchmark.",
+    "GPU timing support is limited under Compatibility/llvmpipe."
+  ]
+}

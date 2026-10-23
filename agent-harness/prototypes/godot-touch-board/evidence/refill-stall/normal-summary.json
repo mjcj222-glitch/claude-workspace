@@ -1,0 +1,96 @@
+{
+  "failures": 0,
+  "runs": [
+    {
+      "actions": 13,
+      "audit_errors": [],
+      "errors": [],
+      "hp": 20,
+      "task": {
+        "pair": 0,
+        "policy": "intent-aware",
+        "route": "safe",
+        "seed": 20261021
+      },
+      "terminal": "victory"
+    },
+    {
+      "actions": 12,
+      "audit_errors": [],
+      "errors": [],
+      "hp": 26,
+      "task": {
+        "pair": 1,
+        "policy": "intent-aware",
+        "route": "safe",
+        "seed": 20261021
+      },
+      "terminal": "victory"
+    },
+    {
+      "actions": 13,
+      "audit_errors": [],
+      "errors": [],
+      "hp": 20,
+      "task": {
+        "pair": 2,
+        "policy": "intent-aware",
+        "route": "safe",
+        "seed": 20261021
+      },
+      "terminal": "victory"
+    },
+    {
+      "actions": 16,
+      "audit_errors": [],
+      "errors": [],
+      "hp": 24,
+      "task": {
+        "pair": 0,
+        "policy": "intent-aware",
+        "route": "elite",
+        "seed": 20261021
+      },
+      "terminal": "victory"
+    },
+    {
+      "actions": 16,
+      "audit_errors": [],
+      "errors": [],
+      "hp": 24,
+      "task": {
+        "pair": 1,
+        "policy": "intent-aware",
+        "route": "elite",
+        "seed": 20261021
+      },
+      "terminal": "victory"
+    },
+    {
+      "actions": 17,
+      "audit_errors": [],
+      "errors": [],
+      "hp": 20,
+      "task": {
+        "pair": 2,
+        "policy": "intent-aware",
+        "route": "elite",
+        "seed": 20261021
+      },
+      "terminal": "victory"
+    },
+    {
+      "actions": 17,
+      "audit_errors": [],
+      "errors": [],
+      "hp": 12,
+      "task": {
+        "pair": 0,
+        "policy": "avoid-intent",
+        "route": "elite",
+        "seed": 20261023
+      },
+      "terminal": "victory"
+    }
+  ]
+}

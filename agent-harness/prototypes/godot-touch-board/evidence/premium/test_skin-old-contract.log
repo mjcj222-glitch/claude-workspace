@@ -1,0 +1,12 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL full board mapping remains unchanged
+FAIL existing pointer targets unchanged
+FAIL palette target unchanged
+FAIL palette target unchanged
+FAIL palette target unchanged
+FAIL palette target unchanged
+FAIL owned target unchanged
+FAIL owned target unchanged
+FAIL owned target unchanged
+SKIN_CONTRACT checks=27 failures=9

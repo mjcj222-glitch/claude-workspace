@@ -1,0 +1,29 @@
+{
+  "baseline_commit": "ad114ff5e4bf9a86e898dab9feb5ff9f8b9515fc",
+  "exact_before": {
+    "elapsed": 4.00833333333332,
+    "ready": false,
+    "stalled": true,
+    "pending": 0,
+    "max_overlap": 0.102012634277344,
+    "max_swept": 0.11328125,
+    "max_step": 9.18127059936523
+  },
+  "exact_after": {
+    "elapsed": 0.991666666666666,
+    "ready": true,
+    "stalled": false,
+    "pending": 0,
+    "max_overlap": 0.102012634277344,
+    "max_swept": 0.11328125,
+    "max_step": 9.18127059936523
+  },
+  "core_suites": 35,
+  "core_failures": 0,
+  "normal_runs": 7,
+  "normal_failures": 0,
+  "strict_archived_replay_status": "archived_plan_diverged",
+  "strict_archived_replay_conclusive": false,
+  "historical_archive_preserved": true,
+  "changed_production_scope": "only Motion._spawn inlet admission; no timeout/solver/readiness/input/combat/UI change"
+}

@@ -1,0 +1,23 @@
+{
+  "normal_clear_5_samples_ms": [
+    659.388,
+    906.322
+  ],
+  "press_6_samples_ms": [
+    32.763,
+    62.54
+  ],
+  "long_chain": [
+    {
+      "event": "commit_to_ready",
+      "frames": 29,
+      "movie": false,
+      "removed": 35,
+      "specials": 2,
+      "wall_ms": 1177.731
+    }
+  ],
+  "known_loaded_press_outlier_ms": 242.153,
+  "os_mouse_clear_ms": 746.965,
+  "source_commit": "b0924b0c027dab054175272a2151b3466776eb76"
+}

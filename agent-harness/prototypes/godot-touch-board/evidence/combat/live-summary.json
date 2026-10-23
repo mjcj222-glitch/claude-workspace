@@ -1,0 +1,49 @@
+{
+  "method": "live normal main.tscn run, llvmpipe software renderer, Dummy audio; screenshot I/O and automated choice CPU may influence; not mobile/human benchmark",
+  "press_to_draw": {
+    "n": 26,
+    "min_ms": 14.899,
+    "median_ms": 17.483,
+    "max_ms": 88.818
+  },
+  "no_existing_core_commit_to_refill_complete": {
+    "n": 16,
+    "min_ms": 756.964,
+    "median_ms": 1148.566,
+    "max_ms": 1552.878
+  },
+  "existing_core_commit_to_refill_complete": {
+    "n": 3,
+    "min_ms": 1068.571,
+    "median_ms": 1348.828,
+    "max_ms": 1827.703
+  },
+  "all_resolution_frames": [
+    60,
+    16,
+    40,
+    31,
+    43,
+    31,
+    48,
+    35,
+    40,
+    56,
+    28,
+    35,
+    48,
+    45,
+    42,
+    24,
+    60,
+    34,
+    33
+  ],
+  "terminal": "victory",
+  "valid_clears": 19,
+  "hp": 30,
+  "enemy_attacks": 5,
+  "mitigation": true,
+  "attack_display_seconds": 0.45,
+  "target_note": "100ms press reaction and0.6-1.0s ordinary target are hypotheses. Ranges above are observations, not universal guarantees. Post-refill enemy_attack display is a separate0.45s lock; reward/terminal require user input."
+}

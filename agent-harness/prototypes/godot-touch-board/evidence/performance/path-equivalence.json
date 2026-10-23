@@ -1,0 +1,8 @@
+{
+  "before_sha256": "e8df397a4f51546fe4e558ea78d73c26fe60bce42758599e6688aca0e3289087",
+  "before_commit": "dccbfe77f63dd093fe0ef495e8d94b8389af5d29",
+  "after_sha256": "e8df397a4f51546fe4e558ea78d73c26fe60bce42758599e6688aca0e3289087",
+  "byte_identical": true,
+  "typed_sha256": "e8df397a4f51546fe4e558ea78d73c26fe60bce42758599e6688aca0e3289087",
+  "typed_byte_identical": true
+}

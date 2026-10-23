@@ -1,0 +1,65 @@
+[
+  {
+    "trace": "evidence/prism/normal/1-rio-safe/rio-safe-intent-aware-live/trace.json",
+    "terminal": "victory",
+    "boss_reached": true,
+    "shield_min": 0,
+    "errors": []
+  },
+  {
+    "trace": "evidence/prism/normal/attrition/noa-risk-attrition-live-free/trace.json",
+    "terminal": "defeat",
+    "boss_reached": false,
+    "shield_min": null,
+    "errors": []
+  },
+  {
+    "trace": "evidence/prism/normal/1-noa-safe/noa-safe-intent-aware-live/trace.json",
+    "terminal": "victory",
+    "boss_reached": true,
+    "shield_min": 0,
+    "errors": []
+  },
+  {
+    "trace": "evidence/prism/normal/20261021-noa-safe/noa-safe-intent-aware-live/trace.json",
+    "terminal": "victory",
+    "boss_reached": true,
+    "shield_min": 0,
+    "errors": []
+  },
+  {
+    "trace": "evidence/prism/normal/1-rio-risk/rio-risk-intent-aware-live/trace.json",
+    "terminal": "victory",
+    "boss_reached": true,
+    "shield_min": 5,
+    "errors": []
+  },
+  {
+    "trace": "evidence/prism/normal/20261021-noa-risk/noa-risk-intent-aware-live/trace.json",
+    "terminal": "victory",
+    "boss_reached": true,
+    "shield_min": 0,
+    "errors": []
+  },
+  {
+    "trace": "evidence/prism/normal/20261021-rio-risk/rio-risk-intent-aware-live/trace.json",
+    "terminal": "victory",
+    "boss_reached": true,
+    "shield_min": 0,
+    "errors": []
+  },
+  {
+    "trace": "evidence/prism/normal/1-noa-risk/noa-risk-intent-aware-live/trace.json",
+    "terminal": "victory",
+    "boss_reached": true,
+    "shield_min": 0,
+    "errors": []
+  },
+  {
+    "trace": "evidence/prism/normal/20261021-rio-safe/rio-safe-intent-aware-live/trace.json",
+    "terminal": "victory",
+    "boss_reached": true,
+    "shield_min": 0,
+    "errors": []
+  }
+]

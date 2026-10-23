@@ -1,0 +1,119 @@
+{
+  "baseline": "2089b39251d353ecb3f037bd0058adf8a5835410",
+  "new_bomb_rules": "Prototype hypotheses, not original Crash Fever radii:98/164, same37 collider; one pending replacement per actual strong activation action, lens upgrades.",
+  "scripts": 47,
+  "suite_failures": 0,
+  "new_checks": {
+    "bomb_rules": 27,
+    "bomb_actual_supply_scene": 10,
+    "audio_fx": 17
+  },
+  "OS_checks_each": 23,
+  "OS_sizes": [
+    "360x640",
+    "390x844"
+  ],
+  "matched_movie_impacts": [
+    [
+      10,
+      7,
+      3,
+      0.36667
+    ],
+    [
+      7,
+      5,
+      2,
+      0.3
+    ],
+    [
+      3,
+      3,
+      0,
+      0.23333
+    ],
+    [
+      8,
+      8,
+      0,
+      0.4
+    ],
+    [
+      5,
+      5,
+      0,
+      0.3
+    ],
+    [
+      4,
+      3,
+      1,
+      0.23333
+    ],
+    [
+      21,
+      15,
+      6,
+      0.4
+    ]
+  ],
+  "normal_runs": [
+    {
+      "trace": "normal/rio-risk-intent-aware-live/trace.json",
+      "hero": "rio",
+      "phase": "victory",
+      "actions": 23,
+      "hp": 20,
+      "gold": 18,
+      "errors": [],
+      "bomb_actions": [
+        {
+          "action": 6,
+          "kinds": [
+            "bomb"
+          ]
+        }
+      ]
+    },
+    {
+      "trace": "normal/noa-risk-intent-aware-movie/trace.json",
+      "hero": "noa",
+      "phase": "victory",
+      "actions": 19,
+      "hp": 28,
+      "gold": 17,
+      "errors": [],
+      "bomb_actions": [
+        {
+          "action": 8,
+          "kinds": [
+            "big_bomb"
+          ]
+        },
+        {
+          "action": 11,
+          "kinds": [
+            "big_bomb"
+          ]
+        },
+        {
+          "action": 17,
+          "kinds": [
+            "big_bomb"
+          ]
+        }
+      ]
+    }
+  ],
+  "performance": "performance/summary.json",
+  "audio": "actual-mix-check.json",
+  "listening_verified": false,
+  "physical_device_verified": false,
+  "limitations": [
+    "Cloud timing tails remain; no claim of speedup or complete parity.",
+    "Original actual full normal movie predates only final concise lens shop/event wording; final OS stills show final wording. Combat excerpt matches final effect/audio implementation.",
+    "Current Windows/Web packages remain old, save/resume not implemented.",
+    "Existing temporary shared portrait and noncombat golem crown sliver retained.",
+    "No human fun/final balance validation."
+  ]
+}

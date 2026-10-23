@@ -1,0 +1,88 @@
+{
+  "baseline": "0b4e0a7598578d0786d11473300747cc9b55010f",
+  "core_regression_scripts": 41,
+  "core_failures": 0,
+  "new_unit_checks": 75,
+  "os_window_checks_each": 40,
+  "os_window_sizes": [
+    "360x640",
+    "390x844"
+  ],
+  "normal_fixed_step_victories": 12,
+  "normal_fixed_step_attrition_defeats": 2,
+  "native_runs": [
+    {
+      "trace": "rio/capture-20261021-safe-pair2-intent-aware-live/trace.json",
+      "character": "rio",
+      "movie": false,
+      "policy": "intent-aware",
+      "route": "safe",
+      "outcome": "victory",
+      "actions": 13,
+      "hp": 20,
+      "return_to_selection": true,
+      "errors": []
+    },
+    {
+      "trace": "rio/capture-20261021-elite-pair0-attrition-live/trace.json",
+      "character": "rio",
+      "movie": false,
+      "policy": "attrition",
+      "route": "elite",
+      "outcome": "defeat",
+      "actions": 20,
+      "hp": 0,
+      "return_to_selection": true,
+      "errors": []
+    },
+    {
+      "trace": "noa/capture-20261021-elite-pair0-intent-aware-movie/trace.json",
+      "character": "noa",
+      "movie": true,
+      "policy": "intent-aware",
+      "route": "elite",
+      "outcome": "victory",
+      "actions": 15,
+      "hp": 24,
+      "return_to_selection": true,
+      "errors": []
+    },
+    {
+      "trace": "noa/capture-20261021-elite-pair0-intent-aware-live/trace.json",
+      "character": "noa",
+      "movie": false,
+      "policy": "intent-aware",
+      "route": "elite",
+      "outcome": "victory",
+      "actions": 15,
+      "hp": 24,
+      "return_to_selection": true,
+      "errors": []
+    },
+    {
+      "trace": "noa/capture-20261021-elite-pair0-attrition-live/trace.json",
+      "character": "noa",
+      "movie": false,
+      "policy": "attrition",
+      "route": "elite",
+      "outcome": "defeat",
+      "actions": 20,
+      "hp": 0,
+      "return_to_selection": true,
+      "errors": []
+    }
+  ],
+  "timing": "one serial pair only; no stable parity/speedup or mobile inference",
+  "mechanics_unchanged": [
+    "board_rules.gd",
+    "board_motion.gd",
+    "board_combat.gd"
+  ],
+  "limits": [
+    "Shared temporary portrait forNoa, no retried failed transfer.",
+    "Small-window charge2/relic detail/result images are explicit fixtures.",
+    "Automated policies are not human fun or balance validation.",
+    "No current Windows/Web package or physical-device/audio validation.",
+    "Original full seed23 strict input trace diverges after earlier corrective contacts; exact saved-state refill regression passes."
+  ]
+}

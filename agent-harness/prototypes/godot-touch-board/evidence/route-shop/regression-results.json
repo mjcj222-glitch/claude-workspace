@@ -1,0 +1,128 @@
+[
+  {
+    "test": "test_rules",
+    "exit": 0,
+    "wall_seconds": 1.009,
+    "errors": []
+  },
+  {
+    "test": "test_relic_rules",
+    "exit": 0,
+    "wall_seconds": 0.279,
+    "errors": []
+  },
+  {
+    "test": "test_growth_session",
+    "exit": 0,
+    "wall_seconds": 0.294,
+    "errors": []
+  },
+  {
+    "test": "test_interaction",
+    "exit": 0,
+    "wall_seconds": 0.273,
+    "errors": []
+  },
+  {
+    "test": "test_scene",
+    "exit": 0,
+    "wall_seconds": 1.505,
+    "errors": []
+  },
+  {
+    "test": "test_reward_input",
+    "exit": 0,
+    "wall_seconds": 1.107,
+    "errors": []
+  },
+  {
+    "test": "test_feedback",
+    "exit": 0,
+    "wall_seconds": 0.394,
+    "errors": []
+  },
+  {
+    "test": "test_presentation_scene",
+    "exit": 0,
+    "wall_seconds": 1.771,
+    "errors": []
+  },
+  {
+    "test": "test_relic_details",
+    "exit": 0,
+    "wall_seconds": 3.614,
+    "errors": []
+  },
+  {
+    "test": "test_clear_timeline",
+    "exit": 0,
+    "wall_seconds": 3.614,
+    "errors": []
+  },
+  {
+    "test": "test_motion",
+    "exit": 0,
+    "wall_seconds": 3.632,
+    "errors": []
+  },
+  {
+    "test": "test_motion_paths",
+    "exit": 0,
+    "wall_seconds": 5.863,
+    "errors": []
+  },
+  {
+    "test": "test_motion_cycles",
+    "exit": 0,
+    "wall_seconds": 12.489,
+    "errors": []
+  },
+  {
+    "test": "test_refill_inlet",
+    "exit": 0,
+    "wall_seconds": 4.051,
+    "errors": []
+  },
+  {
+    "test": "test_combat",
+    "exit": 0,
+    "wall_seconds": 3.305,
+    "errors": []
+  },
+  {
+    "test": "test_run_session",
+    "exit": 0,
+    "wall_seconds": 3.385,
+    "errors": []
+  },
+  {
+    "test": "test_run_input",
+    "exit": 0,
+    "wall_seconds": 8.762,
+    "errors": []
+  },
+  {
+    "test": "test_route_combat",
+    "exit": 0,
+    "wall_seconds": 3.276,
+    "errors": []
+  },
+  {
+    "test": "test_route_economy",
+    "exit": 0,
+    "wall_seconds": 3.293,
+    "errors": []
+  },
+  {
+    "test": "test_route_input",
+    "exit": 0,
+    "wall_seconds": 5.896,
+    "errors": []
+  },
+  {
+    "test": "test_transition_reentry",
+    "exit": 0,
+    "wall_seconds": 6.181,
+    "errors": []
+  }
+]

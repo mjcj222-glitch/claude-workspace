@@ -1,0 +1,86 @@
+[
+  {
+    "test": "test_rules",
+    "exit": 0,
+    "wall_seconds": 3.271,
+    "errors": []
+  },
+  {
+    "test": "test_relic_rules",
+    "exit": 0,
+    "wall_seconds": 3.278,
+    "errors": []
+  },
+  {
+    "test": "test_growth_session",
+    "exit": 0,
+    "wall_seconds": 3.28,
+    "errors": []
+  },
+  {
+    "test": "test_interaction",
+    "exit": 0,
+    "wall_seconds": 3.271,
+    "errors": []
+  },
+  {
+    "test": "test_scene",
+    "exit": 0,
+    "wall_seconds": 4.313,
+    "errors": []
+  },
+  {
+    "test": "test_reward_input",
+    "exit": 0,
+    "wall_seconds": 3.983,
+    "errors": []
+  },
+  {
+    "test": "test_feedback",
+    "exit": 0,
+    "wall_seconds": 3.275,
+    "errors": []
+  },
+  {
+    "test": "test_presentation_scene",
+    "exit": 0,
+    "wall_seconds": 5.025,
+    "errors": []
+  },
+  {
+    "test": "test_relic_details",
+    "exit": 0,
+    "wall_seconds": 6.482,
+    "errors": []
+  },
+  {
+    "test": "test_clear_timeline",
+    "exit": 0,
+    "wall_seconds": 3.531,
+    "errors": []
+  },
+  {
+    "test": "test_motion",
+    "exit": 0,
+    "wall_seconds": 3.488,
+    "errors": []
+  },
+  {
+    "test": "test_motion_paths",
+    "exit": 0,
+    "wall_seconds": 5.108,
+    "errors": []
+  },
+  {
+    "test": "test_motion_cycles",
+    "exit": 0,
+    "wall_seconds": 9.34,
+    "errors": []
+  },
+  {
+    "test": "test_refill_inlet",
+    "exit": 0,
+    "wall_seconds": 3.836,
+    "errors": []
+  }
+]

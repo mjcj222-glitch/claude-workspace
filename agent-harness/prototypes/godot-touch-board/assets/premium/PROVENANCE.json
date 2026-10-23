@@ -1,0 +1,34 @@
+{
+  "assets": [
+    {
+      "file": "assets/premium/amethyst-dragon-arena-v1.png",
+      "library_file_id": "libfile_f8ee661a56488191ae06521969804e4a",
+      "file_id": "file_00000000080081fd9551ed7e13397f43",
+      "version": 0,
+      "sha256": "d8d359fb3c861d60091adf882f7d574564729cc021c39988cea0a25c9856425c",
+      "source": "Original project image generation, supplied and visually inspected by parent; unmodified PNG. Concept is reference only."
+    },
+    {
+      "file": "assets/premium/skill-button-amethyst-base-v1.png",
+      "library_file_id": "libfile_06cf30cc20288191a0f66808f92860e3",
+      "file_id": "file_00000000418c81f5b357efb00206861c",
+      "version": 0,
+      "sha256": "faa82c903c669b1d812acce0f1f92dc374e3414134ca749e9f051e53bf29fd49",
+      "source": "Original project image generation, supplied and visually inspected by parent; unmodified PNG. Concept is reference only."
+    },
+    {
+      "file": "references/premium/chroma-battle-concept-v2-purple.png",
+      "library_file_id": "libfile_f6a27d0b0f8081919c7e7f9d2fb0cc6a",
+      "file_id": "file_0000000034348230bfd197e984086705",
+      "version": 1,
+      "sha256": "4633ff91942706dac1154e8ed0c49c5526610b28d7b688d40b7b6825e7de0e01",
+      "source": "Original project image generation, supplied and visually inspected by parent; unmodified PNG. Concept is reference only."
+    }
+  ],
+  "pending_portrait": {
+    "library_file_id": "libfile_975a958b5f2881918953d4f67816a6a2",
+    "file_id": "file_00000000ebdc820e914510616cbd2fff",
+    "version": 0,
+    "status": "official helper download failed twice; file absent; no substitute generation"
+  }
+}

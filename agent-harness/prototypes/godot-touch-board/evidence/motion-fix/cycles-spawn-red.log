@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL cycle 2 bounded ready
+FAIL final top containment
+FAIL cycle nonoverlap
+FAIL cycle nonoverlap
+FAIL cycle 6 bounded ready
+FAIL final top containment
+FAIL cycle 8 bounded ready
+FAIL final top containment
+FAIL cycle 9 bounded ready
+FAIL final top containment
+CYCLES failures=10 durations=[0.95833333333333, 0.81666666666667, 4.00833333333332, 1.0, 1.15, 0.89166666666667, 4.00833333333332, 1.04166666666667, 4.00833333333332, 4.00833333333332]

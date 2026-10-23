@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL focus loss cancels preview without clear or sound
+FAIL repeated input cannot restart resolution or plan
+IMPACT_FOCUS_SCENE checks=6 failures=2

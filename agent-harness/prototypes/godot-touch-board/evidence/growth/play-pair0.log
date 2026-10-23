@@ -1,0 +1,27 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.161}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.016}
+TIMING {"event":"commit_to_ready","frames":51,"movie":false,"next_phase":"ready","profile":{"anchor_us":70226,"clear_wall_ms":294.043,"fall_sim_s":0.558333333333334,"fall_wall_ms":586.709,"inside_sim_s":0.358333333333334,"iterations":1092,"last_spawn_sim_s":0.2,"pending_sim_s":0.2,"quiet_sim_s":0.0583333333333333,"solve_us":102383,"spawn_us":3529,"ticks":67},"removed":6,"specials":0,"wall_ms":880.743}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.981}
+TIMING {"event":"commit_to_ready","frames":56,"movie":false,"next_phase":"ready","profile":{"anchor_us":122000,"clear_wall_ms":384.533,"fall_sim_s":0.758333333333333,"fall_wall_ms":828.48,"inside_sim_s":0.525000000000001,"iterations":2705,"last_spawn_sim_s":0.366666666666667,"pending_sim_s":0.366666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":278535,"spawn_us":6061,"ticks":91},"removed":10,"specials":0,"wall_ms":1213.003}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":21.507}
+TIMING {"event":"commit_to_ready","frames":31,"movie":false,"next_phase":"reward","profile":{"anchor_us":105700,"clear_wall_ms":219.09,"fall_sim_s":0.575,"fall_wall_ms":638.816,"inside_sim_s":0.275,"iterations":2594,"last_spawn_sim_s":0.116666666666667,"pending_sim_s":0.116666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":296810,"spawn_us":2173,"ticks":69},"removed":3,"specials":0,"wall_ms":857.897}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.857}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.048}
+TIMING {"event":"commit_to_ready","frames":40,"movie":false,"next_phase":"ready","profile":{"anchor_us":102294,"clear_wall_ms":292.488,"fall_sim_s":0.575,"fall_wall_ms":672.396,"inside_sim_s":0.358333333333334,"iterations":2362,"last_spawn_sim_s":0.2,"pending_sim_s":0.2,"quiet_sim_s":0.0583333333333333,"solve_us":274238,"spawn_us":3569,"ticks":69},"removed":6,"specials":0,"wall_ms":964.874}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":17.571}
+TIMING {"event":"commit_to_ready","frames":22,"movie":false,"next_phase":"ready","profile":{"anchor_us":115587,"clear_wall_ms":207.102,"fall_sim_s":0.558333333333334,"fall_wall_ms":1098.768,"inside_sim_s":0.275,"iterations":8576,"last_spawn_sim_s":0.116666666666667,"pending_sim_s":0.116666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":851932,"spawn_us":2130,"ticks":67},"removed":3,"specials":0,"wall_ms":1305.859}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.665}
+TIMING {"event":"commit_to_ready","frames":19,"movie":false,"next_phase":"reward","profile":{"anchor_us":157512,"clear_wall_ms":148.222,"fall_sim_s":0.641666666666667,"fall_wall_ms":1047.225,"inside_sim_s":0.233333333333333,"iterations":7068,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":742888,"spawn_us":1569,"ticks":77},"removed":2,"specials":0,"wall_ms":1195.436}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.324}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":15.981}
+TIMING {"event":"commit_to_ready","frames":38,"movie":false,"next_phase":"ready","profile":{"anchor_us":108164,"clear_wall_ms":264.602,"fall_sim_s":0.450000000000001,"fall_wall_ms":506.999,"inside_sim_s":0.316666666666667,"iterations":1004,"last_spawn_sim_s":0.158333333333333,"pending_sim_s":0.158333333333333,"quiet_sim_s":0.0583333333333333,"solve_us":94150,"spawn_us":2905,"ticks":54},"removed":5,"specials":0,"wall_ms":771.543}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":17.146}
+TIMING {"event":"commit_to_ready","frames":39,"movie":false,"next_phase":"ready","profile":{"anchor_us":116951,"clear_wall_ms":250.263,"fall_sim_s":0.525000000000001,"fall_wall_ms":570.806,"inside_sim_s":0.316666666666667,"iterations":1153,"last_spawn_sim_s":0.158333333333333,"pending_sim_s":0.158333333333333,"quiet_sim_s":0.0583333333333333,"solve_us":99524,"spawn_us":2772,"ticks":63},"removed":4,"specials":0,"wall_ms":821.059}
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":20.821}
+TIMING {"event":"commit_to_ready","frames":45,"movie":false,"next_phase":"summary","profile":{"anchor_us":151241,"clear_wall_ms":233.187,"fall_sim_s":0.683333333333333,"fall_wall_ms":700.587,"inside_sim_s":0.316666666666667,"iterations":791,"last_spawn_sim_s":0.158333333333333,"pending_sim_s":0.158333333333333,"quiet_sim_s":0.0583333333333333,"solve_us":54339,"spawn_us":2870,"ticks":82},"removed":4,"specials":0,"wall_ms":933.764}
+NORMAL_GROWTH pair=0 failures=0 actions=9

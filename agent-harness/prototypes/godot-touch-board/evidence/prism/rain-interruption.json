@@ -1,0 +1,23 @@
+{
+  "busy": {
+    "actions": 1,
+    "errors": [],
+    "phase": "busy",
+    "saved_hash": "30f0921f7a5cbdbf7175101400f4cffdf78135a3fa1c5031eee62eca1e5d69cf",
+    "seed": 1,
+    "state_hash": "9937197d223b5c886bb9e79db76a40d8bb056ef5662353ad1d22f42d69899968",
+    "visited": [
+      "ready:entry"
+    ]
+  },
+  "resumed": {
+    "actions": 0,
+    "errors": [],
+    "phase": "ready",
+    "saved_hash": "30f0921f7a5cbdbf7175101400f4cffdf78135a3fa1c5031eee62eca1e5d69cf",
+    "seed": 1,
+    "state_hash": "30f0921f7a5cbdbf7175101400f4cffdf78135a3fa1c5031eee62eca1e5d69cf",
+    "visited": []
+  },
+  "matched": true
+}

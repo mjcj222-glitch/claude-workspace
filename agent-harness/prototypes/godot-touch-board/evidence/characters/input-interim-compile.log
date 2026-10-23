@@ -1,0 +1,131 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: The member "Material" shadows a native class.
+          at: GDScript::reload (res://scripts/board_character_ui.gd:4)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/test_character_input.gd:10)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://scripts/board_ui.gd:0)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/test_character_input.gd:10)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://scripts/main.gd:0)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/test_character_input.gd:10)
+ERROR: Failed to load script "res://scripts/main.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] run (res://tests/test_character_input.gd:10)
+SCRIPT ERROR: Invalid call. Nonexistent function 'draw' in base 'GDScript'.
+          at: draw_modal (res://scripts/board_ui.gd:150)
+          GDScript backtrace (most recent call first):
+              [0] draw_modal (res://scripts/board_ui.gd:150)
+              [1] _draw (res://scripts/main.gd:94)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] run (res://tests/test_character_input.gd:14)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] run (res://tests/test_character_input.gd:14)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] run (res://tests/test_character_input.gd:16)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] run (res://tests/test_character_input.gd:16)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] run (res://tests/test_character_input.gd:18)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] run (res://tests/test_character_input.gd:18)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] run (res://tests/test_character_input.gd:20)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] run (res://tests/test_character_input.gd:20)
+FAIL card chooses only a candidate
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] tap (res://tests/test_character_input.gd:8)
+              [3] run (res://tests/test_character_input.gd:25)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] tap (res://tests/test_character_input.gd:8)
+              [3] run (res://tests/test_character_input.gd:25)
+FAIL explicit departure fixes character
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] tap (res://tests/test_character_input.gd:8)
+              [3] run (res://tests/test_character_input.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] tap (res://tests/test_character_input.gd:8)
+              [3] run (res://tests/test_character_input.gd:26)
+FAIL cannot reopen choice during run
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] tap (res://tests/test_character_input.gd:8)
+              [3] run (res://tests/test_character_input.gd:33)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] tap (res://tests/test_character_input.gd:8)
+              [3] run (res://tests/test_character_input.gd:33)
+FAIL noa enters direct panel targeting
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] run (res://tests/test_character_input.gd:34)
+SCRIPT ERROR: Invalid call. Nonexistent function 'character_rect' in base 'GDScript'.
+          at: character_rect (res://scripts/board_ui.gd:321)
+          GDScript backtrace (most recent call first):
+              [0] character_rect (res://scripts/board_ui.gd:321)
+              [1] press (res://scripts/main.gd:473)
+              [2] run (res://tests/test_character_input.gd:34)
+SCRIPT ERROR: Invalid access to property or key 'valid' on a base object of type 'Dictionary'.
+          at: run (res://tests/test_character_input.gd:35)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/test_character_input.gd:35)

@@ -1,0 +1,10 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TIMING {"event":"commit_to_ready","frames":0,"movie":false,"next_phase":"ready","profile":{"anchor_us":38961,"clear_wall_ms":1.009,"fall_sim_s":0.35,"fall_wall_ms":539.283,"inside_sim_s":0.233333333333333,"iterations":3756,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":494602,"spawn_us":1305,"ticks":42},"removed":2,"specials":0,"wall_ms":540.279}
+TIMING {"event":"commit_to_ready","frames":0,"movie":false,"next_phase":"ready","profile":{"anchor_us":88833,"clear_wall_ms":3.897,"fall_sim_s":0.708333333333333,"fall_wall_ms":733.231,"inside_sim_s":0.358333333333334,"iterations":3488,"last_spawn_sim_s":0.2,"pending_sim_s":0.2,"quiet_sim_s":0.0583333333333333,"solve_us":633377,"spawn_us":3965,"ticks":85},"removed":5,"specials":0,"wall_ms":737.115}
+TIMING {"event":"commit_to_ready","frames":0,"movie":false,"next_phase":"player_attack","profile":{"anchor_us":90651,"clear_wall_ms":2.336,"fall_sim_s":0.866666666666666,"fall_wall_ms":693.299,"inside_sim_s":0.275,"iterations":4114,"last_spawn_sim_s":0.116666666666667,"pending_sim_s":0.116666666666667,"quiet_sim_s":0.0583333333333333,"solve_us":595950,"spawn_us":1837,"ticks":104},"removed":3,"specials":0,"wall_ms":695.624}
+TIMING {"event":"commit_to_ready","frames":0,"movie":false,"next_phase":"player_attack","profile":{"anchor_us":39524,"clear_wall_ms":0.384,"fall_sim_s":0.35,"fall_wall_ms":535.623,"inside_sim_s":0.233333333333333,"iterations":3756,"last_spawn_sim_s":0.075,"pending_sim_s":0.075,"quiet_sim_s":0.0583333333333333,"solve_us":491197,"spawn_us":1601,"ticks":42},"removed":2,"specials":0,"wall_ms":535.997}
+SCRIPT ERROR: Invalid call. Nonexistent function 'select_node' in base 'RefCounted (board_run_session.gd)'.
+          at: run (res://tests/test_hit_scene.gd:68)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/test_hit_scene.gd:68)

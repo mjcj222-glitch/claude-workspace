@@ -1,0 +1,47 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PASS OS app starts at departure
+PASS OS driver acknowledged 01-departure
+PASS OS driver acknowledged noa-down-cancel
+PASS OS driver acknowledged noa-outside
+PASS OS driver acknowledged noa-release-cancel
+PASS OS card moving outside cancels
+PASS OS driver acknowledged noa-candidate
+PASS OS card only selects candidate
+PASS OS driver acknowledged 02-noa-choice
+PASS OS driver acknowledged departure
+PASS OS explicit departure commits noa
+PASS OS driver acknowledged 03-noa-ready
+PASS OS driver acknowledged noa-target
+PASS OS driver acknowledged noa-preview
+TIMING {"event":"press_to_draw","movie":false,"wall_ms":16.277}
+PASS OS inverse pointer selects same normal
+PASS OS driver acknowledged 04-noa-preview
+PASS OS driver acknowledged noa-commit
+PASS OS installation changes same ID only with no action
+PASS OS driver acknowledged 05-noa-charging3
+PASS OS driver acknowledged 06-noa-charging2-fixture
+PASS OS driver acknowledged noa-owned
+PASS OS owned detail matches noa effect
+PASS OS driver acknowledged 07-noa-relic-details-fixture
+PASS OS driver acknowledged detail-board
+PASS OS detail blocks board
+PASS OS driver acknowledged detail-close
+PASS OS detail closes
+PASS OS driver acknowledged reset
+PASS OS reset returns fresh departure
+PASS OS driver acknowledged rio-candidate
+PASS OS driver acknowledged rio-departure
+PASS OS can choose original hero after reset
+PASS OS driver acknowledged rio-target
+PASS OS driver acknowledged rio-color
+PASS OS original color palette stays touchable
+PASS OS driver acknowledged 08-rio-targeting
+PASS OS driver acknowledged 09-result-fixture
+PASS OS driver acknowledged result-return
+PASS OS result returns to selection
+PASS OS driver acknowledged 10-returned
+CHARACTER_WINDOW checks=40 failures=0 size=(360, 640)

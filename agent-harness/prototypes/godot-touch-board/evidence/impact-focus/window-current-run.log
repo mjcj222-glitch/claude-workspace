@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/claude-workspace/agent-harness/prototypes/godot-touch-board/tests/focus_window_driver.py", line 50, in <module>
+    time.sleep(.03)
+KeyboardInterrupt
+390 844 stages 25 exit 0
+720 1080 stages 25 exit 0
+360 640 stages 25 exit 0

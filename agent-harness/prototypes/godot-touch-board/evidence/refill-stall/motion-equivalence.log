@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/godot-touch-worktree/agent-harness/prototypes/godot-touch-board/tests/audit_motion_equivalence.py", line 10, in <module>
+    assert hashlib.sha256(raw).hexdigest() == expected, 'Trajectory differs from dccbfe7'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Trajectory differs from dccbfe7

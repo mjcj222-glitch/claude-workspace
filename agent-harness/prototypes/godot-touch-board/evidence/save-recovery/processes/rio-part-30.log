@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+CAPTURE_ELEMENTAL {"actions":15,"actions_in_turn":1,"ash_reserved":false,"attacks_total":2,"character_id":"rio","charge":0,"charge_required":3,"combat_context":{"incoming_damage":4,"intent":"slam","intent_serial":7,"mitigation_success":true,"slam_normal_required":8,"slam_weak_required":2,"weakness_color":3},"details":{"color":3,"connected":[290,282,284,302,309,275,278,316,315],"planted":{},"start_id":290,"targets":[290,282,284,302,309]},"encounter":2,"enemies_defeated":3,"enemy_hp":44,"enemy_max_hp":48,"fallback_plain":false,"gold":22,"gold_spent":0,"hp":30,"incoming_damage":4,"last_attack_damage":0,"mitigation_active":true,"mitigation_success":true,"phase":"ready","process_frame":0,"relics":["pigment","lens","ash"],"route":"elite","scene_seconds":0.0,"shop_closed":true,"shop_heal_sold":false,"shop_relic_sold":false,"skill_uses":6,"turn":0,"type":"skill","wall_ms":1286.35,"weak_color":3}
+PROCESS ready actions=15 errors=[]
+AUDIO_TEARDOWN remaining=0 wall_ms=46

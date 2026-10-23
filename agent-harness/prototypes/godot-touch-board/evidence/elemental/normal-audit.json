@@ -1,0 +1,605 @@
+{
+  "method": "24 pure headless fixed-step normal-play runs; no GPU, hardware, real-time or fun claims",
+  "source_sha256_before": {
+    "scripts/board_rules.gd": "393df21c2bbf9eba048f60d055357d2b182766c3ff7cda3ee06a848092416103",
+    "scripts/board_combat.gd": "3b5192371bd9196494b137f7b77c054d0a297ddff8fe2b6cd213eff822f37398",
+    "scripts/board_session.gd": "5d5a2e2cc7067359270d5e8fb8e503a3e9bb48b3b763593f2dc9e3523cf231dc",
+    "scripts/board_run_session.gd": "0dac425c2456d622de4167e8dab525925385ea394b9caff02085069fceda056f",
+    "scripts/board_motion.gd": "54af4d7b9be29b00b107f8ad938bd053c9193542e9927fcb9604fdbdc1748006",
+    "scripts/board_relics.gd": "174f52a0612bca3b55ce80185eb65e6de086fa4c923db4c6c09448cc43d21de4",
+    "tests/play_elemental.gd": "02b852cb134bd6485aa7ab4e1f8f977fa6621401ef1d7c7de22130c6c350af13"
+  },
+  "source_sha256_after": {
+    "scripts/board_rules.gd": "393df21c2bbf9eba048f60d055357d2b182766c3ff7cda3ee06a848092416103",
+    "scripts/board_combat.gd": "3b5192371bd9196494b137f7b77c054d0a297ddff8fe2b6cd213eff822f37398",
+    "scripts/board_session.gd": "5d5a2e2cc7067359270d5e8fb8e503a3e9bb48b3b763593f2dc9e3523cf231dc",
+    "scripts/board_run_session.gd": "0dac425c2456d622de4167e8dab525925385ea394b9caff02085069fceda056f",
+    "scripts/board_motion.gd": "54af4d7b9be29b00b107f8ad938bd053c9193542e9927fcb9604fdbdc1748006",
+    "scripts/board_relics.gd": "174f52a0612bca3b55ce80185eb65e6de086fa4c923db4c6c09448cc43d21de4",
+    "tests/play_elemental.gd": "02b852cb134bd6485aa7ab4e1f8f977fa6621401ef1d7c7de22130c6c350af13"
+  },
+  "source_changes": [],
+  "runs": 24,
+  "terminal": {
+    "victory": 24
+  },
+  "audit_checks": 2722,
+  "errors": [],
+  "boss": {
+    "actual_damage_taken": 228,
+    "attacks": 46,
+    "clears": 182,
+    "deaths": 0,
+    "fallback_turns": 5,
+    "mitigation_latches": 39,
+    "plain_turns": 29,
+    "slam_turns": 41,
+    "turns_observed": 70,
+    "weak_bonus_total": 63
+  },
+  "policies": {
+    "intent-aware": {
+      "runs": 12,
+      "terminal": {
+        "victory": 12
+      },
+      "actions": 178,
+      "final_hp_sum": 250,
+      "boss": {
+        "actual_damage_taken": 114,
+        "attacks": 23,
+        "clears": 88,
+        "deaths": 0,
+        "fallback_turns": 2,
+        "mitigation_latches": 20,
+        "plain_turns": 14,
+        "slam_turns": 21,
+        "turns_observed": 35,
+        "weak_bonus_total": 28
+      }
+    },
+    "damage-first": {
+      "runs": 12,
+      "terminal": {
+        "victory": 12
+      },
+      "actions": 184,
+      "final_hp_sum": 288,
+      "boss": {
+        "actual_damage_taken": 114,
+        "attacks": 23,
+        "clears": 94,
+        "deaths": 0,
+        "fallback_turns": 3,
+        "mitigation_latches": 19,
+        "plain_turns": 15,
+        "slam_turns": 20,
+        "turns_observed": 35,
+        "weak_bonus_total": 35
+      }
+    }
+  },
+  "diverging_choice_pairs": [
+    {
+      "seed": 20261021,
+      "route": "elite",
+      "pair": 2,
+      "intent_aware": {
+        "actions": 16,
+        "hp": 20
+      },
+      "damage_first": {
+        "actions": 17,
+        "hp": 30
+      }
+    },
+    {
+      "seed": 20261022,
+      "route": "elite",
+      "pair": 0,
+      "intent_aware": {
+        "actions": 15,
+        "hp": 20
+      },
+      "damage_first": {
+        "actions": 17,
+        "hp": 30
+      }
+    },
+    {
+      "seed": 20261022,
+      "route": "elite",
+      "pair": 1,
+      "intent_aware": {
+        "actions": 15,
+        "hp": 20
+      },
+      "damage_first": {
+        "actions": 17,
+        "hp": 30
+      }
+    },
+    {
+      "seed": 20261022,
+      "route": "elite",
+      "pair": 2,
+      "intent_aware": {
+        "actions": 17,
+        "hp": 20
+      },
+      "damage_first": {
+        "actions": 16,
+        "hp": 20
+      }
+    },
+    {
+      "seed": 20261022,
+      "route": "safe",
+      "pair": 0,
+      "intent_aware": {
+        "actions": 15,
+        "hp": 20
+      },
+      "damage_first": {
+        "actions": 17,
+        "hp": 30
+      }
+    },
+    {
+      "seed": 20261022,
+      "route": "safe",
+      "pair": 1,
+      "intent_aware": {
+        "actions": 16,
+        "hp": 21
+      },
+      "damage_first": {
+        "actions": 16,
+        "hp": 19
+      }
+    }
+  ],
+  "comparison_limit": "Same INITIAL seeds, later choices/RNG/boards may diverge. Both policies use same greedy skill/heal weights. Small deterministic sample does not establish balance or policy superiority. No deaths observed; none fabricated.",
+  "representative_capture": {
+    "seed": 20261021,
+    "route": "elite",
+    "pair": 0,
+    "policy": "intent-aware",
+    "reason": "Ordinary run with first boss slam mitigated by W4, actual retaliation4; next plain retaliation6; next slam turn victory. HP30→26→20. Selected for visible mechanic coverage, not best win.",
+    "fallback_complement": "seed20261021-safe-pair0-intent-aware.json has one fallback plain turn; all raw runs retained."
+  },
+  "runs_index": [
+    {
+      "path": "evidence/elemental/seed20261021-elite-pair0-damage-first.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-elite-pair0-intent-aware.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-elite-pair1-damage-first.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-elite-pair1-intent-aware.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-elite-pair2-damage-first.json",
+      "terminal": "victory",
+      "hp": 30,
+      "actions": 17,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 1,
+        "mitigation_latches": 1,
+        "plain_turns": 2,
+        "slam_turns": 1,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-elite-pair2-intent-aware.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 16,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 1,
+        "mitigation_latches": 1,
+        "plain_turns": 2,
+        "slam_turns": 1,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-safe-pair0-damage-first.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 13,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 1,
+        "mitigation_latches": 1,
+        "plain_turns": 2,
+        "slam_turns": 1,
+        "turns_observed": 3,
+        "weak_bonus_total": 6
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-safe-pair0-intent-aware.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 13,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 1,
+        "mitigation_latches": 1,
+        "plain_turns": 2,
+        "slam_turns": 1,
+        "turns_observed": 3,
+        "weak_bonus_total": 6
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-safe-pair1-damage-first.json",
+      "terminal": "victory",
+      "hp": 26,
+      "actions": 12,
+      "boss": {
+        "actual_damage_taken": 4,
+        "attacks": 1,
+        "clears": 6,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 1,
+        "plain_turns": 1,
+        "slam_turns": 1,
+        "turns_observed": 2,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-safe-pair1-intent-aware.json",
+      "terminal": "victory",
+      "hp": 26,
+      "actions": 12,
+      "boss": {
+        "actual_damage_taken": 4,
+        "attacks": 1,
+        "clears": 6,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 1,
+        "plain_turns": 1,
+        "slam_turns": 1,
+        "turns_observed": 2,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-safe-pair2-damage-first.json",
+      "terminal": "victory",
+      "hp": 30,
+      "actions": 14,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 4
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261021-safe-pair2-intent-aware.json",
+      "terminal": "victory",
+      "hp": 30,
+      "actions": 14,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 4
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-elite-pair0-damage-first.json",
+      "terminal": "victory",
+      "hp": 30,
+      "actions": 17,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-elite-pair0-intent-aware.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-elite-pair1-damage-first.json",
+      "terminal": "victory",
+      "hp": 30,
+      "actions": 17,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-elite-pair1-intent-aware.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-elite-pair2-damage-first.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 16,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 1,
+        "mitigation_latches": 1,
+        "plain_turns": 2,
+        "slam_turns": 1,
+        "turns_observed": 3,
+        "weak_bonus_total": 8
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-elite-pair2-intent-aware.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 17,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 3
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-safe-pair0-damage-first.json",
+      "terminal": "victory",
+      "hp": 30,
+      "actions": 17,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 9,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-safe-pair0-intent-aware.json",
+      "terminal": "victory",
+      "hp": 20,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-safe-pair1-damage-first.json",
+      "terminal": "victory",
+      "hp": 19,
+      "actions": 16,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 4
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-safe-pair1-intent-aware.json",
+      "terminal": "victory",
+      "hp": 21,
+      "actions": 16,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 8,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 2,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 1
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-safe-pair2-damage-first.json",
+      "terminal": "victory",
+      "hp": 13,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 1,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    },
+    {
+      "path": "evidence/elemental/seed20261022-safe-pair2-intent-aware.json",
+      "terminal": "victory",
+      "hp": 13,
+      "actions": 15,
+      "boss": {
+        "actual_damage_taken": 10,
+        "attacks": 2,
+        "clears": 7,
+        "deaths": 0,
+        "fallback_turns": 0,
+        "mitigation_latches": 1,
+        "plain_turns": 1,
+        "slam_turns": 2,
+        "turns_observed": 3,
+        "weak_bonus_total": 2
+      }
+    }
+  ]
+}

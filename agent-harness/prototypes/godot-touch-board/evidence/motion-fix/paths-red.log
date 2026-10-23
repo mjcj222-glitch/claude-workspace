@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL two bounded refill reaches input-ready
+FAIL two exact refill count
+FAIL center bounded refill reaches input-ready
+FAIL center exact refill count
+FAIL left_column bounded refill reaches input-ready
+FAIL left_column exact refill count
+PATH failures=6

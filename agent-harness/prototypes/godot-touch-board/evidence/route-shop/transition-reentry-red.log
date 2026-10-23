@@ -1,0 +1,19 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS route first mouse gesture enters next fight
+PASS explicit under-control group is a legal clear
+FAIL route immediate second mouse gesture cannot clear underlying board
+PASS route permits different target immediately
+PASS route first touch gesture enters next fight
+PASS explicit under-control group is a legal clear
+FAIL route immediate second touch gesture cannot clear underlying board
+PASS route permits different target immediately
+PASS shop first mouse gesture enters next fight
+PASS explicit under-control group is a legal clear
+FAIL shop immediate second mouse gesture cannot clear underlying board
+PASS shop permits different target immediately
+PASS shop first touch gesture enters next fight
+PASS explicit under-control group is a legal clear
+FAIL shop immediate second touch gesture cannot clear underlying board
+PASS shop permits different target immediately
+TRANSITION_REENTRY checks=16 failures=4

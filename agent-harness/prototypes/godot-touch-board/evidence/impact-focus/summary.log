@@ -1,0 +1,76 @@
+{
+  "state": [
+    {
+      "hero": "rio",
+      "before_events": 92,
+      "after_events": 92,
+      "mismatches": [],
+      "terminal_equal": true,
+      "terminal": "victory",
+      "actions": 22,
+      "hp": 20,
+      "errors": [],
+      "baseline": "fresh b4186b4 recording",
+      "impact_events_equal": true,
+      "refill_frame_counts_equal": true,
+      "pass": true
+    },
+    {
+      "hero": "noa",
+      "before_events": 92,
+      "after_events": 92,
+      "mismatches": [],
+      "terminal_equal": true,
+      "terminal": "victory",
+      "actions": 21,
+      "hp": 30,
+      "errors": [],
+      "baseline": "unchanged b4186b4 archived disc-bombs recording",
+      "impact_events_equal": true,
+      "refill_frame_counts_equal": true,
+      "pass": true
+    }
+  ],
+  "audio": [
+    {
+      "file": "before-full.mp4",
+      "samples": 5898240,
+      "peak_dbfs": -9.292803156307581,
+      "rms_dbfs": -32.38252302762397,
+      "clipped_samples": 0,
+      "nonfinite_samples": 0
+    },
+    {
+      "file": "after-full.mp4",
+      "samples": 5898240,
+      "peak_dbfs": -9.624384496659825,
+      "rms_dbfs": -32.573887598171396,
+      "clipped_samples": 0,
+      "nonfinite_samples": 0
+    },
+    {
+      "file": "before-preview.mp4",
+      "samples": 1114112,
+      "peak_dbfs": -9.44263672611327,
+      "rms_dbfs": -30.448849973302018,
+      "clipped_samples": 0,
+      "nonfinite_samples": 0
+    },
+    {
+      "file": "after-preview.mp4",
+      "samples": 1114112,
+      "peak_dbfs": -9.540659850742138,
+      "rms_dbfs": -30.704508448003807,
+      "clipped_samples": 0,
+      "nonfinite_samples": 0
+    },
+    {
+      "file": "impact-focus-before-after.mp4",
+      "samples": 2228224,
+      "peak_dbfs": -9.44263672611327,
+      "rms_dbfs": -30.58434488388061,
+      "clipped_samples": 0,
+      "nonfinite_samples": 0
+    }
+  ]
+}

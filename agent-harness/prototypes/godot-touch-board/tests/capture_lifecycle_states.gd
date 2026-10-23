@@ -1,0 +1,72 @@
+extends "res://tests/capture_quality_states.gd"
+const Store=preload("res://scripts/board_checkpoint.gd")
+func run():
+ var args=OS.get_cmdline_user_args();root.size=Vector2i(int(args[0]),int(args[1]))
+ scene=load("res://main.tscn").instantiate();root.add_child(scene)
+ preload("res://tests/enter_adventure.gd").enter(scene)
+ var data=Store.capture(scene)
+ var path="/tmp/chroma-lifecycle-window-"+str(OS.get_process_id())
+ var store=Store.new(path);check(store.save(data),"prepare isolated real initial checkpoint")
+ scene.queue_free();await process_frame
+ scene=load("res://main.tscn").instantiate();root.add_child(scene)
+ scene.lifecycle.setup(scene,["--save-dir="+path]);scene.record_timings=false
+ await shot("life-01-resume")
+ await gesture("life-new",scene.lifecycle.SECONDARY.get_center())
+ check(scene.lifecycle.modal=="confirm","OS new requires confirmation")
+ await shot("life-02-confirm")
+ await gesture("life-cancel",scene.lifecycle.SECONDARY.get_center())
+ check(scene.lifecycle.modal=="resume" and store.load_run().data==data,"OS cancel preserves resumable save")
+ await gesture("life-resume-down",scene.lifecycle.PRIMARY.get_center(),"down")
+ await gesture("life-resume-out",Vector2(710,400),"up")
+ check(scene.lifecycle.modal=="resume","interrupted resume press does not start")
+ await gesture("life-resume",scene.lifecycle.PRIMARY.get_center())
+ check(Store.capture(scene)==data,"OS continue restores exact state")
+ await gesture("life-stale-release",scene.board_to_screen(scene.session.panels[0].pos),"up")
+ check(Store.capture(scene)==data,"stale release after resume cannot clear")
+ await shot("life-03-restored")
+ await gesture("life-reset",scene.RESET.get_center())
+ check(scene.lifecycle.modal=="confirm","active reset confirmed")
+ await gesture("life-keep",scene.lifecycle.SECONDARY.get_center())
+ check(Store.capture(scene)==data and scene.lifecycle.modal=="","active cancellation retains state")
+ scene.fixed_seed=false
+ await gesture("life-reset-again",scene.RESET.get_center())
+ await gesture("life-abandon",scene.lifecycle.PRIMARY.get_center())
+ check(scene.session.phase=="departure" and scene.run_seed!=data.seed and not scene.lifecycle.store.load_run().ok,"explicit abandon archives save and chooses fresh seed")
+ await gesture("life-confirm-repeat",scene.lifecycle.PRIMARY.get_center())
+ check(scene.session.departure_choice=="","rapid confirmation repeat does not select hidden card")
+ await shot("life-04-new")
+ # Corrupt-current fixture, valid backup from a real initial board.
+ store=Store.new(path+"-recovery");store.save(data);store.save(data)
+ FileAccess.open(store.directory+"/current.json",FileAccess.WRITE).store_string("truncated")
+ scene.lifecycle.setup(scene,["--save-dir="+store.directory])
+ check(scene.lifecycle.modal=="resume" and scene.lifecycle.notice.contains("복구"),"recovery explicitly labeled")
+ await shot("life-05-recovery")
+ await gesture("life-recover",scene.lifecycle.PRIMARY.get_center())
+ check(Store.capture(scene)==data,"recovery restores previous complete snapshot")
+ if "--save-failure" in OS.get_cmdline_user_args():await failure_checks(data)
+ print("LIFECYCLE_WINDOW checks=",checks," failures=",failures," size=",root.size)
+ quit(1 if failures else 0)
+
+func failure_checks(data):
+ var life=scene.lifecycle
+ life.store=preload("res://tests/fault_checkpoint.gd").new("/tmp/chroma-failure-window-"+str(OS.get_process_id()))
+ life.store.save(data);life.store.fault="readonly"
+ scene.session.gold+=1;life.dirty=true;life.checkpoint(scene)
+ check(life.error!="" and life.dirty,"write failure shown and pending")
+ await shot("failure-01-retrying")
+ await gesture("retry-down",life.RETRY.get_center(),"down")
+ await gesture("retry-out",Vector2(710,400),"up")
+ check(life.error!="" and life.pointer==-99,"interrupted retry cancels")
+ life.store.fault=""
+ await gesture("retry-success",life.RETRY.get_center())
+ check(life.error=="" and life.store.load_run().data==Store.capture(scene),"OS retry saves stable state")
+ life.store.fault="readonly";scene.session.phase="victory";life.dirty=true;life.checkpoint(scene)
+ scene.notification(Node.NOTIFICATION_WM_CLOSE_REQUEST)
+ check(life.modal=="quit","actual window-close handler shows explicit failure choice")
+ await shot("failure-02-quit")
+ # Real OS release outside the button must not exit or retry.
+ await gesture("quit-retry-down",life.PRIMARY.get_center(),"down")
+ await gesture("quit-retry-out",Vector2(710,400),"up")
+ check(life.modal=="quit" and not life.terminal_done,"interrupted quit choice inert")
+ life.store.fault=""
+ check(life.request_quit(scene) and life.store.load_run().get("closed",false),"recovered completion barrier before exit")

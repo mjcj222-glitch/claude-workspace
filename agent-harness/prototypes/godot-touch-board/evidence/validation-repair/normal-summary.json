@@ -1,0 +1,24 @@
+[
+  {
+    "file": "evidence/validation-repair/normal/rio-risk-intent-aware-movie-free/trace.json",
+    "outcome": "victory",
+    "actions": 22,
+    "hp": 20,
+    "earned_rewards": 3,
+    "rewards_return_map_once": true,
+    "fresh_battle": true,
+    "fresh_event": true,
+    "errors": []
+  },
+  {
+    "file": "evidence/validation-repair/normal/rio-risk-attrition-movie/trace.json",
+    "outcome": "defeat",
+    "actions": 20,
+    "hp": 0,
+    "earned_rewards": 1,
+    "rewards_return_map_once": true,
+    "fresh_battle": true,
+    "fresh_event": true,
+    "errors": []
+  }
+]

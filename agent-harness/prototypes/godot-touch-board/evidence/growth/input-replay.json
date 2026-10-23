@@ -1,0 +1,253 @@
+{
+  "failures": 3,
+  "method": "same initial seed and literal recorded screen coordinates/hold times; no fixture/forced charge/reset",
+  "results": [
+    {
+      "actions": 0,
+      "direct_ids": [],
+      "phase": "ready",
+      "point": [
+        386.0,
+        896.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 0,
+      "direct_ids": [],
+      "phase": "ready",
+      "point": [
+        210.0,
+        1010.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 0,
+      "direct_ids": [],
+      "phase": "ready",
+      "point": [
+        367.771331787109,
+        516.170227050781
+      ],
+      "targets": [
+        34,
+        33,
+        41,
+        42
+      ]
+    },
+    {
+      "actions": 1,
+      "direct_ids": [
+        8,
+        16,
+        11,
+        23,
+        25,
+        18,
+        31,
+        32,
+        33,
+        34,
+        40,
+        41,
+        42,
+        35,
+        43
+      ],
+      "phase": "ready",
+      "point": [
+        256.771331787109,
+        708.427856445312
+      ],
+      "targets": []
+    },
+    {
+      "actions": 2,
+      "direct_ids": [
+        19,
+        28,
+        37,
+        44
+      ],
+      "phase": "ready",
+      "point": [
+        544.198913574219,
+        614.828247070312
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [
+        13,
+        21,
+        29
+      ],
+      "phase": "reward",
+      "point": [
+        507.198913574219,
+        678.914123535156
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "phase": "ready",
+      "point": [
+        360.0,
+        379.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "phase": "ready",
+      "point": [
+        386.0,
+        896.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "phase": "ready",
+      "point": [
+        618.0,
+        1010.0
+      ],
+      "targets": []
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "phase": "ready",
+      "point": [
+        470.19921875,
+        614.827697753906
+      ],
+      "targets": [
+        53,
+        45,
+        38,
+        59,
+        22
+      ]
+    },
+    {
+      "actions": 3,
+      "direct_ids": [],
+      "phase": "ready",
+      "point": [
+        359.198913574219,
+        678.914123535156
+      ],
+      "targets": []
+    }
+  ],
+  "timings": [
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 19.478
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 16.482
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 88,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 109192,
+        "clear_wall_ms": 373.73,
+        "fall_sim_s": 1.025,
+        "fall_wall_ms": 1050.138,
+        "inside_sim_s": 0.741666666666666,
+        "iterations": 781,
+        "last_spawn_sim_s": 0.583333333333334,
+        "pending_sim_s": 0.583333333333334,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 51787,
+        "spawn_us": 9217,
+        "ticks": 123
+      },
+      "removed": 15,
+      "specials": 0,
+      "wall_ms": 1423.859
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 15.144
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 45,
+      "movie": false,
+      "next_phase": "ready",
+      "profile": {
+        "anchor_us": 101944,
+        "clear_wall_ms": 239.054,
+        "fall_sim_s": 0.541666666666667,
+        "fall_wall_ms": 577.515,
+        "inside_sim_s": 0.316666666666667,
+        "iterations": 1017,
+        "last_spawn_sim_s": 0.158333333333333,
+        "pending_sim_s": 0.158333333333333,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 67653,
+        "spawn_us": 2696,
+        "ticks": 65
+      },
+      "removed": 4,
+      "specials": 0,
+      "wall_ms": 816.56
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 15.636
+    },
+    {
+      "event": "commit_to_ready",
+      "frames": 56,
+      "movie": false,
+      "next_phase": "reward",
+      "profile": {
+        "anchor_us": 164506,
+        "clear_wall_ms": 213.7,
+        "fall_sim_s": 0.816666666666666,
+        "fall_wall_ms": 831.6,
+        "inside_sim_s": 0.275,
+        "iterations": 1356,
+        "last_spawn_sim_s": 0.116666666666667,
+        "pending_sim_s": 0.116666666666667,
+        "quiet_sim_s": 0.0583333333333333,
+        "solve_us": 90917,
+        "spawn_us": 2199,
+        "ticks": 98
+      },
+      "removed": 3,
+      "specials": 0,
+      "wall_ms": 1045.291
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 14.89
+    },
+    {
+      "event": "press_to_draw",
+      "movie": false,
+      "wall_ms": 16.512
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL third-clear settlement grants earned reward before retaliation
+FAIL chosen first reward moves to route phase
+FAIL route choice unlocks next fight
+FAIL between advances to a newly supplied board
+FAIL next fight uses new board and index
+FAIL hp charge requirement ash and relics carry unchanged
+SCRIPT ERROR: Invalid access of index '0' on a base object of type: 'Array'.
+          at: _init (res://tests/test_run_session.gd:67)
+          GDScript backtrace (most recent call first):
+              [0] _init (res://tests/test_run_session.gd:67)

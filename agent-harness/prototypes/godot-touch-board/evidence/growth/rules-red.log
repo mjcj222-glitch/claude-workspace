@@ -1,0 +1,61 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: same fixed board base skill selects four
+FAIL: pigment selects five including origin distance then ID
+FAIL: pigment preview conversion and result connection agree
+FAIL: duplicate pigment does not stack
+PASS: pigment cannot invent missing targets
+PASS: pigment paths cannot cross heart
+PASS: pigment paths cannot cross special
+PASS: pigment cannot target special
+PASS: skill relic planning does not mutate board
+PASS: base threshold 4
+PASS: lens threshold 4
+FAIL: direct normal count 4
+PASS: ash independent six-normal threshold 4
+PASS: new special protected and only original IDs removed 4
+PASS: at most one spawn descriptor 4
+PASS: base threshold 5
+FAIL: lens threshold 5
+FAIL: direct normal count 5
+PASS: ash independent six-normal threshold 5
+PASS: new special protected and only original IDs removed 5
+PASS: at most one spawn descriptor 5
+PASS: base threshold 6
+PASS: lens threshold 6
+FAIL: direct normal count 6
+FAIL: ash independent six-normal threshold 6
+PASS: new special protected and only original IDs removed 6
+PASS: at most one spawn descriptor 6
+PASS: base threshold 10
+PASS: lens threshold 10
+FAIL: direct normal count 10
+FAIL: ash independent six-normal threshold 10
+PASS: new special protected and only original IDs removed 10
+PASS: at most one spawn descriptor 10
+PASS: base threshold 11
+FAIL: lens threshold 11
+FAIL: direct normal count 11
+FAIL: ash independent six-normal threshold 11
+PASS: new special protected and only original IDs removed 11
+PASS: at most one spawn descriptor 11
+PASS: base threshold 12
+PASS: lens threshold 12
+FAIL: direct normal count 12
+FAIL: ash independent six-normal threshold 12
+PASS: new special protected and only original IDs removed 12
+PASS: at most one spawn descriptor 12
+FAIL: no ash means no reserved charge
+FAIL: lens does not implicitly grant ash
+FAIL: hearts neither produce lens core nor ash
+FAIL: existing core excluded from direct count and ash
+FAIL: additional chain clears do not increase direct normals
+FAIL: additional chain cannot produce lens core or ash
+FAIL: solo special never reserves ash
+FAIL: invalid plan has safe new field defaults
+FAIL: returned plan does not depend on later relic array mutation
+FAIL: unknown relic IDs cannot modify rules
+PASS: relic order does not affect result
+PASS: clear relic planning does not mutate board
+FAIL: relic definitions file exists
+RELIC RULES: 58 checks, 26 failures

@@ -1,0 +1,35 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FAIL first victory grants four gold and first relic offer
+FAIL normal duplicate finish does not pay or recreate offer
+FAIL per-encounter payout guard survives busy reentry
+FAIL first reward enters route choice
+FAIL route selection is explicit
+FAIL selected elite route reaches combat configuration
+FAIL elite second win pays eight in addition to first four
+FAIL second encounter payout and offer are exact-once
+FAIL second reward enters one-time shop
+FAIL shop offers exactly the remaining third relic
+FAIL heal preview caps partial health gap
+FAIL partial healing buys exactly once at full price
+FAIL successful purchase invalidates old UI serial
+FAIL exact remaining eight gold buys third relic
+FAIL shop acquisition is not reward or retroactive resource change
+FAIL shop exits at zero funds
+FAIL shop exit enables final fight
+FAIL final fight unchanged and carries all resources
+FAIL final victory has no payout or extra reward
+FAIL route determines total available gold
+FAIL each route preserves remaining-relic identity
+FAIL route determines total available gold
+FAIL each route preserves remaining-relic identity
+FAIL buying ash never grants retroactive reservation
+FAIL relic-first order still permits eight-health purchase
+FAIL both-purchase reverse order can exit
+FAIL safe heal leaves four gold
+FAIL leaving keeps unspent currency
+FAIL safe exact eight can buy relic instead
+FAIL safe relic-only exit works
+FAIL zero-fund shop may be left without buying
+FAIL resolved first win cannot offer a second earned relic
+ROUTE_ECONOMY checks=48 failures=32
